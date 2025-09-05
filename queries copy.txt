@@ -1,0 +1,11 @@
+# PubMed – Variant C (Hybrid) – High-Recall
+((("Multiple Sclerosis"[Mesh]) OR "multiple sclerosis"[tiab] OR "disseminated sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Mesh]) OR sleep*[tiab] OR insomnia*[tiab] OR "sleep apnea*"[tiab] OR "restless leg*"[tiab] OR narcoleps*[tiab] OR "sleep disorder*"[tiab]) AND (("Behavior Therapy"[Mesh]) OR "Cognitive Behavioral Therapy"[Mesh] OR "Exercise Therapy"[Mesh] OR "Mind-Body Therapies"[Mesh] OR "Rehabilitation"[Mesh] OR "Psychotherapy"[Mesh] OR "non-pharmacological"[tiab] OR "non-invasive"[tiab] OR "behavioral therap*"[tiab] OR "cognitive behavio* therapy"[tiab] OR exercis*[tiab] OR "physical activity"[tiab] OR rehabilitat*[tiab] OR psychotherap*[tiab] OR mindfulness[tiab])) AND (("Randomized Controlled Trial"[Publication Type]) OR "Controlled Clinical Trial"[Publication Type] OR randomized[tiab] OR placebo[tiab] OR trial[tiab] OR groups[tiab])
+
+# PubMed – Variant C (Hybrid) – Balanced
+((("Multiple Sclerosis"[Mesh]) OR "multiple sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Mesh]) OR "insomnia"[tiab] OR "sleep apnea"[tiab] OR "restless legs syndrome"[tiab])) AND (("Cognitive Behavioral Therapy"[Mesh]) OR "Exercise Therapy"[Mesh] OR "Rehabilitation"[Mesh] OR "cognitive behavio* therapy"[tiab] OR "exercise"[tiab]) AND (("Randomized Controlled Trial"[Publication Type]) OR "Controlled Clinical Trial"[Publication Type] OR (randomized[tiab] AND trial[tiab]))
+
+# PubMed – Variant C (Hybrid) – High-Precision
+((("Multiple Sclerosis"[Majr]) AND ("Sleep Wake Disorders"[Majr]))) AND (("Cognitive Behavioral Therapy"[Mesh]) OR "Exercise Therapy"[Mesh]) AND ("Randomized Controlled Trial"[Publication Type])
+
+# PubMed – Minimal Revised – High-Precision (Hybrid)
+((("Multiple Sclerosis"[Majr]) OR "multiple sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Majr]) OR insomnia[tiab]) AND (("Cognitive Behavioral Therapy"[Mesh]) OR "cognitive behavio* therapy"[tiab]) AND (("Randomized Controlled Trial"[Publication Type]) OR "randomized controlled trial"[tiab])

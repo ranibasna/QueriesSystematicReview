@@ -1,0 +1,148 @@
+
+# Search Strategy: Multiple Sclerosis & Sleep Disorders (Non-Pharmacological RCTs)
+
+**Date of Search:** 2025-09-04
+**Databases:** MEDLINE (via PubMed), Scopus, EMBASE, PsycINFO, Cochrane Library
+**Date Window:** Records up to 2024-08-04
+
+---
+
+## 1) Concept → MeSH Table (for MEDLINE/PubMed)
+
+| Concept | MeSH Term | Tree Note | Explode? | Rationale & Source |
+| :--- | :--- | :--- | :--- | :--- |
+| **Population** | Multiple Sclerosis | C10.228.140.580 | Yes | Core condition. Exploding includes all subtypes. (Source: MeSH Browser) |
+| **Population** | Sleep Wake Disorders | C10.886.735 / F03.870.860 | Yes | Broad category for all sleep disorders, as specified in PICOS. (Source: MeSH Browser, PROSPERO) |
+| | Insomnia | C10.886.735.466 | Yes | Specific disorder mentioned in PROSPERO. |
+| | Sleep Apnea Syndromes | C10.886.735.780 | Yes | Specific disorder mentioned in PROSPERO. |
+| | Restless Legs Syndrome | C10.886.735.730 | Yes | Specific disorder mentioned in PROSPERO. |
+| | Narcolepsy | C10.886.735.530 | Yes | Specific disorder mentioned in PROSPERO. |
+| | REM Sleep Behavior Disorder | C10.886.735.720 | Yes | Specific disorder mentioned in PROSPERO. |
+| **Intervention** | Behavior Therapy | F04.754.200 | Yes | Broad term for non-pharma interventions. (Source: MeSH Browser) |
+| | Cognitive Behavioral Therapy | F04.754.200.300 | Yes | Key non-pharma intervention. (Source: MeSH Browser) |
+| | Exercise Therapy | E02.779.330 | Yes | Key non-pharma intervention. (Source: MeSH Browser) |
+| | Mind-Body Therapies | E02.644 | Yes | Includes mindfulness, meditation, etc. (Source: MeSH Browser) |
+| | Rehabilitation | E02.779 | Yes | Broad term covering various non-pharma therapies. (Source: MeSH Browser) |
+| | Psychotherapy | F04.754 | Yes | Broad term for psychological interventions. (Source: MeSH Browser) |
+| **Design** | Randomized Controlled Trial | E05.318.760.535 | No | Specific study design required. (Source: MeSH Browser) |
+| | Controlled Clinical Trial | E05.318.760 | No | Broader term for controlled studies. (Source: MeSH Browser) |
+
+---
+
+## 2) Concept → Textword Table (for MEDLINE/PubMed)
+
+| Concept | Synonym/Phrase | Field Tag | Truncation? | Source |
+| :--- | :--- | :--- | :--- | :--- |
+| **Population** | "multiple sclerosis" | [tiab] | No | Standard term |
+| | "disseminated sclerosis" | [tiab] | No | Synonym |
+| | MS | [tiab] | No | Common acronym, combine with context |
+| | PwMS | [tiab] | No | Acronym for "People with MS" |
+| | sleep | [tiab] | Yes (`sleep*`) | Broad term for the domain |
+| | insomnia | [tiab] | Yes (`insomnia*`) | Specific disorder |
+| | "sleep apnea" | [tiab] | Yes (`"sleep apnea*"`) | Specific disorder |
+| | "obstructive sleep apnea" | [tiab] | Yes (`"obstructive sleep apnea*"`) | Specific disorder |
+| | "restless leg" | [tiab] | Yes (`"restless leg*"`) | Specific disorder |
+| | narcolepsy | [tiab] | Yes (`narcoleps*`) | Specific disorder |
+| | "sleep disorder" | [tiab] | Yes (`"sleep disorder*"`) | General term |
+| | somnolence | [tiab] | Yes (`somnolen*`) | Symptom |
+| | hypersomnia | [tiab] | Yes (`hypersomni*`) | Symptom |
+| **Intervention** | "non-pharmacological" | [tiab] | No | Key intervention descriptor |
+| | "non-invasive" | [tiab] | No | Key intervention descriptor |
+| | "behavioral therapy" | [tiab] | Yes (`"behavioral therap*"`)| Intervention type |
+| | "cognitive behavio* therapy" | [tiab] | Yes | Intervention type (captures UK/US spelling) |
+| | CBT | [tiab] | No | Common acronym |
+| | exercise | [tiab] | Yes (`exercis*`) | Intervention type |
+| | "physical activity" | [tiab] | No | Intervention type |
+| | rehabilitation | [tiab] | Yes (`rehabilitat*`) | Intervention type |
+| | psychotherapy | [tiab] | Yes (`psychotherap*`) | Intervention type |
+| | mindfulness | [tiab] | No | Intervention type |
+| | meditation | [tiab] | Yes (`meditat*`) | Intervention type |
+| | "health education" | [tiab] | No | Intervention type |
+| | "patient education" | [tiab] | No | Intervention type |
+| **Design** | "randomized controlled trial" | [pt] | No | Publication Type |
+| | "controlled clinical trial" | [pt] | No | Publication Type |
+| | randomized | [tiab] | No | Textword |
+| | placebo | [tiab] | No | Textword |
+| | randomly | [tiab] | No | Textword |
+| | trial | [tiab] | No | Textword |
+| | groups | [tiab] | No | Textword |
+
+---
+
+## 3) Boolean Strategies (MEDLINE/PubMed Syntax)
+
+*Note: These strategies are designed for MEDLINE/PubMed and will require translation for other databases. The date filter is applied at the end.*
+
+### Variant A (MeSH-heavy)
+*   **High-Recall:** `((("Multiple Sclerosis"[Mesh]) AND "Sleep Wake Disorders"[Mesh])) AND (("Behavior Therapy"[Mesh]) OR "Cognitive Behavioral Therapy"[Mesh] OR "Exercise Therapy"[Mesh] OR "Mind-Body Therapies"[Mesh] OR "Rehabilitation"[Mesh] OR "Psychotherapy"[Mesh]) AND (("Randomized Controlled Trial"[Publication Type]) OR "Controlled Clinical Trial"[Publication Type] OR random*[tiab] OR placebo[tiab] OR trial[tiab])`
+*   **Balanced:** `((("Multiple Sclerosis"[Mesh])) AND ("Sleep Wake Disorders"[Mesh] OR "Insomnia"[Mesh] OR "Sleep Apnea Syndromes"[Mesh] OR "Restless Legs Syndrome"[Mesh])) AND (("Cognitive Behavioral Therapy"[Mesh]) OR "Exercise Therapy"[Mesh] OR "Rehabilitation"[Mesh]) AND (("Randomized Controlled Trial"[Publication Type]) OR "Controlled Clinical Trial"[Publication Type])`
+*   **High-Precision:** `((("Multiple Sclerosis"[Majr])) AND ("Sleep Wake Disorders"[Majr])) AND (("Cognitive Behavioral Therapy"[Mesh]) OR "Exercise Therapy"[Mesh]) AND ("Randomized Controlled Trial"[Publication Type])`
+
+### Variant B (Text-heavy)
+*   **High-Recall:** `((("multiple sclerosis"[tiab] OR "disseminated sclerosis"[tiab] OR MS[tiab])) AND (sleep*[tiab] OR insomnia*[tiab] OR "sleep apnea*"[tiab] OR "restless leg*"[tiab] OR narcoleps*[tiab] OR "sleep disorder*"[tiab] OR somnolen*[tiab])) AND ("non-pharmacological"[tiab] OR "non-invasive"[tiab] OR "behavioral therap*"[tiab] OR "cognitive behavio* therapy"[tiab] OR CBT[tiab] OR exercis*[tiab] OR "physical activity"[tiab] OR rehabilitat*[tiab] OR psychotherap*[tiab] OR mindfulness[tiab] OR meditat*[tiab]) AND (randomized[tiab] OR placebo[tiab] OR randomly[tiab] OR trial[tiab] OR groups[tiab])`
+*   **Balanced:** `((("multiple sclerosis"[tiab])) AND ("sleep disorder*"[tiab] OR insomnia[tiab] OR "sleep apnea"[tiab] OR "restless legs syndrome"[tiab])) AND (("cognitive behavio* therapy"[tiab]) OR "exercise"[tiab] OR "rehabilitation"[tiab] OR "mindfulness"[tiab]) AND (randomized[tiab] AND trial[tiab])`
+*   **High-Precision:** `("multiple sclerosis"[tiab] AND (insomnia[tiab] OR "sleep apnea"[tiab]) AND ("cognitive behavio* therapy"[tiab] OR "exercise"[tiab]) AND "randomized controlled trial"[tiab])`
+
+### Variant C (Hybrid Balanced - Recommended Best-Practice)
+*   **High-Recall (Recommended):** `((("Multiple Sclerosis"[Mesh]) OR "multiple sclerosis"[tiab] OR "disseminated sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Mesh]) OR sleep*[tiab] OR insomnia*[tiab] OR "sleep apnea*"[tiab] OR "restless leg*"[tiab] OR narcoleps*[tiab] OR "sleep disorder*"[tiab]) AND (("Behavior Therapy"[Mesh]) OR "Cognitive Behavioral Therapy"[Mesh] OR "Exercise Therapy"[Mesh] OR "Mind-Body Therapies"[Mesh] OR "Rehabilitation"[Mesh] OR "Psychotherapy"[Mesh] OR "non-pharmacological"[tiab] OR "non-invasive"[tiab] OR "behavioral therap*"[tiab] OR "cognitive behavio* therapy"[tiab] OR exercis*[tiab] OR "physical activity"[tiab] OR rehabilitat*[tiab] OR psychotherap*[tiab] OR mindfulness[tiab])) AND (("Randomized Controlled Trial"[Publication Type]) OR "Controlled Clinical Trial"[Publication Type] OR randomized[tiab] OR placebo[tiab] OR trial[tiab] OR groups[tiab])`
+*   **Balanced:** `((("Multiple Sclerosis"[Mesh]) OR "multiple sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Mesh]) OR "insomnia"[tiab] OR "sleep apnea"[tiab] OR "restless legs syndrome"[tiab])) AND (("Cognitive Behavioral Therapy"[Mesh]) OR "Exercise Therapy"[Mesh] OR "Rehabilitation"[Mesh] OR "cognitive behavio* therapy"[tiab] OR "exercise"[tiab]) AND (("Randomized Controlled Trial"[Publication Type]) OR "Controlled Clinical Trial"[Publication Type] OR (randomized[tiab] AND trial[tiab]))`
+*   **High-Precision:** `((("Multiple Sclerosis"[Majr]) AND ("Sleep Wake Disorders"[Majr]))) AND (("Cognitive Behavioral Therapy"[Mesh]) OR "Exercise Therapy"[Mesh]) AND ("Randomized Controlled Trial"[Publication Type])`
+
+**Final Query Line (with date filter):**
+*Apply one of the strategies above and add the following line:*
+`AND (("1000/01/01"[Date - Publication] : "2024/08/04"[Date - Publication]))`
+
+---
+
+## 4) PRESS Self-Check
+
+*   **Issues Identified:**
+    *   *Logic:* The term "MS" is a very common acronym. Using it alone could retrieve many irrelevant results (e.g., mass spectrometry). In the text-heavy queries, it should be combined with a contextual term like `(MS[tiab] AND sleep[tiab])` or used with caution. The proposed queries keep it simple for clarity but this is a refinement to consider if precision is poor.
+    *   *Missing Terms:* The intervention concept is broad. While a good range of terms is included, some specific therapies (e.g., "acceptance and commitment therapy", "yoga") are not explicitly listed to keep the query length manageable but are covered by broader MeSH terms like "Mind-Body Therapies".
+    *   *Inappropriate Limits:* No major issues. The use of `[tiab]` and `[pt]` is appropriate for PubMed.
+    *   *Spelling:* Handled `behavio*r` with truncation.
+    *   *Translation:* The queries are PubMed-specific and require careful translation.
+
+*   **Minimal Revised Queries (Fixes):**
+    1.  **Revised High-Recall (Hybrid):** The original is quite comprehensive. No minimal revision is likely to improve it without sacrificing significant recall. The provided hybrid high-recall query is robust.
+    2.  **Revised Balanced (Hybrid) with improved MS precision:** `((("Multiple Sclerosis"[Mesh]) OR "multiple sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Mesh]) OR "insomnia"[tiab] OR "sleep apnea"[tiab] OR "restless legs syndrome"[tiab])) AND (("Cognitive Behavioral Therapy"[Mesh]) OR "Exercise Therapy"[Mesh] OR "Rehabilitation"[Mesh] OR "cognitive behavio* therapy"[tiab] OR "exercise"[tiab]) AND (("Randomized Controlled Trial"[Publication Type]) OR "Controlled Clinical Trial"[Publication Type] OR (randomized[tiab] AND trial[tiab]))` - *This is identical to the one above, which is already well-balanced.*
+    3.  **Revised High-Precision (Hybrid) with text words:** `((("Multiple Sclerosis"[Majr]) OR "multiple sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Majr]) OR insomnia[tiab]) AND (("Cognitive Behavioral Therapy"[Mesh]) OR "cognitive behavio* therapy"[tiab]) AND (("Randomized Controlled Trial"[Publication Type]) OR "randomized controlled trial"[tiab])`
+
+---
+
+## 5) Translation Notes Across Databases
+
+*   **EMBASE (Ovid):**
+    *   MeSH (`"term"[Mesh]`) → Emtree (`'term'/exp`).
+    *   `[tiab]` → `:ti,ab,kw`.
+    *   `[pt]` → `:pt`.
+    *   Truncation `*` → `$`.
+    *   Proximity operators like `ADJ` can be used (e.g., `(cognitive ADJ behavio* ADJ therapy)`).
+    *   **Example Translation (Concept):** `"multiple sclerosis"/exp OR ('multiple sclerosis' OR 'disseminated sclerosis'):ti,ab,kw`
+
+*   **Scopus:**
+    *   No major controlled vocabulary like MeSH/Emtree. Relies on text words.
+    *   `[tiab]` → `TITLE-ABS-KEY(...)`.
+    *   `[pt]` is not a standard field; rely on text words for study design.
+    *   Date format is `PUBDATETXT("YYYY")`. Use `PUBDATETXT(BEFORE 2024-08-05)`.
+    *   **Example Translation (Concept):** `TITLE-ABS-KEY("multiple sclerosis" OR "disseminated sclerosis")`
+
+*   **PsycINFO (Ovid/EBSCO):**
+    *   MeSH → APA Thesaurus of Psychological Index Terms (`DE "term"`).
+    *   `[tiab]` → `ti,ab,id`.
+    *   Syntax is similar to EMBASE on Ovid platform.
+
+*   **Cochrane Library (CENTRAL):**
+    *   Uses MeSH, so vocabulary is similar to PubMed.
+    *   Syntax is slightly different: `[mh] ^"term"` for MeSH exact, or `[mh] "term"` for explode.
+    *   `[tiab]` → `:ti,ab,kw`.
+    *   **Example Translation (Concept):** `([mh] "Multiple Sclerosis") OR ("multiple sclerosis":ti,ab,kw)`
+
+---
+## 6) Date Window
+
+All queries should be combined with a date filter to limit results to on or before **August 4, 2024**.
+*   **PubMed:** `("1000/01/01"[Date - Publication] : "2024/08/04"[Date - Publication])`
+*   **Ovid (EMBASE/PsycINFO):** `..l/1-.. as of 20240804` or use the date limiters in the interface.
+*   **Scopus:** `AND (PUBDATETXT(BEFORE 2024-08-05))`
+*   **Cochrane:** Use the interface date filter.

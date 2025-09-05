@@ -1,0 +1,30 @@
+# Ignore everything by default
+*
+
+# Allow directories so file rules can apply recursively
+!*/
+
+# Keep only these file types in version control
+!*.py
+!*.md
+!*.toml
+!*.txt
+
+# Always track this file
+!.gitignore
+
+# Common local/OS/editor artifacts (kept ignored)
+.DS_Store
+.vscode/
+.idea/
+.env
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.ipynb
+*.log
+*.tmp
+*.lock
+*.bak
+*.swp
+*.swp

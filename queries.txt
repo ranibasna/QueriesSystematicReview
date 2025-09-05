@@ -1,0 +1,23 @@
+# PubMed Strategy: High-Recall (Variant A - MeSH-heavy)
+((("Multiple Sclerosis"[Mesh]) AND (("Sleep Wake Disorders"[Mesh]) OR ("Insomnia"[Mesh]) OR ("Sleep Apnea Syndromes"[Mesh]) OR ("Restless Legs Syndrome"[Mesh]) OR ("Narcolepsy"[Mesh]) OR ("REM Sleep Behavior Disorder"[Mesh]))) AND (("Cognitive Behavioral Therapy"[Mesh]) OR ("Exercise Therapy"[Mesh]) OR ("Mind-Body Therapies"[Mesh]) OR ("Relaxation Therapy"[Mesh]) OR ("Phototherapy"[Mesh]) OR ("Sleep Hygiene"[Mesh]))) AND (("Randomized Controlled Trial"[Publication Type]) OR ("Controlled Clinical Trial"[Publication Type]))
+
+# PubMed Strategy: Balanced (Variant B - Text-heavy)
+((("multiple sclerosis"[tiab] OR "disseminated sclerosis"[tiab])) AND (sleep*[tiab] OR insomnia*[tiab] OR "sleep apnea*"[tiab] OR "restless leg syndrome"[tiab] OR "Willis-Ekbom disease"[tiab] OR narcoleps*[tiab] OR "REM sleep behavior disorder"[tiab] OR "sleep disturbance*"[tiab] OR "sleep quality"[tiab])) AND (("cognitive behavioral therapy"[tiab] OR "cognitive behaviour therapy"[tiab] OR exercise[tiab] OR "physical activity"[tiab] OR yoga[tiab] OR mindfulness[tiab] OR "light therapy"[tiab] OR phototherapy[tiab] OR "sleep hygiene"[tiab] OR "relaxation technique*"[tiab] OR non-pharmacological[tiab] OR nonpharmacological[tiab] OR non-invasive[tiab] OR noninvasive[tiab])) AND (randomi*ed[tiab] OR placebo[tiab] OR "controlled trial"[tiab] OR trial[ti]))
+
+# PubMed Strategy: High-Precision (Variant C - Hybrid)
+((("Multiple Sclerosis"[Mesh] OR "multiple sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Mesh:NoExp]) OR "sleep disturbance*"[tiab] OR insomnia[tiab] OR "sleep apnea"[tiab] OR "restless legs syndrome"[tiab] OR narcolepsy[tiab] OR "REM sleep behavior disorder"[tiab])) AND (("Cognitive Behavioral Therapy"[Mesh] OR "Exercise Therapy"[Mesh] OR "Mind-Body Therapies"[Mesh] OR "cognitive behavioral therapy"[tiab] OR "cognitive behaviour therapy"[tiab] OR exercise[tiab] OR "physical activity"[tiab] OR mindfulness[tiab] OR "sleep hygiene"[tiab])) AND (("Randomized Controlled Trial"[Publication Type]) OR randomi*ed[tiab] OR placebo[tiab]))
+
+# PRESS Revised Query 1 (Broader Intervention via NOT)
+((("Multiple Sclerosis"[Mesh] OR "multiple sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Mesh:NoExp]) OR "sleep disturbance*"[tiab] OR insomnia[tiab] OR "sleep apnea"[tiab] OR "restless legs syndrome"[tiab])) AND (("Randomized Controlled Trial"[Publication Type]) OR randomi*ed[tiab] OR placebo[tiab])) NOT ("drug therapy"[Subheading] OR "drug therapy"[tiab] OR drug*[tiab] OR pharmaco*[tiab])
+
+# PRESS Revised Query 2 (High-Precision Sleep Focus)
+((("Multiple Sclerosis"[Mesh] OR "multiple sclerosis"[tiab])) AND (("Insomnia"[Mesh] OR insomnia[tiab]) OR ("Sleep Apnea Syndromes"[Mesh] OR "sleep apnea"[tiab]) OR ("Restless Legs Syndrome"[Mesh] OR "restless legs syndrome"[tiab]))) AND (("Randomized Controlled Trial"[Publication Type]) OR randomi*ed[tiab] OR placebo[tiab])) AND (English[lang]) AND (humans[mh])
+
+# Micro-Variant V1 (Add Human + English Filters)
+((((("Multiple Sclerosis"[Mesh] OR "multiple sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Mesh]) OR sleep*[tiab])) AND (("Randomized Controlled Trial"[Publication Type]) OR randomi*ed[tiab] OR placebo[tiab] OR trial[tiab]))) AND (English[lang])) AND (humans[mh])
+
+# Micro-Variant V3 (Narrow Sleep Block)
+((("Multiple Sclerosis"[Mesh] OR "multiple sclerosis"[tiab])) AND (("Insomnia"[Mesh]) OR ("Sleep Apnea Syndromes"[Mesh]) OR ("Restless Legs Syndrome"[Mesh]) OR insomnia[tiab] OR "sleep disturbance"[tiab] OR "sleep quality"[tiab])) AND (("Randomized Controlled Trial"[Publication Type]) OR randomi*ed[tiab] OR placebo[tiab] OR trial[tiab]))
+
+# Micro-Variant V6 (Exclude Document Types)
+((((("Multiple Sclerosis"[Mesh] OR "multiple sclerosis"[tiab])) AND (("Sleep Wake Disorders"[Mesh]) OR sleep*[tiab])) AND (("Randomized Controlled Trial"[Publication Type]) OR randomi*ed[tiab] OR placebo[tiab] OR trial[tiab]))) NOT (Letter[pt] OR Editorial[pt] OR Comment[pt] OR "Case Reports"[pt]))
