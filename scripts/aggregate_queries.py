@@ -69,8 +69,15 @@ What you’ll get (in aggregates/)
 """
 
 from __future__ import annotations
-import argparse, glob, json, os, re, sys
+import argparse, glob, json, os, re, sys, time
 from collections import Counter, defaultdict
+from typing import Dict, Iterable, Set
+
+# Use Entrez directly to avoid depending on llm_sr_select_and_score for gating
+try:
+    from Bio import Entrez  # type: ignore
+except Exception:  # biopython missing will degrade gates; we handle gracefully below
+    Entrez = None  # type: ignore
 
 
 def load_pmids_from_file(path: str) -> dict[str, set[str]]:
@@ -113,7 +120,7 @@ def load_all(inputs: list[str]) -> dict[str, set[str]]:
 
 
 def prospero_gate_predicates() -> list[re.Pattern]:
-    # Protocol-aligned textual signals; keep lightweight and recall-friendly
+    # Kept for backward-compat; not used by the relaxed gate below.
     pats = [
         re.compile(r"\bmultiple sclerosis\b", re.I),
         re.compile(r"\bsleep\b|insomnia|sleep apnea|restless leg|narcolep|REM sleep behavior", re.I),
@@ -122,29 +129,79 @@ def prospero_gate_predicates() -> list[re.Pattern]:
     ]
     return pats
 
+# Relaxed gate regexes (compiled once)
+_MS_RX = re.compile(r"\bmultiple sclerosis\b", re.I)
+_SLEEP_RX = re.compile(r"\bsleep\b|insomnia|apnea|restless\s*leg|narcolep|REM sleep", re.I)
+_RCT_RX = re.compile(r"randomi[sz]ed|trial|placebo|randomly", re.I)
+_NONPHARMA_RX = re.compile(r"non[- ]?pharmacolog|non[- ]?invas|behavior|cognitive|exercise|rehabilitation|psychotherap|mindfulness|meditation", re.I)
+
+_RATE_LIMIT = 0.34
+
+def set_ncbi_identity(email: str | None = None, api_key: str | None = None):
+    if Entrez is None:
+        return
+    Entrez.email = email or os.getenv('NCBI_EMAIL', 'you@example.com')
+    Entrez.api_key = api_key or os.getenv('NCBI_API_KEY')
+
 
 def fetch_min_titles(pmids: set[str]) -> dict[str, dict]:
-    # Lazy import to avoid hard dependency; reuse existing script if present.
-    try:
-        from llm_sr_select_and_score import fetch_titles
-    except Exception:
+    """Fetch minimal metadata from PubMed: Title and Abstract for the given PMIDs.
+
+    Returns a mapping: { pmid: { 'Title': str, 'Abstract': str } }
+    If biopython is unavailable or an error occurs, returns an empty dict.
+    """
+    if Entrez is None or not pmids:
         return {}
-    titles = {}
-    for chunk in [list(pmids)[i:i+200] for i in range(0, len(pmids), 200)]:
-        for rec in fetch_titles(chunk):
-            pid = rec.get('pmid') or rec.get('PMID') or rec.get('pmid_str')
-            if pid:
-                titles[str(pid)] = rec
-    return titles
+
+    # Parse MEDLINE text capturing TI and AB with continuation lines
+    def parse_medline(text: str) -> Dict[str, dict]:
+        out: Dict[str, dict] = {}
+        cur: Dict[str, str] | None = None
+        cur_field: str | None = None
+        for raw in text.splitlines():
+            line = raw.rstrip("\n")
+            if line.startswith('PMID- '):
+                if cur and cur.get('PMID'):
+                    out[str(cur['PMID'])] = cur
+                cur = {'PMID': line.split('- ', 1)[1].strip(), 'Title': '', 'Abstract': ''}
+                cur_field = None
+            elif cur is not None and line.startswith('TI  - '):
+                cur['Title'] = line.split('- ', 1)[1].strip()
+                cur_field = 'Title'
+            elif cur is not None and line.startswith('AB  - '):
+                cur['Abstract'] = line.split('- ', 1)[1].strip()
+                cur_field = 'Abstract'
+            elif cur is not None and line.startswith('      ') and cur_field:
+                cur[cur_field] = (cur[cur_field] + ' ' + line.strip()).strip()
+        if cur and cur.get('PMID'):
+            out[str(cur['PMID'])] = cur
+        return out
+
+    ids = [str(p).strip() for p in pmids if str(p).strip()]
+    meta: Dict[str, dict] = {}
+    BATCH = 200
+    for i in range(0, len(ids), BATCH):
+        chunk = ids[i:i+BATCH]
+        try:
+            h = Entrez.efetch(db='pubmed', id=','.join(chunk), rettype='medline', retmode='text')
+            txt = h.read(); h.close(); time.sleep(_RATE_LIMIT)
+            meta.update(parse_medline(txt))
+        except Exception:
+            # best-effort: skip bad batch
+            time.sleep(_RATE_LIMIT)
+            continue
+    return meta
 
 
 def passes_prospero_gates(rec: dict) -> bool:
-    text = ' '.join(str(rec.get(k,'')) for k in ('title','Title','abstract','Abstract'))
+    """Relaxed gate: require (MS AND Sleep) AND (RCT OR Non‑pharma). Works on Title+Abstract."""
+    text = ' '.join(str(rec.get(k, '')) for k in ('title','Title','abstract','Abstract'))
     if not text.strip():
         return False
-    for pat in prospero_gate_predicates():
-        if not pat.search(text):
-            return False
+    if not (_MS_RX.search(text) and _SLEEP_RX.search(text)):
+        return False
+    if not (_RCT_RX.search(text) or _NONPHARMA_RX.search(text)):
+        return False
     return True
 
 
@@ -165,9 +222,12 @@ def consensus_k(pmids_by_query: dict[str,set[str]], topk: int, k: int) -> set[st
 
 def precision_gated_union(pmids_by_query: dict[str,set[str]], use_titles: bool) -> set[str]:
     universe = set().union(*pmids_by_query.values()) if pmids_by_query else set()
-    if not use_titles:
+    if not use_titles or not universe:
         return universe
     meta = fetch_min_titles(universe)
+    # Safe fallback: if metadata can't be fetched, return ungated universe
+    if not meta:
+        return universe
     return {pid for pid in universe if pid in meta and passes_prospero_gates(meta[pid])}
 
 
@@ -197,9 +257,12 @@ def concept_family_consensus(pmids_by_family: dict[str, dict[str,set[str]]], req
 
 
 def two_stage_screen(high_recall: set[str], filters_use_titles: bool) -> set[str]:
-    if not filters_use_titles:
-        return high_recall
+    if not filters_use_titles or not high_recall:
+        return set(high_recall)
     meta = fetch_min_titles(high_recall)
+    # Safe fallback: if metadata can't be fetched, return stage1 unchanged
+    if not meta:
+        return set(high_recall)
     return {pid for pid in high_recall if pid in meta and passes_prospero_gates(meta[pid])}
 
 
@@ -229,6 +292,13 @@ def main():
         sys.exit(1)
 
     os.makedirs(args.outdir, exist_ok=True)
+
+    # Initialize NCBI identity only if gates are used (to support Entrez calls)
+    if args.prospero_gates:
+        try:
+            set_ncbi_identity(os.getenv('NCBI_EMAIL', 'you@example.com'), os.getenv('NCBI_API_KEY'))
+        except Exception:
+            pass
 
     # 1) consensus ≥K of top-K
     cset = consensus_k(pmids_by_query, args.topk, args.consensus_k)

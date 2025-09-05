@@ -157,6 +157,11 @@ Outputs:
 - benchmark_outputs/summary_YYYYMMDD-HHMMSS.csv
 - benchmark_outputs/details_YYYYMMDD-HHMMSS.json
 
+Example:
+```zsh
+python llm_sr_select_and_score.py score --mindate 2015/01/01 --maxdate 2024/08/31 --queries-txt queries.txt --gold-csv Gold_list__all_included_studies_.csv --outdir benchmark_outputs
+```
+
 4) print-titles — fetch minimal metadata for PMIDs
 ```zsh
 # From a sealed file
