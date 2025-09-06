@@ -100,9 +100,9 @@ Main outcome(s): Primary outcome: Sleep quality
 Additional outcome(s): Secondary; Other sleep related outcomes, (health-related quality of life, psychological wellbeing, fatigue, depression, anxiety, adverse event, actiGraph)
 
 Finally: Your output should be a two-step process:
-1.  **Update Search Strategy Document:** Append the full, detailed output of this task (including all tables, all query variants, PRESS check, and translation notes) to the `search_strategy.md` file. Add a markdown horizontal rule (`---`) and a clear H2 header for the "Multiple Sclerosis & Sleep Disorders" topic to separate it from existing content.
-2.  **Update Queries File:** Overwrite the `queries.txt` file with PubMed queries only. Include the three strategies for **Variant C (Hybrid balanced)** labeled as High-recall, Balanced, and High-precision for PubMed, AND any "Minimal Revised Queries" from the PRESS self-check that are PubMed-compatible. Each query must be preceded by a descriptive comment line (starting with '#') and separated by a blank line to be compatible with the scoring script.
+1.  **Update Search Strategy Document:** Append the full, detailed output of this task (including all tables, all query variants, PRESS check, and translation notes) to the `Documentations/search_strategy.md` file. Add a markdown horizontal rule (`---`) and a clear H2 header for the "Multiple Sclerosis & Sleep Disorders" topic to separate it from existing content.
+2.  **Update Queries File:** Overwrite the `Queries/queries.txt` file with PubMed queries only. Include the three strategies for **Variant C (Hybrid balanced)** labeled as High-recall, Balanced, and High-precision for PubMed, AND any "Minimal Revised Queries" from the PRESS self-check that are PubMed-compatible. Each query must be preceded by a descriptive comment line (starting with '#') and separated by a blank line to be compatible with the scoring script.
 
-Additionally, from the micro-variant grid select the top-3 precision-lean PubMed variants that preserve recall (expected_recall_delta: none|minimal) and append them to `queries.txt` as well, each with a descriptive `#` comment label.
+Additionally, from the micro-variant grid select the top-3 precision-lean PubMed variants that preserve recall (expected_recall_delta: none|minimal) and append them to `Queries/queries.txt` as well, each with a descriptive `#` comment label.
 
 """

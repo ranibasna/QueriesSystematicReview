@@ -28,7 +28,7 @@ export NCBI_EMAIL="you@example.com"
 
 ## Inputs
 
-- queries.txt (UTF-8): one or more PubMed Boolean queries.
+- Queries/queries.txt (UTF-8): one or more PubMed Boolean queries.
   - Separate queries with a blank line.
   - Lines inside a query block are concatenated with spaces.
   - Lines starting with `#` are comments and ignored.
@@ -73,7 +73,7 @@ NCBI_EMAIL=you@example.com
 SELECT_MINDATE=2015/01/01
 SELECT_MAXDATE=2024/08/31
 SELECT_CONCEPT_TERMS=concept_terms_OSA_microbiome_case_control.csv
-SELECT_QUERIES_TXT=queries.txt
+SELECT_QUERIES_TXT=Queries/queries.txt
 SELECT_OUTDIR=sealed_outputs
 # SELECT_TARGET_RESULTS=5000
 # SELECT_MIN_RESULTS=50
@@ -83,7 +83,7 @@ SELECT_OUTDIR=sealed_outputs
 
 # SCORE_MINDATE=2000/01/01
 # SCORE_MAXDATE=2024/08/31
-# SCORE_QUERIES_TXT=queries.txt
+# SCORE_QUERIES_TXT=Queries/queries.txt
 # SCORE_GOLD_CSV=gold_pmids.csv
 # SCORE_OUTDIR=benchmark_outputs
 ```
@@ -99,7 +99,7 @@ Then fill values, e.g.:
 mindate = "2015/01/01"
 maxdate = "2024/08/31"
 concept_terms = "concept_terms_OSA_microbiome_case_control.csv"
-queries_txt = "queries.txt"
+queries_txt = "Queries/queries.txt"
 outdir = "sealed_outputs"
 # target_results = 5000
 # min_results = 50
@@ -119,7 +119,7 @@ Subcommands:
 python llm_sr_select_and_score.py select \
   --mindate 2015/01/01 --maxdate 2024/08/31 \
   --concept-terms concept_terms_OSA_microbiome_case_control.csv \
-  --queries-txt queries.txt \
+  --queries-txt Queries/queries.txt \
   --outdir sealed_outputs
 
 # Using .env (no flags)
@@ -149,7 +149,7 @@ Output:
 ```zsh
 python llm_sr_select_and_score.py score \
   --mindate 2015/01/01 --maxdate 2024/08/31 \
-  --queries-txt queries.txt \
+  --queries-txt Queries/queries.txt \
   --gold-csv gold_pmids.csv \
   --outdir benchmark_outputs
 ```
@@ -159,7 +159,7 @@ Outputs:
 
 Example:
 ```zsh
-python llm_sr_select_and_score.py score --mindate 2015/01/01 --maxdate 2024/08/31 --queries-txt queries.txt --gold-csv Gold_list__all_included_studies_.csv --outdir benchmark_outputs
+python llm_sr_select_and_score.py score --mindate 2015/01/01 --maxdate 2024/08/31 --queries-txt Queries/queries.txt --gold-csv Gold_list__all_included_studies_.csv --outdir benchmark_outputs
 ```
 
 4) print-titles — fetch minimal metadata for PMIDs
@@ -206,10 +206,10 @@ This repo now includes an abstract "Recall Lock + Precision Knobs" framework to 
   - Recall_Lock (invariant MS + sleep + RCT core for PubMed)
   - Precision_Knobs list (humans/lang; title emphasis; Mesh:NoExp; exclude case reports; narrower sleep; RCT tiab signal)
   - 6 PubMed micro-variants (V1–V6), each toggling ≤2 knobs, with rationale + expected_recall_delta
-  - PRESS picks top-3 precision variants to append to `queries.txt`
+  - PRESS picks top-3 precision variants to append to `Queries/queries.txt`
 
 Workflow impact:
-- After you run the prompt-driven generator and overwrite `queries.txt`, you'll have the usual strategies plus a few precision-lean variants. Use `score` to benchmark them against your gold list and compare precision/recall/NNR.
+- After you run the prompt-driven generator and overwrite `Queries/queries.txt`, you'll have the usual strategies plus a few precision-lean variants. Use `score` to benchmark them against your gold list and compare precision/recall/NNR.
 
 
 ### Example results explanation of the select Command
@@ -270,7 +270,7 @@ Workflow impact:
   answers (the "gold standard").
 
   Logic:
-   1. It takes all the queries from queries.txt.
+   1. It takes all the queries from Queries/queries.txt.
    2. For each query, it runs the search on PubMed to get a list of results.
    3. It compares those results to your Gold_list__all_included_studies_.csv.
    4. It calculates metrics that tell you how effective each query was.
@@ -376,7 +376,7 @@ Workflow impact:
    * Purpose: To predict which of your candidate queries is the most promising, using only objective, structural
      criteria. It works completely blind, without ever seeing your gold-standard answers.
    * Inputs:
-       * Your list of candidate queries (queries.txt).
+       * Your list of candidate queries (Queries/queries.txt).
        * Your list of concepts (concept_terms.csv).
    * Output:
        * A sealed_...json file containing the single best query chosen by the heuristic score. Think of this as
@@ -400,7 +400,7 @@ Workflow impact:
   You mentioned that finalize recorded the three results. This is a small mix-up in the workflow:
 
    * The command that evaluates all of your queries is the `score` command. The score command's output is the
-     benchmark_outputs/details...json file, which shows the performance of every query in queries.txt.
+     benchmark_outputs/details...json file, which shows the performance of every query in Queries/queries.txt.
    * The finalize command only ever looks at the one query that was saved in the sealed_...json file.
 
   Summary Table
@@ -430,6 +430,7 @@ Retrieved = 91: Total unique papers your pipeline returned.
 Gold = 9: Total relevant papers in your gold set.
 
 Precision: 
+
 P
 =
 T
@@ -452,6 +453,7 @@ TP
 About 9.9% of retrieved items are relevant (many false positives).
 
 Recall: 
+
 R
 =
 T
@@ -474,6 +476,7 @@ TP
 You found every gold paper (perfect recall).
 
 F1: 
+
 F
 1
 =
@@ -506,6 +509,7 @@ P+R
 Harmonic mean of precision and recall.
 
 Jaccard: 
+
 J
 =
 ∣
@@ -547,6 +551,7 @@ A
 ∣A∪B∣=∣A∣=91, so Jaccard equals precision.
 
 Overlap Coefficient: 
+
 Overlap
 =
 ∣
@@ -586,3 +591,73 @@ A
 B⊆A, overlap is perfect.
 
 Practical takeaway: Recall is perfect, but precision is low (82 false positives). To improve precision, tighten queries or add filters/thresholds, while monitoring recall.
+
+## Workflow
+
+This section outlines the typical workflow for using the tools in this repository to generate, evaluate, and refine PubMed queries for a systematic review.
+
+### 1. Query Generation
+
+The first step is to generate a set of candidate queries using the Gemini CLI. This is done by executing a predefined command that contains a prompt for the Large Language Model (LLM).
+
+-   **Process:** Run a command such as `/run_sleep` or `/run_sleep_ms`. These commands are defined in TOML files located in the `.gemini/commands/` directory (e.g., `run_sleep.toml`). The `prompt` within the TOML file instructs the LLM to generate a series of PubMed queries based on a specific research question and PICOS criteria.
+-   **Input:** A prompt defined in a `.toml` file (e.g., `.gemini/commands/run_sleep.toml`).
+-   **Output:** The LLM-generated queries are automatically saved to the `Queries/Queries/queries.txt` file.
+
+### 2. Query Evaluation and Selection
+
+Once the candidate queries are generated, the `llm_sr_select_and_score.py` script is used to evaluate and select the best-performing queries.
+
+-   **Process:** This script offers several subcommands:
+    -   `select`: Evaluates queries based on heuristics (e.g., concept coverage, screening burden) without using a gold-standard list. It "seals" the best query for later evaluation.
+    -   `score`: Benchmarks all queries against a gold-standard list of PMIDs (e.g., `Gold_list__all_included_studies_.csv`) to calculate metrics like recall, precision, and Number Needed to Read (NNR).
+    -   `finalize`: Takes a "sealed" query from the `select` step and runs a full evaluation against the gold-standard list.
+-   **Inputs:**
+    -   `Queries/Queries/queries.txt`: The file containing the candidate queries.
+    -   A gold-standard list of PMIDs in a CSV file (e.g., `Gold_list__all_included_studies_.csv`) for the `score` and `finalize` commands.
+    -   Configuration parameters, which can be provided via the command line, a `.env` file, or `sr_config.toml`.
+-   **Outputs:**
+    -   `select`: A `sealed_*.json` file and a `selection_summary_*.csv` file in the `sealed_outputs/` directory.
+    -   `score`: A `summary_*.csv` file and a `details_*.json` file in the `benchmark_outputs/` directory.
+    -   `finalize`: A `final_*.json` file in the `sealed_outputs/` directory.
+
+### 3. Query Aggregation and Comparison
+
+After evaluating the queries, you can use additional scripts to aggregate results or compare different runs.
+
+-   **Process:**
+    -   `scripts/aggregate_queries.py`: This script combines PMIDs from multiple queries using various strategies (e.g., consensus, weighted voting) to create aggregated sets of results. This can help in finding a balance between recall and precision.
+    -   `scripts/compare_runs.py`: This script compares the outputs of two different query generation runs (e.g., from different prompts or models), providing statistics on the overlap and differences in the retrieved PMIDs.
+-   **Inputs:**
+    -   `aggregate_queries.py`: JSON files from the `benchmark_outputs/` or `sealed_outputs/` directories.
+    -   `compare_runs.py`: The output directories of two different runs (e.g., `benchmark_A/` and `benchmark_B/`).
+-   **Outputs:**
+    -   `aggregate_queries.py`: A set of `.txt` files in the `aggregates/` directory, each containing a list of aggregated PMIDs.
+    -   `compare_runs.py`: A `report.json` file in a new directory named after the two compared runs (e.g., `benchmark_A_vs_benchmark_B/`).
+
+### Workflow Diagram
+
+The following diagram illustrates the overall workflow:
+
+```mermaid
+graph TD
+    subgraph "Step 1: Query Generation"
+        A[Start] --> B{Run Gemini Command<br>(e.g., /run_sleep)};
+        B -- LLM Generates Queries --> C[Save to<br>Queries/Queries/queries.txt];
+    end
+
+    subgraph "Step 2: Evaluation & Selection"
+        C --> D{llm_sr_select_and_score.py};
+        D -- select --> E[Sealed Query<br>(sealed_outputs/*.json)];
+        D -- score --> F[Benchmark Results<br>(benchmark_outputs/*.json)];
+        D -- finalize --> G[Final Results<br>(sealed_outputs/final_*.json)];
+    end
+
+    subgraph "Step 3: Aggregation & Comparison"
+        F --> H{aggregate_queries.py};
+        H --> I[Aggregated PMIDs<br>(aggregates/*.txt)];
+        F --> J{compare_runs.py};
+        J --> K[Comparison Report<br>(runA_vs_runB/report.json)];
+    end
+```
+
