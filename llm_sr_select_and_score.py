@@ -386,7 +386,8 @@ def finalize_with_gold(sealed_glob: str, gold_csv: str, outdir: str = None):
     retrieved = set(sealed['retrieved_pmids'])
     metrics = set_metrics(retrieved, gold)
     sealed.update({'finalized_utc': datetime.utcnow().isoformat(), 'gold_size': len(gold), **metrics})
-    out = sealed_file.replace('sealed_', 'final_')
+    out = sealed_file.replace('sealed_', 'final_').replace('sealed_outputs', 'final_outputs')
+    os.makedirs(Path(out).parent, exist_ok=True)
     with open(out, 'w', encoding='utf-8') as f:
         json.dump(sealed, f, ensure_ascii=False, indent=2)
     print('Final metrics:', json.dumps(metrics, indent=2))
@@ -448,8 +449,14 @@ def _resolve(val, env_key: str | None, cfg: dict, cfg_keys: list[str], cast=lamb
 
 def main():
     parser = argparse.ArgumentParser(description='LLM-assisted SR selection & scoring')
+    # Note: --study-name is not globally required because `scaffold` doesn't need it
+    parser.add_argument('--study-name', help='The name of the study directory under studies/')
     parser.add_argument('--config', help='Path to a TOML or JSON config file (values overridden by CLI/env).')
     sub = parser.add_subparsers(dest='cmd', required=True)
+
+    # --- Scaffold Command ---
+    p_scaffold = sub.add_parser('scaffold', help='Create a new study directory with boilerplate files.')
+    p_scaffold.add_argument('name', help='The name for the new study.')
 
     p_sel = sub.add_parser('select', help='Select best query without gold (sealed)')
     p_sel.add_argument('--mindate')
@@ -496,45 +503,111 @@ def main():
     p_sets.add_argument('--outdir', required=True, help='Directory to write summary CSV and details JSON')
 
     args = parser.parse_args()
-    cfg = _load_config(getattr(args, 'config', None))
+
+    if args.cmd == 'scaffold':
+        study_name = args.name
+        study_dir = Path("studies") / study_name
+        if study_dir.exists():
+            print(f"Error: Study directory already exists at: {study_dir}", file=sys.stderr)
+            sys.exit(1)
+        
+        # Create directory and boilerplate files
+        study_dir.mkdir(parents=True)
+        (study_dir / 'queries.txt').touch()
+        (study_dir / 'concept_terms.csv').touch()
+        (study_dir / 'sr_config.toml').touch()
+
+        # Copy prompt template
+        template_path = Path("Documentations/prompt_template_for_query_generation.md")
+        if template_path.exists():
+            (study_dir / 'prompt.md').write_text(template_path.read_text())
+        
+        print(f"Successfully created new study: {study_name}")
+        print(f"Directory: {study_dir}")
+        print("Created files:")
+        print(f"- {study_dir / 'queries.txt'}")
+        print(f"- {study_dir / 'concept_terms.csv'}")
+        print(f"- {study_dir / 'sr_config.toml'}")
+        if template_path.exists():
+            print(f"- {study_dir / 'prompt.md'}")
+        sys.exit(0)
+
+    # --- Multi-study path and config logic (for all other commands) ---
+    if not args.study_name:
+        print("Error: --study-name is required for this command.", file=sys.stderr)
+        sys.exit(1)
+
+    study_dir = Path("studies") / args.study_name
+    if not study_dir.is_dir():
+        print(f"Error: Study directory not found at: {study_dir}", file=sys.stderr)
+        sys.exit(1)
+
+    # Layered config: study-specific overrides global
+    global_config_path = getattr(args, 'config', None) or 'sr_config.toml'
+    study_config_path = study_dir / 'sr_config.toml'
+
+    cfg = _load_config(global_config_path)
+    study_cfg = _load_config(study_config_path)
+    cfg.update(study_cfg) # study values overwrite global
+
     # Set NCBI identity via CLI/ENV/CONFIG
     ncbi_email = _resolve(getattr(args, 'ncbi_email', None), 'NCBI_EMAIL', cfg, ['ncbi_email'])
     ncbi_api = _resolve(getattr(args, 'ncbi_api_key', None), 'NCBI_API_KEY', cfg, ['ncbi_api_key'])
     set_ncbi_identity(ncbi_email, ncbi_api)
 
+    def resolve_input_path(path_val: str) -> Path | None:
+        if not path_val: return None
+        p = Path(path_val)
+        return p if p.is_absolute() else study_dir / p
+
     if args.cmd == 'select':
         # Resolve inputs for selection (CLI > ENV > CONFIG)
         mindate = _resolve(args.mindate, 'SELECT_MINDATE', cfg, ['select_mindate','mindate','SELECT_MINDATE'])
         maxdate = _resolve(args.maxdate, 'SELECT_MAXDATE', cfg, ['select_maxdate','maxdate','SELECT_MAXDATE'])
-        concept_terms = _resolve(args.concept_terms, 'SELECT_CONCEPT_TERMS', cfg, ['concept_terms','SELECT_CONCEPT_TERMS'])
-        queries_txt = _resolve(args.queries_txt, 'SELECT_QUERIES_TXT', cfg, ['queries_txt','SELECT_QUERIES_TXT'])
+        concept_terms = resolve_input_path(_resolve(args.concept_terms, 'SELECT_CONCEPT_TERMS', cfg, ['concept_terms','SELECT_CONCEPT_TERMS']))
+        queries_txt = resolve_input_path(_resolve(args.queries_txt, 'SELECT_QUERIES_TXT', cfg, ['queries_txt','SELECT_QUERIES_TXT']))
         outdir = _resolve(args.outdir, 'SELECT_OUTDIR', cfg, ['outdir','SELECT_OUTDIR'])
         target_results = _resolve(args.target_results, 'SELECT_TARGET_RESULTS', cfg, ['target_results','SELECT_TARGET_RESULTS'], int) or args.target_results
         min_results = _resolve(args.min_results, 'SELECT_MIN_RESULTS', cfg, ['min_results','SELECT_MIN_RESULTS'], int) or args.min_results
+        
         missing = [k for k,v in {'mindate':mindate,'maxdate':maxdate,'concept_terms':concept_terms,'queries_txt':queries_txt,'outdir':outdir}.items() if not v]
         if missing:
             print(f"Missing required values for select: {', '.join(missing)}", file=sys.stderr); sys.exit(2)
+
+        # Adjust outdir for study
+        study_outdir = Path(outdir) / args.study_name
+
         queries = read_queries_from_txt(queries_txt)
         select_without_gold(mindate=mindate, maxdate=maxdate, concept_terms_path=concept_terms,
-                            queries=queries, outdir=outdir, target_results=target_results, min_results=min_results)
+                            queries=queries, outdir=study_outdir, target_results=target_results, min_results=min_results)
     elif args.cmd == 'finalize':
-        sealed = _resolve(args.sealed, 'FINALIZE_SEALED_GLOB', cfg, ['sealed','FINALIZE_SEALED_GLOB'])
-        gold_csv = _resolve(args.gold_csv, 'FINALIZE_GOLD_CSV', cfg, ['gold_csv','FINALIZE_GOLD_CSV'])
-        missing = [k for k,v in {'sealed':sealed,'gold_csv':gold_csv}.items() if not v]
+        sealed_glob = _resolve(args.sealed, 'FINALIZE_SEALED_GLOB', cfg, ['sealed','FINALIZE_SEALED_GLOB'])
+        gold_csv = resolve_input_path(_resolve(args.gold_csv, 'FINALIZE_GOLD_CSV', cfg, ['gold_csv','FINALIZE_GOLD_CSV']))
+        missing = [k for k,v in {'sealed':sealed_glob,'gold_csv':gold_csv}.items() if not v]
         if missing:
             print(f"Missing required values for finalize: {', '.join(missing)}", file=sys.stderr); sys.exit(2)
-        finalize_with_gold(sealed_glob=sealed, gold_csv=gold_csv)
+
+        # Adjust sealed glob if it's not pointing inside a specific study output dir
+        if args.study_name not in sealed_glob and 'outputs' in sealed_glob:
+             # A bit of a heuristic: if the glob looks generic, scope it to the study
+            sealed_glob = str(Path(sealed_glob).parent / args.study_name / Path(sealed_glob).name)
+
+        finalize_with_gold(sealed_glob=sealed_glob, gold_csv=gold_csv)
     elif args.cmd == 'score':
         mindate = _resolve(args.mindate, 'SCORE_MINDATE', cfg, ['score_mindate','mindate','SCORE_MINDATE'])
         maxdate = _resolve(args.maxdate, 'SCORE_MAXDATE', cfg, ['score_maxdate','maxdate','SCORE_MAXDATE'])
-        queries_txt = _resolve(args.queries_txt, 'SCORE_QUERIES_TXT', cfg, ['queries_txt','SCORE_QUERIES_TXT'])
-        gold_csv = _resolve(args.gold_csv, 'SCORE_GOLD_CSV', cfg, ['gold_csv','SCORE_GOLD_CSV'])
+        queries_txt = resolve_input_path(_resolve(args.queries_txt, 'SCORE_QUERIES_TXT', cfg, ['queries_txt','SCORE_QUERIES_TXT']))
+        gold_csv = resolve_input_path(_resolve(args.gold_csv, 'SCORE_GOLD_CSV', cfg, ['gold_csv','SCORE_GOLD_CSV']))
         outdir = _resolve(args.outdir, 'SCORE_OUTDIR', cfg, ['outdir','SCORE_OUTDIR'])
         missing = [k for k,v in {'mindate':mindate,'maxdate':maxdate,'queries_txt':queries_txt,'gold_csv':gold_csv,'outdir':outdir}.items() if not v]
         if missing:
             print(f"Missing required values for score: {', '.join(missing)}", file=sys.stderr); sys.exit(2)
+
+        # Adjust outdir for study
+        study_outdir = Path(outdir) / args.study_name
+
         queries = read_queries_from_txt(queries_txt)
-        score_queries(mindate=mindate, maxdate=maxdate, queries=queries, gold_csv=gold_csv, outdir=outdir)
+        score_queries(mindate=mindate, maxdate=maxdate, queries=queries, gold_csv=gold_csv, outdir=study_outdir)
     elif args.cmd == 'print-titles':
         pmids = []
         if args.pmids:
@@ -546,17 +619,22 @@ def main():
         else:
             print('Provide --pmids or --sealed', file=sys.stderr); sys.exit(2)
         for r in fetch_titles(pmids):
-            print(f"{r.get('PMID')}: {r.get('Title')}  [{r.get('Journal')}] {r.get('Date','')}")
+            print(f"{r.get('PMID')}: {r.get('Title')}  [{r.get('Journal')}] {r.get('Date','').strip()})")
     elif args.cmd == 'score-sets':
         # Expand globs for set files
         set_paths: List[str] = []
         for pat in getattr(args, 'sets', []) or []:
+            # The shell script now provides the correct glob pattern directly
             set_paths.extend(glob.glob(pat))
         set_paths = sorted(set(set_paths))
         if not set_paths:
             print('No set files found for provided patterns.', file=sys.stderr); sys.exit(2)
-        os.makedirs(args.outdir, exist_ok=True)
-        gold = load_gold_pmids(args.gold_csv)
+        
+        outdir = Path(_resolve(args.outdir, 'SCORE_SETS_OUTDIR', cfg, ['outdir', 'score_sets_outdir'])) / args.study_name
+        os.makedirs(outdir, exist_ok=True)
+        
+        gold_csv_path = resolve_input_path(_resolve(args.gold_csv, 'SCORE_SETS_GOLD_CSV', cfg, ['gold_csv', 'score_sets_gold_csv']))
+        gold = load_gold_pmids(gold_csv_path)
         rows = []
         details = []
         for pth in set_paths:
@@ -568,8 +646,8 @@ def main():
             print(f"Set[{name}]: n={len(pmids)} TP={m['TP']} Precision={m['Precision']:.3f} Recall={m['Recall']:.3f} F1={m['F1']:.3f}")
         df = pd.DataFrame(rows).sort_values(['F1','Recall','Precision'], ascending=[False, False, False])
         run_id = datetime.utcnow().strftime('%Y%m%d-%H%M%S')
-        summary = os.path.join(args.outdir, f'sets_summary_{run_id}.csv')
-        details_path = os.path.join(args.outdir, f'sets_details_{run_id}.json')
+        summary = os.path.join(outdir, f'sets_summary_{run_id}.csv')
+        details_path = os.path.join(outdir, f'sets_details_{run_id}.json')
         df.to_csv(summary, index=False)
         with open(details_path, 'w', encoding='utf-8') as f:
             json.dump(details, f, ensure_ascii=False, indent=2)
