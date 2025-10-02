@@ -182,6 +182,59 @@ python llm_sr_select_and_score.py score-sets \
 Example:
 python llm_sr_select_and_score.py score-sets --sets aggregates/*.txt --gold-csv Gold_list__all_included_studies_.csv --outdir aggregates_eval  
 ```
+## Automated Prompt Generation Workflow
+
+This project includes a powerful workflow to automate the creation of runnable query generation commands, saving you from manually editing prompt files for each study. This is orchestrated by the `/generate_prompt` custom command.
+
+**Note:** This is a new feature and is currently under testing.
+
+### The `/generate_prompt` Command
+
+This command reads a study protocol file, extracts key information, and injects it into a template to create a new, permanent, and runnable command for query generation.
+
+**Arguments:**
+
+*   `--command_name` (Required): The name for the new command you are creating (e.g., `run_my_study`).
+*   `--protocol_path` (Required): The absolute path to the study's protocol file (e.g., `studies/my_study/protocol.md`).
+*   `--level` (Optional): The template to use. Can be `basic`, `extended`, or `keywords`. Defaults to `basic`.
+*   `--min_date` (Optional): The start date for the search (YYYY/MM/DD). Defaults to `1980/01/01`.
+*   `--max_date` (Optional): The end date for the search (YYYY/MM/DD). Defaults to `2025/12/31`.
+
+### Usage Examples
+
+Here are three examples demonstrating how to use the command for different levels of prompt complexity.
+
+**1. Basic Level**
+
+This generates a command using the standard template, focusing on the core query strategies.
+
+```bash
+/generate_prompt --command_name "run_basic_study" --protocol_path "studies/sleep_apnea/prospero-sleep-apnea-dementia.md" --level "basic" --max_date "2021/03/01"
+```
+
+This will create a new command `/run_basic_study` in your Gemini command list.
+
+**2. Extended Level**
+
+This uses the extended template, which includes the detailed `USER TASK` section and instructions for generating precision-lean micro-variants.
+
+```bash
+/generate_prompt --command_name "run_extended_study" --protocol_path "studies/sleep_apnea/prospero-sleep-apnea-dementia.md" --level "extended" --max_date "2021/03/01"
+```
+
+This will create a new command `/run_extended_study`.
+
+**3. Keywords Level**
+
+This uses the keywords-first template, which adds a preliminary step for the LLM to expand on the protocol's keywords before building the main query concepts.
+
+```bash
+/generate_prompt --command_name "run_keywords_study" --protocol_path "studies/sleep_apnea/prospero-sleep-apnea-dementia.md" --level "keywords" --max_date "2021/03/01"
+```
+
+This will create a new command `/run_keywords_study`.
+
+
 ## Heuristics & checks (what affects the score)
 - PubMed esearch uses XML mode.
 - Lint: unbalanced parentheses/quotes, empty groups, duplicated operators, proximity ops.
