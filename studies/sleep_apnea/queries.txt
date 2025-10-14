@@ -1,0 +1,14 @@
+# PubMed Query: Variant A (High-recall / MeSH-heavy)
+((("Sleep Apnea Syndromes"[Mesh]) OR ("Sleep Apnea, Obstructive"[Mesh]) OR ("Sleep Apnea, Central"[Mesh])) AND (("Dementia"[Mesh]) OR ("Alzheimer Disease"[Mesh]) OR ("Lewy Body Disease"[Mesh]) OR ("Dementia, Vascular"[Mesh]) OR ("Frontotemporal Dementia"[Mesh]) OR ("Parkinson Disease"[Mesh]) OR ("Cognitive Dysfunction"[Mesh]))) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])
+
+# PubMed Query: Variant B (Balanced / Text-heavy)
+(("sleep apnea"[tiab] OR "sleep apnoea"[tiab] OR "sleep-disordered breathing"[tiab] OR "sleep disordered breathing"[tiab] OR "SDB"[tiab] OR "obstructive sleep apnea"[tiab] OR "obstructive sleep apnoea"[tiab] OR "OSA"[tiab] OR "hypopnea"[tiab] OR "hypopnoea"[tiab] OR "apnea-hypopnea index"[tiab] OR "AHI"[tiab]) AND ("dementia*"[tiab] OR "Alzheimer's disease"[tiab] OR "Alzheimer disease"[tiab] OR "AD"[tiab] OR "Lewy body*"[tiab] OR "vascular dementia"[tiab] OR "frontotemporal dementia"[tiab] OR "FTD"[tiab] OR "cognitive decline"[tiab] OR "cognitive impairment"[tiab] OR "neurocognitive disorder*"[tiab])) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])
+
+# PubMed Query: Variant C (High-precision / Hybrid)
+((("Sleep Apnea Syndromes"[Mesh]) OR "sleep apnea"[tiab] OR "sleep apnoea"[tiab] OR "sleep-disordered breathing"[tiab] OR "obstructive sleep apnea"[tiab]) AND (("Dementia"[Mesh]) OR "dementia*"[tiab] OR "Alzheimer Disease"[Mesh] OR "Alzheimer's disease"[tiab] OR "cognitive decline"[tiab] OR "cognitive impairment"[tiab])) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])
+
+# PubMed Query: PRESS Revised 1 (More precise acronyms for Variant B)
+(("sleep apnea"[tiab] OR "sleep apnoea"[tiab] OR "sleep-disordered breathing"[tiab] OR "sleep disordered breathing"[tiab] OR "obstructive sleep apnea"[tiab] OR "obstructive sleep apnoea"[tiab] OR "hypopnea"[tiab] OR "hypopnoea"[tiab] OR "apnea-hypopnea index"[tiab]) AND ("dementia*"[tiab] OR "Alzheimer's disease"[tiab] OR "Alzheimer disease"[tiab] OR ("Lewy body"[tiab] AND dementia[tiab]) OR "vascular dementia"[tiab] OR "frontotemporal dementia"[tiab] OR "cognitive decline"[tiab] OR "cognitive impairment"[tiab] OR "neurocognitive disorder*"[tiab])) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])
+
+# PubMed Query: PRESS Revised 2 (More specific dementia for Hybrid)
+((("Sleep Apnea Syndromes"[Mesh]) OR "sleep apnea"[tiab] OR "sleep apnoea"[tiab] OR "sleep-disordered breathing"[tiab]) AND (("Dementia"[Mesh]) OR "dementia*"[tiab] OR "Alzheimer Disease"[Mesh] OR "Alzheimer's disease"[tiab] OR "Lewy Body Disease"[Mesh] OR "Dementia, Vascular"[Mesh] OR "cognitive decline"[tiab])) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])

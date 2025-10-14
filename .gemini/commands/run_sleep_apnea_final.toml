@@ -1,0 +1,83 @@
+# In: ~/.gemini/commands/run_sleep_apnea_final.toml
+# This command will be invoked via: /run_sleep_apnea_final
+
+description = "Runs the generated query prompt for the study based on studies/sleep_apnea/prospero-sleep-apnea-dementia.md."
+
+prompt = '''
+
+# Prompt Template for Systematic Review Query Generation (Extended)
+
+This template provides a structured prompt for an LLM to generate comprehensive search queries for a systematic review. Fill in the bracketed `[PLACEHOLDERS]` with your study-specific information.
+
+---
+
+## SYSTEM (role: information specialist & indexer):
+- You are an expert information specialist and medical indexer.
+- Produce database-ready queries. Verify controlled vocabulary exists for the target DB.
+- PubMed: no proximity operators; use MeSH appropriately; use [tiab] for free text; flag uncertain terms as "verify".
+- If unsure between recall vs precision, bias to recall; keep a high-precision variant too.
+- **Pay close attention to the 'Keywords' section of the protocol document. Actively find and include synonyms and MeSH terms for these keywords in your concept tables and queries.**
+
+
+## Documents
+- Use the PROSPERO protocol or study description located at: `studies/sleep_apnea/prospero-sleep-apnea-dementia.md`
+- (Optional) Use the following guidelines for query design: `[PATH TO GUIDELINE DOCUMENT]`
+
+## INPUT
+- TOPIC: `The Association Between Sleep Apnea and Dementia`
+- DATE WINDOW: `[YYYY/MM/DD]` to `[YYYY/MM/DD]`
+- DATABASES: `[LIST OF DATABASES, e.g., MEDLINE (via PubMed), EMBASE, Scopus]`
+
+## PICOS (summary)
+- **Population:** `Patients with a diagnosis of sleep apnea confirmed by polysomnography (PSG) or overnight oximetry; AHI/ODI thresholds must be specified. No age limit.`
+- **Intervention/Exposure:** `Presence of sleep apnea.`
+- **Comparator:** `Patients without sleep apnea.`
+- **Outcomes:** `Onset of dementia (all-cause) and phenotypes (Alzheimer’s disease, Parkinson’s disease dementia, Lewy body dementia, frontotemporal dementia and related variants, vascular dementia, mixed dementia).`
+- **Design:** `Prospective or retrospective cohort studies; randomized controlled trials (if evaluating incidence).`
+
+
+## OUTPUT (return ALL):
+1) **Concept→MeSH table:** (concept | MeSH | tree note | explode? | rationale & source).
+2) **Concept→Textword table:** (concept | synonym/phrase | [tiab] | truncation? | source).
+3) **Three Boolean strategies PER DATABASE** (paste-ready, one line each): High-recall / Balanced / High-precision.
+   - **Variant A (MeSH-heavy)** = High-recall (emphasize controlled vocabulary).
+   - **Variant B (Text-heavy)** = Balanced (emphasize synonyms in title/abstract).
+   - **Variant C (Hybrid balanced)** = High-precision (best-practice hybrid; precision-leaning).
+
+4) **Precision-lean micro-variants (PubMed focus)**
+   In addition to the three main strategies, generate a micro-variant grid for PubMed to improve precision:
+   - Output 6 single-line PubMed variants (V1–V6), each toggling at most two precision knobs while keeping a Recall_Lock invariant.
+   - **V1:** add humans + English filters.
+   - **V2:** require cohort or trial signals in [tiab] (e.g., cohort|follow-up|prospective|retrospective|randomi[sz]ed|trial|placebo).
+   - **V3:** narrow the main outcome block (e.g., using more specific MeSH terms or text words).
+   - **V4:** use [Mesh:NoExp] on very broad MeSH headings.
+   - **V5:** title emphasis for population/exposure or outcome (e.g., "sleep apnea"[ti] OR dementia[ti]).
+   - **V6:** exclude case reports/editorials/letters/comments.
+   For each variant, include a one-sentence rationale and add "expected_recall_delta: none|minimal".
+   Also output a **Recall_Lock** clause for PubMed (the minimal invariant concept core) and a **Precision_Knobs** list used.
+
+5) **PRESS self-check:** issues + up to 3 minimal revised queries.
+   - **Issues:** bullet points (logic, missing terms, inappropriate limits, spelling, translation).
+   - **Fixes:** up to 3 minimal revisions (full Boolean lines).
+
+6) **Translation notes** across DBs (explain any vocabulary changes).
+
+
+## PER-DATABASE INSTRUCTIONS
+- **PubMed (MEDLINE):**
+   - No proximity operators; use MeSH appropriately; free text with [tiab].
+   - Provide single-line queries with balanced parentheses.
+   - Date window: apply publication date as `("[MIN_DATE]"[Date - Publication] : "[MAX_DATE]"[Date - Publication])`.
+
+- **EMBASE:** specify platform assumptions (e.g., Ovid or Elsevier.com).
+- **Scopus:** use TITLE-ABS-KEY; proximity with W/n or PRE/n.
+- **Cochrane Library:** use ti,ab,kw; NEAR/n allowed.
+
+
+## FINAL TASK: Update Project Files
+Based on the generated content, perform the following two steps:
+
+1.  **Update Search Strategy Document:** Overwrite the `search_strategy.md` file in the current study directory with the full, detailed output of this task (including all tables, all query variants, PRESS check, and translation notes).
+
+2.  **Update Queries File:** Overwrite the `queries.txt` file in the current study directory with the generated **PubMed queries only**. Include the three strategies for **Variant C (Hybrid balanced)**, any "Minimal Revised Queries", and the top-3 precision-lean PubMed variants that preserve recall. Each query must be preceded by a descriptive comment line (starting with '#') and separated by a blank line.
+'''

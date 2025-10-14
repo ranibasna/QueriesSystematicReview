@@ -1,3 +1,9 @@
+# In: ~/.gemini/commands/run_sleep_apnea_final_v2.toml
+# This command will be invoked via: /run_sleep_apnea_final_v2
+
+description = "Runs the generated query prompt for the study based on studies/sleep_apnea/prospero-sleep-apnea-dementia.md."
+
+prompt = '''
 
 # Prompt Template for Systematic Review Query Generation (Extended)
 
@@ -14,20 +20,20 @@ This template provides a structured prompt for an LLM to generate comprehensive 
 
 
 ## Documents
-- Use the PROSPERO protocol or study description located at: `[PATH TO PROSPERO/PROTOCOL FILE]`
-- Use the following guidelines for query design: `studies/[STUDY_NAME]/guidelines.md`
+- Use the PROSPERO protocol or study description located at: `studies/sleep_apnea/prospero-sleep-apnea-dementia.md`
+- Use the following guidelines for query design: `studies/sleep_apnea/guidelines.md`
 
 ## INPUT
-- TOPIC: `[CONCISE TOPIC DESCRIPTION, e.g., Sleep Apnea and Dementia]`
-- DATE WINDOW: `[DATE_WINDOW_START]` to `[DATE_WINDOW_END]`
+- TOPIC: `The Association Between Sleep Apnea and Dementia: A Systematic Review`
+- DATE WINDOW: `1980/01/01` to `2021/03/01`
 - DATABASES: MEDLINE (via PubMed), EMBASE, Scopus, PsycINFO, Cochrane Library, Web of Science Core Collection
 
 ## PICOS (summary)
-- **Population:** `[Describe the patient population]`
-- **Intervention/Exposure:** `[Describe the intervention or exposure]`
-- **Comparator:** `[Describe the comparator]`
-- **Outcomes:** `[Describe the primary and secondary outcomes]`
-- **Design:** `[Describe the study designs to be included, e.g., Randomized controlled trial]`
+- **Population:** `Patients with a diagnosis of sleep apnea confirmed by polysomnography (PSG) or overnight oximetry; AHI/ODI thresholds must be specified. No age limit.`
+- **Intervention/Exposure:** `Presence of sleep apnea.`
+- **Comparator:** `Patients without sleep apnea.`
+- **Outcomes:** `Onset of dementia (all-cause) and phenotypes (Alzheimer’s disease, Parkinson’s disease dementia, Lewy body dementia, frontotemporal dementia and related variants, vascular dementia, mixed dementia).`
+- **Design:** `Prospective or retrospective cohort studies; randomized controlled trials (if evaluating incidence).`
 
 
 ## OUTPUT (return ALL):
@@ -43,9 +49,9 @@ This template provides a structured prompt for an LLM to generate comprehensive 
    - Output 6 single-line PubMed variants (V1–V6), each toggling at most two precision knobs while keeping a Recall_Lock invariant.
    - **V1:** add humans + English filters.
    - **V2:** require cohort or trial signals in [tiab] (e.g., cohort|follow-up|prospective|retrospective|randomi[sz]ed|trial|placebo).
-   - **V3:** narrow the [outcome] block (e.g., using more specific MeSH terms or text words).
+   - **V3:** narrow the main outcome block (e.g., using more specific MeSH terms or text words).
    - **V4:** use [Mesh:NoExp] on very broad MeSH headings.
-   - **V5:** title emphasis for [exposure] or [outcome] (e.g., "sleep apnea"[ti] OR dementia[ti]).
+   - **V5:** title emphasis for population/exposure or outcome (e.g., "sleep apnea"[ti] OR dementia[ti]).
    - **V6:** exclude case reports/editorials/letters/comments.
    For each variant, include a one-sentence rationale and add "expected_recall_delta: none|minimal".
    Also output a **Recall_Lock** clause for PubMed (the minimal invariant concept core) and a **Precision_Knobs** list used.
@@ -61,31 +67,33 @@ This template provides a structured prompt for an LLM to generate comprehensive 
 - **PubMed (MEDLINE):**
    - No proximity operators; use MeSH appropriately; free text with [tiab].
    - Provide single-line queries with balanced parentheses.
-   - Date window: apply publication date as `("[DATE_WINDOW_START]"[Date - Publication] : "[DATE_WINDOW_END]"[Date - Publication])`.
+   - Date window: apply publication date as `("[MIN_DATE]"[Date - Publication] : "[MAX_DATE]"[Date - Publication])`.
 
 - **EMBASE:** specify platform assumptions (e.g., Ovid or Elsevier.com).
 - **Scopus:** use TITLE-ABS-KEY; proximity with W/n or PRE/n.
 - **Cochrane Library:** use ti,ab,kw; NEAR/n allowed.
 
 
-## USER TASK
+## USER TASK 
 Context: I am working on a systematic review, to be published in an international top-tier peer-reviewed scientific journal. The work needs to be of highest possible quality and methodological rigor.
 Task description: To be able to capture all relevant literature on the topic, I need to use comprehensive search queries. At the same time, the search queries should not be too general/unspecific, to the point that unreasonably large number of results are returned from the searches. Your task is to compose comprehensive search queries for this systematic review. Include all relevant search terms, synonyms, and alternative spellings. Utilize search operators (e.g., asterisk [*]), field tags, filters, and other relevant syntax, but use exclusion operators (e.g., NOT) and field tags cautiously, so as to not miss relevant studies. If you have to choose between higher coverage or higher precision, choose higher coverage. Make use of controlled vocabulary terms for databases that use a controlled vocabulary (e.g., MeSH). Ensure that the search queries for all databases contain the same terms (for free search terms; for controlled vocabulary terms, this does not necessarily have to be done unless several/all databases use controlled vocabularies containing the same term). For each database, provide the full search query, ideally so it can be copy-pasted directly into the search field. Below, you may find specific instructions and details about the systematic review and what type of literature I am interested in identifying.
 
-Research question/objective/context: To assess the evidence for an association between [Intervention/Exposure] and [Outcome].
-Databases to search: [List of databases to search, e.g., MEDLINE (via PubMed), EMBASE, Scopus]
-Types of studies to include: [Types of studies, e.g., Prospective or retrospective cohort studies; randomized controlled trials.]
-Condition or domain being studied: The association between [Intervention/Exposure] (a [brief description of intervention/exposure]) and the subsequent incidence of various forms of [Outcome], including [specific outcome 1], [specific outcome 2], and [specific outcome 3].
-Participants/population: [Description of participants from PICOS, e.g., Patients with a diagnosis of [Intervention/Exposure] confirmed by [Diagnostic method]].
-Intervention(s)/exposure(s): The presence of [Intervention/Exposure].
-Comparator(s)/control: Patients without [Intervention/Exposure].
-Main outcome(s): [Main outcome, e.g., Incidence (onset) of [Outcome]].
-Additional outcome(s): [Additional outcomes, e.g., Incidence of specific phenotypes of [Outcome], including [specific outcome 1], [specific outcome 2], etc.].
+Research question/objective/context: To assess the evidence for an association between sleep apnea and the incidence of dementia (all-cause) and specific dementia phenotypes.
+Databases to search: MEDLINE (via PubMed), EMBASE, Scopus, PsycINFO, Cochrane Library, Web of Science Core Collection
+Types of studies to include: Prospective or retrospective cohort studies; randomized controlled trials.
+Condition or domain being studied: The association between Sleep Apnea (a sleep-related breathing disorder) and the subsequent incidence of various forms of Dementia, including Alzheimer’s disease, Lewy body disease, and vascular dementia.
+Participants/population: Patients with a diagnosis of sleep apnea confirmed by polysomnography (PSG) or overnight oximetry. No age limit is specified. Studies lacking clear diagnostic criteria for sleep apnea are excluded.
+Intervention(s)/exposure(s): The presence of sleep apnea.
+Comparator(s)/control: Patients without sleep apnea.
+Main outcome(s): Incidence (onset) of dementia (all-cause).
+Additional outcome(s): Incidence of specific dementia phenotypes, including Alzheimer’s disease, Parkinson’s disease dementia, Lewy body dementia, frontotemporal dementia, vascular dementia, or mixed dementia.
 
 
 ## FINAL TASK: Update Project Files
 Based on the generated content, perform the following two steps:
 
-1.  **Update Search Strategy Document:** Overwrite the `studies/[STUDY_NAME]/search_strategy.md` file with the full, detailed output of this task (including all tables, all query variants, PRESS check, and translation notes).
+1.  **Update Search Strategy Document:** Overwrite the `studies/sleep_apnea/search_strategy.md` file with the full, detailed output of this task (including all tables, all query variants, PRESS check, and translation notes).
 
-2.  **Update Queries File:** Overwrite the `studies/[STUDY_NAME]/queries.txt` file with the generated **PubMed queries only**. Include the three main strategies (High-recall, Balanced, and High-precision), any "Minimal Revised Queries", and the top-3 precision-lean PubMed variants that preserve recall. Each query must be preceded by a descriptive comment line (starting with '#') and separated by a blank line.
+2.  **Update Queries File:** Overwrite the `studies/sleep_apnea/queries.txt` file with the generated **PubMed queries only**. Include the three strategies for **Variant C (Hybrid balanced)**, any "Minimal Revised Queries", and the top-3 precision-lean PubMed variants that preserve recall. Each query must be preceded by a descriptive comment line (starting with '#') and separated by a blank line.
+
+'''

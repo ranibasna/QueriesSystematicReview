@@ -28,3 +28,6 @@ __pycache__/
 *.bak
 *.swp
 *.swpDocumentations/
+
+# Project-specific output folders
+aggregates/

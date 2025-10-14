@@ -710,7 +710,45 @@ graph TD
         F --> H{aggregate_queries.py};
         H --> I[Aggregated PMIDs<br>(aggregates/*.txt)];
         F --> J{compare_runs.py};
-        J --> K[Comparison Report<br>(runA_vs_runB/report.json)];
+J[Comparison Report<br>(runA_vs_runB/report.json)];
     end
+
+### Example Workflow Execution
+
+The `run_workflow_sleep_apnea.sh` script provides an automated way to execute the entire workflow, from query evaluation to aggregation and comparison.
+
+-   **Process:** This script runs the `select`, `finalize`, `score`, `aggregate`, and `evaluate aggregates` steps in sequence. It is a convenient way to perform a full analysis of your queries with a single command.
+-   **Inputs:** The script accepts various command-line options to customize the workflow, such as changing the date range, input files, or output directories.
+-   **Output:** The script will create the output files from each step in the respective directories (`sealed_outputs/`, `final_outputs/`, `benchmark_outputs/`, `aggregates/`, and `aggregates_eval/`).
+
+**Usage:**
+
+```bash
+./run_workflow_sleep_apnea.sh [OPTIONS]
+```
+
+**Options:**
+
+| Option                      | Description                                                  | Default                                     |
+| --------------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| `-m`, `--mindate`           | Minimum date for the search (YYYY/MM/DD).                    | `2015/01/01`                                |
+| `-x`, `--maxdate`           | Maximum date for the search (YYYY/MM/DD).                    | `2024/08/31`                                |
+| `-q`, `--queries-txt`       | Path to the queries text file.                               | `Queries/queries.txt`                       |
+| `-g`, `--gold-csv`          | Path to the gold-standard CSV file.                          | `Gold_list__all_included_studies_.csv`      |
+| `-c`, `--concept-terms`     | Path to the concept terms CSV file.                          | `concept_terms_OSA_microbiome_case_control.csv` |
+| `-os`, `--outdir-select`    | Output directory for the `select` command.                   | `sealed_outputs`                            |
+| `-ob`, `--outdir-score`     | Output directory for the `score` command.                    | `benchmark_outputs`                         |
+| `-oa`, `--outdir-aggregates`| Output directory for the aggregation script.                 | `aggregates`                                |
+| `-oe`, `--outdir-aggregates-eval`| Output directory for the aggregates evaluation.         | `aggregates_eval`                           |
+| `-of`, `--outdir-final`     | Output directory for the `finalize` command.                 | `final_outputs`                             |
+| `-h`, `--help`              | Display the help message.                                    |                                             |
+
+**Example:**
+
+To run the workflow with a different date range and a specific queries file, you can use the following command:
+
+```bash
+./run_workflow_sleep_apnea.sh --mindate 2010/01/01 --maxdate 2023/12/31 --queries-txt My_Queries/new_queries.txt
+```
 ```
 

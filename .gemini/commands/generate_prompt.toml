@@ -37,6 +37,7 @@ You are an expert assistant for systematic reviews. Your task is to **generate a
     *   Extract the following key pieces of information:
         *   A concise topic description.
         *   The full PICOS summary (Population, Intervention/Exposure, Comparator, Outcomes, Design).
+        *   From the PICOS summary, identify the **exposure** (from Intervention/Exposure) and **outcome** (from Outcomes).
     *   Hold this extracted information as structured data.
 
 4.  **Derive and Populate Template:**
@@ -49,6 +50,8 @@ You are an expert assistant for systematic reviews. Your task is to **generate a
         *   Replace `[DATE_WINDOW_END]` with the value of `{max_date}`.
         *   Replace `[CONCISE TOPIC DESCRIPTION]` with the topic you extracted from the protocol.
         *   Replace the PICOS placeholders (`[Describe the patient population]`, etc.) with the corresponding PICOS summary you extracted.
+        *   Replace ALL occurrences of `[exposure]` throughout the entire template with the exposure you extracted.
+        *   Replace ALL occurrences of `[outcome]` throughout the entire template with the outcome you extracted.
 
 5.  **Generate the New Command File:**
     *   You will now create a new Gemini CLI command file.

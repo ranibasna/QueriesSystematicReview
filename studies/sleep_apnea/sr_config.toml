@@ -1,0 +1,6 @@
+# Study-specific config for Sleep Apnea & Dementia
+# Overrides the global sr_config.toml
+
+# Dates from PROSPERO protocol: Inception to 2021/03/01
+mindate = "1900/01/01" # Using a very early date for "inception"
+maxdate = "2021/03/01"

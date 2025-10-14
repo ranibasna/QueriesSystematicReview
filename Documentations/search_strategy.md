@@ -159,7 +159,7 @@ This document outlines the search strategy for the systematic review on Obstruct
 | | hypersomnia | [tiab] | Yes (`hypersomni*`) | Symptom |
 | **Intervention** | "non-pharmacological" | [tiab] | No | Key intervention descriptor |
 | | "non-invasive" | [tiab] | No | Key intervention descriptor |
-| | "behavioral therapy" | [tiab] | Yes (`"behavioral therap*"`)| Intervention type |
+| | "behavioral therapy" | [tiab] | Yes (`"behavioral therap*"`) | Intervention type |
 | | "cognitive behavio* therapy" | [tiab] | Yes | Intervention type (captures UK/US spelling) |
 | | CBT | [tiab] | No | Common acronym |
 | | exercise | [tiab] | Yes (`exercis*`) | Intervention type |
@@ -381,3 +381,139 @@ This search strategy was developed based on the PICOS criteria outlined in the P
 ### 6) Date Window
 
 *   All searches should be run to capture publications up to, but not including, **August 5, 2024**. The syntax for this varies by database.
+
+---
+
+## Search Strategy: The Association Between Sleep Apnea and Dementia
+
+**Date of Search:** 2025-09-25
+**Databases:** MEDLINE (via PubMed), EMBASE, Scopus, PsycINFO, Cochrane Library, Web of Science Core Collection
+**Date Window:** Inception to 2021/03/01
+
+### 1) Concept→MeSH table (for MEDLINE/PubMed)
+
+| Concept | MeSH | Tree Note | Explode? | Rationale & Source |
+| :--- | :--- | :--- | :--- | :--- |
+| **Exposure** | Sleep Apnea Syndromes | C23.888.592.835 | Yes | Broad parent term for all sleep apnea types, matching the PICOS. Exploding includes Obstructive, Central, etc. (Source: MeSH Browser) |
+| **Outcome** | Dementia | C10.228.140.380 / F03.087.400 | Yes | Broad parent term for all dementia types. Exploding includes all specific phenotypes requested. (Source: MeSH Browser) |
+| | Alzheimer Disease | C10.228.140.380.100 | Yes | Specific phenotype. |
+| | Lewy Body Disease | C10.228.140.380.425 | Yes | Specific phenotype. |
+| | Dementia, Vascular | C10.228.140.380.200 | Yes | Specific phenotype. |
+| | Frontotemporal Dementia | C10.228.140.380.350 | Yes | Specific phenotype. |
+| | Parkinson Disease | C10.228.140.617 | Yes | The PROSPERO protocol mentions "Parkinson's disease dementia", which is a feature of Parkinson Disease. Including the parent MeSH is appropriate. |
+| **Design** | Cohort Studies | E05.318.308 | Yes | Specific study design requested. |
+| | Randomized Controlled Trial | E05.318.760.535 | No | Specific study design requested. Not exploded to maintain focus. |
+
+### 2) Concept→Textword table (for MEDLINE/PubMed)
+
+| Concept | Synonym/Phrase | Field Tag | Truncation? | Source |
+| :--- | :--- | :--- | :--- | :--- |
+| **Exposure** | "sleep apnea" | [tiab] | Yes (`"sleep apnea*"`) | Core phrase |
+| | "sleep apnoea" | [tiab] | Yes (`"sleep apnoea*"`) | UK spelling |
+| | OSA | [tiab] | No | Acronym for Obstructive Sleep Apnea |
+| | OSAHS | [tiab] | No | Acronym for Syndrome |
+| | CSA | [tiab] | No | Acronym for Central Sleep Apnea |
+| | "sleep disordered breathing" | [tiab] | No | Related broader term |
+| | SDB | [tiab] | No | Acronym for broader term |
+| | "apnea-hypopnea index" | [tiab] | No | Diagnostic measure |
+| | AHI | [tiab] | No | Acronym for measure |
+| **Outcome** | dementia | [tiab] | Yes (`dementia*`) | Core term |
+| | alzheimer* | [tiab] | Yes | Core term |
+| | "lewy body" | [tiab] | No | Core phrase |
+| | frontotemporal* | [tiab] | Yes | Core term |
+| | vascular dementia | [tiab] | No | Core phrase |
+| | "parkinson disease" | [tiab] | No | Core phrase |
+| | "neurocognitive disorder" | [tiab] | Yes (`"neurocognitive disorder*"`) | Synonym from PROSPERO keywords |
+| **Design** | cohort | [tiab] | No | Study design |
+| | prospective* | [tiab] | Yes | Study design |
+| | retrospective* | [tiab] | Yes | Study design |
+| | "follow up*" | [tiab] | Yes | Study design |
+| | longitudinal | [tiab] | No | Study design |
+| | trial | [tiab] | No | Study design |
+| | randomi*ed | [tiab] | Yes | Study design (captures UK/US spelling) |
+| | placebo | [tiab] | No | Study design |
+
+### 3) Three Boolean strategies PER DATABASE
+
+*Note: Date filters must be applied manually in each database interface according to the specified date window.*
+
+---
+#### **MEDLINE (via PubMed)**
+*   **Variant A (MeSH-heavy):** `("Sleep Apnea Syndromes"[Mesh]) AND ("Dementia"[Mesh] OR "Alzheimer Disease"[Mesh] OR "Lewy Body Disease"[Mesh] OR "Dementia, Vascular"[Mesh] OR "Frontotemporal Dementia"[Mesh] OR "Parkinson Disease"[Mesh]) AND ("Cohort Studies"[Mesh] OR "Randomized Controlled Trial"[Publication Type])`
+*   **Variant B (Text-heavy):** `("sleep apnea*"[tiab] OR "sleep apnoea*"[tiab] OR OSA[tiab] OR CSA[tiab] OR "sleep disordered breathing"[tiab]) AND (dementia*[tiab] OR alzheimer*[tiab] OR "lewy body"[tiab] OR frontotemporal*[tiab] OR "vascular dementia"[tiab] OR "parkinson disease"[tiab] OR "neurocognitive disorder*"[tiab]) AND (cohort[tiab] OR prospective*[tiab] OR retrospective*[tiab] OR "follow up*"[tiab] OR longitudinal[tiab] OR trial[tiab] OR randomi*ed[tiab] OR placebo[tiab])`
+*   **Variant C (Hybrid balanced):** `("Sleep Apnea Syndromes"[Mesh] OR "sleep apnea*"[tiab] OR "sleep apnoea*"[tiab] OR OSA[tiab]) AND ("Dementia"[Mesh] OR dementia*[tiab] OR alzheimer*[tiab] OR "lewy body"[tiab]) AND ("Cohort Studies"[Mesh] OR "Randomized Controlled Trial"[Publication Type] OR cohort[tiab] OR trial[tiab] OR randomi*ed[tiab])`
+
+---
+#### **EMBASE (Ovid)**
+*   **Variant A (MeSH-heavy):** `exp sleep apnea/ and (exp dementia/ or exp alzheimer disease/ or exp lewy body dementia/ or exp vascular dementia/ or exp frontotemporal dementia/ or exp parkinson disease/) and (exp cohort analysis/ or exp randomized controlled trial/)`
+*   **Variant B (Text-heavy):** `('sleep apnea*' or 'sleep apnoea*' or osa or csa or 'sleep disordered breathing').ti,ab. and (dementia* or alzheimer* or 'lewy body' or frontotemporal* or 'vascular dementia' or 'parkinson disease' or 'neurocognitive disorder*').ti,ab. and (cohort or prospective* or retrospective* or 'follow up*' or longitudinal or trial or randomi*ed or placebo).ti,ab.`
+*   **Variant C (Hybrid balanced):** `(exp sleep apnea/ or 'sleep apnea*'.ti,ab. or 'sleep apnoea*'.ti,ab. or osa.ti,ab.) and (exp dementia/ or dementia*.ti,ab. or alzheimer*.ti,ab. or 'lewy body'.ti,ab.) and (exp cohort analysis/ or exp randomized controlled trial/ or cohort.ti,ab. or trial.ti,ab. or randomi*ed.ti,ab.)`
+
+---
+#### **Scopus**
+*   **Variant A (MeSH-heavy):** `INDEXTERMS("sleep apnea") AND (INDEXTERMS(dementia) OR INDEXTERMS("alzheimer disease") OR INDEXTERMS("lewy body disease")) AND (INDEXTERMS("cohort study") OR INDEXTERMS("randomized controlled trial"))`
+*   **Variant B (Text-heavy):** `TITLE-ABS-KEY("sleep apnea*" OR "sleep apnoea*" OR osa OR csa OR "sleep disordered breathing") AND TITLE-ABS-KEY(dementia* OR alzheimer* OR "lewy body" OR frontotemporal* OR "vascular dementia" OR "parkinson disease" OR "neurocognitive disorder*") AND TITLE-ABS-KEY(cohort OR prospective* OR retrospective* OR "follow up*" OR longitudinal OR trial OR randomi*ed OR placebo)`
+*   **Variant C (Hybrid balanced):** `(INDEXTERMS("sleep apnea") OR TITLE-ABS-KEY("sleep apnea*" OR "sleep apnoea*" OR osa)) AND (INDEXTERMS(dementia) OR TITLE-ABS-KEY(dementia* OR alzheimer* OR "lewy body")) AND (INDEXTERMS("cohort study" OR "randomized controlled trial") OR TITLE-ABS-KEY(cohort OR trial OR randomi*ed))`
+
+---
+#### **PsycINFO (Ovid)**
+*   **Variant A (MeSH-heavy):** `exp Sleep Apnea/ and (exp Dementia/ or exp Alzheimers Disease/ or exp Lewy Body Dementia/ or exp Vascular Dementia/ or exp Frontotemporal Dementia/ or exp Parkinsons Disease/) and (exp Cohort Analysis/ or exp Treatment Outcome Clinical Trial/)`
+*   **Variant B (Text-heavy):** `('sleep apnea*' or 'sleep apnoea*' or osa or csa or 'sleep disordered breathing').ti,ab,id. and (dementia* or alzheimer* or 'lewy body' or frontotemporal* or 'vascular dementia' or 'parkinson disease' or 'neurocognitive disorder*').ti,ab,id. and (cohort or prospective* or retrospective* or 'follow up*' or longitudinal or trial or randomi*ed or placebo).ti,ab,id.`
+*   **Variant C (Hybrid balanced):** `(exp Sleep Apnea/ or 'sleep apnea*'.ti,ab,id. or 'sleep apnoea*'.ti,ab,id. or osa.ti,ab,id.) and (exp Dementia/ or dementia*.ti,ab,id. or alzheimer*.ti,ab,id. or 'lewy body'.ti,ab,id.) and (exp Cohort Analysis/ or exp Treatment Outcome Clinical Trial/ or cohort.ti,ab,id. or trial.ti,ab,id. or randomi*ed.ti,ab,id.)`
+
+---
+#### **Cochrane Library**
+*   **Variant A (MeSH-heavy):** `([mh "Sleep Apnea Syndromes"]) AND ([mh Dementia] OR [mh "Alzheimer Disease"] OR [mh "Lewy Body Disease"] OR [mh "Dementia, Vascular"] OR [mh "Frontotemporal Dementia"] OR [mh "Parkinson Disease"]) AND ([mh "Cohort Studies"] OR [mh "Randomized Controlled Trial"])`
+*   **Variant B (Text-heavy):** `("sleep apnea*" OR "sleep apnoea*" OR OSA OR CSA OR "sleep disordered breathing"):ti,ab AND (dementia* OR alzheimer* OR "lewy body" OR frontotemporal* OR "vascular dementia" OR "parkinson disease" OR "neurocognitive disorder*"):ti,ab AND (cohort OR prospective* OR retrospective* OR "follow up*" OR longitudinal OR trial OR randomi*ed OR placebo):ti,ab`
+*   **Variant C (Hybrid balanced):** `([mh "Sleep Apnea Syndromes"] OR "sleep apnea*":ti,ab OR "sleep apnoea*":ti,ab OR OSA:ti,ab) AND ([mh Dementia] OR dementia*:ti,ab OR alzheimer*:ti,ab OR "lewy body":ti,ab) AND ([mh "Cohort Studies"] OR [mh "Randomized Controlled Trial"] OR cohort:ti,ab OR trial:ti,ab OR randomi*ed:ti,ab)`
+
+---
+#### **Web of Science**
+*   **Variant A (MeSH-heavy):** `KP=("Sleep Apnea Syndromes") AND (KP=(Dementia) OR KP=("Alzheimer Disease") OR KP=("Lewy Body Disease")) AND (KP=("Cohort Studies") OR KP=("Randomized Controlled Trial"))`
+*   **Variant B (Text-heavy):** `TS=("sleep apnea*" OR "sleep apnoea*" OR osa OR csa OR "sleep disordered breathing") AND TS=(dementia* OR alzheimer* OR "lewy body" OR frontotemporal* OR "vascular dementia" OR "parkinson disease" OR "neurocognitive disorder*") AND TS=(cohort OR prospective* OR retrospective* OR "follow up*" OR longitudinal OR trial OR randomi*ed OR placebo)`
+*   **Variant C (Hybrid balanced):** `(KP=("Sleep Apnea Syndromes") OR TS=("sleep apnea*" OR "sleep apnoea*" OR osa)) AND (KP=(Dementia) OR TS=(dementia* OR alzheimer* OR "lewy body")) AND (KP=("Cohort Studies" OR "Randomized Controlled Trial") OR TS=(cohort OR trial OR randomi*ed))`
+
+---
+### **Precision-lean micro-variants (PubMed focus)**
+
+*   **Recall_Lock (Invariant Core):** `("Sleep Apnea Syndromes"[Mesh] OR "sleep apnea*"[tiab]) AND ("Dementia"[Mesh] OR dementia*[tiab]) AND ("Cohort Studies"[Mesh] OR "Randomized Controlled Trial"[Publication Type] OR cohort[tiab] OR trial[tiab])`
+*   **Precision_Knobs List:** `humans`, `english`, `study_design_tiab`, `narrow_dementia_block`, `no_exp`, `title_emphasis`, `doc_type_exclusion`
+
+*   **V1 (Add Filters):** `(("Sleep Apnea Syndromes"[Mesh] OR "sleep apnea*"[tiab]) AND ("Dementia"[Mesh] OR dementia*[tiab]) AND ("Cohort Studies"[Mesh] OR "Randomized Controlled Trial"[Publication Type] OR cohort[tiab] OR trial[tiab])) AND (English[lang]) AND (humans[mh])`
+    *   *Rationale:* Adds standard high-value filters to remove non-human studies and non-English articles.
+    *   *expected_recall_delta:* minimal
+*   **V2 (Require TIAB for Study Design):** `("Sleep Apnea Syndromes"[Mesh] OR "sleep apnea*"[tiab]) AND ("Dementia"[Mesh] OR dementia*[tiab]) AND (cohort[tiab] OR prospective*[tiab] OR retrospective*[tiab] OR trial[tiab] OR randomi*ed[tiab])`
+    *   *Rationale:* Strengthens the study design requirement by demanding explicit signal words in the title or abstract, removing broader MeSH/PT terms.
+    *   *expected_recall_delta:* minimal
+*   **V3 (Narrow Dementia Block):** `("Sleep Apnea Syndromes"[Mesh] OR "sleep apnea*"[tiab]) AND ("Alzheimer Disease"[Mesh] OR "Lewy Body Disease"[Mesh] OR "Dementia, Vascular"[Mesh] OR "alzheimer disease"[tiab] OR "lewy body"[tiab] OR "vascular dementia"[tiab]) AND ("Cohort Studies"[Mesh] OR "Randomized Controlled Trial"[Publication Type] OR cohort[tiab] OR trial[tiab])`
+    *   *Rationale:* Replaces the broad `dementia*` textword and general `Dementia` MeSH with a more specific list of key dementia phenotypes.
+    *   *expected_recall_delta:* minimal
+*   **V4 (Use MeSH:NoExp):** `("Sleep Apnea Syndromes"[Mesh:NoExp] OR "sleep apnea*"[tiab]) AND ("Dementia"[Mesh:NoExp] OR dementia*[tiab]) AND ("Cohort Studies"[Mesh] OR "Randomized Controlled Trial"[Publication Type] OR cohort[tiab] OR trial[tiab])`
+    *   *Rationale:* Prevents explosion of broad MeSH terms, focusing the search on articles where these are the primary topic.
+    *   *expected_recall_delta:* minimal
+*   **V5 (Title Emphasis):** `("Sleep Apnea Syndromes"[Mesh] OR "sleep apnea"[ti] OR "sleep apnea*"[tiab]) AND ("Dementia"[Mesh] OR dementia[ti] OR dementia*[tiab]) AND ("Cohort Studies"[Mesh] OR "Randomized Controlled Trial"[Publication Type] OR cohort[tiab] OR trial[tiab])`
+    *   *Rationale:* Boosts precision by requiring either "sleep apnea" or "dementia" to appear in the title, suggesting higher relevance.
+    *   *expected_recall_delta:* minimal
+*   **V6 (Exclude Doc Types):** `(("Sleep Apnea Syndromes"[Mesh] OR "sleep apnea*"[tiab]) AND ("Dementia"[Mesh] OR dementia*[tiab]) AND ("Cohort Studies"[Mesh] OR "Randomized Controlled Trial"[Publication Type] OR cohort[tiab] OR trial[tiab])) NOT (Letter[pt] OR Editorial[pt] OR Comment[pt] OR "Case Reports"[pt])`
+    *   *Rationale:* Excludes common non-research publication types that are unlikely to be cohort studies or RCTs.
+    *   *expected_recall_delta:* none
+
+### 4) PRESS self-check
+
+*   **Issues:**
+    *   *Logic:* The textword `CSA` (Central Sleep Apnea) might be too specific if most literature focuses on Obstructive Sleep Apnea (OSA), but it is included for completeness as per the broad "Sleep Apnea" PICOS.
+    *   *Missing Terms:* The acronym `AD` for Alzheimer's Disease was omitted as it is highly ambiguous and retrieves significant noise (e.g., "Anno Domini", "adherence", drug dosages).
+    *   *Spelling:* Included both "apnea" and "apnoea". Included `randomi*ed` to catch "randomised" and "randomized".
+    *   *Inappropriate Limits:* No inappropriate limits identified. Date window is respected.
+*   **Fixes (Minimal Revised Queries for PubMed):**
+    1.  **Revised Query 1 (OSA Focus):** `("Sleep Apnea, Obstructive"[Mesh] OR OSA[tiab] OR "obstructive sleep apnea*"[tiab]) AND ("Dementia"[Mesh] OR dementia*[tiab]) AND ("Cohort Studies"[Mesh] OR cohort[tiab] OR trial[tiab])`
+        *   *Rationale:* This query increases precision by focusing only on Obstructive Sleep Apnea, which is the most common form and likely to yield the most relevant literature for an association study.
+    2.  **Revised Query 2 (High-Precision Core):** `("Sleep Apnea Syndromes"[Majr] OR "sleep apnea"[ti]) AND ("Dementia"[Majr] OR dementia[ti]) AND ("Cohort Studies"[Mesh] OR "Randomized Controlled Trial"[Publication Type])`
+        *   *Rationale:* This query aims for very high precision by requiring both core concepts to be Major MeSH topics (`[Majr]`) or appear in the title (`[ti]`), strongly suggesting the paper is primarily about this association.
+
+### 5) Translation notes across DBs
+
+*   **Controlled Vocabulary:** MeSH (PubMed) `[Mesh]`, Emtree (EMBASE) `exp/`, PsycINFO Thesaurus `exp/`, and Cochrane `[mh]` are the primary controlled vocabularies. Scopus and Web of Science have more limited keyword indexing (`INDEXTERMS` and `KP` respectively), making textword searching more critical.
+*   **Field Codes:** `[tiab]` (PubMed) is roughly equivalent to `.ti,ab.` (Ovid), `TITLE-ABS-KEY` (Scopus), `:ti,ab` (Cochrane), and `TS` (Web of Science).
+*   **Proximity Operators:** Not used in PubMed. Can be used in other databases (e.g., `(sleep W/2 apnea)`) to increase precision in textword-heavy searches but were omitted here to favor recall.
+*   **Truncation:** `*` is the most common symbol, but Ovid platforms also use `$`.

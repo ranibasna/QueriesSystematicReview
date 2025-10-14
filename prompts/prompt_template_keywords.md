@@ -15,7 +15,7 @@ This template provides a structured prompt for an LLM to generate comprehensive 
 
 ## Documents
 - Use the PROSPERO protocol or study description located at: `[PATH TO PROSPERO/PROTOCOL FILE]`
-- (Optional) Use the following guidelines for query design: `studies/[STUDY_NAME]/guidelines.md`
+- Use the following guidelines for query design: `studies/[STUDY_NAME]/guidelines.md`
 
 ## INPUT
 - TOPIC: `[CONCISE TOPIC DESCRIPTION, e.g., Sleep Apnea and Dementia]`
