@@ -19,6 +19,7 @@
 .idea/
 .env
 .venv/
+.github/
 __pycache__/
 .ipynb_checkpoints/
 *.ipynb
@@ -29,5 +30,19 @@ __pycache__/
 *.swp
 *.swpDocumentations/
 
+GEMINI_files/
+generation_comparison_files/
+generation_comparison.md
+tasks.md
 # Project-specific output folders
 aggregates/
+aggregates_eval/
+benchmark_outputs/
+Documentations/
+Examples/
+final_outputs/
+sealed_outputs/
+NoteBooks/
+Queries/
+sleep_docs/
+
