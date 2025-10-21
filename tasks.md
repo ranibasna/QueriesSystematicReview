@@ -50,6 +50,8 @@ This file outlines planned improvements and new features for the systematic revi
 
 ## 2. Automate and Improve Concept Extraction from Protocol
 
+**Status: COMPLETED.**
+
 **Objective:** Develop a more robust and automated method for extracting core concepts from a study protocol (e.g., a PROSPERO markdown file) and structuring them into a concept CSV file.
 
 **Description:**
@@ -113,3 +115,22 @@ The current tool is tightly coupled with the NCBI Entrez API for PubMed. This ta
 - A clear strategy for handling multi-database results is chosen and implemented.
 - The prompt generation workflow is updated to save queries for the new database.
 - Documentation (`README.md`) is updated to explain how to configure and use the new multi-database capabilities.
+
+---
+
+## 4. Integrate AI-powered Web Search for Supplemental Literature Discovery
+
+**Objective:** Investigate using AI-powered web search tools (like Perplexity) to find literature beyond traditional database queries, such as through citation searching and discovery of grey literature.
+
+**Description:**
+This task involves exploring tools and workflows to supplement the core database searches. The user has suggested investigating "mcp" tools like "Preplexity mcp" (possibly Perplexity) for tasks such as:
+-   **Backward Citation Searching:** Finding literature that is cited by a set of known relevant papers.
+-   **Grey Literature:** Searching for conference proceedings, dissertations, and other non-peer-reviewed but potentially relevant sources.
+-   **General Web Search:** Using the LLM's ability to search the internet to find related articles and concepts.
+
+The investigation should result in a plan for how to integrate this into the existing workflow, considering aspects like reproducibility and the reliability of the sources.
+
+**Acceptance Criteria:**
+- A summary of available tools (including "Preplexity mcp") and their capabilities for systematic reviews.
+- A proposed workflow for how to incorporate this type of search into the project.
+- A discussion of the pros and cons, including potential for bias and challenges in documenting the search process.
