@@ -35,11 +35,30 @@ from typing import List, Dict, Set, Tuple
 from pathlib import Path
 
 # Load .env if present (non-fatal if missing)
+def _load_env_fallback(dotenv_path: str = '.env'):
+    try:
+        env_path = Path(dotenv_path)
+        if not env_path.exists():
+            return
+        for line in env_path.read_text().splitlines():
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            if '=' not in line:
+                continue
+            key, val = line.split('=', 1)
+            key = key.strip()
+            val = val.strip().strip('"').strip("'")
+            if key and val and key not in os.environ:
+                os.environ[key] = val
+    except Exception:
+        pass
+
 try:
     from dotenv import load_dotenv  # type: ignore
     load_dotenv()
 except Exception:
-    pass
+    _load_env_fallback()
 
 # Optional: TOML support for --config
 try:
@@ -72,28 +91,13 @@ _ensure_imports()
 import pandas as pd
 from Bio import Entrez
 from tenacity import retry, wait_exponential, stop_after_attempt
+from search_providers import PROVIDER_REGISTRY
 
 def set_ncbi_identity(email: str = None, api_key: str = None):
     Entrez.email = email or os.getenv('NCBI_EMAIL', 'you@example.com')
     Entrez.api_key = api_key or os.getenv('NCBI_API_KEY', None)
 
 RATE_LIMIT_SECONDS = 0.34
-
-@retry(wait=wait_exponential(multiplier=1, min=1, max=30), stop=stop_after_attempt(5))
-def pubmed_search(query: str, mindate: str, maxdate: str, retmax: int = 100000) -> Tuple[Set[str], int]:
-    """Search PubMed for a query within a date window and return PMIDs and total count.
-
-    Entrez.read expects XML; therefore retmode='xml'. Uses paging if total > retmax.
-    """
-    handle = Entrez.esearch(db='pubmed', term=query, datetype='pdat', mindate=mindate, maxdate=maxdate, retmax=retmax, retstart=0, retmode='xml')
-    rec = Entrez.read(handle); handle.close(); time.sleep(RATE_LIMIT_SECONDS)
-    total = int(rec['Count']); ids = set(rec.get('IdList', []))
-    retstart = retmax
-    while retstart < total:
-        handle = Entrez.esearch(db='pubmed', term=query, datetype='pdat', mindate=mindate, maxdate=maxdate, retmax=retmax, retstart=retstart, retmode='xml')
-        r = Entrez.read(handle); handle.close(); time.sleep(RATE_LIMIT_SECONDS)
-        ids.update(r.get('IdList', [])); retstart += retmax
-    return ids, total
 
 def lint_query(q: str) -> int:
     """Lightweight checks for common Boolean query issues.
@@ -334,22 +338,138 @@ def read_pmids_from_txt(path: str) -> Set[str]:
             pmids.add(ln)
     return pmids
 
-def select_without_gold(mindate: str, maxdate: str, concept_terms_path: str, queries: List[str], outdir: str, target_results: int = 5000, min_results: int = 50):
+
+def _provider_name(provider) -> str:
+    return getattr(provider, 'name', provider.__class__.__name__.lower())
+
+
+def _provider_query_path(base_path: Path, provider_name: str) -> Path | None:
+    if provider_name == 'pubmed':
+        return base_path
+    stem = base_path.stem
+    suffix = base_path.suffix or '.txt'
+    candidates = [
+        base_path.with_name(f"{stem}_{provider_name}{suffix}"),
+        base_path.with_name(f"{stem}.{provider_name}{suffix}"),
+        base_path.with_name(f"{stem}-{provider_name}{suffix}"),
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def _load_queries_for_providers(providers, base_path: Path) -> Dict[str, List[str]]:
+    if not base_path.exists():
+        raise SystemExit(f"Queries file not found: {base_path}")
+    base_queries = read_queries_from_txt(str(base_path))
+    provider_queries: Dict[str, List[str]] = {}
+    for provider in providers:
+        pname = _provider_name(provider)
+        specific_path = _provider_query_path(base_path, pname)
+        if specific_path and specific_path != base_path:
+            queries = read_queries_from_txt(str(specific_path))
+            print(f"[INFO] Using queries from {specific_path} for provider '{pname}'.")
+        else:
+            queries = base_queries
+            if pname != 'pubmed':
+                print(f"[WARN] No provider-specific queries found for '{pname}'. Using {base_path}.", file=sys.stderr)
+        provider_queries[pname] = queries
+    lengths = {name: len(qs) for name, qs in provider_queries.items()}
+    if len(set(lengths.values())) > 1:
+        raise SystemExit(f"Provider query counts differ: {lengths}. Ensure each provider file lists the same number of queries (aligned by order).")
+    return provider_queries
+
+
+def _build_query_bundles(provider_queries: Dict[str, List[str]]) -> List[Dict]:
+    if not provider_queries:
+        return []
+    provider_names = list(provider_queries.keys())
+    bundle_count = len(provider_queries[provider_names[0]])
+    bundles: List[Dict] = []
+    for idx in range(bundle_count):
+        qmap = {name: provider_queries[name][idx] for name in provider_names}
+        canonical = qmap.get('pubmed') or next(iter(qmap.values()))
+        bundles.append({'index': idx, 'canonical': canonical, 'per_provider': qmap})
+    return bundles
+
+
+def _execute_query_bundle(providers, qmap: Dict[str, str], mindate: str, maxdate: str):
+    combined_pmids: Set[str] = set()
+    combined_dois: Set[str] = set()
+    provider_details: Dict[str, Dict] = {}
+    total_results = 0
+    total_raw_results = 0
+    
+    for provider in providers:
+        pname = _provider_name(provider)
+        query = qmap.get(pname)
+        if not query:
+            continue
+        if pname == 'scopus' and getattr(provider, 'apply_year_filter', True) is False:
+            print("[INFO] Scopus date filter disabled (SCOPUS_SKIP_DATE_FILTER=true or flag). Running query without PUBYEAR bounds.")
+        try:
+            dois, ids, total = provider.search(query, mindate, maxdate)
+        except Exception as exc:
+            print(f"[WARN] Provider '{pname}' failed: {exc}. Skipping its contribution for this query.", file=sys.stderr)
+            provider_details[pname] = {
+                'query': query,
+                'results_count': 0,
+                'retrieved_ids': [],
+                'retrieved_dois': [],
+                'error': str(exc),
+            }
+            continue
+        
+        # Track raw results before deduplication
+        total_raw_results += total
+        
+        # Deduplicate by DOI (Option A: Simple DOI-based deduplication)
+        # Articles with DOIs are deduplicated automatically by using a set
+        # Articles without DOIs may appear as duplicates (acceptable ~0.5% edge case)
+        # See multi_database_edge_cases_analysis.md for rationale and Option B (future)
+        combined_dois.update(dois)
+        
+        if getattr(provider, 'id_type', '') == 'pmid':
+            combined_pmids.update(ids)
+        
+        provider_details[pname] = {
+            'query': query,
+            'results_count': total,
+            'retrieved_ids': sorted(ids),
+            'retrieved_dois': sorted(dois),
+            'id_type': getattr(provider, 'id_type', 'id'),
+        }
+        total_results += total
+    
+    # Calculate deduplication statistics
+    unique_articles = len(combined_dois)
+    duplicates_removed = total_raw_results - unique_articles
+    
+    if duplicates_removed > 0:
+        dedup_rate = (duplicates_removed / total_raw_results * 100) if total_raw_results > 0 else 0
+        print(f"[INFO] Deduplication (DOI-based): {total_raw_results} raw results → {unique_articles} unique articles ({duplicates_removed} duplicates removed, {dedup_rate:.1f}%)")
+    
+    return combined_pmids, combined_dois, total_results, provider_details
+
+def select_without_gold(providers, query_bundles: List[Dict], mindate: str, maxdate: str, concept_terms_path: str, outdir: str, target_results: int = 5000, min_results: int = 50):
     """Run selection pipeline without gold and write a sealed JSON plus CSV summary."""
     os.makedirs(outdir, exist_ok=True)
     cdict = load_concept_terms(concept_terms_path)
     max_year = int(maxdate.split('/')[0]) if '/' in maxdate else int(maxdate[:4])
     records = []
-    for q in queries:
-        pmids, total = pubmed_search(q, mindate, maxdate)
-        cov = concept_coverage(q, cdict)
-        lint = lint_query(q)
-        feats = selector_features(q, total, cov, lint, max_year, min_results, target_results)
-        rec = {'query': q, 'query_sha256': hashlib.sha256(q.encode()).hexdigest(), 'results_count': total,
-               **{k:v for k,v in feats.items() if k != 'vocab_info'}, 'retrieved_pmids': sorted(pmids), 'vocab_info': feats['vocab_info']}
+    for bundle in query_bundles:
+        canonical_query = bundle['canonical']
+        pmids, dois, total, provider_details = _execute_query_bundle(providers, bundle['per_provider'], mindate, maxdate)
+        cov = concept_coverage(canonical_query, cdict)
+        lint = lint_query(canonical_query)
+        feats = selector_features(canonical_query, total, cov, lint, max_year, min_results, target_results)
+        rec = {'query': canonical_query, 'query_sha256': hashlib.sha256(canonical_query.encode()).hexdigest(), 'results_count': total,
+               **{k:v for k,v in feats.items() if k != 'vocab_info'}, 'retrieved_pmids': sorted(pmids), 'retrieved_dois': sorted(dois),
+               'vocab_info': feats['vocab_info'], 'provider_details': provider_details}
         records.append(rec)
         print(f"Candidate: {rec['query_sha256'][:8]}  Results={total}  Coverage={cov:.2f}  Score={rec['score']:.3f}")
-    df = pd.DataFrame([{k:(v if k not in ('simplicity_stats','vocab_info') else str(v)) for k,v in r.items() if k!='retrieved_pmids'} for r in records]).sort_values(['score','coverage','results_count'], ascending=[False,False,True])
+    df = pd.DataFrame([{k:(v if k not in ('simplicity_stats','vocab_info') else str(v)) for k,v in r.items() if k not in ('retrieved_pmids', 'retrieved_dois', 'provider_details')} for r in records]).sort_values(['score','coverage','results_count'], ascending=[False,False,True])
     run_id = datetime.utcnow().strftime('%Y%m%d-%H%M%S')
     df_path = os.path.join(outdir, f'selection_summary_{run_id}.csv'); df.to_csv(df_path, index=False)
     best = df.iloc[0].to_dict()
@@ -362,6 +482,22 @@ def select_without_gold(mindate: str, maxdate: str, concept_terms_path: str, que
     return sealed_path, df_path
 
 def load_gold_pmids(path: str) -> Set[str]:
+    """
+    Load gold standard PMIDs from a CSV file.
+    
+    Supports two formats:
+    1. Simple format: Single column with PMIDs (no header or 'pmid' header)
+    2. Enhanced format: Multiple columns including 'pmid' and optionally 'doi'
+       (created by scripts/enhance_gold_standard.py)
+    
+    Note: DOI column is currently informational. For Scopus-only articles in gold,
+    future enhancement could enable DOI-based matching (see tasks_multi_database.md #8.1)
+    
+    The enhanced format can be generated once during study setup:
+        python scripts/enhance_gold_standard.py \
+            studies/<study>/gold_pmids.csv \
+            studies/<study>/gold_pmids_with_doi.csv
+    """
     pmids = set()
     with open(path, newline='', encoding='utf-8') as f:
         rows = list(csv.reader(f))
@@ -394,19 +530,22 @@ def finalize_with_gold(sealed_glob: str, gold_csv: str, outdir: str = None):
     print('Wrote:', out)
     return out
 
-def score_queries(mindate: str, maxdate: str, queries: List[str], gold_csv: str, outdir: str):
+def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: str, gold_csv: str, outdir: str):
+    """Run scoring pipeline and write a summary CSV and details JSON."""
     os.makedirs(outdir, exist_ok=True)
     gold = load_gold_pmids(gold_csv)
-    rows = []; details = []
-    for q in queries:
-        pmids, total = pubmed_search(q, mindate, maxdate)
+    rows = []
+    details = []
+    for bundle in query_bundles:
+        canonical_query = bundle['canonical']
+        pmids, dois, total, provider_details = _execute_query_bundle(providers, bundle['per_provider'], mindate, maxdate)
         tp = len(pmids & gold)
         recall = tp / max(len(gold), 1)
         nnr_proxy = total / max(tp, 1)
-        rec = {'query': q, 'results_count': total, 'TP': tp, 'gold_size': len(gold), 'recall': recall, 'NNR_proxy': nnr_proxy}
+        rec = {'query': canonical_query, 'results_count': total, 'TP': tp, 'gold_size': len(gold), 'recall': recall, 'NNR_proxy': nnr_proxy}
         rows.append(rec)
-        details.append({**rec, 'retrieved_pmids': sorted(pmids), 'tp_pmids': sorted(pmids & gold)})
-        print(f"Query[{hashlib.sha256(q.encode()).hexdigest()[:8]}]: results={total}  TP={tp}  recall={recall:.3f}  NNR_proxy={nnr_proxy:.2f}")
+        details.append({**rec, 'retrieved_pmids': sorted(pmids), 'retrieved_dois': sorted(dois), 'tp_pmids': sorted(pmids & gold), 'provider_details': provider_details})
+        print(f"Query[{hashlib.sha256(canonical_query.encode()).hexdigest()[:8]}]: results={total}  TP={tp}  recall={recall:.3f}  NNR_proxy={nnr_proxy:.2f}")
     df = pd.DataFrame(rows)
     run_id = datetime.utcnow().strftime('%Y%m%d-%H%M%S')
     summary = os.path.join(outdir, f'summary_{run_id}.csv')
@@ -447,11 +586,126 @@ def _resolve(val, env_key: str | None, cfg: dict, cfg_keys: list[str], cast=lamb
             return cast(cfg[k])
     return None
 
+def _parse_bool(val):
+    if isinstance(val, bool):
+        return val
+    if val is None:
+        return False
+    s = str(val).strip().lower()
+    return s in ('1','true','yes','on')
+
+DATABASE_ENV_KEY = 'SR_DATABASES'
+DEFAULT_DATABASES = ['pubmed']
+_PROVIDER_ALIASES = {
+    'ncbi': 'pubmed',
+    'pubmed': 'pubmed',
+    'scopus': 'scopus',
+    'wos': 'web_of_science',
+    'web_of_science': 'web_of_science',
+    'webofscience': 'web_of_science',
+}
+
+
+def _dedupe_preserve(seq: List[str]) -> List[str]:
+    seen = set()
+    out: List[str] = []
+    for item in seq:
+        if item not in seen:
+            seen.add(item)
+            out.append(item)
+    return out
+
+
+def _parse_database_list(val) -> List[str]:
+    if val is None:
+        return []
+    items: List[str] = []
+    if isinstance(val, str):
+        raw = val.replace(';', ',')
+        for piece in raw.split(','):
+            piece = piece.strip()
+            if not piece:
+                continue
+            norm = _PROVIDER_ALIASES.get(piece.lower().replace('-', '_').strip(), piece.lower().strip())
+            if norm:
+                items.append(norm)
+        return items
+    if isinstance(val, (list, tuple, set)):
+        for entry in val:
+            items.extend(_parse_database_list(entry))
+    return items
+
+
+def _resolve_database_selection(cli_value, cfg: dict) -> List[str]:
+    cli = _dedupe_preserve(_parse_database_list(cli_value))
+    if cli:
+        return cli
+    env = _dedupe_preserve(_parse_database_list(os.getenv(DATABASE_ENV_KEY)))
+    if env:
+        return env
+    cfg_databases = cfg.get('databases')
+    defaults: List[str] = []
+    if isinstance(cfg_databases, dict):
+        defaults = _dedupe_preserve(_parse_database_list(cfg_databases.get('default')))
+    elif cfg_databases:
+        defaults = _dedupe_preserve(_parse_database_list(cfg_databases))
+    if defaults:
+        return defaults
+    return DEFAULT_DATABASES.copy()
+
+
+def _provider_config_for(name: str, cfg_section) -> dict:
+    if isinstance(cfg_section, dict):
+        val = cfg_section.get(name)
+        if isinstance(val, dict):
+            return val
+        if isinstance(val, bool):
+            return {'enabled': bool(val)}
+    return {}
+
+
+def _clean_secret(value):
+    if isinstance(value, str):
+        cleaned = value.strip().strip('"').strip("'")
+        expanded = os.path.expandvars(cleaned)
+        return expanded
+    return value
+
+
+def _instantiate_providers(names: List[str], cfg: dict, overrides: dict):
+    providers = []
+    cfg_section = cfg.get('databases') if isinstance(cfg.get('databases'), dict) else {}
+    for name in names:
+        provider_cls = PROVIDER_REGISTRY.get(name)
+        if not provider_cls:
+            raise SystemExit(f"Unknown database provider '{name}'. Available: {', '.join(sorted(set(PROVIDER_REGISTRY)))}")
+        p_cfg = _provider_config_for(name, cfg_section or {})
+        if p_cfg.get('enabled', True) is False:
+            raise SystemExit(f"Database provider '{name}' is disabled via configuration.")
+        kwargs = {}
+        if name == 'pubmed':
+            kwargs = {'email': overrides.get('ncbi_email'), 'api_key': overrides.get('ncbi_api')}
+        elif name == 'scopus':
+            kwargs = {
+                'api_key': _clean_secret(overrides.get('scopus_api_key') or p_cfg.get('api_key')),
+                'insttoken': _clean_secret(overrides.get('scopus_insttoken') or p_cfg.get('insttoken')),
+                'view': p_cfg.get('view', 'STANDARD'),
+                'apply_year_filter': not overrides.get('scopus_skip_date_filter', False),
+            }
+        providers.append(provider_cls(**kwargs))
+    if not providers:
+        raise SystemExit("No active database providers were instantiated. Check --databases or configuration.")
+    return providers
+
 def main():
     parser = argparse.ArgumentParser(description='LLM-assisted SR selection & scoring')
     # Note: --study-name is not globally required because `scaffold` doesn't need it
     parser.add_argument('--study-name', help='The name of the study directory under studies/')
     parser.add_argument('--config', help='Path to a TOML or JSON config file (values overridden by CLI/env).')
+    parser.add_argument('--databases', help='Comma-separated list of database providers to use (e.g., pubmed,scopus).')
+    parser.add_argument('--scopus-api-key', help='API key for Scopus (else set SCOPUS_API_KEY env).')
+    parser.add_argument('--scopus-insttoken', help='Institution token for Scopus, if required.')
+    parser.add_argument('--scopus-skip-date-filter', action='store_true', help='Disable Scopus PUBYEAR filter (useful when Insttoken is unavailable).')
     sub = parser.add_subparsers(dest='cmd', required=True)
 
     # --- Scaffold Command ---
@@ -555,6 +809,15 @@ def main():
     ncbi_api = _resolve(getattr(args, 'ncbi_api_key', None), 'NCBI_API_KEY', cfg, ['ncbi_api_key'])
     set_ncbi_identity(ncbi_email, ncbi_api)
 
+    scopus_api = _resolve(getattr(args, 'scopus_api_key', None), 'SCOPUS_API_KEY', cfg, ['scopus_api_key'])
+    scopus_inst = _resolve(getattr(args, 'scopus_insttoken', None), 'SCOPUS_INSTTOKEN', cfg, ['scopus_insttoken'])
+    scopus_skip_dates = _resolve(getattr(args, 'scopus_skip_date_filter', None), 'SCOPUS_SKIP_DATE_FILTER', cfg, ['scopus_skip_date_filter'], _parse_bool) or False
+
+    requested_databases = _resolve_database_selection(getattr(args, 'databases', None), cfg)
+    providers = _instantiate_providers(requested_databases, cfg, {'ncbi_email': ncbi_email, 'ncbi_api': ncbi_api,
+                                                                  'scopus_api_key': scopus_api, 'scopus_insttoken': scopus_inst,
+                                                                  'scopus_skip_date_filter': scopus_skip_dates})
+
     def resolve_input_path(path_val: str) -> Path | None:
         if not path_val: return None
         p = Path(path_val)
@@ -577,9 +840,11 @@ def main():
         # Adjust outdir for study
         study_outdir = Path(outdir) / args.study_name
 
-        queries = read_queries_from_txt(queries_txt)
-        select_without_gold(mindate=mindate, maxdate=maxdate, concept_terms_path=concept_terms,
-                            queries=queries, outdir=study_outdir, target_results=target_results, min_results=min_results)
+        queries_path = queries_txt if isinstance(queries_txt, Path) else Path(str(queries_txt))
+        provider_queries = _load_queries_for_providers(providers, queries_path)
+        query_bundles = _build_query_bundles(provider_queries)
+        select_without_gold(providers=providers, query_bundles=query_bundles, mindate=mindate, maxdate=maxdate, concept_terms_path=concept_terms,
+                            outdir=study_outdir, target_results=target_results, min_results=min_results)
     elif args.cmd == 'finalize':
         sealed_glob = _resolve(args.sealed, 'FINALIZE_SEALED_GLOB', cfg, ['sealed','FINALIZE_SEALED_GLOB'])
         gold_csv = resolve_input_path(_resolve(args.gold_csv, 'FINALIZE_GOLD_CSV', cfg, ['gold_csv','FINALIZE_GOLD_CSV']))
@@ -606,8 +871,10 @@ def main():
         # Adjust outdir for study
         study_outdir = Path(outdir) / args.study_name
 
-        queries = read_queries_from_txt(queries_txt)
-        score_queries(mindate=mindate, maxdate=maxdate, queries=queries, gold_csv=gold_csv, outdir=study_outdir)
+        queries_path = queries_txt if isinstance(queries_txt, Path) else Path(str(queries_txt))
+        provider_queries = _load_queries_for_providers(providers, queries_path)
+        query_bundles = _build_query_bundles(provider_queries)
+        score_queries(providers=providers, query_bundles=query_bundles, mindate=mindate, maxdate=maxdate, gold_csv=gold_csv, outdir=study_outdir)
     elif args.cmd == 'print-titles':
         pmids = []
         if args.pmids:
