@@ -57,6 +57,45 @@ AND
 
 - concept_terms CSV: CSV with headers `concept,term_regex`; used to compute query concept coverage (regex applied to the raw Boolean text). Example file is provided and adapted for OSA + microbiome case–control.
 
+### Provider-specific query files (beta)
+
+Task 1 (structured LLM output) is still underway, so database-specific files are authored manually for now.
+
+**Step-by-step**
+
+1. Keep the canonical PubMed queries in `studies/<study>/queries.txt` (current behavior).
+2. For every additional provider:
+   - Copy `queries.txt` into the same folder and rename it using one of these patterns:
+     - `queries_scopus.txt`
+     - `queries.scopus.txt`
+     - `queries-scopus.txt`
+     - (future options: `queries_wos.txt`, `queries_embase.txt`, …)
+   - Edit the new file so each query uses that provider’s syntax (`TITLE-ABS-KEY`, field tags, proximity operators, etc.).
+3. Repeat until you have one aligned file per provider.
+
+**Requirements**
+
+- Every provider file **must contain the same number of queries, in the same order**, as the base file so bundle #1/#2/#3 line up across providers.
+- Queries remain separated by blank lines; inline comments starting with `#` are still ignored.
+- If a provider-specific file is missing, the workflow reuses `queries.txt` for that provider and emits a warning so you know you are running untailored syntax.
+
+**Example**
+
+```
+studies/sleep_apnea/
+  queries.txt             # PubMed strategies
+  queries_scopus.txt      # Scopus strategies (see repo for full file)
+```
+
+Snippet from `queries_scopus.txt` (Variant A):
+
+```
+(TITLE-ABS-KEY("sleep apnea syndrome" OR "sleep apnea, obstructive" OR "sleep apnea, central" OR "obstructive sleep apnea")
+ AND TITLE-ABS-KEY("dementia" OR "alzheimer disease" OR "vascular dementia" OR "frontotemporal dementia"))
+```
+
+With this layout you can iterate on Scopus queries immediately while the PubMed-only workflow keeps running unchanged.
+
 ## Configuration modes (precedence: CLI > ENV > CONFIG)
 
 You can provide inputs by:
@@ -81,12 +120,19 @@ SELECT_OUTDIR=sealed_outputs
 # FINALIZE_SEALED_GLOB=sealed_outputs/sealed_*.json
 # FINALIZE_GOLD_CSV=gold_pmids.csv
 
-# SCORE_MINDATE=2000/01/01
-# SCORE_MAXDATE=2024/08/31
-# SCORE_QUERIES_TXT=Queries/queries.txt
-# SCORE_GOLD_CSV=gold_pmids.csv
-# SCORE_OUTDIR=benchmark_outputs
+SCORE_MINDATE=2000/01/01
+SCORE_MAXDATE=2024/08/31
+SCORE_QUERIES_TXT=Queries/queries.txt
+SCORE_GOLD_CSV=gold_pmids.csv
+SCORE_OUTDIR=benchmark_outputs
+
+# Multi-database controls
+SR_DATABASES=pubmed,scopus            # Comma-separated list of providers to run
+SCOPUS_API_KEY=your_scopus_api_key    # Required when Scopus is enabled
+# SCOPUS_INSTTOKEN=optional_insttoken  # Only needed for institutions requiring it
+# SCOPUS_SKIP_DATE_FILTER=true         # Set to true to temporarily drop PUBYEAR filters
 ```
+> Tip: provide secrets without surrounding quotes. If you have `SCOPUS_API_KEY="abc123"`, remove the quotes so the value is `SCOPUS_API_KEY=abc123`.
 Note: the loader reads `.env`, not `.env.yaml`.
 
 ### Config file (TOML/JSON)
@@ -103,8 +149,95 @@ queries_txt = "Queries/queries.txt"
 outdir = "sealed_outputs"
 # target_results = 5000
 # min_results = 50
+
+[databases]
+default = ["pubmed"]
+
+[databases.scopus]
+enabled = true
+api_key = "${SCOPUS_API_KEY}"
+insttoken = "${SCOPUS_INSTTOKEN}"
+view = "STANDARD"
+# skip_date_filter = true
 ```
 Pass it with `--config sr_config.toml`.
+
+### Selecting databases (beta)
+
+- Use `--databases pubmed,scopus` (or set `SR_DATABASES=pubmed,scopus`) to query multiple providers in one run.
+- Provider credentials can come from CLI flags (`--scopus-api-key`, `--scopus-insttoken`), environment variables (`SCOPUS_API_KEY`, `SCOPUS_INSTTOKEN`), or the `[databases.<name>]` section in `sr_config.toml`.
+- If you need to run without date limits (e.g., waiting on an Insttoken), add `--scopus-skip-date-filter` or set `SCOPUS_SKIP_DATE_FILTER=true`. This flag removes the automatic `PUBYEAR` clause so Scopus behaves like your standalone test script. If Scopus still rejects the call, the workflow logs the error but continues with the remaining providers.
+- **Deduplication**: DOI-based deduplication (Option A) is now implemented and automatic. Articles are deduplicated by DOI, handling 96% of articles perfectly. The workflow logs deduplication statistics showing raw results → unique articles. See `Documentations/multi_database_deduplication_complete.md` for details.
+
+## Multi-Database Workflow (beta)
+
+You can now run the workflow across PubMed and Scopus simultaneously. This is an interim experience while we finish Task 1 (structured query prompts) and future DOI/PubMed normalization work.
+
+### 1. Prepare queries
+
+1. Keep your canonical PubMed queries in `studies/<name>/queries.txt`.
+2. Create a Scopus-specific file with the exact same number of queries in the same order, using any of these names placed next to the original file:
+   - `queries_scopus.txt`
+   - `queries.scopus.txt`
+   - `queries-scopus.txt`
+3. Each provider file can tailor syntax (e.g., set `TITLE-ABS-KEY`, `PUBYEAR`, proximity operators) to that database’s rules. Missing provider files fall back to `queries.txt` and emit a warning so you know uniform queries are being used.
+
+### 2. Configure credentials
+
+Add the Scopus credentials to `.env` (or export them in your shell):
+
+```
+SCOPUS_API_KEY=your_elsevier_key_here
+# SCOPUS_INSTTOKEN=optional_institution_token_if_required
+SR_DATABASES=pubmed,scopus
+```
+
+- `SCOPUS_API_KEY` is picked up automatically. The CLI also exposes `--scopus-api-key` if you prefer to pass it explicitly.
+- `SCOPUS_INSTTOKEN` is optional and only needed for institutions that require an Insttoken. Use the `--scopus-insttoken` flag to override per run.
+- If you temporarily disable the date filter, remember to re-enable it (remove `SCOPUS_SKIP_DATE_FILTER` or the CLI flag) once you obtain an Insttoken so Scopus respects `mindate`/`maxdate`.
+- Internally the CLI calls `_instantiate_providers(...)`, which looks for `SCOPUS_API_KEY` / `SCOPUS_INSTTOKEN` / `SCOPUS_SKIP_DATE_FILTER` in this priority order: CLI flag → environment variable (`.env`) → `[databases.scopus]` section in `sr_config.toml`.
+- `SR_DATABASES=pubmed,scopus` enables both providers globally. You can override it on demand with `--databases`.
+
+### 3. Run the workflow
+
+From the repo root:
+
+```zsh
+conda activate systematic_review_queries
+DATABASES="pubmed,scopus" ./run_workflow_sleep_apnea.sh
+```
+
+Or call the CLI directly:
+
+```zsh
+python llm_sr_select_and_score.py \
+  --study-name sleep_apnea \
+  --databases pubmed,scopus \
+  select \
+  --concept-terms concept_terms_sleep_apnea.csv \
+  --queries-txt queries.txt \
+  --outdir sealed_outputs
+```
+
+The same `--databases` flag works for `score`, `finalize`, and `score-sets`. Every bundled query run prints per-provider diagnostics, and the resulting `details_*.json` / `sealed_*.json` files now include a `provider_details` section with the specific query used, result count, and raw IDs returned for each database.
+
+### 4. Inspecting results
+
+- `sealed_outputs/<study>/sealed_*.json` now include `retrieved_dois`, `retrieved_pmids` (PubMed only), and a `provider_details` map. This lets you inspect which provider contributed which identifiers.
+- `benchmark_outputs/<study>/details_*.json` mirror the same structure for the scoring phase.
+- **Deduplication**: Results are automatically deduplicated by DOI. Check the console logs for deduplication statistics (e.g., "3,771 raw results → 3,502 unique articles (269 duplicates removed, 7.1%)").
+
+### 5. Gold Standard Enhancement (Optional)
+
+For robust matching with Scopus-only articles, you can enhance your gold standard PMID list with DOIs:
+
+```bash
+python scripts/enhance_gold_standard.py \
+  studies/<study>/gold_pmids.csv \
+  studies/<study>/gold_pmids_with_doi.csv
+```
+
+This script fetches DOIs from PubMed for each PMID and creates an enhanced CSV with both identifiers. The workflow automatically supports both formats (simple PMID-only and enhanced PMID+DOI).
 
 ## Commands
 
@@ -519,4 +652,3 @@ To run the workflow with a different date range and a specific queries file, you
 ./run_workflow_sleep_apnea.sh --mindate 2010/01/01 --maxdate 2023/12/31 --queries-txt My_Queries/new_queries.txt
 ```
 ```
-
