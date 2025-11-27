@@ -346,16 +346,32 @@ def _provider_name(provider) -> str:
 def _provider_query_path(base_path: Path, provider_name: str) -> Path | None:
     if provider_name == 'pubmed':
         return base_path
+    
+    # Map provider names to aliases for file naming
+    # web_of_science can be abbreviated as 'wos'
+    provider_aliases = {
+        'web_of_science': ['web_of_science', 'wos'],
+        'scopus': ['scopus'],
+        'pubmed': ['pubmed'],
+    }
+    
+    # Get all possible names for this provider (including aliases)
+    possible_names = provider_aliases.get(provider_name, [provider_name])
+    
     stem = base_path.stem
     suffix = base_path.suffix or '.txt'
-    candidates = [
-        base_path.with_name(f"{stem}_{provider_name}{suffix}"),
-        base_path.with_name(f"{stem}.{provider_name}{suffix}"),
-        base_path.with_name(f"{stem}-{provider_name}{suffix}"),
-    ]
-    for candidate in candidates:
-        if candidate.exists():
-            return candidate
+    
+    # Try all combinations of aliases and patterns
+    for name in possible_names:
+        candidates = [
+            base_path.with_name(f"{stem}_{name}{suffix}"),
+            base_path.with_name(f"{stem}.{name}{suffix}"),
+            base_path.with_name(f"{stem}-{name}{suffix}"),
+        ]
+        for candidate in candidates:
+            if candidate.exists():
+                return candidate
+    
     return None
 
 
@@ -692,6 +708,11 @@ def _instantiate_providers(names: List[str], cfg: dict, overrides: dict):
                 'view': p_cfg.get('view', 'STANDARD'),
                 'apply_year_filter': not overrides.get('scopus_skip_date_filter', False),
             }
+        elif name == 'web_of_science' or name == 'wos':
+            kwargs = {
+                'api_key': _clean_secret(overrides.get('wos_api_key') or p_cfg.get('api_key')),
+                'db': p_cfg.get('db', 'WOS'),
+            }
         providers.append(provider_cls(**kwargs))
     if not providers:
         raise SystemExit("No active database providers were instantiated. Check --databases or configuration.")
@@ -706,6 +727,7 @@ def main():
     parser.add_argument('--scopus-api-key', help='API key for Scopus (else set SCOPUS_API_KEY env).')
     parser.add_argument('--scopus-insttoken', help='Institution token for Scopus, if required.')
     parser.add_argument('--scopus-skip-date-filter', action='store_true', help='Disable Scopus PUBYEAR filter (useful when Insttoken is unavailable).')
+    parser.add_argument('--wos-api-key', help='API key for Web of Science (else set WOS_API_KEY env).')
     sub = parser.add_subparsers(dest='cmd', required=True)
 
     # --- Scaffold Command ---
@@ -813,10 +835,13 @@ def main():
     scopus_inst = _resolve(getattr(args, 'scopus_insttoken', None), 'SCOPUS_INSTTOKEN', cfg, ['scopus_insttoken'])
     scopus_skip_dates = _resolve(getattr(args, 'scopus_skip_date_filter', None), 'SCOPUS_SKIP_DATE_FILTER', cfg, ['scopus_skip_date_filter'], _parse_bool) or False
 
+    wos_api = _resolve(getattr(args, 'wos_api_key', None), 'WOS_API_KEY', cfg, ['wos_api_key'])
+
     requested_databases = _resolve_database_selection(getattr(args, 'databases', None), cfg)
     providers = _instantiate_providers(requested_databases, cfg, {'ncbi_email': ncbi_email, 'ncbi_api': ncbi_api,
                                                                   'scopus_api_key': scopus_api, 'scopus_insttoken': scopus_inst,
-                                                                  'scopus_skip_date_filter': scopus_skip_dates})
+                                                                  'scopus_skip_date_filter': scopus_skip_dates,
+                                                                  'wos_api_key': wos_api})
 
     def resolve_input_path(path_val: str) -> Path | None:
         if not path_val: return None

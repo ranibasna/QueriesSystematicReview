@@ -19,3 +19,18 @@ outdir = "sealed_outputs"
 # score_queries_txt = "Queries/queries.txt"
 # score_gold_csv = "gold_pmids.csv"
 # score_outdir = "benchmark_outputs"
+
+[databases]
+default = ["pubmed"]
+
+[databases.scopus]
+enabled = true
+api_key = "${SCOPUS_API_KEY}"
+# insttoken is optional; leave blank if not required by your institution
+# insttoken = "${SCOPUS_INSTTOKEN}"
+view = "STANDARD"
+
+[databases.web_of_science]
+enabled = true
+api_key = "${WOS_API_KEY}"
+db = "WOS"  # WOS = Web of Science Core Collection
