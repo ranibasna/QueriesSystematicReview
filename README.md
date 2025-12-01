@@ -398,6 +398,64 @@ Workflow impact:
 - After you run the prompt-driven generator and overwrite `Queries/queries.txt`, you'll have the usual strategies plus a few precision-lean variants. Use `score` to benchmark them against your gold list and compare precision/recall/NNR.
 
 
+## Automated Multi-Database Prompt Generation
+
+This project features an advanced, two-stage workflow for automatically generating runnable commands that produce complex, multi-database search queries. This system is designed to be robust, maintainable, and highly specific to your study's needs.
+
+### Stage 1: Create a Study-Specific Command
+
+The first step is to use the `/generate_multidb_prompt` command to create a new, permanent, and runnable command tailored to your specific study protocol.
+
+**Command:**
+`/generate_multidb_prompt`
+
+**Arguments:**
+
+*   `--command_name` (Required): The name for the new command you want to create (e.g., `run_my_study_multidb`).
+*   `--protocol_path` (Required): The path to the study's protocol file (e.g., `studies/my_study/protocol.md`).
+*   `--databases` (Required): A comma-separated list of databases (e.g., `pubmed,scopus,embase`).
+*   `--level` (Optional): Specifies the complexity and detail of the queries to be generated. Defaults to `extended`. The available levels are:
+    *   `basic`: Generates the 3 core strategies (High-recall, Balanced, High-precision).
+    *   `extended`: Generates the 3 core strategies plus 3 prescriptive micro-variants based on the database-specific `Precision_Knobs`.
+    *   `keywords`: Adds a preliminary keyword-expansion step and generates 4 keyword-focused queries.
+    *   `exhaustive`: Generates the 3 core strategies plus 6 micro-variants, creating a highly comprehensive set of queries.
+*   `--min_date` / `--max_date` (Optional): The date window for the search (YYYY/MM/DD).
+
+**Example Usage:**
+
+```bash
+/generate_multidb_prompt --command_name "run_sleep_apnea_multidb_extended" --protocol_path "studies/sleep_apnea/prospero-sleep-apnea-dementia.md" --databases "pubmed,scopus,embase" --level "extended" --max_date "2021/03/01"
+```
+
+This command will read the protocol, select the correct instructions from the master template for the `extended` level, and create a new, permanent Gemini command named `/run_sleep_apnea_multidb_extended`.
+
+### Stage 2: Execute the New Command to Generate Queries
+
+Once Stage 1 is complete, you can run the command you just created to perform the actual query generation.
+
+**Example Usage:**
+
+```bash
+/run_sleep_apnea_multidb_extended
+```
+
+Running this command will instruct the LLM to execute the complex, level-specific prompt. The output is a single JSON object containing all queries, which is then automatically parsed to create separate files for each database in your study's folder (e.g., `studies/sleep_apnea/`):
+
+*   `queries.txt` (for PubMed)
+*   `queries_scopus.txt`
+*   `queries_embase.txt`
+
+### Advanced Architectural Features
+
+The multi-database generation workflow includes several advanced features to ensure high-quality and robust output:
+
+*   **Master Template Architecture:** All prompt logic is consolidated into a single master template (`prompts/prompt_template_multidb.md`). The generator intelligently processes this file to select the correct instructions based on the chosen `--level`, making the system highly maintainable.
+*   **Prescriptive Micro-variants:** The `extended` and `exhaustive` levels use a detailed recipe to create micro-variants, telling the LLM what *type* of `Precision_Knob` to use (e.g., Filter-based, Scope-based) for each variant, ensuring consistent and high-quality output.
+*   **"JSON Patch" Self-Correction:** The prompt includes a structured self-correction step. The LLM reviews its own generated queries and produces a machine-readable `json_patch` object for any necessary fixes. This patch is then automatically applied before the final files are written, creating a reliable self-healing mechanism.
+*   **High-Level Context (`USER TASK`):** The prompt includes a dedicated section to provide the LLM with the high-level goals and context of a rigorous systematic review, which helps steer the model towards producing better results.
+
+
+
 ### Example results explanation of the select Command
 
   How the select Command Works

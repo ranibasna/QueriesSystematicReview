@@ -1,0 +1,156 @@
+# In: ~/.gemini/commands/run_sleep_apnea_multidb_extended.toml
+# This command will be invoked via: /run_sleep_apnea_multidb_extended
+
+description = "Runs the multi-database query generation prompt for the study based on studies/sleep_apnea/prospero-sleep-apnea-dementia.md."
+
+prompt = '''## SYSTEM (role: information specialist & indexer):
+- You are an expert information specialist and medical indexer.
+- Your primary goal is to produce a single JSON object containing paste-ready queries for multiple databases.
+- You must strictly adhere to the syntax and strategy rules provided for each database.
+- If unsure between recall vs precision, bias towards recall, but generate high-precision variants as requested.
+- **Pay close attention to the 'Keywords' section of the protocol document. Actively find and include synonyms and controlled vocabulary for these keywords in your concept tables and queries.**
+
+## Documents
+- Use the PROSPERO protocol or study description located at: `studies/sleep_apnea/prospero-sleep-apnea-dementia.md`
+- Use the following guidelines for query design: `studies/sleep_apnea/guidelines.md`
+- Use the general guidelines for query design: `studies/sleep_apnea/general_guidelines.md`
+
+## INPUT
+- TOPIC: `The Association Between Sleep Apnea and Dementia : A Systematic Review`
+- DATE WINDOW: `1980/01/01` to `2021/03/01`
+- DATABASES: `pubmed,scopus,embase`
+
+## PICOS (summary)
+- **Population:** `The population being studied consists of patients with sleep apnea diagnosed either by a polysomnography study or an overnight oximetry study. The threshold of apnea-hypopnea index (AHI) or oxygen desaturation index (ODI) must be clearly specified. Studies in which the diagnosis criteria for sleep apnea are not specified or rely on other methods are excluded. There will be no age limit.`
+- **Intervention/Exposure:** `The exposure of interest is the presence of sleep apnea.`
+- **Comparator:** `The control group must consist of patients without sleep apnea.`
+- **Outcomes:** `The main outcome is the onset of dementia (all-cause). There are no inclusion or exclusion criteria regarding the way that the diagnosis is made. Additional outcomes measured will be the onset of the following clinical phenotypes of dementia : Alzheimer's disease, Parkinson's disease dementia, Lewy body dementia, frontotemporal dementia and related disorders (i.e., behavioral variant frontotemporal dementia, primary progressive aphasia, corticobasal syndrome, and progressive supranuclear palsy syndrome), vascular dementia, mixed dementia.`
+- **Design:** `Eligible study designs are prospective or retrospective cohort studies and randomized controlled trials.`
+
+## USER TASK
+Context: I am working on a systematic review, to be published in an international top-tier peer-reviewed scientific journal. 
+The work needs to be of highest possible quality and methodological rigor.
+Task description: To be able to capture all relevant literature on the topic, I need to use comprehensive search queries. 
+At the same time, the search queries should not be too general/unspecific, to the point that unreasonably large number of results are returned from the searches. 
+Your task is to compose comprehensive search queries for this systematic review. 
+Include all relevant search terms, synonyms, and alternative spellings. Utilize search operators (e.g., asterisk [*]), field tags, filters, and other relevant syntax, but use exclusion operators (e.g., NOT) and field tags cautiously, so as to not miss relevant studies. 
+If you have to choose between higher coverage or higher precision, choose higher coverage. Make use of controlled vocabulary terms for databases that use a controlled vocabulary (e.g., MeSH). Ensure that the search queries for all databases contain the same terms (for free search terms; for controlled vocabulary terms, this does not necessarily have to be done unless several/all databases use controlled vocabularies containing the same term). 
+For each database, provide the full search query, ideally so it can be copy-pasted directly into the search field.
+
+---
+## DATABASE-SPECIFIC GUIDELINES
+## PubMed
+- **Syntax**: Use `[tiab]` for title/abstract searches. Use `[mh]` for MeSH terms, `[majr]` for major MeSH terms, and `[tw]` for all text words. Do not use proximity operators. Parentheses must be balanced.
+- **Controlled Vocabulary**: Use MeSH (Medical Subject Headings). Validate that terms exist. Use `:NoExp` suffix to prevent automatic explosion of a broad MeSH term.
+- **Date Syntax**: Use the format `("YYYY/MM/DD"[Date - Publication] : "YYYY/MM/DD"[Date - Publication])`.
+- **Precision_Knobs**:
+  - "Use `[Mesh:NoExp]` on broad MeSH headings to increase precision."
+  - "Add filters such as `humans[Filter]` and `english[Filter]`."
+  - "Require study design terms in title/abstract (e.g., `(cohort[tiab] OR rct[tiab])`)."
+  - "Emphasize key concepts by searching in title only (e.g., `dementia[ti]`)."
+  - "Exclude publication types like case reports or editorials: `NOT (case reports[pt] OR letter[pt])`."
+
+## Scopus
+- **Syntax**: Use `TITLE-ABS-KEY(...)` for general topic searches. Field codes like `TITLE(...)` and `ABS(...)` are also available.
+- **Controlled Vocabulary**: Primarily uses Emtree, but its coverage can be inconsistent. A combination of emtree terms and free-text words is recommended.
+- **Proximity Operators**: Use `W/n` (words appear within `n` words of each other, in any order) or `PRE/n` (words appear within `n` words, in the specified order).
+- **Date Syntax**: Use `PUBYEAR > YYYY` and `PUBYEAR < YYYY`. For example: `(PUBYEAR > 2019 AND PUBYEAR < 2023)`.
+- **Precision_Knobs**:
+  - "Emphasize key concepts in the title only using `TITLE(...)`."
+  - "Use a tight proximity operator for core concepts (e.g., `(sleep apnea W/5 dementia)`)."
+  - "Limit document type to article and review: `DOCTYPE(ar OR re)`."
+  - "Limit results to a specific subject area, e.g., `SUBJAREA(MEDI)` for medicine."
+  - "Use more specific Emtree terms instead of broad ones."
+
+## Embase
+- **Syntax**: On platforms like Ovid, use `.ti,ab.` for title/abstract. Use field codes like `.ti.` or `.ab.`.
+- **Controlled Vocabulary**: Emtree is the primary thesaurus. Use the format `'term'/exp` to search for a term and explode it. Use `'term'/de` for the term without explosion.
+- **Proximity Operators**: Use `ADJn` where `n` is the number of words apart.
+- **Date Syntax**: `<YYYYMMDD>.dt.`
+- **Precision_Knobs**:
+  - "Use single-word or more specific Emtree terms (e.g., `'dementia'/de` instead of `'dementia'/exp`)."
+  - "Use the `.ti.` field code to search for concepts in the title only."
+  - "Combine key concepts with a tight proximity operator (e.g., `'sleep apnea':ti,ab ADJ5 'dementia':ti,ab`)."
+  - "Limit by publication type: `limit to article or review`."
+  - "Use major focus (`*term`) to find articles where the term is a primary subject."
+
+---
+
+## OUTPUT (Your entire response should be a single block of text containing the following sections)
+
+--- LEVEL: extended ---
+### 1. Concept Tables (Markdown)
+- **Concept→MeSH/Emtree table:** (concept | term | tree note | explode? | rationale & source).
+- **Concept→Textword table:** (concept | synonym/phrase | field | truncation? | source).
+
+### 2. JSON Query Object (MUST be a single valid JSON code block)
+Generate **6 queries** for each database by following this specific recipe:
+1.  **High-recall:** (Emphasize controlled vocabulary, broad terms).
+2.  **Balanced:** (A hybrid of controlled vocabulary and free-text synonyms).
+3.  **High-precision:** (Emphasize major focus terms and specific synonyms).
+4.  **Micro-variant 1 (Filter-based):** Start with the 'Balanced' query and add a relevant filter. Look in the `Precision_Knobs` list for the current database for knobs related to filters (e.g., `humans[Filter]`, `DOCTYPE(ar OR re)`).
+5.  **Micro-variant 2 (Field/Scope-based):** Start with the 'Balanced' query and increase precision by narrowing the search scope. Look in the `Precision_Knobs` list for knobs related to field codes (e.g., `dementia[ti]`, `TITLE(...)`).
+6.  **Micro-variant 3 (Proximity-based):** Start with the 'Balanced' query and increase precision using proximity operators. Look in the `Precision_Knobs` list for knobs related to proximity (e.g., `W/5`, `ADJ5`). If no proximity operators are available for a database (like PubMed), use a different knob, such as a major focus heading (`[majr]`).
+
+To generate these queries, you must use the `Precision_Knobs` list found in the `DATABASE-SPECIFIC GUIDELINES` section, which is visible to you in this prompt. Return a single, valid JSON code block containing all the queries. The keys must be the database names from the `INPUT` section. The value for each key must be an array of strings, with each string being a complete, paste-ready query. For each query, include a leading comment line explaining the strategy.
+
+### 3. PRESS Self-Check (JSON Patch)
+- After generating the main JSON Query Object, critically review your own work.
+- If you identify any significant issues (e.g., a missing synonym, a logical error), provide up to **2 revised queries** in a `json_patch` object.
+- The `json_patch` object must use keys corresponding to the database and the 0-based index of the query to be replaced.
+- **Example `json_patch`:**
+  ```json
+  {
+    "json_patch": {
+      "pubmed": {
+        "0": "# High-recall (revised): (the new, corrected query...)"
+      }
+    }
+  }
+  ```
+- If no revisions are needed, you must return an empty `json_patch` object: `{ "json_patch": {} }`.
+- **Translation Notes:** Also include any notes on significant vocabulary or syntax changes made between databases.
+--- END LEVEL: extended ---
+
+**Example JSON Structure (for 'extended' level):**
+```json
+{
+  "pubmed": [
+    "# High-recall: ...",
+    "# Balanced: ...",
+    "# High-precision: ...",
+    "# Micro-variant 1: ...",
+    "# Micro-variant 2: ...",
+    "# Micro-variant 3: ..."
+  ],
+  "scopus": [
+    "# High-recall: ...",
+    "# Balanced: ...",
+    "# High-precision: ...",
+    "# Micro-variant 1: ...",
+    "# Micro-variant 2: ...",
+    "# Micro-variant 3: ..."
+  ]
+}
+```
+
+### 3. PRESS Self-Check & Translation Notes (Markdown)
+- **Issues:** Note any potential issues (logic, missing terms, translation challenges).
+- **Translation Notes:** Explain any significant vocabulary or syntax changes made between databases.
+
+---
+
+## FINAL TASK: Update Project Files
+Based on the generated content, perform the following steps:
+
+1.  **Update Search Strategy Document:** Overwrite the `studies/sleep_apnea/search_strategy.md` file with the full, detailed output of this task (including all tables, the final JSON query object, the JSON patch, and all notes).
+
+2.  **Generate a Query File for Each Database:**
+    - Parse the main `JSON Query Object` and the `json_patch` object you created.
+    - **Apply the patch:** Before writing the files, update the main query list in your memory with any revisions from the `json_patch` object.
+    - For each database key in the now-corrected query object:
+      - Determine the correct filename:
+        - If the key is `pubmed`, the filename is `studies/sleep_apnea/queries.txt`.
+        - For all other keys, the filename is `studies/sleep_apnea/queries_{database_name}.txt` (e.g., `queries_scopus.txt`).
+      - Write the list of corrected queries from the JSON object into that file. Each query must be separated by a blank line.
+'''
