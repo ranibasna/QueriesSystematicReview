@@ -1,0 +1,17 @@
+# High-recall: Uses broad TITLE-ABS-KEY searches to maximize sensitivity.
+(TITLE-ABS-KEY("sleep apnea" OR "sleep apnoea" OR "sleep disordered breathing")) AND (TITLE-ABS-KEY(dementia OR "cognitive decline" OR "cognitive impairment" OR Alzheimer* OR "Lewy body")) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)
+
+# Balanced: Combines textwords with a study design filter for relevance.
+(TITLE-ABS-KEY("sleep apnea" OR "sleep apnoea" OR "sleep disordered breathing" OR "apnea-hypopnea index" OR "oxygen desaturation index")) AND (TITLE-ABS-KEY(dementia OR "cognitive impairment" OR Alzheimer*)) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR "follow up" OR randomi* OR trial)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)
+
+# High-precision: Focuses on title searches and proximity for core concepts.
+(TITLE("sleep apnea" OR "sleep apnoea")) AND (TITLE(dementia OR Alzheimer*)) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR randomi* OR trial)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)
+
+# Micro-variant 1 (Filter-based): Starts with Balanced and limits document type to articles and reviews.
+(TITLE-ABS-KEY("sleep apnea" OR "sleep apnoea" OR "sleep disordered breathing" OR "apnea-hypopnea index" OR "oxygen desaturation index")) AND (TITLE-ABS-KEY(dementia OR "cognitive impairment" OR Alzheimer*)) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR "follow up" OR randomi* OR trial)) AND (DOCTYPE(ar OR re)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)
+
+# Micro-variant 2 (Field/Scope-based): Starts with Balanced and restricts dementia terms to the title.
+(TITLE-ABS-KEY("sleep apnea" OR "sleep apnoea" OR "sleep disordered breathing" OR "apnea-hypopnea index" OR "oxygen desaturation index")) AND (TITLE(dementia OR "cognitive impairment" OR Alzheimer*)) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR "follow up" OR randomi* OR trial)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)
+
+# Micro-variant 3 (Proximity-based): Starts with Balanced and requires sleep apnea and dementia concepts to be within 10 words of each other.
+((TITLE-ABS-KEY("sleep apnea" OR "sleep apnoea" OR "sleep disordered breathing")) W/10 (TITLE-ABS-KEY(dementia OR "cognitive impairment" OR Alzheimer*))) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR "follow up" OR randomi* OR trial)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)

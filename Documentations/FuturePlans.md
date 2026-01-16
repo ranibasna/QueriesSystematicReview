@@ -1,97 +1,33 @@
-╭─────────────────────────────────────────────────────╮
-│  > Ok I have created the new branch. What are the   │
-│    changes that need to be done. Explian to me      │
-│    before doing any changes                         │
-╰─────────────────────────────────────────────────────╯
+# Strategic Plan: Dynamic Multi-Database Query Generation
 
-✦ Excellent! Now that you're on a new branch, we can
-  safely implement the changes to support multiple
-  studies. Here is a detailed plan of the changes I
-  will make. Please review it, and once you approve, I
-  will proceed with the implementation.
+This document outlines the strategic plan to enhance the query generation workflow to support multiple databases in a unified, "run-once" process.
 
-  Plan for Multi-Study Support
+The goal is to create a system that can generate tailored, balanced sets of search queries for multiple databases (e.g., PubMed, Scopus, Embase) from a single command.
 
-  The goal is to isolate each study's files and
-  results. We will achieve this by creating a new
-  directory structure and then updating the
-  run_workflow.sh script to work with it.
+## Core Components of the New Workflow
 
-  Step 1: Restructure the Project Directory
+1.  **Centralized Database Guidelines:**
+    *   A new file, `prompts/database_guidelines.md`, will be created to act as a single source of truth for all database-specific rules.
+    *   For each database, this file will define syntax, controlled vocabulary usage, and a list of "Precision Knobs" for generating precision-lean query variants.
 
-  I will create a new top-level directory called
-  studies. Each subdirectory within studies will
-  represent a single, self-contained systematic review
-   study.
+2.  **Generic and Powerful Prompt Template:**
+    *   A new prompt template, `prompts/prompt_template_multidb.md`, will be developed.
+    *   This template will be generic and will feature placeholders for dynamically injected database guidelines.
+    *   It will instruct the LLM to produce a balanced number of queries (including micro-variants) for all target databases.
+    *   Crucially, it will mandate that the LLM's final output is a single, structured JSON object containing all generated queries.
 
-   1. Create `studies` directory: I will start by
-      creating a new directory named studies in the
-      root of your project.
+3.  **Dynamic Prompt Generation Command:**
+    *   A new Gemini command, `/generate_multidb_prompt`, will be created. This command will be the user's primary interface for setting up a new multi-database query generation task.
+    *   It will accept a list of target databases (e.g., `--databases "pubmed,scopus"`).
+    *   It will read `database_guidelines.md`, select the relevant sections, and inject them into the `prompt_template_multidb.md` to create a final, fully-formed prompt.
+    *   The output of this command is another, runnable Gemini command (e.g., `/run_my_study_all_db`).
 
-   2. Create a directory for your first study: I will
-      create a directory inside studies for your
-      current study. Based on the context, a good name
-       would be MS_and_Sleep.
+4.  **Unified "Run-Once" Execution:**
+    *   The user will execute the newly generated command (e.g., `/run_my_study_all_db`) just once.
+    *   The agent will execute the complex prompt, receive the single JSON output from the LLM, parse it, and automatically write the queries to their respective files (`queries.txt`, `queries_scopus.txt`, etc.) in a single, atomic operation.
 
-   3. Move study-specific files: I will move all the
-      files and directories that are specific to your
-      "MS and Sleep" study into the new
-      studies/MS_and_Sleep directory. This will
-      include:
-       * Queries/
-       * sealed_outputs/
-       * benchmark_outputs/
-       * aggregates/
-       * aggregates_eval/
-       * Gold_list__all_included_studies_.csv
-       * concept_terms_MS_sleep_RCT.csv
-       * sr_config.toml
-       * .env
-       * The .gemini/ directory and its contents.
+## Benefits of this Approach
 
-  After this restructuring, the
-  llm_sr_select_and_score.py script and the
-  run_workflow.sh script will remain at the top level,
-   as they are the tools that will operate on the
-  different studies.
-
-  Step 2: Update the `run_workflow.sh` Script
-
-  The run_workflow.sh script needs to be made aware of
-   the new directory structure.
-
-   1. Add a `--study-dir` argument: I will add a new,
-      required command-line argument to the script
-      called --study-dir. This will allow you to
-      specify which study you want to run the workflow
-       on.
-
-   2. Update file paths: I will modify the script to
-      use the --study-dir argument to construct the
-      correct paths to all the input files and output
-      directories. For example, instead of using a
-      hardcoded path like Queries/queries.txt, the
-      script will use
-      "$STUDY_DIR/Queries/queries.txt".
-
-  How You Will Use the New Workflow
-
-  After these changes, you will run the workflow for a
-   specific study like this:
-
-   1 ./run_workflow.sh --study-dir
-     "studies/MS_and_Sleep" --query-gen
-     "/run_sleep_ms"
-
-  This command tells the script to run the entire
-  workflow on the files located within the
-  studies/MS_and_Sleep directory. This ensures that
-  the results for your "MS and Sleep" study are kept
-  completely separate from any other studies you might
-   add in the future.
-
-  ---
-
-  Please review this plan. If you are happy with it, I
-   will proceed with making the necessary changes to
-  the file system and the run_workflow.sh script.
+*   **Scalability & Maintainability:** Database-specific rules are decoupled from the prompt logic, making it easy to add new databases or update rules.
+*   **Consistency:** The system guarantees that the same number of queries are generated for each database, ensuring the downstream pipeline functions correctly.
+*   **Powerful Automation:** The entire process, from a study protocol to a complete set of multi-database query files, is automated through a simple two-stage command workflow.

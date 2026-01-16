@@ -29,13 +29,35 @@ This template provides a structured prompt for an LLM to generate comprehensive,
 - **Design:** `[Describe the study designs to be included, e.g., Randomized controlled trial]`
 
 ## USER TASK
-Context: I am working on a systematic review, to be published in an international top-tier peer-reviewed scientific journal. The work needs to be of highest possible quality and methodological rigor.
-Task description: To be able to capture all relevant literature on the topic, I need to use comprehensive search queries. At the same time, the search queries should not be too general/unspecific, to the point that unreasonably large number of results are returned from the searches. Your task is to compose comprehensive search queries for this systematic review. Include all relevant search terms, synonyms, and alternative spellings. Utilize search operators (e.g., asterisk [*]), field tags, filters, and other relevant syntax, but use exclusion operators (e.g., NOT) and field tags cautiously, so as to not miss relevant studies. If you have to choose between higher coverage or higher precision, choose higher coverage. Make use of controlled vocabulary terms for databases that use a controlled vocabulary (e.g., MeSH). Ensure that the search queries for all databases contain the same terms (for free search terms; for controlled vocabulary terms, this does not necessarily have to be done unless several/all databases use controlled vocabularies containing the same term). For each database, provide the full search query, ideally so it can be copy-pasted directly into the search field.
+Generate comprehensive, database-ready search queries for this systematic review.
+- Prioritize recall over precision (when in doubt, choose broader queries)
+- Use controlled vocabulary (MeSH, Emtree) where available
+- Include synonyms, alternative spellings, and truncation
+- Apply exclusion operators (NOT) cautiously to avoid missing studies
+- Ensure free-text terms are consistent across databases
 
 ---
 ## DATABASE-SPECIFIC GUIDELINES
 [DATABASE_SPECIFIC_GUIDELINES]
 ---
+
+## Precision_Knobs Framework
+
+The DATABASE-SPECIFIC GUIDELINES section above contains categorized Precision_Knobs for each database. These knobs are organized into functional categories:
+
+- **Filter Knobs:** Species, language, document type, subject area restrictions
+- **Scope Knobs:** Field restrictions (title, abstract), major/focus headings
+- **Vocabulary Knobs:** Explosion control, term specificity
+- **Design Knobs:** Study methodology requirements
+- **Exclusion Knobs:** Publication type filters
+- **Proximity Knobs:** Term co-occurrence requirements
+
+When generating micro-variants in extended/exhaustive levels:
+- **Filter-based variant:** Uses knobs from the "Filter Knobs" category
+- **Field/Scope-based variant:** Uses knobs from the "Scope Knobs" category
+- **Proximity-based variant:** Uses knobs from the "Proximity Knobs" category (or falls back to "Scope Knobs" for databases without proximity operators like PubMed)
+
+Note: Placeholders like `[CONCEPT]`, `[TERM]`, `[MESH_TERM]` should be replaced with actual study-specific concepts from your PICOS framework.
 
 ## OUTPUT (Your entire response should be a single block of text containing the following sections)
 
@@ -82,9 +104,11 @@ Generate **6 queries** for each database by following this specific recipe:
 1.  **High-recall:** (Emphasize controlled vocabulary, broad terms).
 2.  **Balanced:** (A hybrid of controlled vocabulary and free-text synonyms).
 3.  **High-precision:** (Emphasize major focus terms and specific synonyms).
-4.  **Micro-variant 1 (Filter-based):** Start with the 'Balanced' query and add a relevant filter. Look in the `Precision_Knobs` list for the current database for knobs related to filters (e.g., `humans[Filter]`, `DOCTYPE(ar OR re)`).
-5.  **Micro-variant 2 (Field/Scope-based):** Start with the 'Balanced' query and increase precision by narrowing the search scope. Look in the `Precision_Knobs` list for knobs related to field codes (e.g., `dementia[ti]`, `TITLE(...)`).
-6.  **Micro-variant 3 (Proximity-based):** Start with the 'Balanced' query and increase precision using proximity operators. Look in the `Precision_Knobs` list for knobs related to proximity (e.g., `W/5`, `ADJ5`). If no proximity operators are available for a database (like PubMed), use a different knob, such as a major focus heading (`[majr]`).
+4.  **Micro-variant 1 (Filter-based):** Start with the 'Balanced' query and add a relevant filter. Look under "Filter Knobs" in the Precision_Knobs section for the current database (e.g., `humans[Filter]` for PubMed, `DOCTYPE(ar OR re)` for Scopus).
+5.  **Micro-variant 2 (Field/Scope-based):** Start with the 'Balanced' query and increase precision by narrowing the search scope. Look under "Scope Knobs" in the Precision_Knobs section (e.g., `[ti]` for PubMed, `TITLE(...)` for Scopus).
+6.  **Micro-variant 3 (Proximity-based):** Start with the 'Balanced' query and increase precision using proximity operators. Look under "Proximity Knobs" in the Precision_Knobs section (e.g., `W/5` for Scopus, `ADJ5` for Embase). 
+   
+   **For databases without proximity operators (e.g., PubMed):** Fall back to the "Scope Knobs" category and prefer major heading/focus mechanisms (e.g., `[majr]` for PubMed, `*term` for Embase). If no major heading mechanism exists, use title restriction from Scope Knobs.
 
 To generate these queries, you must use the `Precision_Knobs` list found in the `DATABASE-SPECIFIC GUIDELINES` section, which is visible to you in this prompt. Return a single, valid JSON code block containing all the queries. The keys must be the database names from the `INPUT` section. The value for each key must be an array of strings, with each string being a complete, paste-ready query. For each query, include a leading comment line explaining the strategy.
 
@@ -154,12 +178,12 @@ Generate **9 queries** for each database by following this specific recipe:
 1.  **High-recall:** (Emphasize controlled vocabulary, broad terms).
 2.  **Balanced:** (A hybrid of controlled vocabulary and free-text synonyms).
 3.  **High-precision:** (Emphasize major focus terms and specific synonyms).
-4.  **Micro-variant 1 (Filter):** Start with 'Balanced' and add a filter knob (e.g., `humans[Filter]`, `DOCTYPE(ar OR re)`).
-5.  **Micro-variant 2 (Scope):** Start with 'Balanced' and add a scope-narrowing knob (e.g., `[ti]`, `TITLE(...)`).
-6.  **Micro-variant 3 (Proximity):** Start with 'Balanced' and add a proximity knob (e.g., `W/5`, `ADJ5`). If none, use another specific knob like `[majr]`.
-7.  **Micro-variant 4 (Combo: Scope + Filter):** Start with 'Balanced' and combine a scope-narrowing knob and a filter knob.
-8.  **Micro-variant 5 (Combo: Scope + Proximity):** Start with 'Balanced' and combine a scope-narrowing knob and a proximity knob.
-9.  **Micro-variant 6 (Exclusion):** Start with 'High-precision' and add a knob that excludes certain publication types (e.g., `NOT (case reports[pt] OR letter[pt])`).
+4.  **Micro-variant 1 (Filter):** Start with 'Balanced' and add a filter knob. Look under "Filter Knobs" in the Precision_Knobs section for the current database.
+5.  **Micro-variant 2 (Scope):** Start with 'Balanced' and add a scope-narrowing knob. Look under "Scope Knobs" in the Precision_Knobs section.
+6.  **Micro-variant 3 (Proximity):** Start with 'Balanced' and add a proximity knob. Look under "Proximity Knobs" in the Precision_Knobs section. For databases without proximity operators (e.g., PubMed), fall back to "Scope Knobs" and prefer major heading mechanisms.
+7.  **Micro-variant 4 (Combo: Scope + Filter):** Start with 'Balanced' and combine one Scope Knob and one Filter Knob.
+8.  **Micro-variant 5 (Combo: Scope + Proximity):** Start with 'Balanced' and combine one Scope Knob and one Proximity Knob (or two Scope Knobs if no proximity available).
+9.  **Micro-variant 6 (Exclusion):** Start with 'High-precision' and add an exclusion knob. Look under "Exclusion Knobs" in the Precision_Knobs section for publication type filters.
 
 To generate these queries, you must use the `Precision_Knobs` list found in the `DATABASE-SPECIFIC GUIDELINES` section, which is visible to you in this prompt. Return a single, valid JSON code block containing all the queries. The keys must be the database names from the `INPUT` section. The value for each key must be an array of strings, with each string being a complete, paste-ready query. For each query, include a leading comment line explaining the strategy.
 
@@ -183,7 +207,10 @@ To generate these queries, you must use the `Precision_Knobs` list found in the 
 
 --- END LEVEL-SPECIFIC INSTRUCTIONS ---
 
-**Example JSON Structure (for 'extended' level):**
+## Expected JSON Output Format
+
+Your JSON Query Object should follow this structure, with database names as keys and arrays of query strings as values. Each query string must include a leading comment line (starting with '#') explaining the strategy:
+
 ```json
 {
   "pubmed": [
@@ -205,9 +232,9 @@ To generate these queries, you must use the `Precision_Knobs` list found in the 
 }
 ```
 
-### 3. PRESS Self-Check & Translation Notes (Markdown)
-- **Issues:** Note any potential issues (logic, missing terms, translation challenges).
-- **Translation Notes:** Explain any significant vocabulary or syntax changes made between databases.
+Note: The number of queries per database depends on the level (basic: 3, extended: 6, keywords: 4, exhaustive: 9).
+
+
 
 ---
 
@@ -217,8 +244,8 @@ Based on the generated content, perform the following steps:
 1.  **Update Search Strategy Document:** Overwrite the `studies/[STUDY_NAME]/search_strategy.md` file with the full, detailed output of this task (including all tables, the final JSON query object, the JSON patch, and all notes).
 
 2.  **Generate a Query File for Each Database:**
-    - Parse the main `JSON Query Object` and the `json_patch` object you created.
-    - **Apply the patch:** Before writing the files, update the main query list in your memory with any revisions from the `json_patch` object.
+    - First, apply any revisions from the `json_patch` object to the main 
+     `JSON Query Object` (replace queries at specified indices).
     - For each database key in the now-corrected query object:
       - Determine the correct filename:
         - If the key is `pubmed`, the filename is `studies/[STUDY_NAME]/queries.txt`.

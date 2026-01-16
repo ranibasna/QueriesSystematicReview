@@ -44,7 +44,8 @@ You are an expert assistant for systematic reviews. Your task is to **generate a
     *   First, process the level-specific instructions:
         1.  Find the main instruction block, which is the entire text between the `--- START LEVEL-SPECIFIC INSTRUCTIONS ---` and `--- END LEVEL-SPECIFIC INSTRUCTIONS ---` markers.
         2.  Within that block, find the specific instruction set for the requested `{level}`. This will be the text between `--- LEVEL: {level} ---` and `--- END LEVEL: {level} ---`.
-        3.  Replace the entire main instruction block (from START to END) with **only** the specific instruction set you just found. This creates a clean, level-specific template.
+        3.  Extract the content between those level markers, **removing the level markers themselves** (do not include `--- LEVEL: {level} ---` or `--- END LEVEL: {level} ---` in the extracted content).
+        4.  Replace the entire main instruction block (from START to END) with the extracted level-specific content (without markers). This creates a clean, level-specific template.
     *   Now, using this cleaned template content, systematically replace the following placeholders:
         *   Replace `[PATH TO PROSPERO/PROTOCOL FILE]` with the value of `{protocol_path}`.
         *   Replace `[STUDY_NAME]` with the derived study name (the folder from the protocol path).

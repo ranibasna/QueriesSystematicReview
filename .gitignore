@@ -18,6 +18,7 @@
 .vscode/
 .idea/
 .env
+sr_config.toml
 .venv/
 .github/
 __pycache__/

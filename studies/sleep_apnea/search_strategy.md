@@ -1,123 +1,122 @@
-# Search Strategy: Sleep Apnea and Dementia
+### 1. Concept Tables (Markdown)
 
-This document outlines the comprehensive search strategy developed to identify literature for a systematic review on the association between sleep apnoea and dementia.
+**Concept→MeSH/Emtree table:**
 
-## 1. Concept & Keyword Tables
+| concept | term | tree note | explode? | rationale & source |
+| :--- | :--- | :--- | :--- | :--- |
+| Sleep Apnea | Sleep Apnea Syndromes | C23.888.592.612.850 | Yes | MeSH heading covering all types of sleep apnea. |
+| Sleep Apnea | 'sleep apnea syndrome' | | Yes | Emtree heading, exploded to include central, obstructive, etc. |
+| Dementia | Dementia | C10.228.140.380, F03 | Yes | Broad MeSH heading for dementia and related cognitive disorders. |
+| Dementia | 'dementia' | | Yes | Broad Emtree heading for dementia. |
+| Dementia | Alzheimer Disease | C10.228.140.380.100, F03.050.126.300 | Yes | MeSH heading. |
+| Dementia | 'alzheimer disease' | | Yes | Emtree heading. |
+| Dementia | Lewy Body Disease | C10.228.140.545 | Yes | MeSH heading. |
+| Dementia | 'lewy body dementia' | | Yes | Emtree heading. |
+| Dementia | Frontotemporal Dementia | C10.228.140.380.420 | Yes | MeSH heading. |
+| Dementia | 'frontotemporal dementia' | | Yes | Emtree heading. |
+| Dementia | Dementia, Vascular | C10.228.140.380.850 | Yes | MeSH heading. |
+| Dementia | 'vascular dementia' | | Yes | Emtree heading. |
+| Study Design | Cohort Studies | E05.318.308.940.350 | Yes | MeSH heading for cohort studies. |
+| Study Design | 'cohort analysis' | | Yes | Emtree heading. |
+| Study Design | Randomized Controlled Trial | E05.318.308.940.770 | Yes | MeSH heading for RCTs. |
+| Study Design | 'randomized controlled trial' | | Yes | Emtree heading. |
 
-### Concept 1: Sleep Apnea
+**Concept→Textword table:**
 
-**MeSH Terms (PubMed/MEDLINE)**
+| concept | synonym/phrase | field | truncation? | source |
+| :--- | :--- | :--- | :--- | :--- |
+| Sleep Apnea | sleep apnea | tiab | Yes | PICOS/Keywords |
+| Sleep Apnea | sleep apnoea | tiab | Yes | Spelling variant |
+| Sleep Apnea | sleep disordered breathing | tiab | No | PICOS/Keywords |
+| Sleep Apnea | SDB | tiab | No | Acronym |
+| Sleep Apnea | obstructive sleep apnea | tiab | Yes | PICOS/Keywords |
+| Sleep Apnea | OSA | tiab | No | Acronym |
+| Sleep Apnea | apnea-hypopnea index | tiab | No | PICOS |
+| Sleep Apnea | AHI | tiab | No | Acronym |
+| Sleep Apnea | oxygen desaturation index | tiab | No | PICOS |
+| Sleep Apnea | ODI | tiab | No | Acronym |
+| Dementia | dementia | tiab | Yes | PICOS/Keywords |
+| Dementia | cognitive decline | tiab | No | Synonym |
+| Dementia | cognitive impairment | tiab | No | Synonym |
+| Dementia | Alzheimer* | tiab | Yes | PICOS/Keywords |
+| Dementia | Lewy body | tiab | No | PICOS/Keywords |
+| Dementia | frontotemporal dementia | tiab | No | PICOS/Keywords |
+| Dementia | FTD | tiab | No | Acronym |
+| Dementia | vascular dementia | tiab | No | PICOS/Keywords |
+| Study Design | cohort | tiab | No | Study Design |
+| Study Design | prospective | tiab | No | Study Design |
+| Study Design | retrospective | tiab | No | Study Design |
+| Study Design | follow-up | tiab | No | Study Design |
+| Study Design | randomized | tiab | No | Study Design |
+| Study Design | randomised | tiab | No | Spelling variant |
+| Study Design | trial | tiab | No | Study Design |
+| Study Design | rct | tiab | No | Acronym |
 
-| Concept      | MeSH Term                  | Tree Note                                      | Explode? | Rationale & Source                               |
-|--------------|----------------------------|------------------------------------------------|----------|----------------------------------------------------|
-| Sleep Apnea  | "Sleep Apnea Syndromes"    | C23.888.592.834 or C08.854.834                 | Yes      | Broad parent term covering all types. (PROSPERO)   |
-| Sleep Apnea  | "Sleep Apnea, Obstructive" | C23.888.592.834.850 or C08.854.834.850         | No       | Key phenotype. (PROSPERO)                          |
-| Sleep Apnea  | "Sleep Apnea, Central"     | C23.888.592.834.825 or C08.854.834.825         | No       | Included for comprehensiveness. (Expert knowledge) |
+### 2. JSON Query Object (MUST be a single valid JSON code block)
+```json
+{
+  "pubmed": [
+    "# High-recall: Uses broad MeSH terms and textwords to maximize sensitivity.",
+    "(((\"Sleep Apnea Syndromes\"[Mesh]) OR (\"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep disordered breathing\"[tiab]))) AND (((\"Dementia\"[Mesh]) OR (\"dementia\"[tiab] OR \"cognitive decline\"[tiab] OR \"cognitive impairment\"[tiab] OR \"Alzheimer s\"[tiab] OR \"Lewy body\"[tiab]))) AND (\"1900/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
+    "# Balanced: Combines MeSH and textwords with a study design filter for relevance.",
+    "(((\"Sleep Apnea Syndromes\"[Mesh]) OR (\"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep disordered breathing\"[tiab] OR \"apnea-hypopnea index\"[tiab] OR \"oxygen desaturation index\"[tiab]))) AND (((\"Alzheimer Disease\"[Mesh] OR \"Lewy Body Disease\"[Mesh] OR \"Frontotemporal Dementia\"[Mesh] OR \"Dementia, Vascular\"[Mesh])) OR (\"dementia\"[tiab] OR \"cognitive impairment\"[tiab] OR \"Alzheimer*\"[tiab])) AND ((cohort[tiab] OR follow-up[tiab] OR prospective[tiab] OR retrospective[tiab] OR randomized[tiab] OR randomised[tiab] OR trial[tiab])) AND (\"1900/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
+    "# High-precision: Focuses on major MeSH terms and title searches for core concepts.",
+    "(((\"Sleep Apnea Syndromes\"[majr])) OR (\"sleep apnea\"[ti])) AND (((\"Dementia\"[majr])) OR (\"dementia\"[ti] OR \"Alzheimer*\"[ti])) AND ((cohort[tiab] OR prospective[tiab] OR retrospective[tiab] OR randomized[tiab] OR trial[tiab])) AND (\"1900/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
+    "# Micro-variant 1 (Filter-based): Starts with Balanced and adds human and English language filters.",
+    "(((\"Sleep Apnea Syndromes\"[Mesh]) OR (\"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep disordered breathing\"[tiab] OR \"apnea-hypopnea index\"[tiab] OR \"oxygen desaturation index\"[tiab]))) AND (((\"Alzheimer Disease\"[Mesh] OR \"Lewy Body Disease\"[Mesh] OR \"Frontotemporal Dementia\"[Mesh] OR \"Dementia, Vascular\"[Mesh])) OR (\"dementia\"[tiab] OR \"cognitive impairment\"[tiab] OR \"Alzheimer*\"[tiab])) AND ((cohort[tiab] OR follow-up[tiab] OR prospective[tiab] OR retrospective[tiab] OR randomized[tiab] OR randomised[tiab] OR trial[tiab])) AND (humans[Filter] AND english[Filter]) AND (\"1900/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
+    "# Micro-variant 2 (Field/Scope-based): Starts with Balanced and restricts dementia terms to the title for higher specificity.",
+    "(((\"Sleep Apnea Syndromes\"[Mesh]) OR (\"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep disordered breathing\"[tiab] OR \"apnea-hypopnea index\"[tiab] OR \"oxygen desaturation index\"[tiab]))) AND (((\"Alzheimer Disease\"[Mesh] OR \"Lewy Body Disease\"[Mesh] OR \"Frontotemporal Dementia\"[Mesh] OR \"Dementia, Vascular\"[Mesh])) OR (\"dementia\"[ti] OR \"cognitive impairment\"[ti] OR \"Alzheimer*\"[ti])) AND ((cohort[tiab] OR follow-up[tiab] OR prospective[tiab] OR retrospective[tiab] OR randomized[tiab] OR randomised[tiab] OR trial[tiab])) AND (\"1900/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
+    "# Micro-variant 3 (Proximity-based Fallback): Starts with Balanced and uses major MeSH headings for core concepts to increase relevance.",
+    "(((\"Sleep Apnea Syndromes\"[majr]) OR (\"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep disordered breathing\"[tiab]))) AND (((\"Dementia\"[majr] OR \"Alzheimer Disease\"[majr])) OR (\"dementia\"[tiab] OR \"cognitive impairment\"[tiab] OR \"Alzheimer*\"[tiab])) AND ((cohort[tiab] OR follow-up[tiab] OR prospective[tiab] OR retrospective[tiab] OR randomized[tiab] OR randomised[tiab] OR trial[tiab])) AND (\"1900/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])"
+  ],
+  "scopus": [
+    "# High-recall: Uses broad TITLE-ABS-KEY searches to maximize sensitivity.",
+    "(TITLE-ABS-KEY(\"sleep apnea\" OR \"sleep apnoea\" OR \"sleep disordered breathing\")) AND (TITLE-ABS-KEY(dementia OR \"cognitive decline\" OR \"cognitive impairment\" OR Alzheimer* OR \"Lewy body\")) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)",
+    "# Balanced: Combines textwords with a study design filter for relevance.",
+    "(TITLE-ABS-KEY(\"sleep apnea\" OR \"sleep apnoea\" OR \"sleep disordered breathing\" OR \"apnea-hypopnea index\" OR \"oxygen desaturation index\")) AND (TITLE-ABS-KEY(dementia OR \"cognitive impairment\" OR Alzheimer*)) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR \"follow up\" OR randomi* OR trial)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)",
+    "# High-precision: Focuses on title searches and proximity for core concepts.",
+    "(TITLE(\"sleep apnea\" OR \"sleep apnoea\")) AND (TITLE(dementia OR Alzheimer*)) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR randomi* OR trial)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)",
+    "# Micro-variant 1 (Filter-based): Starts with Balanced and limits document type to articles and reviews.",
+    "(TITLE-ABS-KEY(\"sleep apnea\" OR \"sleep apnoea\" OR \"sleep disordered breathing\" OR \"apnea-hypopnea index\" OR \"oxygen desaturation index\")) AND (TITLE-ABS-KEY(dementia OR \"cognitive impairment\" OR Alzheimer*)) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR \"follow up\" OR randomi* OR trial)) AND (DOCTYPE(ar OR re)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)",
+    "# Micro-variant 2 (Field/Scope-based): Starts with Balanced and restricts dementia terms to the title.",
+    "(TITLE-ABS-KEY(\"sleep apnea\" OR \"sleep apnoea\" OR \"sleep disordered breathing\" OR \"apnea-hypopnea index\" OR \"oxygen desaturation index\")) AND (TITLE(dementia OR \"cognitive impairment\" OR Alzheimer*)) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR \"follow up\" OR randomi* OR trial)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)",
+    "# Micro-variant 3 (Proximity-based): Starts with Balanced and requires sleep apnea and dementia concepts to be within 10 words of each other.",
+    "((TITLE-ABS-KEY(\"sleep apnea\" OR \"sleep apnoea\" OR \"sleep disordered breathing\")) W/10 (TITLE-ABS-KEY(dementia OR \"cognitive impairment\" OR Alzheimer*))) AND (TITLE-ABS-KEY(cohort OR prospective OR retrospective OR \"follow up\" OR randomi* OR trial)) AND (PUBYEAR > 1989 AND PUBYEAR < 2022)"
+  ],
+  "embase": [
+    "# High-recall: Uses broad Emtree terms and textwords to maximize sensitivity.",
+    "('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab OR 'sleep apnoea':ti,ab OR 'sleep disordered breathing':ti,ab) AND ('dementia'/exp OR dementia:ti,ab OR 'cognitive decline':ti,ab OR 'cognitive impairment':ti,ab OR 'alzheimer*':ti,ab OR 'lewy body':ti,ab) AND [1990-2021]/py",
+    "# Balanced: Combines Emtree and textwords with a study design filter for relevance.",
+    "('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab OR 'sleep apnoea':ti,ab OR 'apnea-hypopnea index':ti,ab OR 'oxygen desaturation index':ti,ab) AND ('dementia'/exp OR 'alzheimer disease'/exp OR 'lewy body dementia'/exp OR 'frontotemporal dementia'/exp OR 'vascular dementia'/exp OR dementia:ti,ab OR 'cognitive impairment':ti,ab OR 'alzheimer*':ti,ab) AND ('cohort analysis'/exp OR cohort:ti,ab OR prospective:ti,ab OR retrospective:ti,ab OR 'follow up':ti,ab OR 'randomized controlled trial'/exp OR randomi*:ti,ab OR trial:ti,ab) AND [1990-2021]/py",
+    "# High-precision: Focuses on major focus Emtree terms and title searches.",
+    "(*'sleep apnea syndrome'/exp OR 'sleep apnea':ti) AND (*'dementia'/exp OR dementia:ti OR 'alzheimer*':ti) AND ('cohort analysis'/exp OR cohort:ti,ab OR prospective:ti,ab OR retrospective:ti,ab OR 'randomized controlled trial'/exp OR randomi*:ti,ab OR trial:ti,ab) AND [1990-2021]/py",
+    "# Micro-variant 1 (Filter-based): Starts with Balanced and limits to article or review publication types.",
+    "('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab OR 'sleep apnoea':ti,ab OR 'apnea-hypopnea index':ti,ab OR 'oxygen desaturation index':ti,ab) AND ('dementia'/exp OR 'alzheimer disease'/exp OR 'lewy body dementia'/exp OR 'frontotemporal dementia'/exp OR 'vascular dementia'/exp OR dementia:ti,ab OR 'cognitive impairment':ti,ab OR 'alzheimer*':ti,ab) AND ('cohort analysis'/exp OR cohort:ti,ab OR prospective:ti,ab OR retrospective:ti,ab OR 'follow up':ti,ab OR 'randomized controlled trial'/exp OR randomi*:ti,ab OR trial:ti,ab) AND ([article]/lim OR [review]/lim) AND [1990-2021]/py",
+    "# Micro-variant 2 (Field/Scope-based): Starts with Balanced and restricts dementia terms to the title.",
+    "('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab OR 'sleep apnoea':ti,ab OR 'apnea-hypopnea index':ti,ab OR 'oxygen desaturation index':ti,ab) AND ('dementia'/exp OR 'alzheimer disease'/exp OR 'lewy body dementia'/exp OR 'frontotemporal dementia'/exp OR 'vascular dementia'/exp OR dementia:ti OR 'cognitive impairment':ti OR 'alzheimer*':ti) AND ('cohort analysis'/exp OR cohort:ti,ab OR prospective:ti,ab OR retrospective:ti,ab OR 'follow up':ti,ab OR 'randomized controlled trial'/exp OR randomi*:ti,ab OR trial:ti,ab) AND [1990-2021]/py",
+    "# Micro-variant 3 (Proximity-based): Starts with Balanced and requires sleep apnea and dementia concepts to be adjacent within 10 words.",
+    "('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab OR 'sleep apnoea':ti,ab) ADJ10 ('dementia'/exp OR dementia:ti,ab OR 'cognitive impairment':ti,ab OR 'alzheimer*':ti,ab) AND ('cohort analysis'/exp OR cohort:ti,ab OR prospective:ti,ab OR retrospective:ti,ab OR 'follow up':ti,ab OR 'randomized controlled trial'/exp OR randomi*:ti,ab OR trial:ti,ab) AND [1990-2021]/py"
+  ]
+}
+```
+### 3. PRESS Self-Check (JSON Patch)
+```json
+{
+  "json_patch": {
+    "pubmed": {
+      "1": "# Balanced (revised): Added broad 'Dementia' MeSH term to concept group to improve recall.",
+      "(((\"Sleep Apnea Syndromes\"[Mesh]) OR (\"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep disordered breathing\"[tiab] OR \"apnea-hypopnea index\"[tiab] OR \"oxygen desaturation index\"[tiab]))) AND (((\"Dementia\"[Mesh] OR \"Alzheimer Disease\"[Mesh] OR \"Lewy Body Disease\"[Mesh] OR \"Frontotemporal Dementia\"[Mesh] OR \"Dementia, Vascular\"[Mesh])) OR (\"dementia\"[tiab] OR \"cognitive impairment\"[tiab] OR \"Alzheimer*\"[tiab])) AND ((cohort[tiab] OR follow-up[tiab] OR prospective[tiab] OR retrospective[tiab] OR randomized[tiab] OR randomised[tiab] OR trial[tiab])) AND (\"1900/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])"
+    }
+  }
+}
+```
 
-**Text Words / Synonyms**
-
-| Concept      | Synonym/Phrase                          | Field   | Truncation? | Source                                             |
-|--------------|-----------------------------------------|---------|-------------|----------------------------------------------------|
-| Sleep Apnea  | "sleep apnea"                           | [tiab]  | No          | Standard term. (PROSPERO)                          |
-| Sleep Apnea  | "sleep apnoea"                          | [tiab]  | No          | UK spelling variant. (Expert knowledge)            |
-| Sleep Apnea  | "sleep-disordered breathing"            | [tiab]  | No          | Broader, related term. (Expert knowledge)          |
-| Sleep Apnea  | "sleep disordered breathing"            | [tiab]  | No          | Common variant. (Expert knowledge)                 |
-| Sleep Apnea  | "SDB"                                   | [tiab]  | No          | Common acronym. (Expert knowledge)                 |
-| Sleep Apnea  | "obstructive sleep apnea"               | [tiab]  | No          | Specific type. (PROSPERO)                          |
-| Sleep Apnea  | "obstructive sleep apnoea"              | [tiab]  | No          | UK spelling variant. (Expert knowledge)            |
-| Sleep Apnea  | "OSA"                                   | [tiab]  | No          | Common acronym. (Expert knowledge)                 |
-| Sleep Apnea  | "hypopnea"                              | [tiab]  | No          | Related physiological event. (Expert knowledge)    |
-| Sleep Apnea  | "hypopnoea"                             | [tiab]  | No          | UK spelling variant. (Expert knowledge)            |
-| Sleep Apnea  | "apnea-hypopnea index"                  | [tiab]  | No          | Key diagnostic metric. (PROSPERO)                  |
-| Sleep Apnea  | "AHI"                                   | [tiab]  | No          | Common acronym. (PROSPERO)                         |
-
-### Concept 2: Dementia & Cognitive Decline
-
-**MeSH Terms (PubMed/MEDLINE)**
-
-| Concept   | MeSH Term                     | Tree Note                               | Explode? | Rationale & Source                                     |
-|-----------|-------------------------------|-----------------------------------------|----------|--------------------------------------------------------|
-| Dementia  | "Dementia"                    | F03.087.400 or C10.228.140.380           | Yes      | Broad parent term for all dementia types. (PROSPERO)   |
-| Dementia  | "Alzheimer Disease"           | F03.087.400.100 or C10.228.140.380.100   | No       | Key phenotype. (PROSPERO)                              |
-| Dementia  | "Lewy Body Disease"           | F03.087.400.500 or C10.228.140.380.500   | No       | Key phenotype. (PROSPERO)                              |
-| Dementia  | "Dementia, Vascular"          | F03.087.400.300 or C10.574.510.250       | No       | Key phenotype. (PROSPERO)                              |
-| Dementia  | "Frontotemporal Dementia"     | F03.087.400.400 or C10.228.140.380.400   | No       | Key phenotype. (PROSPERO)                              |
-| Dementia  | "Parkinson Disease"           | C10.228.140.610.750                     | No       | Dementia can be a complication. (PROSPERO)             |
-| Dementia  | "Cognitive Dysfunction"       | F03.087.200 or C23.888.592.250           | Yes      | Broader term for cognitive decline. (PROSPERO)         |
-
-**Text Words / Synonyms**
-
-| Concept   | Synonym/Phrase                | Field   | Truncation? | Source                                             |
-|-----------|-------------------------------|---------|-------------|----------------------------------------------------|
-| Dementia  | "dementia"                    | [tiab]  | Yes (`*`)   | Standard term. (PROSPERO)                          |
-| Dementia  | "Alzheimer's disease"         | [tiab]  | No          | Key phenotype. (PROSPERO)                          |
-| Dementia  | "Alzheimer disease"           | [tiab]  | No          | Common variant. (PROSPERO)                         |
-| Dementia  | "AD"                          | [tiab]  | No          | Common acronym. (Expert knowledge)                 |
-| Dementia  | "Lewy body"                   | [tiab]  | Yes (`*`)   | Key phenotype. (PROSPERO)                          |
-| Dementia  | "vascular dementia"           | [tiab]  | No          | Key phenotype. (PROSPERO)                          |
-| Dementia  | "frontotemporal dementia"     | [tiab]  | No          | Key phenotype. (PROSPERO)                          |
-| Dementia  | "FTD"                         | [tiab]  | No          | Common acronym. (Expert knowledge)                 |
-| Dementia  | "cognitive decline"           | [tiab]  | No          | Broader outcome. (PROSPERO)                        |
-| Dementia  | "cognitive impairment"        | [tiab]  | No          | Related term. (Expert knowledge)                   |
-| Dementia  | "neurocognitive disorder"     | [tiab]  | Yes (`*`)   | Broader term from keywords. (PROSPERO)             |
-
-## 2. Boolean Search Strategies
-
-Date filter for all PubMed queries: `AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])`
-
-### PubMed (MEDLINE)
-
-*   **Variant A (High-recall / MeSH-heavy):**
-    `((("Sleep Apnea Syndromes"[Mesh]) OR ("Sleep Apnea, Obstructive"[Mesh]) OR ("Sleep Apnea, Central"[Mesh])) AND (("Dementia"[Mesh]) OR ("Alzheimer Disease"[Mesh]) OR ("Lewy Body Disease"[Mesh]) OR ("Dementia, Vascular"[Mesh]) OR ("Frontotemporal Dementia"[Mesh]) OR ("Parkinson Disease"[Mesh]) OR ("Cognitive Dysfunction"[Mesh]))) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])`
-
-*   **Variant B (Balanced / Text-heavy):**
-    `(("sleep apnea"[tiab] OR "sleep apnoea"[tiab] OR "sleep-disordered breathing"[tiab] OR "sleep disordered breathing"[tiab] OR "SDB"[tiab] OR "obstructive sleep apnea"[tiab] OR "obstructive sleep apnoea"[tiab] OR "OSA"[tiab] OR "hypopnea"[tiab] OR "hypopnoea"[tiab] OR "apnea-hypopnea index"[tiab] OR "AHI"[tiab]) AND ("dementia*"[tiab] OR "Alzheimer's disease"[tiab] OR "Alzheimer disease"[tiab] OR "AD"[tiab] OR "Lewy body*"[tiab] OR "vascular dementia"[tiab] OR "frontotemporal dementia"[tiab] OR "FTD"[tiab] OR "cognitive decline"[tiab] OR "cognitive impairment"[tiab] OR "neurocognitive disorder*"[tiab])) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])`
-
-*   **Variant C (High-precision / Hybrid):**
-    `((("Sleep Apnea Syndromes"[Mesh]) OR "sleep apnea"[tiab] OR "sleep apnoea"[tiab] OR "sleep-disordered breathing"[tiab] OR "obstructive sleep apnea"[tiab]) AND (("Dementia"[Mesh]) OR "dementia*"[tiab] OR "Alzheimer Disease"[Mesh] OR "Alzheimer's disease"[tiab] OR "cognitive decline"[tiab] OR "cognitive impairment"[tiab])) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])`
-
-### EMBASE (Ovid)
-
-*   **High-recall:**
-    `(exp sleep apnea/ or exp obstructive sleep apnea/ or exp central sleep apnea/) and (exp dementia/ or exp alzheimer disease/ or exp lewy body disease/ or exp vascular dementia/ or exp frontotemporal dementia/ or exp parkinson disease/ or exp cognitive defect/) and (publication_date >= '2010-04-01' and publication_date <= '2021-03-01')`
-
-### Scopus
-
-*   **High-recall:**
-    `(TITLE-ABS-KEY("sleep apnea" OR "sleep apnoea" OR "sleep-disordered breathing" OR "obstructive sleep apnea" OR "SDB" OR "OSA") AND TITLE-ABS-KEY(dementia OR "Alzheimer's disease" OR "Lewy body" OR "vascular dementia" OR "frontotemporal dementia" OR "cognitive decline" OR "cognitive impairment")) AND (PUBDATETXT("april 2010" OR "may 2010" ... "march 2021"))`
-
-### Cochrane Library
-
-*   **High-recall:**
-    `([mh "Sleep Apnea Syndromes"] OR [mh "Sleep Apnea, Obstructive"]) AND ([mh Dementia] OR [mh "Alzheimer Disease"] OR [mh "Cognitive Dysfunction"]) AND (publication year from 2010 to 2021)`
-
-### Web of Science
-
-*   **High-recall:**
-    `TS=("sleep apnea" OR "sleep apnoea" OR "sleep-disordered breathing") AND TS=(dementia OR "Alzheimer's disease" OR "cognitive decline" OR "cognitive impairment") AND PY=(2010-2021)`
-
-### PsycINFO (Ovid)
-
-*   **High-recall:**
-    `(exp sleep apnea/) and (exp dementia/ or exp alzheimer's disease/ or exp vascular dementia/ or exp cognitive impairment/) and (publication_date >= '2010-04-01' and publication_date <= '2021-03-01')`
-
-## 3. PRESS Self-Check
-
-*   **Issues:**
-    *   The text-heavy query (Variant B) might retrieve irrelevant results by including broad terms like "AD" or "SDB" which can have other meanings.
-    *   The term "Parkinson Disease" might be too broad, as the protocol specifies "Parkinson’s disease dementia". The query should be more specific.
-    *   The date range in the prompt template (`2010/04/01` to `2021/03/01`) differs slightly from the PROSPERO registration (`Inception to 1 March 2021`). I have used the more specific date range from the prompt template. The user should clarify which is correct. I will stick to the prompt template's dates.
-    *   The study design filter (cohort, RCT) is not included in the queries to maximize recall, as these are often poorly indexed. This filtering should be done at the screening stage.
-
-*   **Minimal Revised Queries (PubMed):**
-    1.  **Revised Variant B (more precise acronyms):**
-        `(("sleep apnea"[tiab] OR "sleep apnoea"[tiab] OR "sleep-disordered breathing"[tiab] OR "sleep disordered breathing"[tiab] OR "obstructive sleep apnea"[tiab] OR "obstructive sleep apnoea"[tiab] OR "hypopnea"[tiab] OR "hypopnoea"[tiab] OR "apnea-hypopnea index"[tiab]) AND ("dementia*"[tiab] OR "Alzheimer's disease"[tiab] OR "Alzheimer disease"[tiab] OR ("Lewy body"[tiab] AND dementia[tiab]) OR "vascular dementia"[tiab] OR "frontotemporal dementia"[tiab] OR "cognitive decline"[tiab] OR "cognitive impairment"[tiab] OR "neurocognitive disorder*"[tiab])) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])`
-    2.  **Revised Hybrid (more specific dementia):**
-        `((("Sleep Apnea Syndromes"[Mesh]) OR "sleep apnea"[tiab] OR "sleep apnoea"[tiab] OR "sleep-disordered breathing"[tiab]) AND (("Dementia"[Mesh]) OR "dementia*"[tiab] OR "Alzheimer Disease"[Mesh] OR "Alzheimer's disease"[tiab] OR "Lewy Body Disease"[Mesh] OR "Dementia, Vascular"[Mesh] OR "cognitive decline"[tiab])) AND ("2010/04/01"[Date - Publication] : "2021/03/01"[Date - Publication])`
-
-## 4. Translation Notes
-
-*   **MeSH vs Emtree:** PubMed uses MeSH, while EMBASE uses Emtree. The controlled vocabulary terms were translated accordingly (e.g., `exp sleep apnea/` in EMBASE).
-*   **Proximity Operators:** Scopus and Cochrane Library allow proximity operators (like `W/n` or `NEAR/n`), which could be used to refine queries (e.g., `(Lewy W/2 body)`), but were not used here to maintain consistency with the broader PubMed strategy.
-*   **Field Codes:** Field codes are database-specific. `[tiab]` in PubMed becomes `TITLE-ABS-KEY` in Scopus and `.ti,ab.` in Ovid platforms (EMBASE, PsycINFO).
-*   **Date Syntax:** The date syntax varies significantly across databases. The examples provided use the appropriate format for each platform.
+### 3. PRESS Self-Check & Translation Notes (Markdown)
+- **Issues:** The initial 'Balanced' PubMed query accidentally omitted the broad "Dementia"[Mesh] term, including only specific dementia types. This has been corrected in the patch to ensure studies on all-cause dementia are captured.
+- **Translation Notes:**
+  - **Controlled Vocabulary:** PubMed uses MeSH (`"Term"[Mesh]`), while Embase uses Emtree (`'term'/exp`). Scopus has less reliable controlled vocabulary, so queries rely more heavily on textwords in `TITLE-ABS-KEY`.
+  - **Syntax:**
+    - Field codes differ: `[tiab]` (PubMed), `TITLE-ABS-KEY()` (Scopus), `.ti,ab.` (Embase).
+    - Proximity operators are `W/n` in Scopus and `ADJn` in Embase. PubMed has no proximity operator, so a fallback to major headings (`[majr]`) was used for the proximity-based variant.
+    - Truncation is `*` in PubMed and Scopus, and often handled automatically or with `*` in Embase depending on the platform.
+  - **Date:** Date syntax is distinct for each: `"YYYY/MM/DD"[Date - Publication]` for PubMed, `PUBYEAR > YYYY` for Scopus, and `YYYY-YYYY/py` for Embase. The date range was broadened to be more inclusive.

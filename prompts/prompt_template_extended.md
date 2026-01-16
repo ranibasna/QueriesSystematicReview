@@ -31,6 +31,20 @@ This template provides a structured prompt for an LLM to generate comprehensive 
 - **Design:** `[Describe the study designs to be included, e.g., Randomized controlled trial]`
 
 
+## Precision_Knobs Framework
+
+Each Precision_Knob is a discrete query modification technique that increases precision while attempting to minimize recall loss. The 6 micro-variants below (V1-V6) correspond to these knob categories:
+
+- **Filter Knobs (V1):** Species, language, date filters
+- **Design Knobs (V2):** Study methodology requirements  
+- **Outcome Knobs (V3):** Semantic narrowing of outcome concepts
+- **Vocabulary Knobs (V4):** Explosion control, term specificity
+- **Scope Knobs (V5):** Field restrictions (title, major headings)
+- **Exclusion Knobs (V6):** Publication type filters
+
+When generating variants, use abstract placeholders like `[EXPOSURE_TERM]`, `[OUTCOME_TERM]`, `[MESH_TERM]` instead of concrete study-specific examples.
+
+
 ## OUTPUT (return ALL):
 1) **Concept→MeSH table:** (concept | MeSH | tree note | explode? | rationale & source).
 2) **Concept→Textword table:** (concept | synonym/phrase | [tiab] | truncation? | source).
@@ -42,12 +56,12 @@ This template provides a structured prompt for an LLM to generate comprehensive 
 4) **Precision-lean micro-variants (PubMed focus)**
    In addition to the three main strategies, generate a micro-variant grid for PubMed to improve precision:
    - Output 6 single-line PubMed variants (V1–V6), each toggling at most two precision knobs while keeping a Recall_Lock invariant.
-   - **V1:** add humans + English filters.
-   - **V2:** require cohort or trial signals in [tiab] (e.g., cohort|follow-up|prospective|retrospective|randomi[sz]ed|trial|placebo).
-   - **V3:** narrow the [outcome] block (e.g., using more specific MeSH terms or text words).
-   - **V4:** use [Mesh:NoExp] on very broad MeSH headings.
-   - **V5:** title emphasis for [exposure] or [outcome] (e.g., "sleep apnea"[ti] OR dementia[ti]).
-   - **V6:** exclude case reports/editorials/letters/comments.
+   - **V1 (Filter Knobs):** Add species and language filters: `humans[Filter]` AND `english[Filter]`
+   - **V2 (Design Knobs):** Require study design terms in title/abstract: `(cohort[tiab] OR follow-up[tiab] OR prospective[tiab] OR retrospective[tiab] OR randomi[sz]ed[tiab] OR trial[tiab] OR placebo[tiab])`
+   - **V3 (Outcome Knobs):** Narrow outcome concepts by replacing broad MeSH/text terms with only the 3-5 most specific child terms or clinical synonyms relevant to the primary outcome from PICOS. Remove generic outcome terms.
+   - **V4 (Vocabulary Knobs):** Apply `[Mesh:NoExp]` to prevent explosion of very broad MeSH headings (e.g., `[BROAD_MESH_TERM][Mesh:NoExp]`)
+   - **V5 (Scope Knobs):** Restrict primary exposure and/or outcome concepts to title field using `[ti]` tag (e.g., `[EXPOSURE_TERM][ti]` OR `[OUTCOME_TERM][ti]`)
+   - **V6 (Exclusion Knobs):** Exclude low-quality publication types: `NOT (case reports[pt] OR editorial[pt] OR letter[pt] OR comment[pt])`
    For each variant, include a one-sentence rationale and add "expected_recall_delta: none|minimal".
    Also output a **Recall_Lock** clause for PubMed (the minimal invariant concept core) and a **Precision_Knobs** list used.
 
