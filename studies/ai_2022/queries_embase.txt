@@ -1,0 +1,17 @@
+# High-recall: Emphasizes broad, exploded Emtree terms and extensive synonyms in title/abstract.
+('sleep disordered breathing'/exp OR 'snoring'/exp OR 'obstructive sleep apnea'/exp OR 'sleep apnea':ti,ab OR 'snoring':ti,ab) AND ('blood pressure'/exp OR 'hypertension'/exp OR 'blood pressure':ti,ab OR 'hypertension':ti,ab) AND ('child'/exp OR 'adolescent'/exp OR 'pediatric':ti,ab OR 'child':ti,ab OR 'adolescent':ti,ab)
+
+# Balanced: A hybrid of exploded Emtree terms and key free-text synonyms for a mix of recall and precision.
+('sleep disordered breathing'/exp OR 'sleep apnea':ti,ab OR 'snoring':ti,ab) AND ('blood pressure'/exp OR 'hypertension':ti,ab) AND ('child'/exp OR 'adolescent'/exp OR 'pediatric':ti,ab)
+
+# High-precision: Uses major focus Emtree terms and adjacent proximity for key free-text words.
+(*'obstructive sleep apnea'/exp OR *'snoring'/exp OR ('sleep' ADJ2 'apnea'):ti,ab) AND ('hypertension'/exp OR *'hypertension'/exp OR 'blood pressure':ti,ab) AND ('child'/exp OR 'adolescent'/exp OR *'child'/exp OR *'adolescent'/exp)
+
+# Micro-variant 1 (Filter-based): Starts with the 'Balanced' query and limits results to articles and reviews.
+('sleep disordered breathing'/exp OR 'sleep apnea':ti,ab OR 'snoring':ti,ab) AND ('blood pressure'/exp OR 'hypertension':ti,ab) AND ('child'/exp OR 'adolescent'/exp OR 'pediatric':ti,ab) AND (limit to (article or review))
+
+# Micro-variant 2 (Field/Scope-based): Starts with the 'Balanced' query and restricts key free-text terms to the title field.
+('sleep disordered breathing'/exp OR 'sleep apnea':ti OR 'snoring':ti) AND ('blood pressure'/exp OR 'hypertension':ti) AND ('child'/exp OR 'adolescent'/exp OR 'pediatric':ti,ab)
+
+# Micro-variant 3 (Proximity-based): Starts with the 'Balanced' query and adds proximity boost for closely co-occurring terms.
+('sleep disordered breathing'/exp OR 'sleep apnea':ti,ab OR 'snoring':ti,ab OR ('sleep apnea':ti,ab ADJ5 'blood pressure':ti,ab) OR ('snoring':ti,ab ADJ5 'hypertension':ti,ab)) AND ('blood pressure'/exp OR 'hypertension':ti,ab) AND ('child'/exp OR 'adolescent'/exp OR 'pediatric':ti,ab)

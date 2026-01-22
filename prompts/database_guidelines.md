@@ -49,6 +49,9 @@ This file provides database-specific syntax and strategy rules for the LLM to us
   - Tight proximity: `W/5` or `PRE/5` - Require concepts within 5 words (e.g., `[CONCEPT1] W/5 [CONCEPT2]`)
 
 ## Embase
+
+- **Date Syntax**: Date filtering varies by platform. For inline queries, OMIT date filters entirely and apply them through the platform's interface after execution. DO NOT use `limit to yr=` syntax in inline queries.
+
 - **Syntax**: On platforms like Ovid, use `.ti,ab.` for title/abstract. Use field codes like `.ti.` or `.ab.`.
 - **Controlled Vocabulary**: Emtree is the primary thesaurus. Use the format `'term'/exp` to search for a term and explode it. Use `'term'/de` for the term without explosion.
 - **Proximity Operators**: Use `ADJn` where `n` is the number of words apart.

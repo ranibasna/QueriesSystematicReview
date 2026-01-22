@@ -1,0 +1,17 @@
+# High-recall: Emphasizes broad MeSH terms and extensive synonyms to maximize retrieval.
+(((("Sleep Apnea Syndromes"[Mesh] OR "Snoring"[Mesh]) OR ("sleep disordered breathing"[tiab] OR "sleep apnea"[tiab] OR "SDB"[tiab] OR "obstructive sleep apnea"[tiab] OR "OSA"[tiab] OR "snoring"[tiab])) AND (("Blood Pressure"[Mesh] OR "Hypertension"[Mesh]) OR ("blood pressure"[tiab] OR "hypertension"[tiab] OR "BP"[tiab] OR "nondipping"[tiab] OR "non-dipping"[tiab])) AND (("Child"[Mesh] OR "Adolescent"[Mesh] OR "Infant"[Mesh]) OR ("child*"[tiab] OR "adolescen*"[tiab] OR "p*ediatric"[tiab] OR "infan*"[tiab] OR "teen*"[tiab]))) AND ("1990/01/01"[Date - Publication] : "2024/12/31"[Date - Publication])
+
+# Balanced: A hybrid of key MeSH terms and essential free-text synonyms for a mix of recall and precision.
+((("Sleep Apnea Syndromes"[Mesh]) OR ("sleep disordered breathing"[tiab] OR "sleep apnea"[tiab] OR "snoring"[tiab])) AND (("Blood Pressure"[Mesh]) OR ("blood pressure"[tiab] OR "hypertension"[tiab])) AND (("Child"[Mesh] OR "Adolescent"[Mesh]) OR ("child*"[tiab] OR "adolescen*"[tiab] OR "pediatric"[tiab]))) AND ("1990/01/01"[Date - Publication] : "2024/12/31"[Date - Publication])
+
+# High-precision: Emphasizes major MeSH headings and title-only searches for core concepts.
+((("Sleep Apnea, Obstructive"[majr] OR "Snoring"[majr]) OR ("sleep disordered breathing"[ti] OR "obstructive sleep apnea"[ti])) AND (("Hypertension"[majr]) OR ("blood pressure"[ti] OR "hypertension"[ti])) AND (("Child"[majr] OR "Adolescent"[majr]) OR ("pediatric"[ti] OR "child"[ti]))) AND ("1990/01/01"[Date - Publication] : "2024/12/31"[Date - Publication])
+
+# Micro-variant 1 (Filter-based): Starts with the 'Balanced' query and adds human and English language filters.
+((("Sleep Apnea Syndromes"[Mesh]) OR ("sleep disordered breathing"[tiab] OR "sleep apnea"[tiab] OR "snoring"[tiab])) AND (("Blood Pressure"[Mesh]) OR ("blood pressure"[tiab] OR "hypertension"[tiab])) AND (("Child"[Mesh] OR "Adolescent"[Mesh]) OR ("child*"[tiab] OR "adolescen*"[tiab] OR "pediatric"[tiab]))) AND ("1990/01/01"[Date - Publication] : "2024/12/31"[Date - Publication]) AND (humans[Filter] AND english[Filter])
+
+# Micro-variant 2 (Field/Scope-based): Starts with the 'Balanced' query and restricts key concepts to the title field for higher specificity.
+((("Sleep Apnea Syndromes"[Mesh]) OR ("sleep disordered breathing"[ti] OR "sleep apnea"[ti] OR "snoring"[ti])) AND (("Blood Pressure"[Mesh]) OR ("blood pressure"[ti] OR "hypertension"[ti])) AND (("Child"[Mesh] OR "Adolescent"[Mesh]) OR ("child*"[tiab] OR "adolescen*"[tiab] OR "pediatric"[tiab]))) AND ("1990/01/01"[Date - Publication] : "2024/12/31"[Date - Publication])
+
+# Micro-variant 3 (Proximity-based Fallback): Starts with the 'Balanced' query and uses major MeSH headings for core concepts as a fallback for proximity.
+((("Sleep Apnea Syndromes"[majr]) OR ("sleep disordered breathing"[tiab] OR "sleep apnea"[tiab] OR "snoring"[tiab])) AND (("Blood Pressure"[majr]) OR ("blood pressure"[tiab] OR "hypertension"[tiab])) AND (("Child"[Mesh] OR "Adolescent"[Mesh]) OR ("child*"[tiab] OR "adolescen*"[tiab] OR "pediatric"[tiab]))) AND ("1990/01/01"[Date - Publication] : "2024/12/31"[Date - Publication])

@@ -1,0 +1,17 @@
+# High-recall: Broad search using Topic (TS) for all synonyms and truncated terms.
+TS=("sleep disordered breathing" OR "sleep apne*" OR SDB OR "obstructive sleep apnea" OR OSA OR snoring) AND TS=("blood pressure" OR hypertens* OR BP OR nondipping OR "non-dipping") AND TS=(child* OR adolescen* OR p*ediatric OR infan* OR teen*) AND PY=(1990-2024)
+
+# Balanced: A hybrid using proximity (NEAR/5) for core concepts while still capturing major synonyms.
+TS=(("sleep apne*" OR "sleep disordered breathing") NEAR/5 (child* OR adolescen* OR pediatric*)) AND TS=("blood pressure" OR hypertens*) AND PY=(1990-2024)
+
+# High-precision: Tighter proximity (NEAR/3) and title-only (TI) searches for core concepts.
+TI=(("sleep apne*" OR snoring) AND ("blood pressure" OR hypertens*)) AND TS=(child* OR adolescen*) AND PY=(1990-2024)
+
+# Micro-variant 1 (Filter-based): Starts with the 'Balanced' query and limits to articles and reviews.
+TS=(("sleep apne*" OR "sleep disordered breathing") NEAR/5 (child* OR adolescen* OR pediatric*)) AND TS=("blood pressure" OR hypertens*) AND DT=(Article OR Review) AND PY=(1990-2024)
+
+# Micro-variant 2 (Field/Scope-based): Starts with the 'Balanced' query and restricts the main SDB and BP concepts to the title field.
+TI=(("sleep apne*" OR "sleep disordered breathing") AND ("blood pressure" OR hypertens*)) AND TS=(child* OR adolescen* OR pediatric*) AND PY=(1990-2024)
+
+# Micro-variant 3 (Proximity-based): Starts with the 'Balanced' query and tightens the proximity operator to NEAR/3.
+TS=(("sleep apne*" OR "sleep disordered breathing") NEAR/3 (child* OR adolescen* OR pediatric*)) AND TS=("blood pressure" OR hypertens*) AND PY=(1990-2024)
