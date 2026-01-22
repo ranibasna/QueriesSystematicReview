@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/ranibasna/QueriesSystematicReview/schemas/reference_schema.json",
+  "title": "Reference",
+  "description": "A bibliographic reference extracted from a systematic review paper",
+  "type": "object",
+  "required": ["reference_id", "title", "authors", "journal", "year", "raw_citation"],
+  "properties": {
+    "reference_id": {
+      "type": "integer",
+      "description": "Unique identifier for the reference (1-indexed)",
+      "minimum": 1
+    },
+    "title": {
+      "type": "string",
+      "description": "Article title",
+      "minLength": 1
+    },
+    "authors": {
+      "type": "array",
+      "description": "List of author names",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "journal": {
+      "type": "string",
+      "description": "Journal name",
+      "minLength": 1
+    },
+    "year": {
+      "type": "integer",
+      "description": "Publication year",
+      "minimum": 1900,
+      "maximum": 2026
+    },
+    "volume": {
+      "type": ["string", "null"],
+      "description": "Journal volume (optional)"
+    },
+    "issue": {
+      "type": ["string", "null"],
+      "description": "Journal issue (optional)"
+    },
+    "pages": {
+      "type": ["string", "null"],
+      "description": "Page range (e.g., '123-145') (optional)"
+    },
+    "doi": {
+      "type": ["string", "null"],
+      "description": "Digital Object Identifier (optional)",
+      "pattern": "^10\\.\\d{4,}(\\.\\d+)*\\/[\\S]+$"
+    },
+    "pmid": {
+      "type": ["string", "null"],
+      "description": "PubMed ID (optional)",
+      "pattern": "^\\d+$"
+    },
+    "raw_citation": {
+      "type": "string",
+      "description": "Original citation text for debugging"
+    },
+    "confidence": {
+      "type": "number",
+      "description": "Extraction confidence score",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "default": 1.0
+    },
+    "extraction_timestamp": {
+      "type": "string",
+      "description": "ISO 8601 timestamp when the reference was extracted",
+      "format": "date-time"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata (e.g., abstract, keywords)",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "reference_id": 1,
+      "title": "Mediterranean diet and cognitive function in older adults",
+      "authors": ["Smith J", "Johnson M", "Williams K"],
+      "journal": "American Journal of Clinical Nutrition",
+      "year": 2020,
+      "volume": "112",
+      "issue": "3",
+      "pages": "580-589",
+      "doi": "10.1093/ajcn/nqaa123",
+      "pmid": "32648899",
+      "raw_citation": "Smith J, et al. Mediterranean diet and cognitive function. Am J Clin Nutr. 2020;112(3):580-589.",
+      "confidence": 0.95,
+      "extraction_timestamp": "2026-01-22T10:30:00Z",
+      "metadata": {}
+    },
+    {
+      "reference_id": 2,
+      "title": "Olive oil consumption and risk of dementia",
+      "authors": ["Jones M", "Brown A"],
+      "journal": "Neurology",
+      "year": 2019,
+      "volume": "93",
+      "issue": "15",
+      "pages": "e1431-e1439",
+      "doi": "10.1212/WNL.0000000000008235",
+      "pmid": null,
+      "raw_citation": "Jones M, Brown A. Olive oil consumption and risk of dementia. Neurology. 2019;93(15):e1431-e1439.",
+      "confidence": 0.90,
+      "extraction_timestamp": "2026-01-22T10:30:05Z",
+      "metadata": {
+        "study_type": "cohort"
+      }
+    }
+  ]
+}
