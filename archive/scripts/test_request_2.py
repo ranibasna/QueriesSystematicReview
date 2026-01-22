@@ -1,7 +1,10 @@
 import requests
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Replace 'YOUR_API_KEY' with your Elsevier/Scopus API key
-API_KEY = '2e4786f1a46af8fd1a7d8568106f36c7'
+API_KEY = os.getenv("SCOPUS_API_KEY", "your_api_key_here")
 
 # The Scopus search query – note: this uses the Scopus search language
 # query = (

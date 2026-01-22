@@ -1,6 +1,9 @@
 import requests
+import os
+from dotenv import load_dotenv
 
-API_KEY = "2e4786f1a46af8fd1a7d8568106f36c7"
+load_dotenv()
+API_KEY = os.getenv("SCOPUS_API_KEY", "your_api_key_here")
 
 url = "https://api.elsevier.com/content/search/scopus"
 

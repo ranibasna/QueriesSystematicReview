@@ -1,8 +1,11 @@
 import requests
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Replace with your Embase-enabled API key and institutional token
-API_KEY = '2e4786f1a46af8fd1a7d8568106f36c7'
-INST_TOKEN = 'YOUR_INST_TOKEN'
+API_KEY = os.getenv("SCOPUS_API_KEY", "your_api_key_here")
+INST_TOKEN = os.getenv("SCOPUS_INSTTOKEN", "your_inst_token_here")
 
 # Build the advanced query – Embase accepts a similar Boolean syntax to Scopus
 query = (

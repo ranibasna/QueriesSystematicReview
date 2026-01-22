@@ -1,17 +1,53 @@
-# LLM-assisted Systematic Review: Selection & Scoring
+# LLM-Assisted Multi-Database Systematic Review Automation
 
-This repo includes a single-file CLI: `llm_sr_select_and_score.py`.
-It helps you evaluate PubMed queries, pick the best one (sealed), and optionally score against a gold set.
+**An end-to-end automated workflow for systematic literature reviews across PubMed, Scopus, Web of Science, and Embase.**
 
-- select: evaluate candidate queries without gold; write a sealed JSON + CSV summary.
-- finalize: compute recall/TP/NNR and similarity vs gold for a sealed run.
-- score: benchmark queries vs a gold set directly.
-- print-titles: fetch minimal metadata for PMIDs.
+This repository provides tools to:
+- 🤖 **Generate database-specific queries** using LLM from PROSPERO protocols
+- 🔍 **Execute searches** across 4+ major databases with automatic API integration
+- 🔄 **Deduplicate results** using DOI-based matching (~96% coverage)
+- 📊 **Benchmark performance** against gold standard PMID lists
+- 🎯 **Aggregate strategies** to optimize precision and recall
+- ⚡ **Complete automation** from raw PDFs to final results in ~45-90 minutes
 
-## Environment
+## 📚 Documentation
 
-Use the provided conda env.
+- **[Complete Pipeline Guide](Documentations/complete_pipeline_guide.md)** - Comprehensive technical walkthrough of all steps
+- **[Automation Guide](Documentations/AUTOMATION_GUIDE.md)** - End-to-end workflow from raw PDFs to results
+- **[Multi-Database Deduplication](Documentations/multi_database_deduplication_complete.md)** - DOI-based deduplication design
 
+## 🚀 Quick Start
+
+### One-Command Workflow
+```bash
+# Run complete workflow for a study
+bash scripts/run_complete_workflow.sh Godos_2024 --databases pubmed,scopus,wos
+```
+
+### Core Commands
+- **select**: Evaluate candidate queries without gold standard
+- **score**: Benchmark queries against gold standard PMID list
+- **finalize**: Add gold standard metrics to sealed results
+- **score-sets**: Evaluate aggregation strategies
+- **print-titles**: Fetch metadata for PMIDs
+
+## 🛠️ Environment Setup
+
+### 1. Install Conda and Clone Repository
+
+```zsh
+# Install Miniconda (if not already installed)
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+bash Miniconda3-latest-MacOSX-arm64.sh
+
+# Clone repository
+git clone https://github.com/ranibasna/QueriesSystematicReview.git
+cd QueriesSystematicReview
+```
+
+### 2. Create Conda Environments
+
+**Main environment** (for systematic review workflow):
 ```zsh
 conda env create -f environment.yml
 conda activate systematic_review_queries
@@ -19,14 +55,121 @@ conda activate systematic_review_queries
 conda env update -f environment.yml --prune
 ```
 
-NCBI (required by Entrez):
-- Set your email and optionally API key (can also be in .env/config):
+**Docling environment** (for PDF conversion):
 ```zsh
-export NCBI_EMAIL="you@example.com"
-# export NCBI_API_KEY="..."
+conda create -n docling python=3.11
+conda activate docling
+pip install docling
+conda deactivate
 ```
 
-## Inputs
+### 3. Configure API Keys
+
+⚠️ **SECURITY IMPORTANT**: Never commit API keys to version control!
+
+Create a `.env` file in the project root (this file is git-ignored):
+
+```bash
+# .env file
+# PubMed (free, but API key increases rate limit)
+NCBI_EMAIL=your.email@institution.edu
+NCBI_API_KEY=your_ncbi_api_key_optional
+
+# Scopus (requires institutional subscription)
+SCOPUS_API_KEY=your_scopus_api_key
+SCOPUS_INSTTOKEN=your_institution_token_optional
+SCOPUS_SKIP_DATE_FILTER=true
+
+# Web of Science (requires institutional subscription)
+WOS_API_KEY=your_wos_api_key
+
+# Multi-database configuration (no spaces after commas!)
+SR_DATABASES=pubmed,scopus,wos
+```
+
+**Where to get API keys:**
+- **PubMed**: https://www.ncbi.nlm.nih.gov/account/settings/ (free)
+- **Scopus**: Contact your institution's library
+- **WOS**: Contact your institution's library
+
+**Important Notes:**
+- ✅ `.env` is in `.gitignore` and will NOT be committed
+- ✅ `sr_config.toml` is in `.gitignore` and will NOT be committed
+- ❌ Never hardcode API keys in Python files
+- ✅ Use environment variables or config files only
+- 📋 See [SECURITY_AUDIT.md](SECURITY_AUDIT.md) for security review
+
+## 📋 Complete Workflow: From PDFs to Results
+
+This workflow takes ~45-90 minutes per study (30-40 min automated, 15-50 min manual Embase).
+
+### STEP 1: Convert PDFs to Markdown (5 min, automated)
+```bash
+python scripts/prepare_study.py Godos_2024 --docling-env docling
+```
+
+### STEP 2: Generate LLM Command (2 min, automated)
+```bash
+/generate_multidb_prompt \
+  --command_name run_godos_2024_multidb_extended \
+  --protocol_path studies/Godos_2024/prospero_godos_2024.md \
+  --databases pubmed,scopus,wos,embase \
+  --level extended \
+  --min_date "1990/01/01" \
+  --max_date "2023/12/31"
+```
+
+### STEP 3: Run LLM Command to Generate Queries (5 min, automated)
+```bash
+/run_godos_2024_multidb_extended
+```
+This creates:
+- `queries.txt` (6 PubMed queries)
+- `queries_scopus.txt` (6 Scopus queries)
+- `queries_wos.txt` (6 WOS queries)
+- `queries_embase.txt` (6 Embase queries)
+
+### STEP 4: Export Embase Results (10-30 min, manual)
+1. Go to Embase.com
+2. Run each query from `queries_embase.txt`
+3. Export results as CSV
+4. Place in `studies/Godos_2024/embase_manual_queries/`
+
+### STEP 5: Create Gold Standard (5-30 min, semi-automated)
+```bash
+python scripts/validate_pmids_multi_source.py \
+  --study-name Godos_2024 \
+  --paper studies/Godos_2024/paper_godos_2024.md
+```
+
+### STEP 6: Run Complete Workflow (15-30 min, automated)
+```bash
+bash scripts/run_complete_workflow.sh Godos_2024 --databases pubmed,scopus,wos
+```
+
+Results will be in:
+- `benchmark_outputs/Godos_2024/` - Individual query performance
+- `aggregates/Godos_2024/` - Combined query strategies
+- `aggregates_eval/Godos_2024/` - Strategy performance metrics
+
+See [Automation Guide](Documentations/AUTOMATION_GUIDE.md) for detailed instructions.
+
+## 📊 Supported Databases
+
+| Database | Status | API Required | Notes |
+|----------|--------|--------------|-------|
+| **PubMed** | ✅ Full support | Optional (increases rate limit) | Free via NCBI Entrez |
+| **Scopus** | ✅ Full support | Yes | Institutional subscription required |
+| **Web of Science** | ✅ Full support | Yes | Institutional subscription required |
+| **Embase** | ⚠️ Manual export | No API | Export CSV from Embase.com manually |
+
+## 🔄 Multi-Database Deduplication
+
+**Automatic DOI-based deduplication** (Option A implemented):
+- ~96% of modern articles have DOIs
+- Eliminates duplicates across databases perfectly
+- Logs deduplication statistics (e.g., "3,771 raw → 3,502 unique, 269 duplicates removed")
+- See [deduplication documentation](Documentations/multi_database_deduplication_complete.md)
 
 - Queries/queries.txt (UTF-8): one or more PubMed Boolean queries.
   - Separate queries with a blank line.
@@ -315,11 +458,26 @@ python llm_sr_select_and_score.py score-sets \
 Example:
 python llm_sr_select_and_score.py score-sets --sets aggregates/*.txt --gold-csv Gold_list__all_included_studies_.csv --outdir aggregates_eval  
 ```
-## Automated Prompt Generation Workflow
+## 🎓 Project Structure
 
-This project includes a powerful workflow to automate the creation of runnable query generation commands, saving you from manually editing prompt files for each study. This is orchestrated by the `/generate_prompt` custom command.
-
-**Note:** This is a new feature and is currently under testing.
+```
+QueriesSystematicReview/
+├── llm_sr_select_and_score.py    # Main CLI tool
+├── search_providers.py            # Database API integrations
+├── scripts/                       # Utility scripts
+│   ├── run_complete_workflow.sh   # Complete workflow automation
+│   ├── prepare_study.py           # PDF to markdown conversion
+│   ├── validate_pmids_multi_source.py  # Gold standard creation
+│   └── enhance_gold_standard.py   # Add DOIs to gold PMIDs
+├── studies/                       # Study-specific data
+│   ├── Godos_2024/
+│   ├── ai_2022/
+│   └── sleep_apnea/
+├── prompts/                       # LLM prompt templates
+│   ├── prompt_template_multidb.md
+│   └── database_guidelines.md
+├── Documentations/                # Comprehensive guides
+└── .env                          # API keys (git-ignored)
 
 ### The `/generate_prompt` Command
 

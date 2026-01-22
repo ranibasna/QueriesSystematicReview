@@ -31,6 +31,9 @@ __pycache__/
 *.swp
 *.swpDocumentations/
 
+# Archived test scripts
+archive/
+
 GEMINI_files/
 generation_comparison_files/
 generation_comparison.md
