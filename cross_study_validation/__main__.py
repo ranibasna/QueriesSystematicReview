@@ -14,10 +14,13 @@ Usage:
     # Generate analysis report
     python -m cross_study_validation analyze
     
+    # Generate visualizations
+    python -m cross_study_validation visualize
+    
     # Generate report (alias for analyze)
     python -m cross_study_validation report
     
-    # Complete workflow: collect + analyze
+    # Complete workflow: collect + analyze + visualize
     python -m cross_study_validation run
 """
 
@@ -112,8 +115,39 @@ def cmd_analyze(args):
     return 0
 
 
+def cmd_visualize(args):
+    """Generate visualizations."""
+    from .reporting.visualizations import generate_visualizations
+    
+    base_dir = Path(args.base_dir).resolve()
+    data_file = base_dir / 'cross_study_validation' / 'data' / 'all_studies.json'
+    
+    if not data_file.exists():
+        logger.error(f"Data file not found: {data_file}")
+        logger.error("Run 'collect' command first")
+        return 1
+    
+    # Generate visualizations
+    logger.info(f"Generating visualizations from {data_file}")
+    
+    if args.output:
+        output_dir = Path(args.output)
+    else:
+        output_dir = base_dir / 'cross_study_validation' / 'reports' / 'figures'
+    
+    try:
+        figures = generate_visualizations(base_dir, data_file, output_dir)
+        logger.info(f"\n✅ Generated {len(figures)} visualizations:")
+        for fig in figures:
+            logger.info(f"   📊 {fig.name}")
+        return 0
+    except Exception as e:
+        logger.error(f"Failed to generate visualizations: {e}")
+        return 1
+
+
 def cmd_run(args):
-    """Run complete workflow: collect + analyze."""
+    """Run complete workflow: collect + analyze + visualize."""
     logger.info("="*60)
     logger.info("Running complete cross-study validation workflow")
     logger.info("="*60)
@@ -131,6 +165,12 @@ def cmd_run(args):
     if result != 0:
         return result
     
+    # Step 3: Visualize
+    logger.info("\nStep 3: Generating visualizations...")
+    result = cmd_visualize(args)
+    if result != 0:
+        logger.warning("Visualization generation failed (continuing anyway)")
+    
     logger.info("\n" + "="*60)
     logger.info("✅ Complete workflow finished successfully!")
     logger.info("="*60)
@@ -143,7 +183,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Complete workflow
+  # Complete workflow (collect + analyze + visualize)
   python -m cross_study_validation run
   
   # Collect all studies
@@ -154,6 +194,9 @@ Examples:
   
   # Generate report
   python -m cross_study_validation analyze
+  
+  # Generate visualizations
+  python -m cross_study_validation visualize
   
   # Custom output location
   python -m cross_study_validation analyze --output my_report.md
@@ -189,8 +232,12 @@ Examples:
     report_parser = subparsers.add_parser('report', help='Generate analysis report (alias for analyze)')
     report_parser.add_argument('--output', type=str, help='Output markdown file path')
     
-    # Run command (collect + analyze)
-    run_parser = subparsers.add_parser('run', help='Run complete workflow (collect + analyze)')
+    # Visualize command
+    visualize_parser = subparsers.add_parser('visualize', help='Generate visualizations')
+    visualize_parser.add_argument('--output', type=str, help='Output directory for figures')
+    
+    # Run command (collect + analyze + visualize)
+    run_parser = subparsers.add_parser('run', help='Run complete workflow (collect + analyze + visualize)')
     run_parser.add_argument('--output', type=str, help='Output markdown file path')
     
     args = parser.parse_args()
@@ -207,6 +254,8 @@ Examples:
         return cmd_collect(args)
     elif args.command in ['analyze', 'report']:
         return cmd_analyze(args)
+    elif args.command == 'visualize':
+        return cmd_visualize(args)
     elif args.command == 'run':
         return cmd_run(args)
     else:

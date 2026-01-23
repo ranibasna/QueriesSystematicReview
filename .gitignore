@@ -50,3 +50,7 @@ NoteBooks/
 Queries/
 sleep_docs/
 
+# Cross-study validation generated outputs
+cross_study_validation/reports/
+cross_study_validation/data/*.json
+
