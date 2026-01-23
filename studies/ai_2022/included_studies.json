@@ -13,12 +13,18 @@
       "authors": [
         "Li AM"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1136/thx.2007.091132",
+      "pmid": "18388205",
       "volume": "63",
       "issue": null,
       "pages": "803e9",
-      "raw_citation": "Li AM, Au CT, Sung RY, Ho C, Ng PC, Fok TF, et al. Ambulatory blood pressure in children with obstructive sleep apnoea: a community based study. Thorax 2008;63:803 e 9."
+      "raw_citation": "Li AM, Au CT, Sung RY, Ho C, Ng PC, Fok TF, et al. Ambulatory blood pressure in children with obstructive sleep apnoea: a community based study. Thorax 2008;63:803 e 9.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9945945945945946,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 13,
@@ -29,12 +35,18 @@
       "authors": [
         "Amin RS"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1164/rccm.200309-1305OC",
+      "pmid": "14764433",
       "volume": "169",
       "issue": null,
       "pages": "950e6",
-      "raw_citation": "Amin RS, Carroll JL, Jeffries JL, Grone C, Bean JA, Chini B, et al. Twenty-fourhour ambulatory blood pressure in children with sleep-disordered breathing. Am J Respir Crit Care Med 2004;169:950 e 6."
+      "raw_citation": "Amin RS, Carroll JL, Jeffries JL, Grone C, Bean JA, Chini B, et al. Twenty-fourhour ambulatory blood pressure in children with sleep-disordered breathing. Am J Respir Crit Care Med 2004;169:950 e 6.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9883720930232558,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 17,
@@ -45,12 +57,18 @@
       "authors": [
         "Chan KC"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1136/thoraxjnl-2019-213692",
+      "pmid": "32209641",
       "volume": "75",
       "issue": null,
       "pages": "422e31",
-      "raw_citation": "Chan KC, Au CT, Hui LL, Wing YK, Li AM. Childhood OSA is an independent determinant of blood pressure in adulthood: longitudinal follow-up study. Thorax 2020;75:422 e 31."
+      "raw_citation": "Chan KC, Au CT, Hui LL, Wing YK, Li AM. Childhood OSA is an independent determinant of blood pressure in adulthood: longitudinal follow-up study. Thorax 2020;75:422 e 31.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9952153110047847,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 18,
@@ -61,12 +79,18 @@
       "authors": [
         "Fernandez-Mendoza J"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1001/jamacardio.2021.2003",
+      "pmid": "34160576",
       "volume": "6",
       "issue": null,
       "pages": "1144e51",
-      "raw_citation": "Fernandez-Mendoza J, He F, Calhoun SL, Vgontzas AN, Liao D, Bixler EO. Association of pediatric obstructive sleep apnea with elevated blood pressure and orthostatic hypertension in adolescence. JAMA Cardiol 2021;6:1144 e 51."
+      "raw_citation": "Fernandez-Mendoza J, He F, Calhoun SL, Vgontzas AN, Liao D, Bixler EO. Association of pediatric obstructive sleep apnea with elevated blood pressure and orthostatic hypertension in adolescence. JAMA Cardiol 2021;6:1144 e 51.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9958847736625515,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 28,
@@ -77,12 +101,18 @@
       "authors": [
         "Amin R"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1161/HYPERTENSIONAHA.107.099762",
+      "pmid": "18071053",
       "volume": "51",
       "issue": null,
       "pages": "84e91",
-      "raw_citation": "Amin R, Somers VK, McConnell K, Willging P, Myer C, Sherman M, et al. Activity-adjusted 24-hour ambulatory blood pressure and cardiac remodeling in children with sleep disordered breathing. Hypertension 2008;51:84 e 91."
+      "raw_citation": "Amin R, Somers VK, McConnell K, Willging P, Myer C, Sherman M, et al. Activity-adjusted 24-hour ambulatory blood pressure and cardiac remodeling in children with sleep disordered breathing. Hypertension 2008;51:84 e 91.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9957805907172996,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 29,
@@ -93,12 +123,18 @@
       "authors": [
         "Bixler EO"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1161/HYPERTENSIONAHA.108.116756",
+      "pmid": "18838624",
       "volume": "52",
       "issue": null,
       "pages": "841e6",
-      "raw_citation": "Bixler EO, Vgontzas AN, Lin HM, Liao D, Calhoun S, Fedok F, et al. Blood pressure associated with sleep-disordered breathing in a population sample of children. Hypertension 2008;52:841 e 6."
+      "raw_citation": "Bixler EO, Vgontzas AN, Lin HM, Liao D, Calhoun S, Fedok F, et al. Blood pressure associated with sleep-disordered breathing in a population sample of children. Hypertension 2008;52:841 e 6.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9945945945945946,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 30,
@@ -109,12 +145,18 @@
       "authors": [
         "Geng X"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1002/ped4.12163",
+      "pmid": "32851326",
       "volume": "3",
       "issue": null,
       "pages": "217e22",
-      "raw_citation": "Geng X, Wu Y, Ge W, Feng G, Zheng L, Xu Z, et al. Ambulatory blood pressure monitoring in children with obstructive sleep apnea syndrome. Pediatr Investig 2019;3:217 e 22."
+      "raw_citation": "Geng X, Wu Y, Ge W, Feng G, Zheng L, Xu Z, et al. Ambulatory blood pressure monitoring in children with obstructive sleep apnea syndrome. Pediatr Investig 2019;3:217 e 22.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9942196531791907,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 31,
@@ -125,12 +167,18 @@
       "authors": [
         "Horne RS"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1542/peds.2010-3431",
+      "pmid": "21708802",
       "volume": "128",
       "issue": null,
       "pages": "e85e92",
-      "raw_citation": "Horne RS, Yang JS, Walter LM, Richardson HL, O'Driscoll DM, Foster AM, et al. Elevated blood pressure during sleep and wake in children with sleepdisordered breathing. Pediatrics 2011;128:e85 e 92."
+      "raw_citation": "Horne RS, Yang JS, Walter LM, Richardson HL, O'Driscoll DM, Foster AM, et al. Elevated blood pressure during sleep and wake in children with sleepdisordered breathing. Pediatrics 2011;128:e85 e 92.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9887640449438202,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 32,
@@ -141,12 +189,18 @@
       "authors": [
         "Horne RSC"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1016/j.sleep.2019.11.1249",
+      "pmid": "31927221",
       "volume": "67",
       "issue": null,
       "pages": "147e55",
-      "raw_citation": "Horne RSC, Ong C, Weichard A, Nixon GM, Davey MJ. Are there gender differences in the severity and consequences of sleep disordered in children? Sleep Med 2020;67:147 e 55."
+      "raw_citation": "Horne RSC, Ong C, Weichard A, Nixon GM, Davey MJ. Are there gender differences in the severity and consequences of sleep disordered in children? Sleep Med 2020;67:147 e 55.",
+      "lookup_metadata": {
+        "confidence": 0.8,
+        "similarity": 0.8744186046511628,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 33,
@@ -157,12 +211,18 @@
       "authors": [
         "Kaditis AG"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1002/ppul.21285",
+      "pmid": "20648668",
       "volume": "45",
       "issue": null,
       "pages": "999e1004",
-      "raw_citation": "Kaditis AG, Alexopoulos EI, Evangelopoulos K, Kostadima E, Varlami V, Boultadakis E, et al. Correlation of urinary excretion of sodium with severity of sleep-disordered breathing in children: a preliminary study. Pediatr Pulmonol 2010;45:999 e 1004."
+      "raw_citation": "Kaditis AG, Alexopoulos EI, Evangelopoulos K, Kostadima E, Varlami V, Boultadakis E, et al. Correlation of urinary excretion of sodium with severity of sleep-disordered breathing in children: a preliminary study. Pediatr Pulmonol 2010;45:999 e 1004.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.99581589958159,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 34,
@@ -173,12 +233,18 @@
       "authors": [
         "Kang KT"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1016/j.jpeds.2016.11.032",
+      "pmid": "27939257",
       "volume": "182",
       "issue": null,
       "pages": "177e183e172",
-      "raw_citation": "Kang KT, Chiu SN, Weng WC, Lee PL, Hsu WC. Comparisons of of /uniFB01 ce and 24hour ambulatory blood pressure monitoring in children with obstructive sleep apnea. J Pediatr 2017;182:177 e 183 e172."
+      "raw_citation": "Kang KT, Chiu SN, Weng WC, Lee PL, Hsu WC. Comparisons of of /uniFB01 ce and 24hour ambulatory blood pressure monitoring in children with obstructive sleep apnea. J Pediatr 2017;182:177 e 183 e172.",
+      "lookup_metadata": {
+        "confidence": 0.9,
+        "similarity": 0.9217391304347826,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 35,
@@ -189,12 +255,18 @@
       "authors": [
         "McConnell K"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1164/rccm.200808-1324OC",
+      "pmid": "19286627",
       "volume": "180",
       "issue": null,
       "pages": "42e8",
-      "raw_citation": "McConnell K, Somers VK, Kimball T, Daniels S, VanDyke R, Fenchel M, et al. Barore /uniFB02 ex gain in children with obstructive sleep apnea. Am J Respir Crit Care Med 2009;180:42 e 8."
+      "raw_citation": "McConnell K, Somers VK, Kimball T, Daniels S, VanDyke R, Fenchel M, et al. Barore /uniFB02 ex gain in children with obstructive sleep apnea. Am J Respir Crit Care Med 2009;180:42 e 8.",
+      "lookup_metadata": {
+        "confidence": 0.8,
+        "similarity": 0.859504132231405,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 36,
@@ -205,12 +277,18 @@
       "authors": [
         "O'Driscoll DM"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1093/sleep/32.10.1265",
+      "pmid": "19848356",
       "volume": "32",
       "issue": null,
       "pages": "1265e71",
-      "raw_citation": "O'Driscoll DM, Foster AM, Ng ML, Yang JS, Bashir F, Nixon GM, et al. Acute cardiovascular changes with obstructive events in children with sleep disordered breathing. Sleep 2009;32:1265 e 71."
+      "raw_citation": "O'Driscoll DM, Foster AM, Ng ML, Yang JS, Bashir F, Nixon GM, et al. Acute cardiovascular changes with obstructive events in children with sleep disordered breathing. Sleep 2009;32:1265 e 71.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9948186528497409,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     },
     {
       "reference_number": 37,
@@ -221,21 +299,27 @@
       "authors": [
         "O'Driscoll DM"
       ],
-      "doi": null,
-      "pmid": null,
+      "doi": "10.1016/j.sleep.2010.09.015",
+      "pmid": "21521626",
       "volume": "12",
       "issue": null,
       "pages": "483e8",
-      "raw_citation": "O'Driscoll DM, Horne RS, Davey MJ, Hope SA, Anderson V, Trinder J, et al. Increased sympathetic activity in children with obstructive sleep apnea: cardiovascular implications. Sleep Med 2011;12:483 e 8."
+      "raw_citation": "O'Driscoll DM, Horne RS, Davey MJ, Hope SA, Anderson V, Trinder J, et al. Increased sympathetic activity in children with obstructive sleep apnea: cardiovascular implications. Sleep Med 2011;12:483 e 8.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9950248756218906,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
     }
   ],
   "statistics": {
     "total_studies": 14,
-    "with_doi": 0,
-    "with_pmid": 0,
-    "with_identifiers": 0,
-    "doi_coverage_percent": 0.0,
-    "pmid_coverage_percent": 0.0,
-    "identifier_coverage_percent": 0.0
+    "with_doi": 14,
+    "with_pmid": 14,
+    "with_identifiers": 14,
+    "doi_coverage_percent": 100.0,
+    "pmid_coverage_percent": 100.0,
+    "identifier_coverage_percent": 100.0
   }
 }

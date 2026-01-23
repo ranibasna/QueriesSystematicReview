@@ -31,8 +31,6 @@ from dataclasses import dataclass, asdict
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from models import Reference, ReferenceList
-
 
 @dataclass
 class IncludedStudy:
@@ -459,6 +457,7 @@ def main():
 Examples:
   python scripts/extract_included_studies.py ai_2022
   python scripts/extract_included_studies.py Godos_2024 --debug
+  python scripts/extract_included_studies.py ai_2022 --lookup-pmid --pubmed-email your@email.com
         """
     )
     
@@ -478,6 +477,29 @@ Examples:
     )
     
     parser.add_argument(
+        '--lookup-pmid',
+        action='store_true',
+        help='Lookup PMID and DOI using PubMed E-utilities'
+    )
+    
+    parser.add_argument(
+        '--pubmed-email',
+        help='Email for PubMed API (required if --lookup-pmid is used)'
+    )
+    
+    parser.add_argument(
+        '--pubmed-api-key',
+        help='PubMed API key (optional, increases rate limit)'
+    )
+    
+    parser.add_argument(
+        '--min-confidence',
+        type=float,
+        default=0.70,
+        help='Minimum confidence threshold for PubMed matches (default: 0.70)'
+    )
+    
+    parser.add_argument(
         '--debug',
         action='store_true',
         help='Enable debug output'
@@ -485,13 +507,117 @@ Examples:
     
     args = parser.parse_args()
     
+    # Validate PubMed options
+    if args.lookup_pmid and not args.pubmed_email:
+        parser.error("--pubmed-email is required when --lookup-pmid is used")
+    
     # Run extraction
-    extract_included_studies(
+    result = extract_included_studies(
         study_name=args.study_name,
         markdown_file=args.markdown_file,
         output_path=args.output_path,
         debug=args.debug
     )
+    
+    # Optionally lookup PMIDs/DOIs
+    if args.lookup_pmid:
+        print(f"\n🔍 Looking up DOIs and PMIDs (multi-tier strategy)...")
+        print(f"   Email: {args.pubmed_email}")
+        print(f"   Min confidence: {args.min_confidence}")
+        print(f"   Strategy: PubMed → CrossRef fallback\n")
+        
+        from lookup_pmid import PubMedLookup
+        from lookup_crossref import CrossRefLookup
+        
+        pubmed_client = PubMedLookup(
+            email=args.pubmed_email,
+            api_key=args.pubmed_api_key
+        )
+        
+        crossref_client = CrossRefLookup(email=args.pubmed_email)
+        
+        included_studies = result['included_studies']
+        updated_count = 0
+        pubmed_success = 0
+        crossref_success = 0
+        
+        for i, study in enumerate(included_studies, 1):
+            # Skip if already has both PMID and DOI
+            if study['pmid'] and study['doi']:
+                continue
+            
+            title = study['title'][:60]
+            print(f"  [{i}/{len(included_studies)}] {title}...")
+            
+            # Try PubMed first (gets both DOI + PMID if successful)
+            match = pubmed_client.find_best_match(study, min_confidence=args.min_confidence)
+            
+            if match:
+                # Update study with PMID/DOI from PubMed
+                study['pmid'] = match.pmid
+                study['doi'] = match.doi
+                study['lookup_metadata'] = {
+                    'confidence': match.confidence,
+                    'similarity': match.similarity_score,
+                    'method': 'pubmed_eutils',
+                    'source': 'PubMed'
+                }
+                
+                updated_count += 1
+                pubmed_success += 1
+                print(f"      → [PubMed] DOI: {match.doi or 'N/A'}, PMID: {match.pmid}, "
+                      f"Confidence: {match.confidence:.2f} ✓")
+            else:
+                # Fallback to CrossRef (DOI-only)
+                print(f"      → PubMed: No match, trying CrossRef...")
+                
+                cr_match = crossref_client.find_best_match(study, min_confidence=args.min_confidence)
+                
+                if cr_match:
+                    # Update study with DOI from CrossRef
+                    study['doi'] = cr_match.doi
+                    # PMID stays None (CrossRef doesn't provide it)
+                    study['lookup_metadata'] = {
+                        'confidence': cr_match.confidence,
+                        'similarity': cr_match.similarity_score,
+                        'method': 'crossref_api',
+                        'source': 'CrossRef'
+                    }
+                    
+                    updated_count += 1
+                    crossref_success += 1
+                    print(f"      → [CrossRef] DOI: {cr_match.doi}, "
+                          f"Confidence: {cr_match.confidence:.2f} ✓")
+                else:
+                    print(f"      → CrossRef: No match found ✗")
+        
+        # Re-save with updated data
+        output_path = args.output_path or f"studies/{args.study_name}/included_studies.json"
+        
+        # Update statistics
+        with_doi = sum(1 for s in included_studies if s['doi'])
+        with_pmid = sum(1 for s in included_studies if s['pmid'])
+        with_identifiers = sum(1 for s in included_studies if s['doi'] or s['pmid'])
+        
+        result["statistics"].update({
+            "with_doi": with_doi,
+            "with_pmid": with_pmid,
+            "with_identifiers": with_identifiers,
+            "doi_coverage_percent": round(with_doi / len(included_studies) * 100, 1),
+            "pmid_coverage_percent": round(with_pmid / len(included_studies) * 100, 1),
+            "identifier_coverage_percent": round(with_identifiers / len(included_studies) * 100, 1)
+        })
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(result, f, indent=2, ensure_ascii=False)
+        
+        print(f"\n✅ Updated {updated_count} studies")
+        print(f"   PubMed: {pubmed_success} studies (DOI + PMID)")
+        print(f"   CrossRef: {crossref_success} studies (DOI only)")
+        print(f"\n📊 Final Statistics:")
+        stats = result["statistics"]
+        print(f"   With DOI: {stats['with_doi']} ({stats['doi_coverage_percent']}%)")
+        print(f"   With PMID: {stats['with_pmid']} ({stats['pmid_coverage_percent']}%)")
 
 
 if __name__ == "__main__":
