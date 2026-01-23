@@ -1,0 +1,219 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Systematic Review Study Result",
+  "description": "Standardized format for systematic review study results including aggregation strategies and query performance",
+  "type": "object",
+  "required": ["study_id", "metadata", "gold_standard", "aggregation_strategies"],
+  "properties": {
+    "study_id": {
+      "type": "string",
+      "description": "Unique identifier for the study (e.g., 'Godos_2024', 'sleep_apnea')",
+      "pattern": "^[a-zA-Z0-9_]+$"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema",
+      "default": "1.0"
+    },
+    "collection_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this data was collected"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Study characteristics and metadata",
+      "required": ["domain", "databases", "gold_size"],
+      "properties": {
+        "domain": {
+          "type": "string",
+          "description": "Medical/research domain (e.g., 'nutrition', 'sleep medicine', 'artificial intelligence')"
+        },
+        "databases": {
+          "type": "array",
+          "description": "List of databases queried",
+          "items": {
+            "type": "string",
+            "enum": ["pubmed", "scopus", "wos", "embase"]
+          },
+          "minItems": 1
+        },
+        "gold_size": {
+          "type": "integer",
+          "description": "Number of articles in gold standard reference list",
+          "minimum": 1
+        },
+        "date_range": {
+          "type": "object",
+          "description": "Date range of literature search",
+          "properties": {
+            "start": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "end": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          }
+        },
+        "num_queries": {
+          "type": "integer",
+          "description": "Total number of queries executed",
+          "minimum": 1
+        },
+        "has_embase": {
+          "type": "boolean",
+          "description": "Whether Embase data is available"
+        }
+      }
+    },
+    "gold_standard": {
+      "type": "object",
+      "description": "Gold standard reference list",
+      "required": ["pmids", "count"],
+      "properties": {
+        "pmids": {
+          "type": "array",
+          "description": "List of PMIDs in gold standard",
+          "items": {
+            "type": "string",
+            "pattern": "^\\d+$"
+          }
+        },
+        "dois": {
+          "type": "array",
+          "description": "List of DOIs in gold standard (if available)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "count": {
+          "type": "integer",
+          "description": "Number of articles in gold standard",
+          "minimum": 1
+        }
+      }
+    },
+    "aggregation_strategies": {
+      "type": "array",
+      "description": "Performance metrics for each aggregation strategy",
+      "items": {
+        "type": "object",
+        "required": ["name", "recall", "precision", "f1", "retrieved_count", "true_positives"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Strategy name",
+            "enum": [
+              "consensus_k2",
+              "consensus_k3",
+              "two_stage_screen",
+              "precision_gated_union",
+              "time_stratified_hybrid",
+              "weighted_vote"
+            ]
+          },
+          "recall": {
+            "type": "number",
+            "description": "Recall (sensitivity): TP / (TP + FN)",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "precision": {
+            "type": "number",
+            "description": "Precision: TP / (TP + FP)",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "f1": {
+            "type": "number",
+            "description": "F1 score: 2 * (precision * recall) / (precision + recall)",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "jaccard": {
+            "type": "number",
+            "description": "Jaccard similarity coefficient",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "overlap_coeff": {
+            "type": "number",
+            "description": "Overlap coefficient",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "retrieved_count": {
+            "type": "integer",
+            "description": "Total number of articles retrieved",
+            "minimum": 0
+          },
+          "true_positives": {
+            "type": "integer",
+            "description": "Number of gold standard articles found (TP)",
+            "minimum": 0
+          },
+          "false_negatives": {
+            "type": "integer",
+            "description": "Number of gold standard articles missed (FN)",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "query_performance": {
+      "type": "array",
+      "description": "Individual query performance metrics (from benchmark_outputs)",
+      "items": {
+        "type": "object",
+        "required": ["query_text", "results_count", "true_positives", "recall"],
+        "properties": {
+          "query_text": {
+            "type": "string",
+            "description": "Full query string"
+          },
+          "results_count": {
+            "type": "integer",
+            "description": "Number of articles retrieved",
+            "minimum": 0
+          },
+          "true_positives": {
+            "type": "integer",
+            "description": "Number of gold standard articles found",
+            "minimum": 0
+          },
+          "recall": {
+            "type": "number",
+            "description": "Query recall",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "nnr_proxy": {
+            "type": "number",
+            "description": "Number needed to read proxy (results_count / TP)",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "source_files": {
+      "type": "object",
+      "description": "Paths to source files used for data extraction",
+      "properties": {
+        "aggregates_csv": {
+          "type": "string",
+          "description": "Path to aggregates_eval CSV file"
+        },
+        "benchmark_csv": {
+          "type": "string",
+          "description": "Path to benchmark_outputs CSV file"
+        },
+        "gold_standard_csv": {
+          "type": "string",
+          "description": "Path to gold standard CSV file"
+        }
+      }
+    }
+  }
+}

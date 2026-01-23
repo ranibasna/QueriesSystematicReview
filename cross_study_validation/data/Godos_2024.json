@@ -1,0 +1,155 @@
+{
+  "study_id": "Godos_2024",
+  "schema_version": "1.0",
+  "collection_timestamp": "2026-01-23T09:28:59.624170Z",
+  "metadata": {
+    "domain": "nutrition",
+    "databases": [
+      "pubmed",
+      "scopus",
+      "wos",
+      "embase"
+    ],
+    "num_queries": 12,
+    "date_range": {
+      "start": "1990-01-01",
+      "end": "2023-12-31"
+    },
+    "has_embase": true,
+    "gold_size": 23
+  },
+  "gold_standard": {
+    "pmids": [
+      "20808113",
+      "28364422",
+      "30137563",
+      "30187649",
+      "31035395",
+      "30306634",
+      "31071943",
+      "32165704",
+      "32817391",
+      "32397621",
+      "31957658",
+      "32947817",
+      "33892688",
+      "34205057",
+      "35056325",
+      "36540581",
+      "34942284",
+      "35248010",
+      "32951762",
+      "33031478",
+      "33813674",
+      "36226971",
+      "35512773"
+    ],
+    "count": 23
+  },
+  "aggregation_strategies": [
+    {
+      "name": "consensus_k2",
+      "recall": 0.8695652173913043,
+      "precision": 0.0037460198539052,
+      "f1": 0.0074599030212607,
+      "jaccard": 0.0037439161362785,
+      "overlap_coeff": 0.8695652173913043,
+      "retrieved_count": 5339,
+      "true_positives": 20,
+      "false_negatives": 3
+    },
+    {
+      "name": "two_stage_screen",
+      "recall": 0.9130434782608696,
+      "precision": 0.0028416779431664,
+      "f1": 0.0056657223796034,
+      "jaccard": 0.002840909090909,
+      "overlap_coeff": 0.9130434782608696,
+      "retrieved_count": 7390,
+      "true_positives": 21,
+      "false_negatives": 2
+    },
+    {
+      "name": "precision_gated_union",
+      "recall": 1.0,
+      "precision": 0.0009079783664284,
+      "f1": 0.0018143093791906,
+      "jaccard": 0.0009079783664284,
+      "overlap_coeff": 1.0,
+      "retrieved_count": 25331,
+      "true_positives": 23,
+      "false_negatives": 0
+    },
+    {
+      "name": "time_stratified_hybrid",
+      "recall": 1.0,
+      "precision": 0.0009079783664284,
+      "f1": 0.0018143093791906,
+      "jaccard": 0.0009079783664284,
+      "overlap_coeff": 1.0,
+      "retrieved_count": 25331,
+      "true_positives": 23,
+      "false_negatives": 0
+    },
+    {
+      "name": "weighted_vote",
+      "recall": 1.0,
+      "precision": 0.0009079783664284,
+      "f1": 0.0018143093791906,
+      "jaccard": 0.0009079783664284,
+      "overlap_coeff": 1.0,
+      "retrieved_count": 25331,
+      "true_positives": 23,
+      "false_negatives": 0
+    }
+  ],
+  "source_files": {
+    "aggregates_csv": "aggregates_eval/Godos_2024/sets_summary_20260122-091122.csv",
+    "gold_standard_csv": "studies/Godos_2024/gold_pmids_Godos_2024.csv",
+    "benchmark_csv": "benchmark_outputs/Godos_2024/summary_20260122-091116.csv"
+  },
+  "query_performance": [
+    {
+      "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"Mediterranean diet\"[tiab] OR \"MedDiet\"[tiab] OR \"Fruit\"[Mesh] OR fruit*[tiab] OR \"Vegetables\"[Mesh] OR vegetable*[tiab] OR \"Edible Grain\"[Mesh] OR cereal*[tiab] OR grain*[tiab] OR \"Fabaceae\"[Mesh] OR legume*[tiab] OR bean*[tiab] OR \"Dairy Products\"[Mesh] OR dairy[tiab] OR milk[tiab] OR yogurt[tiab] OR cheese[tiab] OR \"Seafood\"[Mesh] OR \"Fishes\"[Mesh] OR fish[tiab] OR seafood[tiab] OR \"Meat\"[Mesh] OR meat[tiab] OR poultry[tiab] OR \"Olive Oil\"[Mesh] OR \"olive oil\"[tiab] OR \"Alcohols\"[Mesh] OR \"Alcohol Drinking\"[Mesh] OR alcohol*[tiab] OR wine[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Wake Disorders\"[Mesh] OR sleep*[tiab] OR insomnia*[tiab] OR dyssomnia*[tiab] OR parasomnia*[tiab] OR somnolence[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
+      "results_count": 22184,
+      "true_positives": 21,
+      "recall": 0.9130434782608696,
+      "nnr_proxy": 1056.3809523809523
+    },
+    {
+      "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"Mediterranean diet\"[tiab] OR \"MedDiet\"[tiab] OR \"Fruit\"[Mesh] OR fruit*[tiab] OR \"Vegetables\"[Mesh] OR vegetable*[tiab] OR \"Edible Grain\"[Mesh] OR cereal*[tiab] OR grain*[tiab] OR \"Fabaceae\"[Mesh] OR legume*[tiab] OR bean*[tiab] OR \"Dairy Products\"[Mesh] OR dairy[tiab] OR milk[tiab] OR yogurt[tiab] OR cheese[tiab] OR \"Seafood\"[Mesh] OR \"Fishes\"[Mesh] OR fish[tiab] OR seafood[tiab] OR \"Meat\"[Mesh] OR meat[tiab] OR poultry[tiab] OR \"Olive Oil\"[Mesh] OR \"olive oil\"[tiab] OR \"Alcohols\"[Mesh] OR \"Alcohol Drinking\"[Mesh] OR alcohol*[tiab] OR wine[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Wake Disorders\"[Mesh] OR sleep*[tiab] OR insomnia*[tiab] OR dyssomnia*[tiab] OR parasomnia*[tiab] OR somnolence[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
+      "results_count": 22184,
+      "true_positives": 21,
+      "recall": 0.9130434782608696,
+      "nnr_proxy": 1056.3809523809523
+    },
+    {
+      "query_text": "((\"Diet, Mediterranean\"[Majr] OR \"Mediterranean diet\"[ti] OR \"Fruit\"[Majr] OR fruit*[ti] OR \"Vegetables\"[Majr] OR vegetable*[ti] OR \"Edible Grain\"[Majr] OR cereal*[ti] OR grain*[ti] OR \"Fabaceae\"[Majr] OR legume*[ti] OR bean*[ti] OR \"Dairy Products\"[Majr] OR dairy[ti] OR \"Seafood\"[Majr] OR \"Meat\"[Majr] OR \"Olive Oil\"[Majr] OR \"Alcohols\"[Majr]) AND (\"Sleep\"[Majr] OR \"Sleep Wake Disorders\"[Majr] OR sleep*[ti] OR insomnia*[ti])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
+      "results_count": 2562,
+      "true_positives": 11,
+      "recall": 0.4782608695652174,
+      "nnr_proxy": 232.9090909090909
+    },
+    {
+      "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"Mediterranean diet\"[tiab] OR \"MedDiet\"[tiab] OR \"Fruit\"[Mesh] OR fruit*[tiab] OR \"Vegetables\"[Mesh] OR vegetable*[tiab] OR \"Edible Grain\"[Mesh] OR cereal*[tiab] OR grain*[tiab] OR \"Fabaceae\"[Mesh] OR legume*[tiab] OR bean*[tiab] OR \"Dairy Products\"[Mesh] OR dairy[tiab] OR milk[tiab] OR yogurt[tiab] OR cheese[tiab] OR \"Seafood\"[Mesh] OR \"Fishes\"[Mesh] OR fish[tiab] OR seafood[tiab] OR \"Meat\"[Mesh] OR meat[tiab] OR poultry[tiab] OR \"Olive Oil\"[Mesh] OR \"olive oil\"[tiab] OR \"Alcohols\"[Mesh] OR \"Alcohol Drinking\"[Mesh] OR alcohol*[tiab] OR wine[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Wake Disorders\"[Mesh] OR sleep*[tiab] OR insomnia*[tiab] OR dyssomnia*[tiab] OR parasomnia*[tiab] OR somnolence[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication]) AND humans[Filter]",
+      "results_count": 19050,
+      "true_positives": 20,
+      "recall": 0.8695652173913043,
+      "nnr_proxy": 952.5
+    },
+    {
+      "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"Mediterranean diet\"[ti] OR \"MedDiet\"[ti] OR \"Fruit\"[Mesh] OR fruit*[ti] OR \"Vegetables\"[Mesh] OR vegetable*[ti] OR \"Edible Grain\"[Mesh] OR cereal*[ti] OR grain*[ti] OR \"Fabaceae\"[Mesh] OR legume*[ti] OR bean*[ti] OR \"Dairy Products\"[Mesh] OR dairy[ti] OR milk[ti] OR yogurt[ti] OR cheese[ti] OR \"Seafood\"[Mesh] OR fish[ti] OR \"Meat\"[Mesh] OR meat[ti] OR \"Olive Oil\"[Mesh] OR \"olive oil\"[ti] OR \"Alcohols\"[Mesh] OR alcohol*[ti]) AND (\"Sleep\"[Mesh] OR \"Sleep Wake Disorders\"[Mesh] OR sleep*[ti] OR insomnia*[ti])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
+      "results_count": 3384,
+      "true_positives": 13,
+      "recall": 0.5652173913043478,
+      "nnr_proxy": 260.3076923076923
+    },
+    {
+      "query_text": "((\"Diet, Mediterranean\"[Majr] OR \"Mediterranean diet\"[tiab] OR \"Fruit\"[Majr] OR \"Vegetables\"[Majr] OR \"Edible Grain\"[Majr] OR \"Fabaceae\"[Majr] OR \"Dairy Products\"[Majr] OR \"Seafood\"[Majr] OR \"Meat\"[Majr] OR \"Olive Oil\"[Majr] OR \"Alcohols\"[Majr]) AND (\"Sleep\"[Majr] OR \"Sleep Wake Disorders\"[Majr])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
+      "results_count": 4215,
+      "true_positives": 11,
+      "recall": 0.4782608695652174,
+      "nnr_proxy": 383.1818181818182
+    }
+  ]
+}
