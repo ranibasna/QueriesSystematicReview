@@ -1,0 +1,115 @@
+{
+  "study_id": "Godos_2024",
+  "schema_version": "1.0",
+  "collection_timestamp": "2026-01-23T10:00:00Z",
+  "metadata": {
+    "domain": "nutrition and sleep medicine",
+    "databases": ["pubmed", "scopus", "wos", "embase"],
+    "gold_size": 23,
+    "date_range": {
+      "start": "1990-01-01",
+      "end": "2023-12-31"
+    },
+    "num_queries": 6,
+    "has_embase": true
+  },
+  "gold_standard": {
+    "pmids": [
+      "20808113",
+      "28364422",
+      "30137563",
+      "30187649",
+      "31035395",
+      "30306634",
+      "31071943",
+      "32165704",
+      "32817391",
+      "32397621",
+      "31957658",
+      "32947817",
+      "33892688",
+      "34205057",
+      "35056325",
+      "36540581",
+      "34942284",
+      "35248010",
+      "32951762",
+      "33031478",
+      "33813674",
+      "36226971",
+      "35512773"
+    ],
+    "count": 23
+  },
+  "aggregation_strategies": [
+    {
+      "name": "consensus_k2",
+      "recall": 0.8696,
+      "precision": 0.0037,
+      "f1": 0.0075,
+      "jaccard": 0.0037,
+      "overlap_coeff": 0.8696,
+      "retrieved_count": 5339,
+      "true_positives": 20,
+      "false_negatives": 3
+    },
+    {
+      "name": "two_stage_screen",
+      "recall": 0.9130,
+      "precision": 0.0028,
+      "f1": 0.0057,
+      "jaccard": 0.0028,
+      "overlap_coeff": 0.9130,
+      "retrieved_count": 7390,
+      "true_positives": 21,
+      "false_negatives": 2
+    },
+    {
+      "name": "precision_gated_union",
+      "recall": 1.0,
+      "precision": 0.0009,
+      "f1": 0.0018,
+      "jaccard": 0.0009,
+      "overlap_coeff": 1.0,
+      "retrieved_count": 25331,
+      "true_positives": 23,
+      "false_negatives": 0
+    },
+    {
+      "name": "time_stratified_hybrid",
+      "recall": 1.0,
+      "precision": 0.0009,
+      "f1": 0.0018,
+      "jaccard": 0.0009,
+      "overlap_coeff": 1.0,
+      "retrieved_count": 25331,
+      "true_positives": 23,
+      "false_negatives": 0
+    },
+    {
+      "name": "weighted_vote",
+      "recall": 1.0,
+      "precision": 0.0009,
+      "f1": 0.0018,
+      "jaccard": 0.0009,
+      "overlap_coeff": 1.0,
+      "retrieved_count": 25331,
+      "true_positives": 23,
+      "false_negatives": 0
+    }
+  ],
+  "query_performance": [
+    {
+      "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"Mediterranean diet\"[tiab] ...",
+      "results_count": 22184,
+      "true_positives": 21,
+      "recall": 0.9130,
+      "nnr_proxy": 1056.38
+    }
+  ],
+  "source_files": {
+    "aggregates_csv": "aggregates_eval/Godos_2024/sets_summary_20260122-091122.csv",
+    "benchmark_csv": "benchmark_outputs/Godos_2024/summary_20260122-091116.csv",
+    "gold_standard_csv": "studies/Godos_2024/gold_pmids_Godos_2024.csv"
+  }
+}

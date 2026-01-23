@@ -50,6 +50,7 @@ This systematic review pipeline automates:
 3. **Automatic deduplication** using DOI-based matching
 4. **Performance evaluation** against gold standard datasets
 5. **Aggregation strategies** to combine multiple queries effectively
+6. **Cross-study meta-analysis** to evaluate strategy performance across multiple reviews
 
 ### System Architecture
 
@@ -1850,7 +1851,457 @@ Set[precision_gated_union]: n=1961 TP=11 Precision=0.006 Recall=1.000 F1=0.011
 
 ---
 
-## Step 9: Understanding the Outputs
+## Step 9: Cross-Study Validation & Meta-Analysis
+
+### Overview
+
+After completing multiple systematic review studies (Steps 1-8), you can perform **cross-study validation** to:
+- Compare aggregation strategy performance across different medical domains
+- Identify universally effective vs. domain-specific strategies
+- Generate evidence-based recommendations for future studies
+- Visualize performance patterns across studies
+
+**When to use this**: After completing ≥2 individual studies with different topics/domains.
+
+**Time investment**: 2-5 minutes for complete analysis + visualization generation.
+
+### Architecture: Cross-Study Validation Framework
+
+```
+┌───────────────────────────────────────────────────────────────┐
+│              INDIVIDUAL STUDIES (Steps 1-8)                    │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
+│  │  Godos_2024  │  │  sleep_apnea │  │   ai_2022    │       │
+│  │  (nutrition) │  │  (sleep med) │  │     (AI)     │       │
+│  └──────────────┘  └──────────────┘  └──────────────┘       │
+│                                                                │
+│  Each produces:                                                │
+│  • aggregates_eval/<study>/sets_summary_*.csv                 │
+│  • benchmark_outputs/<study>/summary_*.csv                    │
+│  • studies/<study>/gold_pmids_<study>.csv                    │
+└───────────────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────────────┐
+│           STEP 9: CROSS-STUDY VALIDATION                       │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  python -m cross_study_validation run                  │  │
+│  └────────────────────────────────────────────────────────┘  │
+│                                                                │
+│  Phase 1: Data Collection                                      │
+│  • Extract strategy performance from all studies               │
+│  • Standardize data format (JSON)                              │
+│  • Validate against schema                                     │
+│                                                                │
+│  Phase 2: Statistical Analysis                                 │
+│  • Calculate mean/std/min/max for each strategy               │
+│  • Rank strategies by recall, precision, F1                    │
+│  • Identify strategies with perfect recall                     │
+│                                                                │
+│  Phase 3: Visualization Generation                             │
+│  • Box plots (recall/precision/F1 distributions)              │
+│  • Bar charts (strategy comparison with error bars)           │
+│  • Scatter plots (precision-recall tradeoffs)                  │
+│  • Heatmaps (performance by study/domain)                      │
+└───────────────────────────────────────────────────────────────┘
+                            ↓
+┌───────────────────────────────────────────────────────────────┐
+│                      OUTPUTS                                   │
+│  • cross_study_validation/reports/report_*.md                  │
+│  • cross_study_validation/reports/figures/*.png                │
+│  • cross_study_validation/data/all_studies.json               │
+└───────────────────────────────────────────────────────────────┘
+```
+
+### Directory Structure
+
+**Before running Step 9** (after completing multiple studies):
+```
+studies/
+├── Godos_2024/
+│   └── gold_pmids_Godos_2024.csv
+├── sleep_apnea/
+│   └── gold_pmids_sleep_apnea.csv
+└── ai_2022/
+    └── gold_pmids_ai_2022.csv
+
+aggregates_eval/
+├── Godos_2024/
+│   └── sets_summary_20260122-091122.csv     # Strategy performance
+├── sleep_apnea/
+│   └── sets_summary_20260115-143544.csv
+└── ai_2022/
+    └── sets_summary_20260121-093646.csv
+
+benchmark_outputs/
+├── Godos_2024/
+│   └── summary_20260122-091116.csv           # Query performance
+├── sleep_apnea/
+│   └── summary_20260115-142946.csv
+└── ai_2022/
+    └── summary_20260121-093645.csv
+```
+
+**After running Step 9**:
+```
+cross_study_validation/
+├── __init__.py
+├── __main__.py                               # Unified CLI entry point
+├── collectors/
+│   ├── collect_study_results.py              # Data collection orchestrator
+│   └── parsers/
+│       ├── csv_parsers.py                    # Parse aggregates_eval CSVs
+│       ├── gold_standard_parser.py           # Extract PMIDs
+│       └── metadata_collector.py             # Infer study domain
+├── analysis/
+│   └── descriptive_stats.py                  # Calculate statistics
+├── reporting/
+│   ├── markdown_reporter.py                  # Generate reports
+│   └── visualizations.py                     # Generate figures
+├── data/                                      # Standardized study data (gitignored)
+│   ├── Godos_2024.json
+│   ├── sleep_apnea.json
+│   ├── ai_2022.json
+│   └── all_studies.json                      # Combined dataset
+├── reports/                                   # Generated reports (gitignored)
+│   ├── report_20260123-111053.md
+│   └── figures/
+│       ├── boxplot_recall.png                # 300 DPI, publication-ready
+│       ├── boxplot_precision.png
+│       ├── boxplot_f1.png
+│       ├── bar_chart_comparison.png
+│       ├── scatter_precision_recall.png
+│       └── heatmap_recall_by_study.png
+└── schemas/
+    └── study_result_schema.json              # Data validation rules
+```
+
+### Step 9.1: Complete Workflow (Recommended)
+
+**Run everything in one command**:
+
+```bash
+# Activate environment
+conda activate systematic_review_queries
+
+# Run complete cross-study workflow
+python -m cross_study_validation run
+```
+
+**What this does**:
+1. **Collects data** from all completed studies in `aggregates_eval/`, `benchmark_outputs/`, and `studies/`
+2. **Generates analysis report** with strategy performance comparison
+3. **Creates 6 visualizations** showing performance patterns
+
+**Expected output**:
+```
+═══════════════════════════════════════════════════════════════
+Running complete cross-study validation workflow
+═══════════════════════════════════════════════════════════════
+
+Step 1: Collecting study data...
+Found 3 studies: Godos_2024, sleep_apnea, ai_2022
+
+Collecting data for: Godos_2024
+  ✓ Parsed 5 strategies from sets_summary_20260122-091122.csv
+  ✓ Parsed 6 queries from summary_20260122-091116.csv
+  ✓ Extracted 23 valid PMIDs from gold_pmids_Godos_2024.csv
+  ✓ Inferred domain 'nutrition' with confidence score 59
+  ✓ Validation passed
+
+Collecting data for: sleep_apnea
+  ✓ Parsed 5 strategies
+  ✓ Parsed 5 queries
+  ✓ Extracted 11 valid PMIDs
+  ✓ Domain: sleep medicine
+  ✓ Validation passed
+
+Collecting data for: ai_2022
+  ✓ Parsed 5 strategies
+  ✓ Parsed 6 queries
+  ✓ Extracted 14 valid PMIDs
+  ✓ Domain: artificial intelligence
+  ✓ Validation passed
+
+✅ Collection complete!
+✓ Saved combined file: cross_study_validation/data/all_studies.json
+
+Step 2: Generating analysis report...
+✓ Loaded 3 studies
+✓ Calculated stats for 5 strategies across 3 studies
+✅ Report generated: cross_study_validation/reports/report_20260123-111053.md
+📊 Analyzed 3 studies
+
+Step 3: Generating visualizations...
+  ✓ Created box plot: boxplot_recall.png
+  ✓ Created box plot: boxplot_precision.png
+  ✓ Created box plot: boxplot_f1.png
+  ✓ Created bar chart: bar_chart_comparison.png
+  ✓ Created scatter plot: scatter_precision_recall.png
+  ✓ Created heatmap: heatmap_recall_by_study.png
+✅ Generated 6 visualizations
+
+═══════════════════════════════════════════════════════════════
+✅ Complete workflow finished successfully!
+═══════════════════════════════════════════════════════════════
+```
+
+### Step 9.2: Step-by-Step Workflow (Optional)
+
+For more control, run each phase separately:
+
+**Phase 1: Collect data from all studies**
+```bash
+python -m cross_study_validation collect --all
+```
+
+**Phase 2: Generate analysis report**
+```bash
+python -m cross_study_validation analyze
+```
+
+**Phase 3: Generate visualizations**
+```bash
+python -m cross_study_validation visualize
+```
+
+### Step 9.3: Understanding the Report
+
+**Report file**: `cross_study_validation/reports/report_TIMESTAMP.md`
+
+**Example report sections**:
+
+```markdown
+# Cross-Study Validation Report
+
+## Executive Summary
+
+This report analyzes the performance of **5 aggregation strategies** 
+across **3 systematic review studies** covering **48 total gold 
+standard articles**.
+
+**Key Finding**: precision_gated_union achieved 100% recall in 2/3 
+studies, making it the most reliable strategy across diverse domains.
+
+## Study Characteristics
+
+| Study ID | Domain | Databases | Gold Standard Size | Queries |
+|----------|--------|-----------|-------------------|---------|
+| Godos_2024 | nutrition | pubmed, scopus, wos, embase | 23 | 12 |
+| ai_2022 | artificial intelligence | pubmed, scopus, wos, embase | 14 | 12 |
+| sleep_apnea | sleep medicine | pubmed, scopus, wos, embase | 11 | 12 |
+
+**Total Gold Standard Articles**: 48  
+**Average Gold Standard Size**: 16.0  
+**Unique Domains**: nutrition, artificial intelligence, sleep medicine
+
+## Strategy Performance Summary
+
+| Strategy | Mean Recall | Mean Precision | Mean Retrieved | Perfect Recall |
+|----------|-------------|----------------|----------------|----------------|
+| precision_gated_union | 78.6% ± 37.1% | 0.0052 ± 0.0041 | 9283 ± 13916 | 2/3 |
+| time_stratified_hybrid | 78.6% ± 37.1% | 0.0052 ± 0.0041 | 9283 ± 13916 | 2/3 |
+| weighted_vote | 78.6% ± 37.1% | 0.0052 ± 0.0041 | 9283 ± 13916 | 2/3 |
+| two_stage_screen | 54.5% ± 31.9% | 0.0134 ± 0.0133 | 2696 ± 4071 | 0/3 |
+| consensus_k2 | 50.0% ± 32.3% | 0.0186 ± 0.0203 | 1966 ± 2928 | 0/3 |
+
+*Perfect Recall: Number of studies where strategy achieved 100% recall*
+
+## Recommended Strategy
+
+### precision_gated_union
+
+**Justification**: 
+- Achieved 100% recall in 2 out of 3 studies
+- Highest mean recall (78.6%) across all domains
+- Consistent performance across nutrition, sleep medicine, and AI domains
+- Manageable screening burden (~9,283 articles on average)
+
+**Performance by Study**:
+- Godos_2024 (nutrition): 100% recall, 23/23 articles found
+- ai_2022 (AI): 100% recall, 14/14 articles found
+- sleep_apnea (sleep medicine): 36.4% recall, 4/11 articles found
+
+## Strategy-Specific Analysis
+
+### consensus_k2 (Articles found by ≥2 queries)
+- Mean Recall: 50.0% ± 32.3%
+- Mean Retrieved: 1,966 ± 2,928
+- Best for: Reducing screening burden when perfect recall isn't required
+
+### two_stage_screen (Two-phase screening)
+- Mean Recall: 54.5% ± 31.9%
+- Mean Retrieved: 2,696 ± 4,071
+- Best for: Balanced approach with moderate screening burden
+
+[... continues with detailed breakdowns per study ...]
+```
+
+### Step 9.4: Understanding the Visualizations
+
+**All figures saved to**: `cross_study_validation/reports/figures/`
+
+**1. Box Plots** (`boxplot_recall.png`, `boxplot_precision.png`, `boxplot_f1.png`)
+- Show distribution of metrics across studies for each strategy
+- Individual study points overlaid on boxes
+- Helps identify strategy consistency
+
+**Example interpretation**:
+- Wide boxes = high variability across studies (domain-specific)
+- Narrow boxes = consistent performance (universally reliable)
+- Outliers = unusual performance in specific domains
+
+**2. Bar Chart** (`bar_chart_comparison.png`)
+- Compares mean performance across all strategies
+- Error bars show ±1 standard deviation
+- Three panels: Recall, Precision, F1
+
+**Example interpretation**:
+- Tallest bar in Recall panel = highest mean recall
+- Large error bars = inconsistent performance across studies
+- Small error bars = reliable strategy
+
+**3. Scatter Plot** (`scatter_precision_recall.png`)
+- Shows precision-recall tradeoffs
+- Each point = one strategy in one study
+- Color-coded by strategy
+
+**Example interpretation**:
+- Top-right corner = ideal (high precision + high recall)
+- Top-left = high recall, low precision (comprehensive but many irrelevant)
+- Bottom-right = high precision, low recall (few but relevant)
+
+**4. Heatmap** (`heatmap_recall_by_study.png`)
+- Rows = studies (with domain labels)
+- Columns = strategies (sorted by mean recall)
+- Cell color = recall percentage (green = high, red = low)
+
+**Example interpretation**:
+- Green columns = strategies that work well across all studies
+- Red cells = strategy failure in specific domain
+- Patterns reveal domain-specific vs. universal strategies
+
+### Step 9.5: Adding New Studies to the Analysis
+
+When you complete a new systematic review:
+
+**Step 1**: Complete the individual study workflow (Steps 1-8)
+```bash
+# Example: New study called "diabetes_2025"
+DATABASES="pubmed,scopus,wos" ./run_workflow_diabetes_2025.sh
+```
+
+**Step 2**: Re-run cross-study validation (automatically includes new study)
+```bash
+python -m cross_study_validation run
+```
+
+**Step 3**: Compare new report with previous reports
+```bash
+# View latest report
+cat cross_study_validation/reports/report_*.md | tail -n 1
+
+# Compare visualizations
+open cross_study_validation/reports/figures/
+```
+
+### Advanced Usage
+
+**Collect single study only**:
+```bash
+python -m cross_study_validation collect --study Godos_2024
+```
+
+**Custom output location**:
+```bash
+python -m cross_study_validation analyze --output my_custom_report.md
+python -m cross_study_validation visualize --output ./my_figures/
+```
+
+**Verbose logging**:
+```bash
+python -m cross_study_validation run --verbose
+```
+
+### Troubleshooting
+
+**Problem: "No studies found"**
+```bash
+# Check that you have completed studies with required files
+ls aggregates_eval/*/sets_summary_*.csv
+ls benchmark_outputs/*/summary_*.csv
+ls studies/*/gold_pmids_*.csv
+
+# If missing, complete Steps 1-8 for at least 2 studies first
+```
+
+**Problem: "Data validation failed"**
+```bash
+# Check schema requirements
+cat cross_study_validation/schemas/study_result_schema.json
+
+# Common issues:
+# - Missing required CSV columns
+# - Invalid PMID format
+# - Corrupted CSV files
+
+# Solution: Re-run the individual study workflow
+```
+
+**Problem: "Visualization generation failed"**
+```bash
+# Ensure matplotlib and seaborn are installed
+conda activate systematic_review_queries
+pip install matplotlib seaborn
+
+# Re-run visualization step
+python -m cross_study_validation visualize
+```
+
+**Problem: "Different number of strategies across studies"**
+```bash
+# This is expected if you ran studies at different times
+# The system will compare only strategies present in all studies
+# Check report for "Strategies analyzed: consensus_k2, precision_gated_union, ..."
+```
+
+### Best Practices
+
+**✅ Do**:
+- Run cross-study validation after completing ≥2 studies
+- Compare studies from different medical domains for robust insights
+- Use visualizations to communicate findings to stakeholders
+- Re-run analysis when adding new studies
+- Keep study names descriptive (e.g., "diabetes_2025" not "study1")
+
+**❌ Don't**:
+- Run cross-study validation with only 1 study (no comparison possible)
+- Manually edit generated JSON files (they'll be overwritten)
+- Delete intermediate files (they're gitignored anyway)
+- Compare studies with vastly different gold standard sizes (<10 vs >100)
+
+### Integration with Paper Writing
+
+**Use cases for cross-study validation**:
+
+1. **Methods section**: Justify aggregation strategy choice
+   - "We used precision_gated_union based on cross-study validation 
+     showing 100% recall in 2/3 diverse systematic reviews."
+
+2. **Results section**: Report performance metrics
+   - "Our selected strategy retrieved 1,704 articles with 100% recall 
+     (23/23 gold standard articles found)."
+
+3. **Discussion section**: Compare with other domains
+   - "The high recall observed in our nutrition study (100%) aligns with
+     previous findings in AI and sleep medicine domains (mean 78.6%)."
+
+4. **Figures**: Publication-ready visualizations
+   - Include `heatmap_recall_by_study.png` to show strategy comparison
+   - Include `bar_chart_comparison.png` to justify strategy selection
+
+---
+
+## Step 10: Understanding the Outputs
 
 ### Directory Structure After Workflow
 
