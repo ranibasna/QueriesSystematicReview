@@ -1,34 +1,50 @@
 # Cross-Study Validation Framework
 
-This directory contains the cross-study validation framework for evaluating aggregation strategy performance across multiple systematic reviews.
+A self-contained meta-analysis package for evaluating aggregation strategy performance across multiple systematic reviews.
 
 ## Directory Structure
 
-- `data/` - Standardized JSON data from completed studies
-- `reports/` - Generated analysis reports (markdown, HTML, JSON)
-- `reports/figures/` - Visualization outputs (PNG, SVG)
-- `schemas/` - JSON schemas for data validation
-- `analysis/` - Analysis engine modules
-- `reporting/` - Report generation modules
-- `tests/` - Unit and integration tests
+```
+cross_study_validation/
+├── __init__.py              # Package initialization
+├── __main__.py              # Main CLI entry point
+├── collectors/              # Data collection modules
+│   ├── collect_study_results.py
+│   └── parsers/             # CSV/JSON parsers
+├── analysis/                # Statistical analysis
+│   └── descriptive_stats.py
+├── reporting/               # Report generation
+│   └── markdown_reporter.py
+├── data/                    # Standardized study data (JSON)
+├── reports/                 # Generated reports
+├── schemas/                 # JSON validation schemas
+└── tests/                   # Unit tests
+```
 
 ## Quick Start
 
-### Collect Study Results
+### Complete Workflow (Recommended)
+
+```bash
+# Run everything: collect data + generate report
+python -m cross_study_validation run
+```
+
+### Step-by-Step
+
+```bash
+# Step 1: Collect data from all studies
+python -m cross_study_validation collect --all
+
+# Step 2: Generate analysis report
+python -m cross_study_validation analyze
+```
+
+### Individual Study
 
 ```bash
 # Collect single study
-python scripts/collect_study_results.py --study Godos_2024
-
-# Collect all studies
-python scripts/collect_study_results.py --all-studies
-```
-
-### Generate Analysis Report
-
-```bash
-# Generate cross-study analysis
-python cross_study_validation/analyze_studies.py
+python -m cross_study_validation collect --study Godos_2024
 ```
 
 ## Features

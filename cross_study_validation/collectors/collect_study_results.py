@@ -23,10 +23,8 @@ from datetime import datetime
 from typing import Dict, List, Optional
 import jsonschema
 
-# Add scripts directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent))
-
-from parsers import (
+# Import parsers from same package
+from .parsers import (
     AggregatesCSVParser,
     BenchmarkCSVParser,
     GoldStandardExtractor,

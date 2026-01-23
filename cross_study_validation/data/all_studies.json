@@ -1,11 +1,11 @@
 {
-  "collection_timestamp": "2026-01-23T09:28:59.705745Z",
+  "collection_timestamp": "2026-01-23T09:49:59.336476Z",
   "num_studies": 3,
   "studies": {
     "Godos_2024": {
       "study_id": "Godos_2024",
       "schema_version": "1.0",
-      "collection_timestamp": "2026-01-23T09:28:59.624170Z",
+      "collection_timestamp": "2026-01-23T09:49:59.318571Z",
       "metadata": {
         "domain": "nutrition",
         "databases": [
@@ -160,7 +160,7 @@
     "sleep_apnea": {
       "study_id": "sleep_apnea",
       "schema_version": "1.0",
-      "collection_timestamp": "2026-01-23T09:28:59.673334Z",
+      "collection_timestamp": "2026-01-23T09:49:59.326519Z",
       "metadata": {
         "domain": "sleep medicine",
         "databases": [
@@ -296,7 +296,7 @@
     "ai_2022": {
       "study_id": "ai_2022",
       "schema_version": "1.0",
-      "collection_timestamp": "2026-01-23T09:28:59.702290Z",
+      "collection_timestamp": "2026-01-23T09:49:59.332928Z",
       "metadata": {
         "domain": "artificial intelligence",
         "databases": [
