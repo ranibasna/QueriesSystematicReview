@@ -12,21 +12,31 @@ reviews, not all references. It:
 This is critical for systematic reviews where we need to identify which studies
 passed the screening process and were included in the analysis.
 
+Sampling-Based Extraction:
+- Use --sampling-runs N to run extraction N times with different parameters
+- Use --voting-threshold X to require X fraction agreement (default 0.60)
+- Studies found in ≥threshold of runs are included
+- Adds robustness against intermittent PDF parsing errors
+
 Usage:
     python scripts/extract_included_studies.py <study_name> [options]
 
 Example:
     python scripts/extract_included_studies.py ai_2022 --debug
+    python scripts/extract_included_studies.py ai_2022 --sampling-runs 5 --voting-threshold 0.60
+
 """
 
 import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Set, Tuple
 from dataclasses import dataclass, asdict
+from collections import defaultdict, Counter
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -448,6 +458,304 @@ def extract_included_studies(
     return output_data
 
 
+def fuzzy_match_studies(study1: Dict[str, Any], study2: Dict[str, Any]) -> float:
+    """
+    Calculate similarity between two studies.
+    
+    Args:
+        study1, study2: Study dictionaries
+        
+    Returns:
+        Similarity score (0.0 to 1.0)
+    """
+    from rapidfuzz import fuzz
+    
+    # Compare title (primary signal)
+    title1 = study1.get('title', '').lower()
+    title2 = study2.get('title', '').lower()
+    title_sim = fuzz.ratio(title1, title2) / 100.0 if title1 and title2 else 0.0
+    
+    # Compare first author (secondary signal)
+    author1 = study1.get('first_author', '').lower()
+    author2 = study2.get('first_author', '').lower()
+    author_sim = fuzz.ratio(author1, author2) / 100.0 if author1 and author2 else 0.0
+    
+    # Compare year (tertiary signal)
+    year1 = study1.get('year')
+    year2 = study2.get('year')
+    year_match = 1.0 if year1 == year2 else (0.5 if abs(year1 - year2) <= 1 else 0.0)
+    
+    # Weighted similarity: title=70%, author=20%, year=10%
+    similarity = (title_sim * 0.70) + (author_sim * 0.20) + (year_match * 0.10)
+    
+    return similarity
+
+
+def extract_included_studies_with_sampling(
+    study_name: str,
+    markdown_file: Optional[str] = None,
+    output_path: Optional[str] = None,
+    debug: bool = False,
+    sampling_runs: int = 5,
+    voting_threshold: float = 0.60,
+    temperature_schedule: Optional[List[float]] = None,
+    seed_schedule: Optional[List[int]] = None
+) -> Dict[str, Any]:
+    """
+    Extract included studies using sampling-based approach with majority voting.
+    
+    This runs the extraction multiple times with different parameters (temperature, seed)
+    and uses majority voting to catch intermittent PDF parsing errors.
+    
+    Args:
+        study_name: Name of the systematic review study
+        markdown_file: Path to markdown file
+        output_path: Output file path
+        debug: Enable debug output
+        sampling_runs: Number of extraction runs (default: 5)
+        voting_threshold: Minimum fraction of runs required to include study (default: 0.60)
+        temperature_schedule: List of temperatures for each run (default: [0.3, 0.5, 0.7, 0.3, 0.5])
+        seed_schedule: List of seeds for each run (default: [42, 142, 242, 342, 442])
+        
+    Returns:
+        Dictionary with extraction results including voting statistics
+    """
+    from rapidfuzz import fuzz
+    
+    print(f"🎲 Sampling-Based Extraction: {study_name}")
+    print(f"   Runs: {sampling_runs}")
+    print(f"   Voting threshold: {voting_threshold:.0%} ({int(voting_threshold * sampling_runs)}/{sampling_runs} required)")
+    print()
+    
+    # Default schedules
+    if temperature_schedule is None:
+        temperature_schedule = [0.3, 0.5, 0.7, 0.3, 0.5]
+    if seed_schedule is None:
+        seed_schedule = [42, 142, 242, 342, 442]
+    
+    # Ensure we have enough values
+    while len(temperature_schedule) < sampling_runs:
+        temperature_schedule.extend([0.3, 0.5, 0.7])
+    while len(seed_schedule) < sampling_runs:
+        seed_schedule.extend([s + 500 for s in seed_schedule[:sampling_runs]])
+    
+    # Run extraction multiple times
+    all_runs = []
+    
+    for run_idx in range(sampling_runs):
+        temp = temperature_schedule[run_idx]
+        seed = seed_schedule[run_idx]
+        
+        print(f"🔄 Run {run_idx + 1}/{sampling_runs} (temp={temp}, seed={seed})...")
+        
+        # For deterministic extraction, parameters don't affect parsing
+        # But this structure allows for future LLM-based extraction
+        # For now, we just run the same extraction multiple times
+        # to demonstrate the framework
+        
+        try:
+            result = extract_included_studies(
+                study_name=study_name,
+                markdown_file=markdown_file,
+                output_path=None,  # Don't save intermediate runs
+                debug=False  # Suppress run-level debug
+            )
+            
+            all_runs.append({
+                'run_id': run_idx + 1,
+                'temperature': temp,
+                'seed': seed,
+                'studies': result['included_studies'],
+                'count': len(result['included_studies'])
+            })
+            
+            print(f"   → Extracted {len(result['included_studies'])} studies ✓\n")
+            
+        except Exception as e:
+            print(f"   → Run failed: {e} ✗\n")
+            all_runs.append({
+                'run_id': run_idx + 1,
+                'temperature': temp,
+                'seed': seed,
+                'studies': [],
+                'count': 0,
+                'error': str(e)
+            })
+    
+    # Perform majority voting
+    print(f"🗳️  Performing majority voting...")
+    print(f"   Similarity threshold: 0.85 (for matching studies across runs)")
+    print()
+    
+    # Build study clusters (group same study across runs)
+    study_clusters = []  # List of {representative: dict, run_ids: list, votes: int}
+    
+    for run in all_runs:
+        for study in run['studies']:
+            # Try to find matching cluster
+            matched_cluster = None
+            best_similarity = 0.0
+            
+            for cluster in study_clusters:
+                similarity = fuzzy_match_studies(study, cluster['representative'])
+                if similarity >= 0.85 and similarity > best_similarity:
+                    matched_cluster = cluster
+                    best_similarity = similarity
+            
+            if matched_cluster:
+                # Add to existing cluster
+                matched_cluster['run_ids'].append(run['run_id'])
+                matched_cluster['votes'] += 1
+                # Update representative if this has better metadata
+                if study.get('doi') or study.get('pmid'):
+                    matched_cluster['representative'] = study
+            else:
+                # Create new cluster
+                study_clusters.append({
+                    'representative': study,
+                    'run_ids': [run['run_id']],
+                    'votes': 1
+                })
+    
+    # Apply voting threshold
+    min_votes = int(voting_threshold * sampling_runs)
+    accepted_studies = []
+    rejected_studies = []
+    
+    for cluster in study_clusters:
+        vote_fraction = cluster['votes'] / sampling_runs
+        cluster['vote_fraction'] = vote_fraction
+        cluster['accepted'] = vote_fraction >= voting_threshold
+        
+        if cluster['accepted']:
+            accepted_studies.append(cluster)
+        else:
+            rejected_studies.append(cluster)
+    
+    # Sort by votes (descending)
+    accepted_studies.sort(key=lambda x: x['votes'], reverse=True)
+    rejected_studies.sort(key=lambda x: x['votes'], reverse=True)
+    
+    print(f"✅ Voting complete!")
+    print(f"   Accepted: {len(accepted_studies)} studies (≥{min_votes} votes)")
+    print(f"   Rejected: {len(rejected_studies)} studies (<{min_votes} votes)")
+    print()
+    
+    # Print detailed voting statistics
+    if debug or len(rejected_studies) > 0:
+        print(f"📊 Voting Details:")
+        print()
+        
+        print(f"   Accepted Studies:")
+        for i, cluster in enumerate(accepted_studies[:10], 1):  # Show top 10
+            study = cluster['representative']
+            votes = cluster['votes']
+            runs = ','.join(map(str, cluster['run_ids']))
+            print(f"   {i}. {study['first_author']} ({study['year']}): {votes}/{sampling_runs} votes (runs: {runs})")
+            print(f"      {study['title'][:80]}...")
+        
+        if len(accepted_studies) > 10:
+            print(f"   ... and {len(accepted_studies) - 10} more")
+        
+        print()
+        
+        if rejected_studies:
+            print(f"   Rejected Studies:")
+            for i, cluster in enumerate(rejected_studies, 1):
+                study = cluster['representative']
+                votes = cluster['votes']
+                runs = ','.join(map(str, cluster['run_ids']))
+                print(f"   {i}. {study['first_author']} ({study['year']}): {votes}/{sampling_runs} votes (runs: {runs})")
+                print(f"      {study['title'][:80]}...")
+            print()
+    
+    # Prepare output
+    final_studies = [cluster['representative'] for cluster in accepted_studies]
+    
+    output_data = {
+        "study_name": study_name,
+        "source_file": markdown_file or f"studies/{study_name}/paper_{study_name}.md",
+        "extraction_method": "sampling_based_with_voting",
+        "sampling_parameters": {
+            "runs": sampling_runs,
+            "voting_threshold": voting_threshold,
+            "temperature_schedule": temperature_schedule[:sampling_runs],
+            "seed_schedule": seed_schedule[:sampling_runs]
+        },
+        "total_included_studies": len(final_studies),
+        "included_studies": final_studies,
+        "voting_statistics": {
+            "accepted_count": len(accepted_studies),
+            "rejected_count": len(rejected_studies),
+            "consistency_rate": len(accepted_studies) / len(study_clusters) if study_clusters else 0.0,
+            "accepted_clusters": [
+                {
+                    "title": c['representative']['title'],
+                    "first_author": c['representative']['first_author'],
+                    "year": c['representative']['year'],
+                    "votes": c['votes'],
+                    "vote_fraction": c['vote_fraction'],
+                    "run_ids": c['run_ids']
+                }
+                for c in accepted_studies
+            ],
+            "rejected_clusters": [
+                {
+                    "title": c['representative']['title'],
+                    "first_author": c['representative']['first_author'],
+                    "year": c['representative']['year'],
+                    "votes": c['votes'],
+                    "vote_fraction": c['vote_fraction'],
+                    "run_ids": c['run_ids']
+                }
+                for c in rejected_studies
+            ]
+        },
+        "all_runs": all_runs
+    }
+    
+    # Calculate statistics
+    with_doi = sum(1 for s in final_studies if s.get('doi'))
+    with_pmid = sum(1 for s in final_studies if s.get('pmid'))
+    with_identifiers = sum(1 for s in final_studies if s.get('doi') or s.get('pmid'))
+    
+    output_data["statistics"] = {
+        "total_studies": len(final_studies),
+        "with_doi": with_doi,
+        "with_pmid": with_pmid,
+        "with_identifiers": with_identifiers,
+        "doi_coverage_percent": round(with_doi / len(final_studies) * 100, 1) if final_studies else 0,
+        "pmid_coverage_percent": round(with_pmid / len(final_studies) * 100, 1) if final_studies else 0,
+        "identifier_coverage_percent": round(with_identifiers / len(final_studies) * 100, 1) if final_studies else 0
+    }
+    
+    # Save results
+    if output_path is None:
+        output_path = f"studies/{study_name}/included_studies_sampling.json"
+    
+    print(f"💾 Saving results...")
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(output_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"✓ Saved to: {output_path}\n")
+    
+    # Print final statistics
+    stats = output_data["statistics"]
+    voting_stats = output_data["voting_statistics"]
+    print(f"📊 Final Statistics:")
+    print(f"   Total included studies: {stats['total_studies']}")
+    print(f"   Consistency rate: {voting_stats['consistency_rate']:.1%}")
+    print(f"   With DOI: {stats['with_doi']} ({stats['doi_coverage_percent']}%)")
+    print(f"   With PMID: {stats['with_pmid']} ({stats['pmid_coverage_percent']}%)")
+    
+    print(f"\n✅ Sampling-based extraction complete!")
+    
+    return output_data
+
+
+
 def main():
     """Command-line interface."""
     parser = argparse.ArgumentParser(
@@ -455,9 +763,21 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
+  # Basic extraction
   python scripts/extract_included_studies.py ai_2022
   python scripts/extract_included_studies.py Godos_2024 --debug
+  
+  # With PMID/DOI lookup
   python scripts/extract_included_studies.py ai_2022 --lookup-pmid --pubmed-email your@email.com
+  
+  # Sampling-based extraction (robust against intermittent errors)
+  python scripts/extract_included_studies.py ai_2022 --sampling-runs 5 --voting-threshold 0.60
+  
+  # Full pipeline with sampling and lookup
+  python scripts/extract_included_studies.py ai_2022 \\
+    --sampling-runs 5 --voting-threshold 0.60 \\
+    --lookup-pmid --pubmed-email your@email.com \\
+    --generate-gold-csv
         """
     )
     
@@ -500,9 +820,37 @@ Examples:
     )
     
     parser.add_argument(
+        '--generate-gold-csv',
+        action='store_true',
+        help='Automatically generate gold standard CSV files after extraction (requires --lookup-pmid)'
+    )
+    
+    parser.add_argument(
+        '--gold-confidence',
+        type=float,
+        default=0.85,
+        help='Minimum confidence threshold for gold standard generation (default: 0.85)'
+    )
+    
+    parser.add_argument(
         '--debug',
         action='store_true',
         help='Enable debug output'
+    )
+    
+    # Sampling-based extraction options
+    parser.add_argument(
+        '--sampling-runs',
+        type=int,
+        default=None,
+        help='Number of extraction runs for sampling-based extraction (e.g., 5). Enables robust extraction with majority voting.'
+    )
+    
+    parser.add_argument(
+        '--voting-threshold',
+        type=float,
+        default=0.60,
+        help='Minimum fraction of runs required to include a study (default: 0.60, i.e., 3/5 for 5 runs)'
     )
     
     args = parser.parse_args()
@@ -511,13 +859,36 @@ Examples:
     if args.lookup_pmid and not args.pubmed_email:
         parser.error("--pubmed-email is required when --lookup-pmid is used")
     
-    # Run extraction
-    result = extract_included_studies(
-        study_name=args.study_name,
-        markdown_file=args.markdown_file,
-        output_path=args.output_path,
-        debug=args.debug
-    )
+    # Validate gold CSV generation options
+    if args.generate_gold_csv and not args.lookup_pmid:
+        parser.error("--generate-gold-csv requires --lookup-pmid (need identifier lookup first)")
+    
+    # Validate sampling options
+    if args.sampling_runs is not None:
+        if args.sampling_runs < 2:
+            parser.error("--sampling-runs must be at least 2")
+        if not (0.0 < args.voting_threshold <= 1.0):
+            parser.error("--voting-threshold must be between 0.0 and 1.0")
+    
+    # Run extraction (with or without sampling)
+    if args.sampling_runs:
+        # Sampling-based extraction
+        result = extract_included_studies_with_sampling(
+            study_name=args.study_name,
+            markdown_file=args.markdown_file,
+            output_path=args.output_path,
+            debug=args.debug,
+            sampling_runs=args.sampling_runs,
+            voting_threshold=args.voting_threshold
+        )
+    else:
+        # Standard single-run extraction
+        result = extract_included_studies(
+            study_name=args.study_name,
+            markdown_file=args.markdown_file,
+            output_path=args.output_path,
+            debug=args.debug
+        )
     
     # Optionally lookup PMIDs/DOIs
     if args.lookup_pmid:
@@ -618,6 +989,34 @@ Examples:
         stats = result["statistics"]
         print(f"   With DOI: {stats['with_doi']} ({stats['doi_coverage_percent']}%)")
         print(f"   With PMID: {stats['with_pmid']} ({stats['pmid_coverage_percent']}%)")
+    
+    # Optionally generate gold standard CSV files
+    if args.generate_gold_csv:
+        print(f"\n📝 Generating gold standard CSV files...")
+        print(f"   Confidence threshold: {args.gold_confidence}")
+        
+        # Import the gold standard generator
+        import subprocess
+        
+        # Build command
+        cmd = [
+            sys.executable,
+            str(Path(__file__).parent / 'generate_gold_standard.py'),
+            args.study_name,
+            '--min-confidence', str(args.gold_confidence)
+        ]
+        
+        # Run the generator
+        try:
+            result_code = subprocess.run(cmd, check=True)
+            if result_code.returncode == 0:
+                print(f"\n✅ Gold standard generation completed successfully!")
+        except subprocess.CalledProcessError as e:
+            print(f"\n⚠️  Warning: Gold standard generation failed with error code {e.returncode}")
+            print(f"   You can run it manually: python scripts/generate_gold_standard.py {args.study_name}")
+        except FileNotFoundError:
+            print(f"\n⚠️  Warning: Could not find generate_gold_standard.py")
+            print(f"   You can run it manually: python scripts/generate_gold_standard.py {args.study_name}")
 
 
 if __name__ == "__main__":

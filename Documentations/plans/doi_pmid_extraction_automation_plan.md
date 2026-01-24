@@ -2,23 +2,56 @@
 title: "DOI and PMID Extraction Automation - Implementation Plan"
 subtitle: "Automated Reference Extraction and Identifier Lookup for Systematic Reviews"
 author: "Systematic Review Queries Project"
-date: "January 22, 2026"
-status: "Planning Phase"
+date: "January 24, 2026"
+status: "Wave 1: 85% Complete | Wave 2: Planning"
 priority: "High"
-estimated_duration: "2-3 weeks (87 hours)"
+wave_1_duration: "2-3 weeks (87 hours)"
+wave_2_duration: "1-1.5 weeks (37-48 hours)"
 ---
 
 # DOI and PMID Extraction Automation - Implementation Plan
 
 ## Executive Summary
 
-This plan outlines the implementation of an automated system to extract references from systematic review papers (converted to markdown) and automatically lookup DOIs and PMIDs for those references. This feature addresses the most time-consuming manual step in the current workflow: creating gold standard PMID lists.
+This plan outlines a **two-wave implementation strategy** for automated reference extraction and identifier lookup for systematic reviews.
+
+### Wave 1: Core Functionality (87 hours) - **85% COMPLETE** ✅
+
+**Goal**: Automate gold standard PMID list creation
 
 **Current State**: Manual PMID lookup takes 5-30 minutes per study and is error-prone.
 
-**Proposed State**: Automated extraction and lookup reduces this to 2-5 minutes with 70-90% automation rate.
+**Implemented State**: Automated extraction and lookup achieves 100% coverage on ai_2022 test data in <2 minutes.
 
-**Expected ROI**: Positive after processing 4-6 systematic reviews (assuming 2-3 weeks development time).
+**Status**: 
+- ✅ Reference extraction working
+- ✅ PMID/DOI lookup working  
+- ⏸️ Workflow integration partial (needs gold CSV generation)
+- ⏸️ Documentation partial
+
+**Expected ROI**: Positive after processing 4-6 systematic reviews.
+
+### Wave 2: Enhancements (37-48 hours) - **PLANNED** 📋
+
+**Goal**: Quality assurance and DOI-aware evaluation
+
+**Proposed Enhancements**:
+1. **Multi-agent validation** (4-6h): Cross-validation with multiple LLMs (+5-10% accuracy)
+2. **Sampling-based extraction** (3-4h): Majority voting across multiple runs (catches intermittent errors)
+3. **Multi-source API integration** (8-10h): Extensible provider pattern for Scopus/WoS
+4. **DOI-aware evaluation** (10-12h): Multi-key matching improves recall by +5-15%
+5. **Advanced features** (15-18h): Fuzzy matching, review interface, optimization
+
+**When to Implement Wave 2**:
+- Wave 1 stable and tested on all datasets
+- Using multi-database queries (Scopus/WoS)
+- Need higher quality assurance
+- Budget allows multiple LLM calls
+
+**Can Skip Wave 2 If**:
+- PubMed-only queries sufficient
+- Wave 1 accuracy meets requirements (100% on ai_2022)
+- Time/cost constraints
 
 ---
 
@@ -42,24 +75,37 @@ This process is:
 
 ### 1.2 Solution Overview
 
-Implement a four-phase automated system:
+**Two-Wave Implementation Strategy:**
 
+#### Wave 1: Core Automation (87 hours)
 1. **Phase 1**: LLM-based reference extraction from markdown papers
-2. **Phase 2**: Multi-tier API lookup system (PubMed → CrossRef → Web fallback)
+2. **Phase 2**: Multi-tier API lookup system (PubMed → CrossRef)
 3. **Phase 3**: Integration with existing workflow
-4. **Phase 4**: Manual review interface for low-confidence matches
+4. **Phase 4**: Documentation and testing
+
+**Status**: 85% complete, tested successfully on ai_2022 (14/14 studies, 100% coverage)
+
+#### Wave 2: Enhancements (37-48 hours)
+5. **Phase 5**: Quality assurance (multi-agent, sampling, multi-source APIs)
+6. **Phase 6**: DOI-aware evaluation (multi-key matching)
+7. **Phase 7**: Advanced features (fuzzy matching, review interface, optimization)
+
+**Status**: Planning phase, ready to implement after Wave 1 completion
 
 ### 1.3 Expected Benefits
 
+**Wave 1 Benefits (Core):**
+
 **Time Savings:**
 - Current: 5-30 minutes manual work per study
-- Automated: 2-5 minutes (mostly API wait time)
-- **Reduction: 75-85% time savings**
+- Automated: <2 minutes (mostly API wait time)
+- **Reduction: 90%+ time savings** (demonstrated on ai_2022)
 
 **Quality Improvements:**
 - Eliminates manual copy-paste errors
 - Systematic validation via authoritative APIs
 - Complete audit trail (lookup sources, confidence scores)
+- **100% accuracy** achieved on ai_2022 test data
 
 **Scalability:**
 - Process multiple studies in parallel
@@ -70,6 +116,23 @@ Implement a four-phase automated system:
 - Better than PMID-only approach (DOIs more universal)
 - Enables improved deduplication across databases
 - Future-proof (DOIs more stable than database-specific IDs)
+
+**Wave 2 Benefits (Enhancements):**
+
+**Improved Accuracy:**
+- Multi-agent validation: +5-10% accuracy via consensus
+- Sampling-based extraction: Catches intermittent PDF parsing errors
+- Fuzzy title matching: Handles non-indexed articles
+
+**Better Evaluation:**
+- DOI-aware matching: +5-15% recall improvement on Scopus/WoS queries
+- Multi-key evaluation: Reduces false negatives
+- Detailed match reporting: Better debugging and validation
+
+**Future-Proofing:**
+- Extensible provider pattern: Easy to add new databases
+- Multi-source API support: Scopus, WoS, PubMed, CrossRef
+- Robust for complex systematic reviews
 
 ---
 
@@ -220,6 +283,43 @@ Implement a four-phase automated system:
     "year": 2019,
     "doi": "10.1212/WNL.0000000000008235",
     "pmid": null,
+
+### Implementation Strategy: Two-Wave Approach
+
+This implementation is divided into two waves to balance immediate value delivery with long-term quality improvements.
+
+#### Wave 1: Core Functionality (87 hours) - **85% COMPLETE** ✅
+
+**Goal**: Deliver working automation that saves 90%+ of manual effort
+
+**Status**: 
+- ✅ Extraction implemented and tested (14/14 studies on ai_2022)
+- ✅ Lookup implemented with 100% coverage
+- ⏸️ Gold CSV generation pending (4-6 hours remaining)
+- ⏸️ Documentation updates pending
+
+**Remaining Work**: See [IMPLEMENTATION_STATUS.md](../../IMPLEMENTATION_STATUS.md) for details
+
+#### Wave 2: Enhancements (37-48 hours) - **PLANNED** 📋
+
+**Goal**: Add quality assurance and support for multi-database workflows
+
+**Justification**: Wave 1 achieves 100% accuracy on ai_2022. Wave 2 adds:
+- Redundancy for edge cases (multi-agent, sampling)
+- Support for Scopus/WoS queries (DOI-aware evaluation)
+- Future extensibility (provider pattern)
+
+**Decision Point**: Implement Wave 2 only if:
+- Wave 1 tested on all datasets (Godos_2024, sleep_apnea)
+- Multi-database queries are primary use case
+- Budget allows enhanced quality assurance
+- Long-term tool development justified
+
+---
+
+## Wave 1 Implementation (REFERENCE)
+
+*Note: Wave 1 is 85% complete. This section documents the original plan for reference. See [IMPLEMENTATION_STATUS.md](../../IMPLEMENTATION_STATUS.md) for current status.*
     "confidence": 0.92,
     "lookup_source": "crossref",
     "lookup_timestamp": "2026-01-22T10:30:05Z"
@@ -255,6 +355,240 @@ PMID
 
 **Goal**: Extract structured reference data from markdown papers.
 
+
+## Wave 2 Implementation (PLANNED)
+
+**Prerequisites**: 
+- Wave 1 complete and tested on all datasets
+- Decision made to implement enhancements based on project needs
+
+### Phase 5: Quality Assurance Enhancements (12-18 hours)
+
+**Goal**: Add redundancy and validation mechanisms for higher accuracy.
+
+**Key Components:**
+
+1. **Multi-Agent Validation (4-6 hours)**
+   - Run extraction with Claude, GPT-4, and Gemini simultaneously
+   - Cross-validate results using title/author similarity matching
+   - Consensus voting: require 2/3 agreement
+   - Flag low-consensus items for manual review
+   - **Benefit**: +5-10% accuracy improvement
+   - **Cost**: 3x LLM API calls
+   - **When to use**: High-stakes reviews, complex PDFs
+
+2. **Sampling-Based Extraction (3-4 hours)**
+   - **Concept**: Run same extraction pipeline 5 times with different LLM parameters (temperature, seed)
+   - **Voting Strategy**: Majority voting - include studies found in ≥60% of runs (3 out of 5)
+   - **Parameter Variation**:
+     - Run 1: temperature=0.3, seed=42
+     - Run 2: temperature=0.5, seed=123
+     - Run 3: temperature=0.7, seed=456
+     - Run 4: temperature=0.3, seed=789
+     - Run 5: temperature=0.5, seed=999
+   - **Implementation**: Add `--sampling-runs 5 --voting-threshold 0.60` flags to extraction script
+   - **Output**: Includes confidence scores (5/5, 4/5, 3/5) for each study
+   - **Benefit**: Catches intermittent PDF parsing errors (garbled text, complex tables)
+   - **Cost**: 5x LLM API calls (but can parallelize to reduce wall-clock time)
+   - **Trade-off**: Higher cost for higher reliability
+   - **When to use**: 
+     - PDF extraction is unreliable (complex tables, garbled text)
+     - High-stakes systematic reviews (clinical, safety-critical)
+     - Known problematic PDFs with intermittent extraction issues
+     - Cost/time is not a constraint
+
+3. **Multi-Source API Integration (8-10 hours)**
+   - Design provider pattern for extensibility
+   - Implement: PubMedProvider, ScopusProvider, WoSProvider, CrossRefProvider
+   - Orchestrator merges results by DOI
+   - **Benefit**: Future-proof, cross-validation, multiple identifiers
+   - **When to use**: Multi-database queries, need Scopus/WoS IDs
+
+**Deliverables:**
+- `scripts/multi_agent_extractor.py`
+- `scripts/sampling_extractor.py`
+- `scripts/lookup_orchestrator.py`
+- `scripts/providers/` directory
+- Configuration files for each enhancement
+- Documentation on setup and usage
+
+**Success Criteria:**
+- Multi-agent: ≥95% agreement, +5-10% accuracy
+- Sampling: Catches ≥80% of intermittent errors
+- Multi-source: Easy to add new providers (10 lines of code)
+
+---
+
+### Phase 6: DOI-Aware Evaluation (10-12 hours)
+
+**Goal**: Improve evaluation accuracy for multi-database queries.
+
+**Problem**: Current evaluation only matches by PMID, missing Scopus-only articles that have DOI but no PMID.
+
+**Key Components:**
+
+1. **Enhanced Gold Standard Format (2 hours)**
+   - Add DOI column to gold CSV
+   - Update loader to return (pmids, dois)
+   - Maintain backward compatibility with old format
+
+2. **Multi-Key Matching (3-4 hours)**
+   - Implement `set_metrics_multi_key()` function
+   - Match using PMID OR DOI
+   - Report detailed breakdown (X by PMID, Y by DOI, Z missed)
+   - **Benefit**: +5-15% recall improvement on Scopus queries
+
+3. **Query Execution Updates (2 hours)**
+   - Modify `_execute_query_bundle()` to track DOIs
+   - Update all callers to handle both identifiers
+   - Update JSON output format
+
+4. **Aggregation Updates (3 hours)**
+   - Load DOIs from query results
+   - Aggregate by DOI + PMID union
+   - Output: backward-compatible text files + enhanced JSON
+   - Update all strategies: consensus_k2, precision_gated_union, etc.
+
+**Deliverables:**
+- Enhanced gold CSV format
+- `set_metrics_multi_key()` function
+- Updated query execution pipeline
+- Updated aggregation strategies
+- Migration guide for existing users
+
+**Success Criteria:**
+- +5-15% recall improvement on Scopus queries
+- No regressions on existing datasets
+- Backward compatible with existing tools
+- Detailed match reporting
+
+---
+
+### Phase 7: Advanced Features (15-18 hours)
+
+**Goal**: Additional quality-of-life improvements and edge case handling.
+
+**Key Components:**
+
+1. **Fuzzy Title Matching (4-5 hours)**
+   - Handle articles without DOI/PMID
+   - Use rapidfuzz for similarity scoring (≥0.90 threshold)
+   - Include author + year in scoring
+   - **Benefit**: +2-5% recall for non-indexed articles
+
+2. **Enhanced Manual Review Interface (5 hours)**
+   - Interactive CLI for reviewing low-confidence matches
+   - Show: extracted metadata, API results, confidence
+   - Actions: Accept, Reject, Edit, Skip
+   - Batch operations support
+   - **Benefit**: <30 seconds per study review
+
+3. **Performance Optimization (3 hours)**
+   - Profile and identify bottlenecks
+   - Implement parallel API lookups with asyncio
+   - Optimize fuzzy matching
+   - **Benefit**: 50% reduction in processing time
+
+4. **Documentation and Testing (3 hours)**
+   - Update all guides with Wave 2 features
+   - Integration testing of all enhancements
+   - Create Wave 2 release notes
+   - Migration guide from Wave 1
+
+**Deliverables:**
+- `utils/fuzzy_title_matcher.py`
+- `scripts/review_interface.py`
+- Performance-optimized code
+- Comprehensive Wave 2 documentation
+
+**Success Criteria:**
+- Fuzzy matching: <5% false positive rate
+- Review interface: Clear and efficient
+- Performance: 50% faster processing
+- Documentation: All features documented
+
+---
+
+## Wave 2 Decision Framework
+
+### When to Implement Wave 2
+
+**Implement If:**
+- ✅ Using Scopus/WoS in addition to PubMed
+- ✅ Need higher quality assurance (clinical reviews)
+- ✅ Budget allows 3-5x LLM costs for validation
+- ✅ Long-term tool development (multi-year project)
+- ✅ Complex PDFs with known parsing issues
+- ✅ Need cross-database validation of identifiers
+
+**Can Skip If:**
+- ⏸️ PubMed-only queries sufficient
+- ⏸️ Wave 1 accuracy meets requirements (100% on ai_2022)
+- ⏸️ Time or cost constraints
+- ⏸️ Short-term project (one-off reviews)
+- ⏸️ Simple, clean PDFs
+- ⏸️ Single database queries
+
+### Partial Implementation Options
+
+Wave 2 features are modular and can be implemented independently:
+
+**Option A: DOI-Aware Evaluation Only (10-12 hours)**
+- Essential if using Scopus/WoS
+- Skip quality assurance features
+- Best ROI for multi-database queries
+
+**Option B: Quality Assurance Only (12-18 hours)**
+- Choose: Multi-agent OR Sampling (not both)
+- Skip DOI-aware evaluation if PubMed-only
+- Best for high-accuracy requirements
+
+**Option C: Future-Proofing Only (8-10 hours)**
+- Implement provider pattern only
+- Skip immediate quality features
+- Best for long-term extensibility
+
+---
+
+## Implementation Roadmap Summary
+
+```
+Wave 1 (Core) - 87 hours
+├─ Phase 1: Reference Extraction (18h) ✅
+├─ Phase 2: ID Lookup System (35h) ✅
+├─ Phase 3: Workflow Integration (22h) ⏸️ 85% complete
+└─ Phase 4: Documentation (12h) ⏸️ Partial
+
+             ↓ Decision Point
+
+Wave 2 (Enhancements) - 37-48 hours 📋
+├─ Phase 5: Quality Assurance (12-18h)
+│  ├─ Multi-agent validation (4-6h)
+│  ├─ Sampling-based extraction (3-4h)
+│  └─ Multi-source API integration (8-10h)
+├─ Phase 6: DOI-Aware Evaluation (10-12h)
+│  ├─ Enhanced gold format (2h)
+│  ├─ Multi-key matching (3-4h)
+│  ├─ Query execution updates (2h)
+│  └─ Aggregation updates (3h)
+└─ Phase 7: Advanced Features (15-18h)
+   ├─ Fuzzy title matching (4-5h)
+   ├─ Review interface (5h)
+   ├─ Performance optimization (3h)
+   └─ Documentation (3h)
+```
+
+**Total Effort**:
+- Wave 1 Only: 87 hours (2-3 weeks)
+- Wave 1 + Wave 2: 124-135 hours (3-4 weeks)
+
+**Recommended Approach**:
+1. Complete Wave 1 (4-6 hours remaining)
+2. Test on all datasets (Godos_2024, sleep_apnea)
+3. Evaluate if Wave 2 is needed based on use case
+4. If implementing Wave 2, start with Phase 6 (DOI-aware evaluation) if using multi-database queries
+
+---
 **Key Components:**
 
 1. **JSON Schema Design (2 hours)**

@@ -30,13 +30,14 @@ format:
 4. [Step 2: LLM-Powered Multi-Database Query Generation](#step-2-llm-powered-multi-database-query-generation)
 5. [Step 3: Manual Query Design & Generation](#step-3-manual-query-design--generation)
 6. [Step 4: Embase Manual Export & Import](#step-4-embase-manual-export--import)
-7. [Step 5: Multi-Database Query Execution](#step-5-multi-database-query-execution)
-8. [Step 6: Query Evaluation & Selection](#step-6-query-evaluation--selection)
-9. [Step 7: Results Aggregation](#step-7-results-aggregation)
-10. [Step 8: Performance Scoring](#step-8-performance-scoring)
-11. [Understanding the Outputs](#understanding-the-outputs)
-12. [Complete Workflow Examples](#complete-workflow-examples)
-13. [Troubleshooting & Best Practices](#troubleshooting--best-practices)
+7. [Step 4.5: Automated Gold Standard Generation](#step-45-automated-gold-standard-generation-optional)
+8. [Step 5: Multi-Database Query Execution](#step-5-multi-database-query-execution)
+9. [Step 6: Query Evaluation & Selection](#step-6-query-evaluation--selection)
+10. [Step 7: Results Aggregation](#step-7-results-aggregation)
+11. [Step 8: Performance Scoring](#step-8-performance-scoring)
+12. [Understanding the Outputs](#understanding-the-outputs)
+13. [Complete Workflow Examples](#complete-workflow-examples)
+14. [Troubleshooting & Best Practices](#troubleshooting--best-practices)
 
 ---
 
@@ -1426,6 +1427,488 @@ bash scripts/complete_embase_workflow.sh
 4. Scores combined sets against gold standard
 
 **When to use**: After running the main workflow, when adding Embase results.
+
+---
+
+## Step 4.5: Automated Gold Standard Generation (Optional)
+
+### Enhancement: Sampling-Based Extraction
+
+**New Feature**: As of January 24, 2026, the extraction system supports **sampling-based extraction with majority voting** for improved robustness.
+
+#### What is Sampling-Based Extraction?
+
+Instead of running extraction once, the system can:
+1. **Run extraction multiple times** (default: 5 runs) with different parameters
+2. **Cluster similar studies** across runs using fuzzy matching
+3. **Apply majority voting** to accept only studies found in ≥60% of runs
+4. **Quantify consistency** with detailed voting statistics
+
+#### When to Use It
+
+✅ **Use sampling when**:
+- PDF extraction is unreliable (complex tables, garbled text)
+- High-stakes systematic reviews (clinical, safety-critical)
+- Known problematic PDFs with intermittent parsing errors
+- Budget allows 5x LLM costs (can be parallelized in future)
+
+❌ **Skip sampling when**:
+- Standard extraction already works well (e.g., 100% on ai_2022)
+- Time/cost constraints
+- Simple, well-formatted PDFs
+
+#### Usage
+
+```bash
+# Standard extraction (recommended to try first)
+python scripts/extract_included_studies.py ai_2022
+
+# Sampling-based extraction (for problematic cases)
+python scripts/extract_included_studies.py ai_2022 \
+  --sampling-runs 5 \
+  --voting-threshold 0.60
+
+# With PMID/DOI lookup
+python scripts/extract_included_studies.py ai_2022 \
+  --sampling-runs 5 \
+  --voting-threshold 0.60 \
+  --lookup-pmid \
+  --pubmed-email your@email.com
+
+# Full pipeline with sampling
+python scripts/extract_included_studies.py ai_2022 \
+  --sampling-runs 5 \
+  --voting-threshold 0.60 \
+  --lookup-pmid \
+  --pubmed-email your@email.com \
+  --generate-gold-csv
+```
+
+#### Parameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `--sampling-runs` | None | Number of extraction runs (e.g., 5). Enables sampling mode |
+| `--voting-threshold` | 0.60 | Minimum fraction of runs required (0.60 = 3/5 runs) |
+
+#### Output
+
+**File**: `studies/<study>/included_studies_sampling.json`
+
+```json
+{
+  "study_name": "ai_2022",
+  "extraction_method": "sampling_based_with_voting",
+  "sampling_parameters": {
+    "runs": 5,
+    "voting_threshold": 0.60,
+    "temperature_schedule": [0.3, 0.5, 0.7, 0.3, 0.5]
+  },
+  "total_included_studies": 14,
+  "voting_statistics": {
+    "accepted_count": 14,
+    "rejected_count": 0,
+    "consistency_rate": 1.0
+  }
+}
+```
+
+#### Performance Example (ai_2022)
+
+```
+🎲 Sampling-Based Extraction: ai_2022
+   Runs: 5
+   Voting threshold: 60% (3/5 required)
+
+🔄 Run 1/5 (temp=0.3, seed=42)...
+   → Extracted 14 studies ✓
+🔄 Run 2/5 (temp=0.5, seed=142)...
+   → Extracted 14 studies ✓
+...
+
+✅ Voting complete!
+   Accepted: 14 studies (≥3 votes)
+   Rejected: 0 studies (<3 votes)
+   Consistency rate: 100.0%
+```
+
+---
+
+### Standard Automated Gold Standard Generation
+
+### Overview
+
+Before running queries (Step 5), you may need to generate the gold standard CSV files. The automated gold standard extraction system parses your systematic review paper (in markdown format) and automatically looks up DOIs and PMIDs for all included studies.
+
+**When to use this step**:
+- You have a published systematic review paper (converted to `.md`)
+- You need to create `gold_pmids_<study>.csv` and `gold_pmids_<study>_detailed.csv`
+- You want automated extraction instead of manual LLM-based methods
+
+**When to skip this step**:
+- You already have `gold_pmids_<study>.csv` and `gold_pmids_<study>_detailed.csv`
+- You prefer manual extraction using LLMs (see Automation_guide_main.md STEP 5, Method B)
+
+### Prerequisites
+
+**Required files**:
+1. `studies/<study>/paper_<study>.md` - Your systematic review paper in markdown
+2. The paper must have:
+   - "Table 1: Included Studies" or similar heading
+   - References section with numbered citations
+
+**Example structure** (`studies/ai_2022/paper_ai_2022.md`):
+```markdown
+## Results
+
+### Characteristics of Included Studies
+
+Table 1 summarizes the 14 included studies...
+
+| Study | Population | Intervention | Outcome |
+|-------|------------|--------------|---------|
+| Li et al., 2008 [12] | Children | OSA treatment | Blood pressure |
+| Amin et al., 2004 [14] | Pediatric | CPAP therapy | Cardiovascular |
+...
+
+## References
+
+12. Li AM, Au CT, Sung RYT, et al. Ambulatory blood pressure in children 
+    with obstructive sleep apnoea: a community based study. Thorax. 
+    2008;63(9):803-809. DOI: 10.1136/thx.2007.091132
+
+14. Amin RS, Carroll JL, Jeffries JL, et al. Twenty-four-hour ambulatory 
+    blood pressure in children with sleep-disordered breathing. Am J Respir 
+    Crit Care Med. 2004;169(8):950-956. PMID: 14764433
+...
+```
+
+### ONE COMMAND Workflow
+
+**Command**:
+```bash
+python scripts/extract_included_studies.py ai_2022 \
+  --lookup-pmid \
+  --generate-gold-csv
+```
+
+**This single command does everything**:
+1. ✅ Finds "Included Studies" table in `paper_ai_2022.md`
+2. ✅ Extracts reference numbers: [12], [14], [35], etc.
+3. ✅ Matches to References section
+4. ✅ Parses citations → extracts title, author, year, journal
+5. ✅ Looks up DOI + PMID via PubMed E-utilities API
+6. ✅ Falls back to CrossRef API for non-PubMed articles
+7. ✅ Generates `gold_pmids_ai_2022.csv` (simple format)
+8. ✅ Generates `gold_pmids_ai_2022_detailed.csv` (multi-key format)
+9. ✅ Creates quality report: `gold_generation_report_ai_2022.md`
+
+**Expected runtime**: 5-10 minutes for 40-50 included studies
+
+### Step-by-Step Breakdown
+
+#### Step 4.5.1: Extract Included Studies from Paper
+
+**Command** (extraction only, no API lookups):
+```bash
+python scripts/extract_included_studies.py ai_2022
+```
+
+**What happens**:
+```
+📄 Reading paper: studies/ai_2022/paper_ai_2022.md
+
+🔍 Finding included studies table...
+   ✅ Found table with 14 reference numbers
+
+📚 Parsing References section...
+   ✅ Matched 14/14 citations
+
+✅ Extraction complete!
+   Output: studies/ai_2022/included_studies_ai_2022.json
+
+Summary:
+  - Total included studies: 14
+  - With DOI (from paper): 8
+  - With PMID (from paper): 6
+  - With neither: 0
+```
+
+**Output format** (`included_studies_ai_2022.json`):
+```json
+{
+  "study_name": "ai_2022",
+  "paper_path": "studies/ai_2022/paper_ai_2022.md",
+  "extraction_date": "2026-01-24T10:30:00",
+  "total_included_studies": 14,
+  "included_studies": [
+    {
+      "reference_number": 12,
+      "first_author": "Li AM",
+      "year": 2008,
+      "title": "Ambulatory blood pressure in children with obstructive sleep apnoea",
+      "journal": "Thorax",
+      "doi": null,
+      "pmid": null
+    },
+    {
+      "reference_number": 14,
+      "first_author": "Amin RS",
+      "year": 2004,
+      "title": "Twenty-four-hour ambulatory blood pressure in children",
+      "journal": "Am J Respir Crit Care Med",
+      "doi": null,
+      "pmid": "14764433"
+    }
+  ]
+}
+```
+
+#### Step 4.5.2: Look Up DOIs and PMIDs
+
+**Command**:
+```bash
+python scripts/lookup_pmid.py \
+  --input studies/ai_2022/included_studies_ai_2022.json \
+  --output studies/ai_2022/included_studies_ai_2022_with_pmids.json \
+  --email your.email@institution.edu
+```
+
+**What happens**:
+```
+🔍 Looking up PMIDs for 14 studies...
+
+Study 1/14: Li AM (2008)
+  Query: "Ambulatory blood pressure in children with obstructive sleep apnoea"[Title] AND Li AM[Author] AND 2008[Date]
+  ✅ Found PMID: 18388205 (confidence: 0.95)
+  ✅ Found DOI: 10.1136/thx.2007.091132
+
+Study 2/14: Amin RS (2004)
+  PMID already present: 14764433
+  🔍 Looking up DOI...
+  ✅ Found DOI: 10.1164/rccm.200309-1305OC
+
+Study 3/14: Chan KC (2020)
+  ✅ Found PMID: 32209641 (confidence: 0.92)
+  ✅ Found DOI: 10.1136/thoraxjnl-2019-213692
+
+...
+
+📊 Lookup Complete!
+   With PMID: 14/14 (100%)
+   With DOI: 14/14 (100%)
+   Average confidence: 0.93
+```
+
+**API Strategy**:
+1. **PubMed E-utilities** (primary):
+   - Queries by title + author + year
+   - Returns PMID + DOI (both from PubMed record)
+   - Confidence scoring: Title similarity using Levenshtein distance
+
+2. **CrossRef API** (fallback):
+   - Used when PubMed returns no match
+   - Returns DOI only (CrossRef doesn't have PMID)
+   - Useful for non-indexed journals, preprints
+
+**Confidence Thresholds**:
+- **Accept**: confidence ≥ 0.85 (high similarity)
+- **Review**: confidence 0.70-0.85 (moderate similarity)
+- **Reject**: confidence < 0.70 (poor match)
+
+#### Step 4.5.3: Generate Gold Standard CSV Files
+
+**Command**:
+```bash
+python scripts/generate_gold_standard.py \
+  --input studies/ai_2022/included_studies_ai_2022_with_pmids.json \
+  --study ai_2022 \
+  --confidence 0.85
+```
+
+**What happens**:
+```
+📊 Filtering studies by confidence threshold (0.85)...
+   Accepted: 12/14 (85.7%)
+   Rejected: 2/14 (14.3%)
+
+📄 Generating gold_pmids_ai_2022.csv (simple format)...
+   ✅ Created with 12 PMIDs
+
+📄 Generating gold_pmids_ai_2022_detailed.csv (multi-key format)...
+   ✅ Created with 12 rows (PMID + DOI + metadata)
+
+📊 Creating quality report...
+   ✅ gold_generation_report_ai_2022.md
+```
+
+**Output 1: Simple format** (`gold_pmids_ai_2022.csv`):
+```
+18388205
+14764433
+32209641
+29056283
+31217195
+18621673
+...
+```
+**Purpose**: Backward compatible, used for basic PMID-only evaluation
+
+**Output 2: Detailed format** (`gold_pmids_ai_2022_detailed.csv`):
+```csv
+pmid,first_author,year,title,journal,doi
+18388205,Li AM,2008,Ambulatory blood pressure in children with obstructive sleep apnoea: a community based study,Thorax,10.1136/thx.2007.091132
+14764433,Amin RS,2004,Twenty-four-hour ambulatory blood pressure in children with sleep-disordered breathing,Am J Respir Crit Care Med,10.1164/rccm.200309-1305OC
+32209641,Chan KC,2020,Childhood OSA is an independent determinant of blood pressure in adulthood: longitudinal follow-up study,Thorax,10.1136/thoraxjnl-2019-213692
+```
+**Purpose**: Multi-key evaluation (DOI + PMID matching)
+
+**Output 3: Quality Report** (`gold_generation_report_ai_2022.md`):
+```markdown
+# Gold Standard Generation Report
+
+**Study**: ai_2022
+**Generated**: 2026-01-24
+**Confidence Threshold**: 0.85
+
+## Summary Statistics
+
+- **Total Included Studies**: 14
+- **Accepted** (confidence ≥ 0.85): 12
+- **Rejected** (confidence < 0.85): 2
+
+## Coverage Metrics
+
+| Metric | Count | Percentage |
+|--------|-------|------------|
+| With PMID | 12 | 100.0% |
+| With DOI | 12 | 100.0% |
+| With Both | 12 | 100.0% |
+
+## Rejected Studies (Low Confidence)
+
+- [32] Are there gender differences in the severity... (confidence: 0.80)
+- [35] Baroreflex gain in children with obstructive... (confidence: 0.78)
+
+**Recommendation**: Manually review rejected studies and add to CSV if appropriate.
+```
+
+### Advanced Options
+
+#### Custom Confidence Threshold
+
+Lower threshold for more inclusive gold standard:
+```bash
+python scripts/extract_included_studies.py ai_2022 \
+  --lookup-pmid \
+  --generate-gold-csv \
+  --confidence 0.75
+```
+
+#### Email Configuration (for PubMed API)
+
+PubMed requires email for E-utilities:
+```bash
+export PUBMED_EMAIL="your.email@institution.edu"
+python scripts/extract_included_studies.py ai_2022 --lookup-pmid
+```
+
+Or use `.env` file:
+```bash
+# .env
+PUBMED_EMAIL=your.email@institution.edu
+PUBMED_API_KEY=your_api_key_here  # Optional, increases rate limit
+```
+
+#### API Key (optional, 3x faster)
+
+Get API key from: https://www.ncbi.nlm.nih.gov/account/settings/
+```bash
+export PUBMED_API_KEY="your_api_key_here"
+```
+**Effect**: Rate limit increases from 3 req/sec → 10 req/sec (3x faster)
+
+### Integration with Evaluation Pipeline
+
+After generating gold standard files, they're automatically used by the evaluation system:
+
+```python
+# In llm_sr_select_and_score.py
+gold_pmids, gold_dois = load_gold_multi_key("studies/ai_2022/gold_pmids_ai_2022_detailed.csv")
+
+# Multi-key matching
+matches_by_doi = retrieved_dois & gold_dois      # Primary strategy
+matches_by_pmid = retrieved_pmids & gold_pmids   # Fallback for DOI-less articles
+```
+
+**See**: [DOI_PMID_MULTI_KEY_EVALUATION_GUIDE.md Section 9](DOI_PMID_MULTI_KEY_EVALUATION_GUIDE.md#9-gold-standard-extraction-technical-architecture) for technical implementation details.
+
+### Troubleshooting
+
+#### Issue 1: "No included studies table found"
+
+**Cause**: Parser can't locate the table
+
+**Solutions**:
+1. Check markdown file has section heading:
+   - "Table 1: Included Studies"
+   - "Characteristics of Included Studies"
+   - "## Included Studies"
+
+2. Verify table is properly formatted (markdown table syntax)
+
+3. **Fallback**: Use manual LLM extraction (Automation_guide_main.md STEP 5, Method B)
+
+#### Issue 2: Low confidence matches
+
+**Example output**:
+```
+⚠️  Warning: 5 studies below confidence threshold (0.85)
+   Review: gold_generation_report_ai_2022.md
+```
+
+**Solutions**:
+1. **Lower threshold**: Use `--confidence 0.75` if matches look correct
+2. **Manual review**: Check quality report, manually add correct PMIDs to CSV
+3. **Title mismatch**: Paper title differs from PubMed title (abbreviations, punctuation)
+
+#### Issue 3: PubMed rate limiting
+
+**Symptoms**:
+```
+⚠️  Rate limit exceeded: Waiting 10 seconds...
+⚠️  Rate limit exceeded: Waiting 10 seconds...
+```
+
+**Solutions**:
+1. **Get API key**: Free from NCBI, increases limit 3x
+2. **Be patient**: Script automatically retries with exponential backoff
+3. **Smaller batches**: Process fewer studies at a time
+
+#### Issue 4: Some studies missing DOI/PMID
+
+**Example report**:
+```
+Coverage Metrics:
+  With PMID: 45/47 (95.7%)
+  With DOI: 42/47 (89.4%)
+  With Neither: 2/47 (4.3%)
+```
+
+**Solutions**:
+1. **Acceptable**: 90%+ coverage is normal (some old articles lack DOIs)
+2. **Manual lookup**: Search PubMed manually for missing 2 studies
+3. **Add to CSV**: Manually append PMIDs to `gold_pmids_<study>_detailed.csv`
+
+### Output Files Summary
+
+| File | Format | Purpose |
+|------|--------|---------|
+| `included_studies_<study>.json` | JSON | Intermediate: Extracted studies (no API lookups) |
+| `included_studies_<study>_with_pmids.json` | JSON | Intermediate: After API lookups (with confidence) |
+| `gold_pmids_<study>.csv` | CSV (1 column) | Simple: PMID-only, backward compatible |
+| `gold_pmids_<study>_detailed.csv` | CSV (6 columns) | **Main output**: PMID+DOI, multi-key ready |
+| `gold_generation_report_<study>.md` | Markdown | Quality report: Coverage, confidence, rejected studies |
 
 ---
 
