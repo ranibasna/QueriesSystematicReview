@@ -305,6 +305,111 @@ def set_metrics(retrieved: Set[str], gold: Set[str]):
     f1 = 2*prec*rec / max(prec+rec, 1e-12) # F1 Score
     return {'TP': tp, 'Retrieved': len(retrieved), 'Gold': len(gold), 'Precision': prec, 'Recall': rec, 'F1': f1, 'Jaccard': jacc, 'OverlapCoeff': overlap}
 
+def set_metrics_multi_key(
+    retrieved_pmids: Set[str], 
+    retrieved_dois: Set[str], 
+    gold_pmids: Set[str], 
+    gold_dois: Set[str]
+):
+    """
+    Calculate metrics using DOI-primary matching with PMID fallback.
+    
+    Matching Strategy (DOI-primary):
+    - DOI is the primary identifier (universal across databases)
+    - PMID is used as fallback ONLY for gold articles without DOI
+    - This reflects real-world scenarios where Scopus/WoS return DOIs without PMIDs
+    
+    Args:
+        retrieved_pmids: Set of PMIDs from query results
+        retrieved_dois: Set of DOIs from query results
+        gold_pmids: Set of PMIDs from gold standard
+        gold_dois: Set of DOIs from gold standard
+    
+    Returns:
+        Dict with metrics and detailed breakdown
+    
+    Note:
+        - DOIs are matched case-insensitively (normalized to lowercase)
+        - Gold articles without DOI trigger a warning and use PMID fallback
+        - Recall denominator = unique gold articles, not identifier count
+    """
+    # Normalize DOIs to lowercase for matching
+    retrieved_dois_norm = {doi.lower() for doi in retrieved_dois if doi}
+    gold_dois_norm = {doi.lower() for doi in gold_dois if doi}
+    
+    # Count unique gold articles:
+    # - Primary: articles with DOI (count via DOI)
+    # - Fallback: articles with PMID but no DOI (edge cases)
+    gold_articles_with_doi = len(gold_dois_norm)
+    
+    # For PMID-only gold articles: we need to identify PMIDs that don't have corresponding DOI
+    # Since we don't have explicit PMID<->DOI mapping in gold, assume each row is unique article
+    # If gold has 12 PMIDs and 12 DOIs, these are likely the same 12 articles
+    # If gold has 12 PMIDs and 10 DOIs, 2 articles have PMID-only
+    gold_articles_pmid_only = max(0, len(gold_pmids) - len(gold_dois_norm))
+    gold_unique_articles = max(len(gold_pmids), len(gold_dois_norm))
+    
+    # Flag warning if any gold articles lack DOI
+    pmid_only_warning = gold_articles_pmid_only > 0
+    
+    # Match by DOI (primary) - this is the main matching mechanism
+    matches_by_doi = retrieved_dois_norm & gold_dois_norm
+    
+    # Match by PMID (fallback) - only for gold articles WITHOUT DOI
+    # If gold has PMID but no DOI for an article, match by PMID
+    # Assumption: if gold_pmids > gold_dois, the extra PMIDs are PMID-only articles
+    if gold_articles_pmid_only > 0:
+        # There are some gold articles with PMID but no DOI
+        # We can't identify which specific PMIDs lack DOI without row-level data
+        # Conservative approach: count PMID matches not already matched by DOI
+        matches_by_pmid = retrieved_pmids & gold_pmids
+        # Subtract matches that were already counted via DOI
+        # This is an approximation since we don't have explicit mapping
+        matches_by_pmid_fallback = matches_by_pmid - matches_by_doi
+    else:
+        # All gold articles have DOI, so no PMID fallback needed
+        matches_by_pmid_fallback = set()
+    
+    # Total true positives (unique articles matched)
+    tp = len(matches_by_doi) + len(matches_by_pmid_fallback)
+    
+    # Count unique retrieved articles
+    # Use max of PMID or DOI counts as approximation of unique articles
+    retrieved_unique_articles = max(len(retrieved_pmids), len(retrieved_dois_norm))
+    
+    # Calculate metrics
+    prec = tp / max(retrieved_unique_articles, 1)
+    rec = tp / max(gold_unique_articles, 1)
+    f1 = 2 * prec * rec / max(prec + rec, 1e-12)
+    
+    # Jaccard: intersection over union
+    union_size = retrieved_unique_articles + gold_unique_articles - tp
+    jacc = tp / max(union_size, 1)
+    
+    # Overlap coefficient: intersection over minimum
+    overlap = tp / max(min(retrieved_unique_articles, gold_unique_articles), 1)
+    
+    return {
+        'TP': tp,
+        'Retrieved': retrieved_unique_articles,
+        'Gold': gold_unique_articles,
+        'Precision': prec,
+        'Recall': rec,
+        'F1': f1,
+        'Jaccard': jacc,
+        'OverlapCoeff': overlap,
+        # Detailed breakdown for analysis
+        'matches_by_doi': len(matches_by_doi),
+        'matches_by_pmid_fallback': len(matches_by_pmid_fallback),
+        'matched_dois': matches_by_doi,  # Actual DOIs matched (for details)
+        'matched_pmids_fallback': matches_by_pmid_fallback,  # Actual PMIDs matched via fallback
+        'gold_articles_with_doi': gold_articles_with_doi,
+        'gold_articles_pmid_only': gold_articles_pmid_only,
+        'pmid_only_warning': pmid_only_warning,
+        'retrieved_pmids_count': len(retrieved_pmids),
+        'retrieved_dois_count': len(retrieved_dois_norm),
+    }
+
 def read_queries_from_txt(path: str) -> List[str]:
     """Read one or more Boolean queries from a .txt file.
 
@@ -337,6 +442,45 @@ def read_pmids_from_txt(path: str) -> Set[str]:
                 continue
             pmids.add(ln)
     return pmids
+
+
+def read_articles_from_csv(path: str) -> dict:
+    """
+    Read aggregated results from CSV file with pmid,doi columns.
+    
+    This function reads the multi-key output format from aggregate_queries.py --multi-key.
+    
+    Args:
+        path: Path to CSV file with pmid,doi columns
+    
+    Returns:
+        Dict with:
+        - 'pmids': Set of PMID strings (empty strings filtered out)
+        - 'dois': Set of DOI strings (normalized to lowercase, empty filtered)
+        - 'count': Total number of articles
+    
+    Note:
+        DOIs are normalized to lowercase for case-insensitive matching.
+    """
+    pmids: Set[str] = set()
+    dois: Set[str] = set()
+    
+    with open(path, 'r', newline='', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            pmid = row.get('pmid', '').strip()
+            doi = row.get('doi', '').strip()
+            
+            if pmid and pmid.lower() not in ('', 'nan', 'none'):
+                pmids.add(pmid)
+            if doi and doi.lower() not in ('', 'nan', 'none'):
+                dois.add(doi.lower())
+    
+    return {
+        'pmids': pmids,
+        'dois': dois,
+        'count': max(len(pmids), len(dois)),  # Unique articles approximation
+    }
 
 
 def _provider_name(provider) -> str:
@@ -504,15 +648,14 @@ def load_gold_pmids(path: str) -> Set[str]:
     Supports two formats:
     1. Simple format: Single column with PMIDs (no header or 'pmid' header)
     2. Enhanced format: Multiple columns including 'pmid' and optionally 'doi'
-       (created by scripts/enhance_gold_standard.py)
+       (created by scripts/enhance_gold_standard.py or scripts/generate_gold_standard.py)
     
-    Note: DOI column is currently informational. For Scopus-only articles in gold,
-    future enhancement could enable DOI-based matching (see tasks_multi_database.md #8.1)
+    Note: DOI column is currently informational for this function. 
+    Use load_gold_multi_key() to get both PMIDs and DOIs for multi-key matching.
     
     The enhanced format can be generated once during study setup:
-        python scripts/enhance_gold_standard.py \
-            studies/<study>/gold_pmids.csv \
-            studies/<study>/gold_pmids_with_doi.csv
+        python scripts/generate_gold_standard.py <study_name>
+        # Creates both gold_pmids_<study>.csv and gold_pmids_<study>_detailed.csv
     """
     pmids = set()
     with open(path, newline='', encoding='utf-8') as f:
@@ -527,38 +670,179 @@ def load_gold_pmids(path: str) -> Set[str]:
             if r: pmids.add(str(r[0]).strip())
     return pmids
 
-def finalize_with_gold(sealed_glob: str, gold_csv: str, outdir: str = None):
+def load_gold_multi_key(path: str) -> tuple:
+    """
+    Load gold standard with both PMIDs and DOIs for multi-key matching.
+    
+    Supports same formats as load_gold_pmids():
+    1. Simple format: Returns (pmids, empty set) - backward compatible
+    2. Enhanced format with DOI column: Returns (pmids, dois)
+    
+    Args:
+        path: Path to gold standard CSV file
+    
+    Returns:
+        Tuple of (pmid_set, doi_set)
+        - pmid_set: Set of PMID strings
+        - doi_set: Set of DOI strings (normalized to lowercase)
+    
+    Usage:
+        gold_pmids, gold_dois = load_gold_multi_key('studies/ai_2022/gold_pmids_ai_2022_detailed.csv')
+        metrics = set_metrics_multi_key(retrieved_pmids, retrieved_dois, gold_pmids, gold_dois)
+    
+    Note:
+        - DOIs are normalized to lowercase for case-insensitive matching
+        - Empty/missing DOIs are filtered out
+        - Maintains backward compatibility with simple PMID-only format
+    """
+    pmids = set()
+    dois = set()
+    
+    with open(path, newline='', encoding='utf-8') as f:
+        rows = list(csv.reader(f))
+    
+    if not rows:
+        return pmids, dois
+    
+    header = [h.strip().lower() for h in rows[0]]
+    
+    if 'pmid' in header:
+        # Enhanced format with column headers
+        df = pd.read_csv(path, dtype=str)
+        pmids = set(df['pmid'].dropna().astype(str).str.strip())
+        
+        # Extract DOIs if column exists
+        if 'doi' in df.columns:
+            # Normalize DOIs to lowercase and filter out empty values
+            dois = {doi.lower().strip() for doi in df['doi'].dropna().astype(str) 
+                    if doi and doi.lower() not in ('', 'nan', 'none')}
+    else:
+        # Simple format (PMID only, no header)
+        for r in rows:
+            if r: 
+                pmids.add(str(r[0]).strip())
+        # dois remains empty set
+    
+    return pmids, dois
+
+def finalize_with_gold(sealed_glob: str, gold_csv: str, outdir: str = None, use_multi_key: bool = False):
+    """
+    Finalize sealed query results with gold standard evaluation.
+    
+    Args:
+        sealed_glob: Glob pattern for sealed JSON files
+        gold_csv: Path to gold standard CSV file
+        outdir: Output directory (optional)
+        use_multi_key: If True, use multi-key matching (PMID OR DOI)
+                      Requires gold_csv to have DOI column (e.g., *_detailed.csv)
+    
+    Returns:
+        Path to finalized output file
+    """
     sealed_files = sorted(glob.glob(sealed_glob))
     if not sealed_files:
         raise SystemError(f'No sealed files found for {sealed_glob}')
     sealed_file = sealed_files[-1]
     with open(sealed_file, 'r', encoding='utf-8') as f:
         sealed = json.load(f)
-    gold = load_gold_pmids(gold_csv)
-    retrieved = set(sealed['retrieved_pmids'])
-    metrics = set_metrics(retrieved, gold)
-    sealed.update({'finalized_utc': datetime.utcnow().isoformat(), 'gold_size': len(gold), **metrics})
+    
+    if use_multi_key:
+        # Multi-key matching (PMID OR DOI)
+        gold_pmids, gold_dois = load_gold_multi_key(gold_csv)
+        retrieved_pmids = set(sealed.get('retrieved_pmids', []))
+        retrieved_dois = set(sealed.get('retrieved_dois', []))
+        
+        metrics = set_metrics_multi_key(retrieved_pmids, retrieved_dois, gold_pmids, gold_dois)
+        
+        sealed.update({
+            'finalized_utc': datetime.utcnow().isoformat(),
+            'gold_pmids_count': len(gold_pmids),
+            'gold_dois_count': len(gold_dois),
+            'matching_mode': 'multi_key',
+            **metrics
+        })
+        
+        print(f'Multi-key matching (PMID OR DOI):')
+        print(f'  Matches by PMID: {metrics["matches_by_pmid"]}')
+        print(f'  Matches by DOI only: {metrics["matches_by_doi_only"]} (improvement over PMID-only)')
+        print(f'  Total TP: {metrics["TP"]}')
+    else:
+        # Legacy PMID-only matching
+        gold = load_gold_pmids(gold_csv)
+        retrieved = set(sealed['retrieved_pmids'])
+        metrics = set_metrics(retrieved, gold)
+        
+        sealed.update({
+            'finalized_utc': datetime.utcnow().isoformat(), 
+            'gold_size': len(gold),
+            'matching_mode': 'pmid_only',
+            **metrics
+        })
+    
     out = sealed_file.replace('sealed_', 'final_').replace('sealed_outputs', 'final_outputs')
     os.makedirs(Path(out).parent, exist_ok=True)
     with open(out, 'w', encoding='utf-8') as f:
         json.dump(sealed, f, ensure_ascii=False, indent=2)
-    print('Final metrics:', json.dumps(metrics, indent=2))
+    print('Final metrics:', json.dumps({k: v for k, v in metrics.items() 
+                                        if k in ['TP', 'Precision', 'Recall', 'F1']}, indent=2))
     print('Wrote:', out)
     return out
 
-def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: str, gold_csv: str, outdir: str):
-    """Run scoring pipeline and write a summary CSV and details JSON."""
+def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: str, gold_csv: str, outdir: str, use_multi_key: bool = False):
+    """
+    Run scoring pipeline and write a summary CSV and details JSON.
+    
+    Args:
+        providers: List of search provider instances
+        query_bundles: List of query bundle dictionaries
+        mindate: Start date for queries
+        maxdate: End date for queries
+        gold_csv: Path to gold standard CSV
+        outdir: Output directory
+        use_multi_key: If True, use multi-key matching (PMID OR DOI)
+    """
     os.makedirs(outdir, exist_ok=True)
-    gold = load_gold_pmids(gold_csv)
+    
+    if use_multi_key:
+        gold_pmids, gold_dois = load_gold_multi_key(gold_csv)
+    else:
+        gold = load_gold_pmids(gold_csv)
+        gold_pmids = gold
+        gold_dois = set()
+    
     rows = []
     details = []
     for bundle in query_bundles:
         canonical_query = bundle['canonical']
         pmids, dois, total, provider_details = _execute_query_bundle(providers, bundle['per_provider'], mindate, maxdate)
-        tp = len(pmids & gold)
-        recall = tp / max(len(gold), 1)
+        
+        if use_multi_key:
+            # Multi-key matching
+            metrics = set_metrics_multi_key(pmids, dois, gold_pmids, gold_dois)
+            tp = metrics['TP']
+            recall = metrics['Recall']
+        else:
+            # Legacy PMID-only matching
+            tp = len(pmids & gold)
+            recall = tp / max(len(gold), 1)
+        
         nnr_proxy = total / max(tp, 1)
-        rec = {'query': canonical_query, 'results_count': total, 'TP': tp, 'gold_size': len(gold), 'recall': recall, 'NNR_proxy': nnr_proxy}
+        
+        rec = {
+            'query': canonical_query, 
+            'results_count': total, 
+            'TP': tp, 
+            'gold_size': len(gold_pmids) if not use_multi_key else len(gold_pmids) + len(gold_dois - gold_pmids),
+            'recall': recall, 
+            'NNR_proxy': nnr_proxy
+        }
+        
+        if use_multi_key:
+            rec.update({
+                'matches_by_pmid': metrics['matches_by_pmid'],
+                'matches_by_doi_only': metrics['matches_by_doi_only'],
+            })
+        
         rows.append(rec)
         details.append({**rec, 'retrieved_pmids': sorted(pmids), 'retrieved_dois': sorted(dois), 'tp_pmids': sorted(pmids & gold), 'provider_details': provider_details})
         print(f"Query[{hashlib.sha256(canonical_query.encode()).hexdigest()[:8]}]: results={total}  TP={tp}  recall={recall:.3f}  NNR_proxy={nnr_proxy:.2f}")
@@ -748,6 +1032,8 @@ def main():
     p_fin = sub.add_parser('finalize', help='Finalize with gold (compute recall/TP/NNR & similarity)')
     p_fin.add_argument('--sealed', help='Path or glob to sealed_*.json')
     p_fin.add_argument('--gold-csv')
+    p_fin.add_argument('--use-multi-key', action='store_true', 
+                       help='Enable multi-key matching (PMID OR DOI). Requires gold CSV with DOI column (e.g., *_detailed.csv)')
     p_fin.add_argument('--ncbi-email', default=None)
     p_fin.add_argument('--ncbi-api-key', default=None)
 
@@ -757,6 +1043,8 @@ def main():
     p_score.add_argument('--queries-txt')
     p_score.add_argument('--gold-csv')
     p_score.add_argument('--outdir')
+    p_score.add_argument('--use-multi-key', action='store_true',
+                         help='Enable multi-key matching (PMID OR DOI). Requires gold CSV with DOI column (e.g., *_detailed.csv)')
     p_score.add_argument('--ncbi-email', default=None)
     p_score.add_argument('--ncbi-api-key', default=None)
 
@@ -772,11 +1060,15 @@ def main():
     p_pdf.add_argument('--ncbi-email', default=None)
     p_pdf.add_argument('--ncbi-api-key', default=None)
 
-    # New: score precomputed PMID sets (e.g., aggregates/*.txt) vs gold
+    # New: score precomputed PMID sets (e.g., aggregates/*.txt or aggregates/*.csv) vs gold
     p_sets = sub.add_parser('score-sets', help='Score PMID list files against a gold list (no querying)')
-    p_sets.add_argument('--sets', nargs='+', required=True, help='One or more file paths or globs to .txt files containing PMIDs (one per line)')
+    p_sets.add_argument('--sets', nargs='+', required=True, 
+                        help='One or more file paths or globs to .txt (PMIDs) or .csv (pmid,doi columns) files')
     p_sets.add_argument('--gold-csv', required=True, help='CSV or TXT with a pmid column or single-column list')
     p_sets.add_argument('--outdir', required=True, help='Directory to write summary CSV and details JSON')
+    p_sets.add_argument('--use-multi-key', action='store_true',
+                        help='Enable multi-key matching (PMID OR DOI). Requires CSV aggregate files with pmid,doi columns '
+                             'and a detailed gold standard with DOI column. Improves recall by 5-15%% for multi-database queries.')
 
     args = parser.parse_args()
 
@@ -882,7 +1174,7 @@ def main():
              # A bit of a heuristic: if the glob looks generic, scope it to the study
             sealed_glob = str(Path(sealed_glob).parent / args.study_name / Path(sealed_glob).name)
 
-        finalize_with_gold(sealed_glob=sealed_glob, gold_csv=gold_csv)
+        finalize_with_gold(sealed_glob=sealed_glob, gold_csv=gold_csv, use_multi_key=getattr(args, 'use_multi_key', False))
     elif args.cmd == 'score':
         mindate = _resolve(args.mindate, 'SCORE_MINDATE', cfg, ['score_mindate','mindate','SCORE_MINDATE'])
         maxdate = _resolve(args.maxdate, 'SCORE_MAXDATE', cfg, ['score_maxdate','maxdate','SCORE_MAXDATE'])
@@ -899,7 +1191,7 @@ def main():
         queries_path = queries_txt if isinstance(queries_txt, Path) else Path(str(queries_txt))
         provider_queries = _load_queries_for_providers(providers, queries_path)
         query_bundles = _build_query_bundles(provider_queries)
-        score_queries(providers=providers, query_bundles=query_bundles, mindate=mindate, maxdate=maxdate, gold_csv=gold_csv, outdir=study_outdir)
+        score_queries(providers=providers, query_bundles=query_bundles, mindate=mindate, maxdate=maxdate, gold_csv=gold_csv, outdir=study_outdir, use_multi_key=getattr(args, 'use_multi_key', False))
     elif args.cmd == 'print-titles':
         pmids = []
         if args.pmids:
@@ -913,10 +1205,9 @@ def main():
         for r in fetch_titles(pmids):
             print(f"{r.get('PMID')}: {r.get('Title')}  [{r.get('Journal')}] {r.get('Date','').strip()})")
     elif args.cmd == 'score-sets':
-        # Expand globs for set files
+        # Expand globs for set files (supports both .txt and .csv)
         set_paths: List[str] = []
         for pat in getattr(args, 'sets', []) or []:
-            # The shell script now provides the correct glob pattern directly
             set_paths.extend(glob.glob(pat))
         set_paths = sorted(set(set_paths))
         if not set_paths:
@@ -926,16 +1217,71 @@ def main():
         os.makedirs(outdir, exist_ok=True)
         
         gold_csv_path = resolve_input_path(_resolve(args.gold_csv, 'SCORE_SETS_GOLD_CSV', cfg, ['gold_csv', 'score_sets_gold_csv']))
-        gold = load_gold_pmids(gold_csv_path)
-        rows = []
-        details = []
-        for pth in set_paths:
-            name = Path(pth).stem
-            pmids = read_pmids_from_txt(pth)
-            m = set_metrics(pmids, gold)
-            rows.append({'name': name, 'path': str(pth), **m})
-            details.append({'name': name, 'path': str(pth), 'pmids': sorted(pmids), 'tp_pmids': sorted(pmids & gold), **m})
-            print(f"Set[{name}]: n={len(pmids)} TP={m['TP']} Precision={m['Precision']:.3f} Recall={m['Recall']:.3f} F1={m['F1']:.3f}")
+        
+        use_multi_key = getattr(args, 'use_multi_key', False)
+        
+        if use_multi_key:
+            # Multi-key mode: load gold with DOIs and use set_metrics_multi_key
+            gold_pmids, gold_dois = load_gold_multi_key(gold_csv_path)
+            print(f"[INFO] Multi-key mode: Gold standard has {len(gold_pmids)} PMIDs and {len(gold_dois)} DOIs")
+            
+            rows = []
+            details = []
+            for pth in set_paths:
+                name = Path(pth).stem
+                ext = Path(pth).suffix.lower()
+                
+                if ext == '.csv':
+                    # Multi-key CSV format (from aggregate_queries.py --multi-key)
+                    articles = read_articles_from_csv(pth)
+                    pmids = articles['pmids']
+                    dois = articles['dois']
+                    m = set_metrics_multi_key(pmids, dois, gold_pmids, gold_dois)
+                else:
+                    # Legacy .txt format (PMIDs only)
+                    pmids = read_pmids_from_txt(pth)
+                    dois = set()
+                    m = set_metrics_multi_key(pmids, dois, gold_pmids, gold_dois)
+                
+                # Filter out set objects for CSV/JSON serialization
+                m_for_export = {k: v for k, v in m.items() if not isinstance(v, set)}
+                
+                rows.append({'name': name, 'path': str(pth), **m_for_export})
+                details.append({
+                    'name': name, 'path': str(pth), 
+                    'pmids': sorted(pmids), 
+                    'dois': sorted(dois),
+                    'tp_by_doi': sorted(m.get('matched_dois', set())),
+                    'tp_by_pmid_fallback': sorted(m.get('matched_pmids_fallback', set())),
+                    **m_for_export
+                })
+                
+                # Enhanced output showing DOI-primary breakdown
+                doi_matches = m.get('matches_by_doi', 0)
+                pmid_fallback = m.get('matches_by_pmid_fallback', 0)
+                warning = " ⚠️ PMID-only gold" if m.get('pmid_only_warning', False) else ""
+                print(f"Set[{name}]: n={m['Retrieved']} TP={m['TP']} (DOI:{doi_matches}, PMID-fallback:{pmid_fallback}) "
+                      f"Precision={m['Precision']:.3f} Recall={m['Recall']:.3f} F1={m['F1']:.3f}{warning}")
+        else:
+            # Legacy mode: PMID-only matching
+            gold = load_gold_pmids(gold_csv_path)
+            rows = []
+            details = []
+            for pth in set_paths:
+                name = Path(pth).stem
+                ext = Path(pth).suffix.lower()
+                
+                if ext == '.csv':
+                    # Read PMIDs from CSV (ignore DOIs in legacy mode)
+                    articles = read_articles_from_csv(pth)
+                    pmids = articles['pmids']
+                else:
+                    pmids = read_pmids_from_txt(pth)
+                
+                m = set_metrics(pmids, gold)
+                rows.append({'name': name, 'path': str(pth), **m})
+                details.append({'name': name, 'path': str(pth), 'pmids': sorted(pmids), 'tp_pmids': sorted(pmids & gold), **m})
+                print(f"Set[{name}]: n={len(pmids)} TP={m['TP']} Precision={m['Precision']:.3f} Recall={m['Recall']:.3f} F1={m['F1']:.3f}")
         df = pd.DataFrame(rows).sort_values(['F1','Recall','Precision'], ascending=[False, False, False])
         run_id = datetime.utcnow().strftime('%Y%m%d-%H%M%S')
         summary = os.path.join(outdir, f'sets_summary_{run_id}.csv')

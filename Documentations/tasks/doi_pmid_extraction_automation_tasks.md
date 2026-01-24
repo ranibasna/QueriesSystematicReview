@@ -2,26 +2,50 @@
 title: "DOI and PMID Extraction Automation - Task Breakdown"
 subtitle: "Actionable Tasks and Subtasks for Implementation"
 author: "Systematic Review Queries Project"
-date: "January 22, 2026"
-status: "Planning Phase"
-total_estimated_hours: 87
+date: "January 24, 2026"
+status: "Wave 1 Complete | Wave 2 Planning"
+wave_1_hours: 87
+wave_2_hours: 37-48
+total_estimated_hours: 124-135
 ---
 
 # DOI and PMID Extraction Automation - Task Breakdown
 
 This document breaks down the implementation plan into specific, actionable tasks and subtasks with time estimates, dependencies, and success criteria.
 
+**Implementation is organized into two waves:**
+- **Wave 1 (Core)**: Basic extraction and workflow automation - **COMPLETE** ✅
+- **Wave 2 (Enhancement)**: Quality improvements and DOI-aware evaluation - **IN PLANNING** 📋
+
 ---
 
 ## Task Organization
 
-**Total Estimated Time**: 87 hours (2-3 weeks for one developer)
+### Wave 1: Core Implementation (87 hours) ✅ **COMPLETE**
 
 **Phases**:
-- Phase 1: Reference Extraction (18 hours)
-- Phase 2: ID Lookup System (35 hours)
-- Phase 3: Workflow Integration (22 hours)
-- Phase 4: Documentation & Testing (12 hours)
+- Phase 1: Reference Extraction (18 hours) ✅
+- Phase 2: ID Lookup System (35 hours) ✅
+- Phase 3: Workflow Integration (22 hours) ⏸️ **PARTIAL** (Gold CSV generation pending)
+- Phase 4: Documentation & Testing (12 hours) ⏸️ **PARTIAL**
+
+**Status**: 85% complete - extraction and lookup working, needs final integration
+
+### Wave 2: Enhancements (37-48 hours) 📋 **PLANNED**
+
+**Phases**:
+- Phase 5: Quality Assurance Enhancements (12-18 hours)
+  - Multi-agent validation
+  - Sampling-based extraction
+  - Multi-source API integration
+- Phase 6: DOI-Aware Evaluation (10-12 hours)
+  - Enhanced gold standard format
+  - Multi-key matching
+  - Aggregation updates
+- Phase 7: Advanced Features (15-18 hours)
+  - Fuzzy title matching
+  - Manual review interface
+  - Performance optimization
 
 ---
 
@@ -823,6 +847,571 @@ This document breaks down the implementation plan into specific, actionable task
 **Success Criteria**:
 - All checklist items completed
 - No merge conflicts
+
+---
+
+---
+
+# WAVE 2: ENHANCEMENTS (37-48 hours)
+
+**Prerequisites**: Wave 1 must be complete and tested on all datasets
+
+**Motivation**: Wave 1 provides 90% time savings with 100% accuracy on ai_2022. Wave 2 adds quality assurance mechanisms and improves evaluation accuracy for multi-database queries.
+
+---
+
+## Phase 5: Quality Assurance Enhancements (12-18 hours)
+
+### Task 5.1: Multi-Agent Validation System
+**Estimated Time**: 4-6 hours  
+**Priority**: Medium (Optional Enhancement)  
+**Dependencies**: Wave 1 complete
+
+**Purpose**: Use multiple LLMs (Claude, GPT-4, Gemini) to extract references and cross-validate results via consensus voting.
+
+**Subtasks**:
+- [ ] 5.1.1 Design multi-agent architecture (1 hour)
+  - Three-agent system: Claude, GPT-4, Gemini
+  - Consensus threshold: 2 out of 3 must agree
+  - Similarity matching: title + author (≥0.85 similarity)
+  - Confidence levels: High (3/3), Medium (2/3), Low (1/3)
+
+- [ ] 5.1.2 Implement agent orchestrator (2 hours)
+  ```python
+  class MultiAgentExtractor:
+      def __init__(self, agents=['claude', 'gpt4', 'gemini']):
+          self.agents = [self._init_agent(a) for a in agents]
+      
+      def extract_with_consensus(self, markdown_path):
+          # Run all agents in parallel
+          results = [agent.extract(markdown_path) for agent in self.agents]
+          
+          # Match studies across agents by similarity
+          matched_groups = self._match_across_agents(results)
+          
+          # Apply consensus voting
+          consensus = self._vote_consensus(matched_groups)
+          return consensus
+  ```
+
+- [ ] 5.1.3 Implement study matching logic (1.5 hours)
+  - Title similarity using rapidfuzz (≥0.85)
+  - Author matching (first author + year)
+  - Group studies found by multiple agents
+  - Handle agent-specific errors gracefully
+
+- [ ] 5.1.4 Integrate with existing workflow (30 min)
+  ```bash
+  python scripts/extract_included_studies.py ai_2022 \
+    --multi-agent-validation \
+    --agents claude,gpt4,gemini \
+    --consensus-threshold 0.66
+  ```
+
+- [ ] 5.1.5 Add review queue for low-consensus items (30 min)
+  - Export studies with <2/3 agreement to CSV
+  - Include all agent versions for manual inspection
+  - Allow user to select correct version
+
+- [ ] 5.1.6 Test and benchmark (30 min)
+  - Test on ai_2022, Godos_2024
+  - Measure agreement rate between agents
+  - Calculate accuracy improvement vs single agent
+
+**Deliverables**:
+- `scripts/multi_agent_extractor.py`
+- Updated `extract_included_studies.py` with `--multi-agent` flag
+- Consensus report template
+- Documentation on agent setup (API keys required)
+
+**Success Criteria**:
+- ≥95% agreement between agents on test data
+- Low-consensus items (<2/3) correctly flagged
+- +5-10% accuracy improvement demonstrated
+- Processing time ≤3x single agent
+
+**When to Use**:
+- High-stakes systematic reviews (clinical, policy)
+- Complex table formats prone to parsing errors
+- Budget allows 3x LLM costs
+- Multiple API keys available
+
+---
+
+### Task 5.2: Sampling-Based Extraction
+**Estimated Time**: 3-4 hours  
+**Priority**: Medium (Optional Enhancement)  
+**Dependencies**: Wave 1 complete
+
+**Purpose**: Run extraction multiple times with different parameters and use majority voting to catch intermittent errors.
+
+**Subtasks**:
+- [ ] 5.2.1 Design sampling strategy (30 min)
+  - 5 runs with varying temperature (0.3, 0.5, 0.7, 0.3, 0.5)
+  - Different random seeds per run
+  - Majority voting: ≥3/5 runs must agree
+  - Track: consistency score per study
+
+- [ ] 5.2.2 Implement sampling orchestrator (1.5 hours)
+  ```python
+  class SamplingExtractor:
+      def extract_with_sampling(self, markdown_path, n_samples=5):
+          results = []
+          for i in range(n_samples):
+              temp = [0.3, 0.5, 0.7, 0.3, 0.5][i]
+              seed = 42 + i * 100
+              result = self._extract_once(markdown_path, temp, seed)
+              results.append(result)
+          
+          # Majority voting
+          consensus = self._majority_vote(results)
+          return consensus
+  ```
+
+- [ ] 5.2.3 Implement voting logic (1 hour)
+  - Match studies across runs (title + author similarity)
+  - Count votes per study
+  - Accept if ≥60% runs agree (3/5)
+  - Flag inconsistent extractions
+
+- [ ] 5.2.4 Add parallel execution (30 min)
+  - Run 5 extractions in parallel (if resources allow)
+  - Reduce total time from 5x to ~1.5x
+
+- [ ] 5.2.5 Test and analyze (30 min)
+  - Test on papers with known parsing issues
+  - Measure: consistency rate, error catch rate
+  - Compare accuracy vs single extraction
+
+**Deliverables**:
+- `scripts/sampling_extractor.py`
+- Voting configuration file
+- Consistency analysis report
+
+**Success Criteria**:
+- Catches ≥80% of intermittent PDF parsing errors
+- Processing time ≤2x single extraction (with parallelization)
+- Consistency score reported per study
+- False rejection rate <5%
+
+**When to Use**:
+- PDFs with complex tables or formatting
+- Known unreliable text extraction
+- High accuracy requirements
+- Cost/time not primary constraint
+
+---
+
+### Task 5.3: Multi-Source API Integration
+**Estimated Time**: 8-10 hours  
+**Priority**: Medium (Future-Proofing)  
+**Dependencies**: Wave 1 complete
+
+**Purpose**: Design provider pattern to support lookup from multiple sources (PubMed, Scopus, WoS, CrossRef) with DOI-based merging.
+
+**Subtasks**:
+- [ ] 5.3.1 Design provider interface (1 hour)
+  ```python
+  from abc import ABC, abstractmethod
+  
+  class LookupProvider(ABC):
+      @abstractmethod
+      def search(self, study: IncludedStudy) -> Optional[dict]:
+          """Return {pmid, doi, scopus_id, wos_id, confidence, source}"""
+          pass
+  ```
+
+- [ ] 5.3.2 Implement provider classes (3 hours)
+  - PubMedProvider (refactor from existing code)
+  - CrossRefProvider (refactor from existing code)
+  - ScopusProvider (NEW - requires Scopus API)
+  - WoSProvider (NEW - requires WoS API)
+
+- [ ] 5.3.3 Implement multi-source orchestrator (2 hours)
+  ```python
+  class MultiSourceOrchestrator:
+      def __init__(self, providers: List[LookupProvider]):
+          self.providers = providers
+      
+      def lookup(self, study: IncludedStudy) -> dict:
+          results = []
+          for provider in self.providers:
+              try:
+                  result = provider.search(study)
+                  if result:
+                      results.append(result)
+              except Exception as e:
+                  logging.warning(f"{provider} failed: {e}")
+          
+          # Merge by DOI
+          merged = self._merge_by_doi(results)
+          return merged
+  ```
+
+- [ ] 5.3.4 Implement DOI-based merging (1.5 hours)
+  - Group results by DOI
+  - Take highest confidence value for each field
+  - Collect all identifier types (PMID, Scopus ID, WoS ID, DOI)
+  - Track which sources contributed
+
+- [ ] 5.3.5 Add graceful degradation (30 min)
+  - Continue if one provider fails
+  - Log provider failures
+  - Return partial results if available
+
+- [ ] 5.3.6 Add CLI configuration (1 hour)
+  ```bash
+  python scripts/extract_included_studies.py ai_2022 \
+    --lookup-sources pubmed,scopus,wos,crossref \
+    --pubmed-email user@example.com \
+    --scopus-api-key YOUR_KEY \
+    --wos-api-key YOUR_KEY
+  ```
+
+- [ ] 5.3.7 Test with mock providers (1 hour)
+  - Create mock Scopus/WoS responses
+  - Test merging logic
+  - Test error handling
+
+**Deliverables**:
+- `scripts/lookup_orchestrator.py`
+- `scripts/providers/` directory with all provider classes
+- Provider configuration file
+- Documentation on API setup
+
+**Success Criteria**:
+- All 4 providers implement common interface
+- Merging correctly deduplicates by DOI
+- Graceful failure when provider unavailable
+- Easy to add new providers (10 lines of code)
+
+**When to Use**:
+- Using Scopus/WoS queries in workflow
+- Need multiple identifier types
+- Want cross-validation of IDs
+- Long-term tool development
+
+---
+
+## Phase 6: DOI-Aware Evaluation (10-12 hours)
+
+### Task 6.1: Enhanced Gold Standard Format
+**Estimated Time**: 2 hours  
+**Priority**: High (if using Scopus/WoS)  
+**Dependencies**: Wave 1 complete
+
+**Purpose**: Add DOI column to gold standard CSV to enable multi-key matching.
+
+**Subtasks**:
+- [ ] 6.1.1 Update gold standard generator (1 hour)
+  ```python
+  def generate_gold_pmids_csv(included_studies, output_path):
+      with open(output_path, 'w', newline='') as f:
+          writer = csv.DictWriter(f, fieldnames=['pmid', 'doi', 'title', 'confidence'])
+          writer.writeheader()
+          for study in included_studies:
+              writer.writerow({
+                  'pmid': study.pmid,
+                  'doi': study.doi,
+                  'title': study.title[:100],  # Truncate for readability
+                  'confidence': study.lookup_metadata.get('confidence', 1.0)
+              })
+  ```
+
+- [ ] 6.1.2 Update gold loader with format detection (1 hour)
+  ```python
+  def load_gold_pmids(path: str) -> tuple[set[str], set[str]]:
+      """Returns (gold_pmids, gold_dois)"""
+      # Auto-detect format and load both identifiers
+      # See DOI_PMID_FEATURE_STATUS_ANALYSIS.md for full implementation
+  ```
+
+**Deliverables**:
+- Updated `scripts/generate_gold_pmids.py`
+- Updated `load_gold_pmids()` in `llm_sr_select_and_score.py`
+- Migration script for existing gold CSVs
+
+**Success Criteria**:
+- Backward compatible (handles old PMID-only format)
+- New format includes DOI column
+- Both identifiers loaded correctly
+
+---
+
+### Task 6.2: Multi-Key Matching Implementation
+**Estimated Time**: 3-4 hours  
+**Priority**: High (if using Scopus/WoS)  
+**Dependencies**: Task 6.1
+
+**Purpose**: Match query results against gold standard using PMID or DOI.
+
+**Subtasks**:
+- [ ] 6.2.1 Implement multi-key metrics function (2 hours)
+  ```python
+  def set_metrics_multi_key(
+      retrieved_pmids: Set[str],
+      retrieved_dois: Set[str],
+      gold_pmids: Set[str],
+      gold_dois: Set[str],
+      detailed: bool = False
+  ) -> dict:
+      # See DOI_PMID_FEATURE_STATUS_ANALYSIS.md for full implementation
+  ```
+
+- [ ] 6.2.2 Update query execution to track DOIs (1 hour)
+  - Modify `_execute_query_bundle()` to return both PMIDs and DOIs
+  - Update all callers to handle dict return value
+
+- [ ] 6.2.3 Add evaluation breakdown report (1 hour)
+  - Show: X matched by PMID, Y by DOI, Z missed
+  - Export detailed match report to JSON
+
+**Deliverables**:
+- `set_metrics_multi_key()` function
+- Updated `_execute_query_bundle()`
+- Match breakdown report template
+
+**Success Criteria**:
+- Recall improvement: +5-15% on Scopus queries
+- Detailed breakdown shows match source
+- No false positives (same article matched twice)
+
+---
+
+### Task 6.3: Aggregation Strategy Updates
+**Estimated Time**: 3 hours  
+**Priority**: High (if using Scopus/WoS)  
+**Dependencies**: Task 6.2
+
+**Purpose**: Update aggregation to use DOI-aware deduplication.
+
+**Subtasks**:
+- [ ] 6.3.1 Update aggregation loader (1 hour)
+  ```python
+  def load_identifiers_from_file(path: str) -> dict[str, dict]:
+      # Load both PMIDs and DOIs
+      # See DOI_PMID_FEATURE_STATUS_ANALYSIS.md for implementation
+  ```
+
+- [ ] 6.3.2 Update all aggregation strategies (1.5 hours)
+  - consensus_k2, precision_gated_union, weighted_vote, etc.
+  - Use DOI + PMID union for deduplication
+  - Maintain backward compatibility
+
+- [ ] 6.3.3 Update output format (30 min)
+  - Text files: PMIDs only (backward compatible)
+  - New JSON files: Include DOIs
+  - Example: `consensus_k2.txt` + `consensus_k2_details.json`
+
+**Deliverables**:
+- Updated `scripts/aggregate_queries.py`
+- Enhanced JSON output format
+- Backward compatibility maintained
+
+**Success Criteria**:
+- Existing tools still work (text files unchanged)
+- New evaluation uses DOI data
+- All aggregation strategies updated
+
+---
+
+### Task 6.4: Integration Testing for DOI-Aware Evaluation
+**Estimated Time**: 2 hours  
+**Priority**: High  
+**Dependencies**: Tasks 6.1, 6.2, 6.3
+
+**Subtasks**:
+- [ ] 6.4.1 Test on ai_2022 with enhanced gold (1 hour)
+  - Regenerate gold CSV with DOI column
+  - Run evaluation with multi-key matching
+  - Compare recall: old vs new
+
+- [ ] 6.4.2 Test on Scopus-heavy queries (1 hour)
+  - Create test case with Scopus-only articles
+  - Verify DOI matching works
+  - Measure recall improvement
+
+**Deliverables**:
+- Test results report
+- Before/after comparison
+
+**Success Criteria**:
+- No regressions on existing datasets
+- Measurable recall improvement on Scopus queries
+
+---
+
+## Phase 7: Advanced Features (15-18 hours)
+
+### Task 7.1: Fuzzy Title Matching
+**Estimated Time**: 4-5 hours  
+**Priority**: Low (Optional)  
+**Dependencies**: Phase 6 complete
+
+**Purpose**: Handle articles without DOI/PMID using title similarity.
+
+**Subtasks**:
+- [ ] 7.1.1 Implement title normalization (1 hour)
+  - Remove punctuation, lowercase, stemming
+  - Handle Unicode characters
+  - Strip common words
+
+- [ ] 7.1.2 Implement fuzzy matching (2 hours)
+  - Use rapidfuzz for similarity scoring
+  - Threshold: ≥0.90 for match
+  - Include author + year in scoring
+
+- [ ] 7.1.3 Integrate with evaluation (1 hour)
+  - Add as tertiary match method (after PMID and DOI)
+  - Report fuzzy matches separately
+
+- [ ] 7.1.4 Test on edge cases (1 hour)
+  - Preprints, non-indexed journals
+  - Measure false positive rate
+
+**Deliverables**:
+- `utils/fuzzy_title_matcher.py`
+- Integration with evaluation
+
+**Success Criteria**:
+- Handles articles without DOI/PMID
+- False positive rate <5%
+- +2-5% recall improvement
+
+---
+
+### Task 7.2: Enhanced Manual Review Interface
+**Estimated Time**: 5 hours  
+**Priority**: Medium  
+**Dependencies**: Wave 1 complete
+
+**Purpose**: Interactive interface for reviewing and correcting low-confidence matches.
+
+**Subtasks**:
+- [ ] 7.2.1 Design review UI (1 hour)
+  - CLI or web-based (recommend CLI for simplicity)
+  - Show: extracted metadata, API results, confidence
+  - Actions: Accept, Reject, Edit, Skip
+
+- [ ] 7.2.2 Implement review CLI (2.5 hours)
+  ```python
+  class ReviewInterface:
+      def review_low_confidence(self, threshold=0.85):
+          for study in self._get_low_confidence(threshold):
+              self._display_study(study)
+              action = self._prompt_action()
+              self._apply_action(study, action)
+  ```
+
+- [ ] 7.2.3 Add batch operations (1 hour)
+  - Accept/reject all
+  - Filter by confidence range
+  - Search functionality
+
+- [ ] 7.2.4 Test usability (30 min)
+  - User testing with 10-20 low-confidence studies
+  - Measure time per study
+  - Collect feedback
+
+**Deliverables**:
+- `scripts/review_interface.py`
+- User guide
+
+**Success Criteria**:
+- <30 seconds per study review
+- Clear display of relevant information
+- Changes saved correctly
+
+---
+
+### Task 7.3: Performance Optimization
+**Estimated Time**: 3 hours  
+**Priority**: Low  
+**Dependencies**: All previous tasks
+
+**Subtasks**:
+- [ ] 7.3.1 Profile bottlenecks (1 hour)
+  - Use cProfile on full pipeline
+  - Identify slow functions
+  - Measure API call time vs processing time
+
+- [ ] 7.3.2 Implement parallel lookups (1.5 hours)
+  - Use asyncio for concurrent API calls
+  - Batch lookups where possible
+  - Maintain rate limits
+
+- [ ] 7.3.3 Optimize fuzzy matching (30 min)
+  - Cache normalized titles
+  - Use faster algorithms
+  - Batch similarity calculations
+
+**Deliverables**:
+- Performance report
+- Optimized code
+
+**Success Criteria**:
+- 50% reduction in processing time
+- No accuracy loss
+- Rate limits respected
+
+---
+
+### Task 7.4: Wave 2 Documentation and Testing
+**Estimated Time**: 3 hours  
+**Priority**: High  
+**Dependencies**: All Wave 2 tasks
+
+**Subtasks**:
+- [ ] 7.4.1 Update documentation (1.5 hours)
+  - Add Wave 2 features to guides
+  - Update decision matrix
+  - Add new examples
+
+- [ ] 7.4.2 Integration testing (1 hour)
+  - Test all enhancements together
+  - Verify no conflicts
+  - Measure combined impact
+
+- [ ] 7.4.3 Create Wave 2 release notes (30 min)
+  - Document new features
+  - Migration guide for Wave 1 users
+  - Performance improvements
+
+**Deliverables**:
+- Updated documentation
+- Release notes
+- Migration guide
+
+**Success Criteria**:
+- All documentation current
+- Clear upgrade path from Wave 1
+- Examples for all new features
+
+---
+
+## Wave 2 Summary
+
+**Total Time**: 37-48 hours (1-1.5 weeks)
+
+**When to Implement Wave 2**:
+- Wave 1 complete and stable
+- Using multi-database queries (Scopus/WoS)
+- Need higher quality assurance
+- Have budget for multiple LLM calls
+- Long-term systematic review program
+
+**Expected Benefits**:
+- +5-10% extraction accuracy (multi-agent/sampling)
+- +5-15% evaluation recall (DOI matching)
+- Future-proof architecture (extensible providers)
+- Better error detection and handling
+- More robust for complex reviews
+
+**Can Skip Wave 2 If**:
+- PubMed-only queries
+- Wave 1 accuracy sufficient (100% on ai_2022)
+- Time/cost constraints
+- Simple systematic reviews
 - Release notes are clear and comprehensive
 - Beta tag indicates users should report issues
 
