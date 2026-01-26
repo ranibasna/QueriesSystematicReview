@@ -1,0 +1,17 @@
+# High-recall: Broad topic search with comprehensive synonyms
+TITLE-ABS-KEY((sleep OR "sleep duration" OR "sleep deprivation" OR "short sleep" OR "sleep restriction" OR "insufficient sleep" OR "sleep time" OR "sleep quantity") AND (obesity OR obese OR overweight OR "body mass index" OR BMI OR "weight gain" OR adiposity) AND (sex OR gender OR men OR women OR male OR female OR "sex differences" OR "sex-specific") AND (cohort OR prospective OR longitudinal OR "follow-up" OR retrospective)) AND PUBYEAR > 1989 AND PUBYEAR < 2026
+
+# Balanced: Focused terms with date filter and study design
+TITLE-ABS-KEY(("sleep duration" OR "short sleep" OR "insufficient sleep" OR "sleep deprivation") AND (obesity OR "body mass index" OR BMI OR overweight) AND ("sex differences" OR sex OR gender OR men OR women) AND (cohort OR prospective OR longitudinal)) AND PUBYEAR > 1989 AND PUBYEAR < 2026
+
+# High-precision: Title-only search for key concepts
+TITLE(("sleep duration" OR "short sleep") AND (obesity OR BMI OR overweight) AND (sex OR gender OR "sex differences")) AND TITLE-ABS-KEY(cohort OR prospective) AND PUBYEAR > 1989 AND PUBYEAR < 2026
+
+# Micro-variant 1 (Filter-based): Balanced query + document type filter
+TITLE-ABS-KEY(("sleep duration" OR "short sleep" OR "insufficient sleep" OR "sleep deprivation") AND (obesity OR "body mass index" OR BMI OR overweight) AND ("sex differences" OR sex OR gender OR men OR women) AND (cohort OR prospective OR longitudinal)) AND PUBYEAR > 1989 AND PUBYEAR < 2026 AND DOCTYPE(ar OR re)
+
+# Micro-variant 2 (Scope-based): Balanced query + title restriction
+TITLE(("sleep duration" OR "short sleep") AND obesity) AND TITLE-ABS-KEY(("sex differences" OR sex OR gender) AND (cohort OR prospective)) AND PUBYEAR > 1989 AND PUBYEAR < 2026
+
+# Micro-variant 3 (Proximity-based): Balanced query + tight proximity operators
+TITLE-ABS-KEY((("sleep duration" OR "short sleep") W/10 (obesity OR BMI OR overweight)) AND (("sex differences" OR sex OR gender) W/10 (cohort OR prospective))) AND PUBYEAR > 1989 AND PUBYEAR < 2026

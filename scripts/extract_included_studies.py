@@ -84,11 +84,12 @@ def find_included_studies_table(content: str) -> Optional[Tuple[str, List[int]]]
     """
     # Look for table headings
     table_patterns = [
-        r'Table\s+\d+\s+.*[Ii]ncluded\s+[Ss]tudies',
-        r'Table\s+\d+\s+.*[Cc]haracteristics\s+of\s+.*[Ss]tudies',
-        r'Table\s+\d+\s+.*[Bb]aseline\s+[Cc]haracteristics',
+        r'Table\s+\d+[\s:]+.*[Ii]ncluded\s+[Ss]tudies',
+        r'Table\s+\d+[\s:]+.*[Cc]haracteristics\s+of\s+.*[Ss]tudies',
+        r'Table\s+\d+[\s:]+.*[Bb]aseline\s+[Cc]haracteristics',
         r'## [Ii]ncluded [Ss]tudies',
-        r'## [Cc]haracteristics of [Ii]ncluded [Ss]tudies'
+        r'## [Cc]haracteristics of [Ii]ncluded [Ss]tudies',
+        r'##\s+Table\s+\d+[\s:]+.*[Cc]haracteristics',
     ]
     
     lines = content.split('\n')
@@ -853,6 +854,12 @@ Examples:
         help='Minimum fraction of runs required to include a study (default: 0.60, i.e., 3/5 for 5 runs)'
     )
     
+    parser.add_argument(
+        '--from-json',
+        action='store_true',
+        help='Skip extraction (Steps 1-4) and load from existing included_studies.json. Useful when extraction was done manually via LLM agent. Only runs lookup (Step 5) and CSV generation (Step 6).'
+    )
+    
     args = parser.parse_args()
     
     # Validate PubMed options
@@ -870,25 +877,53 @@ Examples:
         if not (0.0 < args.voting_threshold <= 1.0):
             parser.error("--voting-threshold must be between 0.0 and 1.0")
     
-    # Run extraction (with or without sampling)
-    if args.sampling_runs:
-        # Sampling-based extraction
-        result = extract_included_studies_with_sampling(
-            study_name=args.study_name,
-            markdown_file=args.markdown_file,
-            output_path=args.output_path,
-            debug=args.debug,
-            sampling_runs=args.sampling_runs,
-            voting_threshold=args.voting_threshold
-        )
+    # Validate --from-json option
+    if args.from_json:
+        if args.sampling_runs:
+            parser.error("--from-json cannot be used with --sampling-runs (extraction is skipped)")
+    
+    # ==================== STAGE 1: EXTRACTION (Steps 1-4) ====================
+    # Load from existing JSON or run extraction
+    if args.from_json:
+        # Skip extraction, load from existing JSON
+        print(f"📂 Loading from existing JSON (--from-json mode)")
+        
+        json_path = args.output_path or f"studies/{args.study_name}/included_studies.json"
+        
+        if not os.path.exists(json_path):
+            print(f"❌ Error: JSON file not found: {json_path}")
+            print(f"   Please ensure the file exists or run extraction first without --from-json")
+            sys.exit(1)
+        
+        print(f"   Source: {json_path}\n")
+        
+        try:
+            with open(json_path, 'r', encoding='utf-8') as f:
+                result = json.load(f)
+            print(f"✓ Loaded {result['total_included_studies']} studies from JSON\n")
+        except (json.JSONDecodeError, KeyError) as e:
+            print(f"❌ Error: Invalid JSON file: {e}")
+            sys.exit(1)
     else:
-        # Standard single-run extraction
-        result = extract_included_studies(
-            study_name=args.study_name,
-            markdown_file=args.markdown_file,
-            output_path=args.output_path,
-            debug=args.debug
-        )
+        # Run extraction (with or without sampling)
+        if args.sampling_runs:
+            # Sampling-based extraction
+            result = extract_included_studies_with_sampling(
+                study_name=args.study_name,
+                markdown_file=args.markdown_file,
+                output_path=args.output_path,
+                debug=args.debug,
+                sampling_runs=args.sampling_runs,
+                voting_threshold=args.voting_threshold
+            )
+        else:
+            # Standard single-run extraction
+            result = extract_included_studies(
+                study_name=args.study_name,
+                markdown_file=args.markdown_file,
+                output_path=args.output_path,
+                debug=args.debug
+            )
     
     # Optionally lookup PMIDs/DOIs
     if args.lookup_pmid:
