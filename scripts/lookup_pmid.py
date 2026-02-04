@@ -198,10 +198,7 @@ class PubMedLookup:
         cleaned_title = self._clean_title(title)
         last_name = self._extract_last_name(first_author)
         
-        # Try two search strategies:
-        # 1. Exact title match (if available)
-        # 2. Title words + author + year (more lenient)
-        
+        # Try multiple search strategies to improve recall
         queries = []
         
         # Strategy 1: Exact title (quoted)
@@ -215,6 +212,12 @@ class PubMedLookup:
         if title_words:
             key_terms = ' '.join(title_words)
             queries.append(f'{key_terms}[Title] AND {last_name}[Author] AND {year}[PDAT]')
+
+        # Strategy 4: Title + year (no author constraint) for author parsing errors
+        queries.append(f'"{cleaned_title}"[Title] AND {year}[PDAT]')
+
+        # Strategy 5: Title only (broad catch-all)
+        queries.append(f'{cleaned_title}[Title]')
         
         for i, query in enumerate(queries, 1):
             try:
@@ -399,12 +402,33 @@ class PubMedLookup:
             confidence *= 0.90
         
         return round(confidence, 3)
+
+    def _validate_metadata(
+        self,
+        extracted_study: Dict[str, Any],
+        metadata: Dict[str, Any],
+        max_year_diff: int
+    ) -> bool:
+        """Validate PubMed metadata against extracted study fields."""
+        extracted_year = extracted_study.get('year')
+        candidate_year = metadata.get('year')
+        if extracted_year and candidate_year:
+            if abs(candidate_year - extracted_year) > max_year_diff:
+                return False
+
+        extracted_last = self._extract_last_name(extracted_study.get('first_author', '')).lower()
+        authors = metadata.get('authors', [])
+        if extracted_last:
+            if not any(extracted_last in a.lower() for a in authors[:5]):
+                return False
+        return True
     
     def find_best_match(
         self,
         extracted_study: Dict[str, Any],
         max_results: int = 10,
-        min_confidence: float = 0.70
+        min_confidence: float = 0.80,
+        max_year_diff: int = 1
     ) -> Optional[PubMedMatch]:
         """
         Find best PubMed match for an extracted study.
@@ -450,6 +474,9 @@ class PubMedLookup:
                 extracted_last_name in author.lower()
                 for author in pm_authors[:3]  # Check first 3 authors
             )
+
+            if not self._validate_metadata(extracted_study, metadata, max_year_diff):
+                continue
             
             # Calculate confidence
             confidence = self.calculate_confidence(
@@ -556,7 +583,7 @@ def find_best_pmid_doi(
     year: int,
     email: str,
     api_key: Optional[str] = None,
-    min_confidence: float = 0.70
+    min_confidence: float = 0.80
 ) -> Optional[Dict[str, Any]]:
     """
     Convenience function to find best PMID and DOI for a study.

@@ -38,6 +38,65 @@ The process is a sequence of steps that the agent follows based on the instructi
 
 ---
 
+## 2. Query Type Analysis Across Databases
+
+**Status: COMPLETED** (February 4, 2026)
+
+**Motivation:** Users needed a way to understand how different query strategies (High-recall, Balanced, High-precision) perform when aggregated across multiple databases. The existing per-database summary showed individual query performance per database, but there was no easy way to see how a specific query type performs when combining all databases.
+
+**Implementation:**
+
+1. **New Analysis Script**: Created `scripts/analyze_queries_by_type.py` that:
+   - Parses query type annotations from comment lines in query files
+   - Aggregates performance metrics by semantic type across all databases
+   - Shows both summary statistics and detailed per-database breakdowns
+   - Supports filtering by specific query types
+   - Exports results to CSV for further analysis
+
+2. **Workflow Integration**: 
+   - Updated `scripts/run_complete_workflow.sh` to suggest running the analysis in "Next Steps"
+   - Auto-detects existing per-database summary files
+   - No changes required to existing workflow - pure addition
+
+3. **Documentation**:
+   - Added comprehensive standalone documentation: `scripts/README_analyze_queries_by_type.md`
+   - Updated `.github/skills/systematic-review-queries-to-results/SKILL.md` with Step 4
+   - Added to `Documentations/complete_pipeline_guide.md` as Step 8.5
+   - Added to `Documentations/Automation_guide_main.md` as Step 6.5
+
+**Usage Examples:**
+```bash
+# Basic analysis
+python scripts/analyze_queries_by_type.py Medeiros_2023
+
+# Detailed per-database breakdown
+python scripts/analyze_queries_by_type.py Medeiros_2023 --detailed
+
+# Focus on specific query types
+python scripts/analyze_queries_by_type.py Medeiros_2023 --query-types "High-recall,Balanced"
+
+# Export to CSV
+python scripts/analyze_queries_by_type.py Medeiros_2023 --output analysis.csv
+```
+
+**Key Features:**
+- Query type extraction from comment annotations (e.g., "# Query 1: High-recall - description")
+- Aggregates metrics across all databases (PubMed, Scopus, WOS, Embase)
+- Shows combined statistics: total results, best recall, average recall
+- Per-database breakdown when using `--detailed` flag
+- CSV export for spreadsheet analysis
+- Automatically works with existing workflow outputs
+
+**Files Created/Modified:**
+- `scripts/analyze_queries_by_type.py` - NEW (341 lines)
+- `scripts/README_analyze_queries_by_type.md` - NEW
+- `scripts/run_complete_workflow.sh` - Updated (added suggestion in Next Steps)
+- `.github/skills/systematic-review-queries-to-results/SKILL.md` - Updated (added Step 4)
+- `Documentations/complete_pipeline_guide.md` - Updated (added Step 8.5)
+- `Documentations/Automation_guide_main.md` - Updated (added Step 6.5)
+
+---
+
 # Future Development Tasks
 
 This file outlines planned improvements and new features for the systematic review query generation workflow.

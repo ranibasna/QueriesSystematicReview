@@ -89,9 +89,12 @@ This systematic review pipeline automates:
                            ↓
 ┌─────────────────────────────────────────────────────────────┐
 │                  Evaluation Layer                            │
-│  • Precision, Recall, F1-score                              │
+│  • Per-database metrics (PubMed, Scopus, WOS, Embase)      │
+│  • Multi-key matching (DOI-primary with PMID fallback)     │
+│  • Precision, Recall, F1-score per query and database      │
 │  • Set-level performance metrics                             │
-│  • Gold standard validation                                  │
+│  • Gold standard validation (auto-detects detailed format)  │
+│  • Auto-enables DOI matching when detailed gold std found   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -103,6 +106,13 @@ This systematic review pipeline automates:
 - **High-recall**: Broad terms, maximizes sensitivity (finds all relevant articles + many irrelevant)
 - **Balanced**: Mix of controlled vocabulary and free text with filters
 - **High-precision**: Focused terms, maximizes specificity (finds fewer but more relevant articles)
+
+**Multi-Key Matching Strategy**:
+- **Auto-detection**: Workflow automatically detects if `gold_pmids_<study>_detailed.csv` exists (with DOI column)
+- **DOI-primary matching**: When detailed gold standard found, uses DOI as primary key, PMID as fallback
+- **Why important**: Scopus/WOS return DOIs (not PMIDs), so DOI matching is essential for accurate recall
+- **Performance impact**: Without DOI matching, Scopus/WOS show 0% recall; with DOI matching, 90-100% recall
+- **Automatic activation**: `--use-multi-key` flag automatically enabled when detailed gold standard detected
 
 **Study-Specific Structure**: All files organized under `studies/<study_name>/` for portability and clarity.
 
@@ -1676,44 +1686,70 @@ python scripts/lookup_pmid.py \
 
 **What happens**:
 ```
-🔍 Looking up PMIDs for 14 studies...
+🔍 Looking up identifiers for 14 studies (multi-tier strategy)...
+   Strategy: PubMed → Europe PMC → CrossRef
+   Min confidence: 0.80
+   Year tolerance: ±1 years
 
 Study 1/14: Li AM (2008)
-  Query: "Ambulatory blood pressure in children with obstructive sleep apnoea"[Title] AND Li AM[Author] AND 2008[Date]
-  ✅ Found PMID: 18388205 (confidence: 0.95)
-  ✅ Found DOI: 10.1136/thx.2007.091132
+  Tier 1 [PubMed]: Trying 5 query strategies...
+    Strategy 2: Found 1 result
+  ✅ [PubMed] PMID: 18388205, DOI: 10.1136/thx.2007.091132
+     Confidence: 0.95 ✓
 
 Study 2/14: Amin RS (2004)
-  PMID already present: 14764433
-  🔍 Looking up DOI...
-  ✅ Found DOI: 10.1164/rccm.200309-1305OC
+  Tier 1 [PubMed]: Trying 5 query strategies...
+    Strategy 2: Found 1 result
+  ✅ [PubMed] PMID: 14764433, DOI: 10.1164/rccm.200309-1305OC
+     Confidence: 0.95 ✓
 
-Study 3/14: Chan KC (2020)
-  ✅ Found PMID: 32209641 (confidence: 0.92)
-  ✅ Found DOI: 10.1136/thoraxjnl-2019-213692
+Study 3/14: Obscure Study (2015)
+  Tier 1 [PubMed]: No match (all strategies failed)
+  → Trying Europe PMC...
+  ✅ [Europe PMC] PMID: 26123456, DOI: 10.1234/example
+     Confidence: 0.82 ✓
+
+Study 4/14: Non-Indexed Article (2020)
+  Tier 1 [PubMed]: No match
+  Tier 2 [Europe PMC]: No match
+  → Trying CrossRef...
+  ✅ [CrossRef] DOI: 10.9999/obscure-journal
+     Confidence: 0.81 ✓
 
 ...
 
 📊 Lookup Complete!
-   With PMID: 14/14 (100%)
-   With DOI: 14/14 (100%)
-   Average confidence: 0.93
+   PubMed (Tier 1): 12 studies (85.7%)
+   Europe PMC (Tier 2): 1 study (7.1%)
+   CrossRef (Tier 3): 1 study (7.1%)
+   
+   With PMID: 13/14 (92.9%)
+   With DOI: 14/14 (100.0%)
+   Average confidence: 0.89
 ```
 
-**API Strategy**:
-1. **PubMed E-utilities** (primary):
-   - Queries by title + author + year
+**API Strategy** (Enhanced 2026):
+1. **PubMed E-utilities** (Tier 1 - Primary):
+   - Multiple query strategies (exact → relaxed → broad)
    - Returns PMID + DOI (both from PubMed record)
-   - Confidence scoring: Title similarity using Levenshtein distance
+   - Validation: Year tolerance (±1), author match, metadata checks
+   - Confidence scoring: Title similarity + validation checks
 
-2. **CrossRef API** (fallback):
-   - Used when PubMed returns no match
+2. **Europe PMC** (Tier 2 - Fallback):
+   - Structured queries (TITLE/FIRST_AUTHOR/PUB_YEAR)
+   - Returns PMID + DOI (both when available)
+   - Validation: Same strict criteria as Tier 1
+   - Useful for European journals, early online publications
+
+3. **CrossRef API** (Tier 3 - Final Fallback):
+   - Used when Tier 1-2 return no match
    - Returns DOI only (CrossRef doesn't have PMID)
-   - Useful for non-indexed journals, preprints
+   - Work type filtering (excludes preprints/proceedings by default)
+   - Useful for non-indexed journals, book chapters
 
-**Confidence Thresholds**:
-- **Accept**: confidence ≥ 0.85 (high similarity)
-- **Review**: confidence 0.70-0.85 (moderate similarity)
+**Confidence Thresholds** (raised in 2026):
+- **Accept**: confidence ≥ 0.80 (high similarity + validation pass)
+- **Review**: confidence 0.70-0.80 (moderate similarity)
 - **Reject**: confidence < 0.70 (poor match)
 
 #### Step 4.5.3: Generate Gold Standard CSV Files
@@ -1797,12 +1833,38 @@ pmid,first_author,year,title,journal,doi
 
 #### Custom Confidence Threshold
 
-Lower threshold for more inclusive gold standard:
+Default threshold raised to 0.80 (from 0.70) with enhanced validation:
 ```bash
 python scripts/extract_included_studies.py ai_2022 \
   --lookup-pmid \
   --generate-gold-csv \
-  --confidence 0.75
+  --min-confidence 0.80
+```
+
+For stricter matching (high-stakes validations):
+```bash
+python scripts/extract_included_studies.py ai_2022 \
+  --lookup-pmid \
+  --generate-gold-csv \
+  --min-confidence 0.90
+```
+
+#### Year Tolerance Control (New)
+
+Control allowed publication year difference (±1 year default):
+```bash
+python scripts/extract_included_studies.py ai_2022 \
+  --lookup-pmid \
+  --generate-gold-csv \
+  --max-year-diff 1
+```
+
+For exact year matching only:
+```bash
+python scripts/extract_included_studies.py ai_2022 \
+  --lookup-pmid \
+  --generate-gold-csv \
+  --max-year-diff 0
 ```
 
 #### Email Configuration (for PubMed API)
@@ -2299,6 +2361,7 @@ python llm_sr_select_and_score.py \
 
 **Output files**:
 - `benchmark_outputs/sleep_apnea/summary_TIMESTAMP.csv` - Metrics table
+- `benchmark_outputs/sleep_apnea/summary_per_database_TIMESTAMP.csv` - Per-database metrics
 - `benchmark_outputs/sleep_apnea/details_TIMESTAMP.json` - Full results
 
 **Summary CSV format**:
@@ -2331,6 +2394,102 @@ Set[precision_gated_union]: n=1961 TP=11 Precision=0.006 Recall=1.000 F1=0.011
 - `n`: Total articles in set
 - `TP`: True positives (articles in gold standard found)
 - `Precision`, `Recall`, `F1`: Standard metrics
+
+---
+
+## Step 8.5: Query Type Analysis Across Databases (Optional)
+
+### Overview
+
+After running the complete workflow, you can analyze query performance by semantic type (High-recall, Balanced, High-precision, etc.) aggregated across all databases. This provides insights into:
+- How different query strategies perform when combining results from multiple databases
+- Which databases contribute most to each query type's coverage
+- Whether high-recall queries maintain their advantage across all databases
+
+**When to use**: After completing Step 6 (Complete Workflow) with multi-database queries.
+
+**Time investment**: 1-2 minutes for analysis.
+
+### Running Query Type Analysis
+
+**Basic analysis (all query types)**:
+```bash
+python scripts/analyze_queries_by_type.py sleep_apnea
+```
+
+**Detailed per-database breakdown**:
+```bash
+python scripts/analyze_queries_by_type.py sleep_apnea --detailed
+```
+
+**Filter specific query types**:
+```bash
+python scripts/analyze_queries_by_type.py sleep_apnea --query-types "High-recall,Balanced"
+```
+
+**Export to CSV for further analysis**:
+```bash
+python scripts/analyze_queries_by_type.py sleep_apnea --output query_analysis.csv
+```
+
+### Understanding the Output
+
+**Example output**:
+```
+====================================================================================================
+Query Performance Aggregated by Type Across All Databases
+====================================================================================================
+
+Query 1: High-recall
+--------------------------------------------------------------------------------
+  Databases: embase+pubmed+scopus+wos (4 total)
+  Total Results (before dedup): 22,746
+  Best Recall Achieved: 100.0% (47/47 gold studies)
+  Average Recall: 94.4%
+
+  Per-Database Breakdown:
+    • EMBASE: 17,990 results, 46 TP, 97.9% recall
+    • PUBMED: 1,188 results, 45 TP, 95.7% recall
+    • SCOPUS: 3,568 results, 44 TP, 93.6% recall
+    • WOS: 2,037 results, 42 TP, 89.4% recall
+
+Query 2: Balanced
+--------------------------------------------------------------------------------
+  Databases: embase+pubmed+scopus+wos (4 total)
+  Total Results (before dedup): 5,234
+  Best Recall Achieved: 95.7% (45/47 gold studies)
+  Average Recall: 91.5%
+```
+
+### Key Metrics Explained
+
+| Metric | Description | What to Look For |
+|--------|-------------|------------------|
+| **Databases** | Which databases contributed to this query type | More databases = better coverage |
+| **Total Results** | Sum across all databases (before dedup) | High-recall should have most |
+| **Best Recall** | Highest recall achieved in any single database | Should be close to 100% for high-recall |
+| **Average Recall** | Mean recall across all databases | Consistency indicator |
+| **Per-Database Breakdown** | Individual database performance | Identifies database-specific strengths |
+
+### Use Cases
+
+1. **Compare Strategy Effectiveness**: See if high-recall queries truly outperform balanced/precision queries across databases
+2. **Database Selection**: Identify which databases are most valuable for your topic
+3. **Coverage Gaps**: Find queries that work well in one database but not others
+4. **Multi-Database Value**: Quantify whether combining databases improves coverage
+
+### CSV Output Format
+
+When using `--output`, the CSV includes:
+- `query_num`: Query number (1-6)
+- `query_type`: Semantic type (High-recall, Balanced, etc.)
+- `databases`: Databases included (e.g., "embase+pubmed+scopus")
+- `num_databases`: Count of databases
+- `total_results`: Sum before deduplication
+- `max_TP`, `max_recall`, `avg_recall`: Aggregate metrics
+- `<db>_results`, `<db>_TP`, `<db>_recall`: Per-database columns
+
+**For complete documentation**: See `scripts/README_analyze_queries_by_type.md`
 
 ---
 

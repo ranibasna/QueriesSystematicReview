@@ -790,7 +790,7 @@ def finalize_with_gold(sealed_glob: str, gold_csv: str, outdir: str = None, use_
 
 def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: str, gold_csv: str, outdir: str, use_multi_key: bool = False):
     """
-    Run scoring pipeline and write a summary CSV and details JSON.
+    Run scoring pipeline and write a summary CSV, per-database summary CSV, and details JSON.
     
     Args:
         providers: List of search provider instances
@@ -800,6 +800,11 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
         gold_csv: Path to gold standard CSV
         outdir: Output directory
         use_multi_key: If True, use multi-key matching (PMID OR DOI)
+    
+    Output Files:
+        summary_{timestamp}.csv: Combined query performance (one row per query)
+        summary_per_database_{timestamp}.csv: Per-database query performance (one row per query per database)
+        details_{timestamp}.json: Full details including retrieved IDs
     """
     os.makedirs(outdir, exist_ok=True)
     
@@ -812,7 +817,9 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
     
     rows = []
     details = []
-    for bundle in query_bundles:
+    per_db_rows = []  # New: per-database metrics
+    
+    for bundle_idx, bundle in enumerate(query_bundles):
         canonical_query = bundle['canonical']
         pmids, dois, total, provider_details = _execute_query_bundle(providers, bundle['per_provider'], mindate, maxdate)
         
@@ -827,34 +834,126 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
             recall = tp / max(len(gold), 1)
         
         nnr_proxy = total / max(tp, 1)
+        gold_size = len(gold_pmids) if not use_multi_key else len(gold_pmids) + len(gold_dois - gold_pmids)
         
         rec = {
             'query': canonical_query, 
             'results_count': total, 
             'TP': tp, 
-            'gold_size': len(gold_pmids) if not use_multi_key else len(gold_pmids) + len(gold_dois - gold_pmids),
+            'gold_size': gold_size,
             'recall': recall, 
             'NNR_proxy': nnr_proxy
         }
         
         if use_multi_key:
             rec.update({
-                'matches_by_pmid': metrics['matches_by_pmid'],
-                'matches_by_doi_only': metrics['matches_by_doi_only'],
+                'matches_by_pmid': metrics['matches_by_doi'] + metrics['matches_by_pmid_fallback'],
+                'matches_by_doi_only': metrics['matches_by_doi'],
             })
         
         rows.append(rec)
-        details.append({**rec, 'retrieved_pmids': sorted(pmids), 'retrieved_dois': sorted(dois), 'tp_pmids': sorted(pmids & gold), 'provider_details': provider_details})
+        # Store TP PMIDs for details - use appropriate gold standard
+        tp_pmids_for_details = (pmids & gold_pmids) if use_multi_key else (pmids & gold)
+        details.append({**rec, 'retrieved_pmids': sorted(pmids), 'retrieved_dois': sorted(dois), 'tp_pmids': sorted(tp_pmids_for_details), 'provider_details': provider_details})
         print(f"Query[{hashlib.sha256(canonical_query.encode()).hexdigest()[:8]}]: results={total}  TP={tp}  recall={recall:.3f}  NNR_proxy={nnr_proxy:.2f}")
+        
+        # Generate per-database metrics
+        for db_name, db_details in provider_details.items():
+            if 'error' in db_details:
+                # Skip databases that failed
+                continue
+            
+            db_ids = set(db_details.get('retrieved_ids', []))
+            db_dois = set(db_details.get('retrieved_dois', []))
+            db_results = db_details.get('results_count', 0)
+            db_query = db_details.get('query', '')
+            
+            if use_multi_key:
+                # Multi-key matching for this database
+                db_metrics = set_metrics_multi_key(db_ids, db_dois, gold_pmids, gold_dois)
+                db_tp = db_metrics['TP']
+                db_recall = db_metrics['Recall']
+            else:
+                # Legacy PMID-only matching
+                db_tp = len(db_ids & gold)
+                db_recall = db_tp / max(len(gold), 1)
+            
+            db_nnr_proxy = db_results / max(db_tp, 1)
+            
+            db_rec = {
+                'query_num': bundle_idx + 1,
+                'database': db_name,
+                'query': db_query[:200] + '...' if len(db_query) > 200 else db_query,  # Truncate long queries
+                'results_count': db_results,
+                'TP': db_tp,
+                'gold_size': gold_size,
+                'recall': db_recall,
+                'NNR_proxy': db_nnr_proxy
+            }
+            
+            if use_multi_key:
+                db_rec.update({
+                    'matches_by_pmid': db_metrics.get('matches_by_doi', 0) + db_metrics.get('matches_by_pmid_fallback', 0),
+                    'matches_by_doi_only': db_metrics.get('matches_by_doi', 0),
+                })
+            
+            per_db_rows.append(db_rec)
+        
+        # Also add combined row to per-database CSV for reference
+        combined_rec = {
+            'query_num': bundle_idx + 1,
+            'database': 'COMBINED',
+            'query': canonical_query[:200] + '...' if len(canonical_query) > 200 else canonical_query,
+            'results_count': total,
+            'TP': tp,
+            'gold_size': gold_size,
+            'recall': recall,
+            'NNR_proxy': nnr_proxy
+        }
+        if use_multi_key:
+            combined_rec.update({
+                'matches_by_pmid': metrics['matches_by_doi'] + metrics['matches_by_pmid_fallback'],
+                'matches_by_doi_only': metrics['matches_by_doi'],
+            })
+        per_db_rows.append(combined_rec)
+    
     df = pd.DataFrame(rows)
+    df_per_db = pd.DataFrame(per_db_rows)
+    
     run_id = datetime.utcnow().strftime('%Y%m%d-%H%M%S')
     summary = os.path.join(outdir, f'summary_{run_id}.csv')
+    summary_per_db = os.path.join(outdir, f'summary_per_database_{run_id}.csv')
     details_path = os.path.join(outdir, f'details_{run_id}.json')
+    
     df.to_csv(summary, index=False)
+    df_per_db.to_csv(summary_per_db, index=False)
     with open(details_path, 'w', encoding='utf-8') as f:
         json.dump(details, f, ensure_ascii=False, indent=2)
+    
     print('Saved:', summary)
+    print('Saved:', summary_per_db)
     print('Saved:', details_path)
+    
+    # Print per-database summary
+    if len(per_db_rows) > 0:
+        print('\n📊 Per-Database Query Performance:')
+        print('─' * 70)
+        # Group by database for summary
+        db_summary = {}
+        for row in per_db_rows:
+            db = row['database']
+            if db == 'COMBINED':
+                continue
+            if db not in db_summary:
+                db_summary[db] = {'total_results': 0, 'best_recall': 0, 'queries': 0}
+            db_summary[db]['total_results'] += row['results_count']
+            db_summary[db]['best_recall'] = max(db_summary[db]['best_recall'], row['recall'])
+            db_summary[db]['queries'] += 1
+        
+        for db, stats in sorted(db_summary.items()):
+            print(f"  {db:12s}: {stats['queries']} queries, {stats['total_results']:,} results, best recall={stats['best_recall']:.3f}")
+        print('─' * 70)
+    
     return summary, details_path
 
 def _load_config(config_path: str | None) -> dict:
@@ -1231,7 +1330,21 @@ def main():
                 name = Path(pth).stem
                 ext = Path(pth).suffix.lower()
                 
-                if ext == '.csv':
+                if ext == '.json':
+                    # JSON format (from Embase import or query results)
+                    with open(pth, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    # Extract PMIDs and DOIs from all queries in the JSON
+                    pmids = set()
+                    dois = set()
+                    for query_hash, query_data in data.items():
+                        if isinstance(query_data, dict):
+                            if 'retrieved_dois' in query_data:
+                                dois.update(query_data['retrieved_dois'])
+                            if 'retrieved_pmids' in query_data:
+                                pmids.update(map(str, query_data['retrieved_pmids']))
+                    m = set_metrics_multi_key(pmids, dois, gold_pmids, gold_dois)
+                elif ext == '.csv':
                     # Multi-key CSV format (from aggregate_queries.py --multi-key)
                     articles = read_articles_from_csv(pth)
                     pmids = articles['pmids']

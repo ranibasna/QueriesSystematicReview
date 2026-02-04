@@ -1,0 +1,17 @@
+# Query 1 - High-recall: Comprehensive Emtree with explosion and broad text words
+('sleep disorder'/exp OR 'sleep'/exp OR 'sleep apnea'/exp OR 'circadian rhythm'/exp OR sleep:ti,ab OR 'sleep disorder':ti,ab OR 'sleep disorders':ti,ab OR 'sleep disturbance':ti,ab OR 'sleep disturbances':ti,ab OR 'sleep dysfunction':ti,ab OR 'sleep quality':ti,ab OR insomnia:ti,ab OR 'sleep apnea':ti,ab OR 'sleep breathing disorder':ti,ab OR 'obstructive sleep apnea':ti,ab OR osa:ti,ab OR 'circadian dysrhythmia':ti,ab OR 'circadian rhythm':ti,ab) AND ('female infertility'/exp OR 'fertility'/exp OR 'in vitro fertilization'/exp OR 'reproduction'/exp OR infertility:ti,ab OR 'female infertility':ti,ab OR fertility:ti,ab OR 'female fertility':ti,ab OR 'female reproduction':ti,ab OR subfertility:ti,ab OR 'reproductive health':ti,ab OR 'in vitro fertilization':ti,ab OR ivf:ti,ab OR 'fertility treatment':ti,ab OR 'assisted reproduction':ti,ab OR 'reproductive function':ti,ab)
+
+# Query 2 - Balanced: Mix of Emtree and filtered text words with study design
+('sleep disorder'/exp OR sleep:ti,ab OR 'sleep disorder':ti,ab OR 'sleep disturbance':ti,ab OR 'sleep dysfunction':ti,ab OR 'sleep apnea':ti,ab OR 'sleep breathing disorder':ti,ab OR insomnia:ti,ab) AND ('female infertility'/exp OR 'fertility'/exp OR infertility:ti,ab OR 'female infertility':ti,ab OR fertility:ti,ab OR 'female fertility':ti,ab OR ivf:ti,ab OR 'fertility treatment':ti,ab) AND (cohort:ti,ab OR prospective:ti,ab OR 'cross sectional':ti,ab OR observational:ti,ab OR 'cohort analysis'/de OR 'cross-sectional study'/de)
+
+# Query 3 - High-precision: Major focus terms and title searches
+'sleep disorder' AND 'female infertility' AND (sleep:ti OR insomnia:ti OR 'sleep disorder':ti) AND (infertility:ti OR fertility:ti) AND ('cohort analysis'/de OR 'cross-sectional study'/de)
+
+# Query 4 - Micro-variant (Filter-based): Balanced query with publication type filter
+('sleep disorder'/exp OR sleep:ti,ab OR 'sleep disorder':ti,ab OR 'sleep disturbance':ti,ab OR 'sleep apnea':ti,ab OR insomnia:ti,ab) AND ('female infertility'/exp OR 'fertility'/exp OR infertility:ti,ab OR 'female infertility':ti,ab OR fertility:ti,ab OR ivf:ti,ab) AND (cohort:ti,ab OR prospective:ti,ab OR 'cross sectional':ti,ab) AND [article]/lim OR [review]/lim
+
+# Query 5 - Micro-variant (Scope-based): Balanced query with title restriction
+('sleep disorder'/exp OR sleep:ti OR 'sleep disorder':ti OR 'sleep disturbance':ti OR insomnia:ti) AND ('female infertility'/exp OR infertility:ti OR fertility:ti OR ivf:ti)
+
+# Query 6 - Micro-variant (Proximity-based): Balanced query with adjacency operator
+(sleep ADJ5 (disorder OR disturbance OR dysfunction OR quality)):ti,ab AND ((female ADJ3 infertility):ti,ab OR fertility:ti,ab OR ivf:ti,ab)

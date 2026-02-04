@@ -757,6 +757,67 @@ def extract_included_studies_with_sampling(
 
 
 
+def validate_json_structure(data: Dict[str, Any], study_name: str) -> bool:
+    """Validate the structure and required fields of loaded JSON.
+    
+    Args:
+        data: Loaded JSON data
+        study_name: Name of the study for validation
+    
+    Returns:
+        True if valid, raises ValueError otherwise
+    """
+    # Check top-level structure
+    if not isinstance(data, dict):
+        raise ValueError("JSON must be a dictionary")
+    
+    if 'included_studies' not in data:
+        raise ValueError("JSON must have 'included_studies' key")
+    
+    if not isinstance(data['included_studies'], list):
+        raise ValueError("'included_studies' must be a list")
+    
+    if not data['included_studies']:
+        raise ValueError("'included_studies' list is empty")
+    
+    # Validate each study entry
+    required_fields = ['title', 'year', 'first_author']
+    recommended_fields = ['authors', 'journal']
+    
+    for i, study in enumerate(data['included_studies']):
+        if not isinstance(study, dict):
+            raise ValueError(f"Study {i} is not a dictionary")
+        
+        # Check required fields
+        missing = [f for f in required_fields if f not in study or not study[f]]
+        if missing:
+            raise ValueError(f"Study {i} missing required fields: {', '.join(missing)}")
+        
+        # Validate field types
+        if not isinstance(study['title'], str) or len(study['title'].strip()) < 5:
+            raise ValueError(f"Study {i} has invalid title (too short or not a string)")
+        
+        if not isinstance(study['year'], int):
+            try:
+                study['year'] = int(study['year'])
+            except (ValueError, TypeError):
+                raise ValueError(f"Study {i} has invalid year: {study.get('year')}")
+        
+        if study['year'] < 1900 or study['year'] > 2030:
+            raise ValueError(f"Study {i} has implausible year: {study['year']}")
+        
+        if not isinstance(study['first_author'], str) or len(study['first_author'].strip()) < 2:
+            raise ValueError(f"Study {i} has invalid first_author")
+        
+        # Warn about missing recommended fields
+        missing_rec = [f for f in recommended_fields if f not in study or not study[f]]
+        if missing_rec:
+            print(f"⚠️  Study {i} ({study['title'][:50]}...) missing recommended fields: {', '.join(missing_rec)}")
+    
+    print(f"✅ JSON structure validated: {len(data['included_studies'])} studies")
+    return True
+
+
 def main():
     """Command-line interface."""
     parser = argparse.ArgumentParser(
@@ -770,6 +831,9 @@ Examples:
   
   # With PMID/DOI lookup
   python scripts/extract_included_studies.py ai_2022 --lookup-pmid --pubmed-email your@email.com
+  
+  # Load from existing JSON and run lookup only
+  python scripts/extract_included_studies.py ai_2022 --from-json --lookup-pmid --pubmed-email your@email.com
   
   # Sampling-based extraction (robust against intermittent errors)
   python scripts/extract_included_studies.py ai_2022 --sampling-runs 5 --voting-threshold 0.60
@@ -816,8 +880,15 @@ Examples:
     parser.add_argument(
         '--min-confidence',
         type=float,
-        default=0.70,
-        help='Minimum confidence threshold for PubMed matches (default: 0.70)'
+        default=0.80,
+        help='Minimum confidence threshold for identifier lookups (default: 0.80)'
+    )
+
+    parser.add_argument(
+        '--max-year-diff',
+        type=int,
+        default=1,
+        help='Maximum allowed year difference between extracted and lookup metadata (default: 1)'
     )
     
     parser.add_argument(
@@ -841,6 +912,12 @@ Examples:
     
     # Sampling-based extraction options
     parser.add_argument(
+        '--from-json',
+        action='store_true',
+        help='Skip extraction and load from existing included_studies.json. Only runs lookup and CSV generation. Useful when extraction was done manually or by LLM. Requires strict JSON validation.'
+    )
+    
+    parser.add_argument(
         '--sampling-runs',
         type=int,
         default=None,
@@ -854,12 +931,6 @@ Examples:
         help='Minimum fraction of runs required to include a study (default: 0.60, i.e., 3/5 for 5 runs)'
     )
     
-    parser.add_argument(
-        '--from-json',
-        action='store_true',
-        help='Skip extraction (Steps 1-4) and load from existing included_studies.json. Useful when extraction was done manually via LLM agent. Only runs lookup (Step 5) and CSV generation (Step 6).'
-    )
-    
     args = parser.parse_args()
     
     # Validate PubMed options
@@ -870,6 +941,13 @@ Examples:
     if args.generate_gold_csv and not args.lookup_pmid:
         parser.error("--generate-gold-csv requires --lookup-pmid (need identifier lookup first)")
     
+    # Validate --from-json options
+    if args.from_json:
+        if args.sampling_runs:
+            parser.error("--from-json cannot be used with --sampling-runs (extraction would be skipped)")
+        if not args.lookup_pmid and not args.generate_gold_csv:
+            parser.error("--from-json requires at least one of --lookup-pmid or --generate-gold-csv (otherwise nothing to do)")
+    
     # Validate sampling options
     if args.sampling_runs is not None:
         if args.sampling_runs < 2:
@@ -877,63 +955,81 @@ Examples:
         if not (0.0 < args.voting_threshold <= 1.0):
             parser.error("--voting-threshold must be between 0.0 and 1.0")
     
-    # Validate --from-json option
+    # Run extraction (with or without sampling) OR load from JSON
     if args.from_json:
-        if args.sampling_runs:
-            parser.error("--from-json cannot be used with --sampling-runs (extraction is skipped)")
-    
-    # ==================== STAGE 1: EXTRACTION (Steps 1-4) ====================
-    # Load from existing JSON or run extraction
-    if args.from_json:
-        # Skip extraction, load from existing JSON
-        print(f"📂 Loading from existing JSON (--from-json mode)")
-        
+        # Load from existing JSON
         json_path = args.output_path or f"studies/{args.study_name}/included_studies.json"
         
-        if not os.path.exists(json_path):
-            print(f"❌ Error: JSON file not found: {json_path}")
-            print(f"   Please ensure the file exists or run extraction first without --from-json")
-            sys.exit(1)
+        print(f"📂 Loading from existing JSON: {json_path}")
         
-        print(f"   Source: {json_path}\n")
+        if not os.path.exists(json_path):
+            print(f"❌ Error: File not found: {json_path}")
+            print(f"   Create it first or run without --from-json to extract studies.")
+            sys.exit(1)
         
         try:
             with open(json_path, 'r', encoding='utf-8') as f:
                 result = json.load(f)
-            print(f"✓ Loaded {result['total_included_studies']} studies from JSON\n")
-        except (json.JSONDecodeError, KeyError) as e:
-            print(f"❌ Error: Invalid JSON file: {e}")
+        except json.JSONDecodeError as e:
+            print(f"❌ Error: Invalid JSON in {json_path}: {e}")
             sys.exit(1)
+        except Exception as e:
+            print(f"❌ Error loading {json_path}: {e}")
+            sys.exit(1)
+        
+        # Validate JSON structure
+        try:
+            validate_json_structure(result, args.study_name)
+        except ValueError as e:
+            print(f"❌ Error: Invalid JSON structure: {e}")
+            print(f"\n📋 Required JSON structure:")
+            print(f"   {{")
+            print(f"     \"included_studies\": [")
+            print(f"       {{")
+            print(f"         \"title\": \"Study Title\",")
+            print(f"         \"year\": 2023,")
+            print(f"         \"first_author\": \"LastName\",")
+            print(f"         \"authors\": [\"LastName, FirstName\", ...],")
+            print(f"         \"journal\": \"Journal Name\",")
+            print(f"         \"doi\": null,  // optional")
+            print(f"         \"pmid\": null  // optional")
+            print(f"       }}, ...")
+            print(f"     ]")
+            print(f"   }}")
+            sys.exit(1)
+        
+        print(f"✅ Loaded {len(result['included_studies'])} studies from JSON\n")
+        
+    elif args.sampling_runs:
+        # Sampling-based extraction
+        result = extract_included_studies_with_sampling(
+            study_name=args.study_name,
+            markdown_file=args.markdown_file,
+            output_path=args.output_path,
+            debug=args.debug,
+            sampling_runs=args.sampling_runs,
+            voting_threshold=args.voting_threshold
+        )
     else:
-        # Run extraction (with or without sampling)
-        if args.sampling_runs:
-            # Sampling-based extraction
-            result = extract_included_studies_with_sampling(
-                study_name=args.study_name,
-                markdown_file=args.markdown_file,
-                output_path=args.output_path,
-                debug=args.debug,
-                sampling_runs=args.sampling_runs,
-                voting_threshold=args.voting_threshold
-            )
-        else:
-            # Standard single-run extraction
-            result = extract_included_studies(
-                study_name=args.study_name,
-                markdown_file=args.markdown_file,
-                output_path=args.output_path,
-                debug=args.debug
-            )
+        # Standard single-run extraction
+        result = extract_included_studies(
+            study_name=args.study_name,
+            markdown_file=args.markdown_file,
+            output_path=args.output_path,
+            debug=args.debug
+        )
     
     # Optionally lookup PMIDs/DOIs
     if args.lookup_pmid:
         print(f"\n🔍 Looking up DOIs and PMIDs (multi-tier strategy)...")
         print(f"   Email: {args.pubmed_email}")
         print(f"   Min confidence: {args.min_confidence}")
-        print(f"   Strategy: PubMed → CrossRef fallback\n")
+        print(f"   Year tolerance: ±{args.max_year_diff} years")
+        print(f"   Strategy: PubMed → Europe PMC → CrossRef\n")
         
-        from lookup_pmid import PubMedLookup
-        from lookup_crossref import CrossRefLookup
+        from scripts.lookup_pmid import PubMedLookup
+        from scripts.lookup_europepmc import EuropePMCLookup
+        from scripts.lookup_crossref import CrossRefLookup
         
         pubmed_client = PubMedLookup(
             email=args.pubmed_email,
@@ -941,10 +1037,12 @@ Examples:
         )
         
         crossref_client = CrossRefLookup(email=args.pubmed_email)
+        europepmc_client = EuropePMCLookup(email=args.pubmed_email)
         
         included_studies = result['included_studies']
         updated_count = 0
         pubmed_success = 0
+        europepmc_success = 0
         crossref_success = 0
         
         for i, study in enumerate(included_studies, 1):
@@ -956,7 +1054,11 @@ Examples:
             print(f"  [{i}/{len(included_studies)}] {title}...")
             
             # Try PubMed first (gets both DOI + PMID if successful)
-            match = pubmed_client.find_best_match(study, min_confidence=args.min_confidence)
+            match = pubmed_client.find_best_match(
+                study,
+                min_confidence=args.min_confidence,
+                max_year_diff=args.max_year_diff
+            )
             
             if match:
                 # Update study with PMID/DOI from PubMed
@@ -974,28 +1076,54 @@ Examples:
                 print(f"      → [PubMed] DOI: {match.doi or 'N/A'}, PMID: {match.pmid}, "
                       f"Confidence: {match.confidence:.2f} ✓")
             else:
-                # Fallback to CrossRef (DOI-only)
-                print(f"      → PubMed: No match, trying CrossRef...")
-                
-                cr_match = crossref_client.find_best_match(study, min_confidence=args.min_confidence)
-                
-                if cr_match:
-                    # Update study with DOI from CrossRef
-                    study['doi'] = cr_match.doi
-                    # PMID stays None (CrossRef doesn't provide it)
+                # Fallback to Europe PMC (can return PMID and DOI)
+                print(f"      → PubMed: No match, trying Europe PMC...")
+
+                epmc_match = europepmc_client.find_best_match(
+                    study,
+                    min_confidence=args.min_confidence,
+                    max_year_diff=args.max_year_diff
+                )
+
+                if epmc_match:
+                    study['pmid'] = epmc_match.pmid or study['pmid']
+                    study['doi'] = epmc_match.doi or study['doi']
                     study['lookup_metadata'] = {
-                        'confidence': cr_match.confidence,
-                        'similarity': cr_match.similarity_score,
-                        'method': 'crossref_api',
-                        'source': 'CrossRef'
+                        'confidence': epmc_match.confidence,
+                        'similarity': epmc_match.similarity_score,
+                        'method': 'europe_pmc',
+                        'source': 'EuropePMC'
                     }
-                    
                     updated_count += 1
-                    crossref_success += 1
-                    print(f"      → [CrossRef] DOI: {cr_match.doi}, "
-                          f"Confidence: {cr_match.confidence:.2f} ✓")
+                    europepmc_success += 1
+                    print(f"      → [Europe PMC] DOI: {epmc_match.doi or 'N/A'}, PMID: {epmc_match.pmid or 'N/A'}, "
+                          f"Confidence: {epmc_match.confidence:.2f} ✓")
                 else:
-                    print(f"      → CrossRef: No match found ✗")
+                    # Fallback to CrossRef (DOI-only)
+                    print(f"      → Europe PMC: No match, trying CrossRef...")
+                    cr_match = crossref_client.find_best_match(
+                        study,
+                        min_confidence=args.min_confidence,
+                        max_year_diff=args.max_year_diff
+                    )
+                    
+                    if cr_match:
+                        # Update study with DOI from CrossRef
+                        study['doi'] = cr_match.doi
+                        # PMID stays None (CrossRef doesn't provide it)
+                        study['lookup_metadata'] = {
+                            'confidence': cr_match.confidence,
+                            'similarity': cr_match.similarity_score,
+                            'method': 'crossref_api',
+                            'source': 'CrossRef'
+                        }
+                        
+                        updated_count += 1
+                        crossref_success += 1
+                        print(f"      → [CrossRef] DOI: {cr_match.doi}, "
+                              f"Confidence: {cr_match.confidence:.2f} ✓")
+                    else:
+                        print(f"      → CrossRef: No match found ✗")
         
         # Re-save with updated data
         output_path = args.output_path or f"studies/{args.study_name}/included_studies.json"
@@ -1011,7 +1139,10 @@ Examples:
             "with_identifiers": with_identifiers,
             "doi_coverage_percent": round(with_doi / len(included_studies) * 100, 1),
             "pmid_coverage_percent": round(with_pmid / len(included_studies) * 100, 1),
-            "identifier_coverage_percent": round(with_identifiers / len(included_studies) * 100, 1)
+            "identifier_coverage_percent": round(with_identifiers / len(included_studies) * 100, 1),
+            "pubmed_matches": pubmed_success,
+            "europepmc_matches": europepmc_success,
+            "crossref_matches": crossref_success
         })
         
         with open(output_path, 'w', encoding='utf-8') as f:
@@ -1019,6 +1150,7 @@ Examples:
         
         print(f"\n✅ Updated {updated_count} studies")
         print(f"   PubMed: {pubmed_success} studies (DOI + PMID)")
+        print(f"   Europe PMC: {europepmc_success} studies (DOI + PMID when available)")
         print(f"   CrossRef: {crossref_success} studies (DOI only)")
         print(f"\n📊 Final Statistics:")
         stats = result["statistics"]

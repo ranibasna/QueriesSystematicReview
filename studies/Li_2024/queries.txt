@@ -1,0 +1,17 @@
+# Query 1 - High-recall: Comprehensive MeSH with explosion and broad text words
+("Sleep Wake Disorders"[MeSH] OR "Sleep"[MeSH] OR "Sleep Apnea Syndromes"[MeSH] OR "Circadian Rhythm"[MeSH] OR sleep[tiab] OR "sleep disorder"[tiab] OR "sleep disorders"[tiab] OR "sleep disturbance"[tiab] OR "sleep disturbances"[tiab] OR "sleep dysfunction"[tiab] OR "sleep quality"[tiab] OR insomnia[tiab] OR "sleep apnea"[tiab] OR "sleep breathing disorder"[tiab] OR "obstructive sleep apnea"[tiab] OR OSA[tiab] OR "circadian dysrhythmia"[tiab] OR "circadian rhythm"[tiab]) AND ("Infertility, Female"[MeSH] OR "Fertility"[MeSH] OR "Fertilization in Vitro"[MeSH] OR "Reproduction"[MeSH] OR infertility[tiab] OR "female infertility"[tiab] OR fertility[tiab] OR "female fertility"[tiab] OR "female reproduction"[tiab] OR subfertility[tiab] OR "reproductive health"[tiab] OR "in vitro fertilization"[tiab] OR IVF[tiab] OR "fertility treatment"[tiab] OR "assisted reproduction"[tiab] OR "reproductive function"[tiab])
+
+# Query 2 - Balanced: Mix of MeSH and filtered text words with study design
+("Sleep Wake Disorders"[MeSH] OR sleep[tiab] OR "sleep disorder"[tiab] OR "sleep disturbance"[tiab] OR "sleep dysfunction"[tiab] OR "sleep apnea"[tiab] OR "sleep breathing disorder"[tiab] OR insomnia[tiab]) AND ("Infertility, Female"[MeSH] OR "Fertility"[MeSH] OR infertility[tiab] OR "female infertility"[tiab] OR fertility[tiab] OR "female fertility"[tiab] OR IVF[tiab] OR "fertility treatment"[tiab]) AND (cohort[tiab] OR prospective[tiab] OR "cross-sectional"[tiab] OR observational[tiab] OR "Cohort Studies"[MeSH] OR "Cross-Sectional Studies"[MeSH]) AND ("2010/01/01"[Date - Publication] : "2023/12/31"[Date - Publication])
+
+# Query 3 - High-precision: Major focus headings and title searches
+"Sleep Wake Disorders"[majr] AND "Infertility, Female"[majr] AND (sleep[ti] OR insomnia[ti] OR "sleep disorder"[ti]) AND (infertility[ti] OR fertility[ti]) AND ("Cohort Studies"[MeSH] OR "Cross-Sectional Studies"[MeSH]) AND ("2010/01/01"[Date - Publication] : "2023/12/31"[Date - Publication])
+
+# Query 4 - Micro-variant (Filter-based): Balanced query with human filter
+("Sleep Wake Disorders"[MeSH] OR sleep[tiab] OR "sleep disorder"[tiab] OR "sleep disturbance"[tiab] OR "sleep dysfunction"[tiab] OR "sleep apnea"[tiab] OR insomnia[tiab]) AND ("Infertility, Female"[MeSH] OR "Fertility"[MeSH] OR infertility[tiab] OR "female infertility"[tiab] OR fertility[tiab] OR IVF[tiab]) AND (cohort[tiab] OR prospective[tiab] OR "cross-sectional"[tiab] OR "Cohort Studies"[MeSH]) AND ("2010/01/01"[Date - Publication] : "2023/12/31"[Date - Publication]) AND humans[Filter]
+
+# Query 5 - Micro-variant (Scope-based): Balanced query with title restriction
+("Sleep Wake Disorders"[MeSH] OR sleep[ti] OR "sleep disorder"[ti] OR "sleep disturbance"[ti] OR insomnia[ti]) AND ("Infertility, Female"[MeSH] OR infertility[ti] OR fertility[ti] OR IVF[ti]) AND ("2010/01/01"[Date - Publication] : "2023/12/31"[Date - Publication])
+
+# Query 6 - Micro-variant (Major heading focus): Balanced query with major headings instead of proximity
+("Sleep Wake Disorders"[majr] OR sleep[tiab] OR "sleep disorder"[tiab] OR "sleep disturbance"[tiab]) AND ("Infertility, Female"[majr] OR infertility[tiab] OR fertility[tiab]) AND (cohort[tiab] OR "cross-sectional"[tiab] OR "Cohort Studies"[MeSH]) AND ("2010/01/01"[Date - Publication] : "2023/12/31"[Date - Publication])

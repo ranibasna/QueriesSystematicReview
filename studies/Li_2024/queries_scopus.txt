@@ -1,0 +1,17 @@
+# Query 1 - High-recall: Comprehensive keyword search across title, abstract, and keywords
+TITLE-ABS-KEY(sleep OR "sleep disorder" OR "sleep disorders" OR "sleep disturbance" OR "sleep disturbances" OR "sleep dysfunction" OR "sleep quality" OR insomnia OR "sleep apnea" OR "sleep breathing disorder" OR "obstructive sleep apnea" OR OSA OR "circadian dysrhythmia" OR "circadian rhythm" OR "sleep wake disorder") AND TITLE-ABS-KEY(infertility OR "female infertility" OR fertility OR "female fertility" OR "female reproduction" OR subfertility OR "reproductive health" OR "in vitro fertilization" OR IVF OR "fertility treatment" OR "assisted reproduction" OR "reproductive function" OR "assisted reproductive technology")
+
+# Query 2 - Balanced: Focused keywords with date and study type filters
+TITLE-ABS-KEY(sleep OR "sleep disorder" OR "sleep disturbance" OR "sleep dysfunction" OR "sleep apnea" OR "sleep breathing disorder" OR insomnia) AND TITLE-ABS-KEY(infertility OR "female infertility" OR fertility OR "female fertility" OR IVF OR "fertility treatment" OR "reproductive health") AND TITLE-ABS-KEY(cohort OR prospective OR "cross-sectional" OR observational) AND PUBYEAR > 2009 AND PUBYEAR < 2024
+
+# Query 3 - High-precision: Title-only search with restrictive filters
+TITLE(sleep OR insomnia OR "sleep disorder") AND TITLE(infertility OR fertility) AND TITLE-ABS-KEY(cohort OR "cross-sectional" OR observational) AND PUBYEAR > 2009 AND PUBYEAR < 2024
+
+# Query 4 - Micro-variant (Filter-based): Balanced query with document type filter
+TITLE-ABS-KEY(sleep OR "sleep disorder" OR "sleep disturbance" OR "sleep dysfunction" OR "sleep apnea" OR insomnia) AND TITLE-ABS-KEY(infertility OR "female infertility" OR fertility OR IVF OR "fertility treatment") AND TITLE-ABS-KEY(cohort OR prospective OR "cross-sectional") AND PUBYEAR > 2009 AND PUBYEAR < 2024 AND DOCTYPE(ar OR re)
+
+# Query 5 - Micro-variant (Scope-based): Balanced query with title field restriction
+TITLE(sleep OR "sleep disorder" OR "sleep disturbance" OR insomnia) AND TITLE-ABS-KEY(infertility OR "female infertility" OR fertility OR IVF) AND PUBYEAR > 2009 AND PUBYEAR < 2024
+
+# Query 6 - Micro-variant (Proximity-based): Balanced query with tight proximity
+TITLE-ABS-KEY(sleep W/5 (disorder OR disturbance OR dysfunction OR quality)) AND TITLE-ABS-KEY((female W/3 infertility) OR fertility OR IVF) AND PUBYEAR > 2009 AND PUBYEAR < 2024

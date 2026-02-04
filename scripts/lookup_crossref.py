@@ -34,6 +34,7 @@ class CrossRefMatch:
     authors: List[str]
     journal: str
     year: int
+    work_type: Optional[str]
     similarity_score: float
     confidence: float
     
@@ -143,6 +144,32 @@ class CrossRefLookup:
         except requests.RequestException as e:
             print(f"⚠️  CrossRef search error: {e}")
             return []
+
+    def search_title_variations(
+        self,
+        title: str,
+        max_results: int = 10
+    ) -> List[Dict[str, Any]]:
+        """Try multiple title variants to improve recall."""
+        # Full title
+        items = self.search_by_title(title, max_results)
+        if items:
+            return items
+
+        # Truncate to first 12 words to dampen noisy tails
+        truncated = ' '.join(title.split()[:12])
+        if truncated and truncated != title:
+            items = self.search_by_title(truncated, max_results)
+            if items:
+                return items
+
+        # Remove punctuation and retry
+        cleaned = re.sub(r'[^\w\s-]', ' ', title)
+        cleaned = ' '.join(cleaned.split())
+        if cleaned and cleaned != title:
+            items = self.search_by_title(cleaned, max_results)
+
+        return items
     
     def search_by_bibliographic(
         self,
@@ -244,13 +271,16 @@ class CrossRefLookup:
                 date_parts = published.get('date-parts', [[]])
                 if date_parts and date_parts[0]:
                     year = date_parts[0][0]
+
+            work_type = item.get('type')
             
             return {
                 'doi': doi,
                 'title': title,
                 'authors': authors,
                 'journal': journal,
-                'year': year
+                'year': year,
+                'type': work_type
             }
             
         except Exception as e:
@@ -287,7 +317,8 @@ class CrossRefLookup:
         similarity_score: float,
         num_results: int,
         author_match: bool,
-        year_match: bool
+        year_match: bool,
+        type_penalty: float = 1.0
     ) -> float:
         """
         Calculate confidence score for a match.
@@ -327,14 +358,61 @@ class CrossRefLookup:
         # Reduce if many results (ambiguous)
         if num_results > 5:
             confidence *= 0.95
+
+        # Apply type-based penalty
+        confidence *= type_penalty
         
         return round(confidence, 3)
+
+    def _type_penalty(self, work_type: Optional[str]) -> float:
+        """Apply a light penalty for non-article types."""
+        if not work_type:
+            return 1.0
+        # Lower confidence for preprints or posted content
+        if work_type in {"posted-content", "preprint"}:
+            return 0.85
+        # Light penalty for proceedings
+        if work_type in {"proceedings-article", "book-chapter"}:
+            return 0.95
+        return 1.0
+
+    def _validate_metadata(
+        self,
+        extracted_study: Dict[str, Any],
+        metadata: Dict[str, Any],
+        max_year_diff: int,
+        allowed_types: Optional[List[str]]
+    ) -> bool:
+        """Validate CrossRef metadata against extracted study fields."""
+        extracted_year = extracted_study.get('year')
+        candidate_year = metadata.get('year')
+
+        if extracted_year and candidate_year:
+            if abs(candidate_year - extracted_year) > max_year_diff:
+                return False
+
+        # Author last-name match required when available
+        extracted_last = self._extract_last_name(extracted_study.get('first_author', '')).lower()
+        authors = metadata.get('authors', [])
+        if extracted_last:
+            if not any(extracted_last in a.lower() for a in authors[:5]):
+                return False
+
+        # Type validation if provided
+        if allowed_types:
+            candidate_type = metadata.get('type')
+            if candidate_type and candidate_type not in allowed_types:
+                return False
+
+        return True
     
     def find_best_match(
         self,
         extracted_study: Dict[str, Any],
         max_results: int = 10,
-        min_confidence: float = 0.70
+        min_confidence: float = 0.80,
+        max_year_diff: int = 1,
+        allowed_types: Optional[List[str]] = None
     ) -> Optional[CrossRefMatch]:
         """
         Find best CrossRef match for an extracted study.
@@ -353,13 +431,26 @@ class CrossRefLookup:
         
         if not title:
             return None
+
+        if allowed_types is None:
+            allowed_types = [
+                "journal-article",
+                "article",
+                "review-article",
+                "proceedings-article"
+            ]
         
-        # Try bibliographic search first (more accurate)
-        items = self.search_by_bibliographic(title, first_author, year, max_results)
-        
-        # If no results, try title-only search
-        if not items:
-            items = self.search_by_title(title, max_results)
+        # Try multiple strategies to improve recall
+        search_strategies = [
+            lambda: self.search_by_bibliographic(title, first_author, year, max_results),
+            lambda: self.search_title_variations(title, max_results),
+        ]
+
+        items: List[Dict[str, Any]] = []
+        for search_fn in search_strategies:
+            items = search_fn()
+            if items:
+                break
         
         if not items:
             return None
@@ -371,6 +462,9 @@ class CrossRefLookup:
             metadata = self.parse_crossref_item(item)
             
             if not metadata:
+                continue
+
+            if not self._validate_metadata(extracted_study, metadata, max_year_diff, allowed_types):
                 continue
             
             # Calculate title similarity
@@ -394,7 +488,8 @@ class CrossRefLookup:
                 similarity,
                 len(items),
                 author_match,
-                year_match
+                year_match,
+                type_penalty=self._type_penalty(metadata.get('type'))
             )
             
             if confidence >= min_confidence:
@@ -404,6 +499,7 @@ class CrossRefLookup:
                     authors=cr_authors,
                     journal=metadata.get('journal', ''),
                     year=cr_year or 0,
+                    work_type=metadata.get('type'),
                     similarity_score=similarity,
                     confidence=confidence
                 )
@@ -423,7 +519,7 @@ def find_doi(
     first_author: str,
     year: int,
     email: Optional[str] = None,
-    min_confidence: float = 0.70
+    min_confidence: float = 0.80
 ) -> Optional[Dict[str, Any]]:
     """
     Convenience function to find DOI for a study.

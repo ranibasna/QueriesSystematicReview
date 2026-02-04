@@ -1,0 +1,17 @@
+# High-recall: Comprehensive TITLE-ABS-KEY search with all synonyms
+TITLE-ABS-KEY(("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "idiopathic generalised epilepsy" OR "IGE" OR "GGE" OR "juvenile myoclonic epilepsy" OR "JME" OR "childhood absence epilepsy" OR "CAE" OR "juvenile absence epilepsy" OR "JAE" OR "generalized tonic-clonic" OR "generalised tonic-clonic" OR "GTCS") AND ("sleep quality" OR "sleep architecture" OR "sleep macrostructure" OR "sleep microstructure" OR "sleep stages" OR "sleep stage" OR "sleep disorder" OR "sleep disorders" OR "sleep disturbance" OR "polysomnography" OR "PSG"))
+
+# Balanced: Mix of key terms with study design filters
+TITLE-ABS-KEY(("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "IGE" OR "GGE" OR "juvenile myoclonic epilepsy" OR "JME") AND ("sleep quality" OR "sleep architecture" OR "sleep macrostructure" OR "sleep microstructure" OR "polysomnography") AND (cohort OR "cross-sectional" OR observational)) AND DOCTYPE(ar OR re)
+
+# High-precision: Title-specific search with document type restriction
+TITLE(("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "IGE" OR "GGE") AND ("sleep quality" OR "sleep architecture")) AND DOCTYPE(ar OR re)
+
+# Micro-variant 1 (Filter-based): Balanced query with article and review filter
+TITLE-ABS-KEY(("genetic generalized epilepsy" OR "idiopathic generalized epilepsy" OR "IGE" OR "GGE" OR "juvenile myoclonic epilepsy" OR "JME") AND ("sleep quality" OR "sleep architecture" OR "sleep macrostructure" OR "polysomnography") AND (cohort OR "cross-sectional")) AND DOCTYPE(ar OR re)
+
+# Micro-variant 2 (Scope-based): Balanced query with title restriction
+TITLE(("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "IGE" OR "GGE" OR "juvenile myoclonic epilepsy")) AND TITLE-ABS-KEY("sleep quality" OR "sleep architecture" OR "sleep macrostructure") AND TITLE-ABS-KEY(cohort OR "cross-sectional")
+
+# Micro-variant 3 (Proximity-based): Balanced query with tight proximity between epilepsy and sleep terms
+TITLE-ABS-KEY((("genetic generalized epilepsy" OR "idiopathic generalized epilepsy" OR "IGE" OR "GGE") W/10 ("sleep quality" OR "sleep architecture" OR "sleep macrostructure")) AND (cohort OR "cross-sectional"))
