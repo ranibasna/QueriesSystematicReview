@@ -33,6 +33,7 @@ def extract_query_type_from_comment(comment: str) -> Optional[str]:
     
     Examples:
         "# Query 1: High-recall - Broad MeSH terms..." -> "High-recall"
+        "# Query 1 - High-recall: Broad MeSH terms..." -> "High-recall"
         "# High-recall: Broad search..." -> "High-recall"
         "# Balanced - Mix of MeSH..." -> "Balanced"
         "# Micro-variant 1 (Filter-based)" -> "Micro-variant 1"
@@ -50,9 +51,16 @@ def extract_query_type_from_comment(comment: str) -> Optional[str]:
         query_type = match.group(1).strip()
         return query_type
     
-    # Pattern 2: "TYPE - description" or "TYPE: description" (no "Query N:")
-    # Match everything before " - " or ": "
-    match = re.match(r'^(.+?)(?:\s+[-:]\s+|\s*$)', comment)
+    # Pattern 2: "Query N - TYPE: description" (new format with dash before type)
+    # Match everything after "Query N -" until we hit ":" or end of string
+    match = re.match(r'Query\s+\d+\s*-\s*(.+?)(?:\s*:\s+|\s*$)', comment, re.IGNORECASE)
+    if match:
+        query_type = match.group(1).strip()
+        return query_type
+    
+    # Pattern 3: "TYPE - description" or "TYPE: description" (no "Query N:")
+    # Match everything before " - " or ": " or " :"
+    match = re.match(r'^(.+?)(?:\s*[-:]\s+|\s*$)', comment)
     if match:
         query_type = match.group(1).strip()
         # Exclude common non-type words
@@ -113,7 +121,7 @@ def aggregate_by_query_type(
     per_db_csv: Path,
     query_types: Dict[int, Dict[str, str]],
     filter_types: Optional[List[str]] = None
-) -> pd.DataFrame:
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Aggregate per-database metrics by query type.
     
@@ -123,31 +131,41 @@ def aggregate_by_query_type(
         filter_types: Only include these query types (None = all)
     
     Returns:
-        DataFrame with aggregated metrics by query type
+        Tuple of (per_db_df, merged_df) - DataFrames with per-database and merged metrics
     """
     df = pd.read_csv(per_db_csv)
     
-    # Filter out COMBINED rows (we'll compute our own)
-    df = df[df['database'] != 'COMBINED'].copy()
+    # Split into per-database and combined rows
+    combined_df = df[df['database'] == 'COMBINED'].copy()
+    per_db_df = df[df['database'] != 'COMBINED'].copy()
     
-    # Add query type column
-    df['query_type'] = df.apply(
+    # Add query type column to both dataframes
+    per_db_df['query_type'] = per_db_df.apply(
         lambda row: query_types.get(row['query_num'], {}).get(row['database'], 'Unknown'),
         axis=1
     )
     
+    # For combined rows, use the query type from any database (they should all match)
+    combined_df['query_type'] = combined_df['query_num'].apply(
+        lambda qnum: next(
+            (qt for qt in query_types.get(qnum, {}).values()),
+            'Unknown'
+        )
+    )
+    
     # Filter by requested types
     if filter_types:
-        df = df[df['query_type'].isin(filter_types)]
+        per_db_df = per_db_df[per_db_df['query_type'].isin(filter_types)]
+        combined_df = combined_df[combined_df['query_type'].isin(filter_types)]
     
-    if df.empty:
+    if per_db_df.empty and combined_df.empty:
         print(f"⚠️  No data found for query types: {filter_types}", file=sys.stderr)
-        return pd.DataFrame()
+        return pd.DataFrame(), pd.DataFrame()
     
     # Group by query_num and query_type, aggregate across databases
-    aggregated = []
+    per_db_aggregated = []
     
-    for (query_num, query_type), group in df.groupby(['query_num', 'query_type']):
+    for (query_num, query_type), group in per_db_df.groupby(['query_num', 'query_type']):
         databases = sorted(group['database'].unique())
         
         # Collect all PMIDs across databases (deduped)
@@ -173,20 +191,38 @@ def aggregate_by_query_type(
             combined_row[f'{db}_TP'] = int(row['TP'])
             combined_row[f'{db}_recall'] = float(row['recall'])
         
-        aggregated.append(combined_row)
+        per_db_aggregated.append(combined_row)
     
-    result_df = pd.DataFrame(aggregated)
+    per_db_result = pd.DataFrame(per_db_aggregated)
+    if not per_db_result.empty:
+        per_db_result = per_db_result.sort_values('query_num')
     
-    # Sort by query_num
-    result_df = result_df.sort_values('query_num')
+    # Process merged/deduplicated results
+    merged_aggregated = []
+    for _, row in combined_df.iterrows():
+        merged_row = {
+            'query_num': int(row['query_num']),
+            'query_type': row['query_type'],
+            'merged_results': int(row['results_count']),  # Deduplicated count
+            'merged_TP': int(row['TP']),
+            'merged_recall': float(row['recall']),
+            'gold_size': int(row['gold_size']),
+            'matches_by_pmid': int(row.get('matches_by_pmid', 0)),
+            'matches_by_doi_only': int(row.get('matches_by_doi_only', 0)),
+        }
+        merged_aggregated.append(merged_row)
     
-    return result_df
+    merged_result = pd.DataFrame(merged_aggregated)
+    if not merged_result.empty:
+        merged_result = merged_result.sort_values('query_num')
+    
+    return per_db_result, merged_result
 
-def format_output(df: pd.DataFrame, detailed: bool = False) -> str:
+def format_output(per_db_df: pd.DataFrame, merged_df: pd.DataFrame, detailed: bool = False) -> str:
     """
-    Format DataFrame for console output.
+    Format DataFrames for console output.
     """
-    if df.empty:
+    if per_db_df.empty and merged_df.empty:
         return "No results to display."
     
     output = []
@@ -195,7 +231,15 @@ def format_output(df: pd.DataFrame, detailed: bool = False) -> str:
     output.append("=" * 100)
     output.append("")
     
-    for _, row in df.iterrows():
+    # Merge the two dataframes on query_num for display
+    if not per_db_df.empty and not merged_df.empty:
+        display_df = per_db_df.merge(merged_df, on=['query_num', 'query_type'], how='left', suffixes=('', '_merged'))
+    elif not per_db_df.empty:
+        display_df = per_db_df
+    else:
+        display_df = merged_df
+    
+    for _, row in display_df.iterrows():
         query_type = row['query_type']
         query_num = int(row['query_num'])
         databases = row['databases']
@@ -203,24 +247,40 @@ def format_output(df: pd.DataFrame, detailed: bool = False) -> str:
         
         output.append(f"Query {query_num}: {query_type}")
         output.append("-" * 80)
-        output.append(f"  Databases: {databases} ({num_dbs} total)")
-        output.append(f"  Total Results (before dedup): {int(row['total_results']):,}")
-        output.append(f"  Best Recall Achieved: {row['max_recall']:.1%} ({int(row['max_TP'])}/{int(row['gold_size'])} gold studies)")
-        output.append(f"  Average Recall: {row['avg_recall']:.1%}")
         
-        if detailed:
+        # Show merged/deduplicated results first (if available)
+        if 'merged_results' in row and pd.notna(row['merged_results']):
+            merged_gold_size = row.get('gold_size_merged', row.get('gold_size', 0))
+            output.append(f"  📊 MERGED (Deduplicated) Results:")
+            output.append(f"     Total Results: {int(row['merged_results']):,}")
+            output.append(f"     Recall: {row['merged_recall']:.1%} ({int(row['merged_TP'])}/{int(merged_gold_size)} gold studies)")
+            if 'matches_by_pmid' in row and pd.notna(row['matches_by_pmid']):
+                output.append(f"     Matches by PMID: {int(row['matches_by_pmid'])}, by DOI only: {int(row['matches_by_doi_only'])}")
             output.append("")
-            output.append("  Per-Database Breakdown:")
+        
+        # Show per-database summary
+        if 'databases' in row and pd.notna(row['databases']):
+            databases = row['databases']
+            num_dbs = int(row['num_databases'])
+            output.append(f"  🔍 Per-Database Summary:")
+            output.append(f"     Databases: {databases} ({num_dbs} total)")
+            output.append(f"     Total Results (before dedup): {int(row['total_results']):,}")
+            output.append(f"     Best Recall: {row['max_recall']:.1%} ({int(row['max_TP'])}/{int(row['gold_size'])} gold studies)")
+            output.append(f"     Average Recall: {row['avg_recall']:.1%}")
+        
+        if detailed and 'databases' in row:
+            output.append("")
+            output.append("     Per-Database Breakdown:")
             
-            # Extract database-specific columns
-            for col in df.columns:
-                if col.endswith('_recall'):
+            # Extract database-specific columns (exclude merged_ columns)
+            for col in display_df.columns:
+                if col.endswith('_recall') and not col.startswith('merged_'):
                     db_name = col.replace('_recall', '')
                     if f'{db_name}_results' in row and pd.notna(row[f'{db_name}_results']):
                         results = int(row[f'{db_name}_results'])
                         tp = int(row[f'{db_name}_TP'])
                         recall = float(row[f'{db_name}_recall'])
-                        output.append(f"    • {db_name.upper()}: {results:,} results, {tp} TP, {recall:.1%} recall")
+                        output.append(f"       • {db_name.upper()}: {results:,} results, {tp} TP, {recall:.1%} recall")
         
         output.append("")
     
@@ -316,23 +376,36 @@ Examples:
         print("", file=sys.stderr)
     
     # Aggregate data
-    result_df = aggregate_by_query_type(latest_per_db, query_types, filter_types)
+    per_db_df, merged_df = aggregate_by_query_type(latest_per_db, query_types, filter_types)
     
-    if result_df.empty:
+    if per_db_df.empty and merged_df.empty:
         sys.exit(1)
     
     # Output
     if args.output:
-        result_df.to_csv(args.output, index=False)
-        print(f"✅ Saved to: {args.output}", file=sys.stderr)
+        # Save both dataframes to CSV with different sheets/files
+        output_base = Path(args.output).stem
+        output_dir = Path(args.output).parent
+        output_ext = Path(args.output).suffix
+        
+        if not per_db_df.empty:
+            per_db_file = output_dir / f"{output_base}_per_database{output_ext}"
+            per_db_df.to_csv(per_db_file, index=False)
+            print(f"✅ Saved per-database analysis to: {per_db_file}", file=sys.stderr)
+        
+        if not merged_df.empty:
+            merged_file = output_dir / f"{output_base}_merged{output_ext}"
+            merged_df.to_csv(merged_file, index=False)
+            print(f"✅ Saved merged analysis to: {merged_file}", file=sys.stderr)
+        
         print("", file=sys.stderr)
         
         # Also print summary to console
-        summary = format_output(result_df, detailed=False)
+        summary = format_output(per_db_df, merged_df, detailed=False)
         print(summary)
     else:
         # Print to console
-        output = format_output(result_df, detailed=args.detailed)
+        output = format_output(per_db_df, merged_df, detailed=args.detailed)
         print(output)
 
 if __name__ == '__main__':
