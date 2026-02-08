@@ -1,7 +1,7 @@
 # Multi-Database Deduplication: Complete Design & Implementation Guide
 
-**Last Updated**: November 20, 2025  
-**Status**: Option A Implemented, Option B Documented for Future  
+**Last Updated**: February 8, 2026  
+**Status**: Option A Implemented (active), query-level modes documented; Option B documented for future  
 **Branch**: `feature/multi-database-support`
 
 ---
@@ -27,43 +27,225 @@ This document provides a complete guide to multi-database article deduplication 
 
 ## Table of Contents
 
-1. [Problem Statement](#problem-statement)
-2. [Data Analysis & Edge Cases](#data-analysis--edge-cases)
-3. [Solution Options](#solution-options)
-4. [Implemented Solution (Option A)](#implemented-solution-option-a)
-5. [Detailed Design](#detailed-design)
-6. [Gold Standard Matching](#gold-standard-matching)
-7. [Future Enhancement (Option B)](#future-enhancement-option-b)
-8. [Testing & Validation](#testing--validation)
-9. [FAQ](#faq)
+1. [Multi-Database Aggregation Workflow](#multi-database-aggregation-workflow)
+2. [Problem Statement](#problem-statement)
+3. [Data Analysis & Edge Cases](#data-analysis--edge-cases)
+4. [Solution Options](#solution-options)
+5. [Implemented Solution (Option A)](#implemented-solution-option-a)
+6. [Detailed Design](#detailed-design)
+7. [Gold Standard Matching](#gold-standard-matching)
+8. [Future Enhancement (Option B)](#future-enhancement-option-b)
+9. [Testing & Validation](#testing--validation)
+10. [FAQ](#faq)
+
+---
+
+## Multi-Database Aggregation Workflow
+
+This section reflects the current behavior of:
+
+```bash
+bash scripts/run_complete_workflow.sh <STUDY_NAME> --databases pubmed,scopus,wos --multi-key
+```
+
+As of the latest workflow updates, the script supports three execution modes, produces per-query and per-database metrics, and supports DOI-primary multi-key scoring.
+
+### Workflow Modes (Current)
+
+| Mode | Trigger | What it does | When to use |
+|------|---------|--------------|-------------|
+| **Default (full-set)** | No mode flag | Runs all queries together, then aggregates and scores strategies across the full query set | Final study-level strategy selection |
+| **Query-by-query** | `--query-by-query` | Runs query 1..N one-at-a-time across databases; per-query aggregation/evaluation outputs are saved in `query_XX` folders | Debugging/diagnostics of each query |
+| **Single query index** | `--query-index N` | Runs only query N across databases with same pipeline as query-by-query for that one query | Focused troubleshooting of one query |
+
+**Important**: If you do not specify a mode flag, the script runs **Default (full-set)** mode.
+
+### How Query Alignment Works Across Databases
+
+Query matching is **index-based by order**, not by comment labels:
+
+- Blank lines separate query blocks
+- Lines beginning with `#` are ignored
+- Query block `i` in `queries.txt` is paired with block `i` in:
+  - `queries_scopus.txt`
+  - `queries_wos.txt`
+  - `queries_embase.txt` (for imported Embase JSONs)
+
+The script validates query counts across provider files before running query-level modes.
+
+### End-to-End Pipeline (Default Full-Set Mode)
+
+Assume 6 queries and 4 databases (PubMed, Scopus, WOS, Embase imported from CSV).
+
+1. **Step 1: Embase import (optional auto-detected)**
+   - Imports `embase_query*.csv` into `studies/<STUDY>/embase_query*.json`
+   - In default mode, Embase sets are also scored once via `score-sets`
+
+2. **Step 2: Query execution and scoring**
+   - Executes all query bundles across selected databases
+   - For each query bundle, provider results are merged and deduplicated by DOI in-memory
+   - Writes:
+     - `benchmark_outputs/<STUDY>/summary_<TIMESTAMP>.csv`
+     - `benchmark_outputs/<STUDY>/summary_per_database_<TIMESTAMP>.csv`
+     - `benchmark_outputs/<STUDY>/details_<TIMESTAMP>.json`
+
+3. **Step 3: Aggregation strategies**
+   - Aggregates all query result sets (and Embase JSON sets if present)
+   - In multi-key mode, outputs CSV (PMID+DOI) strategy files:
+     - `consensus_k2.csv`
+     - `precision_gated_union.csv`
+     - `weighted_vote.csv`
+     - `two_stage_screen.csv`
+     - `time_stratified_hybrid.csv`
+     - `concept_family_consensus.csv` (only when families are provided)
+
+4. **Step 4: Scoring aggregated sets**
+   - Scores strategy outputs against gold standard
+   - Writes:
+     - `aggregates_eval/<STUDY>/sets_summary_<TIMESTAMP>.csv`
+     - `aggregates_eval/<STUDY>/sets_details_<TIMESTAMP>.json`
+
+### Pipeline in Query-Level Modes
+
+In `--query-by-query` and `--query-index N` modes:
+
+1. One query block is extracted per provider file
+2. Query is run across selected databases
+3. Aggregation/scoring are run for that single query run (unless `--skip-aggregation`)
+4. Outputs are additionally organized in per-query folders:
+   - `benchmark_outputs/<STUDY>/query_XX/`
+   - `aggregates/<STUDY>/query_XX/`
+   - `aggregates_eval/<STUDY>/query_XX/`
+
+### Metrics Used (Current Implementation)
+
+#### Query Scoring (`summary_*.csv`, `summary_per_database_*.csv`)
+
+Core columns:
+- `results_count`: Raw retrieved count (sum across providers for combined rows)
+- `TP`: true positives
+- `gold_size`: size of gold denominator used for recall
+- `recall`: `TP / gold_size`
+- `NNR_proxy`: `results_count / max(TP, 1)`
+
+Multi-key additional columns:
+- `matches_by_pmid`
+- `matches_by_doi_only`
+
+#### Aggregation Strategy Scoring (`sets_summary_*.csv`)
+
+Columns include:
+- `TP`, `Retrieved`, `Gold`, `Precision`, `Recall`, `F1`, `Jaccard`, `OverlapCoeff`
+- `matches_by_doi`, `matches_by_pmid_fallback`
+- `gold_articles_with_doi`, `gold_articles_pmid_only`, `pmid_only_warning`
+- `retrieved_pmids_count`, `retrieved_dois_count`
+
+### Gold Size and Multi-Key Denominator
+
+In multi-key mode, the recall denominator is based on **unique gold articles** (`Gold` in multi-key metrics), not PMID+DOI sum.
+
+This is critical when detailed gold files contain both PMID and DOI for the same row:
+- Correct denominator should count articles once
+- The workflow now uses the same denominator as multi-key matching logic for query summaries
+
+### Matching Mechanics (DOI-Primary, PMID Fallback)
+
+Multi-key scoring uses:
+1. DOI match first (`retrieved_dois ∩ gold_dois`)
+2. PMID fallback for gold records lacking DOI
+
+Edge-case behavior:
+- Gold has no DOI column: falls back to PMID-only matching
+- Retrieved record has no DOI but has PMID: can still match via PMID fallback
+- Retrieved record has DOI only: can match DOI-based gold entries
+- Both DOI and PMID missing in retrieved record: cannot be matched
+- Gold row with neither DOI nor PMID: not matchable by identifier logic
+
+### Output Locations and File Types
+
+#### Default mode outputs
+
+```
+benchmark_outputs/<STUDY>/
+  summary_<TIMESTAMP>.csv
+  summary_per_database_<TIMESTAMP>.csv
+  details_<TIMESTAMP>.json
+  sets_summary_<TIMESTAMP>.csv         # Embase scoring (if Embase import scored)
+  sets_details_<TIMESTAMP>.json        # Embase scoring details (if applicable)
+
+aggregates/<STUDY>/
+  consensus_k2.csv
+  precision_gated_union.csv
+  weighted_vote.csv
+  two_stage_screen.csv
+  time_stratified_hybrid.csv
+  concept_family_consensus.csv         # optional
+
+aggregates_eval/<STUDY>/
+  sets_summary_<TIMESTAMP>.csv
+  sets_details_<TIMESTAMP>.json
+```
+
+#### Query-level mode extra outputs
+
+```
+benchmark_outputs/<STUDY>/query_01/
+aggregates/<STUDY>/query_01/
+aggregates_eval/<STUDY>/query_01/
+...
+```
+
+### Medeiros_2023 Example (Latest Run Pattern)
+
+Command:
+
+```bash
+bash scripts/run_complete_workflow.sh Medeiros_2023 --databases pubmed,scopus,wos --multi-key
+```
+
+Example outputs observed:
+- `benchmark_outputs/Medeiros_2023/summary_20260208-090334.csv`
+- `benchmark_outputs/Medeiros_2023/summary_per_database_20260208-090334.csv`
+- `benchmark_outputs/Medeiros_2023/details_20260208-090334.json`
+- `aggregates/Medeiros_2023/consensus_k2.csv`
+- `aggregates/Medeiros_2023/precision_gated_union.csv`
+- `aggregates/Medeiros_2023/weighted_vote.csv`
+- `aggregates/Medeiros_2023/two_stage_screen.csv`
+- `aggregates/Medeiros_2023/time_stratified_hybrid.csv`
+- `aggregates_eval/Medeiros_2023/sets_summary_20260208-090336.csv`
+
+Gold files for this study:
+- `studies/Medeiros_2023/gold_pmids_Medeiros_2023.csv`
+- `studies/Medeiros_2023/gold_pmids_Medeiros_2023_detailed.csv`
+
+The detailed file has 6 studies with both PMID and DOI, so multi-key gold denominator should be 6.
+
+### Quick Command Reference
+
+```bash
+# Default (full-set) mode
+bash scripts/run_complete_workflow.sh <STUDY> --databases pubmed,scopus,wos --multi-key
+
+# Query-by-query mode
+bash scripts/run_complete_workflow.sh <STUDY> --databases pubmed,scopus,wos --multi-key --query-by-query
+
+# Single query mode (query 3 only)
+bash scripts/run_complete_workflow.sh <STUDY> --databases pubmed,scopus,wos --multi-key --query-index 3
+```
 
 ---
 
 ## Problem Statement
 
-### Current Workflow Limitation
+### Historical Limitation (Now Resolved)
 
-The existing workflow queries multiple databases but only uses PubMed results for aggregation:
+Earlier iterations of this project included a PubMed-centric aggregation path. The current workflow has moved beyond that and now:
 
-```python
-# Current behavior in _execute_query_bundle()
-combined_pmids: Set[str] = set()  # Only populated by PubMed
-combined_dois: Set[str] = set()   # Union of all databases, but UNUSED
+1. Executes and scores across selected providers (PubMed, Scopus, WOS, plus optional Embase import)
+2. Merges provider outputs per query with DOI-aware deduplication
+3. Aggregates and evaluates strategy outputs in multi-key mode (`PMID + DOI`) when enabled
 
-# Later in aggregate_queries.py
-pmids = item.get('retrieved_pmids')  # Only PubMed PMIDs
-```
-
-**Result**: 
-- Query 1 example: 285 PubMed articles aggregated, 3,486 Scopus articles ignored
-- **92% of data is discarded**
-
-### Why This Is a Problem
-
-1. **Lost Coverage**: Scopus finds articles PubMed misses (and vice versa)
-2. **Inaccurate Metrics**: Recall/precision calculated only on PubMed subset
-3. **Wasted API Calls**: Querying Scopus but not using its results
-4. **Scalability**: Adding more databases won't improve coverage
+This section is retained for historical context, while the active behavior is documented in **Multi-Database Aggregation Workflow** above.
 
 ---
 
@@ -867,7 +1049,6 @@ def batch_lookup_pmids_by_dois(dois: List[str], batch_size: int = 50) -> Dict[st
 
 ---
 
-**Author**: GitHub Copilot  
 **Last Updated**: November 20, 2025  
 **Branch**: `feature/multi-database-support`  
 **Status**: Production-ready (Option A), Option B documented for future

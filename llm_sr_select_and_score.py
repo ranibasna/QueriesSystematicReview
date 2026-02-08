@@ -828,14 +828,14 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
             metrics = set_metrics_multi_key(pmids, dois, gold_pmids, gold_dois)
             tp = metrics['TP']
             recall = metrics['Recall']
+            gold_size = metrics['Gold']
         else:
             # Legacy PMID-only matching
             tp = len(pmids & gold)
             recall = tp / max(len(gold), 1)
+            gold_size = len(gold)
         
         nnr_proxy = total / max(tp, 1)
-        gold_size = len(gold_pmids) if not use_multi_key else len(gold_pmids) + len(gold_dois - gold_pmids)
-        
         rec = {
             'query': canonical_query, 
             'results_count': total, 
