@@ -41,13 +41,15 @@ def test_returns_dict():
     p = PubMedProvider(email="x@x.com")
     arts = [make_article("1", "10.a/b"), make_article("2", "10.c/d"), make_article("3")]
     h = FH(articles=arts)
+    # W2.1b: PMID "3" has no DOI → CrossRef fallback fires; mock it returning None
     with patch("search_providers.Entrez.efetch", return_value=h), \
          patch("search_providers.Entrez.read", side_effect=lambda h: h.read_result()), \
-         patch("search_providers.time.sleep"):
+         patch("search_providers.time.sleep"), \
+         patch.object(PubMedProvider, "_crossref_lookup", return_value=None):
         r = p._get_dois_from_pmids(["1", "2", "3"])
     assert isinstance(r, dict), type(r)
     assert r == {"1": "10.a/b", "2": "10.c/d"}, r
-    assert "3" not in r, "PMID with no DOI must not appear in mapping"
+    assert "3" not in r, "PMID with no DOI (CrossRef also None) must not appear in mapping"
     print("PASS test_returns_dict:", r)
 
 
@@ -78,10 +80,12 @@ def test_cache_and_signature():
     p = PubMedProvider(email="x@x.com")
     arts = [make_article("1", "10.a/b"), make_article("2", "10.c/d"), make_article("3")]
     sr = {"Count": "3", "IdList": ["1", "2", "3"]}
+    # W2.1b: PMID "3" has no DOI → CrossRef fallback fires; mock it returning None
     with patch("search_providers.Entrez.esearch", return_value=FH(sr=sr)), \
          patch("search_providers.Entrez.efetch", return_value=FH(articles=arts)), \
          patch("search_providers.Entrez.read", side_effect=lambda h: h.read_result()), \
-         patch("search_providers.time.sleep"):
+         patch("search_providers.time.sleep"), \
+         patch.object(PubMedProvider, "_crossref_lookup", return_value=None):
         result = p.search("q", "2020/01/01", "2024/12/31")
 
     # Return signature must be unchanged: (set, set, int)

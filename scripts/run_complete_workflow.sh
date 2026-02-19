@@ -521,6 +521,18 @@ if [ "$EMBASE_ONLY" = false ] && [ "$RUN_QUERY_LEVEL" = true ]; then
         # (each invocation only has 1 bundle, so bundle_idx is always 0 → query_num
         # would always be 1 without the offset).
         QUERY_NUM_OFFSET=$(( QUERY_NUM - 1 ))
+
+        # W3.2: pass pre-imported Embase results for this query index so that
+        # EmbaseLocalProvider is included alongside PubMed/Scopus/WOS in scoring.
+        # This makes Embase contribute to COMBINED metrics and per-database reporting
+        # natively, without a post-hoc merge step.
+        EMBASE_QUERY_FILE="$STUDY_DIR/embase_query${QUERY_NUM}.json"
+        EMBASE_SCORE_ARGS=()
+        if [ -f "$EMBASE_QUERY_FILE" ]; then
+            EMBASE_SCORE_ARGS=(--embase-jsons "$EMBASE_QUERY_FILE")
+            echo "   Including Embase (W3.2): $(basename "$EMBASE_QUERY_FILE")"
+        fi
+
         python llm_sr_select_and_score.py \
             --study-name "$STUDY_NAME" \
             "${DB_ARGS[@]}" \
@@ -529,7 +541,8 @@ if [ "$EMBASE_ONLY" = false ] && [ "$RUN_QUERY_LEVEL" = true ]; then
             --gold-csv "$GOLD_CSV" \
             --outdir "$BENCHMARK_OUTDIR" \
             --query-num-offset "$QUERY_NUM_OFFSET" \
-            $MULTI_KEY_FLAG
+            $MULTI_KEY_FLAG \
+            "${EMBASE_SCORE_ARGS[@]}"
 
         LATEST_DETAILS=$(ls -t "$BENCHMARK_OUTDIR/$STUDY_NAME"/details_*.json 2>/dev/null | head -n 1)
         if [ ! -f "$LATEST_DETAILS" ]; then
@@ -557,15 +570,21 @@ if [ "$EMBASE_ONLY" = false ] && [ "$RUN_QUERY_LEVEL" = true ]; then
         mkdir -p "$QUERY_AGG_DIR"
         QUERY_AGG_INPUTS=("$LATEST_DETAILS")
 
-        EMBASE_QUERY_FILE="$STUDY_DIR/embase_query${QUERY_NUM}.json"
-        if [ -f "$EMBASE_QUERY_FILE" ]; then
-            echo "   Including Embase result: $(basename "$EMBASE_QUERY_FILE")"
-            QUERY_AGG_INPUTS+=("$EMBASE_QUERY_FILE")
-        fi
-
+        # W3.2/W3.4: Embase is now inside details_*.json (integrated via --embase-jsons
+        # in STEP 2 above). Do NOT add standalone embase_query*.json — it would cause
+        # double-counting. Instead, use --split-by-provider (with --multi-key) so each
+        # database (pubmed, scopus, wos, embase) forms its own pool, enabling
+        # cross-database consensus:
+        #   consensus_k2 = articles found by ≥2 databases for this query.
+        # Notes:
+        #   • --split-by-provider requires --multi-key (linked_records); both are gated
+        #     on USE_MULTI_KEY so legacy studies without a detailed gold standard still
+        #     use the standard PMID-only aggregation path.
+        #   • In legacy mode (USE_MULTI_KEY=false) query-by-query aggregation produces
+        #     a single pool → consensus_k2 returns empty (known limitation).
         AGGREGATE_ARGS=(python scripts/aggregate_queries.py --inputs "${QUERY_AGG_INPUTS[@]}" --outdir "$QUERY_AGG_DIR")
         if [ "$USE_MULTI_KEY" = true ]; then
-            AGGREGATE_ARGS+=(--multi-key)
+            AGGREGATE_ARGS+=(--multi-key --split-by-provider)
         fi
         "${AGGREGATE_ARGS[@]}"
 
@@ -635,6 +654,14 @@ else
         if [ "$USE_MULTI_KEY" = true ]; then
             echo "   Using multi-key matching (PMID + DOI)"
         fi
+
+        # W3.2: pass all pre-imported Embase files so EmbaseLocalProvider is included
+        # natively in the scoring run (COMBINED metrics + per-database row).
+        EMBASE_SCORE_ARGS=()
+        if [ ${#EMBASE_FILES[@]} -gt 0 ]; then
+            EMBASE_SCORE_ARGS=(--embase-jsons "${EMBASE_FILES[@]}")
+            echo "   Including Embase (W3.2): ${#EMBASE_FILES[@]} file(s) → native provider row"
+        fi
         
         python llm_sr_select_and_score.py \
             --study-name "$STUDY_NAME" \
@@ -643,7 +670,8 @@ else
             --queries-txt "$QUERIES_TXT" \
             --gold-csv "$GOLD_CSV" \
             --outdir "$BENCHMARK_OUTDIR" \
-            $MULTI_KEY_FLAG
+            $MULTI_KEY_FLAG \
+            "${EMBASE_SCORE_ARGS[@]}"
         
         if [ $? -eq 0 ]; then
             echo ""
@@ -664,63 +692,11 @@ else
             LATEST_PER_DB=$(ls -t "$BENCHMARK_OUTDIR/$STUDY_NAME"/summary_per_database_*.csv 2>/dev/null | head -n 1)
             if [ -f "$LATEST_PER_DB" ]; then
                 echo ""
-                echo "📊 Per-Database Query Performance:"
+                echo "📊 Per-Database Query Performance (Embase is a native row when --embase-jsons was used):"
                 echo "────────────────────────────────────────────────────────────"
                 head -n 30 "$LATEST_PER_DB" | column -t -s,
                 echo "────────────────────────────────────────────────────────────"
-                
-                # Merge Embase results into per-database summary if Embase was scored
-                LATEST_EMBASE_SUMMARY=$(ls -t "$BENCHMARK_OUTDIR/$STUDY_NAME"/sets_summary_*.csv 2>/dev/null | head -n 1)
-                if [ ${#EMBASE_FILES[@]} -gt 0 ] && [ -f "$LATEST_EMBASE_SUMMARY" ]; then
-                    echo ""
-                    echo "📊 Merging Embase results into per-database summary..."
-                    python -c "
-import pandas as pd
-import sys
-
-try:
-    # Load Embase results
-    embase_df = pd.read_csv('$LATEST_EMBASE_SUMMARY')
-    per_db_df = pd.read_csv('$LATEST_PER_DB')
-    
-    # Transform Embase results to per-database format
-    embase_rows = []
-    for idx, row in embase_df.iterrows():
-        # Extract query number from name (e.g., 'embase_query1' -> 1)
-        query_num = int(row['name'].replace('embase_query', ''))
-        
-        embase_row = {
-            'query_num': query_num,
-            'database': 'embase',
-            'query': 'Embase query (see embase_manual_queries/)',
-            'results_count': row['Retrieved'],
-            'TP': row['TP'],
-            'gold_size': row['Gold'],
-            'recall': row['Recall'],
-            'NNR_proxy': row['Retrieved'] / max(row['TP'], 1)
-        }
-        
-        # Add multi-key columns if they exist
-        if 'matches_by_doi' in row:
-            embase_row['matches_by_pmid'] = row.get('matches_by_doi', 0) + row.get('matches_by_pmid_fallback', 0)
-            embase_row['matches_by_doi_only'] = row.get('matches_by_doi', 0)
-        
-        embase_rows.append(embase_row)
-    
-    # Append Embase rows to per-database dataframe
-    embase_per_db = pd.DataFrame(embase_rows)
-    combined_df = pd.concat([per_db_df, embase_per_db], ignore_index=True)
-    
-    # Sort by query_num and database
-    combined_df = combined_df.sort_values(['query_num', 'database'])
-    
-    # Save back to the same file
-    combined_df.to_csv('$LATEST_PER_DB', index=False)
-    print('   ✅ Embase results merged into per-database summary')
-except Exception as e:
-    print(f'   ⚠️  Failed to merge Embase results: {e}', file=sys.stderr)
-"
-                fi
+                # W3.3: Embase now appears natively in per-database CSV; no post-hoc merge needed.
             fi
         else
             echo ""
@@ -752,13 +728,15 @@ except Exception as e:
         else
             echo "🔄 Aggregating query results..."
             
-            # Prepare input arguments
+            # Prepare input arguments — details_*.json only.
+            # W3.2: Embase is already integrated inside details_*.json (via --embase-jsons
+            # passed to 'score' in STEP 2 above). Adding standalone embase_query*.json
+            # files here would cause double-counting (each Embase article would receive
+            # two votes in consensus strategies). The legacy standalone path is therefore
+            # intentionally removed.
             AGGREGATE_INPUTS=("$BENCHMARK_OUTDIR/$STUDY_NAME"/details_*.json)
-            
-            # Add Embase files if available
             if [ ${#EMBASE_FILES[@]} -gt 0 ]; then
-                echo "   Including ${#EMBASE_FILES[@]} Embase result file(s)"
-                AGGREGATE_INPUTS+=("${EMBASE_FILES[@]}")
+                echo "   ℹ️  Embase integrated into details_*.json (W3.2) — not adding standalone files"
             fi
             
             AGGREGATE_ARGS=(python scripts/aggregate_queries.py --inputs "${AGGREGATE_INPUTS[@]}" --outdir "$AGGREGATES_OUTDIR/$STUDY_NAME")

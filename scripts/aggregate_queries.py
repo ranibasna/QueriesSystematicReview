@@ -193,7 +193,43 @@ class ArticleRegistry:
         return len(self._articles)
 
 
-def _articles_from_linked_records(provider_details: dict) -> set[Article] | None:
+def _articles_from_provider_details_per_source(
+    provider_details: dict, query_key: str
+) -> dict[str, set[Article]]:
+    """
+    Build **one Article set per database provider** from a ``provider_details`` block.
+
+    Used by ``--split-by-provider`` (W3.4) to give each database its own vote in
+    aggregation strategies for a single query.  This transforms the query-by-query
+    aggregation question from "API vs Embase" to "which databases agree?", enabling
+    ``consensus_k2`` to mean "retrieved by ≥2 databases for this query".
+
+    Each returned key is ``"{provider_name}_{query_key}"`` so that keys remain unique
+    across multiple queries when inputs contain more than one bundle.
+
+    Only providers with ``linked_records`` data and at least one valid article are
+    included; error providers (those with an ``error`` key) are skipped.
+    """
+    result: dict[str, set[Article]] = {}
+    for pname, pd in provider_details.items():
+        if not isinstance(pd, dict) or "error" in pd:
+            continue
+        linked = pd.get("linked_records")
+        if not linked:
+            continue
+        registry = ArticleRegistry()
+        for rec in linked:
+            if isinstance(rec, dict):
+                registry.add(rec.get("pmid"), rec.get("doi"))
+        arts = set(registry.articles())
+        if arts:
+            result[f"{pname}_{query_key}"] = arts
+    return result
+
+
+
+
+def _articles_from_linked_records(provider_details: dict) -> 'set[Article] | None':
     """
     Build an Article set from provider_details when W2.2-format linked_records are
     present.  Returns None when no provider has linked_records so the caller can fall
@@ -376,6 +412,63 @@ def _merge_pmids_dois(pmids: list, dois: list) -> set[Article]:
     return articles
 
 
+def load_articles_from_file_split(path: str) -> dict[str, set[Article]]:
+    """
+    Like :func:`load_articles_from_file` but in **split-by-provider mode** (W3.4):
+    each database provider in ``provider_details`` becomes its own pool keyed as
+    ``"{provider}_{query}"`` instead of collapsing all providers into one combined pool.
+
+    This enables ``consensus_k2`` to mean "retrieved by ≥2 databases for this query"
+    rather than "retrieved by the combined API pool in ≥2 query strategies".
+
+    Only ``details_*.json`` list entries with ``provider_details.linked_records`` data
+    benefit from per-source splitting.  Entries without ``linked_records`` (legacy format
+    or error providers) fall back to the combined pool via :func:`load_articles_from_file`.
+
+    Non-list JSON schemas (sealed files, Embase imports, old dict-format details) are
+    forwarded to :func:`load_articles_from_file` unchanged.
+    """
+    articles_by_query: dict[str, set[Article]] = {}
+    with open(path, "r") as f:
+        data = json.load(f)
+
+    if not isinstance(data, list):
+        # Sealed / Embase / old dict-format: use the standard combined loader.
+        return load_articles_from_file(path)
+
+    for i, item in enumerate(data):
+        if not isinstance(item, dict):
+            continue
+        q = item.get("query", f"item_{i}")
+        provider_details = item.get("provider_details", {})
+        per_source = _articles_from_provider_details_per_source(provider_details, q)
+        if per_source:
+            articles_by_query.update(per_source)
+        else:
+            # Fallback: no per-provider linked_records — use combined pool.
+            articles = _articles_from_linked_records(provider_details)
+            if articles is None:
+                pmids = item.get("pmids") or item.get("retrieved_pmids") or []
+                dois = item.get("dois") or item.get("retrieved_dois") or []
+                articles = _merge_pmids_dois(pmids, dois)
+            if articles:
+                articles_by_query[q] = articles
+
+    return articles_by_query
+
+
+def load_all_articles_split(inputs: list[str]) -> dict[str, set[Article]]:
+    """Load articles in split-by-provider mode from multiple input files."""
+    merged: dict[str, set[Article]] = {}
+    paths: list[str] = []
+    for pat in inputs:
+        paths.extend(glob.glob(pat))
+    for p in paths:
+        for q, articles in load_articles_from_file_split(p).items():
+            merged.setdefault(q, set()).update(articles)
+    return merged
+
+
 def load_pmids_from_file(path: str) -> dict[str, set[str]]:
     """
     Legacy function: Load PMIDs only (backward compatibility).
@@ -408,11 +501,52 @@ def load_pmids_from_file(path: str) -> dict[str, set[str]]:
 
 
 def load_all_articles(inputs: list[str]) -> dict[str, set[Article]]:
-    """Load articles (PMID + DOI pairs) from multiple input files."""
+    """Load articles (PMID + DOI pairs) from multiple input files.
+
+    W3.2 double-counting guard: if any ``details_*.json`` file has entries with
+    ``'embase'`` in ``providers_included`` (i.e. Embase was integrated via
+    ``--embase-jsons`` during scoring), AND the same ``inputs`` list also contains
+    standalone ``embase_query*.json`` files, a clear warning is printed because each
+    Embase article will receive two votes in consensus strategies.  The caller is
+    responsible for not passing both; the shell workflow handles this automatically.
+    """
     merged: dict[str, set[Article]] = {}
     paths: list[str] = []
     for pat in inputs:
         paths.extend(glob.glob(pat))
+
+    # --- W3.2: double-counting guard -------------------------------------------
+    standalone_embase = [
+        p for p in paths
+        if os.path.basename(p).startswith("embase_query") and p.endswith(".json")
+    ]
+    if standalone_embase:
+        for p in paths:
+            if not (os.path.basename(p).startswith("details_") and p.endswith(".json")):
+                continue
+            try:
+                with open(p) as _f:
+                    _d = json.load(_f)
+                if isinstance(_d, list) and any(
+                    "embase" in item.get("providers_included", [])
+                    for item in _d
+                    if isinstance(item, dict)
+                ):
+                    import sys as _sys
+                    print(
+                        f"[WARN] Double-counting risk detected: {len(standalone_embase)} standalone "
+                        "Embase JSON file(s) are being loaded alongside details_*.json files that "
+                        "already contain Embase results (field 'providers_included' contains 'embase'). "
+                        "Each Embase article will receive two votes in consensus strategies. "
+                        "Remove standalone Embase JSONs from AGGREGATE_INPUTS, or re-run scoring "
+                        "without --embase-jsons to use the standalone approach.",
+                        file=_sys.stderr,
+                    )
+                    break
+            except Exception:
+                pass
+    # ---------------------------------------------------------------------------
+
     for p in paths:
         for q, articles in load_articles_from_file(p).items():
             merged.setdefault(q, set()).update(articles)
@@ -712,8 +846,19 @@ def main():
     ap.add_argument('--multi-key', action='store_true', 
                     help='Use multi-key mode: output CSV with pmid,doi columns for multi-key evaluation. '
                          'This improves recall by 5-15%% for Scopus/WoS queries.')
+    # W3.4: per-provider pool splitting for query-by-query aggregation.
+    # When active, each database (pubmed, scopus, wos, embase …) in provider_details
+    # becomes its own pool keyed as "{provider}_{query}".  consensus_k2 then means
+    # "articles retrieved by ≥2 databases for this query" rather than "found in ≥2
+    # query strategies", which is semantically correct for single-query bundled inputs.
+    # Use in query-by-query mode ONLY; in normal mode it changes the consensus semantics
+    # from "across query variants" to "across databases across query variants".
+    ap.add_argument('--split-by-provider', action='store_true',
+                    help='Load each database provider as its own pool (W3.4). '
+                         'In query-by-query mode this makes consensus_k2 mean '
+                         '“retrieved by ≥2 databases for this query”. '
+                         'Requires details_*.json files with provider_details.linked_records.')
     args = ap.parse_args()
-
     os.makedirs(args.outdir, exist_ok=True)
 
     # Initialize NCBI identity only if gates are used (to support Entrez calls)
@@ -725,10 +870,32 @@ def main():
 
     # Use multi-key mode if requested
     use_multi_key = getattr(args, 'multi_key', False)
-    
+    split_by_provider = getattr(args, 'split_by_provider', False)
+
+    if split_by_provider:
+        print("[INFO] --split-by-provider active: each database provider forms its own pool.")
+        if not use_multi_key:
+            print(
+                "[WARN] --split-by-provider has no effect without --multi-key: "
+                "per-provider pooling requires linked_records (W2.2+ format). "
+                "Add --multi-key to activate split-by-provider mode.",
+                file=sys.stderr,
+            )
+
     if use_multi_key:
         # Multi-key mode: track both PMIDs and DOIs
-        articles_by_query = load_all_articles(args.inputs)
+        if split_by_provider:
+            articles_by_query = load_all_articles_split(args.inputs)
+            # Use ALL pools for consensus when split-by-provider: topk defaults to 3
+            # but with 4 providers (pubmed/scopus/wos/embase) we want all pools considered.
+            effective_topk = max(len(articles_by_query), args.topk)
+            print(
+                f"[INFO] split-by-provider: {len(articles_by_query)} provider pool(s) loaded; "
+                f"using topk={effective_topk} for consensus strategies."
+            )
+        else:
+            articles_by_query = load_all_articles(args.inputs)
+            effective_topk = args.topk
         if not articles_by_query:
             print('No inputs loaded', file=sys.stderr)
             sys.exit(1)
@@ -736,7 +903,7 @@ def main():
         print(f"[INFO] Multi-key mode enabled. Loaded {len(articles_by_query)} queries with PMID+DOI tracking.")
         
         # 1) consensus ≥K of top-K
-        cset = consensus_k_articles(articles_by_query, args.topk, args.consensus_k)
+        cset = consensus_k_articles(articles_by_query, effective_topk, args.consensus_k)
         write_articles_csv(os.path.join(args.outdir, f'consensus_k{args.consensus_k}.csv'), cset)
         print(f"  ✓ consensus_k{args.consensus_k}: {len(cset)} articles")
         
@@ -762,7 +929,7 @@ def main():
             print(f"  ✓ concept_family_consensus: {len(cfc)} articles")
         
         # 5) two-stage screen
-        stage1 = set().union(*[s for _, s in list(articles_by_query.items())[:args.topk]])
+        stage1 = set().union(*[s for _, s in list(articles_by_query.items())[:effective_topk]])
         tss = two_stage_screen_articles(stage1, args.prospero_gates)
         write_articles_csv(os.path.join(args.outdir, 'two_stage_screen.csv'), tss)
         print(f"  ✓ two_stage_screen: {len(tss)} articles")

@@ -91,7 +91,7 @@ _ensure_imports()
 import pandas as pd
 from Bio import Entrez
 from tenacity import retry, wait_exponential, stop_after_attempt
-from search_providers import PROVIDER_REGISTRY
+from search_providers import PROVIDER_REGISTRY, EmbaseLocalProvider
 from collections import namedtuple
 
 # W2.3: row-level gold article representation, one entry per CSV row.
@@ -1046,7 +1046,11 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
         rows.append(rec)
         # Store TP PMIDs for details - use appropriate gold standard
         tp_pmids_for_details = (pmids & gold_pmids) if use_multi_key else (pmids & gold)
-        details.append({**rec, 'retrieved_pmids': sorted(pmids), 'retrieved_dois': sorted(dois), 'tp_pmids': sorted(tp_pmids_for_details), 'provider_details': provider_details})
+        # W3.2: record which providers participated so that downstream aggregation can
+        # detect Embase-integrated details files and avoid double-counting standalone
+        # embase_query*.json files when both are passed to aggregate_queries.py.
+        providers_included = sorted(_provider_name(p) for p in providers)
+        details.append({**rec, 'retrieved_pmids': sorted(pmids), 'retrieved_dois': sorted(dois), 'tp_pmids': sorted(tp_pmids_for_details), 'provider_details': provider_details, 'providers_included': providers_included})
         _raw_note = f" (raw={total_raw})" if total_raw != total else ""
         print(f"Query[{hashlib.sha256(canonical_query.encode()).hexdigest()[:8]}]: results={total}{_raw_note}  TP={tp}  recall={recall:.3f}  NNR_proxy={nnr_proxy:.2f}")
         
@@ -1349,6 +1353,17 @@ def main():
                          help='Enable multi-key matching (PMID OR DOI). Requires gold CSV with DOI column (e.g., *_detailed.csv)')
     p_score.add_argument('--ncbi-email', default=None)
     p_score.add_argument('--ncbi-api-key', default=None)
+    # W3.2: Embase integration — accept pre-imported JSON files as a local provider.
+    # In normal mode: pass all embase_query*.json files produced by batch_import_embase.py.
+    # In query-by-query mode: pass the single file for the current query index.
+    # The provider looks up each query by SHA-256 hash of the Embase query text
+    # (queries_embase.txt must exist alongside queries.txt for correct lookup).
+    p_score.add_argument(
+        '--embase-jsons', nargs='*', default=[], metavar='JSON',
+        help='Paths to pre-imported Embase JSON files (produced by batch_import_embase.py). '
+             'Adds an EmbaseLocalProvider so Embase is included in COMBINED metrics and '
+             'per-database reporting. Requires queries_embase.txt in the study directory.'
+    )
 
     p_titles = sub.add_parser('print-titles', help='Fetch and print titles for PMIDs')
     p_titles.add_argument('--pmids', help='Comma-separated PMIDs')
@@ -1489,6 +1504,21 @@ def main():
 
         # Adjust outdir for study
         study_outdir = Path(outdir) / args.study_name
+
+        # W3.2: Instantiate EmbaseLocalProvider from --embase-jsons paths BEFORE
+        # _load_queries_for_providers() so it discovers queries_embase.txt for Embase.
+        embase_json_paths: List[str] = []
+        for _ep in getattr(args, 'embase_jsons', None) or []:
+            _ep_obj = Path(_ep)
+            if not _ep_obj.is_absolute():
+                _ep_obj = study_dir / _ep_obj   # try relative to study dir
+            if _ep_obj.is_file():
+                embase_json_paths.append(str(_ep_obj))
+            else:
+                print(f"[WARN] Embase JSON not found: {_ep}", file=sys.stderr)
+        if embase_json_paths:
+            providers.append(EmbaseLocalProvider(embase_json_paths))
+            print(f"[INFO] EmbaseLocalProvider: {len(embase_json_paths)} file(s) loaded.")
 
         queries_path = queries_txt if isinstance(queries_txt, Path) else Path(str(queries_txt))
         provider_queries = _load_queries_for_providers(providers, queries_path)

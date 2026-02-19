@@ -1,6 +1,10 @@
+import hashlib
+import json
+import logging
 import os
+import sys
 import time
-from typing import Protocol, Set, Tuple, List, Iterable, Optional, Dict
+from typing import Protocol, Set, Tuple, List, Iterable, Optional, Dict, Union
 
 import requests
 from Bio import Entrez
@@ -411,4 +415,212 @@ PROVIDER_REGISTRY = {
     "scopus": ScopusProvider,
     "web_of_science": WebOfScienceProvider,
     "wos": WebOfScienceProvider,
+    # EmbaseLocalProvider is intentionally absent from PROVIDER_REGISTRY:
+    # it requires a json_path constructor argument and is instantiated explicitly
+    # by the caller (e.g. via the --embase-jsons CLI flag added in W3.2),
+    # not through the generic key-based _instantiate_providers() factory.
 }
+logger = logging.getLogger(__name__)
+
+
+class EmbaseLocalProvider:
+    """
+    Search provider for Embase results that were manually exported from the Embase
+    website and pre-imported via ``scripts/import_embase_manual.py``.
+
+    Because Embase has no machine-readable API, results are stored as JSON files on
+    disk by the existing import script and loaded at query time.  This provider
+    presents the same interface as PubMedProvider / ScopusProvider / WebOfScienceProvider
+    so that ``_execute_query_bundle`` can treat Embase identically to any API-backed
+    database.
+
+    JSON file format (written by import_embase_manual.py)::
+
+        {
+          "<sha256_of_query_text>": {
+            "query":          "<the Embase query string>",
+            "provider":       "embase_manual",
+            "results_count":  <int>,
+            "retrieved_dois": ["10.x/y", ...],
+            "retrieved_pmids": ["12345", ...],          # articles cross-referenced to PubMed
+            "pmids":          ["12345", ...],           # legacy alias — same list
+            "records": [
+              {"pmid": "12345", "doi": "10.x/y", "title": "..."},
+              ...
+            ],
+            ...
+          }
+        }
+
+    Key design decisions (aligned with the W3 plan):
+
+    * ``id_type = 'pmid'`` — Embase CSV exports include NCBI-validated PMIDs for indexed
+      articles.  Setting id_type to 'pmid' causes ``_execute_query_bundle`` to add
+      Embase PMIDs to ``combined_pmids`` and to the PMID fallback count, which is correct
+      because these are real PubMed IDs.
+
+    * Query lookup uses SHA-256 of the query string — identical to the hash key written by
+      ``import_embase_manual.py``'s ``create_workflow_json()``.
+
+    * Date bounds are informational only.  Embase CSVs are date-filtered at export time
+      by the researcher.  A DEBUG log message is emitted when date bounds are received.
+
+    * ``_pmid_to_doi_cache`` is populated from ``records`` (per-record paired data),
+      integrating with W2.1's enrichment flow so that Embase PMID↔DOI pairs propagate
+      to ``combined_pmid_to_doi`` in ``_execute_query_bundle``.
+
+    * ``linked_records`` is NOT built here; it is constructed by ``_execute_query_bundle``
+      from ``_pmid_to_doi_cache`` and the set of PMIDs returned by ``search()``, using
+      exactly the same logic as for PubMedProvider.  This avoids duplicating that logic.
+
+    Constraints / known limitations:
+    * If no JSON file is found for the query hash, ``search()`` returns an empty result
+      rather than raising an error.  This allows the workflow to continue gracefully when
+      a query-specific Embase file is missing (e.g. a query that returned no Embase
+      results was imported as an empty placeholder).
+    * The JSON file must have been produced with the same query text used here; any
+      whitespace normalisation or encoding differences will cause a hash mismatch.
+    """
+
+    name = "embase"
+    id_type = "pmid"  # Embase records carry NCBI-validated PMIDs
+
+    def __init__(self, json_paths: Union[str, List[str]]):
+        """
+        Args:
+            json_paths: Path (str) or list of paths to Embase JSON files produced by
+                        import_embase_manual.py (e.g. ``studies/ai_2022/embase_query1.json``).
+                        Multiple paths are merged into a single entry lookup keyed by
+                        SHA-256 hash — enabling a single provider instance to serve all
+                        N query entries in normal mode (one file per query index).
+
+                        Backward-compatible: a single ``str`` path is also accepted.
+        """
+        if isinstance(json_paths, str):
+            self._json_paths: List[str] = [json_paths]
+        else:
+            self._json_paths = list(json_paths)
+        # Keep _json_path (singular) pointing at the first entry for backward compat
+        # with code that only needs the primary path (e.g. repr / logging).
+        self._json_path: str = self._json_paths[0] if self._json_paths else ""
+        self._data: Dict | None = None  # lazy-loaded on first search()
+
+    def _load(self) -> Dict:
+        """Load and merge all JSON file contents into a single entry dict."""
+        if self._data is None:
+            merged: Dict = {}
+            for path in self._json_paths:
+                if os.path.exists(path):
+                    with open(path, "r", encoding="utf-8") as fh:
+                        try:
+                            merged.update(json.load(fh))
+                        except json.JSONDecodeError as exc:
+                            print(
+                                f"[WARN] EmbaseLocalProvider: failed to parse {path}: {exc}",
+                                file=sys.stderr,
+                            )
+            self._data = merged
+        return self._data  # type: ignore[return-value]
+
+    def search(
+        self,
+        query: str,
+        mindate: str,
+        maxdate: str,
+        retmax: int = 100000,
+    ) -> Tuple[Set[str], Set[str], int]:
+        """
+        Load pre-imported Embase results for the given query text.
+
+        Date bounds are informational only — Embase results were date-filtered at
+        export time.  A DEBUG message is logged when bounds are provided.
+
+        Returns:
+            (dois, pmids, total_count)  — same signature as other providers.
+
+        Side effects:
+            Sets ``self._pmid_to_doi_cache: Dict[str, str]`` so that
+            ``_execute_query_bundle`` can read the authoritative PMID↔DOI pairing
+            without changing the search() return signature (W2.1 pattern).
+        """
+        if mindate or maxdate:
+            logger.debug(
+                "[embase] Date bounds received (%s – %s) — Embase results are "
+                "pre-filtered at export time; bounds are informational only.",
+                mindate,
+                maxdate,
+            )
+
+        existing = [p for p in self._json_paths if os.path.exists(p)]
+        if not existing:
+            paths_str = ", ".join(self._json_paths) if len(self._json_paths) <= 3 else \
+                f"{', '.join(self._json_paths[:3])} … ({len(self._json_paths)} total)"
+            print(
+                f"[WARN] EmbaseLocalProvider: no JSON file(s) found at: {paths_str}. "
+                "Returning empty results.",
+                file=sys.stderr,
+            )
+            self._pmid_to_doi_cache: Dict[str, str] = {}
+            return set(), set(), 0
+
+        data = self._load()
+        query_hash = hashlib.sha256(query.encode()).hexdigest()
+
+        entry = data.get(query_hash)
+        if entry is None:
+            # Try a linear search in case there is only one entry and the caller
+            # used a slightly different query text (e.g. stripped vs non-stripped).
+            # Only fall back when there is exactly one entry; ambiguity is an error.
+            entries = list(data.values())
+            if len(entries) == 1:
+                entry = entries[0]
+                logger.debug(
+                    "[embase] Exact hash miss for query; falling back to the single "
+                    "entry in %s (single-entry file).",
+                    self._json_path,
+                )
+            else:
+                print(
+                    f"[WARN] EmbaseLocalProvider: no entry found for query hash "
+                    f"{query_hash[:8]} in {self._json_path} ({len(data)} entries). "
+                    "Returning empty results.",
+                    file=sys.stderr,
+                )
+                self._pmid_to_doi_cache = {}
+                return set(), set(), 0
+
+        # Build the PMID↔DOI cache from the per-record paired data.
+        # ``records`` carries the most accurate per-article pairing; fall back to
+        # zip(pmids, dois) for legacy files that lack a ``records`` list.
+        pmid_to_doi: Dict[str, str] = {}
+        records: List[Dict] = entry.get("records", [])
+        if records:
+            for rec in records:
+                if not isinstance(rec, dict):
+                    continue
+                pmid = rec.get("pmid")
+                doi = rec.get("doi")
+                if pmid and doi:
+                    pmid_to_doi[str(pmid)] = str(doi).lower()
+        else:
+            # Legacy: pair by the flat lists already in the entry.
+            flat_pmids: List[str] = [str(p) for p in (entry.get("retrieved_pmids") or entry.get("pmids") or []) if p]
+            flat_dois: List[str] = [str(d).lower() for d in (entry.get("retrieved_dois") or []) if d]
+            for p, d in zip(flat_pmids, flat_dois):
+                if p and d:
+                    pmid_to_doi[p] = d
+
+        self._pmid_to_doi_cache = pmid_to_doi
+
+        # Build return sets from the JSON entry — always use the stored lists as the
+        # authoritative source (not re-derived from the cache) so that PMID-only
+        # articles (no DOI) are included in the pmids return set.
+        pmids: Set[str] = {
+            str(p) for p in (entry.get("retrieved_pmids") or entry.get("pmids") or []) if p
+        }
+        dois: Set[str] = {
+            str(d).lower() for d in (entry.get("retrieved_dois") or []) if d
+        }
+        total_count: int = entry.get("results_count", len(dois))
+
+        return dois, pmids, total_count
