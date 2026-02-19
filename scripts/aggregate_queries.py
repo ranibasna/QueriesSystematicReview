@@ -103,58 +103,254 @@ class Article(NamedTuple):
         return False
 
 
+class ArticleRegistry:
+    """
+    Maintains canonical Article records, merging identifiers from multiple sources.
+
+    When the same article appears in more than one database provider (W2.5 / Issue 2):
+
+      PubMed  → linked_records: {pmid: "34160576", doi: "10.1001/jamacardio.2021.2003"}
+      Scopus  → linked_records: {pmid: null,       doi: "10.1001/jamacardio.2021.2003"}
+
+    Without this class, _merge_pmids_dois() would produce two Article objects (because
+    Article.__eq__ returns False when one side has only PMID and the other only DOI).
+    The registry sees the shared DOI and merges them into ONE Article(pmid="34160576",
+    doi="10.1001/jamacardio.2021.2003"), which is the canonical representation that every
+    downstream strategy and aggregation step should see.
+
+    Limitation (known, Issue 2 partial fix):
+      If PubMed returned a PMID-only record (doi=None in its XML) AND Scopus returned the
+      same article as DOI-only (pmid=None), there is no shared identifier to match on, so
+      the registry cannot merge them — they remain as two separate Article objects.  This
+      affects ~22 articles per query for ai_2022 and is addressed separately by W4
+      (title/author/date fuzzy matching).
+
+    Design:
+      • _by_doi  — primary index: normalized DOI  → canonical Article
+      • _by_pmid — secondary index: PMID          → canonical Article
+      • _articles — the full set of canonical Article objects (used by articles())
+
+    Thread safety: not thread-safe (single-threaded aggregation scripts).
+    """
+
+    def __init__(self):
+        self._by_doi: dict[str, Article] = {}
+        self._by_pmid: dict[str, Article] = {}
+        self._articles: set[Article] = set()
+
+    def add(self, pmid: str | None, doi: str | None) -> Article:
+        """
+        Add an article by its identifiers, merging with any existing record
+        that shares a DOI or PMID.
+
+        Returns the canonical Article object (merged if applicable, new otherwise).
+        Records where both pmid and doi are absent/empty are silently ignored
+        and None is returned.
+        """
+        doi_norm = doi.strip().lower() if doi and doi.strip() else None
+        pmid_clean = pmid.strip() if pmid and pmid.strip() else None
+
+        if not doi_norm and not pmid_clean:
+            return None  # type: ignore[return-value]  # nothing to add
+
+        # Look up existing canonical record by DOI first, then PMID
+        existing: Article | None = None
+        if doi_norm and doi_norm in self._by_doi:
+            existing = self._by_doi[doi_norm]
+        elif pmid_clean and pmid_clean in self._by_pmid:
+            existing = self._by_pmid[pmid_clean]
+
+        if existing is not None:
+            # Merge: fill in whichever identifier is missing on the existing record.
+            merged_pmid = existing.pmid or pmid_clean
+            merged_doi = existing.doi or doi_norm
+            merged = Article(pmid=merged_pmid, doi=merged_doi)
+
+            if merged != existing:
+                # The canonical record gained a new identifier; update everything.
+                self._articles.discard(existing)
+                self._articles.add(merged)
+                # Re-index under both identifiers so future lookups find the merged record.
+                if merged.doi:
+                    self._by_doi[merged.doi] = merged
+                if merged.pmid:
+                    self._by_pmid[merged.pmid] = merged
+            return merged
+        else:
+            art = Article(pmid=pmid_clean, doi=doi_norm)
+            if art.doi:
+                self._by_doi[art.doi] = art
+            if art.pmid:
+                self._by_pmid[art.pmid] = art
+            self._articles.add(art)
+            return art
+
+    def articles(self) -> frozenset[Article]:
+        """Return an immutable snapshot of all canonical articles."""
+        return frozenset(self._articles)
+
+    def __len__(self) -> int:
+        return len(self._articles)
+
+
+def _articles_from_linked_records(provider_details: dict) -> set[Article] | None:
+    """
+    Build an Article set from provider_details when W2.2-format linked_records are
+    present.  Returns None when no provider has linked_records so the caller can fall
+    back to _merge_pmids_dois() for legacy JSON files.
+
+    Each provider's linked_records is a list of {pmid, doi} dicts.  All providers are
+    fed into a single ArticleRegistry so that cross-database duplicates (e.g. PubMed
+    returns (pmid=X, doi=Y) and Scopus returns (pmid=None, doi=Y)) are merged into one
+    canonical Article rather than counted twice.
+
+    This is the primary W2.5 code path for details_*.json files produced after W2.2.
+    """
+    has_linked = any(
+        isinstance(pd, dict) and 'linked_records' in pd
+        for pd in provider_details.values()
+    )
+    if not has_linked:
+        return None
+
+    registry = ArticleRegistry()
+    for pd in provider_details.values():
+        if not isinstance(pd, dict):
+            continue
+        for rec in pd.get('linked_records', []):
+            registry.add(rec.get('pmid'), rec.get('doi'))
+    return set(registry.articles())
+
+
 def load_articles_from_file(path: str) -> dict[str, set[Article]]:
     """
     Load articles (PMID + DOI pairs) from a JSON file.
-    
+
+    Supports three JSON schemas (in priority order for each item):
+
+    1. **W2.2 provider_details with linked_records** (details_*.json produced after W2.2):
+       Each top-level item has a ``provider_details`` dict whose provider entries carry a
+       ``linked_records`` list of {pmid, doi} pairs.  These are fed into an
+       ``ArticleRegistry`` so that per-provider duplicate articles are merged — e.g. PubMed
+       returning (pmid=X, doi=Y) and Scopus returning (pmid=None, doi=Y) collapse into one
+       canonical Article(pmid=X, doi=Y).  This is the W2.5 primary path.
+
+    2. **Embase per-record format** (embase_query*.json produced by import_embase_manual.py):
+       Each entry has a ``records`` list of {pmid, doi, title, ...} dicts with accurate
+       per-record PMID↔DOI pairing.  An ``ArticleRegistry`` is used here too, so Embase
+       articles that also appear in the API results are correctly deduplicated in downstream
+       aggregation.
+
+    3. **Legacy flat-list format** (details_*.json produced before W2.2, sealed_*.json):
+       Falls back to ``_merge_pmids_dois()`` which pairs by index position.  This is the
+       pre-W2.5 behavior; it produces Article objects with random PMID↔DOI pairings but
+       the output is still correct for DOI-based matching (the dominant case).
+
     Returns:
-        Dict mapping query strings to sets of Article objects
+        Dict mapping query strings to sets of Article objects.
     """
     articles_by_query: dict[str, set[Article]] = {}
     with open(path, 'r') as f:
         data = json.load(f)
-    
-    # Handle formats:
-    # 1) sealed_*.json: single object with 'retrieved_pmids' and optionally 'retrieved_dois'
-    # 2) details_*.json (dict): {id: {query, pmids, dois}}
-    # 3) details_*.json (list): [ {query, retrieved_pmids, retrieved_dois, ...}, ... ]
-    
+
+    # ── Format 1: sealed_*.json ─────────────────────────────────────────────────
+    # Top-level has 'retrieved_pmids' directly (single-query sealed output).
     if isinstance(data, dict) and 'retrieved_pmids' in data:
         q = data.get('query', f"sealed:{os.path.basename(path)}")
-        pmids = data.get('retrieved_pmids', [])
-        dois = data.get('retrieved_dois', [])
-        articles_by_query[q] = _merge_pmids_dois(pmids, dois)
+        # W2.5: prefer linked_records when the sealed file includes provider_details.
+        provider_details = data.get('provider_details', {})
+        articles = _articles_from_linked_records(provider_details)
+        if articles is None:
+            pmids = data.get('retrieved_pmids', [])
+            dois = data.get('retrieved_dois', [])
+            articles = _merge_pmids_dois(pmids, dois)
+        if articles:
+            articles_by_query[q] = articles
+
+    # ── Format 2: dict of entries ────────────────────────────────────────────────
+    # Could be:
+    #   (a) Embase JSON:  {sha_or_key: {records: [...], retrieved_pmids: [...], ...}}
+    #   (b) Old details JSON (dict form): {some_key: {query, pmids, dois, ...}}
     elif isinstance(data, dict):
         for key, item in data.items():
-            if isinstance(item, dict):
-                pmids = item.get('pmids') or item.get('retrieved_pmids') or []
-                dois = item.get('dois') or item.get('retrieved_dois') or []
-                if pmids or dois:
-                    q = item.get('query', key)
-                    articles_by_query[q] = _merge_pmids_dois(pmids, dois)
+            if not isinstance(item, dict):
+                continue
+
+            # W2.5 path (a): Embase format — use accurate per-record PMID+DOI pairs.
+            embase_records = item.get('records')
+            if embase_records is not None:
+                registry = ArticleRegistry()
+                for rec in embase_records:
+                    if isinstance(rec, dict):
+                        registry.add(rec.get('pmid'), rec.get('doi'))
+                articles: set[Article] = set(registry.articles())
+            else:
+                # W2.5 path (b): check for provider_details with linked_records.
+                provider_details = item.get('provider_details', {})
+                articles = _articles_from_linked_records(provider_details)
+                if articles is None:
+                    # Legacy fallback.
+                    pmids = item.get('pmids') or item.get('retrieved_pmids') or []
+                    dois = item.get('dois') or item.get('retrieved_dois') or []
+                    articles = _merge_pmids_dois(pmids, dois)
+
+            if articles:
+                q = item.get('query', key)
+                articles_by_query[q] = articles
+
+    # ── Format 3: list of entries ────────────────────────────────────────────────
+    # details_*.json written by score_queries() is always a list.
     elif isinstance(data, list):
         for i, item in enumerate(data):
-            if isinstance(item, dict):
+            if not isinstance(item, dict):
+                continue
+
+            # W2.5: use provider_details.linked_records when present (W2.2 format).
+            provider_details = item.get('provider_details', {})
+            articles = _articles_from_linked_records(provider_details)
+            if articles is None:
+                # Legacy fallback: index-based pairing (Issue 3 known limitation).
                 pmids = item.get('pmids') or item.get('retrieved_pmids') or []
                 dois = item.get('dois') or item.get('retrieved_dois') or []
-                if pmids or dois:
-                    q = item.get('query', f"item_{i}")
-                    articles_by_query[q] = _merge_pmids_dois(pmids, dois)
+                articles = _merge_pmids_dois(pmids, dois)
+
+            if articles:
+                q = item.get('query', f"item_{i}")
+                articles_by_query[q] = articles
+
     return articles_by_query
 
 
 def _merge_pmids_dois(pmids: list, dois: list) -> set[Article]:
     """
-    Merge PMID and DOI lists into Article objects.
-    
-    Since we don't have explicit pairing, we create:
-    1. Articles with both PMID and DOI (for overlapping indices)
-    2. Articles with only PMID (for extra PMIDs)
-    3. Articles with only DOI (for extra DOIs)
-    
-    Note: This is an approximation. For accurate pairing, would need
-    provider_details or API lookup. Current approach is conservative.
+    .. deprecated::
+       **W2.6 — Legacy fallback only.** This function is retained solely for backward
+       compatibility with JSON files produced before W2.2 (i.e. before the
+       ``linked_records`` field was added to ``provider_details``).
+
+       **Do not use for new code.** For current-format ``details_*.json`` files (W2.2+)
+       use ``_articles_from_linked_records()`` which feeds an ``ArticleRegistry`` and
+       correctly deduplicates cross-provider duplicates.  For Embase JSONs, use the
+       ``records`` array path in ``load_articles_from_file()``.
+
+    Root problem (Issue 3):
+       PMIDs in the JSON are sorted numerically; DOIs are sorted alphabetically.
+       Pairing them by index position produces wrong PMID↔DOI associations for
+       every single article.  0 of N pairs are correct for typical PubMed outputs.
+       DOI-based matching still works (DOI is correct even if paired with wrong PMID),
+       but PMID-based matching and cross-DB deduplication (Issue 2) both fail.
+
+    When this function is called it means the caller is processing a legacy JSON file.
+    A ``[WARN]`` message is printed so that stale files are visible in run logs.
     """
+    if pmids and dois:
+        import sys
+        print(
+            "[WARN] _merge_pmids_dois: using legacy index-based PMID↔DOI pairing "
+            "(Issue 3 known limitation). Re-run the query to generate a JSON with "
+            "linked_records for accurate pairing.",
+            file=sys.stderr,
+        )
     articles = set()
     
     # Create paired articles up to min length

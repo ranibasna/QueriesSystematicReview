@@ -70,15 +70,20 @@ class PubMedProvider:
         return None
 
     @retry(wait=wait_exponential(multiplier=1, min=1, max=30), stop=stop_after_attempt(5))
-    def _get_dois_from_pmids(self, pmids: List[str]) -> Set[str]:
+    def _get_dois_from_pmids(self, pmids: List[str]) -> Dict[str, str]:
         """
         Fetch article details from PubMed and extract DOIs.
-        Handles cases where articles may not have a DOI.
+
+        Returns a {pmid: doi} mapping for each article that has both identifiers.
+        Articles without a DOI are absent from the mapping; their PMIDs are still
+        present in the set returned by search().  The caller should set
+        self._pmid_to_doi_cache = result so that _execute_query_bundle can read the
+        preserved pairing without altering the search() return signature.
         """
         if not pmids:
-            return set()
+            return {}
 
-        dois = set()
+        pmid_to_doi: Dict[str, str] = {}
         for batch in _chunk_list(pmids, EFETCH_BATCH_SIZE):
             handle = Entrez.efetch(
                 db="pubmed",
@@ -91,10 +96,11 @@ class PubMedProvider:
             time.sleep(RATE_LIMIT_SECONDS)
 
             for article in records.get("PubmedArticle", []):
+                pmid = str(article.get("MedlineCitation", {}).get("PMID", ""))
                 doi = self._extract_doi(article)
-                if doi:
-                    dois.add(doi.lower())
-        return dois
+                if pmid and doi:
+                    pmid_to_doi[pmid] = doi.lower()
+        return pmid_to_doi
 
     @retry(wait=wait_exponential(multiplier=1, min=1, max=30), stop=stop_after_attempt(5))
     def search(self, query: str, mindate: str, maxdate: str, retmax: int = 100000) -> Tuple[Set[str], Set[str], int]:
@@ -138,8 +144,14 @@ class PubMedProvider:
             pmids.update(record.get("IdList", []))
             retstart += retmax
 
-        dois = self._get_dois_from_pmids(list(pmids))
-        
+        pmid_to_doi = self._get_dois_from_pmids(list(pmids))
+        # Cache the PMID↔DOI mapping as an instance attribute so that
+        # _execute_query_bundle can read it without changing the search() return
+        # signature.  The cache is overwritten on each call (one call per query
+        # bundle), so callers must read it immediately after search() returns.
+        self._pmid_to_doi_cache: Dict[str, str] = pmid_to_doi
+        dois = set(pmid_to_doi.values())
+
         return dois, pmids, total_count
 
 

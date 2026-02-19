@@ -646,3 +646,68 @@ Review complete!
 **Status**: Ready to begin Task 2.1 (PubMed Lookup)  
 **Blocker**: None  
 **Next Action**: Install Biopython and test PubMed E-utilities API
+
+---
+
+## Bug Fixes
+
+### BF-1: Embase Empty-Query CSV Treated as Import Error ✅ FIXED
+
+**Date Fixed**: February 18, 2026  
+**File**: `scripts/import_embase_manual.py`
+
+#### Problem
+
+When a proximity-based Embase query (e.g., query 6, Micro-variant 3) returns 0 results,
+the exported CSV is empty (header row only or completely empty). The import script could
+not distinguish this from a genuinely malformed export (CSV has data rows but missing
+DOI/PMID columns), and returned exit code `1` in both cases:
+
+```python
+# OLD — no distinction between the two failure modes:
+if len(dois) == 0 and len(pmids) == 0:
+    print("⚠️  WARNING: No DOIs or PMIDs found!")
+    return 1   # ← blocks the whole workflow
+```
+
+This caused a cascade failure:
+1. `import_embase_manual.py` returned `1` for empty CSV
+2. `batch_import_embase.py` counted it as a failed import → returned `1`
+3. `run_complete_workflow.sh` called `exit 1` at the Embase import step
+
+Crucially, removing the empty CSV was **not** a safe workaround: `batch_import_embase.py`
+pairs CSVs to query text by positional zip-order. Dropping query 3 (balanced) would cause
+query 4 (high-precision) to be written as `embase_query3.json` and scored under the wrong
+index — silent result mislabeling.
+
+#### Fix
+
+`parse_embase_csv` now tracks `raw_row_count` (data rows seen before DOI/PMID filtering)
+and returns it as a 4th value. `main()` then branches on this count:
+
+| Condition | Meaning | Behaviour |
+|---|---|---|
+| `raw_row_count == 0` and `dois/pmids == 0` | Query returned 0 results on Embase | Create **empty JSON placeholder**, return `0` ✅ |
+| `raw_row_count > 0` and `dois/pmids == 0` | Wrong export format (missing columns) | Warn user, return `1` ❌ |
+
+The empty JSON placeholder (`retrieved_dois: [], retrieved_pmids: []`) flows correctly through the rest of the pipeline:
+- `batch_import_embase.py` counts the slot as successful → positional ordering preserved
+- `score-sets` scores it as Recall=0 / Precision=0 → accurately reflects zero Embase results for that query
+- `aggregate_queries.py` adds 0 records from it → harmless
+
+#### Key Code Change
+
+```python
+# NEW — distinguishes empty query from bad export format:
+dois, pmids, records, raw_row_count = parse_embase_csv(args.input)
+
+if len(dois) == 0 and len(pmids) == 0:
+    if raw_row_count == 0:
+        # Genuinely empty — create placeholder and succeed
+        create_workflow_json(args.query, set(), set(), [], args.output)
+        return 0
+    else:
+        # Has rows but no DOI/PMID columns — bad export format
+        print(f"⚠️  WARNING: CSV has {raw_row_count} data rows but no DOI/PMID extracted.")
+        return 1
+```

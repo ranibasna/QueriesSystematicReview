@@ -517,6 +517,10 @@ if [ "$EMBASE_ONLY" = false ] && [ "$RUN_QUERY_LEVEL" = true ]; then
 
         echo ""
         echo "🔍 STEP 2: Executing Query $QUERY_NUM across selected databases..."
+        # Pass --query-num-offset so per-database CSVs show the actual query number
+        # (each invocation only has 1 bundle, so bundle_idx is always 0 → query_num
+        # would always be 1 without the offset).
+        QUERY_NUM_OFFSET=$(( QUERY_NUM - 1 ))
         python llm_sr_select_and_score.py \
             --study-name "$STUDY_NAME" \
             "${DB_ARGS[@]}" \
@@ -524,6 +528,7 @@ if [ "$EMBASE_ONLY" = false ] && [ "$RUN_QUERY_LEVEL" = true ]; then
             --queries-txt "$QUERY_MAIN_TMP" \
             --gold-csv "$GOLD_CSV" \
             --outdir "$BENCHMARK_OUTDIR" \
+            --query-num-offset "$QUERY_NUM_OFFSET" \
             $MULTI_KEY_FLAG
 
         LATEST_DETAILS=$(ls -t "$BENCHMARK_OUTDIR/$STUDY_NAME"/details_*.json 2>/dev/null | head -n 1)

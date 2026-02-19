@@ -92,6 +92,12 @@ import pandas as pd
 from Bio import Entrez
 from tenacity import retry, wait_exponential, stop_after_attempt
 from search_providers import PROVIDER_REGISTRY
+from collections import namedtuple
+
+# W2.3: row-level gold article representation, one entry per CSV row.
+# pmid and doi may both be present, one, or (rarely) neither.
+# DOIs are expected to be pre-normalised to lowercase.
+GoldArticle = namedtuple('GoldArticle', ['pmid', 'doi'])
 
 def set_ncbi_identity(email: str = None, api_key: str = None):
     Entrez.email = email or os.getenv('NCBI_EMAIL', 'you@example.com')
@@ -410,6 +416,80 @@ def set_metrics_multi_key(
         'retrieved_dois_count': len(retrieved_dois_norm),
     }
 
+def set_metrics_row_level(
+    retrieved_pmids: Set[str],
+    retrieved_dois: Set[str],
+    gold_rows: List[GoldArticle],
+) -> dict:
+    """
+    Row-level (per-article) metrics: each gold article is a TP if DOI OR PMID was retrieved.
+
+    Fixes Issue 1: the flat-set approach in set_metrics_multi_key() disables the PMID
+    fallback whenever all gold articles have DOIs (because it gates the fallback on
+    `gold_articles_pmid_only > 0`).  Here each gold article is tested independently:
+
+      1. DOI match  : gold.doi != None  and  gold.doi in retrieved_dois → TP
+      2. PMID fallback: gold.pmid != None and gold.pmid in retrieved_pmids
+                        (only fires when DOI did NOT match)  → TP
+      3. Miss otherwise.
+
+    This correctly handles the scenario where PubMed retrieved an article's PMID but
+    the DOI was absent from the PubMed XML, and no other database retrieved the DOI.
+    Old code: miss (fallback disabled).  This function: TP via PMID.
+
+    Returns the same keys as set_metrics_multi_key() for drop-in compatibility.
+    """
+    retrieved_dois_norm = {d.lower() for d in retrieved_dois if d}
+
+    matches_by_doi_count = 0
+    matches_by_pmid_only_count = 0  # matched by PMID; DOI was NOT in retrieved set
+    matched_dois_set: Set[str] = set()
+    matched_pmids_fallback_set: Set[str] = set()
+
+    for g in gold_rows:
+        doi_matched = bool(g.doi) and g.doi.lower() in retrieved_dois_norm
+        pmid_matched = bool(g.pmid) and g.pmid in retrieved_pmids
+
+        if doi_matched:
+            matches_by_doi_count += 1
+            matched_dois_set.add(g.doi.lower())  # g.doi is non-None here
+        elif pmid_matched:
+            # PMID fallback: article was not matched by DOI, but PMID was retrieved
+            matches_by_pmid_only_count += 1
+            matched_pmids_fallback_set.add(g.pmid)  # g.pmid is non-None here
+
+    tp = matches_by_doi_count + matches_by_pmid_only_count
+    gold = len(gold_rows)
+    retrieved_unique = max(len(retrieved_pmids), len(retrieved_dois_norm))
+
+    prec = tp / max(retrieved_unique, 1)
+    rec = tp / max(gold, 1)
+    f1 = 2 * prec * rec / max(prec + rec, 1e-12)
+    union_size = retrieved_unique + gold - tp
+    jacc = tp / max(union_size, 1)
+    overlap = tp / max(min(retrieved_unique, gold), 1)
+
+    return {
+        'TP': tp,
+        'Retrieved': retrieved_unique,
+        'Gold': gold,
+        'Precision': prec,
+        'Recall': rec,
+        'F1': f1,
+        'Jaccard': jacc,
+        'OverlapCoeff': overlap,
+        # Detailed breakdown (same key names as set_metrics_multi_key for compat)
+        'matches_by_doi': matches_by_doi_count,
+        'matches_by_pmid_fallback': matches_by_pmid_only_count,
+        'matched_dois': matched_dois_set,
+        'matched_pmids_fallback': matched_pmids_fallback_set,
+        'gold_articles_with_doi': sum(1 for g in gold_rows if g.doi),
+        'gold_articles_pmid_only': sum(1 for g in gold_rows if not g.doi),
+        'pmid_only_warning': any(not g.doi for g in gold_rows),
+        'retrieved_pmids_count': len(retrieved_pmids),
+        'retrieved_dois_count': len(retrieved_dois_norm),
+    }
+
 def read_queries_from_txt(path: str) -> List[str]:
     """Read one or more Boolean queries from a .txt file.
 
@@ -557,6 +637,11 @@ def _build_query_bundles(provider_queries: Dict[str, List[str]]) -> List[Dict]:
 def _execute_query_bundle(providers, qmap: Dict[str, str], mindate: str, maxdate: str):
     combined_pmids: Set[str] = set()
     combined_dois: Set[str] = set()
+    # W2.1: accumulate PMID↔DOI pairs from PubMed so downstream code (W2.2
+    # linked_records serialisation, W2.3 row-level gold matching, W2.4
+    # total_results dedup fix) can use the authoritative pairing without
+    # changing any function return signatures.
+    combined_pmid_to_doi: Dict[str, str] = {}
     provider_details: Dict[str, Dict] = {}
     total_results = 0
     total_raw_results = 0
@@ -581,6 +666,13 @@ def _execute_query_bundle(providers, qmap: Dict[str, str], mindate: str, maxdate
             }
             continue
         
+        # W2.1: read the PMID↔DOI cache set by PubMedProvider.search() on this
+        # provider instance immediately after the call (before the next iteration
+        # overwrites it on a different provider).  Non-PubMed providers do not set
+        # this attribute, so getattr returns {} safely.
+        pmid_to_doi = getattr(provider, '_pmid_to_doi_cache', {})
+        combined_pmid_to_doi.update(pmid_to_doi)
+
         # Track raw results before deduplication
         total_raw_results += total
         
@@ -590,25 +682,64 @@ def _execute_query_bundle(providers, qmap: Dict[str, str], mindate: str, maxdate
         # See multi_database_edge_cases_analysis.md for rationale and Option B (future)
         combined_dois.update(dois)
         
-        if getattr(provider, 'id_type', '') == 'pmid':
+        id_type = getattr(provider, 'id_type', 'id')
+        if id_type == 'pmid':
             combined_pmids.update(ids)
-        
+
+        # W2.2: build linked_records that preserve the authoritative PMID↔DOI
+        # pairing so downstream code (W2.5 ArticleRegistry, W2.3 row-level gold
+        # matching) can construct correctly-linked Article objects rather than
+        # relying on the broken index-based pairing in _merge_pmids_dois.
+        #
+        # PubMed  (id_type='pmid'):  paired records from _pmid_to_doi_cache, then
+        #   PMID-only records for PMIDs whose DOI was absent from the PubMed XML.
+        # Scopus/WOS               :  DOI-only records (native IDs are not PMIDs).
+        if id_type == 'pmid':
+            _linked: list = [{'pmid': p, 'doi': d} for p, d in pmid_to_doi.items()]
+            _pmids_no_doi = sorted(set(ids) - set(pmid_to_doi.keys()))
+            _linked += [{'pmid': p, 'doi': None} for p in _pmids_no_doi]
+        else:
+            _linked = [{'pmid': None, 'doi': d} for d in sorted(dois)]
+
         provider_details[pname] = {
             'query': query,
             'results_count': total,
             'retrieved_ids': sorted(ids),
             'retrieved_dois': sorted(dois),
-            'id_type': getattr(provider, 'id_type', 'id'),
+            'id_type': id_type,
+            'linked_records': _linked,  # W2.2: authoritative PMID↔DOI pairs
         }
-        total_results += total
+        # W2.4: per-DB counts are stored in provider_details[*]['results_count'].
+        # total_results is NOT accumulated here; it is set to the deduplicated
+        # unique-article count after the provider loop ends (see below).
     
     # Calculate deduplication statistics
-    unique_articles = len(combined_dois)
-    duplicates_removed = total_raw_results - unique_articles
-    
+    # Count PubMed PMIDs that have no corresponding DOI (truly PMID-only articles).
+    # W2.1: use the exact pairing from combined_pmid_to_doi when available, so
+    # the count is derived from the authoritative PMID↔DOI map rather than an
+    # index-length approximation.
+    if combined_pmid_to_doi:
+        # Exact: PMIDs not present as keys in the PMID→DOI map have no DOI.
+        _pmid_only_count = len(combined_pmids - set(combined_pmid_to_doi.keys()))
+    else:
+        # Fallback for when PubMed was not queried or cache is unavailable.
+        _pm_detail = provider_details.get('pubmed', {})
+        _pmid_only_count = max(
+            0,
+            len(_pm_detail.get('retrieved_ids', [])) - len(_pm_detail.get('retrieved_dois', [])),
+        )
+    unique_articles = len(combined_dois) + _pmid_only_count
+    # W2.4: total_results is now the deduplicated unique-article count, NOT the
+    # raw sum of per-database API-reported counts. The raw sum is preserved in
+    # total_raw_results (used for the log below) and is recoverable by callers
+    # as sum(provider_details[*]['results_count']).
+    total_results = unique_articles
+    duplicates_removed = total_raw_results - total_results
+
     if duplicates_removed > 0:
         dedup_rate = (duplicates_removed / total_raw_results * 100) if total_raw_results > 0 else 0
-        print(f"[INFO] Deduplication (DOI-based): {total_raw_results} raw results → {unique_articles} unique articles ({duplicates_removed} duplicates removed, {dedup_rate:.1f}%)")
+        pmid_only_note = f", {_pmid_only_count} PubMed PMID-only" if _pmid_only_count else ""
+        print(f"[INFO] Deduplication (DOI-based): {total_raw_results} raw results → {total_results} unique articles ({len(combined_dois)} with DOI{pmid_only_note}, {duplicates_removed} duplicates removed, {dedup_rate:.1f}%)")
     
     return combined_pmids, combined_dois, total_results, provider_details
 
@@ -621,14 +752,23 @@ def select_without_gold(providers, query_bundles: List[Dict], mindate: str, maxd
     for bundle in query_bundles:
         canonical_query = bundle['canonical']
         pmids, dois, total, provider_details = _execute_query_bundle(providers, bundle['per_provider'], mindate, maxdate)
+        # W2.4: total is now the deduplicated unique count; compute raw sum for reference.
+        total_raw = sum(
+            v.get('results_count', 0)
+            for v in provider_details.values()
+            if 'error' not in v
+        )
         cov = concept_coverage(canonical_query, cdict)
         lint = lint_query(canonical_query)
         feats = selector_features(canonical_query, total, cov, lint, max_year, min_results, target_results)
-        rec = {'query': canonical_query, 'query_sha256': hashlib.sha256(canonical_query.encode()).hexdigest(), 'results_count': total,
+        rec = {'query': canonical_query, 'query_sha256': hashlib.sha256(canonical_query.encode()).hexdigest(),
+               'results_count': total,          # W2.4: deduplicated unique article count
+               'results_count_raw': total_raw,  # W2.4: raw sum of per-DB API counts
                **{k:v for k,v in feats.items() if k != 'vocab_info'}, 'retrieved_pmids': sorted(pmids), 'retrieved_dois': sorted(dois),
                'vocab_info': feats['vocab_info'], 'provider_details': provider_details}
         records.append(rec)
-        print(f"Candidate: {rec['query_sha256'][:8]}  Results={total}  Coverage={cov:.2f}  Score={rec['score']:.3f}")
+        _raw_note = f" (raw={total_raw})" if total_raw != total else ""
+        print(f"Candidate: {rec['query_sha256'][:8]}  Results={total}{_raw_note}  Coverage={cov:.2f}  Score={rec['score']:.3f}")
     df = pd.DataFrame([{k:(v if k not in ('simplicity_stats','vocab_info') else str(v)) for k,v in r.items() if k not in ('retrieved_pmids', 'retrieved_dois', 'provider_details')} for r in records]).sort_values(['score','coverage','results_count'], ascending=[False,False,True])
     run_id = datetime.utcnow().strftime('%Y%m%d-%H%M%S')
     df_path = os.path.join(outdir, f'selection_summary_{run_id}.csv'); df.to_csv(df_path, index=False)
@@ -725,6 +865,49 @@ def load_gold_multi_key(path: str) -> tuple:
     
     return pmids, dois
 
+def load_gold_rows(path: str) -> List[GoldArticle]:
+    """
+    Load gold standard as an ordered list of GoldArticle(pmid, doi) rows.
+
+    Each row represents one article from the gold standard CSV.  Both identifiers
+    may be present, one, or neither (though the latter is unusual).
+    DOIs are normalised to lowercase.
+
+    Supports the same CSV formats as load_gold_multi_key():
+      - Enhanced format: column headers 'pmid' (required) and 'doi' (optional)
+      - Simple format  : no header row; first column treated as PMID, doi=None
+
+    Used by W2.3 set_metrics_row_level() for per-article matching.
+    """
+    rows: List[GoldArticle] = []
+
+    with open(path, newline='', encoding='utf-8') as f:
+        csv_rows = list(csv.reader(f))
+
+    if not csv_rows:
+        return rows
+
+    header = [h.strip().lower() for h in csv_rows[0]]
+
+    if 'pmid' in header:
+        df = pd.read_csv(path, dtype=str)
+        doi_col = df['doi'] if 'doi' in df.columns else pd.Series([None] * len(df))
+        for pmid_val, doi_val in zip(df['pmid'], doi_col):
+            pmid_str = str(pmid_val).strip() if pmid_val is not None else ''
+            pmid = pmid_str if pmid_str and pmid_str.lower() not in ('nan', 'none', '') else None
+            doi_raw = str(doi_val).strip().lower() if doi_val is not None else ''
+            doi = doi_raw if doi_raw and doi_raw not in ('nan', 'none', '') else None
+            rows.append(GoldArticle(pmid=pmid, doi=doi))
+    else:
+        # Simple format: each row is just a PMID, no DOI available
+        for r in csv_rows:
+            if r:
+                pmid = str(r[0]).strip()
+                if pmid:
+                    rows.append(GoldArticle(pmid=pmid, doi=None))
+
+    return rows
+
 def finalize_with_gold(sealed_glob: str, gold_csv: str, outdir: str = None, use_multi_key: bool = False):
     """
     Finalize sealed query results with gold standard evaluation.
@@ -747,24 +930,24 @@ def finalize_with_gold(sealed_glob: str, gold_csv: str, outdir: str = None, use_
         sealed = json.load(f)
     
     if use_multi_key:
-        # Multi-key matching (PMID OR DOI)
-        gold_pmids, gold_dois = load_gold_multi_key(gold_csv)
+        # W2.3: row-level matching (PMID OR DOI per article)
+        gold_rows = load_gold_rows(gold_csv)
         retrieved_pmids = set(sealed.get('retrieved_pmids', []))
         retrieved_dois = set(sealed.get('retrieved_dois', []))
-        
-        metrics = set_metrics_multi_key(retrieved_pmids, retrieved_dois, gold_pmids, gold_dois)
-        
+
+        metrics = set_metrics_row_level(retrieved_pmids, retrieved_dois, gold_rows)
+
         sealed.update({
             'finalized_utc': datetime.utcnow().isoformat(),
-            'gold_pmids_count': len(gold_pmids),
-            'gold_dois_count': len(gold_dois),
-            'matching_mode': 'multi_key',
+            'gold_pmids_count': sum(1 for g in gold_rows if g.pmid),
+            'gold_dois_count': sum(1 for g in gold_rows if g.doi),
+            'matching_mode': 'row_level',
             **metrics
         })
-        
-        print(f'Multi-key matching (PMID OR DOI):')
-        print(f'  Matches by PMID: {metrics["matches_by_pmid"]}')
-        print(f'  Matches by DOI only: {metrics["matches_by_doi_only"]} (improvement over PMID-only)')
+
+        print(f'Row-level matching (per-article DOI-then-PMID):')
+        print(f'  Matches by DOI: {metrics["matches_by_doi"]}')
+        print(f'  Matches by PMID fallback (no DOI match): {metrics["matches_by_pmid_fallback"]}')
         print(f'  Total TP: {metrics["TP"]}')
     else:
         # Legacy PMID-only matching
@@ -788,7 +971,7 @@ def finalize_with_gold(sealed_glob: str, gold_csv: str, outdir: str = None, use_
     print('Wrote:', out)
     return out
 
-def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: str, gold_csv: str, outdir: str, use_multi_key: bool = False):
+def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: str, gold_csv: str, outdir: str, use_multi_key: bool = False, query_num_offset: int = 0):
     """
     Run scoring pipeline and write a summary CSV, per-database summary CSV, and details JSON.
     
@@ -810,22 +993,30 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
     
     if use_multi_key:
         gold_pmids, gold_dois = load_gold_multi_key(gold_csv)
+        gold_rows = load_gold_rows(gold_csv)  # W2.3: row-level matching
     else:
         gold = load_gold_pmids(gold_csv)
         gold_pmids = gold
         gold_dois = set()
-    
+
     rows = []
     details = []
     per_db_rows = []  # New: per-database metrics
-    
+
     for bundle_idx, bundle in enumerate(query_bundles):
         canonical_query = bundle['canonical']
         pmids, dois, total, provider_details = _execute_query_bundle(providers, bundle['per_provider'], mindate, maxdate)
-        
+        # W2.4: total is now the deduplicated unique count. Compute raw sum for
+        # reference (= what the old code returned; now stored as results_count_raw).
+        total_raw = sum(
+            v.get('results_count', 0)
+            for v in provider_details.values()
+            if 'error' not in v
+        )
+
         if use_multi_key:
-            # Multi-key matching
-            metrics = set_metrics_multi_key(pmids, dois, gold_pmids, gold_dois)
+            # W2.3: row-level matching (per-article DOI-then-PMID)
+            metrics = set_metrics_row_level(pmids, dois, gold_rows)
             tp = metrics['TP']
             recall = metrics['Recall']
             gold_size = metrics['Gold']
@@ -837,11 +1028,12 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
         
         nnr_proxy = total / max(tp, 1)
         rec = {
-            'query': canonical_query, 
-            'results_count': total, 
-            'TP': tp, 
+            'query': canonical_query,
+            'results_count': total,          # W2.4: deduplicated unique article count
+            'results_count_raw': total_raw,  # W2.4: raw sum of per-DB API counts
+            'TP': tp,
             'gold_size': gold_size,
-            'recall': recall, 
+            'recall': recall,
             'NNR_proxy': nnr_proxy
         }
         
@@ -855,7 +1047,8 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
         # Store TP PMIDs for details - use appropriate gold standard
         tp_pmids_for_details = (pmids & gold_pmids) if use_multi_key else (pmids & gold)
         details.append({**rec, 'retrieved_pmids': sorted(pmids), 'retrieved_dois': sorted(dois), 'tp_pmids': sorted(tp_pmids_for_details), 'provider_details': provider_details})
-        print(f"Query[{hashlib.sha256(canonical_query.encode()).hexdigest()[:8]}]: results={total}  TP={tp}  recall={recall:.3f}  NNR_proxy={nnr_proxy:.2f}")
+        _raw_note = f" (raw={total_raw})" if total_raw != total else ""
+        print(f"Query[{hashlib.sha256(canonical_query.encode()).hexdigest()[:8]}]: results={total}{_raw_note}  TP={tp}  recall={recall:.3f}  NNR_proxy={nnr_proxy:.2f}")
         
         # Generate per-database metrics
         for db_name, db_details in provider_details.items():
@@ -863,25 +1056,30 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
                 # Skip databases that failed
                 continue
             
+            db_id_type = db_details.get('id_type', 'id')
             db_ids = set(db_details.get('retrieved_ids', []))
             db_dois = set(db_details.get('retrieved_dois', []))
             db_results = db_details.get('results_count', 0)
             db_query = db_details.get('query', '')
             
+            # Only PubMed returns real PMIDs; Scopus/WOS native IDs are internal
+            # identifiers that will never match gold PMIDs — pass empty set instead.
+            db_pmids_for_matching = db_ids if db_id_type == 'pmid' else set()
+
             if use_multi_key:
-                # Multi-key matching for this database
-                db_metrics = set_metrics_multi_key(db_ids, db_dois, gold_pmids, gold_dois)
+                # W2.3: row-level matching for this database
+                db_metrics = set_metrics_row_level(db_pmids_for_matching, db_dois, gold_rows)
                 db_tp = db_metrics['TP']
                 db_recall = db_metrics['Recall']
             else:
                 # Legacy PMID-only matching
-                db_tp = len(db_ids & gold)
+                db_tp = len(db_pmids_for_matching & gold)
                 db_recall = db_tp / max(len(gold), 1)
             
             db_nnr_proxy = db_results / max(db_tp, 1)
             
             db_rec = {
-                'query_num': bundle_idx + 1,
+                'query_num': bundle_idx + 1 + query_num_offset,
                 'database': db_name,
                 'query': db_query[:200] + '...' if len(db_query) > 200 else db_query,  # Truncate long queries
                 'results_count': db_results,
@@ -901,10 +1099,11 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
         
         # Also add combined row to per-database CSV for reference
         combined_rec = {
-            'query_num': bundle_idx + 1,
+            'query_num': bundle_idx + 1 + query_num_offset,
             'database': 'COMBINED',
             'query': canonical_query[:200] + '...' if len(canonical_query) > 200 else canonical_query,
-            'results_count': total,
+            'results_count': total,          # W2.4: deduplicated unique article count
+            'results_count_raw': total_raw,  # W2.4: raw sum of per-DB API counts
             'TP': tp,
             'gold_size': gold_size,
             'recall': recall,
@@ -1142,6 +1341,10 @@ def main():
     p_score.add_argument('--queries-txt')
     p_score.add_argument('--gold-csv')
     p_score.add_argument('--outdir')
+    p_score.add_argument('--query-num-offset', type=int, default=0,
+                          help='Add this offset to query_num in per-database CSV output. '
+                               'Use in query-by-query mode: pass QUERY_NUM-1 so the CSV '
+                               'reflects the actual query number instead of always showing 1.')
     p_score.add_argument('--use-multi-key', action='store_true',
                          help='Enable multi-key matching (PMID OR DOI). Requires gold CSV with DOI column (e.g., *_detailed.csv)')
     p_score.add_argument('--ncbi-email', default=None)
@@ -1290,7 +1493,7 @@ def main():
         queries_path = queries_txt if isinstance(queries_txt, Path) else Path(str(queries_txt))
         provider_queries = _load_queries_for_providers(providers, queries_path)
         query_bundles = _build_query_bundles(provider_queries)
-        score_queries(providers=providers, query_bundles=query_bundles, mindate=mindate, maxdate=maxdate, gold_csv=gold_csv, outdir=study_outdir, use_multi_key=getattr(args, 'use_multi_key', False))
+        score_queries(providers=providers, query_bundles=query_bundles, mindate=mindate, maxdate=maxdate, gold_csv=gold_csv, outdir=study_outdir, use_multi_key=getattr(args, 'use_multi_key', False), query_num_offset=getattr(args, 'query_num_offset', 0))
     elif args.cmd == 'print-titles':
         pmids = []
         if args.pmids:
