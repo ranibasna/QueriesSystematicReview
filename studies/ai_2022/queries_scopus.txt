@@ -1,17 +1,17 @@
-# High-recall: Broad search using TITLE-ABS-KEY for all synonyms and acronyms.
-(TITLE-ABS-KEY("sleep disordered breathing" OR "sleep apnea" OR SDB OR "obstructive sleep apnea" OR OSA OR snoring) AND TITLE-ABS-KEY("blood pressure" OR hypertension OR BP OR nondipping OR "non-dipping") AND TITLE-ABS-KEY(child* OR adolescen* OR p*ediatric OR infan* OR teen*)) AND (PUBYEAR > 1989 AND PUBYEAR < 2025)
+# High-recall: Broad text search across all SDB, BP, and pediatric terms
+TITLE-ABS-KEY("sleep disordered breathing" OR "sleep-disordered breathing" OR "SDB" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "OSA" OR "OSAS" OR "upper airway resistance" OR "snoring") AND TITLE-ABS-KEY("blood pressure" OR "hypertension" OR "systolic" OR "diastolic" OR "ambulatory blood pressure" OR "ABPM" OR "nondipping" OR "non-dipping" OR "BP load" OR "prehypertension") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric" OR "infant" OR "youth" OR "juvenile" OR "teenager" OR "school-age")
 
-# Balanced (revised): Added 'UARS' (Upper Airway Resistance Syndrome) for better recall, as it's part of the SDB spectrum.
-(TITLE-ABS-KEY(("sleep apnea" OR "sleep disordered breathing" OR UARS) W/5 (child* OR adolescen* OR pediatric*)) AND TITLE-ABS-KEY(snoring OR "obstructive sleep apnea") AND TITLE-ABS-KEY("blood pressure" OR hypertension)) AND (PUBYEAR > 1989 AND PUBYEAR < 2025)
+# Balanced: Core SDB and BP terms with date filter
+TITLE-ABS-KEY("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TITLE-ABS-KEY("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND (PUBYEAR > 1989 AND PUBYEAR < 2026)
 
-# High-precision: Tighter proximity (W/2) and title-only searches for core concepts.
-(TITLE(("sleep apnea" OR snoring) AND ("blood pressure" OR hypertension)) AND TITLE-ABS-KEY(("sleep disordered breathing" W/2 (child* OR adolescen*)))) AND (PUBYEAR > 1989 AND PUBYEAR < 2025)
+# High-precision: SDB restricted to title field
+TITLE("sleep disordered breathing" OR "sleep apnea" OR "obstructive sleep apnea") AND TITLE-ABS-KEY("blood pressure" OR "hypertension") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "pediatric") AND (PUBYEAR > 1989 AND PUBYEAR < 2026)
 
-# Micro-variant 1 (Filter-based): Starts with the 'Balanced' query and limits to articles, reviews, and the medicine subject area.
-(TITLE-ABS-KEY(("sleep apnea" OR "sleep disordered breathing") W/5 (child* OR adolescen* OR pediatric*)) AND TITLE-ABS-KEY(snoring OR "obstructive sleep apnea") AND TITLE-ABS-KEY("blood pressure" OR hypertension)) AND (DOCTYPE(ar OR re)) AND (SUBJAREA(MEDI)) AND (PUBYEAR > 1989 AND PUBYEAR < 2025)
+# Micro-variant 1 (Filter-based): Balanced query with document type filter
+TITLE-ABS-KEY("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TITLE-ABS-KEY("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND DOCTYPE(ar OR re) AND (PUBYEAR > 1989 AND PUBYEAR < 2026)
 
-# Micro-variant 2 (Field/Scope-based): Starts with the 'Balanced' query and restricts the SDB and BP concepts to the title field.
-(TITLE(("sleep apnea" OR "sleep disordered breathing") AND ("blood pressure" OR hypertension)) AND TITLE-ABS-KEY((child* OR adolescen* OR pediatric*)) AND TITLE-ABS-KEY(snoring OR "obstructive sleep apnea")) AND (PUBYEAR > 1989 AND PUBYEAR < 2025)
+# Micro-variant 2 (Field/Scope-based): SDB concept restricted to title
+TITLE("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TITLE-ABS-KEY("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND (PUBYEAR > 1989 AND PUBYEAR < 2026)
 
-# Micro-variant 3 (Proximity-based): Starts with the 'Balanced' query and tightens proximity to W/3 for the main concepts.
-(TITLE-ABS-KEY(("sleep apnea" OR "sleep disordered breathing") W/3 (child* OR adolescen* OR pediatric*)) AND TITLE-ABS-KEY(snoring OR "obstructive sleep apnea") AND TITLE-ABS-KEY("blood pressure" OR hypertension)) AND (PUBYEAR > 1989 AND PUBYEAR < 2025)
+# Micro-variant 3 (Proximity-based): SDB and BP concepts within 10 words
+TITLE-ABS-KEY(("sleep apnea" OR "sleep disordered breathing" OR "obstructive sleep apnea") W/10 ("blood pressure" OR "hypertension")) AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND (PUBYEAR > 1989 AND PUBYEAR < 2026)

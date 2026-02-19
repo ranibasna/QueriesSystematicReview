@@ -1,17 +1,17 @@
-# High-recall: Broad search using Topic (TS) for all synonyms and truncated terms.
-TS=("sleep disordered breathing" OR "sleep apne*" OR SDB OR "obstructive sleep apnea" OR OSA OR snoring) AND TS=("blood pressure" OR hypertens* OR BP OR nondipping OR "non-dipping") AND TS=(child* OR adolescen* OR p*ediatric OR infan* OR teen*) AND PY=(1990-2024)
+# High-recall: Broad topic search across all SDB, BP, and pediatric terms
+TS=("sleep disordered breathing" OR "sleep-disordered breathing" OR "SDB" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "OSA" OR "OSAS" OR "upper airway resistance" OR "snoring") AND TS=("blood pressure" OR "hypertension" OR "systolic" OR "diastolic" OR "ambulatory blood pressure" OR "ABPM" OR "nondipping" OR "non-dipping" OR "BP load" OR "prehypertension") AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric" OR "infant" OR "youth" OR "juvenile" OR "teenager" OR "school-age")
 
-# Balanced: A hybrid using proximity (NEAR/5) for core concepts while still capturing major synonyms.
-TS=(("sleep apne*" OR "sleep disordered breathing") NEAR/5 (child* OR adolescen* OR pediatric*)) AND TS=("blood pressure" OR hypertens*) AND PY=(1990-2024)
+# Balanced: Core SDB and BP terms with publication year filter
+TS=("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TS=("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND PY=(1990-2025)
 
-# High-precision: Tighter proximity (NEAR/3) and title-only (TI) searches for core concepts.
-TI=(("sleep apne*" OR snoring) AND ("blood pressure" OR hypertens*)) AND TS=(child* OR adolescen*) AND PY=(1990-2024)
+# High-precision: SDB restricted to title field
+TI=("sleep disordered breathing" OR "sleep apnea" OR "obstructive sleep apnea") AND TS=("blood pressure" OR "hypertension") AND TS=("child" OR "children" OR "adolescent" OR "pediatric") AND PY=(1990-2025)
 
-# Micro-variant 1 (Filter-based): Starts with the 'Balanced' query and limits to articles and reviews.
-TS=(("sleep apne*" OR "sleep disordered breathing") NEAR/5 (child* OR adolescen* OR pediatric*)) AND TS=("blood pressure" OR hypertens*) AND DT=(Article OR Review) AND PY=(1990-2024)
+# Micro-variant 1 (Filter-based): Balanced query with document type filter
+TS=("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TS=("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND DT=(Article OR Review) AND PY=(1990-2025)
 
-# Micro-variant 2 (Field/Scope-based): Starts with the 'Balanced' query and restricts the main SDB and BP concepts to the title field.
-TI=(("sleep apne*" OR "sleep disordered breathing") AND ("blood pressure" OR hypertens*)) AND TS=(child* OR adolescen* OR pediatric*) AND PY=(1990-2024)
+# Micro-variant 2 (Field/Scope-based): SDB concept restricted to title
+TI=("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TS=("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND PY=(1990-2025)
 
-# Micro-variant 3 (Proximity-based): Starts with the 'Balanced' query and tightens the proximity operator to NEAR/3.
-TS=(("sleep apne*" OR "sleep disordered breathing") NEAR/3 (child* OR adolescen* OR pediatric*)) AND TS=("blood pressure" OR hypertens*) AND PY=(1990-2024)
+# Micro-variant 3 (Proximity-based): SDB and BP concepts within 10 words
+TS=(("sleep apnea" OR "sleep disordered breathing" OR "obstructive sleep apnea") NEAR/10 ("blood pressure" OR "hypertension")) AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND PY=(1990-2025)

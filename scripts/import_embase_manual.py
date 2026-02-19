@@ -25,34 +25,39 @@ from pathlib import Path
 from typing import Set, List, Dict
 
 
-def parse_embase_csv(csv_path: str) -> tuple[Set[str], Set[str], List[Dict]]:
+def parse_embase_csv(csv_path: str) -> tuple[Set[str], Set[str], List[Dict], int]:
     """
     Parse Embase CSV export and extract DOIs and PMIDs.
     Supports two formats:
     1. Standard CSV with headers (columns: DOI, PMID, Title, etc.)
     2. Vertical format with field-value pairs (field_name, value per row)
-    
+
     Returns:
-        (dois, pmids, records) - sets of identifiers and list of full records
+        (dois, pmids, records, raw_row_count)
+        raw_row_count: number of data rows seen before DOI/PMID filtering.
+        A count of 0 means the query genuinely returned no results (empty export).
+        A count > 0 with empty dois/pmids means the export is missing the expected columns.
     """
     dois: Set[str] = set()
     pmids: Set[str] = set()
     records: List[Dict] = []
-    
+    raw_row_count: int = 0
+
     with open(csv_path, 'r', encoding='utf-8') as f:
         # Read first line to detect format
         first_line = f.readline()
         f.seek(0)
-        
+
         # Check if it's vertical format (no header row, field names in first column)
         if 'TITLE' in first_line.upper() and first_line.count(',') <= 2:
             # Vertical format: field_name, value
             reader = csv.reader(f)
             current_record = {}
-            
+
             for row in reader:
                 if len(row) < 2:
                     continue
+                raw_row_count += 1
                     
                 field_name = row[0].strip().upper()
                 field_value = row[1].strip() if len(row) > 1 else ''
@@ -86,8 +91,9 @@ def parse_embase_csv(csv_path: str) -> tuple[Set[str], Set[str], List[Dict]]:
         else:
             # Standard horizontal format with DictReader
             reader = csv.DictReader(f)
-            
+
             for row in reader:
+                raw_row_count += 1
                 record = {}
                 
                 # Extract DOI (various possible column names)
@@ -120,7 +126,7 @@ def parse_embase_csv(csv_path: str) -> tuple[Set[str], Set[str], List[Dict]]:
                 if doi or pmid:
                     records.append(record)
     
-    return dois, pmids, records
+    return dois, pmids, records, raw_row_count
 
 
 def create_workflow_json(query: str, dois: Set[str], pmids: Set[str], 
@@ -167,17 +173,31 @@ def main():
     args = parser.parse_args()
     
     print(f"Reading Embase export from: {args.input}")
-    dois, pmids, records = parse_embase_csv(args.input)
-    
+    dois, pmids, records, raw_row_count = parse_embase_csv(args.input)
+
     print(f"\nExtracted:")
     print(f"  - {len(dois)} unique DOIs")
     print(f"  - {len(pmids)} PMIDs (cross-referenced articles)")
     print(f"  - {len(records)} total records")
-    
+
     if len(dois) == 0 and len(pmids) == 0:
-        print("\n⚠️  WARNING: No DOIs or PMIDs found!")
-        print("Make sure your CSV export includes DOI and/or PubMed ID columns.")
-        return 1
+        if raw_row_count == 0:
+            # Genuinely empty CSV — the query returned no results on Embase.
+            # Create an empty-but-valid JSON placeholder so positional ordering
+            # is preserved across all 6 query slots and return success.
+            print("\nℹ️  Query returned 0 results on Embase — creating empty JSON placeholder.")
+            print("   This query will score Recall=0 / Precision=0 but will not block the workflow.")
+            query_hash = create_workflow_json(args.query, set(), set(), [], args.output)
+            print(f"\n✅ Created empty JSON placeholder:")
+            print(f"   {args.output}")
+            print(f"   Query hash: {query_hash[:8]}")
+            return 0
+        else:
+            # CSV has data rows but DOI/PMID columns could not be found — bad export format.
+            print(f"\n⚠️  WARNING: No DOIs or PMIDs found!")
+            print(f"   CSV has {raw_row_count} data rows but no DOI or PubMed ID column could be extracted.")
+            print("   Make sure your CSV export includes DOI and/or PubMed ID columns.")
+            return 1
     
     query_hash = create_workflow_json(args.query, dois, pmids, records, args.output)
     

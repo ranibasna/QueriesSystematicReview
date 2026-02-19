@@ -25,14 +25,14 @@ This template provides a structured prompt for an LLM to generate comprehensive,
 ## INPUT
 - TOPIC: `Blood pressure in children and adolescents with sleep-disordered breathing`
 - DATE WINDOW: `1990/01/01` to `2022/12/31`
-- DATABASES: `pubmed,scopus,embase`
+- DATABASES: `pubmed,scopus,wos,embase`
 
 ## PICOS (summary)
-- **Population:** `Children and adolescents with SDB, without clinical history of congenital heart disease and without any surgical or CPAP intervention for SDB.`
-- **Intervention/Exposure:** `The main exposure was children and adolescents with a spectrum of SDB (i.e., primary snoring, mild, moderate, or severe SDB) aged from 0 to 18 years old.`
+- **Population:** `Children and adolescents (0-18 years) with sleep-disordered breathing (SDB), without congenital heart disease or surgical/CPAP intervention.`
+- **Intervention/Exposure:** `A spectrum of SDB (primary snoring, mild, moderate, or severe SDB).`
 - **Comparator:** `Healthy children, without any sleep disturbance history.`
-- **Outcomes:** `Mean blood pressure (MBP), systolic and diastolic BP during sleep or awake.`
-- **Design:** `Case-control, cross-sectional, and longitudinal cohort studies`
+- **Outcomes:** `Mean blood pressure (MBP), systolic and diastolic BP during sleep or awake. Additional: BP load, nondipping BP, and SBP Index.`
+- **Design:** `Case-control, cross-sectional, and longitudinal cohort studies.`
 
 ## USER TASK
 Generate comprehensive, database-ready search queries for this systematic review.
@@ -90,6 +90,24 @@ Generate comprehensive, database-ready search queries for this systematic review
   **Proximity Knobs:**
   - Tight proximity: `W/5` or `PRE/5` - Require concepts within 5 words (e.g., `[CONCEPT1] W/5 [CONCEPT2]`)
 
+## Web of Science
+- **Syntax**: Use field tags like `TS=` (Topic), `TI=` (Title), `AB=` (Abstract).
+- **Controlled Vocabulary**: Limited native thesaurus. Relies heavily on author keywords and `KeyWords Plus`.
+- **Proximity Operators**: `NEAR/n` or `SAME` (same sentence).
+- **Date Syntax**: Use the format `PY=(YYYY-YYYY)`.
+- **Precision_Knobs**:
+  
+  **Filter Knobs:**
+  - Document type: `DT=(Article OR Review)` - Limit to articles and reviews
+  - Subject category: `WC=([CATEGORY])` - Refine by Web of Science Categories (e.g., `WC=(NEUROSCIENCES)`)
+  
+  **Scope Knobs:**
+  - Title only: `TI=([CONCEPT])` - Search for key concepts in title field only
+  
+  **Proximity Knobs:**
+  - Tight proximity: `NEAR/5` - Require concepts within 5 words (e.g., `[CONCEPT1] NEAR/5 [CONCEPT2]`)
+  - Same sentence: `SAME` - Require concepts in same sentence
+
 ## Embase
 
 - **Date Syntax**: Date filtering varies by platform. For inline queries, OMIT date filters entirely and apply them through the platform's interface after execution. DO NOT use `limit to yr=` syntax in inline queries.
@@ -112,6 +130,7 @@ Generate comprehensive, database-ready search queries for this systematic review
   
   **Proximity Knobs:**
   - Adjacent terms: `ADJ5` - Require concepts within 5 words (e.g., `'[CONCEPT1]':ti,ab ADJ5 '[CONCEPT2]':ti,ab`)
+
 ---
 
 ## Precision_Knobs Framework
@@ -168,6 +187,7 @@ To generate these queries, you must use the `Precision_Knobs` list found in the 
 - If no revisions are needed, you must return an empty `json_patch` object: `{ "json_patch": {} }`.
 - **Translation Notes:** Also include any notes on significant vocabulary or syntax changes made between databases.
 
+
 ## Expected JSON Output Format
 
 Your JSON Query Object should follow this structure, with database names as keys and arrays of query strings as values. Each query string must include a leading comment line (starting with '#') explaining the strategy:
@@ -202,14 +222,14 @@ Note: The number of queries per database depends on the level (basic: 3, extende
 ## FINAL TASK: Update Project Files
 Based on the generated content, perform the following steps:
 
-1.  **Update Search Strategy Document:** Overwrite the `studies/[STUDY_NAME]/search_strategy.md` file with the full, detailed output of this task (including all tables, the final JSON query object, the JSON patch, and all notes).
+1.  **Update Search Strategy Document:** Overwrite the `studies/ai_2022/search_strategy.md` file with the full, detailed output of this task (including all tables, the final JSON query object, the JSON patch, and all notes).
 
 2.  **Generate a Query File for Each Database:**
     - First, apply any revisions from the `json_patch` object to the main 
      `JSON Query Object` (replace queries at specified indices).
     - For each database key in the now-corrected query object:
       - Determine the correct filename:
-        - If the key is `pubmed`, the filename is `studies/[STUDY_NAME]/queries.txt`.
-        - For all other keys, the filename is `studies/[STUDY_NAME]/queries_{database_name}.txt` (e.g., `queries_scopus.txt`).
+        - If the key is `pubmed`, the filename is `studies/ai_2022/queries.txt`.
+        - For all other keys, the filename is `studies/ai_2022/queries_{database_name}.txt` (e.g., `queries_scopus.txt`).
       - Write the list of corrected queries from the JSON object into that file. Each query must be separated by a blank line.
 '''
