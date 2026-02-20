@@ -1704,7 +1704,12 @@ def main():
         for _ep in getattr(args, 'embase_jsons', None) or []:
             _ep_obj = Path(_ep)
             if not _ep_obj.is_absolute():
-                _ep_obj = study_dir / _ep_obj   # try relative to study dir
+                if _ep_obj.is_file():
+                    pass  # found as-is relative to CWD
+                else:
+                    # try just the filename inside study_dir (avoids double-nesting
+                    # when caller passes "studies/Godos_2024/embase_query1.json")
+                    _ep_obj = study_dir / Path(_ep).name
             if _ep_obj.is_file():
                 embase_json_paths.append(str(_ep_obj))
             else:
