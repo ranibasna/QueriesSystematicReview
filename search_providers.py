@@ -73,6 +73,94 @@ class PubMedProvider:
                 return str(eloc).strip()
         return None
 
+    def _extract_article_metadata(self, article: dict) -> dict:
+        """
+        Extract article-level metadata (title, first_author, year, journal) from a
+        PubMed XML record returned by Entrez.efetch.
+
+        Returns a dict with only the keys whose values are non-None/non-empty.
+        Silently returns {} on any extraction error so that a malformed record never
+        interrupts the main search loop.
+
+        Used by W4.1 to populate ``_metadata_cache`` for downstream fuzzy matching.
+        """
+        meta: dict = {}
+        try:
+            mc = article.get("MedlineCitation", {})
+            art = mc.get("Article", {})
+
+            # Title
+            raw_title = art.get("ArticleTitle")
+            if raw_title:
+                title_str = str(raw_title).strip()
+                if title_str:
+                    meta["title"] = title_str
+
+            # First author (last name)
+            author_list = art.get("AuthorList", [])
+            if author_list:
+                last_name = str(author_list[0].get("LastName", "") or "").strip()
+                if last_name:
+                    meta["first_author"] = last_name
+
+            # Year — prefer PubDate Year; fallback to MedlineDate first 4 chars
+            journal = art.get("Journal", {})
+            pub_date = journal.get("JournalIssue", {}).get("PubDate", {})
+            year_str = str(pub_date.get("Year", "") or "").strip()
+            if year_str.isdigit():
+                meta["year"] = int(year_str)
+            else:
+                med_date = str(pub_date.get("MedlineDate", "") or "").strip()
+                if med_date and med_date[:4].isdigit():
+                    meta["year"] = int(med_date[:4])
+
+            # Journal title
+            journal_title = str(journal.get("Title", "") or "").strip()
+            if journal_title:
+                meta["journal"] = journal_title
+
+        except Exception:
+            pass  # Never raise — metadata extraction is best-effort
+
+        return meta
+
+    def _crossref_lookup(self, pmid: str) -> Optional[str]:
+        """
+        Fallback DOI lookup via CrossRef for a single PMID that PubMed XML did not
+        carry a DOI for.  Uses the polite-pool endpoint with a mailto parameter.
+
+        Returns the lowercased DOI string on success, or None on any failure
+        (HTTP error, timeout, empty result, or PMID round-trip mismatch).
+
+        Class E guard: if CrossRef returns a record whose own PMID field differs
+        from the queried PMID (can happen for errata/corrections), the DOI is
+        rejected to avoid mis-attribution.
+        """
+        mailto = Entrez.email or "default@example.com"
+        url = "https://api.crossref.org/works"
+        params = {
+            "filter": f"from-pub-date:1000,pmid:{pmid}",
+            "mailto": mailto,
+            "rows": 1,
+        }
+        try:
+            resp = requests.get(url, params=params, timeout=10)
+            resp.raise_for_status()
+            data = resp.json()
+            items = data.get("message", {}).get("items", [])
+            if not items:
+                return None
+            item = items[0]
+            # Class E guard: if CrossRef returns a record carrying a different PMID
+            # (e.g. an erratum), reject it to avoid mis-attribution.
+            item_pmid = str(item.get("PMID", "")).strip()
+            if item_pmid and item_pmid != str(pmid):
+                return None
+            doi = item.get("DOI", "")
+            return doi.lower() if doi else None
+        except Exception:
+            return None
+
     @retry(wait=wait_exponential(multiplier=1, min=1, max=30), stop=stop_after_attempt(5))
     def _get_dois_from_pmids(self, pmids: List[str]) -> Dict[str, str]:
         """
@@ -83,11 +171,23 @@ class PubMedProvider:
         present in the set returned by search().  The caller should set
         self._pmid_to_doi_cache = result so that _execute_query_bundle can read the
         preserved pairing without altering the search() return signature.
+
+        W4.1 side effect: sets ``self._metadata_cache`` — a DOI-keyed dict of article
+        metadata (title, first_author, year, journal) extracted from the same efetch
+        XML records.  PMID-only articles (no DOI) are keyed as ``"pmid:{pmid}"``.
+        This attribute is reset to {} at the start of every call so that stale data
+        from a previous query never leaks into the current one.
         """
+        # W4.1: Reset in case this method is never reached in the loop (empty pmids
+        # handled below), so the attribute always exists on the instance.
+        self._metadata_cache: Dict[str, dict] = {}
         if not pmids:
             return {}
 
         pmid_to_doi: Dict[str, str] = {}
+        # W4.1: temporary PMID-keyed store; converted to DOI keys at the end
+        _pmid_meta_tmp: Dict[str, dict] = {}
+
         for batch in _chunk_list(pmids, EFETCH_BATCH_SIZE):
             handle = Entrez.efetch(
                 db="pubmed",
@@ -104,6 +204,41 @@ class PubMedProvider:
                 doi = self._extract_doi(article)
                 if pmid and doi:
                     pmid_to_doi[pmid] = doi.lower()
+                # W4.1: extract metadata for every article, regardless of DOI
+                if pmid:
+                    meta = self._extract_article_metadata(article)
+                    if meta:
+                        _pmid_meta_tmp[pmid] = meta
+
+        # W4.1: convert PMID-keyed metadata to DOI-keyed (primary) or pmid:XXXX
+        # (fallback for PMID-only articles).  This happens after the full loop so
+        # that all pmid→doi mappings are available before the key conversion.
+        metadata_cache: Dict[str, dict] = {}
+        for pmid, meta in _pmid_meta_tmp.items():
+            doi = pmid_to_doi.get(pmid)
+            key = doi if doi else f"pmid:{pmid}"
+            metadata_cache[key] = meta
+        self._metadata_cache = metadata_cache
+
+        # W2.1b: CrossRef fallback for PMIDs that PubMed XML didn't carry a DOI for
+        unresolved = [p for p in pmids if p not in pmid_to_doi]
+        if unresolved:
+            gained = 0
+            for pmid in unresolved:
+                doi = self._crossref_lookup(pmid)
+                if doi:
+                    pmid_to_doi[pmid] = doi
+                    # Also update metadata cache key if metadata was captured
+                    fallback_key = f"pmid:{pmid}"
+                    if fallback_key in self._metadata_cache:
+                        self._metadata_cache[doi] = self._metadata_cache.pop(fallback_key)
+                    gained += 1
+                    logging.debug("CrossRef fallback: PMID %s → %s", pmid, doi)
+            logging.info(
+                "CrossRef fallback: %d/%d unresolved PMIDs gained a DOI",
+                gained, len(unresolved),
+            )
+
         return pmid_to_doi
 
     @retry(wait=wait_exponential(multiplier=1, min=1, max=30), stop=stop_after_attempt(5))
@@ -212,6 +347,8 @@ class ScopusProvider:
         total_results = 0
         retrieved = 0
         start = 0
+        # W4.1: article metadata keyed by DOI (lowercase); populated from each entry
+        self._metadata_cache: Dict[str, dict] = {}
         query_with_dates = self._apply_year_filter(query, mindate, maxdate)
         headers = self._headers()
         while start < retmax:
@@ -251,8 +388,28 @@ class ScopusProvider:
                 if identifier:
                     scopus_ids.add(identifier.replace("SCOPUS_ID:", "").strip())
                 doi_val = entry.get("prism:doi")
+                doi_key: Optional[str] = None
                 if doi_val:
-                    dois.add(str(doi_val).lower().strip())
+                    doi_key = str(doi_val).lower().strip()
+                    dois.add(doi_key)
+                # W4.1: extract metadata — only store when DOI is available;
+                # Scopus-only records wthout a DOI cannot be linked to gold articles
+                # at scoring time, so metadata without a lookup key is useless.
+                if doi_key:
+                    _title = str(entry.get("dc:title") or "").strip() or None
+                    # dc:creator: typically "LastName Initials" or "LastName, First"
+                    _creator = str(entry.get("dc:creator") or "").strip()
+                    _first_author = _creator.split(",")[0].strip() or None
+                    # prism:coverDate: "YYYY-MM-DD" or "YYYY" → extract year
+                    _cover = str(entry.get("prism:coverDate") or "").strip()
+                    _year = int(_cover[:4]) if _cover and _cover[:4].isdigit() else None
+                    _journal = str(entry.get("prism:publicationName") or "").strip() or None
+                    _meta = {k: v for k, v in {
+                        "title": _title, "first_author": _first_author,
+                        "year": _year, "journal": _journal,
+                    }.items() if v is not None}
+                    if _meta:
+                        self._metadata_cache[doi_key] = _meta
             batch_size = len(entries)
             retrieved += batch_size
             start += batch_size
@@ -336,6 +493,8 @@ class WebOfScienceProvider:
         total_results = 0
         retrieved = 0
         page = 1
+        # W4.1: article metadata keyed by DOI (lowercase)
+        self._metadata_cache: Dict[str, dict] = {}
         
         query_with_dates = self._apply_year_filter(query, mindate, maxdate)
         headers = self._headers()
@@ -394,8 +553,36 @@ class WebOfScienceProvider:
                 # Extract DOI from identifiers
                 identifiers = doc.get("identifiers", {})
                 doi_val = identifiers.get("doi")
+                doi_key: Optional[str] = None
                 if doi_val:
-                    dois.add(str(doi_val).lower().strip())
+                    doi_key = str(doi_val).lower().strip()
+                    dois.add(doi_key)
+
+                # W4.1: extract metadata — only keyed by DOI (same reasoning as Scopus)
+                if doi_key:
+                    _title_raw = doc.get("title")
+                    _title = str(_title_raw).strip() if _title_raw else None
+                    # names.authors[0].displayName → "LastName, FirstName" or "LastName F."
+                    _authors = doc.get("names", {}).get("authors", [])
+                    _first_author: Optional[str] = None
+                    if _authors:
+                        _display = str(_authors[0].get("displayName", "") or "").strip()
+                        _first_author = _display.split(",")[0].strip() or None
+                    _source = doc.get("source", {})
+                    _pub_year = _source.get("publishYear")
+                    _year: Optional[int] = None
+                    if _pub_year is not None:
+                        try:
+                            _year = int(_pub_year)
+                        except (TypeError, ValueError):
+                            pass
+                    _journal = str(_source.get("sourceTitle", "") or "").strip() or None
+                    _meta = {k: v for k, v in {
+                        "title": _title, "first_author": _first_author,
+                        "year": _year, "journal": _journal,
+                    }.items() if v is not None}
+                    if _meta:
+                        self._metadata_cache[doi_key] = _meta
             
             batch_size = len(documents)
             retrieved += batch_size
@@ -561,6 +748,7 @@ class EmbaseLocalProvider:
                 file=sys.stderr,
             )
             self._pmid_to_doi_cache: Dict[str, str] = {}
+            self._metadata_cache: Dict[str, dict] = {}
             return set(), set(), 0
 
         data = self._load()
@@ -587,6 +775,7 @@ class EmbaseLocalProvider:
                     file=sys.stderr,
                 )
                 self._pmid_to_doi_cache = {}
+                self._metadata_cache = {}
                 return set(), set(), 0
 
         # Build the PMID↔DOI cache from the per-record paired data.
@@ -611,6 +800,41 @@ class EmbaseLocalProvider:
                     pmid_to_doi[p] = d
 
         self._pmid_to_doi_cache = pmid_to_doi
+
+        # W4.1: Build metadata cache from per-record fields.
+        # Key: DOI (lowercase) when available, "pmid:{pmid}" for PMID-only records.
+        # Only fields with non-None/non-empty values are stored (no null inflation).
+        # When the records list is missing (legacy import), the cache is left empty;
+        # W4.3 will simply skip Layer 3 for this provider — graceful degradation.
+        meta_cache: Dict[str, dict] = {}
+        for rec in records:
+            if not isinstance(rec, dict):
+                continue
+            rec_doi = rec.get("doi")
+            rec_pmid = rec.get("pmid")
+            doi_lower = str(rec_doi).lower().strip() if rec_doi else None
+            key: Optional[str] = doi_lower or (f"pmid:{rec_pmid}" if rec_pmid else None)
+            if not key:
+                continue
+            _meta: dict = {}
+            _title = str(rec.get("title", "") or "").strip()
+            if _title:
+                _meta["title"] = _title
+            _fa = str(rec.get("first_author", "") or "").strip()
+            if _fa:
+                _meta["first_author"] = _fa
+            _yr = rec.get("year")
+            if _yr is not None:
+                try:
+                    _meta["year"] = int(_yr)
+                except (TypeError, ValueError):
+                    pass
+            _jn = str(rec.get("journal", "") or "").strip()
+            if _jn:
+                _meta["journal"] = _jn
+            if _meta:
+                meta_cache[key] = _meta
+        self._metadata_cache: Dict[str, dict] = meta_cache
 
         # Build return sets from the JSON entry — always use the stored lists as the
         # authoritative source (not re-derived from the cache) so that PMID-only

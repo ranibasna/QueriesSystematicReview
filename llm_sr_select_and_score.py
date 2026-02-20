@@ -31,7 +31,7 @@ NCBI settings (can be in environment or .env):
 """
 import os, sys, csv, re, time, json, argparse, glob, hashlib
 from datetime import datetime
-from typing import List, Dict, Set, Tuple
+from typing import List, Dict, Set, Tuple, Optional
 from pathlib import Path
 
 # Load .env if present (non-fatal if missing)
@@ -88,16 +88,72 @@ def _ensure_imports():
         print('NOTE: You may need to install:', ', '.join(missing), file=sys.stderr)
 
 _ensure_imports()
+import logging
 import pandas as pd
 from Bio import Entrez
 from tenacity import retry, wait_exponential, stop_after_attempt
 from search_providers import PROVIDER_REGISTRY, EmbaseLocalProvider
 from collections import namedtuple
 
+# Module-level logger.  DEBUG output is suppressed by default; callers enable
+# it with: logging.getLogger('llm_sr_select_and_score').setLevel(logging.DEBUG)
+_logger = logging.getLogger(__name__)
+
+# W4.3: import fuzzy_match_article from scripts/matching.py.
+# Adds scripts/ to sys.path at module load time so the import works whether
+# the main file is executed from the project root or from scripts/.
+_SCRIPTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scripts')
+if _SCRIPTS_DIR not in sys.path:
+    sys.path.insert(0, _SCRIPTS_DIR)
+try:
+    from matching import fuzzy_match_article as _fuzzy_match_article  # type: ignore
+    _W4_3_FUZZY_AVAILABLE = True
+except Exception as _w43_exc:
+    _fuzzy_match_article = None  # type: ignore
+    _W4_3_FUZZY_AVAILABLE = False
+    # Warn at module load so the user knows Layer 3 is disabled, not silently absent
+    import warnings as _warnings
+    _warnings.warn(
+        f"[W4.3] fuzzy_match_article unavailable ({_w43_exc}); "
+        "Layer 3 fuzzy fallback in set_metrics_row_level() will be skipped.",
+        ImportWarning,
+        stacklevel=1,
+    )
+
 # W2.3: row-level gold article representation, one entry per CSV row.
 # pmid and doi may both be present, one, or (rarely) neither.
 # DOIs are expected to be pre-normalised to lowercase.
 GoldArticle = namedtuple('GoldArticle', ['pmid', 'doi'])
+
+# W4.0: extended gold article representation with full metadata fields for
+# Layer 3 fuzzy matching (W4.3).  Uses a dataclass so that the two new fields
+# added for W4 have default=None, making all existing
+# GoldArticle(...) call sites unaffected (they continue to use the NamedTuple).
+from dataclasses import dataclass as _dataclass
+
+@_dataclass
+class RichGoldArticle:
+    """
+    Gold article with full metadata for Layer 3 fuzzy matching (W4.3).
+
+    All fields default to None so that this class can be used alongside the
+    existing GoldArticle NamedTuple without breaking any existing call site.
+
+    Field descriptions
+    ------------------
+    pmid          : PubMed ID string (no leading zeros)
+    doi           : DOI string, lower-cased
+    title         : full article title, un-normalised
+    year          : publication year as int
+    first_author  : last name of first author only
+    journal       : journal title (not abbreviation)
+    """
+    pmid: Optional[str] = None
+    doi: Optional[str] = None
+    title: Optional[str] = None
+    year: Optional[int] = None
+    first_author: Optional[str] = None
+    journal: Optional[str] = None
 
 def set_ncbi_identity(email: str = None, api_key: str = None):
     Entrez.email = email or os.getenv('NCBI_EMAIL', 'you@example.com')
@@ -419,7 +475,8 @@ def set_metrics_multi_key(
 def set_metrics_row_level(
     retrieved_pmids: Set[str],
     retrieved_dois: Set[str],
-    gold_rows: List[GoldArticle],
+    gold_rows: List,  # List[GoldArticle] or List[RichGoldArticle]
+    retrieved_metadata: Optional[Dict[str, dict]] = None,  # W4.3: Layer 3 metadata
 ) -> dict:
     """
     Row-level (per-article) metrics: each gold article is a TP if DOI OR PMID was retrieved.
@@ -428,16 +485,23 @@ def set_metrics_row_level(
     fallback whenever all gold articles have DOIs (because it gates the fallback on
     `gold_articles_pmid_only > 0`).  Here each gold article is tested independently:
 
-      1. DOI match  : gold.doi != None  and  gold.doi in retrieved_dois → TP
-      2. PMID fallback: gold.pmid != None and gold.pmid in retrieved_pmids
-                        (only fires when DOI did NOT match)  → TP
-      3. Miss otherwise.
+      1. DOI match     : gold.doi != None and gold.doi in retrieved_dois → TP
+      2. PMID fallback : gold.pmid != None and gold.pmid in retrieved_pmids
+                         (only fires when DOI did NOT match) → TP
+      3. Fuzzy fallback: (W4.3) iterate retrieved_metadata; use fuzzy title/author/year
+                         matching when both Layers 1 and 2 failed → TP
+                         (only active when retrieved_metadata is non-empty and
+                          gold_rows carry RichGoldArticle metadata fields)
 
     This correctly handles the scenario where PubMed retrieved an article's PMID but
     the DOI was absent from the PubMed XML, and no other database retrieved the DOI.
     Old code: miss (fallback disabled).  This function: TP via PMID.
 
-    Returns the same keys as set_metrics_multi_key() for drop-in compatibility.
+    Layer 3 is skipped entirely when `retrieved_metadata` is None or empty — fully
+    backward compatible with all call sites that do not pass metadata.
+
+    Returns the same keys as set_metrics_multi_key() for drop-in compatibility,
+    plus W4.3 additions: 'matches_by_fuzzy', 'matched_fuzzy_keys'.
     """
     retrieved_dois_norm = {d.lower() for d in retrieved_dois if d}
 
@@ -445,6 +509,12 @@ def set_metrics_row_level(
     matches_by_pmid_only_count = 0  # matched by PMID; DOI was NOT in retrieved set
     matched_dois_set: Set[str] = set()
     matched_pmids_fallback_set: Set[str] = set()
+
+    # W4.3 Layer 3: fuzzy fallback counters.
+    # Only active when retrieved_metadata is non-empty AND fuzzy matching is available.
+    matches_by_fuzzy_count = 0
+    matched_fuzzy_keys_set: Set[str] = set()
+    _fuzzy_enabled = bool(retrieved_metadata) and _fuzzy_match_article is not None
 
     for g in gold_rows:
         doi_matched = bool(g.doi) and g.doi.lower() in retrieved_dois_norm
@@ -457,8 +527,34 @@ def set_metrics_row_level(
             # PMID fallback: article was not matched by DOI, but PMID was retrieved
             matches_by_pmid_only_count += 1
             matched_pmids_fallback_set.add(g.pmid)  # g.pmid is non-None here
+        elif _fuzzy_enabled:
+            # W4.3 Layer 3: title / first-author / year fuzzy fallback.
+            # Only fires when BOTH Layer 1 (DOI) and Layer 2 (PMID) failed.
+            # Requires gold article to carry metadata fields (RichGoldArticle);
+            # GoldArticle rows silently produce no testable fields and return None.
+            _best_score: Optional[float] = None
+            _best_key: Optional[str] = None
+            for _cand_key, _cand_meta in retrieved_metadata.items():  # type: ignore[union-attr]
+                _score = _fuzzy_match_article(g, _cand_meta)  # type: ignore[misc]
+                if _score is not None and (_best_score is None or _score > _best_score):
+                    _best_score = _score
+                    _best_key = _cand_key
+            if _best_score is not None:
+                matches_by_fuzzy_count += 1
+                matched_fuzzy_keys_set.add(_best_key)  # type: ignore[arg-type]
+                _logger.debug(
+                    "[W4.3 Layer 3] Fuzzy match: gold pmid=%s doi=%s | "
+                    "candidate_key=%s | confidence=%.2f | "
+                    "gold_title=%r | cand_title=%r",
+                    g.pmid,
+                    g.doi,
+                    _best_key,
+                    _best_score,
+                    getattr(g, 'title', None),
+                    retrieved_metadata.get(_best_key, {}).get('title'),  # type: ignore[union-attr]
+                )
 
-    tp = matches_by_doi_count + matches_by_pmid_only_count
+    tp = matches_by_doi_count + matches_by_pmid_only_count + matches_by_fuzzy_count
     gold = len(gold_rows)
     retrieved_unique = max(len(retrieved_pmids), len(retrieved_dois_norm))
 
@@ -488,6 +584,9 @@ def set_metrics_row_level(
         'pmid_only_warning': any(not g.doi for g in gold_rows),
         'retrieved_pmids_count': len(retrieved_pmids),
         'retrieved_dois_count': len(retrieved_dois_norm),
+        # W4.3 Layer 3 additions (zero when metadata is unavailable or not passed)
+        'matches_by_fuzzy': matches_by_fuzzy_count,
+        'matched_fuzzy_keys': matched_fuzzy_keys_set,
     }
 
 def read_queries_from_txt(path: str) -> List[str]:
@@ -701,13 +800,23 @@ def _execute_query_bundle(providers, qmap: Dict[str, str], mindate: str, maxdate
         else:
             _linked = [{'pmid': None, 'doi': d} for d in sorted(dois)]
 
+        # W4.1: collect article metadata from the provider's _metadata_cache.
+        # All providers expose this attribute after W4.1 (PubMed via
+        # _get_dois_from_pmids, Scopus/WOS/Embase inside search()).
+        # getattr fallback → {} for any legacy provider that lacks the attribute.
+        # The metadata dict is stored separately from linked_records (not inlined)
+        # to avoid ~3× JSON size inflation — aggregation code only reads
+        # linked_records and is unaffected by the new key.
+        _metadata_dict: Dict[str, dict] = dict(getattr(provider, '_metadata_cache', {}))
+
         provider_details[pname] = {
             'query': query,
             'results_count': total,
             'retrieved_ids': sorted(ids),
             'retrieved_dois': sorted(dois),
             'id_type': id_type,
-            'linked_records': _linked,  # W2.2: authoritative PMID↔DOI pairs
+            'linked_records': _linked,   # W2.2: authoritative PMID↔DOI pairs
+            'metadata': _metadata_dict,  # W4.1: {doi_or_pmid_key: {title, first_author, year, journal}}
         }
         # W2.4: per-DB counts are stored in provider_details[*]['results_count'].
         # total_results is NOT accumulated here; it is set to the deduplicated
@@ -908,6 +1017,61 @@ def load_gold_rows(path: str) -> List[GoldArticle]:
 
     return rows
 
+
+def load_rich_gold_rows(path: str) -> List['RichGoldArticle']:
+    """
+    W4.0: Load gold standard as a list of RichGoldArticle objects with full
+    metadata (title, first_author, year, journal) for Layer 3 fuzzy matching.
+
+    Reads the *_detailed.csv format:
+        pmid, first_author, year, title, journal, doi
+
+    Column order is not required; detection is by header name.  Columns that are
+    absent from the file result in the corresponding field being None for all rows.
+    Empty / NaN values are normalised to None.
+
+    The function falls back to plain GoldArticle behaviour (doi+pmid only) when the
+    file does not have a recognisable header row — useful if called with a simple
+    gold CSV by mistake.
+
+    Returns: ordered list of RichGoldArticle, one per non-empty data row.
+    """
+    rows: List[RichGoldArticle] = []
+
+    try:
+        df = pd.read_csv(path, dtype=str)
+    except Exception as exc:
+        raise ValueError(f"load_rich_gold_rows: cannot read {path}: {exc}") from exc
+
+    # Normalise column names to lowercase, stripping whitespace
+    df.columns = [c.strip().lower() for c in df.columns]
+
+    def _clean(val: Optional[str]) -> Optional[str]:
+        """Return stripped string or None for empty/NaN/sentinel values."""
+        if val is None:
+            return None
+        s = str(val).strip()
+        return None if s.lower() in ('', 'nan', 'none') else s
+
+    for _, row in df.iterrows():
+        pmid = _clean(row.get('pmid'))
+        doi_raw = _clean(row.get('doi'))
+        doi = doi_raw.lower() if doi_raw else None
+        title = _clean(row.get('title'))
+        year_str = _clean(row.get('year'))
+        year: Optional[int] = None
+        if year_str and year_str.isdigit():
+            year = int(year_str)
+        first_author = _clean(row.get('first_author'))
+        journal = _clean(row.get('journal'))
+        rows.append(RichGoldArticle(
+            pmid=pmid, doi=doi, title=title,
+            year=year, first_author=first_author, journal=journal,
+        ))
+
+    return rows
+
+
 def finalize_with_gold(sealed_glob: str, gold_csv: str, outdir: str = None, use_multi_key: bool = False):
     """
     Finalize sealed query results with gold standard evaluation.
@@ -993,7 +1157,11 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
     
     if use_multi_key:
         gold_pmids, gold_dois = load_gold_multi_key(gold_csv)
-        gold_rows = load_gold_rows(gold_csv)  # W2.3: row-level matching
+        # W4.3: use RichGoldArticle rows so Layer 3 fuzzy matching has title/
+        # first_author/year fields.  Falls back gracefully: when the CSV lacks
+        # those columns all extra fields are None, Layer 3 finds no testable
+        # fields, and fuzzy_match_article returns None (no effect on recalls).
+        gold_rows = load_rich_gold_rows(gold_csv)  # W4.3: rich rows enable Layer 3
     else:
         gold = load_gold_pmids(gold_csv)
         gold_pmids = gold
@@ -1015,8 +1183,24 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
         )
 
         if use_multi_key:
-            # W2.3: row-level matching (per-article DOI-then-PMID)
-            metrics = set_metrics_row_level(pmids, dois, gold_rows)
+            # W4.3: build merged metadata map for Layer 3 fuzzy fallback.
+            # Priority: PubMed > Scopus > WOS > Embase (later providers fill gaps
+            # only where the higher-priority provider has no entry for that key).
+            _retrieved_metadata: Dict[str, dict] = {}
+            for _pname in ('pubmed', 'scopus', 'wos', 'web_of_science', 'embase'):
+                for _k, _m in provider_details.get(_pname, {}).get('metadata', {}).items():
+                    if _k not in _retrieved_metadata:
+                        _retrieved_metadata[_k] = _m
+            # Cover any remaining providers not in the explicit priority list
+            for _pname, _pd in provider_details.items():
+                for _k, _m in _pd.get('metadata', {}).items():
+                    if _k not in _retrieved_metadata:
+                        _retrieved_metadata[_k] = _m
+            # W2.3 + W4.3: row-level matching with Layer 3 fuzzy fallback
+            metrics = set_metrics_row_level(
+                pmids, dois, gold_rows,
+                retrieved_metadata=_retrieved_metadata or None,
+            )
             tp = metrics['TP']
             recall = metrics['Recall']
             gold_size = metrics['Gold']
@@ -1041,6 +1225,7 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
             rec.update({
                 'matches_by_pmid': metrics['matches_by_doi'] + metrics['matches_by_pmid_fallback'],
                 'matches_by_doi_only': metrics['matches_by_doi'],
+                'matches_by_fuzzy': metrics.get('matches_by_fuzzy', 0),  # W4.3
             })
         
         rows.append(rec)
@@ -1071,8 +1256,14 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
             db_pmids_for_matching = db_ids if db_id_type == 'pmid' else set()
 
             if use_multi_key:
-                # W2.3: row-level matching for this database
-                db_metrics = set_metrics_row_level(db_pmids_for_matching, db_dois, gold_rows)
+                # W2.3 + W4.3: row-level matching with per-provider Layer 3 fuzzy fallback.
+                # Each database's own metadata dict is passed so Layer 3 only fires for
+                # articles that DB itself retrieved (maintaining per-DB independence).
+                _db_metadata = db_details.get('metadata') or None
+                db_metrics = set_metrics_row_level(
+                    db_pmids_for_matching, db_dois, gold_rows,
+                    retrieved_metadata=_db_metadata,
+                )
                 db_tp = db_metrics['TP']
                 db_recall = db_metrics['Recall']
             else:
@@ -1097,6 +1288,7 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
                 db_rec.update({
                     'matches_by_pmid': db_metrics.get('matches_by_doi', 0) + db_metrics.get('matches_by_pmid_fallback', 0),
                     'matches_by_doi_only': db_metrics.get('matches_by_doi', 0),
+                    'matches_by_fuzzy': db_metrics.get('matches_by_fuzzy', 0),  # W4.3
                 })
             
             per_db_rows.append(db_rec)
@@ -1117,6 +1309,7 @@ def score_queries(providers, query_bundles: List[Dict], mindate: str, maxdate: s
             combined_rec.update({
                 'matches_by_pmid': metrics['matches_by_doi'] + metrics['matches_by_pmid_fallback'],
                 'matches_by_doi_only': metrics['matches_by_doi'],
+                'matches_by_fuzzy': metrics.get('matches_by_fuzzy', 0),  # W4.3
             })
         per_db_rows.append(combined_rec)
     

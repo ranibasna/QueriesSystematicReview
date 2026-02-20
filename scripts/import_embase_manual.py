@@ -83,6 +83,23 @@ def parse_embase_csv(csv_path: str) -> tuple[Set[str], Set[str], List[Dict], int
                 # Extract title
                 elif field_name == 'TITLE':
                     current_record['title'] = field_value
+
+                # W4.1: Extract first author from AUTHOR NAMES field.
+                # The vertical-format row is: ["AUTHOR NAMES", "LastName I.", ...]
+                # row[1] is the first author entry in the CSV column sequence.
+                elif field_name == 'AUTHOR NAMES':
+                    # row[1] is already consumed into field_value by the reader;
+                    # take the first space-delimited token as the last name.
+                    first_entry = field_value  # e.g. "Smith J." or "van den Berg A."
+                    if first_entry:
+                        # For "LastName Initials." format → split on space, take all
+                        # except trailing initials (last dot-terminated token).
+                        # Simplest robust approach: everything up to the last space
+                        # chunk that contains a dot is considered a suffix/initial,
+                        # so we take the first token which is always the last name.
+                        last_name = first_entry.split()[0].rstrip('.') if first_entry.split() else first_entry
+                        if last_name:
+                            current_record['first_author'] = last_name
             
             # Don't forget the last record
             if current_record and ('doi' in current_record or 'pmid' in current_record):
@@ -120,6 +137,23 @@ def parse_embase_csv(csv_path: str) -> tuple[Set[str], Set[str], List[Dict], int
                 for col in ['Title', 'title', 'Article Title', 'TITLE']:
                     if col in row and row[col]:
                         record['title'] = row[col].strip()
+                        break
+
+                # W4.1: Extract first author from author columns.
+                # Embase horizontal exports typically put all authors in one cell,
+                # separated by semicolons or commas.  Take the first entry and
+                # extract the last name (everything before the first comma or the
+                # first space-delimited token that is not an initial).
+                for col in ['Author Names', 'AUTHOR NAMES', 'Authors', 'Author(s)', 'First Author']:
+                    if col in row and row[col]:
+                        authors_str = row[col].strip()
+                        # First author: first semicolon-delimited segment
+                        first_entry = authors_str.split(';')[0].strip()
+                        if first_entry:
+                            # Remove trailing period and take last-name token
+                            last_name = first_entry.split()[0].rstrip('.') if first_entry.split() else first_entry
+                            if last_name:
+                                record['first_author'] = last_name
                         break
                 
                 # Only add records that have at least a DOI or PMID
