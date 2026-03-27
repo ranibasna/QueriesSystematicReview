@@ -13,7 +13,7 @@ This template produces a single JSON object containing paste-ready queries for m
 - You must not broaden scope by inventing adjacent concept blocks unless they are explicit review targets or explicit protocol targets.
 
 ## Documents
-- Use the study protocol or study description located at: `[PATH TO PROTOCOL FILE]`
+- Use the study protocol located at: `[PATH TO PROTOCOL FILE]`
 - Use the domain guidance located at: `studies/guidelines.md`
 - Use the general search guidance located at: `studies/general_guidelines.md`
 
@@ -57,13 +57,20 @@ Before generating any query, explicitly classify the retrieval architecture as o
    - A single concept-block query structure combining all mandatory concepts in one route.
 2. `dual_route_union`
    - Two parallel routes are built and unioned, typically an indexed route and a textword route.
-3. default `design_analytic_block`
+
+## Modifier: the design_analytic_block
+The design_analytic_block is a separate modifier, not a retrieval architecture.
    - Start with this modifier active by default.
    - Populate it carefully from explicit protocol constraints, which may include study type, longitudinal or prospective framing, comparator structure, population restrictions, data-source restrictions, language restrictions, publication or journal-type restrictions, and other retrieval-relevant design constraints.
    - Double-check each candidate constraint before adding it. Only keep constraints that are clearly intended to shape retrieval rather than later-stage screening.
    - If a candidate protocol restriction is too likely to remove relevant studies when used at retrieval time, demote it to `filter_only` or `screening_only` rather than forcing it into the baseline design block.
+   - When a design-related candidate is explicit in the protocol, assign it using this order:
+      - baseline_active only if retrieval-defining
+      - bundled_only if useful but recall-risky
+      - filter_only if acceptable as a later retrieval limit
+      - screening_only if better handled after retrieval
 
-Protocol-based architecture decision rules:
+## Protocol-based architecture decision rules:
 
 - Choose `single_route` when the protocol describes one coherent Boolean route in which all `mandatory_core` blocks can be safely combined in a single AND structure.
 - Choose `dual_route_union` only when the protocol itself indicates two complementary retrieval routes are needed for the same `mandatory_core` concepts, typically an indexed route and a textword route that should be unioned.
@@ -71,7 +78,14 @@ Protocol-based architecture decision rules:
 - If the evidence is ambiguous, default to `single_route`.
 - Do not choose `dual_route_union` only because it is common in published reviews; the protocol must justify it.
 
-Then assign every candidate concept to one role:
+## Role definitions:
+
+- `mandatory_core`: concepts that must appear in both Q1 and Q2 because they define the main review topic
+- `optional_precision`: concepts that may narrow Q2 or Q3 but must not appear in Q1 unless they are promoted to mandatory_core
+- `filter_only`: low-risk retrieval limits that may be used in Q2 or later queries but are not part of the topic definition
+- `screening_only`: concepts that must not appear in retrieval queries and are handled during screening only
+
+Then, assign every candidate concept to one role:
 
 - `mandatory_core`
 - `optional_precision`
@@ -81,22 +95,23 @@ Then assign every candidate concept to one role:
 Rules:
 
 - Q1 and Q2 must use the same `mandatory_core` blocks.
-- `optional_precision` terms may narrow Q2 or Q3 but must not widen Q1 beyond the selected architecture.
-- `filter_only` concepts may only appear in bundled variants or explicit filter steps.
+- `optional_precision` terms should narrow Q2 and Q3 according to the instructions in Q2 and Q3 below, but must not widen Q1 beyond the selected architecture. 
+- `filter_only` should enter Q2 and Q3 according to the instructions in Q2 and Q3 below, but must not widen Q1 beyond the selected architecture. Q2 may use one (or at most two based on protocl assesment) low-risk filter layer by default. higher-risk filters should be delayed to Q3 or bundled variants unless the protocol makes them central and retrieval-reliable
 - `screening_only` concepts must not be forced into baseline retrieval.
-- `design_analytic_block` is active by default, but its contents must be evidence-based and conservative.
+- `design_analytic_block` is active by default, but its contents must be evidence-based and conservative
 - Candidate design-block constraints must be checked against the protocol wording before inclusion.
-- Language, publication type, and similar restrictions should be included in the design block only when the protocol makes them explicit retrieval constraints; otherwise keep them out of the baseline and use them only in later variants or interface limits.
-- Comparator concepts default to `screening_only` or `optional_precision` unless the protocol makes the comparator a true subject-matter concept rather than an eligibility condition.
-- Design labels default to `filter_only` or `optional_precision` unless the protocol makes study design part of the review's substantive question.
+- Language, publication type, and similar restrictions should be included in the design block only when the protocol makes them explicit; otherwise keep them out of the baseline and use them only in later variants.
+- Comparator concepts default to `screening_only` unless the protocol makes the comparator a true subject-matter concept rather than an eligibility condition. Use comparator language in retrieval only when the protocol treats the comparator as part of the topic being searched, not merely as an eligibility rule. In this case put them as `filter_only`.
+- Design labels default to `filter_only` unless the protocol makes study design part of the review's substantive question.
+
 
 ## RELAXATION PROFILE RULES
 
 If `RELAXATION_PROFILE` is omitted, use `default`.
 
 1. `default`
-   - Keep the current conservative strategy-aware behavior.
-   - Allow `design_analytic_block` content only when strongly justified by the protocol.
+   - Keep the current strategy-aware behavior.
+   - Allow `design_analytic_block` content when justified by the protocol.
 2. `recall_soft`
    - Keep the same architecture decision rules, but bias Q1 toward recall.
    - Move comparator language out of baseline Q1 unless the comparator is a true `mandatory_core` concept.
@@ -112,7 +127,9 @@ If `RELAXATION_PROFILE` is omitted, use `default`.
 ## QUERY FAMILY RULES
 
 - **Q1 High-recall:** Broaden only within the selected `mandatory_core` blocks and the default active `design_analytic_block` when it is supported by explicit protocol constraints. Under `recall_soft` or `recall_strong`, remove comparator, design, and filter-like restrictions from baseline Q1 unless the protocol makes them retrieval-defining.
-- **Q2 Balanced:** Keep the same `mandatory_core` blocks as Q1, then tighten with narrower wording, fields, or controlled vocabulary choices.
+- **Q2 Balanced:** Keep the same `mandatory_core` blocks as Q1, then tighten with narrower wording, fields, or controlled vocabulary choices. Then, always add:
+   - one (or two based on the protocl) topical precision step, and optionally
+   - one (or two based on the protocl) low-risk retrieval filter if the protocol clearly supports it
 - **Q3 High-precision:** Apply the strongest acceptable narrowing while preserving the chosen architecture.
 - **Q4-Q6:** Start from Q2 and apply three compatible bundled variant cases from the approved catalog.
 
