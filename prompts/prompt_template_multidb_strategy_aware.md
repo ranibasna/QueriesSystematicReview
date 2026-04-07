@@ -66,9 +66,13 @@ The design_analytic_block is a separate modifier, not a retrieval architecture.
    - If a candidate protocol restriction is too likely to remove relevant studies when used at retrieval time, demote it to `filter_only` or `screening_only` rather than forcing it into the baseline design block.
    - When a design-related candidate is explicit in the protocol, assign it using this order:
       - baseline_active only if retrieval-defining
-      - bundled_only if useful but recall-risky
       - filter_only if acceptable as a later retrieval limit
+      - bundled_only if useful but recall-risky
       - screening_only if better handled after retrieval
+
+   - `baseline_active` may appear in Q1 when the protocol makes it retrieval-defining.
+   - `filter_only` may enter Q2 or Q3 as a later retrieval limit.
+   - `bundled_only` must stay out of Q1 and Q2 and may enter only bundled variants derived from Q2.
 
 ## Protocol-based architecture decision rules:
 
@@ -97,6 +101,9 @@ Rules:
 - Q1 and Q2 must use the same `mandatory_core` blocks.
 - `optional_precision` terms should narrow Q2 and Q3 according to the instructions in Q2 and Q3 below, but must not widen Q1 beyond the selected architecture. 
 - `filter_only` should enter Q2 and Q3 according to the instructions in Q2 and Q3 below, but must not widen Q1 beyond the selected architecture. Q2 may use one (or at most two based on protocl assesment) low-risk filter layer by default. higher-risk filters should be delayed to Q3 or bundled variants unless the protocol makes them central and retrieval-reliable
+- If removing a protocol-explicit population, design, timing, or outcome-defining constraint causes the search topic to collapse into a much broader adjacent literature, do not treat that constraint as an ordinary low-value filter. Keep it as a required Q2 discriminator, and keep it baseline-active when the protocol makes it retrieval-defining.
+- When multiple optional_precision or filter_only candidates are available, prioritize the candidate most likely to reduce adjacent-literature spillover while preserving relevant studies.
+- Prefer protocol-explicit population restrictions, design restrictions, timing restrictions, or outcome-defining restrictions over weaker demographic or generic analytic wording.
 - `screening_only` concepts must not be forced into baseline retrieval.
 - `design_analytic_block` is active by default, but its contents must be evidence-based and conservative
 - Candidate design-block constraints must be checked against the protocol wording before inclusion.
@@ -127,10 +134,37 @@ If `RELAXATION_PROFILE` is omitted, use `default`.
 ## QUERY FAMILY RULES
 
 - **Q1 High-recall:** Broaden only within the selected `mandatory_core` blocks and the default active `design_analytic_block` when it is supported by explicit protocol constraints. Under `recall_soft` or `recall_strong`, remove comparator, design, and filter-like restrictions from baseline Q1 unless the protocol makes them retrieval-defining.
+   - Q1 may add at most one low-risk retrieval-shaping restriction only when the protocol makes it explicit and omitting it would broaden retrieval into a clearly adjacent literature. Prefer a protocol-explicit population or setting restriction before humans or document type.
 - **Q2 Balanced:** Keep the same `mandatory_core` blocks as Q1, then tighten with narrower wording, fields, or controlled vocabulary choices. Then, always add:
-   - one (or two based on the protocl) topical precision step, and optionally
-   - one (or two based on the protocl) low-risk retrieval filter if the protocol clearly supports it
-- **Q3 High-precision:** Apply the strongest acceptable narrowing while preserving the chosen architecture.
+   - Preserve the Q1 route and all mandatory_core blocks.
+   - Add one primary optional_precision narrowing mode by default. Add a second only when the protocol clearly supports it and recall risk remains acceptable.
+   - Add one low-risk filter_only category when at least one protocol-supported, retrieval-safe filter category is available. Add a second only when the protocol clearly supports it.
+
+ **Allowed Q2 optional_precision narrowing modes**:
+
+   - narrower fielding
+   - narrower synonym set
+   - narrower controlled-vocabulary choice
+   - narrower outcome phrasing when explicit in the protocol and still within the same mandatory_core block
+
+ **Allowed Q2 filter_only categories**:
+
+   - protocol-explicit population restriction
+   - protocol-explicit design or outcome-timing restriction
+   - humans restriction
+   - document type restriction
+   - language restriction only when explicit in the protocol and platform-safe; otherwise record it as an interface-applied limit
+
+ **If multiple Q2 filter_only categories are available, prioritize them in this order**:
+
+   - protocol-explicit population restriction
+   - protocol-explicit design or outcome-timing restriction
+   - humans restriction
+   - document type restriction
+   - language restriction
+
+- **Q3 High-precision:** Start from Q2 and add 2-3 further precision steps and filter_only that are protocol-supported and recall-aware. Respect the importance order defined previously. Do not remove any `mandatory_core` block or convert Q3 into a highly selective niche query unless the protocol clearly supports that level of restriction.
+
 - **Q4-Q6:** Start from Q2 and apply three compatible bundled variant cases from the approved catalog.
 
 ## APPROVED BUNDLED VARIANT CASES
