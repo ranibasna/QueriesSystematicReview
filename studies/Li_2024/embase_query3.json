@@ -1,0 +1,212 @@
+{
+  "c897663d5b5d39176cefaac39a370b572a9181d53d62b2a06447a44d210101ba": {
+    "query": "# Query 3: High-precision - major-focus headings with observational design terms\n((('sleep disorder'/mj OR 'sleep apnea syndrome'/mj OR 'sleep disturbance*':ti OR 'sleep disorder*':ti OR 'obstructive sleep apnea':ti OR 'circadian dysrhythmia':ti) AND ('female infertility'/mj OR 'in vitro fertilization'/mj OR 'female infertil*':ti OR 'fertility treatment*':ti OR 'assisted reproduction':ti OR ((infertil*:ti OR subfertil*:ti OR ivf:ti,ab) AND (female*:ti,ab OR woman:ti,ab OR women:ti,ab))) AND ('female'/exp OR female*:ti,ab OR woman:ti,ab OR women:ti,ab) AND (observational:ti,ab OR cohort:ti,ab OR prospective:ti,ab OR 'cross-sectional':ti,ab OR 'cross sectional':ti,ab)) AND 'human'/de)",
+    "provider": "embase_manual",
+    "results_count": 21,
+    "retrieved_dois": [
+      "10.1002/brb3.70293",
+      "10.1002/ijgo.70879",
+      "10.1002/ppul.24428",
+      "10.1007/s11325-022-02770-4",
+      "10.1007/s11325-023-02802-7",
+      "10.1007/s11325-025-03399-9",
+      "10.1016/j.fertnstert.2021.07.1085",
+      "10.1016/j.fertnstert.2021.07.620",
+      "10.1016/j.sleep.2022.09.026",
+      "10.1016/j.tjog.2018.11.031",
+      "10.1093/humrep/deac106.P-687",
+      "10.1093/sleep/zsx186",
+      "10.1111/jocn.12306",
+      "10.1183/13993003.congress-2019.PA901",
+      "10.1186/s12905-024-03508-y",
+      "10.1210/clinem/dgab474",
+      "10.1371/journal.pone.0260842",
+      "10.3389/fendo.2022.818567",
+      "10.3389/fendo.2023.1178396",
+      "10.3390/jpm12060933",
+      "10.5664/jcsm.10780"
+    ],
+    "retrieved_pmids": [
+      "23829562",
+      "29136234",
+      "30638474",
+      "31264380",
+      "34180998",
+      "34910749",
+      "36306629",
+      "36609819",
+      "36877353",
+      "37593900",
+      "39707272",
+      "39924965",
+      "40627095",
+      "41700659"
+    ],
+    "pmids": [
+      "23829562",
+      "29136234",
+      "30638474",
+      "31264380",
+      "34180998",
+      "34910749",
+      "36306629",
+      "36609819",
+      "36877353",
+      "37593900",
+      "39707272",
+      "39924965",
+      "40627095",
+      "41700659"
+    ],
+    "records": [
+      {
+        "title": "Mediating role of sleep disorders in the association between depression and infertility: A cross-sectional study using the National Health and nutrition examination survey",
+        "first_author": "Zhang",
+        "year": 2026,
+        "pmid": "41700659",
+        "doi": "10.1002/ijgo.70879"
+      },
+      {
+        "title": "Obstructive sleep apnea as a predictive indicator for in vitro fertilization and embryo transfer outcomes in patients with polycystic ovary syndrome: a prospective cohort study",
+        "first_author": "Li",
+        "year": 2025,
+        "pmid": "40627095",
+        "doi": "10.1007/s11325-025-03399-9"
+      },
+      {
+        "title": "Relationship Between Sleep Disturbances and In Vitro Fertilization Outcomes in Infertile Women: A Systematic Review and Meta-Analysis",
+        "first_author": "Habibi",
+        "year": 2025,
+        "pmid": "39924965",
+        "doi": "10.1002/brb3.70293"
+      },
+      {
+        "title": "Sleep disturbances and female infertility: a systematic review",
+        "first_author": "Li",
+        "year": 2024,
+        "pmid": "39707272",
+        "doi": "10.1186/s12905-024-03508-y"
+      },
+      {
+        "title": "Effect of obstructive sleep apnea on in vitro fertilization outcomes in women with polycystic ovary syndrome",
+        "first_author": "Zhang",
+        "year": 2024,
+        "pmid": "37593900",
+        "doi": "10.5664/jcsm.10780"
+      },
+      {
+        "title": "Sleep and obstructive sleep apnea in women with infertility",
+        "first_author": "Ibrahim",
+        "year": 2023,
+        "pmid": "36609819",
+        "doi": "10.1007/s11325-022-02770-4"
+      },
+      {
+        "title": "Relationship between sleep disorders and female infertility among US reproductive-aged women",
+        "first_author": "Zhao",
+        "year": 2023,
+        "pmid": "36877353",
+        "doi": "10.1007/s11325-023-02802-7"
+      },
+      {
+        "title": "Sleep characteristics before assisted reproductive technology treatment predict reproductive outcomes: a prospective cohort study of Chinese infertile women",
+        "first_author": "Li",
+        "year": 2023,
+        "doi": "10.3389/fendo.2023.1178396"
+      },
+      {
+        "title": "Pregnancy outcomes in infertility patients diagnosed with sleep disordered breathing with wireless wearable sensors",
+        "first_author": "Walter",
+        "year": 2022,
+        "pmid": "36306629",
+        "doi": "10.1016/j.sleep.2022.09.026"
+      },
+      {
+        "title": "Sleep parameters and sleep disorders in male and female subjects presenting idiopathic infertility: the ALIFERT case-control study",
+        "first_author": "Sermondade",
+        "year": 2022,
+        "doi": "10.1093/humrep/deac106.P-687"
+      },
+      {
+        "title": "Risk of Infertility in Males with Obstructive Sleep Apnea: A Nationwide, Population-based, Nested Case‒Control Study",
+        "first_author": "Lin",
+        "year": 2022,
+        "doi": "10.3390/jpm12060933"
+      },
+      {
+        "title": "Sleep Behavior and Self-Reported Infertility: A Cross-Sectional Analysis Among U.S. Women",
+        "first_author": "Liang",
+        "year": 2022,
+        "doi": "10.3389/fendo.2022.818567"
+      },
+      {
+        "title": "Obstructive sleep apnea increases risk of female infertility: A 14-year nationwide population-based study",
+        "first_author": "Lim",
+        "year": 2021,
+        "pmid": "34910749",
+        "doi": "10.1371/journal.pone.0260842"
+      },
+      {
+        "title": "Sleep Habits of Women with Infertility",
+        "first_author": "Eisenberg",
+        "year": 2021,
+        "pmid": "34180998",
+        "doi": "10.1210/clinem/dgab474"
+      },
+      {
+        "title": "EARLY PREGNANCY OUTCOMES AFTER IVF AND SLEEP DISORDERED BREATHING",
+        "first_author": "Walter",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.620"
+      },
+      {
+        "title": "PREVALENCE OF OBSTRUCTIVE SLEEP APNEA IN WOMEN SEEKING FERTILITY TREATMENT",
+        "first_author": "Cooney",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.1085"
+      },
+      {
+        "title": "PREVALENCE OF OBSTRUCTIVE SLEEP APNEA IN WOMEN SEEKING FERTILITY TREATMENT",
+        "first_author": "Cooney",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.1085"
+      },
+      {
+        "title": "Fertility treatments and the risk of pediatric obstructive sleep apnea in the offspring—Results from a population-based cohort study",
+        "first_author": "Imterat",
+        "year": 2019,
+        "pmid": "31264380",
+        "doi": "10.1002/ppul.24428"
+      },
+      {
+        "title": "Association of obstructive sleep apnea with female infertility-A 13-year nationwide population-based retrospective study",
+        "first_author": "Wang",
+        "year": 2019,
+        "doi": "10.1183/13993003.congress-2019.PA901"
+      },
+      {
+        "title": "Association of emotional distress and quality of sleep among women receiving in-vitro fertilization treatment",
+        "first_author": "Huang",
+        "year": 2019,
+        "pmid": "30638474",
+        "doi": "10.1016/j.tjog.2018.11.031"
+      },
+      {
+        "title": "Non-Apnea sleep disorder increases the risk of subsequent female infertility—A nationwide population-Based cohort study",
+        "first_author": "Wang",
+        "year": 2018,
+        "pmid": "29136234",
+        "doi": "10.1093/sleep/zsx186"
+      },
+      {
+        "title": "Somatic symptoms, psychological distress and sleep disturbance among infertile women with intrauterine insemination treatment",
+        "first_author": "Lin",
+        "year": 2014,
+        "pmid": "23829562",
+        "doi": "10.1111/jocn.12306"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

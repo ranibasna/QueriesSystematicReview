@@ -1,0 +1,440 @@
+{
+  "25019b1191b9f4fa893e80dc92ea2e3e35d8cc1947874f5200dc42540c9b424e": {
+    "query": "(('mediterranean diet':ti OR 'mediterranean diet adherence':ti) AND ('sleep quality':ti OR 'sleep duration':ti OR 'daytime sleepiness':ti OR sleep:ti) AND ('adult'/exp OR adult*:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 45,
+    "retrieved_dois": [
+      "10.1007/s00394-021-02552-w",
+      "10.1007/s11325-021-02351-x",
+      "10.1007/s11325-023-02890-5",
+      "10.1007/s11325-025-03546-2",
+      "10.1007/s40519-023-01581-0",
+      "10.1016/j.appet.2021.105881",
+      "10.1016/j.atherosclerosis.2022.06.767",
+      "10.1016/j.cdnut.2024.102223",
+      "10.1016/j.cdnut.2025.106562",
+      "10.1016/j.clnu.2020.08.037",
+      "10.1016/j.jand.2026.156300",
+      "10.1016/j.numecd.2016.11.085",
+      "10.1016/j.numecd.2023.02.010",
+      "10.1016/j.sleep.2024.02.032",
+      "10.1016/j.tjnut.2025.08.023",
+      "10.1055/s-0043-1773786",
+      "10.1080/09637486.2017.1330405",
+      "10.1093/sleep/zsw083",
+      "10.1093/sleep/zsy158",
+      "10.1111/ggi.13521",
+      "10.1111/joim.20119",
+      "10.1159/000530786",
+      "10.1159/000545968",
+      "10.1177/02601060231207666",
+      "10.1177/08919887231218754",
+      "10.23736/S2724-6507.21.03410-6",
+      "10.3389/fped.2022.959643",
+      "10.3390/ijerph17072227",
+      "10.3390/nu11050976",
+      "10.3390/nu12051364",
+      "10.3390/nu12061570",
+      "10.3390/nu12113265",
+      "10.3390/nu12113569",
+      "10.3390/nu15102362",
+      "10.3390/nu15132882",
+      "10.3390/nu16010012",
+      "10.3390/nu16020282",
+      "10.3390/nu16132169",
+      "10.3390/nu16234191",
+      "10.3390/nu17132174",
+      "10.3390/nu17172745",
+      "10.3390/nu17182948",
+      "10.3390/nu17213402",
+      "10.4274/jtsm.galenos.2022.15046",
+      "10.7416/ai.2018.2258"
+    ],
+    "retrieved_pmids": [
+      "28364422",
+      "28545315",
+      "30137563",
+      "30187649",
+      "30614496",
+      "31035395",
+      "32224987",
+      "32397621",
+      "32481487",
+      "32928580",
+      "33113807",
+      "33233842",
+      "33813674",
+      "33839919",
+      "33855384",
+      "34942284",
+      "36958969",
+      "37395824",
+      "37603232",
+      "38018355",
+      "38201842",
+      "38257175",
+      "38280227",
+      "38408422",
+      "38999916",
+      "39683584",
+      "40647277",
+      "40677148",
+      "40886950",
+      "40944138",
+      "41010474",
+      "41228474",
+      "41313511",
+      "41610913"
+    ],
+    "pmids": [
+      "28364422",
+      "28545315",
+      "30137563",
+      "30187649",
+      "30614496",
+      "31035395",
+      "32224987",
+      "32397621",
+      "32481487",
+      "32928580",
+      "33113807",
+      "33233842",
+      "33813674",
+      "33839919",
+      "33855384",
+      "34942284",
+      "36958969",
+      "37395824",
+      "37603232",
+      "38018355",
+      "38201842",
+      "38257175",
+      "38280227",
+      "38408422",
+      "38999916",
+      "39683584",
+      "40647277",
+      "40677148",
+      "40886950",
+      "40944138",
+      "41010474",
+      "41228474",
+      "41313511",
+      "41610913"
+    ],
+    "records": [
+      {
+        "title": "Adherence to the Alternate Mediterranean Diet and Multidimensional Sleep Health Among US Adults from the 2017-2018 National Health and Nutrition Examination Survey: Exploring Racial/Ethnic Disparities",
+        "first_author": "Zamora",
+        "year": 2026,
+        "pmid": "41610913",
+        "doi": "10.1016/j.jand.2026.156300"
+      },
+      {
+        "title": "Unraveling the connection between the Mediterranean diet and sleep health: from biological mechanisms to clinical implications",
+        "first_author": "Minari",
+        "year": 2025,
+        "pmid": "41313511",
+        "doi": "10.1007/s11325-025-03546-2"
+      },
+      {
+        "title": "Sleep Duration Modifies the Association of the Alternate Mediterranean Diet Score With Metabolic Syndrome in Midlife Women in Mexico",
+        "first_author": "Bou",
+        "year": 2025,
+        "pmid": "40886950",
+        "doi": "10.1016/j.tjnut.2025.08.023"
+      },
+      {
+        "title": "Mediterranean Diet Adherence, Sleep Disturbances and Emotional Well-Being in Skin Ulcer Burden: Insights from a Monocentric Registry",
+        "first_author": "Samela",
+        "year": 2025,
+        "pmid": "41228474",
+        "doi": "10.3390/nu17213402"
+      },
+      {
+        "title": "Long sleep duration pattern is associated with increased cardiovascular recurrence: Effect of long-term Mediterranean diet from the CORDIOPREV study",
+        "first_author": "García-Ríos",
+        "year": 2025,
+        "pmid": "40677148",
+        "doi": "10.1111/joim.20119"
+      },
+      {
+        "title": "Mediterranean Diet, Sleep Quality, Perceived Stress, and Physical Activity: A Pilot Study Among School Teachers",
+        "first_author": "Esgalhado",
+        "year": 2025,
+        "pmid": "40944138",
+        "doi": "10.3390/nu17172745"
+      },
+      {
+        "title": "Mediterranean Diet Adherence and Sleep Quality Among Primary and Secondary School Teachers in Portugal: An Exploratory Cross-Sectional Study",
+        "first_author": "Oliveira",
+        "year": 2025,
+        "pmid": "41010474",
+        "doi": "10.3390/nu17182948"
+      },
+      {
+        "title": "Mediterranean Diet Compliance Is Related with Lower Prevalence of Perceived Stress and Poor Sleep Quality in University Students: A Cross-Sectional Study in Greece",
+        "first_author": "Dakanalis",
+        "year": 2025,
+        "pmid": "40647277",
+        "doi": "10.3390/nu17132174"
+      },
+      {
+        "title": "Mediterranean diet adherence, sleep adequacy and obesity prevalence among students in remote areas of Greece: A cross-sectional study",
+        "first_author": "Maraki",
+        "year": 2025,
+        "doi": "10.1159/000545968"
+      },
+      {
+        "title": "Association of Mediterranean diet with sleep quality, depression, anxiety, stress, and body mass index in university students: A cross-sectional study",
+        "first_author": "Ünal",
+        "year": 2025,
+        "pmid": "38280227",
+        "doi": "10.1177/02601060231207666"
+      },
+      {
+        "title": "Exploring Mediterranean Diet Adherence and Sleep Health Across Racial/Ethnic Groups: Results From a Nationally Representative Sample of US Adults",
+        "first_author": "Zamora",
+        "year": 2025,
+        "doi": "10.1016/j.cdnut.2025.106562"
+      },
+      {
+        "title": "The Mediterranean Diet, the DASH Diet, and the MIND Diet in Relation to Sleep Duration and Quality: A Narrative Review",
+        "first_author": "Różańska",
+        "year": 2024,
+        "pmid": "39683584",
+        "doi": "10.3390/nu16234191"
+      },
+      {
+        "title": "Association of Higher Mediterranean Diet Adherence With Lower Prevalence of Disability and Symptom Severity, Depression, Anxiety, Stress, Sleep Quality, Cognitive Impairment, and Physical Inactivity in Older Adults With Multiple Sclerosis",
+        "first_author": "Tryfonos",
+        "year": 2024,
+        "pmid": "38018355",
+        "doi": "10.1177/08919887231218754"
+      },
+      {
+        "title": "Poor Adherence to the Mediterranean Diet and Sleep Disturbances Are Associated with Migraine Chronification and Disability among an Adult Population in the Lazio Region, Italy",
+        "first_author": "Bovenzi",
+        "year": 2024,
+        "pmid": "38999916",
+        "doi": "10.3390/nu16132169"
+      },
+      {
+        "title": "Adherence to Mediterranean Diet Mediates the Relationship Between Cognition, Sleep, and Daily Autonomy in Mild Cognitive Impairment",
+        "first_author": "Varrasi",
+        "year": 2024,
+        "doi": "10.1016/j.cdnut.2024.102223"
+      },
+      {
+        "title": "Association between adherence to the mediterranean diet, physical activity, and sleep apnea-hypopnea syndrome (SAHS) in a middle-aged population with cardiovascular risk: Insights from the ILERVAS cohort",
+        "first_author": "Salinas-Roca",
+        "year": 2024,
+        "pmid": "38408422",
+        "doi": "10.1016/j.sleep.2024.02.032"
+      },
+      {
+        "title": "Effectiveness of Mediterranean Diet on Daytime Sleepiness among Individuals with Type 2 Diabetes Mellitus in Oman",
+        "first_author": "AlAufi",
+        "year": 2024,
+        "doi": "10.1055/s-0043-1773786"
+      },
+      {
+        "title": "Evaluation of the relationship between the Mediterranean diet adherence and sleep quality in adults",
+        "first_author": "Şahin-Bodur",
+        "year": 2024,
+        "pmid": "37603232",
+        "doi": "10.1007/s11325-023-02890-5"
+      },
+      {
+        "title": "Mediterranean Diet and Cardiovascular Disease: The Moderating Role of Adequate Sleep—Results from the ATTICA Cohort Study (2002–2022)",
+        "first_author": "Damigou",
+        "year": 2024,
+        "pmid": "38201842",
+        "doi": "10.3390/nu16010012"
+      },
+      {
+        "title": "Mediterranean Diet and Sleep Features: A Systematic Review of Current Evidence",
+        "first_author": "Godos",
+        "year": 2024,
+        "pmid": "38257175",
+        "doi": "10.3390/nu16020282"
+      },
+      {
+        "title": "The association of dietary approaches to stop hypertension (DASH) and Mediterranean diet with mental health, sleep quality and chronotype in women with overweight and obesity: a cross-sectional study",
+        "first_author": "Shiraseb",
+        "year": 2023,
+        "pmid": "37395824",
+        "doi": "10.1007/s40519-023-01581-0"
+      },
+      {
+        "title": "Effectiveness of Mediterranean diet on daytime sleepiness among individual with type 2 diabetes mellitus in Oman",
+        "first_author": "AlAufi",
+        "year": 2023,
+        "doi": "10.1159/000530786"
+      },
+      {
+        "title": "Effectiveness of Mediterranean diet on daytime sleepiness among individual with type 2 diabetes mellitus in Oman",
+        "first_author": "AlAufi",
+        "year": 2023,
+        "doi": "10.1159/000530786"
+      },
+      {
+        "title": "Macronutrient Intake, Sleep Quality, Anxiety, Adherence to a Mediterranean Diet and Emotional Eating among Female Health Science Undergraduate Students",
+        "first_author": "Díaz",
+        "year": 2023,
+        "doi": "10.3390/nu15132882"
+      },
+      {
+        "title": "Effects of a Mediterranean Diet Intervention on Maternal Stress, Well-Being, and Sleep Quality throughout Gestation—The IMPACT-BCN Trial",
+        "first_author": "Casas",
+        "year": 2023,
+        "doi": "10.3390/nu15102362"
+      },
+      {
+        "title": "Sustained improvements in the cardiometabolic profile of patients with obstructive sleep apnea after a weight-loss Mediterranean diet/lifestyle intervention: 12-month follow-up (6 months post-intervention) of the “MIMOSA” randomized clinical trial",
+        "first_author": "Georgoulis",
+        "year": 2023,
+        "pmid": "36958969",
+        "doi": "10.1016/j.numecd.2023.02.010"
+      },
+      {
+        "title": "Is adherence to the Mediterranean diet associated with good sleep duration in primary-school children?",
+        "first_author": "Buja",
+        "year": 2022,
+        "doi": "10.3389/fped.2022.959643"
+      },
+      {
+        "title": "Adherence to Mediterranean Diet and the relationship among weight status, physical activity, and sleep behavior in Brazilian undergraduate students",
+        "first_author": "Lottenberg",
+        "year": 2022,
+        "doi": "10.1016/j.atherosclerosis.2022.06.767"
+      },
+      {
+        "title": "Diet, Sleep and Depression: Does Adherence to the Mediterranean Diet Matter?",
+        "first_author": "Bakırhan",
+        "year": 2022,
+        "doi": "10.4274/jtsm.galenos.2022.15046"
+      },
+      {
+        "title": "What about Mediterranean diet as tool to improve sleep quality in obesity?",
+        "first_author": "Barrea",
+        "year": 2022,
+        "pmid": "33855384",
+        "doi": "10.23736/S2724-6507.21.03410-6"
+      },
+      {
+        "title": "Association of adherence to the Mediterranean diet and physical activity habits with the presence of insomnia in patients with obstructive sleep apnea",
+        "first_author": "Kechribari",
+        "year": 2022,
+        "pmid": "33813674",
+        "doi": "10.1007/s11325-021-02351-x"
+      },
+      {
+        "title": "Associations between sleep duration and Mediterranean diet score in Costa Rican adults",
+        "first_author": "Gupta",
+        "year": 2022,
+        "pmid": "34942284",
+        "doi": "10.1016/j.appet.2021.105881"
+      },
+      {
+        "title": "A weight-loss Mediterranean diet/lifestyle intervention ameliorates inflammation and oxidative stress in patients with obstructive sleep apnea: results of the “MIMOSA” randomized clinical trial",
+        "first_author": "Georgoulis",
+        "year": 2021,
+        "pmid": "33839919",
+        "doi": "10.1007/s00394-021-02552-w"
+      },
+      {
+        "title": "The effectiveness of a weight-loss Mediterranean diet/lifestyle intervention in the management of obstructive sleep apnea: Results of the “MIMOSA” randomized clinical trial",
+        "first_author": "Georgoulis",
+        "year": 2021,
+        "pmid": "32928580",
+        "doi": "10.1016/j.clnu.2020.08.037"
+      },
+      {
+        "title": "Adherence to the mediterranean diet and self-efficacy as mediators in the mediation of sleep quality and grades in nursing students",
+        "first_author": "Fernández-Medina",
+        "year": 2020,
+        "pmid": "33113807",
+        "doi": "10.3390/nu12113265"
+      },
+      {
+        "title": "Influence of dietary habits and mediterranean diet adherence on sleep quality during pregnancy. The gestafit project",
+        "first_author": "Flor-Alemany",
+        "year": 2020,
+        "pmid": "33233842",
+        "doi": "10.3390/nu12113569"
+      },
+      {
+        "title": "Cardiometabolic benefits of a weight-loss mediterranean diet/lifestyle intervention in patients with obstructive sleep apnea: The “mimosa” randomized clinical trial",
+        "first_author": "Georgoulis",
+        "year": 2020,
+        "pmid": "32481487",
+        "doi": "10.3390/nu12061570"
+      },
+      {
+        "title": "Sleep quality in obesity: Does adherence to the mediterranean diet matter?",
+        "first_author": "Muscogiuri",
+        "year": 2020,
+        "pmid": "32397621",
+        "doi": "10.3390/nu12051364"
+      },
+      {
+        "title": "Psychological and sleep effects of tryptophan and magnesium-enriched mediterranean diet in women with fibromyalgia",
+        "first_author": "Martínez-Rodríguez",
+        "year": 2020,
+        "pmid": "32224987",
+        "doi": "10.3390/ijerph17072227"
+      },
+      {
+        "title": "Adherence to the mediterranean diet is associated with better sleep quality in Italian adults",
+        "first_author": "Godos",
+        "year": 2019,
+        "pmid": "31035395",
+        "doi": "10.3390/nu11050976"
+      },
+      {
+        "title": "Associations between the mediterranean diet and sleep in older adults: Results from the hellenic longitudinal investigation of aging and diet study",
+        "first_author": "Mamalaki",
+        "year": 2018,
+        "pmid": "30187649",
+        "doi": "10.1111/ggi.13521"
+      },
+      {
+        "title": "Sleep disorder, Mediterranean Diet and learning performance among nursing students: inSOMNIA, a cross-sectional study",
+        "first_author": "Gianfredi",
+        "year": 2018,
+        "pmid": "30614496",
+        "doi": "10.7416/ai.2018.2258"
+      },
+      {
+        "title": "Mediterranean diet pattern and sleep duration and insomnia symptoms in the Multi-Ethnic Study of Atherosclerosis",
+        "first_author": "Castro-Diehl",
+        "year": 2018,
+        "pmid": "30137563",
+        "doi": "10.1093/sleep/zsy158"
+      },
+      {
+        "title": "Relationship between sleep pattern and efficacy of calorie-restricted Mediterranean diet in overweight/obese subjects",
+        "first_author": "Pagliai",
+        "year": 2018,
+        "pmid": "28545315",
+        "doi": "10.1080/09637486.2017.1330405"
+      },
+      {
+        "title": "Mediterranean diet and changes in sleep duration and indicators of sleep quality in older adults",
+        "first_author": "Campanini",
+        "year": 2017,
+        "pmid": "28364422",
+        "doi": "10.1093/sleep/zsw083"
+      },
+      {
+        "title": "Relationship between sleep pattern and efficacy of calorie-restricted mediterranean diet in overweight/ obese subjects",
+        "first_author": "Pagliai",
+        "year": 2017,
+        "doi": "10.1016/j.numecd.2016.11.085"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

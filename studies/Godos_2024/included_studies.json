@@ -1,0 +1,668 @@
+{
+  "study_name": "Godos_2024",
+  "source_file": "studies/Godos_2024/paper_Godos_2024.md",
+  "total_included_studies": 23,
+  "extraction_method": "manual_llm_assisted",
+  "included_studies": [
+    {
+      "reference_number": 13,
+      "first_author": "Jaussent",
+      "year": 2011,
+      "title": "Insomnia symptoms in older adults: Associated factors and gender differences",
+      "journal": "American Journal of Geriatric Psychiatry",
+      "authors": [
+        "Jaussent I",
+        "Dauvilliers Y",
+        "Ancelin ML",
+        "Dartigues JF",
+        "Tavernier B",
+        "Touchon J",
+        "Ritchie K",
+        "Besset A"
+      ],
+      "doi": "10.1097/JGP.0b013e3181e049b6",
+      "pmid": "20808113",
+      "volume": "19",
+      "issue": "1",
+      "pages": "88-97",
+      "raw_citation": "Jaussent, I.; Dauvilliers, Y.; Ancelin, M.-L.; Dartigues, J.-F.; Tavernier, B.; Touchon, J.; Ritchie, K.; Besset, A. Insomnia symptoms in older adults: Associated factors and gender differences. Am. J. Geriatr. Psychiatry 2011, 19, 88-97.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9934640522875817,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 14,
+      "first_author": "Campanini",
+      "year": 2017,
+      "title": "Mediterranean diet and changes in sleep duration and indicators of sleep quality in older adults",
+      "journal": "Sleep",
+      "authors": [
+        "Campanini MZ",
+        "Guallar-Castillon P",
+        "Rodriguez-Artalejo F",
+        "Lopez-Garcia E"
+      ],
+      "doi": "10.1093/sleep/zsw083",
+      "pmid": "28364422",
+      "volume": "40",
+      "issue": "3",
+      "pages": "zsw083",
+      "raw_citation": "Campanini, M.Z.; Guallar-Castillon, P.; Rodriguez-Artalejo, F.; Lopez-Garcia, E. Mediterranean diet and changes in sleep duration and indicators of sleep quality in older adults. Sleep 2017, 40, zsw083.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9948186528497409,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 15,
+      "first_author": "Castro-Diehl",
+      "year": 2018,
+      "title": "Mediterranean diet pattern and sleep duration and insomnia symptoms in the Multi-Ethnic Study of Atherosclerosis",
+      "journal": "Sleep",
+      "authors": [
+        "Castro-Diehl C",
+        "Wood AC",
+        "Redline S",
+        "Reid M",
+        "Johnson DA",
+        "Maras JE",
+        "Jacobs DR",
+        "Shea S",
+        "Crawford A",
+        "St-Onge MP"
+      ],
+      "doi": "10.1093/sleep/zsy158",
+      "pmid": "30137563",
+      "volume": "41",
+      "issue": "11",
+      "pages": "zsy158",
+      "raw_citation": "Castro-Diehl, C.; Wood, A.C.; Redline, S.; Reid, M.; Johnson, D.A.; Maras, J.E.; Jacobs, D.R.; Shea, S.; Crawford, A.; St-Onge, M.-P. Mediterranean diet pattern and sleep duration and insomnia symptoms in the Multi-Ethnic Study of Atherosclerosis. Sleep 2018, 41, zsy158.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9955555555555555,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 16,
+      "first_author": "Mamalaki",
+      "year": 2018,
+      "title": "Associations between the Mediterranean diet and sleep in older adults: Results from the Hellenic Longitudinal Investigation of Aging and Diet study",
+      "journal": "Geriatrics and Gerontology International",
+      "authors": [
+        "Mamalaki E",
+        "Anastasiou CA",
+        "Ntanasi E",
+        "Tsapanou A",
+        "Kosmidis MH",
+        "Dardiotis E",
+        "Hadjigeorgiou GM",
+        "Sakka P",
+        "Scarmeas N",
+        "Yannakoulia M"
+      ],
+      "doi": "10.1111/ggi.13521",
+      "pmid": "30187649",
+      "volume": "18",
+      "issue": "12",
+      "pages": "1543-1548",
+      "raw_citation": "Mamalaki, E.; Anastasiou, C.A.; Ntanasi, E.; Tsapanou, A.; Kosmidis, M.H.; Dardiotis, E.; Hadjigeorgiou, G.M.; Sakka, P.; Scarmeas, N.; Yannakoulia, M. Associations between the Mediterranean diet and sleep in older adults: Results from the Hellenic Longitudinal Investigation of Aging and Diet study. Geriatr. Gerontol. Int. 2018, 18, 1543-1548.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9966101694915256,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 17,
+      "first_author": "Godos",
+      "year": 2019,
+      "title": "Adherence to the Mediterranean Diet is Associated with Better Sleep Quality in Italian Adults",
+      "journal": "Nutrients",
+      "authors": [
+        "Godos J",
+        "Ferri R",
+        "Caraci F",
+        "Cosentino FII",
+        "Castellano S",
+        "Galvano F",
+        "Grosso G"
+      ],
+      "doi": "10.3390/nu11050976",
+      "pmid": "31035395",
+      "volume": "11",
+      "issue": "5",
+      "pages": "976",
+      "raw_citation": "Godos, J.; Ferri, R.; Caraci, F.; Cosentino, F.I.I.; Castellano, S.; Galvano, F.; Grosso, G. Adherence to the Mediterranean Diet is Associated with Better Sleep Quality in Italian Adults. Nutrients 2019, 11, 976.",
+      "lookup_metadata": {
+        "confidence": 0.9,
+        "similarity": 0.9946524064171123,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 18,
+      "first_author": "Maraki",
+      "year": 2019,
+      "title": "Mediterranean diet adherence is related to reduced probability of prodromal Parkinson's disease",
+      "journal": "Movement Disorders",
+      "authors": [
+        "Maraki MI",
+        "Yannakoulia M",
+        "Stamelou M",
+        "Stefanis L",
+        "Xiromerisiou G",
+        "Kosmidis MH",
+        "Dardiotis E",
+        "Hadjigeorgiou GM",
+        "Sakka P",
+        "Anastasiou CA"
+      ],
+      "doi": "10.1002/mds.27489",
+      "pmid": "30306634",
+      "volume": "34",
+      "issue": "1",
+      "pages": "48-57",
+      "raw_citation": "Maraki, M.I.; Yannakoulia, M.; Stamelou, M.; Stefanis, L.; Xiromerisiou, G.; Kosmidis, M.H.; Dardiotis, E.; Hadjigeorgiou, G.M.; Sakka, P.; Anastasiou, C.A.; et al. Mediterranean diet adherence is related to reduced probability of prodromal Parkinson's disease. Mov. Disord. 2019, 34, 48-57.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9947643979057592,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 19,
+      "first_author": "van Egmond",
+      "year": 2019,
+      "title": "Association between Healthy Dietary Patterns and Self-Reported Sleep Disturbances in Older Men: The ULSAM Study",
+      "journal": "Nutrients",
+      "authors": [
+        "van Egmond L",
+        "Tan X",
+        "Sjögren P",
+        "Cederholm T",
+        "Benedict C"
+      ],
+      "doi": "10.3390/nu11051029",
+      "pmid": "31071943",
+      "volume": "11",
+      "issue": "5",
+      "pages": "1029",
+      "raw_citation": "van Egmond, L.; Tan, X.; Sjögren, P.; Cederholm, T.; Benedict, C. Association between Healthy Dietary Patterns and Self-Reported Sleep Disturbances in Older Men: The ULSAM Study. Nutrients 2019, 11, 1029.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9955156950672646,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 20,
+      "first_author": "Jurado-Fasoli",
+      "year": 2020,
+      "title": "Association between sleep quality and time with energy metabolism in sedentary adults",
+      "journal": "Scientific Reports",
+      "authors": [
+        "Jurado-Fasoli L",
+        "Mochon-Benguigui S",
+        "Castillo MJ",
+        "Amaro-Gahete FJ"
+      ],
+      "doi": "10.1038/s41598-020-61493-2",
+      "pmid": "32165704",
+      "volume": "10",
+      "issue": "1",
+      "pages": "4598",
+      "raw_citation": "Jurado-Fasoli, L.; Mochon-Benguigui, S.; Castillo, M.J.; Amaro-Gahete, F.J. Association between sleep quality and time with energy metabolism in sedentary adults. Sci. Rep. 2020, 10, 4598.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9941520467836259,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 21,
+      "first_author": "Molsberry",
+      "year": 2020,
+      "title": "Diet pattern and prodromal features of Parkinson disease",
+      "journal": "Neurology",
+      "authors": [
+        "Molsberry S",
+        "Bjornevik K",
+        "Hughes KC",
+        "Healy B",
+        "Schwarzschild M",
+        "Ascherio A"
+      ],
+      "doi": "10.1212/WNL.0000000000010523",
+      "pmid": "32817391",
+      "volume": "95",
+      "issue": "15",
+      "pages": "e2095-e2108",
+      "raw_citation": "Molsberry, S.; Bjornevik, K.; Hughes, K.C.; Healy, B.; Schwarzschild, M.; Ascherio, A. Diet pattern and prodromal features of Parkinson disease. Neurology 2020, 95, e2095-e2108.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9911504424778761,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 22,
+      "first_author": "Muscogiuri",
+      "year": 2020,
+      "title": "Sleep quality in obesity: Does adherence to the Mediterranean diet matter?",
+      "journal": "Nutrients",
+      "authors": [
+        "Muscogiuri G",
+        "Barrea L",
+        "Aprano S",
+        "Framondi L",
+        "Di Matteo R",
+        "Laudisio D",
+        "Pugliese G",
+        "Savastano S",
+        "Colao A"
+      ],
+      "doi": "10.3390/nu12051364",
+      "pmid": "32397621",
+      "volume": "12",
+      "issue": "5",
+      "pages": "1364",
+      "raw_citation": "Muscogiuri, G.; Barrea, L.; Aprano, S.; Framondi, L.; Di Matteo, R.; Laudisio, D.; Pugliese, G.; Savastano, S.; Colao, A.; on behalf of the OPERA PREVENTION Project. Sleep quality in obesity: Does adherence to the Mediterranean diet matter? Nutrients 2020, 12, 1364.",
+      "lookup_metadata": {
+        "confidence": 0.9,
+        "similarity": 1.0,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 23,
+      "first_author": "Theorell-Haglöw",
+      "year": 2020,
+      "title": "Sleep duration is associated with healthy diet scores and meal patterns: Results from the population-based EpiHealth study",
+      "journal": "Journal of Clinical Sleep Medicine",
+      "authors": [
+        "Theorell-Haglöw J",
+        "Lemming EW",
+        "Michaëlsson K",
+        "Elmståhl S",
+        "Lind L",
+        "Lindberg E"
+      ],
+      "doi": "10.5664/jcsm.8112",
+      "pmid": "31957658",
+      "volume": "16",
+      "issue": "1",
+      "pages": "9-18",
+      "raw_citation": "Theorell-Haglöw, J.; Lemming, E.W.; Michaëlsson, K.; Elmståhl, S.; Lind, L.; Lindberg, E. Sleep duration is associated with healthy diet scores and meal patterns: Results from the population-based EpiHealth study. J. Clin. Sleep Med. 2020, 16, 9-18.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9959183673469387,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 24,
+      "first_author": "Zuraikat",
+      "year": 2020,
+      "title": "A Mediterranean Dietary Pattern Predicts Better Sleep Quality in US Women from the American Heart Association Go Red for Women Strategically Focused Research Network",
+      "journal": "Nutrients",
+      "authors": [
+        "Zuraikat FM",
+        "Makarem N",
+        "St-Onge MP",
+        "Xi H",
+        "Akkapeddi A",
+        "Aggarwal B"
+      ],
+      "doi": "10.3390/nu12092830",
+      "pmid": "32947817",
+      "volume": "12",
+      "issue": "9",
+      "pages": "2830",
+      "raw_citation": "Zuraikat, F.M.; Makarem, N.; St-Onge, M.-P.; Xi, H.; Akkapeddi, A.; Aggarwal, B. A Mediterranean Dietary Pattern Predicts Better Sleep Quality in US Women from the American Heart Association Go Red for Women Strategically Focused Research Network. Nutrients 2020, 12, 2830.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9969788519637462,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 25,
+      "first_author": "Kolokotroni",
+      "year": 2021,
+      "title": "Lifestyle habits of adults during the COVID-19 pandemic lockdown in Cyprus: Evidence from a cross-sectional study",
+      "journal": "BMC Public Health",
+      "authors": [
+        "Kolokotroni O",
+        "Mosquera MC",
+        "Quattrocchi A",
+        "Heraclides A",
+        "Demetriou C",
+        "Philippou E"
+      ],
+      "doi": "10.1186/s12889-021-10863-0",
+      "pmid": "33892688",
+      "volume": "21",
+      "issue": "1",
+      "pages": "786",
+      "raw_citation": "Kolokotroni, O.; Mosquera, M.C.; Quattrocchi, A.; Heraclides, A.; Demetriou, C.; Philippou, E. Lifestyle habits of adults during the COVID-19 pandemic lockdown in Cyprus: Evidence from a cross-sectional study. BMC Public Health 2021, 21, 786.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9955947136563875,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 26,
+      "first_author": "Prete",
+      "year": 2021,
+      "title": "Changes in Lifestyle and Dietary Habits during COVID-19 Lockdown in Italy: Results of an Online Survey",
+      "journal": "Nutrients",
+      "authors": [
+        "Prete M",
+        "Luzzetti A",
+        "Augustin LSA",
+        "Porciello G",
+        "Montagnese C",
+        "Calabrese I",
+        "Ballarin G",
+        "Coluccia S",
+        "Patel L",
+        "Vitale S"
+      ],
+      "doi": "10.3390/nu13061923",
+      "pmid": "34205057",
+      "volume": "13",
+      "issue": "6",
+      "pages": "1923",
+      "raw_citation": "Prete, M.; Luzzetti, A.; Augustin, L.S.A.; Porciello, G.; Montagnese, C.; Calabrese, I.; Ballarin, G.; Coluccia, S.; Patel, L.; Vitale, S.; et al. Changes in Lifestyle and Dietary Habits during COVID-19 Lockdown in Italy: Results of an Online Survey. Nutrients 2021, 13, 1923.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9951219512195122,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 27,
+      "first_author": "Zaidalkilani",
+      "year": 2021,
+      "title": "Arab women adherence to the Mediterranean diet and insomnia",
+      "journal": "Medicina",
+      "authors": [
+        "Zaidalkilani AT",
+        "Alhaj OA",
+        "Serag El-Dine MF",
+        "Fekih-Romdhane F",
+        "AlRasheed MM",
+        "Jahrami HA",
+        "Bragazzi NL"
+      ],
+      "doi": "10.3390/medicina58010017",
+      "pmid": "35056325",
+      "volume": "58",
+      "issue": "1",
+      "pages": "17",
+      "raw_citation": "Zaidalkilani, A.T.; Alhaj, O.A.; Serag El-Dine, M.F.; Fekih-Romdhane, F.; AlRasheed, M.M.; Jahrami, H.A.; Bragazzi, N.L. Arab women adherence to the Mediterranean diet and insomnia. Medicina 2021, 58, 17.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9915966386554622,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 28,
+      "first_author": "Georgiadi",
+      "year": 2022,
+      "title": "How Do Greeks Sleep? A Cross-Sectional Study among Indigenous and Minority Populations",
+      "journal": "Maedica",
+      "authors": [
+        "Georgiadi K",
+        "Tsiptsios D",
+        "Fotiadou A",
+        "Kaltsatou A",
+        "Vafeiadis I",
+        "Lialiaris S",
+        "Trypsiani I",
+        "Kitmeridou S",
+        "Karatzetzou S",
+        "Manolis A"
+      ],
+      "doi": "10.26574/maedica.2022.17.3.615",
+      "pmid": "36540581",
+      "volume": "17",
+      "issue": "3",
+      "pages": "615-627",
+      "raw_citation": "Georgiadi, K.; Tsiptsios, D.; Fotiadou, A.; Kaltsatou, A.; Vafeiadis, I.; Lialiaris, S.; Trypsiani, I.; Kitmeridou, S.; Karatzetzou, S.; Manolis, A.; et al. 'How Do Greeks Sleep?' A Cross-Sectional Study among Indigenous and Minority Populations. Maedica 2022, 17, 615-627.",
+      "lookup_metadata": {
+        "confidence": 0.9,
+        "similarity": 0.9371428571428573,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 29,
+      "first_author": "Gupta",
+      "year": 2022,
+      "title": "Associations between sleep duration and Mediterranean diet score in Costa Rican adults",
+      "journal": "Appetite",
+      "authors": [
+        "Gupta K",
+        "Jansen EC",
+        "Campos H",
+        "Baylin A"
+      ],
+      "doi": "10.1016/j.appet.2021.105881",
+      "pmid": "34942284",
+      "volume": "170",
+      "issue": null,
+      "pages": "105881",
+      "raw_citation": "Gupta, K.; Jansen, E.C.; Campos, H.; Baylin, A. Associations between sleep duration and Mediterranean diet score in Costa Rican adults. Appetite 2022, 170, 105881.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9942196531791907,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 30,
+      "first_author": "Rostami",
+      "year": 2022,
+      "title": "Adherence to the MIND dietary pattern and sleep quality, sleep related outcomes and mental health in male adults: A cross-sectional study",
+      "journal": "BMC Psychiatry",
+      "authors": [
+        "Rostami H",
+        "Parastouei K",
+        "Samadi M",
+        "Taghdir M",
+        "Eskandari E"
+      ],
+      "doi": "10.1186/s12888-022-03816-3",
+      "pmid": "35248010",
+      "volume": "22",
+      "issue": "1",
+      "pages": "167",
+      "raw_citation": "Rostami, H.; Parastouei, K.; Samadi, M.; Taghdir, M.; Eskandari, E. Adherence to the MIND dietary pattern and sleep quality, sleep related outcomes and mental health in male adults: A cross-sectional study. BMC Psychiatry 2022, 22, 167.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9963636363636365,
+        "method": "europe_pmc",
+        "source": "EuropePMC"
+      }
+    },
+    {
+      "reference_number": 31,
+      "first_author": "Ingegnoli",
+      "year": 2020,
+      "title": "Adherence to Mediterranean diet and patient perception of rheumatoid arthritis",
+      "journal": "Complementary Therapies in Medicine",
+      "authors": [
+        "Ingegnoli F",
+        "Schioppo T",
+        "Scotti I",
+        "Ubiali T",
+        "De Lucia O",
+        "Murgo A",
+        "Marano G",
+        "Boracchi P",
+        "Caporali R"
+      ],
+      "doi": "10.1016/j.ctim.2020.102519",
+      "pmid": "32951762",
+      "volume": "52",
+      "issue": null,
+      "pages": "102519",
+      "raw_citation": "Ingegnoli, F.; Schioppo, T.; Scotti, I.; Ubiali, T.; De Lucia, O.; Murgo, A.; Marano, G.; Boracchi, P.; Caporali, R. Adherence to Mediterranean diet and patient perception of rheumatoid arthritis. Complement. Ther. Med. 2020, 52, 102519.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9936305732484076,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 32,
+      "first_author": "Porciello",
+      "year": 2020,
+      "title": "Mediterranean diet and quality of life in women treated for breast cancer: A baseline analysis of DEDiCa multicentre trial",
+      "journal": "PLoS ONE",
+      "authors": [
+        "Porciello G",
+        "Montagnese C",
+        "Crispo A",
+        "Grimaldi M",
+        "Libra M",
+        "Vitale S",
+        "Palumbo E",
+        "Pica R",
+        "Calabrese I",
+        "Cubisino S"
+      ],
+      "doi": "10.1371/journal.pone.0239803",
+      "pmid": "33031478",
+      "volume": "15",
+      "issue": "9",
+      "pages": "e0239803",
+      "raw_citation": "Porciello, G.; Montagnese, C.; Crispo, A.; Grimaldi, M.; Libra, M.; Vitale, S.; Palumbo, E.; Pica, R.; Calabrese, I.; Cubisino, S.; et al. Mediterranean diet and quality of life in women treated for breast cancer: A baseline analysis of DEDiCa multicentre trial. PLoS ONE 2020, 15, e0239803.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9959183673469387,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 33,
+      "first_author": "Kechribari",
+      "year": 2022,
+      "title": "Association of adherence to the Mediterranean diet and physical activity habits with the presence of insomnia in patients with obstructive sleep apnea",
+      "journal": "Sleep and Breathing",
+      "authors": [
+        "Kechribari I",
+        "Kontogianni MD",
+        "Georgoulis M",
+        "Lamprou K",
+        "Critselis E",
+        "Vagiakis E",
+        "Yiannakouris N"
+      ],
+      "doi": "10.1007/s11325-021-02351-x",
+      "pmid": "33813674",
+      "volume": "26",
+      "issue": "1",
+      "pages": "89-97",
+      "raw_citation": "Kechribari, I.; Kontogianni, M.D.; Georgoulis, M.; Lamprou, K.; Critselis, E.; Vagiakis, E.; Yiannakouris, N. Association of adherence to the Mediterranean diet and physical activity habits with the presence of insomnia in patients with obstructive sleep apnea. Sleep Breath. 2022, 26, 89-97.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9966777408637875,
+        "method": "europe_pmc",
+        "source": "EuropePMC"
+      }
+    },
+    {
+      "reference_number": 34,
+      "first_author": "Katz Sand",
+      "year": 2023,
+      "title": "Mediterranean diet is linked to less objective disability in multiple sclerosis",
+      "journal": "Multiple Sclerosis Journal",
+      "authors": [
+        "Katz Sand I",
+        "Levy S",
+        "Fitzgerald K",
+        "Sorets T",
+        "Sumowski JF"
+      ],
+      "doi": "10.1177/13524585221127414",
+      "pmid": "36226971",
+      "volume": "29",
+      "issue": "2",
+      "pages": "248-260",
+      "raw_citation": "Katz Sand, I.; Levy, S.; Fitzgerald, K.; Sorets, T.; Sumowski, J.F. Mediterranean diet is linked to less objective disability in multiple sclerosis. Mult. Scler. 2023, 29, 248-260.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9937106918238993,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 35,
+      "first_author": "Lawrie",
+      "year": 2023,
+      "title": "Dietary Patterns and Nonmotor Symptoms in Parkinson's Disease: A Cross-Sectional Analysis",
+      "journal": "Journal of the American Nutrition Association",
+      "authors": [
+        "Lawrie S",
+        "Coe S",
+        "Mansoubi M",
+        "Welch J",
+        "Razzaque J",
+        "Hu MT",
+        "Dawes H"
+      ],
+      "doi": "10.1080/07315724.2022.2056544",
+      "pmid": "35512773",
+      "volume": "42",
+      "issue": "4",
+      "pages": "393-402",
+      "raw_citation": "Lawrie, S.; Coe, S.; Mansoubi, M.; Welch, J.; Razzaque, J.; Hu, M.T.; Dawes, H. Dietary Patterns and Nonmotor Symptoms in Parkinson's Disease: A Cross-Sectional Analysis. J. Am. Nutr. Assoc. 2023, 42, 393-402.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9944134078212289,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    }
+  ],
+  "statistics": {
+    "total_studies": 23,
+    "with_doi": 23,
+    "with_pmid": 23,
+    "with_identifiers": 23,
+    "doi_coverage_percent": 100.0,
+    "pmid_coverage_percent": 100.0,
+    "identifier_coverage_percent": 100.0,
+    "pubmed_matches": 21,
+    "europepmc_matches": 2,
+    "crossref_matches": 0
+  }
+}

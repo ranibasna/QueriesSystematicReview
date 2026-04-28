@@ -1,0 +1,1969 @@
+{
+  "caf337c2f4d5f5d1977807cc9d660d971d6ae3832ac6fed578b7ae1ba6ae43a1": {
+    "query": "(('sleep apnea syndrome'/exp OR 'snoring'/exp OR 'sleep disordered breathing':ti,ab OR 'sleep-disordered breathing':ti,ab OR 'sleep apnea':ti,ab OR 'sleep apnoea':ti,ab OR 'obstructive sleep apnea':ti,ab OR 'obstructive sleep apnoea':ti,ab OR 'primary snoring':ti,ab) AND ('blood pressure'/exp OR 'blood pressure monitoring'/exp OR 'blood pressure':ti,ab OR 'ambulatory blood pressure':ti,ab OR 'blood pressure monitoring':ti,ab OR 'systolic blood pressure':ti,ab OR 'diastolic blood pressure':ti,ab OR 'mean blood pressure':ti,ab OR 'blood pressure load':ti,ab OR nondipping:ti,ab OR 'non-dipping':ti,ab OR 'sbp index':ti,ab) AND ('child'/exp OR 'adolescent'/exp OR child*:ti,ab OR adolescen*:ti,ab OR pediatric*:ti,ab OR paediatric*:ti,ab OR youth*:ti,ab) AND (cohort:ti,ab OR longitudinal:ti,ab OR observational:ti,ab OR 'case-control':ti,ab OR 'case control':ti,ab OR 'cross-sectional':ti,ab OR 'cross sectional':ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 219,
+    "retrieved_dois": [
+      "10.1001/archpedi.157.9.901",
+      "10.1001/archpedi.161.2.172",
+      "10.1001/jamacardio.2021.2003",
+      "10.1001/jamaoto.2017.3127",
+      "10.1002/14651858.CD012069.pub2",
+      "10.1002/ajh.21763",
+      "10.1002/hsr2.1909",
+      "10.1002/lary.20870",
+      "10.1002/lary.22508",
+      "10.1002/nau.24624",
+      "10.1002/ohn.184",
+      "10.1002/ped4.12249",
+      "10.1002/ppul.24693",
+      "10.1002/ppul.25097",
+      "10.1002/ppul.25961",
+      "10.1002/ppul.27396",
+      "10.1002/ppul.71339",
+      "10.1007/s00405-016-4207-y",
+      "10.1007/s00405-022-07255-4",
+      "10.1007/s00420-018-1381-9",
+      "10.1007/s00431-021-04238-1",
+      "10.1007/s00467-010-1577-z",
+      "10.1007/s00467-017-3753-x",
+      "10.1007/s00467-025-06767-5",
+      "10.1007/s00467-025-06969-x",
+      "10.1007/s00592-014-0583-1",
+      "10.1007/s11325-010-0462-0",
+      "10.1007/s11695-019-03929-x",
+      "10.1007/s40292-013-0021-4",
+      "10.1007/s44470-025-00023-1",
+      "10.1016/S0212-6567(13)70033-7",
+      "10.1016/j.acvd.2024.10.040",
+      "10.1016/j.acvdsp.2019.07.002",
+      "10.1016/j.ajo.2020.04.020",
+      "10.1016/j.amjcard.2018.09.038",
+      "10.1016/j.bjorl.2016.03.020",
+      "10.1016/j.cgh.2025.05.011",
+      "10.1016/j.chest.2025.07.3779",
+      "10.1016/j.echo.2019.04.414",
+      "10.1016/j.eclinm.2025.103529",
+      "10.1016/j.envint.2024.108841",
+      "10.1016/j.healun.2012.01.841",
+      "10.1016/j.ijporl.2012.11.006",
+      "10.1016/j.ijporl.2014.02.028",
+      "10.1016/j.ijporl.2014.06.002",
+      "10.1016/j.ijporl.2014.07.021",
+      "10.1016/j.ijporl.2023.111648",
+      "10.1016/j.intimp.2014.05.029",
+      "10.1016/j.jash.2017.12.010",
+      "10.1016/j.jpeds.2009.03.041",
+      "10.1016/j.jpeds.2011.12.034",
+      "10.1016/j.jpeds.2016.08.101",
+      "10.1016/j.jpeds.2021.08.031",
+      "10.1016/j.jpeds.2022.03.024",
+      "10.1016/j.jpeds.2022.08.027",
+      "10.1016/j.jsmc.2009.01.002",
+      "10.1016/j.rmed.2024.107531",
+      "10.1016/j.sleep.2004.10.004",
+      "10.1016/j.sleep.2009.10.007",
+      "10.1016/j.sleep.2013.01.015",
+      "10.1016/j.sleep.2013.09.017",
+      "10.1016/j.sleep.2015.06.004",
+      "10.1016/j.sleep.2015.06.014",
+      "10.1016/j.sleep.2019.07.027",
+      "10.1016/j.sleep.2019.11.052",
+      "10.1016/j.sleep.2019.11.1237",
+      "10.1016/j.sleep.2019.11.960",
+      "10.1016/j.sleep.2022.10.023",
+      "10.1016/j.sleep.2022.11.029",
+      "10.1016/j.sleep.2023.11.1067",
+      "10.1016/j.sleep.2023.11.729",
+      "10.1016/j.sleep.2023.11.763",
+      "10.1016/j.sleep.2023.11.898",
+      "10.1016/j.smrv.2015.09.001",
+      "10.1016/j.smrv.2022.101663",
+      "10.1017/S1047951124024478",
+      "10.1038/ijo.2015.67",
+      "10.1038/ijo.2017.215",
+      "10.1038/s41390-021-01841-8",
+      "10.1038/s41390-021-01893-w",
+      "10.1038/s41598-017-08930-x",
+      "10.1038/sc.2016.100",
+      "10.1093/aje/kws258",
+      "10.1093/ajh/hpaf025",
+      "10.1093/cid/ciy216",
+      "10.1093/ejechocard/jer216",
+      "10.1093/sleep/15.suppl_6.s1",
+      "10.1093/sleep/26.6.703",
+      "10.1093/sleep/zsaa056.932",
+      "10.1093/sleep/zsac281",
+      "10.1093/sleep/zsae067.0393",
+      "10.1093/sleep/zsaf090.1070",
+      "10.1093/sleep/zsaf090.1136",
+      "10.1093/sleep/zsx015",
+      "10.1097/01.hjh.0000420100.95614.d2",
+      "10.1097/01.hjh.0000492010.69491.02",
+      "10.1097/01.tp.0000700952.70548.9a",
+      "10.1097/HJH.0000000000003475",
+      "10.1097/INF.0000000000000695",
+      "10.1097/MBP.0000000000000642",
+      "10.1097/MD.0000000000001568",
+      "10.1097/MD.0000000000003229",
+      "10.1097/MOP.0000000000000223",
+      "10.1097/MPG.0000000000002403",
+      "10.1097/MPG.0000000000003607",
+      "10.1101/2022.04.18.22273955",
+      "10.1101/2025.10.24.25338706",
+      "10.1111/cob.12695",
+      "10.1111/ijpo.13207",
+      "10.1111/j.1365-2141.2008.07501.x",
+      "10.1111/j.1440-1754.2011.02014.x",
+      "10.1111/j.1445-5994.2012.02753.x",
+      "10.1111/j.1479-8425.2009.00410-2.x",
+      "10.1111/j.1479-8425.2012.00580.x",
+      "10.1111/jch.13605",
+      "10.1111/jdi.70021",
+      "10.1111/jpc.70182",
+      "10.1111/jsr.12213",
+      "10.1111/jsr.12446",
+      "10.1111/jsr.70049",
+      "10.1111/pan.12945",
+      "10.1111/pedi.12917",
+      "10.1111/pedi.13409",
+      "10.1111/petr.14355",
+      "10.1111/resp.14089",
+      "10.1111/sbr.12082",
+      "10.1136/archdischild-2014-306468",
+      "10.1136/archdischild-2022-rcpch.554",
+      "10.1136/bmjgh-2023-011763",
+      "10.1136/thoraxjnl-2019-213692",
+      "10.1155/2016/3950914",
+      "10.1155/ijhy/1945725",
+      "10.1159/000504540",
+      "10.1159/000529083",
+      "10.1159/000545968",
+      "10.1161/01.HYP.0000032940.33466.12",
+      "10.1161/CIRCULATIONAHA.108.766410",
+      "10.1161/CIRCULATIONAHA.110.192774",
+      "10.1161/circ.139.suppl_1.MP51",
+      "10.1161/circ.140.suppl_1.10677",
+      "10.1161/circ.140.suppl_1.10855",
+      "10.1161/circ.143.suppl_1.MP63",
+      "10.1161/circ.145.suppl_1.MP56",
+      "10.1161/hyp.76.suppl_1.5",
+      "10.1164/ajrccm.2025.211.Abstracts.A3153",
+      "10.1164/ajrccm.2025.211.Abstracts.A4416",
+      "10.1164/ajrccm.2025.211.Abstracts.A4432",
+      "10.1177/0022034513488140",
+      "10.1177/01939459251340492",
+      "10.1177/0194599818785627i",
+      "10.1177/0194599818825462",
+      "10.1177/0194599820934781",
+      "10.1177/09691413211043911",
+      "10.1177/10556656221119078",
+      "10.1177/11795514241274696",
+      "10.1177/2045894019845610",
+      "10.1182/blood-2024-208896",
+      "10.1183/1393003.congress-2017.OA1790",
+      "10.1183/1393003.congress-2017.OA1796",
+      "10.1183/1393003.congress-2017.PA3336",
+      "10.1183/13993003.01972-2017",
+      "10.1186/s12871-022-01951-8",
+      "10.1186/s12889-025-21637-3",
+      "10.1186/s12903-025-05957-9",
+      "10.1186/s13023-023-02755-w",
+      "10.1186/s43054-025-00351-0",
+      "10.1210/jc.2006-1714",
+      "10.12669/pjms.40.8.9326",
+      "10.12809/hkmj2210552",
+      "10.1371/journal.pone.0104593",
+      "10.1371/journal.pone.0142242",
+      "10.1371/journal.pone.0241841",
+      "10.1371/journal.pone.0312127",
+      "10.1378/chest.13-1333",
+      "10.1378/chest.1386299",
+      "10.1513/AnnalsATS.201309-325OC",
+      "10.1542/hpeds.2022-007007",
+      "10.1590/2175-8239-JBN-2025-0123en",
+      "10.21037/tp-2025-401",
+      "10.21037/tp-23-138",
+      "10.2174/157340112803832219",
+      "10.2310/7070.2003.11420",
+      "10.31083/J.RCM2305166",
+      "10.3109/14767058.2014.978757",
+      "10.3109/17477160903473705",
+      "10.3389/fendo.2020.00157",
+      "10.3389/fendo.2025.1663499",
+      "10.3389/fneur.2025.1632919",
+      "10.3389/fped.2023.1055158",
+      "10.3389/fped.2024.1360227",
+      "10.3389/fphys.2021.650260",
+      "10.3389/fpsyt.2024.1489229",
+      "10.3390/children8030242",
+      "10.3390/children9121849",
+      "10.3390/ijerph17134663",
+      "10.3390/ijerph182212032",
+      "10.3390/ijms252413344",
+      "10.3390/jcdd9060195",
+      "10.3390/jpm11060486",
+      "10.3390/nu10030344",
+      "10.3390/nu16152419",
+      "10.3390/v17081030",
+      "10.4103/0970-9185.125699",
+      "10.4103/ija.ija_466_21",
+      "10.4103/ijem.ijem_838_25",
+      "10.4103/ijpvm.IJPVM_602_20",
+      "10.4103/sja.sja_612_25",
+      "10.4187/respcare.11679",
+      "10.4250/jcvi.2018.26.e26",
+      "10.4414/smw.2017.14400",
+      "10.5005/jp-journals-10006-2000",
+      "10.5664/jcsm.11440",
+      "10.5664/jcsm.11784",
+      "10.5664/jcsm.27824",
+      "10.5664/jcsm.6718",
+      "10.5664/jcsm.9412",
+      "10.5664/jcsm.9944",
+      "10.5665/sleep.2890",
+      "10.5665/sleep.5740"
+    ],
+    "retrieved_pmids": [
+      "12364344",
+      "12963596",
+      "14572123",
+      "1470800",
+      "14974860",
+      "15854854",
+      "17105842",
+      "17283303",
+      "18711015",
+      "19055665",
+      "19540515",
+      "20210676",
+      "20513046",
+      "20572420",
+      "20605109",
+      "21210231",
+      "21535282",
+      "22252904",
+      "22284918",
+      "22372985",
+      "22643156",
+      "23245625",
+      "23690360",
+      "23768837",
+      "23904682",
+      "24088776",
+      "24210606",
+      "24384690",
+      "24656225",
+      "24682536",
+      "24724923",
+      "24969347",
+      "24975656",
+      "25108873",
+      "25330842",
+      "25437865",
+      "25831423",
+      "25913504",
+      "25944309",
+      "26429748",
+      "26459685",
+      "26581088",
+      "26683701",
+      "26699539",
+      "26951394",
+      "27057856",
+      "27291518",
+      "27349605",
+      "27388953",
+      "27430227",
+      "27445534",
+      "27697327",
+      "28165541",
+      "28329042",
+      "28728620",
+      "28821856",
+      "28871150",
+      "29450504",
+      "29534158",
+      "29534525",
+      "29744873",
+      "30093572",
+      "30420185",
+      "30483875",
+      "30668275",
+      "31104284",
+      "31222948",
+      "31486162",
+      "31751907",
+      "31805573",
+      "32068974",
+      "32209641",
+      "32360343",
+      "32610444",
+      "32986303",
+      "33152746",
+      "33550620",
+      "34027888",
+      "34056796",
+      "34160576",
+      "34450122",
+      "34557975",
+      "34605296",
+      "34785780",
+      "34831784",
+      "34916627",
+      "35022863",
+      "35212261",
+      "35314156",
+      "35869891",
+      "36027975",
+      "36070531",
+      "36087456",
+      "36161685",
+      "36417809",
+      "36433727",
+      "36443934",
+      "36516525",
+      "36577959",
+      "36810939",
+      "36939432",
+      "37141920",
+      "37260279",
+      "37365619",
+      "37419069",
+      "38246393",
+      "38653555",
+      "38917626",
+      "39054617",
+      "39125300",
+      "39147587",
+      "39492576",
+      "39752375",
+      "39769109",
+      "39835470",
+      "39910513",
+      "39976745",
+      "40143709",
+      "40170220",
+      "40214778",
+      "40307762",
+      "40411382",
+      "40518063",
+      "40566988",
+      "40855701",
+      "40872745",
+      "41020482",
+      "41511102",
+      "41678059"
+    ],
+    "pmids": [
+      "12364344",
+      "12963596",
+      "14572123",
+      "1470800",
+      "14974860",
+      "15854854",
+      "17105842",
+      "17283303",
+      "18711015",
+      "19055665",
+      "19540515",
+      "20210676",
+      "20513046",
+      "20572420",
+      "20605109",
+      "21210231",
+      "21535282",
+      "22252904",
+      "22284918",
+      "22372985",
+      "22643156",
+      "23245625",
+      "23690360",
+      "23768837",
+      "23904682",
+      "24088776",
+      "24210606",
+      "24384690",
+      "24656225",
+      "24682536",
+      "24724923",
+      "24969347",
+      "24975656",
+      "25108873",
+      "25330842",
+      "25437865",
+      "25831423",
+      "25913504",
+      "25944309",
+      "26429748",
+      "26459685",
+      "26581088",
+      "26683701",
+      "26699539",
+      "26951394",
+      "27057856",
+      "27291518",
+      "27349605",
+      "27388953",
+      "27430227",
+      "27445534",
+      "27697327",
+      "28165541",
+      "28329042",
+      "28728620",
+      "28821856",
+      "28871150",
+      "29450504",
+      "29534158",
+      "29534525",
+      "29744873",
+      "30093572",
+      "30420185",
+      "30483875",
+      "30668275",
+      "31104284",
+      "31222948",
+      "31486162",
+      "31751907",
+      "31805573",
+      "32068974",
+      "32209641",
+      "32360343",
+      "32610444",
+      "32986303",
+      "33152746",
+      "33550620",
+      "34027888",
+      "34056796",
+      "34160576",
+      "34450122",
+      "34557975",
+      "34605296",
+      "34785780",
+      "34831784",
+      "34916627",
+      "35022863",
+      "35212261",
+      "35314156",
+      "35869891",
+      "36027975",
+      "36070531",
+      "36087456",
+      "36161685",
+      "36417809",
+      "36433727",
+      "36443934",
+      "36516525",
+      "36577959",
+      "36810939",
+      "36939432",
+      "37141920",
+      "37260279",
+      "37365619",
+      "37419069",
+      "38246393",
+      "38653555",
+      "38917626",
+      "39054617",
+      "39125300",
+      "39147587",
+      "39492576",
+      "39752375",
+      "39769109",
+      "39835470",
+      "39910513",
+      "39976745",
+      "40143709",
+      "40170220",
+      "40214778",
+      "40307762",
+      "40411382",
+      "40518063",
+      "40566988",
+      "40855701",
+      "40872745",
+      "41020482",
+      "41511102",
+      "41678059"
+    ],
+    "records": [
+      {
+        "title": "The association between obstructive sleep apnea risk and cardiovascular disease risk in midlife Thai women in the U.S",
+        "first_author": "Srimoragot",
+        "year": 2026,
+        "pmid": "41678059",
+        "doi": "10.1007/s44470-025-00023-1"
+      },
+      {
+        "title": "ALT Is an Effective Screening Tool for Advanced Metabolic Dysfunction-Associated Steatotic Liver Disease in Children With Obesity and Overweight",
+        "first_author": "Stroes",
+        "year": 2026,
+        "pmid": "40518063",
+        "doi": "10.1016/j.cgh.2025.05.011"
+      },
+      {
+        "title": "Comparison of ketamine and fentanyl in pediatric tonsillectomy: Impact on pain control and emergence delirium",
+        "first_author": "Atalay",
+        "year": 2026,
+        "doi": "10.4103/sja.sja_612_25"
+      },
+      {
+        "title": "Identifying Obstructive Sleep Apnea in At-Risk Youth: An Exploratory Cross-Sectional Study in Adolescents Living With Obesity",
+        "first_author": "Chudy",
+        "year": 2025,
+        "pmid": "41511102"
+      },
+      {
+        "title": "The effect of laparoscopic sleeve gastrectomy in improving endocrinal and psychiatric comorbidities in morbidly obese adolescents: a single-center study",
+        "first_author": "Allam",
+        "year": 2025,
+        "doi": "10.1186/s43054-025-00351-0"
+      },
+      {
+        "title": "Rising Incidence of Type 2 Diabetes (T2D) Among Children and Adolescents Under 15 Years Over a 28-Year Period (1995–2023): Insights From a Regional Diabetes Service in Auckland, New Zealand",
+        "first_author": "Smith",
+        "year": 2025,
+        "pmid": "40855701",
+        "doi": "10.1111/jpc.70182"
+      },
+      {
+        "title": "Effect of sleep apnoea interventions on multiple health outcomes: an umbrella review of meta-analyses of randomised controlled trials",
+        "first_author": "Figard",
+        "year": 2025,
+        "doi": "10.1016/j.eclinm.2025.103529"
+      },
+      {
+        "title": "NOCTURNAL HYPERTENSION and LOSS of NOCTURNAL DIPPING in CHILDREN ATTENDING the SLEEP CLINIC",
+        "first_author": "Leow",
+        "year": 2025,
+        "doi": "10.1007/s00467-025-06969-x"
+      },
+      {
+        "title": "Clinical analysis of 73 children with anti-N-methyl-D-aspartic receptor (NMDAR) encephalitis",
+        "first_author": "Zeng",
+        "year": 2025,
+        "doi": "10.21037/tp-2025-401"
+      },
+      {
+        "title": "The ambulatory arterial stiffness index is not a measure of arterial stiffness in childhood",
+        "first_author": "Bokov",
+        "year": 2025,
+        "doi": "10.1101/2025.10.24.25338706"
+      },
+      {
+        "title": "Relationship of Circadian Blood Pressure Dysregulation With Left Ventricular Structure and Function in Children With Obstructive Sleep Apnea",
+        "first_author": "Witter",
+        "year": 2025,
+        "pmid": "40170220",
+        "doi": "10.1111/jsr.70049"
+      },
+      {
+        "title": "Large Airway and Lung Findings in Symptomatic Children and Young Adults With Down Syndrome",
+        "first_author": "DeBoer",
+        "year": 2025,
+        "doi": "10.1002/ppul.71339"
+      },
+      {
+        "title": "SUBMASSIVE PULMONARY EMBOLISM IN A POWERLIFTER SECONDARY TO TESTOSTERONE SUPPLEMENTATION: SUCCESSFUL MANAGEMENT WITH EKOS THERAPY",
+        "first_author": "Chawla",
+        "year": 2025,
+        "doi": "10.1016/j.chest.2025.07.3779"
+      },
+      {
+        "title": "Association between obstructive sleep apnea and cardiovascular events in hemodialysis patients",
+        "first_author": "Goes",
+        "year": 2025,
+        "pmid": "41020482",
+        "doi": "10.1590/2175-8239-JBN-2025-0123en"
+      },
+      {
+        "title": "A Cross Sectional Pilot Study on Plasma Renin Activity and Plasma Aldosterone Levels in those Undergoing Sleep Study in a Tertiary Care Hospital",
+        "first_author": "Sharath",
+        "year": 2025,
+        "doi": "10.4103/ijem.ijem_838_25"
+      },
+      {
+        "title": "Prevalence of sleep disordered breathing in children with chronic kidney disease",
+        "first_author": "Kumar",
+        "year": 2025,
+        "pmid": "40214778",
+        "doi": "10.1007/s00467-025-06767-5"
+      },
+      {
+        "title": "Association of Comorbidities with Adverse Outcomes in Adults Hospitalized with Respiratory Syncytial Virus (RSV) Infection: A Retrospective Cohort Study from Switzerland (2022–2024)",
+        "first_author": "Joseph",
+        "year": 2025,
+        "pmid": "40872745",
+        "doi": "10.3390/v17081030"
+      },
+      {
+        "title": "Factors Associated With Blood Pressure in School-Age Children With Obstructive Sleep Apnea",
+        "first_author": "Phillips",
+        "year": 2025,
+        "pmid": "40411382",
+        "doi": "10.1177/01939459251340492"
+      },
+      {
+        "title": "Impact of Weight Status on Sleep Heart Rate Variability and Quality of Life in Children with Obstructive Sleep Apnea",
+        "first_author": "Lee",
+        "year": 2025,
+        "doi": "10.1159/000545968"
+      },
+      {
+        "title": "Relation between obesity and health disorders as revealed by the J-ORBIT clinical information collection system directly linked to electronic medical records (J-ORBIT 1)",
+        "first_author": "Nishikage",
+        "year": 2025,
+        "pmid": "40143709",
+        "doi": "10.1111/jdi.70021"
+      },
+      {
+        "title": "Parasympathetic Modulation is Correlated With Baroreflex Sensitivity and Orthostatic Pressor Response in Childhood",
+        "first_author": "El",
+        "year": 2025,
+        "pmid": "39976745",
+        "doi": "10.1093/ajh/hpaf025"
+      },
+      {
+        "title": "Sleep-disordered breathing and cardiometabolic and inflammatory markers in children with overweight/obesity: The role of cardiorespiratory fitness",
+        "first_author": "Torres-Lopez",
+        "year": 2025,
+        "pmid": "39835470",
+        "doi": "10.1111/ijpo.13207"
+      },
+      {
+        "title": "IMPACT OF CONTEXTUAL AND PHYSIOLOGIC FACTORS ON ADOLESCENT MULTIDIMENSIONAL SLEEP HEALTH FOR CARDIOMETABOLIC HEALTH",
+        "first_author": "Nyhuis",
+        "year": 2025,
+        "doi": "10.1093/sleep/zsaf090.1136"
+      },
+      {
+        "title": "IMPACT OF SLEEP APNEA, SHORT SLEEP, AND INSOMNIA SYMPTOMS ON BLOOD PRESSURE MATURATIONAL TRAJECTORIES",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2025,
+        "doi": "10.1093/sleep/zsaf090.1070"
+      },
+      {
+        "title": "Cardiometabolic Measures in Children Born to Mothers With Gestational Sleep-disordered Breathing: A Pilot Study",
+        "first_author": "Bourassa",
+        "year": 2025,
+        "doi": "10.1164/ajrccm.2025.211.Abstracts.A4432"
+      },
+      {
+        "title": "Assessing Cardiovascular Risk Through Hypoxic Burden in Children With Sleep Apnea: Results From the Kids-trial Study",
+        "first_author": "Mediano",
+        "year": 2025,
+        "doi": "10.1164/ajrccm.2025.211.Abstracts.A3153"
+      },
+      {
+        "title": "Pulmonary Comorbidities in Children and Young Adults With Single Ventricle Congenital Heart Disease Status Post Fontan Surgery",
+        "first_author": "Rashed",
+        "year": 2025,
+        "doi": "10.1164/ajrccm.2025.211.Abstracts.A4416"
+      },
+      {
+        "title": "Association between body roundness index and obstructive sleep apnea: a cross-sectional study from the NHANES (2005-2008 to 2015-2020)",
+        "first_author": "Qin",
+        "year": 2025,
+        "pmid": "40307762",
+        "doi": "10.1186/s12903-025-05957-9"
+      },
+      {
+        "title": "Sleep-disordered breathing in a multiethnic cohort of preterm adolescents and adults: assessment of neonatal and subsequent risk factors",
+        "first_author": "Sanchez-Solano",
+        "year": 2025,
+        "pmid": "39492576",
+        "doi": "10.5664/jcsm.11440"
+      },
+      {
+        "title": "Status of sleeping habits and its influence on growth and metabolism of children in Beijing: a population-based cross-sectional study",
+        "first_author": "Chen",
+        "year": 2025,
+        "pmid": "39910513",
+        "doi": "10.1186/s12889-025-21637-3"
+      },
+      {
+        "title": "Postnatal Growth Trajectories and Risk of Obstructive Sleep Apnea in Middle Age: A Cohort Study",
+        "first_author": "Suri",
+        "year": 2025,
+        "doi": "10.1002/ppul.27396"
+      },
+      {
+        "title": "Childhood Obstructive Sleep Apnea and Systemic Blood Pressure and Kidney Function: A Systematic Review and Meta-Analysis",
+        "first_author": "Rodriguez-Lopez",
+        "year": 2025,
+        "doi": "10.1155/ijhy/1945725"
+      },
+      {
+        "title": "12-month outcomes of GLP - 1 in severe pediatric obesity: real-world data",
+        "first_author": "Cominato",
+        "year": 2025,
+        "doi": "10.3389/fendo.2025.1663499"
+      },
+      {
+        "title": "Pulse transit time respiratory swing as a diagnostic test for obstructive sleep apnoea in children—An observational study",
+        "first_author": "Yanney",
+        "year": 2025,
+        "doi": "10.3389/fneur.2025.1632919"
+      },
+      {
+        "title": "Association between early life second-hand smoke exposure on child sleep and psychoactive substance use on adult sleep patterns in an urban informal settlement in Uganda",
+        "first_author": "Wafula",
+        "year": 2025,
+        "pmid": "39752375",
+        "doi": "10.1371/journal.pone.0312127"
+      },
+      {
+        "title": "Unique nature of sickle sell diastolic cardiomyopathy: A tailored echocardiographic definition to refine prognostic stratification in young adults",
+        "first_author": "Simon",
+        "year": 2025,
+        "doi": "10.1016/j.acvd.2024.10.040"
+      },
+      {
+        "title": "Obstructive sleep apnea, glycemic control, and cardiovascular risk in young adults with youth-onset type 2 diabetes: results from the TODAY study",
+        "first_author": "Katz",
+        "year": 2025,
+        "pmid": "40566988",
+        "doi": "10.5664/jcsm.11784"
+      },
+      {
+        "title": "Undetected and undiagnosed comorbidity in patients with obesity undergoing bariatric surgery—Results from the Berlin Bariatric Cohort study",
+        "first_author": "Pommer",
+        "year": 2024,
+        "pmid": "39054617",
+        "doi": "10.1111/cob.12695"
+      },
+      {
+        "title": "Exploring the Interplay of Gut Microbiota and Systemic Inflammation in Pediatric Obstructive Sleep Apnea Syndrome and Its Impact on Blood Pressure Status: A Cross-Sectional Study",
+        "first_author": "Huang",
+        "year": 2024,
+        "pmid": "39769109",
+        "doi": "10.3390/ijms252413344"
+      },
+      {
+        "title": "Unique Nature of Sickle Cell Diastolic Cardiomyopathy: A Tailored Echocardiographic Definition to Refine Prognostic Stratification in Young Adults",
+        "first_author": "D'Humieres",
+        "year": 2024,
+        "doi": "10.1182/blood-2024-208896"
+      },
+      {
+        "title": "Safety Assessment of Sedation Services in Radiology at Shaukat Khanum Memorial Cancer Hospital and Research Center, Peshawar",
+        "first_author": "Mansoor",
+        "year": 2024,
+        "doi": "10.12669/pjms.40.8.9326"
+      },
+      {
+        "title": "Positive Airway Pressure and Metabolic Markers in Children With Obstructive Sleep Apnea",
+        "first_author": "Gerdung",
+        "year": 2024,
+        "pmid": "38653555",
+        "doi": "10.4187/respcare.11679"
+      },
+      {
+        "title": "Glycaemic control and microvascular complications among paediatric type 2 diabetes mellitus patients in Hong Kong at 2 years after diagnosis",
+        "first_author": "Yam",
+        "year": 2024,
+        "pmid": "39147587",
+        "doi": "10.12809/hkmj2210552"
+      },
+      {
+        "title": "Associations of Obstructive Sleep Apnea Risk with Obesity, Body Composition and Metabolic Abnormalities in School-Aged Children and Adolescents",
+        "first_author": "Liao",
+        "year": 2024,
+        "pmid": "39125300",
+        "doi": "10.3390/nu16152419"
+      },
+      {
+        "title": "Exposures to particulate matters and childhood sleep disorders—A large study in three provinces in China",
+        "first_author": "Gui",
+        "year": 2024,
+        "pmid": "38917626",
+        "doi": "10.1016/j.envint.2024.108841"
+      },
+      {
+        "title": "INSOMNIA WITH SHORT SLEEP DURATION IS ASSOCIATED WITH HYPERTENSION AND ENDOTHELIAL DYSFUNCTION IN YOUNG ADULTS",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2024,
+        "doi": "10.1093/sleep/zsae067.0393"
+      },
+      {
+        "title": "INSOMNIA WITH SHORT SLEEP DURATION IS ASSOCIATED WITH HYPERTENSION AND ENDOTHELIALDYSFUNCTION IN YOUNG ADULTS",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2024,
+        "doi": "10.1093/sleep/zsae067.0393"
+      },
+      {
+        "title": "Renal artery stenting; fibromuscular dysplasia as a potential patho-aetiologic factor and transcatheter intervention in the paediatric population",
+        "first_author": "Shidhika",
+        "year": 2024,
+        "doi": "10.1017/S1047951124024478"
+      },
+      {
+        "title": "Prevalence of metabolically healthy obesity and healthy overweight and the associated factors in southern Iran: A population-based cross-sectional study",
+        "first_author": "Taherifard",
+        "year": 2024,
+        "doi": "10.1002/hsr2.1909"
+      },
+      {
+        "title": "Obstructive sleep related breathing disorders and cardiometabolic risk factors – A Portuguese birth cohort",
+        "first_author": "Costa",
+        "year": 2024,
+        "pmid": "38246393",
+        "doi": "10.1016/j.rmed.2024.107531"
+      },
+      {
+        "title": "Characterization of risk criteria for obstructive sleep apnea and its association with absenteeism among nursing staff: a cross-sectional study",
+        "first_author": "Sadeghniiat-Haghighi",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.898"
+      },
+      {
+        "title": "Prevalence of sleep disorders in children and adolescents with primary monosymptomatic enuresis",
+        "first_author": "Dutra",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.763"
+      },
+      {
+        "title": "The prevalence of Obstructive Sleep Apnea in Gestational Hypertension: a systematic review",
+        "first_author": "Cunha",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.1067"
+      },
+      {
+        "title": "Association between Sleep Apnoea-Specific Hypoxic Burden and blood pressure in children with OSA",
+        "first_author": "Au",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.729"
+      },
+      {
+        "title": "Screening for Obstructive Sleep Apnea and Associated Risk Factors in Adolescents and Adults With Isolated Robin Sequence",
+        "first_author": "Semensato",
+        "year": 2024,
+        "pmid": "36443934",
+        "doi": "10.1177/10556656221119078"
+      },
+      {
+        "title": "Breathing patterns during sleep and their relationship with FEV1 in pediatric patients with cystic fibrosis residing at high altitude",
+        "first_author": "Duenas-Meza",
+        "year": 2024,
+        "doi": "10.3389/fped.2024.1360227"
+      },
+      {
+        "title": "Making the Most of Familismo to Curb the Diabetes Epidemic: Early Evidence of Success Delivering the Same Intervention to Latinas at Risk for and With Diabetes",
+        "first_author": "Joachim-Célestin",
+        "year": 2024,
+        "doi": "10.1177/11795514241274696"
+      },
+      {
+        "title": "Associations of lamplight exposure during sleep and sleep duration with attention-deficit/hyperactivity disorder among preschool children in China",
+        "first_author": "Jiang",
+        "year": 2024,
+        "doi": "10.3389/fpsyt.2024.1489229"
+      },
+      {
+        "title": "Real-world evidence in achondroplasia: considerations for a standardized data set",
+        "first_author": "Alanay",
+        "year": 2023,
+        "pmid": "37365619",
+        "doi": "10.1186/s13023-023-02755-w"
+      },
+      {
+        "title": "Low incidence of pulmonary hypertension in children with suspected obstructive sleep apnea: A prospective observational study",
+        "first_author": "Omer",
+        "year": 2023,
+        "pmid": "37419069",
+        "doi": "10.1016/j.ijporl.2023.111648"
+      },
+      {
+        "title": "Neurogenic hypertension characterizes children with congenital central hypoventilation syndrome and is aggravated by alveolar hypoventilation during sleep",
+        "first_author": "Dudoignon",
+        "year": 2023,
+        "pmid": "37260279",
+        "doi": "10.1097/HJH.0000000000003475"
+      },
+      {
+        "title": "Obstructive sleep apnea and ambulatory blood pressure abnormalities in children with chronic kidney disease",
+        "first_author": "Kumar",
+        "year": 2023,
+        "pmid": "37141920",
+        "doi": "10.1097/MBP.0000000000000642"
+      },
+      {
+        "title": "Effect of Preoperative Weight Status and Disease Presentation on Postoperative Elevated Blood Pressure After Childhood Adenotonsillectomy",
+        "first_author": "Hsieh",
+        "year": 2023,
+        "pmid": "36939432",
+        "doi": "10.1002/ohn.184"
+      },
+      {
+        "title": "Obesity in children with narcolepsy: metabolic and endocrine comorbidities",
+        "first_author": "Arvis",
+        "year": 2023,
+        "pmid": "36433727",
+        "doi": "10.1093/sleep/zsac281"
+      },
+      {
+        "title": "Comparison of the postoperative in-hospital versus at-home recovery quality and circadian rhythm status in preschool kids after adenotonsillectomy: a cohort and observational study",
+        "first_author": "Qiu",
+        "year": 2023,
+        "doi": "10.21037/tp-23-138"
+      },
+      {
+        "title": "Surgery for rheumatic heart disease in the Northern Territory, Australia, 1997-2016: what have we gained?",
+        "first_author": "Doran",
+        "year": 2023,
+        "doi": "10.1136/bmjgh-2023-011763"
+      },
+      {
+        "title": "A Canadian, retrospective, multicenter experience with selexipag for a heterogeneous group of pediatric pulmonary hypertension patients",
+        "first_author": "Youssef",
+        "year": 2023,
+        "doi": "10.3389/fped.2023.1055158"
+      },
+      {
+        "title": "Physical and metabolic characteristics of adolescents with severe obesity referred for bariatric surgery; observational study from Abu Dhabi, United Arab Emirates",
+        "first_author": "Hassan-Beck",
+        "year": 2023,
+        "doi": "10.1159/000529083"
+      },
+      {
+        "title": "Pulmonary Hypertension in Children with Down Syndrome: Results from the Pediatric Pulmonary Hypertension Network Registry",
+        "first_author": "Hopper",
+        "year": 2023,
+        "pmid": "36027975",
+        "doi": "10.1016/j.jpeds.2022.08.027"
+      },
+      {
+        "title": "Impact of OSA treatment success on changes in hypertension and obesity: A retrospective cohort study",
+        "first_author": "Shanmugam",
+        "year": 2023,
+        "pmid": "36417809",
+        "doi": "10.1016/j.sleep.2022.10.023"
+      },
+      {
+        "title": "Association between self-reported snoring and metabolic-associated fatty liver disease: A cross-sectional analysis of the NHANES 2017–2018",
+        "first_author": "Wang",
+        "year": 2023,
+        "pmid": "36516525",
+        "doi": "10.1016/j.sleep.2022.11.029"
+      },
+      {
+        "title": "Clinical Outcomes Associated With Intranasal Dexmedetomidine Sedation in Children",
+        "first_author": "Tsze",
+        "year": 2023,
+        "pmid": "36810939",
+        "doi": "10.1542/hpeds.2022-007007"
+      },
+      {
+        "title": "Sleep-related breathing disorders and cardiometabolic risk factors in pediatric kidney transplant recipients",
+        "first_author": "Kuznetsova",
+        "year": 2022,
+        "pmid": "35869891",
+        "doi": "10.1111/petr.14355"
+      },
+      {
+        "title": "Prevalence of High Blood Pressure in Pediatric Patients with Sleep-Disordered Breathing, Reversibility after Treatment: The KIDS TRIAL Study Protocol",
+        "first_author": "Castillo-García",
+        "year": 2022,
+        "doi": "10.3390/children9121849"
+      },
+      {
+        "title": "Do COVID-19 pandemic-related behavior changes affect perioperative respiratory adverse events in children undergoing cardiac interventional catheterization?",
+        "first_author": "Ji",
+        "year": 2022,
+        "pmid": "36577959",
+        "doi": "10.1186/s12871-022-01951-8"
+      },
+      {
+        "title": "Magnetic Resonance Imaging to Assess Body Composition Change in Adolescents with Obesity after Sleeve Gastrectomy",
+        "first_author": "Berg",
+        "year": 2022,
+        "pmid": "36070531",
+        "doi": "10.1097/MPG.0000000000003607"
+      },
+      {
+        "title": "ISPAD Clinical Practice Consensus Guidelines 2022: Type 2 diabetes in children and adolescents",
+        "first_author": "Shah",
+        "year": 2022,
+        "pmid": "36161685",
+        "doi": "10.1111/pedi.13409"
+      },
+      {
+        "title": "Blood pressure and childhood obstructive sleep apnea: A systematic review and meta-analysis",
+        "first_author": "Ai",
+        "year": 2022,
+        "pmid": "36087456",
+        "doi": "10.1016/j.smrv.2022.101663"
+      },
+      {
+        "title": "Blood pressure variability in children with obesity and sleep-disordered breathing following positive airway pressure treatment",
+        "first_author": "Myette",
+        "year": 2022,
+        "pmid": "34785780",
+        "doi": "10.1038/s41390-021-01841-8"
+      },
+      {
+        "title": "Diet quality scores associated with improved cardiometabolic measures among African American adolescents",
+        "first_author": "Ducharme-Smith",
+        "year": 2022,
+        "pmid": "34916627",
+        "doi": "10.1038/s41390-021-01893-w"
+      },
+      {
+        "title": "DEVELOPMENT OF A NATIONAL FRAMEWORK FOR CLINICS TO TREAT COMPLICATIONS RELATED TO EXCESS WEIGHT (CEW)",
+        "first_author": "Stilwell",
+        "year": 2022,
+        "doi": "10.1136/archdischild-2022-rcpch.554"
+      },
+      {
+        "title": "Office Blood Pressure Monitoring in Children with Obesity and Obstructive Sleep Apnea",
+        "first_author": "Kang",
+        "year": 2022,
+        "pmid": "35314156",
+        "doi": "10.1016/j.jpeds.2022.03.024"
+      },
+      {
+        "title": "Assessment of preoperative and postoperative cardiac function in children with adenotonsillar hypertrophy: a prospective cohort study",
+        "first_author": "Sameema",
+        "year": 2022,
+        "pmid": "35022863",
+        "doi": "10.1007/s00405-022-07255-4"
+      },
+      {
+        "title": "Management of Pulmonary Arterial Hypertension in Pregnancy: Experience from a Nationally Accredited Center",
+        "first_author": "Vaidya",
+        "year": 2022,
+        "doi": "10.3390/jcdd9060195"
+      },
+      {
+        "title": "Prevalence of pulmonary hypertension on echocardiogram in children with severe obstructive sleep apnea",
+        "first_author": "Maloney",
+        "year": 2022,
+        "pmid": "35212261",
+        "doi": "10.5664/jcsm.9944"
+      },
+      {
+        "title": "Sleep-Disordered Breathing-Year in Review 2021",
+        "first_author": "Praud",
+        "year": 2022,
+        "doi": "10.1002/ppul.25961"
+      },
+      {
+        "title": "Impact of OSA Treatment Success on Changes in Hypertension and Obesity: A Retrospective Cohort Study",
+        "first_author": "Shanmugam",
+        "year": 2022,
+        "doi": "10.1101/2022.04.18.22273955"
+      },
+      {
+        "title": "Predicting perinatal outcomes with an obstructive sleep apnea screening tool",
+        "first_author": "Seybold",
+        "year": 2022,
+        "pmid": "34605296",
+        "doi": "10.1177/09691413211043911"
+      },
+      {
+        "title": "Effect of adding midazolam to intrathecal bupivacaine in children undergoing lower abdominal surgeries: A randomised controlled trial",
+        "first_author": "Shama",
+        "year": 2022,
+        "doi": "10.4103/ija.ija_466_21"
+      },
+      {
+        "title": "Sleep Regularity Modifies the Association of Visceral Adiposity with Elevated Blood Pressure in Adolescents",
+        "first_author": "Morales-Ghinaglia",
+        "year": 2022,
+        "doi": "10.1161/circ.145.suppl_1.MP56"
+      },
+      {
+        "title": "Pediatric obstructive sleep-disordered breathing is associated with arterial stiffness",
+        "first_author": "Rossi-Monteiro",
+        "year": 2022,
+        "pmid": "34557975",
+        "doi": "10.1007/s00431-021-04238-1"
+      },
+      {
+        "title": "Clinicobiochemical Analysis of Polycystic Ovary Syndrome and Metabolic Syndrome: Do They Go “Hand in Glove”?",
+        "first_author": "Mishra",
+        "year": 2022,
+        "doi": "10.5005/jp-journals-10006-2000"
+      },
+      {
+        "title": "Cardiovascular implications in adolescent and young adult hypertension",
+        "first_author": "Raina",
+        "year": 2022,
+        "doi": "10.31083/J.RCM2305166"
+      },
+      {
+        "title": "The prevalence of metabolic syndrome in first degree relatives of patients with obstructive sleep apnea syndrome: A case-control study",
+        "first_author": "Amra",
+        "year": 2022,
+        "doi": "10.4103/ijpvm.IJPVM_602_20"
+      },
+      {
+        "title": "Early Atherosclerotic Inflammatory Pathways in Children with Obstructive Sleep Apnea",
+        "first_author": "Smith",
+        "year": 2021,
+        "pmid": "34450122",
+        "doi": "10.1016/j.jpeds.2021.08.031"
+      },
+      {
+        "title": "Obstructive sleep apnea in a clinical population: Prevalence, predictive factors and clinical characteristics of patients referred to a sleep center in mongolia",
+        "first_author": "Dashzeveg",
+        "year": 2021,
+        "pmid": "34831784",
+        "doi": "10.3390/ijerph182212032"
+      },
+      {
+        "title": "Prevalence of elevated right ventricular pressure in children with obstructive sleep apnea syndrome undergoing pulmonary hypertension screening",
+        "first_author": "Bitners",
+        "year": 2021,
+        "pmid": "34027888",
+        "doi": "10.5664/jcsm.9412"
+      },
+      {
+        "title": "Association of pediatric obstructive sleep apnea with elevated blood pressure and orthostatic hypertension in adolescence",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2021,
+        "pmid": "34160576",
+        "doi": "10.1001/jamacardio.2021.2003"
+      },
+      {
+        "title": "Cardiovascular risks of children with primary snoring: A 5-year follow-up study",
+        "first_author": "Au",
+        "year": 2021,
+        "pmid": "34056796",
+        "doi": "10.1111/resp.14089"
+      },
+      {
+        "title": "Different associations between tonsil microbiome, chronic tonsillitis, and intermittent hypoxemia among obstructive sleep apnea children of different weight status: A pilot case-control study",
+        "first_author": "Chuang",
+        "year": 2021,
+        "doi": "10.3390/jpm11060486"
+      },
+      {
+        "title": "Childhood-onset obstructive sleep apnea is associated with increased risk of adolescent hypertension",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2021,
+        "doi": "10.1161/circ.143.suppl_1.MP63"
+      },
+      {
+        "title": "Association of Metabolic Syndrome With Prevalence of Obstructive Sleep Apnea and Remission After Sleeve Gastrectomy",
+        "first_author": "Chen",
+        "year": 2021,
+        "doi": "10.3389/fphys.2021.650260"
+      },
+      {
+        "title": "Potential associations of adult nocturia. Results from a national prevalence study",
+        "first_author": "Azuero",
+        "year": 2021,
+        "pmid": "33550620",
+        "doi": "10.1002/nau.24624"
+      },
+      {
+        "title": "Characteristics of pediatric inpatients with primary and secondary hypertension",
+        "first_author": "Chen",
+        "year": 2021,
+        "doi": "10.1002/ped4.12249"
+      },
+      {
+        "title": "Risk factors for postoperative bleeding after adenoidectomy",
+        "first_author": "Urík",
+        "year": 2021,
+        "doi": "10.3390/children8030242"
+      },
+      {
+        "title": "Obstructive sleep apnea in children with hypothalamic obesity: Evaluation of possible related factors",
+        "first_author": "Iyigun",
+        "year": 2020,
+        "pmid": "32986303",
+        "doi": "10.1002/ppul.25097"
+      },
+      {
+        "title": "Cross-sectional relationship among different anthropometric parameters and cardiometabolic risk factors in a cohort of patients with overweight or obesity",
+        "first_author": "Lampignano",
+        "year": 2020,
+        "pmid": "33152746",
+        "doi": "10.1371/journal.pone.0241841"
+      },
+      {
+        "title": "Association of Systemic Hypertension With Primary Open-angle Glaucoma: A Population-based Case-Control Study",
+        "first_author": "Kuang",
+        "year": 2020,
+        "pmid": "32360343",
+        "doi": "10.1016/j.ajo.2020.04.020"
+      },
+      {
+        "title": "Is gastric sleeve surgery an optimal therapy for weight reduction post renal transplantation?",
+        "first_author": "AlKindi",
+        "year": 2020,
+        "doi": "10.1097/01.tp.0000700952.70548.9a"
+      },
+      {
+        "title": "White coat hypertension stability in children and adolescents: pediatric nephrology research consortium study",
+        "first_author": "Miyashita",
+        "year": 2020,
+        "doi": "10.1161/hyp.76.suppl_1.5"
+      },
+      {
+        "title": "Prevalence of elevated right ventricular pressure in children with osa undergoing pulmonary hypertension screening",
+        "first_author": "Bitners",
+        "year": 2020,
+        "doi": "10.1177/0194599820934781"
+      },
+      {
+        "title": "Differences in anthropometric and clinical features among preschoolers, school-age children, and adolescents with obstructive sleep apnea—A hospital-based study in Taiwan",
+        "first_author": "Chuang",
+        "year": 2020,
+        "pmid": "32610444",
+        "doi": "10.3390/ijerph17134663"
+      },
+      {
+        "title": "Childhood OSA is an independent determinant of blood pressure in adulthood: Longitudinal follow-up study",
+        "first_author": "Chan",
+        "year": 2020,
+        "pmid": "32209641",
+        "doi": "10.1136/thoraxjnl-2019-213692"
+      },
+      {
+        "title": "The relationship of hypertension with obesity and obstructive sleep apnea in adolescents",
+        "first_author": "Khan",
+        "year": 2020,
+        "pmid": "32068974",
+        "doi": "10.1002/ppul.24693"
+      },
+      {
+        "title": "Cardiometabolic disorders are independently associated with excessive daytime sleepiness in young adults",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2020,
+        "doi": "10.1093/sleep/zsaa056.932"
+      },
+      {
+        "title": "Comparison of Short and Long-Term Outcomes of Metabolic and Bariatric Surgery in Adolescents and Adults",
+        "first_author": "Stanford",
+        "year": 2020,
+        "doi": "10.3389/fendo.2020.00157"
+      },
+      {
+        "title": "Increased Prevalence of Severe Obesity and Related Comorbidities among Patients Referred to a Pediatric Obesity Clinic during the Last Decade",
+        "first_author": "Avnieli",
+        "year": 2020,
+        "pmid": "31805573",
+        "doi": "10.1159/000504540"
+      },
+      {
+        "title": "Trajectory of ambulatory blood pressure after adenotonsillectomy in children with obstructive sleep apnea: comparison at three- and six-month follow-up",
+        "first_author": "Kang",
+        "year": 2020,
+        "pmid": "31751907",
+        "doi": "10.1016/j.sleep.2019.07.027"
+      },
+      {
+        "title": "The association of sleep disturbances with glycemia and obesity in youth at risk for or with recently diagnosed type 2 diabetes",
+        "first_author": "Mokhlesi",
+        "year": 2019,
+        "pmid": "31486162",
+        "doi": "10.1111/pedi.12917"
+      },
+      {
+        "title": "Cholinergic activity in children and adolescents with and without type 2 diabetes mellitus and their association with obstructive sleep apnea",
+        "first_author": "Sever",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.960"
+      },
+      {
+        "title": "Effects of sleep extension on daytime blood pressure in sleep-deprived adolescents",
+        "first_author": "Au",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.052"
+      },
+      {
+        "title": "Endothelial dysfunction in children with obstructive sleep apnea syndrome",
+        "first_author": "Zhifei",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.1237"
+      },
+      {
+        "title": "Development of an Interactive Outcome Estimation Tool for Laparoscopic Roux-en-Y Gastric Bypass in Mexico Based on a Cohort of 1002 Patients",
+        "first_author": "Velázquez-Fernández",
+        "year": 2019,
+        "pmid": "31104284",
+        "doi": "10.1007/s11695-019-03929-x"
+      },
+      {
+        "title": "38es JHTA: 12th International Meeting of the French Society of Hypertension",
+        "year": 2019,
+        "doi": "10.1016/j.acvdsp.2019.07.002"
+      },
+      {
+        "title": "The association of obstructive sleep apnea and left ventricular hypertrophy in obese and overweight children with history of elevated blood pressure",
+        "first_author": "Hanlon",
+        "year": 2019,
+        "pmid": "31222948",
+        "doi": "10.1111/jch.13605"
+      },
+      {
+        "title": "Global Longitudinal Strain is Diminished in Young Children with Obesity",
+        "first_author": "Paul",
+        "year": 2019,
+        "doi": "10.1016/j.echo.2019.04.414"
+      },
+      {
+        "title": "Effect of Adenotonsillectomy on Ambulatory Blood Pressure in Pediatric Obstructive Sleep Apnea: 6-Month Follow-up Study",
+        "first_author": "Kang",
+        "year": 2019,
+        "pmid": "30668275",
+        "doi": "10.1177/0194599818825462"
+      },
+      {
+        "title": "Waist-height ratio as an indicator of systemic alterations in obese paediatric patients",
+        "first_author": "Martínez",
+        "year": 2019,
+        "doi": "10.1097/MPG.0000000000002403"
+      },
+      {
+        "title": "Prevalence of sleep-disordered breathing among women working in the aged care services in Japan",
+        "first_author": "Suzuki",
+        "year": 2019,
+        "pmid": "30483875",
+        "doi": "10.1007/s00420-018-1381-9"
+      },
+      {
+        "title": "Effects of oxygen therapy in a pediatric normoxemic patient with pulmonary arterial hypertension and congenital heart disease",
+        "first_author": "Green",
+        "year": 2019,
+        "doi": "10.1177/2045894019845610"
+      },
+      {
+        "title": "Sleep characteristics and adverse social exposures elevate blood pressure in young Black females",
+        "first_author": "Scott",
+        "year": 2019,
+        "doi": "10.1161/circ.139.suppl_1.MP51"
+      },
+      {
+        "title": "Effect of Obstructive Sleep Apnea on Cardiovascular Function in Obese Youth",
+        "first_author": "Hui",
+        "year": 2019,
+        "pmid": "30420185",
+        "doi": "10.1016/j.amjcard.2018.09.038"
+      },
+      {
+        "title": "Sleep disordered breathing is a component of metabolic syndrome in adolescents and adults",
+        "first_author": "He",
+        "year": 2019,
+        "doi": "10.1161/circ.140.suppl_1.10855"
+      },
+      {
+        "title": "Association of childhood sleep apnea with adolescent hypertension: The penn state child cohort",
+        "first_author": "Bixler",
+        "year": 2019,
+        "doi": "10.1161/circ.140.suppl_1.10677"
+      },
+      {
+        "title": "Right atrial deformation mechanics in children with adenotonsillar hypertrophy",
+        "first_author": "Kang",
+        "year": 2018,
+        "doi": "10.4250/jcvi.2018.26.e26"
+      },
+      {
+        "title": "Physical activity as a moderator for obstructive sleep apnoea and cardiometabolic risk in the EPISONO study",
+        "first_author": "Mônico-Neto",
+        "year": 2018,
+        "pmid": "30093572",
+        "doi": "10.1183/13993003.01972-2017"
+      },
+      {
+        "title": "Effect of adenotonsillectomy on 24-hour ambulatory blood pressure in children with obstructive sleep apnea: Prospective 6-month follow-up study",
+        "first_author": "Hsu",
+        "year": 2018,
+        "doi": "10.1177/0194599818785627i"
+      },
+      {
+        "title": "Sleep apnea and heart failure with a reduced ejection fraction among persons living with human immunodeficiency virus",
+        "first_author": "Alvi",
+        "year": 2018,
+        "pmid": "29534158",
+        "doi": "10.1093/cid/ciy216"
+      },
+      {
+        "title": "Methylphenidate for attention deficit hyperactivity disorder (ADHD) in children and adolescents - assessment of adverse events in non-randomised studies",
+        "first_author": "Storebø",
+        "year": 2018,
+        "pmid": "29744873",
+        "doi": "10.1002/14651858.CD012069.pub2"
+      },
+      {
+        "title": "Association of adenotonsillectomy with blood pressure among hypertensive and nonhypertensive children with obstructive sleep apnea",
+        "first_author": "Lee",
+        "year": 2018,
+        "pmid": "29450504",
+        "doi": "10.1001/jamaoto.2017.3127"
+      },
+      {
+        "title": "Association between erythrocyte membrane phospholipid fatty acids and sleep disturbance in Chinese children and adolescents",
+        "first_author": "Tang",
+        "year": 2018,
+        "pmid": "29534525",
+        "doi": "10.3390/nu10030344"
+      },
+      {
+        "title": "Severe obstructive sleep apnea in children with elevated blood pressure",
+        "first_author": "Hinkle",
+        "year": 2018,
+        "doi": "10.1016/j.jash.2017.12.010"
+      },
+      {
+        "title": "Intragastric balloon as an adjunct to lifestyle programme in severely obese adolescents: Impact on biomedical outcomes and skeletal health",
+        "first_author": "Sachdev",
+        "year": 2018,
+        "pmid": "28871150",
+        "doi": "10.1038/ijo.2017.215"
+      },
+      {
+        "title": "Do children with hypertension and snoring have severe OSAS?",
+        "first_author": "Malakasioti",
+        "year": 2017,
+        "doi": "10.1007/s00467-017-3753-x"
+      },
+      {
+        "title": "Severe sleep obstructive apnea in children. can respiratory polygraphy estimate pulmonary pressure and right heart function?",
+        "first_author": "Sardon",
+        "year": 2017,
+        "doi": "10.1183/1393003.congress-2017.PA3336"
+      },
+      {
+        "title": "Should children with hypertension and snoring be referred for polysomnography?",
+        "first_author": "Alexopoulos",
+        "year": 2017,
+        "doi": "10.1183/1393003.congress-2017.OA1790"
+      },
+      {
+        "title": "Paediatric sleep apnoea syndrome and cardiovascular risk factors in the generation XXI cohort",
+        "first_author": "Azevedo",
+        "year": 2017,
+        "doi": "10.1183/1393003.congress-2017.OA1796"
+      },
+      {
+        "title": "Smoking, obstructive sleep apnea syndrome and their combined effects on metabolic parameters: Evidence from a large cross-sectional study",
+        "first_author": "Zhu",
+        "year": 2017,
+        "pmid": "28821856",
+        "doi": "10.1038/s41598-017-08930-x"
+      },
+      {
+        "title": "Pulmonary hypertension evaluation by Doppler echocardiogram in children and adolescents with mouth breathing syndrome",
+        "first_author": "Lima",
+        "year": 2017,
+        "pmid": "27388953",
+        "doi": "10.1016/j.bjorl.2016.03.020"
+      },
+      {
+        "title": "The clinical and radiological predictors of pulmonary hypertension in children with adenotonsillar hypertrophy",
+        "first_author": "Orji",
+        "year": 2017,
+        "pmid": "27430227",
+        "doi": "10.1007/s00405-016-4207-y"
+      },
+      {
+        "title": "Longitudinal cardiovascular outcomes of sleep disordered breathing in children: A meta-analysis and systematic review",
+        "first_author": "Ehsan",
+        "year": 2017,
+        "pmid": "28329042",
+        "doi": "10.1093/sleep/zsx015"
+      },
+      {
+        "title": "Obstructive sleep-disordered breathing, enuresis and combined disorders in children: Chance or related association?",
+        "first_author": "Zaffanello",
+        "year": 2017,
+        "pmid": "28165541",
+        "doi": "10.4414/smw.2017.14400"
+      },
+      {
+        "title": "Diurnal blood pressure and urine production in acute spinal cord injury compared with controls",
+        "first_author": "Goh",
+        "year": 2017,
+        "pmid": "27349605",
+        "doi": "10.1038/sc.2016.100"
+      },
+      {
+        "title": "The Benefit of Sleeve Gastrectomy in Obese Adolescents on Nonalcoholic Steatohepatitis and Hepatic Fibrosis",
+        "first_author": "Manco",
+        "year": 2017,
+        "pmid": "27697327",
+        "doi": "10.1016/j.jpeds.2016.08.101"
+      },
+      {
+        "title": "Insulin resistance and hypertension in obese youth with sleep-disordered breathing treated with positive airway pressure: A prospective multicenter study",
+        "first_author": "Katz",
+        "year": 2017,
+        "pmid": "28728620",
+        "doi": "10.5664/jcsm.6718"
+      },
+      {
+        "title": "Sleep and cardiometabolic risk in children and adolescents",
+        "first_author": "Quist",
+        "year": 2016,
+        "pmid": "26683701",
+        "doi": "10.1016/j.smrv.2015.09.001"
+      },
+      {
+        "title": "Childhood inflammation predicts sleep apnoea and blood pressure reactivity in adolescence: The Penn State Child Cohort",
+        "first_author": "Gaines",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Natural history of sleep-disordered breathing in childhood: Risk factors and association with clinical factors",
+        "first_author": "Bixler",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Sleep history and hypertension burden in first generation chinese migrants settled in the south of europe; the chinese in prato cross-sectional survey",
+        "first_author": "Modesti",
+        "year": 2016,
+        "doi": "10.1097/01.hjh.0000492010.69491.02"
+      },
+      {
+        "title": "Association of elevated preoperative blood pressure with preincision hypotension in pediatric surgical patients",
+        "first_author": "Stewart",
+        "year": 2016,
+        "pmid": "27291518",
+        "doi": "10.1111/pan.12945"
+      },
+      {
+        "title": "Adaptation to life in the high andes: Nocturnal oxyhemoglobin saturation in early development",
+        "first_author": "Hill",
+        "year": 2016,
+        "pmid": "26951394",
+        "doi": "10.5665/sleep.5740"
+      },
+      {
+        "title": "Nocturnal haemoglobin oxygen desaturation in urban and rural East African paediatric cohorts with and without sickle cell anaemia: A cross-sectional study",
+        "first_author": "L'Esperance",
+        "year": 2016,
+        "pmid": "26699539",
+        "doi": "10.1136/archdischild-2014-306468"
+      },
+      {
+        "title": "Sleep History and Hypertension Burden in First-Generation Chinese Migrants Settled in Italy: The CHIinese in Prato Cross-Sectional Survey",
+        "first_author": "Modesti",
+        "year": 2016,
+        "pmid": "27057856",
+        "doi": "10.1097/MD.0000000000003229"
+      },
+      {
+        "title": "Sleep characteristics and cardiovascular risk in children and adolescents: An enumerative review",
+        "first_author": "Matthews",
+        "year": 2016,
+        "pmid": "26459685",
+        "doi": "10.1016/j.sleep.2015.06.004"
+      },
+      {
+        "title": "Obstructive sleep apnea and hypertension in adolescents: Effect on neurobehavioral and cognitive functioning",
+        "first_author": "Madaeva",
+        "year": 2016,
+        "pmid": "27445534",
+        "doi": "10.1155/2016/3950914"
+      },
+      {
+        "title": "Effect of caffeine on preterm infants cerebral cortical activity: An observational study",
+        "first_author": "Hassanein",
+        "year": 2015,
+        "pmid": "25330842",
+        "doi": "10.3109/14767058.2014.978757"
+      },
+      {
+        "title": "Modified STOP-bang tool for stratifying obstructive sleep apnea risk in adolescent children",
+        "first_author": "Combs",
+        "year": 2015,
+        "pmid": "26581088",
+        "doi": "10.1371/journal.pone.0142242"
+      },
+      {
+        "title": "The interactive effects of nocturnal sleep and daytime naps in relation to serum C-reactive protein",
+        "first_author": "Mantua",
+        "year": 2015,
+        "pmid": "26429748",
+        "doi": "10.1016/j.sleep.2015.06.014"
+      },
+      {
+        "title": "Interrelationships between obesity, obstructive sleep apnea syndrome and cardiovascular risk in obese adolescents",
+        "first_author": "Koren",
+        "year": 2015,
+        "pmid": "25913504",
+        "doi": "10.1038/ijo.2015.67"
+      },
+      {
+        "title": "Increased Prevalence of Elevated Blood Pressures in HIV-Infected Children, Adolescents and Young Adults",
+        "first_author": "Chatterton-Kirchmeier",
+        "year": 2015,
+        "pmid": "25831423",
+        "doi": "10.1097/INF.0000000000000695"
+      },
+      {
+        "title": "Analysis of 24-hour ambulatory blood pressure monitoring in children with obstructive sleep apnea: A hospital-based study",
+        "first_author": "Kang",
+        "year": 2015,
+        "doi": "10.1097/MD.0000000000001568"
+      },
+      {
+        "title": "Update on bariatric surgery in adolescence",
+        "first_author": "Thakkar",
+        "year": 2015,
+        "pmid": "25944309",
+        "doi": "10.1097/MOP.0000000000000223"
+      },
+      {
+        "title": "Leukotriene production is increased in abdominal obesity",
+        "first_author": "Bäck",
+        "year": 2014,
+        "pmid": "25437865",
+        "doi": "10.1371/journal.pone.0104593"
+      },
+      {
+        "title": "A systematic review and meta-analysis of cohort studies of echocardiographic findings in OSA children after adenotonsilectomy",
+        "first_author": "Anna",
+        "year": 2014,
+        "pmid": "25108873",
+        "doi": "10.1016/j.ijporl.2014.07.021"
+      },
+      {
+        "title": "Long-term cardiovascular impairment in preschool-aged children with unresolved sleep disordered breathing",
+        "first_author": "Walter",
+        "year": 2014,
+        "doi": "10.1111/sbr.12082"
+      },
+      {
+        "title": "Should we be worried about paediatric central sleep apnoea?",
+        "first_author": "Horne",
+        "year": 2014,
+        "doi": "10.1111/sbr.12082"
+      },
+      {
+        "title": "Incident sleep-disordered breathing associated with cardiovascular risk factors: The Penn State Child Cohort",
+        "first_author": "Bixler",
+        "year": 2014,
+        "doi": "10.1111/jsr.12213"
+      },
+      {
+        "title": "Comparison of the effects of dexmedetomidine-ketamine and sevoflurane-sufentanil anesthesia in children with obstructive sleep apnea after uvulopalatopharyngoplasty: An observational study",
+        "first_author": "Cheng",
+        "year": 2014,
+        "doi": "10.4103/0970-9185.125699"
+      },
+      {
+        "title": "Young adults with spina bifida may have higher occurrence of prehypertension and hypertension.",
+        "first_author": "Stepanczuk",
+        "year": 2014,
+        "pmid": "24088776"
+      },
+      {
+        "title": "A 4-year prospective follow-up study of childhood OSA and its association with BP",
+        "first_author": "Li",
+        "year": 2014,
+        "pmid": "24384690",
+        "doi": "10.1378/chest.13-1333"
+      },
+      {
+        "title": "Sleep-disordered breathing in children with cardiomyopathy",
+        "first_author": "Al-Saleh",
+        "year": 2014,
+        "pmid": "24724923",
+        "doi": "10.1513/AnnalsATS.201309-325OC"
+      },
+      {
+        "title": "Serum leukotrienes, circulating neutrophils, and high sensitivity C-reactive protein in Chinese children with sleep-disordered breathing",
+        "first_author": "Shen",
+        "year": 2014,
+        "pmid": "24975656",
+        "doi": "10.1016/j.intimp.2014.05.029"
+      },
+      {
+        "title": "Metabolic alterations in children with obstructive sleep apnea",
+        "first_author": "Bhushan",
+        "year": 2014,
+        "pmid": "24656225",
+        "doi": "10.1016/j.ijporl.2014.02.028"
+      },
+      {
+        "title": "Are frequency and severity of sleep-disordered breathing in obese children and youth with and without type 2 diabetes mellitus different?",
+        "first_author": "Shalitin",
+        "year": 2014,
+        "pmid": "24682536",
+        "doi": "10.1007/s00592-014-0583-1"
+      },
+      {
+        "title": "Prevalence and associated factors of pulmonary hypertension in Kenyan children with adenoid or adenotonsillar hypertrophy",
+        "first_author": "Marangu",
+        "year": 2014,
+        "pmid": "24969347",
+        "doi": "10.1016/j.ijporl.2014.06.002"
+      },
+      {
+        "title": "The effect of childhood obstructive sleep apnea on ambulatory blood pressure is modulated by the distribution of respiratory events during rapid eye movement and nonrapid eye movement sleep",
+        "first_author": "Au",
+        "year": 2013,
+        "pmid": "24210606",
+        "doi": "10.1016/j.sleep.2013.09.017"
+      },
+      {
+        "title": "Impaired blood pressure control in children with obstructive sleep apnea",
+        "first_author": "Walter",
+        "year": 2013,
+        "pmid": "23768837",
+        "doi": "10.1016/j.sleep.2013.01.015"
+      },
+      {
+        "title": "Effects of obstructive sleep apnoea syndrome on cardiovascular function in a population of children with obesity",
+        "first_author": "Tocci",
+        "year": 2013,
+        "doi": "10.1007/s40292-013-0021-4"
+      },
+      {
+        "title": "Preschool children with obstructive sleep apnea: The beginnings of elevated blood pressure?",
+        "first_author": "Nisbet",
+        "year": 2013,
+        "pmid": "23904682",
+        "doi": "10.5665/sleep.2890"
+      },
+      {
+        "title": "Sleep apnea symptoms and risk of temporomandibular disorder: OPPERA cohort",
+        "first_author": "Sanders",
+        "year": 2013,
+        "pmid": "23690360",
+        "doi": "10.1177/0022034513488140"
+      },
+      {
+        "title": "Obesity, diet and physical activity: The reality of our teenagers",
+        "first_author": "Neves",
+        "year": 2013,
+        "doi": "10.1016/S0212-6567(13)70033-7"
+      },
+      {
+        "title": "Reversal of pulmonary hypertension in children after adenoidectomy or adenotonsillectomy",
+        "first_author": "Martha",
+        "year": 2013,
+        "pmid": "23245625",
+        "doi": "10.1016/j.ijporl.2012.11.006"
+      },
+      {
+        "title": "The \"7 steps multidisciplinary program\" approach to morbidly obese patients: An Italian Experience",
+        "first_author": "Rovera",
+        "year": 2012,
+        "doi": "10.2174/157340112803832219"
+      },
+      {
+        "title": "Children with obstructive sleep apnoea have significantly dampened baroreflex responses to changes in blood pressure",
+        "first_author": "Walter",
+        "year": 2012,
+        "doi": "10.1111/j.1479-8425.2012.00580.x"
+      },
+      {
+        "title": "Pulmonary arterial hypertension in pediatric patients with chronic lung disease: Insights from reveal",
+        "first_author": "Yung",
+        "year": 2012,
+        "doi": "10.1378/chest.1386299"
+      },
+      {
+        "title": "New diagnosis of hypertension in patients with obstructive sleep apnea syndrome",
+        "first_author": "Tamarit-Garcaa",
+        "year": 2012,
+        "doi": "10.1097/01.hjh.0000420100.95614.d2"
+      },
+      {
+        "title": "Effects of sleep patterns and obesity on increases in blood pressure in a 5-year period: Report from the Tucson children's assessment of sleep apnea study",
+        "first_author": "Archbold",
+        "year": 2012,
+        "pmid": "22284918",
+        "doi": "10.1016/j.jpeds.2011.12.034"
+      },
+      {
+        "title": "Pet ownership and factors associated with cardiovascular health: The coronary artery risk development in young adults (CARDIA) study",
+        "first_author": "Schreiner",
+        "year": 2012,
+        "doi": "10.1093/aje/kws258"
+      },
+      {
+        "title": "Sleep, blood pressure and obesity in 22389 New Zealanders",
+        "first_author": "Wilsmore",
+        "year": 2012,
+        "pmid": "22372985",
+        "doi": "10.1111/j.1445-5994.2012.02753.x"
+      },
+      {
+        "title": "Factors associated with undiagnosed obstructive sleep apnoea in hypertensive primary care patients.",
+        "first_author": "Broström",
+        "year": 2012,
+        "pmid": "22643156"
+      },
+      {
+        "title": "Pulmonary arterial hypertension (PAH) with chronic lung disease (CLD): Insights from reveal",
+        "first_author": "Yung",
+        "year": 2012,
+        "doi": "10.1016/j.healun.2012.01.841"
+      },
+      {
+        "title": "Early cardiac abnormalities and increased C-reactive protein levels in a cohort of children with sleep disordered breathing",
+        "first_author": "Villa",
+        "year": 2012,
+        "pmid": "21210231",
+        "doi": "10.1007/s11325-010-0462-0"
+      },
+      {
+        "title": "Adenotonsillar hypertrophy: Correlation between obstruction types and cardiopulmonary complications",
+        "first_author": "Tatlipinar",
+        "year": 2012,
+        "pmid": "22252904",
+        "doi": "10.1002/lary.22508"
+      },
+      {
+        "title": "Cardiac mechanics in obese children: 2D speckle strain imaging study",
+        "first_author": "Labombarda",
+        "year": 2011,
+        "doi": "10.1093/ejechocard/jer216"
+      },
+      {
+        "title": "Snoring is not associated with adverse effects on blood pressure, arterial structure or function in 8-year-old children: The Childhood Asthma Prevention Study (CAPS)",
+        "first_author": "Marshall",
+        "year": 2011,
+        "pmid": "21535282",
+        "doi": "10.1111/j.1440-1754.2011.02014.x"
+      },
+      {
+        "title": "Sleep disordered breathing in children with ambulatory blood pressure monitoring and renin angiotensin system evaluation",
+        "first_author": "Bolte",
+        "year": 2010,
+        "doi": "10.1007/s00467-010-1577-z"
+      },
+      {
+        "title": "Association of sleep disordered breathing and nocturnal hypoxia with tricuspid regurgitant jet velocity in children with sickle cell disease",
+        "first_author": "Kirn",
+        "year": 2010,
+        "doi": "10.1002/ajh.21763"
+      },
+      {
+        "title": "Etiology analysis of 628 patients with refractory hypertension",
+        "first_author": "Wang",
+        "year": 2010,
+        "doi": "10.1161/CIRCULATIONAHA.110.192774"
+      },
+      {
+        "title": "Prenatal and perinatal complications: Is it the link between race and SES and childhood sleep disordered breathing?",
+        "first_author": "Calhoun",
+        "year": 2010,
+        "pmid": "20572420",
+        "doi": "10.5664/jcsm.27824"
+      },
+      {
+        "title": "Arterial alterations in severely obese children with obstructive sleep apnoea",
+        "first_author": "Dubern",
+        "year": 2010,
+        "pmid": "20210676",
+        "doi": "10.3109/17477160903473705"
+      },
+      {
+        "title": "Ambulatory blood pressure before and after adenotonsillectomy in children with obstructive sleep apnea",
+        "first_author": "Ng",
+        "year": 2010,
+        "pmid": "20605109",
+        "doi": "10.1016/j.sleep.2009.10.007"
+      },
+      {
+        "title": "Determinants of blood pressure and heart rate in children with sleep disordered breathing",
+        "first_author": "O'driscoll",
+        "year": 2009,
+        "doi": "10.1111/j.1479-8425.2009.00410-2.x"
+      },
+      {
+        "title": "Blood Pressure is Elevated in Children with Primary Snoring",
+        "first_author": "Li",
+        "year": 2009,
+        "pmid": "19540515",
+        "doi": "10.1016/j.jpeds.2009.03.041"
+      },
+      {
+        "title": "Tonsil size as a predictor of cardiac complications in children with sleep-disordered breathing",
+        "first_author": "Granzotto",
+        "year": 2010,
+        "pmid": "20513046",
+        "doi": "10.1002/lary.20870"
+      },
+      {
+        "title": "Longitudinal follow up of elevated pulmonary artery pressures in children with sickle cell disease",
+        "first_author": "Pashankar",
+        "year": 2009,
+        "pmid": "19055665",
+        "doi": "10.1111/j.1365-2141.2008.07501.x"
+      },
+      {
+        "title": "The Penn State Child Cohort: Diagnostic Criteria and Possible Etiologic Factors of Sleep Apnea Based on Objective Clinical Outcomes",
+        "first_author": "Bixler",
+        "year": 2009,
+        "doi": "10.1016/j.jsmc.2009.01.002"
+      },
+      {
+        "title": "Sleep Quality and Elevated Blood Pressure in Adolescents",
+        "first_author": "Javaheri",
+        "year": 2008,
+        "pmid": "18711015",
+        "doi": "10.1161/CIRCULATIONAHA.108.766410"
+      },
+      {
+        "title": "Sleep-disordered breathing and blood pressure in children: A meta-analysis",
+        "first_author": "Zintzaras",
+        "year": 2007,
+        "pmid": "17283303",
+        "doi": "10.1001/archpedi.161.2.172"
+      },
+      {
+        "title": "Increasing body mass index z-score is continuously associated with complications of overweight in children, even in the healthy weight range",
+        "first_author": "Bell",
+        "year": 2007,
+        "pmid": "17105842",
+        "doi": "10.1210/jc.2006-1714"
+      },
+      {
+        "title": "Structural cardiac changes as a predictor of respiratory complications after adenotonsillectomy for obstructive breathing during sleep in children",
+        "first_author": "Kalra",
+        "year": 2005,
+        "pmid": "15854854",
+        "doi": "10.1016/j.sleep.2004.10.004"
+      },
+      {
+        "title": "Predictors of longitudinal change in sleep-disordered breathing in a nonclinic population",
+        "first_author": "Redline",
+        "year": 2003,
+        "pmid": "14572123",
+        "doi": "10.1093/sleep/26.6.703"
+      },
+      {
+        "title": "Blood pressure elevation associated with sleep-related breathing disorder in a community sample of white and hispanic children: The Tucson children's assessment of sleep apnea study",
+        "first_author": "Enright",
+        "year": 2003,
+        "pmid": "12963596",
+        "doi": "10.1001/archpedi.157.9.901"
+      },
+      {
+        "title": "American Society of Anesthesiology Classification May Predict Severe Post-Tonsillectomy Haemorrhage in Children",
+        "first_author": "Castellano",
+        "year": 2003,
+        "pmid": "14974860",
+        "doi": "10.2310/7070.2003.11420"
+      },
+      {
+        "title": "Obesity hypertension in children: A problem of epidemic proportions",
+        "first_author": "Sorof",
+        "year": 2002,
+        "pmid": "12364344",
+        "doi": "10.1161/01.HYP.0000032940.33466.12"
+      },
+      {
+        "title": "Epidemiology of obstructive sleep apnea syndrome",
+        "first_author": "Partinen",
+        "year": 1992,
+        "pmid": "1470800",
+        "doi": "10.1093/sleep/15.suppl_6.s1"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

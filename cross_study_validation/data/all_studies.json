@@ -1,11 +1,734 @@
 {
-  "collection_timestamp": "2026-01-23T09:49:59.336476Z",
-  "num_studies": 3,
+  "collection_timestamp": "2026-04-09T07:37:46.495550Z",
+  "num_studies": 10,
   "studies": {
+    "Lehner_2022": {
+      "study_id": "Lehner_2022",
+      "schema_version": "1.0",
+      "collection_timestamp": "2026-04-09T07:37:46.112261Z",
+      "metadata": {
+        "domain": "sleep medicine",
+        "databases": [
+          "pubmed",
+          "scopus",
+          "wos",
+          "embase"
+        ],
+        "num_queries": 12,
+        "has_embase": true,
+        "gold_size": 20
+      },
+      "gold_standard": {
+        "pmids": [
+          "12131930",
+          "27400071",
+          "32320932",
+          "24462228",
+          "15660775",
+          "29031745",
+          "17275662",
+          "25643767",
+          "26847987",
+          "29161907",
+          "23103316",
+          "28704743",
+          "1547761",
+          "20653454",
+          "26078488",
+          "22366052",
+          "16352471",
+          "27344501",
+          "28012415",
+          "25637104"
+        ],
+        "count": 20
+      },
+      "aggregation_strategies": [
+        {
+          "name": "precision_gated_union",
+          "recall": 0.4545454545454545,
+          "precision": 0.2127659574468085,
+          "f1": 0.289855072463768,
+          "jaccard": 0.1694915254237288,
+          "overlap_coeff": 0.4545454545454545,
+          "retrieved_count": 47,
+          "true_positives": 10,
+          "false_negatives": 12
+        },
+        {
+          "name": "time_stratified_hybrid",
+          "recall": 0.4545454545454545,
+          "precision": 0.2127659574468085,
+          "f1": 0.289855072463768,
+          "jaccard": 0.1694915254237288,
+          "overlap_coeff": 0.4545454545454545,
+          "retrieved_count": 47,
+          "true_positives": 10,
+          "false_negatives": 12
+        },
+        {
+          "name": "two_stage_screen",
+          "recall": 0.4545454545454545,
+          "precision": 0.2127659574468085,
+          "f1": 0.289855072463768,
+          "jaccard": 0.1694915254237288,
+          "overlap_coeff": 0.4545454545454545,
+          "retrieved_count": 47,
+          "true_positives": 10,
+          "false_negatives": 12
+        },
+        {
+          "name": "weighted_vote",
+          "recall": 0.4545454545454545,
+          "precision": 0.2127659574468085,
+          "f1": 0.289855072463768,
+          "jaccard": 0.1694915254237288,
+          "overlap_coeff": 0.4545454545454545,
+          "retrieved_count": 47,
+          "true_positives": 10,
+          "false_negatives": 12
+        },
+        {
+          "name": "consensus_k2",
+          "recall": 0.0909090909090909,
+          "precision": 0.2857142857142857,
+          "f1": 0.1379310344827586,
+          "jaccard": 0.074074074074074,
+          "overlap_coeff": 0.2857142857142857,
+          "retrieved_count": 7,
+          "true_positives": 2,
+          "false_negatives": 20
+        }
+      ],
+      "source_files": {
+        "aggregates_csv": "aggregates_eval/Lehner_2022/sets_summary_20260407-121323.csv",
+        "gold_standard_csv": "studies/Lehner_2022/gold_pmids_Lehner_2022.csv",
+        "benchmark_csv": "benchmark_outputs/Lehner_2022/summary_20260407-121322.csv"
+      },
+      "query_performance": [
+        {
+          "query_text": "(\"Epilepsy, Generalized\"[Mesh] OR \"genetic generalized epilepsy\"[tiab] OR \"genetic generalised epilepsy\"[tiab] OR \"idiopathic generalized epilepsy\"[tiab] OR \"idiopathic generalised epilepsy\"[tiab] OR \"juvenile myoclonic epilepsy\"[tiab] OR \"childhood absence epilepsy\"[tiab] OR \"juvenile absence epilepsy\"[tiab] OR \"generalized tonic-clonic seizures alone\"[tiab] OR \"generalised tonic-clonic seizures alone\"[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Quality\"[Mesh] OR sleep[tiab] OR \"sleep quality\"[tiab] OR \"sleep architecture\"[tiab] OR \"sleep macrostructure\"[tiab] OR \"sleep microstructure\"[tiab] OR \"sleep questionnaire\"[tiab] OR \"sleep questionnaires\"[tiab] OR \"sleep disorder\"[tiab] OR \"sleep disorders\"[tiab])",
+          "results_count": 6063,
+          "true_positives": 21,
+          "recall": 0.9545454545454546,
+          "nnr_proxy": 288.7142857142857
+        },
+        {
+          "query_text": "(\"Epilepsy, Generalized\"[Mesh] OR \"genetic generalized epilepsy\"[tiab] OR \"genetic generalised epilepsy\"[tiab] OR \"idiopathic generalized epilepsy\"[tiab] OR \"idiopathic generalised epilepsy\"[tiab] OR \"juvenile myoclonic epilepsy\"[tiab] OR \"childhood absence epilepsy\"[tiab] OR \"juvenile absence epilepsy\"[tiab] OR \"generalized tonic-clonic seizures alone\"[tiab] OR \"generalised tonic-clonic seizures alone\"[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Quality\"[Mesh] OR \"sleep quality\"[tiab] OR \"sleep architecture\"[tiab] OR \"sleep macrostructure\"[tiab] OR \"sleep microstructure\"[tiab] OR \"sleep questionnaire\"[tiab] OR \"sleep questionnaires\"[tiab] OR \"sleep disorder\"[tiab] OR \"sleep disorders\"[tiab]) AND (\"Cohort Studies\"[Mesh] OR \"Cross-Sectional Studies\"[Mesh] OR cohort[tiab] OR \"cross-sectional\"[tiab] OR observational[tiab])",
+          "results_count": 662,
+          "true_positives": 13,
+          "recall": 0.5909090909090909,
+          "nnr_proxy": 50.92307692307692
+        },
+        {
+          "query_text": "((\"Epilepsy, Generalized\"[Majr] OR \"genetic generalized epilepsy\"[ti] OR \"genetic generalised epilepsy\"[ti] OR \"idiopathic generalized epilepsy\"[ti] OR \"idiopathic generalised epilepsy\"[ti] OR \"juvenile myoclonic epilepsy\"[ti] OR \"childhood absence epilepsy\"[ti] OR \"juvenile absence epilepsy\"[ti]) AND (\"Sleep\"[Majr] OR \"Sleep Quality\"[Mesh] OR \"sleep quality\"[ti] OR \"sleep architecture\"[ti] OR \"sleep macrostructure\"[tiab] OR \"sleep microstructure\"[tiab] OR \"sleep disorder\"[tiab] OR \"sleep disorders\"[tiab]) AND (\"Cohort Studies\"[Mesh] OR \"Cross-Sectional Studies\"[Mesh] OR cohort[tiab] OR \"cross-sectional\"[tiab] OR observational[tiab]) AND (\"Child\"[Mesh] OR \"Adolescent\"[Mesh] OR \"Young Adult\"[Mesh] OR child*[tiab] OR adolescen*[tiab] OR \"young adult\"[tiab] OR \"young adults\"[tiab] OR pediatric*[tiab] OR paediatric*[tiab]))",
+          "results_count": 30,
+          "true_positives": 7,
+          "recall": 0.3181818181818182,
+          "nnr_proxy": 4.285714285714286
+        },
+        {
+          "query_text": "((\"genetic generalized epilepsy\"[ti] OR \"genetic generalised epilepsy\"[ti] OR \"idiopathic generalized epilepsy\"[ti] OR \"idiopathic generalised epilepsy\"[ti] OR \"juvenile myoclonic epilepsy\"[ti] OR \"childhood absence epilepsy\"[ti] OR \"juvenile absence epilepsy\"[ti] OR \"generalized tonic-clonic seizures alone\"[ti] OR \"generalised tonic-clonic seizures alone\"[ti] OR \"Epilepsy, Generalized\"[Majr]) AND (sleep[ti] OR \"sleep quality\"[ti] OR \"sleep architecture\"[ti] OR \"sleep disorder\"[ti] OR \"sleep disorders\"[ti]) AND (\"Cohort Studies\"[Mesh] OR \"Cross-Sectional Studies\"[Mesh] OR cohort[tiab] OR \"cross-sectional\"[tiab] OR observational[tiab]))",
+          "results_count": 46,
+          "true_positives": 7,
+          "recall": 0.3181818181818182,
+          "nnr_proxy": 6.571428571428571
+        },
+        {
+          "query_text": "((\"Epilepsy, Generalized\"[Mesh] OR \"genetic generalized epilepsy\"[tiab] OR \"genetic generalised epilepsy\"[tiab] OR \"idiopathic generalized epilepsy\"[tiab] OR \"idiopathic generalised epilepsy\"[tiab] OR \"juvenile myoclonic epilepsy\"[tiab] OR \"childhood absence epilepsy\"[tiab] OR \"juvenile absence epilepsy\"[tiab] OR \"generalized tonic-clonic seizures alone\"[tiab] OR \"generalised tonic-clonic seizures alone\"[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Quality\"[Mesh] OR \"sleep quality\"[tiab] OR \"sleep architecture\"[tiab] OR \"sleep macrostructure\"[tiab] OR \"sleep microstructure\"[tiab] OR \"sleep questionnaire\"[tiab] OR \"sleep questionnaires\"[tiab] OR \"sleep disorder\"[tiab] OR \"sleep disorders\"[tiab]) AND (\"Cohort Studies\"[Mesh] OR \"Cross-Sectional Studies\"[Mesh] OR cohort[tiab] OR \"cross-sectional\"[tiab] OR observational[tiab]) AND (\"Child\"[Mesh] OR \"Adolescent\"[Mesh] OR \"Young Adult\"[Mesh] OR child*[tiab] OR adolescen*[tiab] OR \"young adult\"[tiab] OR \"young adults\"[tiab] OR pediatric*[tiab] OR paediatric*[tiab]) AND humans[Filter])",
+          "results_count": 463,
+          "true_positives": 12,
+          "recall": 0.5454545454545454,
+          "nnr_proxy": 38.583333333333336
+        },
+        {
+          "query_text": "((\"Epilepsy, Generalized\"[Mesh:NoExp] OR \"genetic generalized epilepsy\"[ti] OR \"genetic generalised epilepsy\"[ti] OR \"idiopathic generalized epilepsy\"[ti] OR \"idiopathic generalised epilepsy\"[ti] OR \"juvenile myoclonic epilepsy\"[ti]) AND (\"Sleep\"[Majr] OR \"Sleep Quality\"[Mesh] OR \"sleep quality\"[ti] OR \"sleep architecture\"[ti] OR \"sleep disorder\"[ti] OR \"sleep disorders\"[ti]) AND (\"Cohort Studies\"[Mesh] OR \"Cross-Sectional Studies\"[Mesh] OR cohort[tiab] OR \"cross-sectional\"[tiab] OR observational[tiab]))",
+          "results_count": 47,
+          "true_positives": 10,
+          "recall": 0.4545454545454545,
+          "nnr_proxy": 4.7
+        }
+      ]
+    },
+    "Riedy_2021": {
+      "study_id": "Riedy_2021",
+      "schema_version": "1.0",
+      "collection_timestamp": "2026-04-09T07:37:46.155404Z",
+      "metadata": {
+        "domain": "sleep medicine",
+        "databases": [
+          "pubmed",
+          "scopus",
+          "wos",
+          "embase"
+        ],
+        "num_queries": 12,
+        "has_embase": true,
+        "date_range": {
+          "start": "0001-01-01",
+          "end": "2019-02-28"
+        },
+        "gold_size": 24
+      },
+      "gold_standard": {
+        "pmids": [
+          "5119985",
+          "4706072",
+          "27354974",
+          "27566502",
+          "18400669",
+          "17114145",
+          "2045483",
+          "21243655",
+          "20043248",
+          "4330831",
+          "8974191",
+          "7567395",
+          "4336955",
+          "28618052",
+          "2405784",
+          "16139772",
+          "3413207",
+          "1694482",
+          "8524969",
+          "7987267",
+          "1307884",
+          "4137259",
+          "3372968",
+          "22726808"
+        ],
+        "count": 24
+      },
+      "aggregation_strategies": [
+        {
+          "name": "consensus_k2",
+          "recall": 0.5,
+          "precision": 0.0416666666666666,
+          "f1": 0.0769230769230769,
+          "jaccard": 0.04,
+          "overlap_coeff": 0.5,
+          "retrieved_count": 384,
+          "true_positives": 16,
+          "false_negatives": 16
+        },
+        {
+          "name": "precision_gated_union",
+          "recall": 0.75,
+          "precision": 0.0107913669064748,
+          "f1": 0.0212765957446808,
+          "jaccard": 0.010752688172043,
+          "overlap_coeff": 0.75,
+          "retrieved_count": 2224,
+          "true_positives": 24,
+          "false_negatives": 8
+        },
+        {
+          "name": "time_stratified_hybrid",
+          "recall": 0.75,
+          "precision": 0.0107913669064748,
+          "f1": 0.0212765957446808,
+          "jaccard": 0.010752688172043,
+          "overlap_coeff": 0.75,
+          "retrieved_count": 2224,
+          "true_positives": 24,
+          "false_negatives": 8
+        },
+        {
+          "name": "two_stage_screen",
+          "recall": 0.75,
+          "precision": 0.0107913669064748,
+          "f1": 0.0212765957446808,
+          "jaccard": 0.010752688172043,
+          "overlap_coeff": 0.75,
+          "retrieved_count": 2224,
+          "true_positives": 24,
+          "false_negatives": 8
+        },
+        {
+          "name": "weighted_vote",
+          "recall": 0.75,
+          "precision": 0.0107913669064748,
+          "f1": 0.0212765957446808,
+          "jaccard": 0.010752688172043,
+          "overlap_coeff": 0.75,
+          "retrieved_count": 2224,
+          "true_positives": 24,
+          "false_negatives": 8
+        }
+      ],
+      "source_files": {
+        "aggregates_csv": "aggregates_eval/Riedy_2021/sets_summary_20260408-101433.csv",
+        "gold_standard_csv": "studies/Riedy_2021/gold_pmids_Riedy_2021.csv",
+        "benchmark_csv": "benchmark_outputs/Riedy_2021/summary_20260408-101432.csv"
+      },
+      "query_performance": [
+        {
+          "query_text": "((\"Noise\"[Mesh] OR \"white noise\"[tiab] OR \"pink noise\"[tiab] OR \"broadband noise\"[tiab] OR \"broad band noise\"[tiab] OR \"masking noise\"[tiab] OR \"acoustic noise\"[tiab] OR \"continuous noise\"[tiab] OR \"continuous broadband acoustic noise\"[tiab] OR \"noise machine*\"[tiab] OR \"sound machine*\"[tiab] OR \"sleep sound*\"[tiab] OR \"natural sound*\"[tiab] OR \"nature sound*\"[tiab] OR \"ocean wave*\"[tiab] OR rainfall[tiab] OR waterfall*[tiab] OR \"flowing water\"[tiab] OR \"water sound*\"[tiab] OR \"broadband acoustic noise\"[tiab]) AND (\"Sleep\"[Mesh] OR \"Wakefulness\"[Mesh] OR \"Sleep Initiation and Maintenance Disorders\"[Mesh] OR \"Sleep Stages\"[Mesh] OR sleep[tiab] OR \"sleep onset\"[tiab] OR \"sleep onset latency\"[tiab] OR \"sleep latency\"[tiab] OR \"sleep continuity\"[tiab] OR \"sleep quality\"[tiab] OR \"sleep efficiency\"[tiab] OR \"total sleep time\"[tiab] OR \"wakefulness after sleep onset\"[tiab] OR WASO[tiab] OR wakefulness[tiab] OR awakening*[tiab] OR arousal*[tiab] OR \"sleep fragmentation\"[tiab] OR \"sleep architecture\"[tiab] OR \"sleep maintenance\"[tiab])) AND (\"0001/01/01\"[Date - Publication] : \"2019/02/28\"[Date - Publication])",
+          "results_count": 4550,
+          "true_positives": 28,
+          "recall": 0.7368421052631579,
+          "nnr_proxy": 162.5
+        },
+        {
+          "query_text": "((\"Noise\"[Mesh] OR \"white noise\"[tiab] OR \"pink noise\"[tiab] OR \"broadband noise\"[tiab] OR \"masking noise\"[tiab] OR \"acoustic noise\"[tiab] OR \"continuous noise\"[tiab] OR \"noise machine*\"[tiab] OR \"sound machine*\"[tiab] OR \"natural sound*\"[tiab] OR \"broadband acoustic noise\"[tiab]) AND (\"Sleep\"[Mesh] OR \"Wakefulness\"[Mesh] OR \"Sleep Initiation and Maintenance Disorders\"[Mesh] OR \"sleep onset latency\"[tiab] OR \"sleep latency\"[tiab] OR \"sleep continuity\"[tiab] OR \"sleep quality\"[tiab] OR \"sleep efficiency\"[tiab] OR \"total sleep time\"[tiab] OR \"wakefulness after sleep onset\"[tiab] OR WASO[tiab] OR wakefulness[tiab] OR awakening*[tiab] OR arousal*[tiab] OR \"sleep fragmentation\"[tiab] OR \"sleep architecture\"[tiab])) AND humans[Filter] AND (\"0001/01/01\"[Date - Publication] : \"2019/02/28\"[Date - Publication])",
+          "results_count": 3734,
+          "true_positives": 28,
+          "recall": 0.7368421052631579,
+          "nnr_proxy": 133.35714285714286
+        },
+        {
+          "query_text": "((((\"Noise\"[Majr] OR \"white noise\"[ti] OR \"pink noise\"[ti] OR \"broadband noise\"[ti] OR \"masking noise\"[ti] OR \"noise machine\"[ti] OR \"sound machine\"[ti] OR \"acoustic noise\"[ti] OR \"continuous noise\"[ti]) AND (\"Sleep\"[Majr] OR \"Wakefulness\"[Majr] OR \"sleep onset latency\"[ti] OR \"sleep latency\"[ti] OR \"sleep quality\"[ti] OR \"sleep efficiency\"[ti] OR \"wakefulness after sleep onset\"[ti] OR \"sleep continuity\"[ti] OR \"sleep fragmentation\"[ti] OR \"sleep architecture\"[ti])) AND humans[Filter] AND english[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])) AND (\"0001/01/01\"[Date - Publication] : \"2019/02/28\"[Date - Publication])",
+          "results_count": 257,
+          "true_positives": 11,
+          "recall": 0.2894736842105263,
+          "nnr_proxy": 23.363636363636363
+        },
+        {
+          "query_text": "((\"white noise\"[ti] OR \"pink noise\"[ti] OR \"broadband noise\"[ti] OR \"masking noise\"[ti] OR \"noise machine\"[ti] OR \"sound machine\"[ti] OR \"acoustic noise\"[ti] OR \"continuous noise\"[ti]) AND (sleep[ti] OR \"sleep onset\"[ti] OR \"sleep latency\"[ti] OR \"sleep quality\"[ti] OR \"sleep efficiency\"[ti] OR wakefulness[ti] OR WASO[ti] OR \"sleep fragmentation\"[ti] OR \"sleep continuity\"[ti])) AND (\"0001/01/01\"[Date - Publication] : \"2019/02/28\"[Date - Publication])",
+          "results_count": 48,
+          "true_positives": 10,
+          "recall": 0.2631578947368421,
+          "nnr_proxy": 4.8
+        },
+        {
+          "query_text": "(((\"white noise\"[ti] OR \"pink noise\"[ti] OR \"broadband noise\"[ti] OR \"masking noise\"[ti] OR \"noise machine\"[ti] OR \"sound machine\"[ti] OR \"acoustic noise\"[ti] OR \"continuous noise\"[ti]) AND (\"Sleep\"[Mesh] OR \"Wakefulness\"[Mesh] OR \"sleep onset latency\"[tiab] OR \"sleep latency\"[tiab] OR \"sleep quality\"[tiab] OR \"sleep efficiency\"[tiab] OR \"wakefulness after sleep onset\"[tiab] OR WASO[tiab] OR \"sleep continuity\"[tiab] OR \"sleep fragmentation\"[tiab])) AND humans[Filter] AND english[Filter]) AND (\"0001/01/01\"[Date - Publication] : \"2019/02/28\"[Date - Publication])",
+          "results_count": 67,
+          "true_positives": 13,
+          "recall": 0.3421052631578947,
+          "nnr_proxy": 5.153846153846154
+        },
+        {
+          "query_text": "(((\"Noise\"[Majr] OR \"white noise\"[ti] OR \"pink noise\"[ti] OR \"broadband noise\"[ti] OR \"masking noise\"[ti] OR \"noise machine\"[ti] OR \"sound machine\"[ti] OR \"acoustic noise\"[ti] OR \"continuous noise\"[ti]) AND (\"Sleep\"[Majr] OR \"Wakefulness\"[Majr] OR \"sleep latency\"[ti] OR \"sleep quality\"[ti] OR \"sleep efficiency\"[ti] OR \"wakefulness after sleep onset\"[ti] OR \"sleep continuity\"[ti] OR \"sleep fragmentation\"[ti])) AND humans[Filter]) AND (\"0001/01/01\"[Date - Publication] : \"2019/02/28\"[Date - Publication])",
+          "results_count": 384,
+          "true_positives": 13,
+          "recall": 0.3421052631578947,
+          "nnr_proxy": 29.53846153846154
+        }
+      ]
+    },
+    "Varallo_2022": {
+      "study_id": "Varallo_2022",
+      "schema_version": "1.0",
+      "collection_timestamp": "2026-04-09T07:37:46.190468Z",
+      "metadata": {
+        "domain": "sleep medicine",
+        "databases": [
+          "pubmed",
+          "scopus",
+          "wos",
+          "embase"
+        ],
+        "num_queries": 12,
+        "has_embase": true,
+        "gold_size": 10
+      },
+      "gold_standard": {
+        "pmids": [
+          "33452600",
+          "30506023",
+          "19837554",
+          "28916991",
+          "31752947",
+          "26455403",
+          "25791445",
+          "23182226",
+          "31337179",
+          "30479746"
+        ],
+        "count": 10
+      },
+      "aggregation_strategies": [
+        {
+          "name": "consensus_k2",
+          "recall": 0.1176470588235294,
+          "precision": 0.064516129032258,
+          "f1": 0.0833333333333333,
+          "jaccard": 0.0434782608695652,
+          "overlap_coeff": 0.1176470588235294,
+          "retrieved_count": 31,
+          "true_positives": 2,
+          "false_negatives": 15
+        },
+        {
+          "name": "precision_gated_union",
+          "recall": 0.2352941176470588,
+          "precision": 0.0222222222222222,
+          "f1": 0.0406091370558375,
+          "jaccard": 0.0207253886010362,
+          "overlap_coeff": 0.2352941176470588,
+          "retrieved_count": 180,
+          "true_positives": 4,
+          "false_negatives": 13
+        },
+        {
+          "name": "time_stratified_hybrid",
+          "recall": 0.2352941176470588,
+          "precision": 0.0222222222222222,
+          "f1": 0.0406091370558375,
+          "jaccard": 0.0207253886010362,
+          "overlap_coeff": 0.2352941176470588,
+          "retrieved_count": 180,
+          "true_positives": 4,
+          "false_negatives": 13
+        },
+        {
+          "name": "two_stage_screen",
+          "recall": 0.2352941176470588,
+          "precision": 0.0222222222222222,
+          "f1": 0.0406091370558375,
+          "jaccard": 0.0207253886010362,
+          "overlap_coeff": 0.2352941176470588,
+          "retrieved_count": 180,
+          "true_positives": 4,
+          "false_negatives": 13
+        },
+        {
+          "name": "weighted_vote",
+          "recall": 0.2352941176470588,
+          "precision": 0.0222222222222222,
+          "f1": 0.0406091370558375,
+          "jaccard": 0.0207253886010362,
+          "overlap_coeff": 0.2352941176470588,
+          "retrieved_count": 180,
+          "true_positives": 4,
+          "false_negatives": 13
+        }
+      ],
+      "source_files": {
+        "aggregates_csv": "aggregates_eval/Varallo_2022/sets_summary_20260408-125042.csv",
+        "gold_standard_csv": "studies/Varallo_2022/gold_pmids_Varallo_2022.csv",
+        "benchmark_csv": "benchmark_outputs/Varallo_2022/summary_20260408-125041.csv"
+      },
+      "query_performance": [
+        {
+          "query_text": "((\"Sleep Wake Disorders\"[Mesh] OR \"Sleep Initiation and Maintenance Disorders\"[Mesh] OR \"Sleep Apnea Syndromes\"[Mesh] OR \"Narcolepsy\"[Mesh] OR sleep disturbance*[tiab] OR sleep disorder*[tiab] OR insomnia[tiab] OR hypersomnia[tiab] OR narcolep*[tiab] OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"obstructive sleep apnoea\"[tiab] OR \"sleep quality\"[tiab] OR \"sleep quantity\"[tiab] OR \"sleep duration\"[tiab] OR polysomnograph*[tiab]) AND (\"Pain, Postoperative\"[Mesh] OR \"postoperative pain\"[tiab] OR \"post-operative pain\"[tiab] OR \"postsurgical pain\"[tiab] OR \"post-surgical pain\"[tiab] OR \"persistent postoperative pain\"[tiab] OR \"persistent post-operative pain\"[tiab] OR \"persistent postsurgical pain\"[tiab] OR \"persistent post-surgical pain\"[tiab] OR \"chronic postoperative pain\"[tiab] OR \"chronic post-operative pain\"[tiab] OR \"chronic postsurgical pain\"[tiab] OR \"chronic post-surgical pain\"[tiab] OR CPSP[tiab]))",
+          "results_count": 3014,
+          "true_positives": 19,
+          "recall": 0.9047619047619048,
+          "nnr_proxy": 158.6315789473684
+        },
+        {
+          "query_text": "((\"Sleep Wake Disorders\"[Mesh] OR \"Sleep Initiation and Maintenance Disorders\"[Mesh] OR \"Sleep Apnea Syndromes\"[Mesh] OR \"Narcolepsy\"[Mesh] OR sleep disturbance*[tiab] OR sleep disorder*[tiab] OR insomnia[tiab] OR hypersomnia[tiab] OR narcolep*[tiab] OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"obstructive sleep apnoea\"[tiab] OR \"sleep quality\"[tiab] OR \"sleep quantity\"[tiab] OR \"sleep duration\"[tiab]) AND (\"Pain, Postoperative\"[Mesh] OR \"postoperative pain\"[tiab] OR \"post-operative pain\"[tiab] OR \"postsurgical pain\"[tiab] OR \"post-surgical pain\"[tiab] OR \"persistent postoperative pain\"[tiab] OR \"persistent postsurgical pain\"[tiab] OR \"chronic postoperative pain\"[tiab] OR \"chronic postsurgical pain\"[tiab] OR CPSP[tiab]) AND (preoperat*[tiab] OR presurg*[tiab] OR perioperat*[tiab] OR \"pre-operative\"[tiab] OR \"peri-operative\"[tiab]) AND (chronic*[tiab] OR persistent*[tiab] OR \"3 month*\"[tiab] OR \"three month*\"[tiab] OR \"follow-up\"[tiab]) AND (\"Adult\"[Mesh] OR adult*[tiab]))",
+          "results_count": 341,
+          "true_positives": 13,
+          "recall": 0.6190476190476191,
+          "nnr_proxy": 26.23076923076923
+        },
+        {
+          "query_text": "(((\"Sleep Initiation and Maintenance Disorders\"[Majr] OR \"Sleep Apnea Syndromes\"[Majr] OR \"Narcolepsy\"[Majr]) OR sleep disturbance*[ti] OR sleep disorder*[ti] OR insomnia[ti] OR hypersomnia[ti] OR narcolep*[ti] OR \"sleep apnea\"[ti] OR \"obstructive sleep apnea\"[ti] OR \"sleep quality\"[ti]) AND ((\"Pain, Postoperative\"[Majr] OR \"postoperative pain\"[ti] OR \"postsurgical pain\"[ti] OR \"persistent postoperative pain\"[ti] OR \"chronic postsurgical pain\"[ti] OR CPSP[tiab]) AND (chronic*[tiab] OR persistent*[tiab] OR \"3 month*\"[tiab] OR \"follow-up\"[tiab])) AND (preoperat*[tiab] OR presurg*[tiab] OR perioperat*[tiab]) AND (\"Adult\"[Mesh] OR adult*[tiab]) AND (prospective[tiab] OR longitudinal[tiab] OR cohort[tiab] OR \"follow-up\"[tiab]))",
+          "results_count": 6,
+          "true_positives": 2,
+          "recall": 0.0952380952380952,
+          "nnr_proxy": 3.0
+        },
+        {
+          "query_text": "((sleep disturbance*[ti] OR sleep disorder*[ti] OR insomnia[ti] OR \"sleep apnea\"[ti] OR \"obstructive sleep apnea\"[ti] OR \"sleep quality\"[ti]) AND (\"postoperative pain\"[ti] OR \"postsurgical pain\"[ti] OR \"persistent postoperative pain\"[ti] OR \"chronic postsurgical pain\"[ti] OR CPSP[ti]) AND (preoperat*[tiab] OR presurg*[tiab] OR perioperat*[tiab]))",
+          "results_count": 26,
+          "true_positives": 1,
+          "recall": 0.0476190476190476,
+          "nnr_proxy": 26.0
+        },
+        {
+          "query_text": "((sleep disturbance*[ti] OR sleep disorder*[ti] OR insomnia[ti] OR \"sleep apnea\"[ti] OR \"obstructive sleep apnea\"[ti]) AND (\"persistent postoperative pain\"[ti] OR \"persistent postsurgical pain\"[ti] OR \"chronic postoperative pain\"[ti] OR \"chronic postsurgical pain\"[ti] OR CPSP[tiab]) AND (preoperat*[tiab] OR presurg*[tiab] OR perioperat*[tiab]) AND (\"Adult\"[Mesh] OR adult*[tiab]))",
+          "results_count": 21,
+          "true_positives": 1,
+          "recall": 0.0476190476190476,
+          "nnr_proxy": 21.0
+        },
+        {
+          "query_text": "((((\"Sleep Wake Disorders\"[Mesh] OR \"Sleep Initiation and Maintenance Disorders\"[Mesh] OR \"Sleep Apnea Syndromes\"[Mesh] OR \"Narcolepsy\"[Mesh] OR sleep disturbance*[tiab] OR sleep disorder*[tiab] OR insomnia[tiab] OR hypersomnia[tiab] OR narcolep*[tiab] OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"obstructive sleep apnoea\"[tiab] OR \"sleep quality\"[tiab] OR \"sleep quantity\"[tiab] OR \"sleep duration\"[tiab]) AND (\"Pain, Postoperative\"[Mesh] OR \"postoperative pain\"[tiab] OR \"post-operative pain\"[tiab] OR \"postsurgical pain\"[tiab] OR \"post-surgical pain\"[tiab] OR \"persistent postoperative pain\"[tiab] OR \"persistent postsurgical pain\"[tiab] OR \"chronic postoperative pain\"[tiab] OR \"chronic postsurgical pain\"[tiab] OR CPSP[tiab]) AND (preoperat*[tiab] OR presurg*[tiab] OR perioperat*[tiab] OR \"pre-operative\"[tiab] OR \"peri-operative\"[tiab]) AND (chronic*[tiab] OR persistent*[tiab] OR \"3 month*\"[tiab] OR \"three month*\"[tiab] OR \"follow-up\"[tiab]) AND (\"Adult\"[Mesh] OR adult*[tiab]) AND (prospective[tiab] OR longitudinal[tiab] OR cohort[tiab] OR \"follow-up\"[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])",
+          "results_count": 190,
+          "true_positives": 11,
+          "recall": 0.5238095238095238,
+          "nnr_proxy": 17.272727272727273
+        }
+      ]
+    },
+    "lang_2024": {
+      "study_id": "lang_2024",
+      "schema_version": "1.0",
+      "collection_timestamp": "2026-04-09T07:37:46.205187Z",
+      "metadata": {
+        "domain": "sleep medicine",
+        "databases": [
+          "pubmed",
+          "scopus",
+          "wos",
+          "embase"
+        ],
+        "num_queries": 12,
+        "has_embase": true,
+        "gold_size": 6
+      },
+      "gold_standard": {
+        "pmids": [
+          "32959137",
+          "21377926",
+          "23970143",
+          "20175399",
+          "24049160",
+          "32058229"
+        ],
+        "count": 6
+      },
+      "aggregation_strategies": [
+        {
+          "name": "consensus_k2",
+          "recall": 0.8333333333333334,
+          "precision": 0.0064020486555697,
+          "f1": 0.0127064803049555,
+          "jaccard": 0.0063938618925831,
+          "overlap_coeff": 0.8333333333333334,
+          "retrieved_count": 781,
+          "true_positives": 5,
+          "false_negatives": 1
+        },
+        {
+          "name": "precision_gated_union",
+          "recall": 1.0,
+          "precision": 0.003196590303676,
+          "f1": 0.006372809346787,
+          "jaccard": 0.003196590303676,
+          "overlap_coeff": 1.0,
+          "retrieved_count": 1877,
+          "true_positives": 6,
+          "false_negatives": 0
+        },
+        {
+          "name": "time_stratified_hybrid",
+          "recall": 1.0,
+          "precision": 0.003196590303676,
+          "f1": 0.006372809346787,
+          "jaccard": 0.003196590303676,
+          "overlap_coeff": 1.0,
+          "retrieved_count": 1877,
+          "true_positives": 6,
+          "false_negatives": 0
+        },
+        {
+          "name": "two_stage_screen",
+          "recall": 1.0,
+          "precision": 0.003196590303676,
+          "f1": 0.006372809346787,
+          "jaccard": 0.003196590303676,
+          "overlap_coeff": 1.0,
+          "retrieved_count": 1877,
+          "true_positives": 6,
+          "false_negatives": 0
+        },
+        {
+          "name": "weighted_vote",
+          "recall": 1.0,
+          "precision": 0.003196590303676,
+          "f1": 0.006372809346787,
+          "jaccard": 0.003196590303676,
+          "overlap_coeff": 1.0,
+          "retrieved_count": 1877,
+          "true_positives": 6,
+          "false_negatives": 0
+        }
+      ],
+      "source_files": {
+        "aggregates_csv": "aggregates_eval/lang_2024/sets_summary_20260327-191734.csv",
+        "gold_standard_csv": "studies/lang_2024/gold_pmids_lang_2024.csv",
+        "benchmark_csv": "benchmark_outputs/lang_2024/summary_20260327-191733.csv"
+      },
+      "query_performance": [
+        {
+          "query_text": "((\"Sleep\"[Mesh] OR \"Sleep Deprivation\"[Mesh] OR \"sleep duration\"[tiab] OR \"sleep quantity\"[tiab] OR \"short sleep\"[tiab] OR \"short sleep duration\"[tiab] OR \"total sleep time\"[tiab] OR \"sleep hours\"[tiab] OR \"insufficient sleep\"[tiab]) AND (\"Obesity\"[Mesh] OR \"Overweight\"[Mesh] OR \"Body Mass Index\"[Mesh] OR obesity[tiab] OR obese[tiab] OR overweight[tiab] OR \"body mass index\"[tiab] OR BMI[tiab]))",
+          "results_count": 11260,
+          "true_positives": 6,
+          "recall": 1.0,
+          "nnr_proxy": 1876.6666666666667
+        },
+        {
+          "query_text": "((\"Sleep Deprivation\"[Mesh] OR \"sleep duration\"[tiab] OR \"sleep quantity\"[tiab] OR \"short sleep\"[tiab] OR \"short sleep duration\"[tiab] OR \"total sleep time\"[tiab] OR \"insufficient sleep\"[tiab]) AND (\"Obesity\"[Mesh] OR \"Overweight\"[Mesh] OR \"Body Mass Index\"[Mesh] OR obesity[tiab] OR obese[tiab] OR overweight[tiab] OR \"body mass index\"[tiab] OR BMI[tiab]) AND (\"Sex Factors\"[Mesh] OR sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab]))",
+          "results_count": 6097,
+          "true_positives": 6,
+          "recall": 1.0,
+          "nnr_proxy": 1016.1666666666666
+        },
+        {
+          "query_text": "(((\"sleep duration\"[ti] OR \"sleep quantity\"[ti] OR \"short sleep\"[ti] OR \"short sleep duration\"[ti] OR \"total sleep time\"[ti]) AND (obesity[ti] OR overweight[ti] OR \"body mass index\"[ti] OR BMI[ti]) AND (sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab])) AND (cohort[tiab] OR prospective[tiab] OR retrospective[tiab] OR longitudinal[tiab] OR \"follow-up\"[tiab] OR incidence[tiab] OR incident*[tiab]))",
+          "results_count": 190,
+          "true_positives": 5,
+          "recall": 0.8333333333333334,
+          "nnr_proxy": 38.0
+        },
+        {
+          "query_text": "((\"sleep duration\"[ti] OR \"sleep quantity\"[ti] OR \"short sleep\"[ti] OR \"short sleep duration\"[ti] OR \"total sleep time\"[ti]) AND (obesity[ti] OR overweight[ti] OR \"body mass index\"[ti] OR BMI[ti]) AND (sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab]))",
+          "results_count": 475,
+          "true_positives": 5,
+          "recall": 0.8333333333333334,
+          "nnr_proxy": 95.0
+        },
+        {
+          "query_text": "(((\"sleep duration\"[ti] OR \"sleep quantity\"[ti] OR \"short sleep\"[ti] OR \"short sleep duration\"[ti] OR \"total sleep time\"[ti]) AND (obesity[ti] OR overweight[ti] OR \"body mass index\"[ti] OR BMI[ti]) AND (sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab])) AND (cohort[tiab] OR prospective[tiab] OR retrospective[tiab] OR longitudinal[tiab] OR \"follow-up\"[tiab] OR incidence[tiab] OR incident*[tiab]))",
+          "results_count": 190,
+          "true_positives": 5,
+          "recall": 0.8333333333333334,
+          "nnr_proxy": 38.0
+        },
+        {
+          "query_text": "((((\"Sleep Deprivation\"[Mesh] OR \"sleep duration\"[tiab] OR \"sleep quantity\"[tiab] OR \"short sleep\"[tiab] OR \"short sleep duration\"[tiab] OR \"total sleep time\"[tiab] OR \"insufficient sleep\"[tiab]) AND (\"Obesity\"[Mesh] OR \"Overweight\"[Mesh] OR \"Body Mass Index\"[Mesh] OR obesity[tiab] OR obese[tiab] OR overweight[tiab] OR \"body mass index\"[tiab] OR BMI[tiab]) AND (\"Sex Factors\"[Mesh] OR sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab])) AND (\"Adult\"[Mesh] OR adult*[tiab]) AND (cohort[tiab] OR prospective[tiab] OR retrospective[tiab] OR longitudinal[tiab] OR \"follow-up\"[tiab] OR incidence[tiab] OR incident*[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])",
+          "results_count": 2479,
+          "true_positives": 6,
+          "recall": 1.0,
+          "nnr_proxy": 413.1666666666667
+        }
+      ]
+    },
+    "Li_2024": {
+      "study_id": "Li_2024",
+      "schema_version": "1.0",
+      "collection_timestamp": "2026-04-09T07:37:46.253207Z",
+      "metadata": {
+        "domain": "sleep medicine",
+        "databases": [
+          "pubmed",
+          "scopus",
+          "wos",
+          "embase"
+        ],
+        "num_queries": 12,
+        "has_embase": true,
+        "gold_size": 19
+      },
+      "gold_standard": {
+        "pmids": [
+          "37908752",
+          "35259255",
+          "34910749",
+          "34013438",
+          "34374922",
+          "36480727",
+          "34949542",
+          "32981061",
+          "34180998",
+          "30987736",
+          "29136234",
+          "32836186",
+          "35620388",
+          "36877353",
+          "36586812",
+          "36435629",
+          "37593900",
+          "36609819",
+          "28366321"
+        ],
+        "count": 19
+      },
+      "aggregation_strategies": [
+        {
+          "name": "consensus_k2",
+          "recall": 0.3157894736842105,
+          "precision": 0.3333333333333333,
+          "f1": 0.3243243243243243,
+          "jaccard": 0.1935483870967742,
+          "overlap_coeff": 0.3333333333333333,
+          "retrieved_count": 18,
+          "true_positives": 6,
+          "false_negatives": 13
+        },
+        {
+          "name": "precision_gated_union",
+          "recall": 0.5789473684210527,
+          "precision": 0.1864406779661017,
+          "f1": 0.2820512820512821,
+          "jaccard": 0.1641791044776119,
+          "overlap_coeff": 0.5789473684210527,
+          "retrieved_count": 59,
+          "true_positives": 11,
+          "false_negatives": 8
+        },
+        {
+          "name": "time_stratified_hybrid",
+          "recall": 0.5789473684210527,
+          "precision": 0.1864406779661017,
+          "f1": 0.2820512820512821,
+          "jaccard": 0.1641791044776119,
+          "overlap_coeff": 0.5789473684210527,
+          "retrieved_count": 59,
+          "true_positives": 11,
+          "false_negatives": 8
+        },
+        {
+          "name": "two_stage_screen",
+          "recall": 0.5789473684210527,
+          "precision": 0.1864406779661017,
+          "f1": 0.2820512820512821,
+          "jaccard": 0.1641791044776119,
+          "overlap_coeff": 0.5789473684210527,
+          "retrieved_count": 59,
+          "true_positives": 11,
+          "false_negatives": 8
+        },
+        {
+          "name": "weighted_vote",
+          "recall": 0.5789473684210527,
+          "precision": 0.1864406779661017,
+          "f1": 0.2820512820512821,
+          "jaccard": 0.1641791044776119,
+          "overlap_coeff": 0.5789473684210527,
+          "retrieved_count": 59,
+          "true_positives": 11,
+          "false_negatives": 8
+        }
+      ],
+      "source_files": {
+        "aggregates_csv": "aggregates_eval/Li_2024/sets_summary_20260407-120630.csv",
+        "gold_standard_csv": "studies/Li_2024/gold_pmids_Li_2024.csv",
+        "benchmark_csv": "benchmark_outputs/Li_2024/summary_20260407-120629.csv"
+      },
+      "query_performance": [
+        {
+          "query_text": "((\"Sleep\"[Mesh] OR \"Sleep Wake Disorders\"[Mesh] OR \"Circadian Rhythm Sleep Disorders\"[Mesh] OR \"Sleep Apnea Syndromes\"[Mesh] OR sleep[tiab] OR \"sleep disorder*\"[tiab] OR \"sleep disturbance*\"[tiab] OR \"sleep dysfunction*\"[tiab] OR \"sleep breathing disorder*\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"obstructive sleep apnoea\"[tiab] OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"circadian dysrhythmia\"[tiab] OR \"circadian rhythm disorder*\"[tiab]) AND (\"Infertility, Female\"[Mesh] OR \"Infertility\"[Mesh] OR \"Fertilization in Vitro\"[Mesh] OR \"Reproductive Techniques, Assisted\"[Mesh] OR \"female infertil*\"[tiab] OR \"fertility treatment*\"[tiab] OR \"in vitro fertilization\"[tiab] OR \"in vitro fertilisation\"[tiab] OR IVF[tiab] OR \"assisted reproduction\"[tiab] OR \"assisted reproductive technolog*\"[tiab] OR ((infertil*[tiab] OR subfertil*[tiab]) AND (female*[tiab] OR woman[tiab] OR women[tiab]))) AND (\"Female\"[Mesh] OR female*[tiab] OR woman[tiab] OR women[tiab]))",
+          "results_count": 1689,
+          "true_positives": 18,
+          "recall": 0.9473684210526316,
+          "nnr_proxy": 93.83333333333331
+        },
+        {
+          "query_text": "((\"Sleep Wake Disorders\"[Mesh] OR \"Circadian Rhythm Sleep Disorders\"[Mesh] OR \"Sleep Apnea Syndromes\"[Mesh] OR \"sleep disorder*\"[tiab] OR \"sleep disturbance*\"[tiab] OR \"sleep dysfunction*\"[tiab] OR \"sleep breathing disorder*\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"sleep apnea\"[tiab] OR \"circadian dysrhythmia\"[tiab]) AND (\"Infertility, Female\"[Mesh] OR \"Infertility\"[Mesh] OR \"Fertilization in Vitro\"[Mesh] OR \"Reproductive Techniques, Assisted\"[Mesh] OR \"female infertil*\"[tiab] OR \"fertility treatment*\"[tiab] OR \"in vitro fertilization\"[tiab] OR IVF[tiab] OR \"assisted reproduction\"[tiab] OR ((infertil*[tiab] OR subfertil*[tiab]) AND (female*[tiab] OR woman[tiab] OR women[tiab]))) AND (\"Female\"[Mesh] OR female*[tiab] OR woman[tiab] OR women[tiab])) AND humans[Filter]",
+          "results_count": 1063,
+          "true_positives": 15,
+          "recall": 0.7894736842105263,
+          "nnr_proxy": 70.86666666666666
+        },
+        {
+          "query_text": "(((\"Sleep Wake Disorders\"[Majr] OR \"Circadian Rhythm Sleep Disorders\"[Majr] OR \"Sleep Apnea Syndromes\"[Majr] OR \"sleep disturbance*\"[ti] OR \"sleep disorder*\"[ti] OR \"sleep breathing disorder*\"[ti] OR \"obstructive sleep apnea\"[ti] OR \"circadian dysrhythmia\"[ti]) AND (\"Infertility, Female\"[Majr] OR \"Fertilization in Vitro\"[Majr] OR \"female infertil*\"[ti] OR \"in vitro fertilization\"[ti] OR \"fertility treatment*\"[ti] OR ((infertil*[ti] OR subfertil*[ti] OR IVF[tiab] OR \"assisted reproduction\"[tiab]) AND (female*[tiab] OR woman[tiab] OR women[tiab]))) AND (\"Female\"[Mesh] OR female*[tiab] OR woman[tiab] OR women[tiab]) AND (observational[tiab] OR cohort[tiab] OR prospective[tiab] OR \"cross-sectional\"[tiab] OR \"cross sectional\"[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])",
+          "results_count": 38,
+          "true_positives": 12,
+          "recall": 0.631578947368421,
+          "nnr_proxy": 3.1666666666666665
+        },
+        {
+          "query_text": "((\"sleep disturbance*\"[ti] OR \"sleep disorder*\"[ti] OR \"sleep breathing disorder*\"[ti] OR \"obstructive sleep apnea\"[ti] OR \"circadian dysrhythmia\"[ti] OR \"sleep apnea\"[ti]) AND (\"female infertil*\"[ti] OR \"fertility treatment*\"[ti] OR \"in vitro fertilization\"[ti] OR \"assisted reproduction\"[ti] OR ((infertil*[ti] OR subfertil*[ti]) AND (female*[ti] OR woman[ti] OR women[ti]))))",
+          "results_count": 169,
+          "true_positives": 13,
+          "recall": 0.6842105263157895,
+          "nnr_proxy": 13.0
+        },
+        {
+          "query_text": "(((\"Sleep Wake Disorders\"[Mesh] OR \"Circadian Rhythm Sleep Disorders\"[Mesh] OR \"Sleep Apnea Syndromes\"[Mesh] OR \"sleep disorder*\"[tiab] OR \"sleep disturbance*\"[tiab] OR \"sleep dysfunction*\"[tiab] OR \"sleep breathing disorder*\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"sleep apnea\"[tiab] OR \"circadian dysrhythmia\"[tiab]) AND (\"Infertility, Female\"[Mesh] OR \"Infertility\"[Mesh] OR \"Fertilization in Vitro\"[Mesh] OR \"Reproductive Techniques, Assisted\"[Mesh] OR \"female infertil*\"[tiab] OR \"fertility treatment*\"[tiab] OR \"in vitro fertilization\"[tiab] OR IVF[tiab] OR \"assisted reproduction\"[tiab] OR ((infertil*[tiab] OR subfertil*[tiab]) AND (female*[tiab] OR woman[tiab] OR women[tiab]))) AND (\"Female\"[Mesh] OR female*[tiab] OR woman[tiab] OR women[tiab]) AND (observational[tiab] OR cohort[tiab] OR prospective[tiab] OR \"cross-sectional\"[tiab] OR \"cross sectional\"[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])",
+          "results_count": 280,
+          "true_positives": 14,
+          "recall": 0.7368421052631579,
+          "nnr_proxy": 20.0
+        },
+        {
+          "query_text": "(((\"sleep disturbance*\"[tiab] OR \"sleep disorder*\"[tiab] OR \"sleep breathing disorder*\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"circadian dysrhythmia\"[tiab] OR \"sleep apnea\"[tiab]) AND (\"female infertil*\"[tiab] OR \"fertility treatment*\"[tiab] OR \"in vitro fertilization\"[tiab] OR IVF[tiab] OR \"assisted reproduction\"[tiab] OR ((infertil*[tiab] OR subfertil*[tiab]) AND (female*[tiab] OR woman[tiab] OR women[tiab]))) AND (female*[tiab] OR woman[tiab] OR women[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])",
+          "results_count": 73,
+          "true_positives": 12,
+          "recall": 0.631578947368421,
+          "nnr_proxy": 6.083333333333333
+        }
+      ]
+    },
     "Godos_2024": {
       "study_id": "Godos_2024",
       "schema_version": "1.0",
-      "collection_timestamp": "2026-01-23T09:49:59.318571Z",
+      "collection_timestamp": "2026-04-09T07:37:46.298056Z",
       "metadata": {
         "domain": "nutrition",
         "databases": [
@@ -15,10 +738,6 @@
           "embase"
         ],
         "num_queries": 12,
-        "date_range": {
-          "start": "1990-01-01",
-          "end": "2023-12-31"
-        },
         "has_embase": true,
         "gold_size": 23
       },
@@ -53,114 +772,114 @@
       "aggregation_strategies": [
         {
           "name": "consensus_k2",
-          "recall": 0.8695652173913043,
-          "precision": 0.0037460198539052,
-          "f1": 0.0074599030212607,
-          "jaccard": 0.0037439161362785,
-          "overlap_coeff": 0.8695652173913043,
-          "retrieved_count": 5339,
-          "true_positives": 20,
-          "false_negatives": 3
-        },
-        {
-          "name": "two_stage_screen",
-          "recall": 0.9130434782608696,
-          "precision": 0.0028416779431664,
-          "f1": 0.0056657223796034,
-          "jaccard": 0.002840909090909,
-          "overlap_coeff": 0.9130434782608696,
-          "retrieved_count": 7390,
-          "true_positives": 21,
-          "false_negatives": 2
+          "recall": 0.6521739130434783,
+          "precision": 0.0112951807228915,
+          "f1": 0.0222057735011102,
+          "jaccard": 0.0112275449101796,
+          "overlap_coeff": 0.6521739130434783,
+          "retrieved_count": 1328,
+          "true_positives": 15,
+          "false_negatives": 8
         },
         {
           "name": "precision_gated_union",
-          "recall": 1.0,
-          "precision": 0.0009079783664284,
-          "f1": 0.0018143093791906,
-          "jaccard": 0.0009079783664284,
-          "overlap_coeff": 1.0,
-          "retrieved_count": 25331,
-          "true_positives": 23,
-          "false_negatives": 0
+          "recall": 0.8260869565217391,
+          "precision": 0.0040503091025367,
+          "f1": 0.0080610946117946,
+          "jaccard": 0.0040468583599574,
+          "overlap_coeff": 0.8260869565217391,
+          "retrieved_count": 4691,
+          "true_positives": 19,
+          "false_negatives": 4
         },
         {
           "name": "time_stratified_hybrid",
-          "recall": 1.0,
-          "precision": 0.0009079783664284,
-          "f1": 0.0018143093791906,
-          "jaccard": 0.0009079783664284,
-          "overlap_coeff": 1.0,
-          "retrieved_count": 25331,
-          "true_positives": 23,
-          "false_negatives": 0
+          "recall": 0.8260869565217391,
+          "precision": 0.0040503091025367,
+          "f1": 0.0080610946117946,
+          "jaccard": 0.0040468583599574,
+          "overlap_coeff": 0.8260869565217391,
+          "retrieved_count": 4691,
+          "true_positives": 19,
+          "false_negatives": 4
+        },
+        {
+          "name": "two_stage_screen",
+          "recall": 0.8260869565217391,
+          "precision": 0.0040503091025367,
+          "f1": 0.0080610946117946,
+          "jaccard": 0.0040468583599574,
+          "overlap_coeff": 0.8260869565217391,
+          "retrieved_count": 4691,
+          "true_positives": 19,
+          "false_negatives": 4
         },
         {
           "name": "weighted_vote",
-          "recall": 1.0,
-          "precision": 0.0009079783664284,
-          "f1": 0.0018143093791906,
-          "jaccard": 0.0009079783664284,
-          "overlap_coeff": 1.0,
-          "retrieved_count": 25331,
-          "true_positives": 23,
-          "false_negatives": 0
+          "recall": 0.8260869565217391,
+          "precision": 0.0040503091025367,
+          "f1": 0.0080610946117946,
+          "jaccard": 0.0040468583599574,
+          "overlap_coeff": 0.8260869565217391,
+          "retrieved_count": 4691,
+          "true_positives": 19,
+          "false_negatives": 4
         }
       ],
       "source_files": {
-        "aggregates_csv": "aggregates_eval/Godos_2024/sets_summary_20260122-091122.csv",
+        "aggregates_csv": "aggregates_eval/Godos_2024/sets_summary_20260327-105155.csv",
         "gold_standard_csv": "studies/Godos_2024/gold_pmids_Godos_2024.csv",
-        "benchmark_csv": "benchmark_outputs/Godos_2024/summary_20260122-091116.csv"
+        "benchmark_csv": "benchmark_outputs/Godos_2024/summary_20260327-105154.csv"
       },
       "query_performance": [
         {
-          "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"Mediterranean diet\"[tiab] OR \"MedDiet\"[tiab] OR \"Fruit\"[Mesh] OR fruit*[tiab] OR \"Vegetables\"[Mesh] OR vegetable*[tiab] OR \"Edible Grain\"[Mesh] OR cereal*[tiab] OR grain*[tiab] OR \"Fabaceae\"[Mesh] OR legume*[tiab] OR bean*[tiab] OR \"Dairy Products\"[Mesh] OR dairy[tiab] OR milk[tiab] OR yogurt[tiab] OR cheese[tiab] OR \"Seafood\"[Mesh] OR \"Fishes\"[Mesh] OR fish[tiab] OR seafood[tiab] OR \"Meat\"[Mesh] OR meat[tiab] OR poultry[tiab] OR \"Olive Oil\"[Mesh] OR \"olive oil\"[tiab] OR \"Alcohols\"[Mesh] OR \"Alcohol Drinking\"[Mesh] OR alcohol*[tiab] OR wine[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Wake Disorders\"[Mesh] OR sleep*[tiab] OR insomnia*[tiab] OR dyssomnia*[tiab] OR parasomnia*[tiab] OR somnolence[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-          "results_count": 22184,
+          "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"mediterranean diet\"[tiab] OR \"mediterranean diet adherence\"[tiab] OR ((fruit*[tiab] OR vegetable*[tiab] OR cereal*[tiab] OR legume*[tiab] OR \"dairy product\"[tiab] OR \"dairy products\"[tiab] OR fish[tiab] OR meat[tiab] OR \"olive oil\"[tiab] OR alcohol[tiab]) AND (diet*[tiab] OR intake[tiab] OR consumption[tiab]))) AND (\"Sleep\"[Mesh] OR \"Somnolence\"[Mesh] OR sleep[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab] OR \"daytime sleepiness\"[tiab] OR sleepiness[tiab] OR somnolence[tiab]))",
+          "results_count": 9272,
+          "true_positives": 23,
+          "recall": 1.0,
+          "nnr_proxy": 403.1304347826087
+        },
+        {
+          "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"mediterranean diet\"[tiab] OR \"mediterranean diet adherence\"[tiab] OR ((legume*[tiab] OR fish[tiab] OR \"olive oil\"[tiab] OR alcohol[tiab]) AND (diet*[tiab] OR intake[tiab] OR consumption[tiab]))) AND (\"Sleep\"[Mesh] OR sleep[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab] OR \"daytime sleepiness\"[tiab] OR sleepiness[tiab]) AND (\"Adult\"[Mesh] OR adult*[tiab]))",
+          "results_count": 5229,
+          "true_positives": 22,
+          "recall": 0.9565217391304348,
+          "nnr_proxy": 237.6818181818182
+        },
+        {
+          "query_text": "(((\"Diet, Mediterranean\"[Majr] OR \"mediterranean diet\"[ti] OR \"mediterranean diet adherence\"[ti]) AND (\"sleep quality\"[ti] OR \"sleep duration\"[ti] OR \"daytime sleepiness\"[ti] OR sleep[ti])) AND (\"Adult\"[Mesh] OR adult*[tiab]))",
+          "results_count": 113,
+          "true_positives": 14,
+          "recall": 0.6086956521739131,
+          "nnr_proxy": 8.071428571428571
+        },
+        {
+          "query_text": "((\"mediterranean diet\"[ti] OR \"mediterranean diet adherence\"[ti]) AND (\"sleep quality\"[ti] OR \"sleep duration\"[ti] OR \"daytime sleepiness\"[ti] OR sleep[ti]) AND (\"Adult\"[Mesh] OR adult*[tiab]))",
+          "results_count": 49,
+          "true_positives": 7,
+          "recall": 0.3043478260869565,
+          "nnr_proxy": 7.0
+        },
+        {
+          "query_text": "(((\"Diet, Mediterranean\"[Mesh] OR \"mediterranean diet\"[tiab] OR \"mediterranean diet adherence\"[tiab] OR ((legume*[tiab] OR fish[tiab] OR \"olive oil\"[tiab] OR alcohol[tiab]) AND (diet*[tiab] OR intake[tiab] OR consumption[tiab]))) AND (\"Sleep\"[Mesh] OR sleep[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab] OR \"daytime sleepiness\"[tiab] OR sleepiness[tiab]) AND (\"Adult\"[Mesh] OR adult*[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])",
+          "results_count": 1748,
           "true_positives": 21,
           "recall": 0.9130434782608696,
-          "nnr_proxy": 1056.3809523809523
+          "nnr_proxy": 83.23809523809524
         },
         {
-          "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"Mediterranean diet\"[tiab] OR \"MedDiet\"[tiab] OR \"Fruit\"[Mesh] OR fruit*[tiab] OR \"Vegetables\"[Mesh] OR vegetable*[tiab] OR \"Edible Grain\"[Mesh] OR cereal*[tiab] OR grain*[tiab] OR \"Fabaceae\"[Mesh] OR legume*[tiab] OR bean*[tiab] OR \"Dairy Products\"[Mesh] OR dairy[tiab] OR milk[tiab] OR yogurt[tiab] OR cheese[tiab] OR \"Seafood\"[Mesh] OR \"Fishes\"[Mesh] OR fish[tiab] OR seafood[tiab] OR \"Meat\"[Mesh] OR meat[tiab] OR poultry[tiab] OR \"Olive Oil\"[Mesh] OR \"olive oil\"[tiab] OR \"Alcohols\"[Mesh] OR \"Alcohol Drinking\"[Mesh] OR alcohol*[tiab] OR wine[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Wake Disorders\"[Mesh] OR sleep*[tiab] OR insomnia*[tiab] OR dyssomnia*[tiab] OR parasomnia*[tiab] OR somnolence[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-          "results_count": 22184,
-          "true_positives": 21,
-          "recall": 0.9130434782608696,
-          "nnr_proxy": 1056.3809523809523
-        },
-        {
-          "query_text": "((\"Diet, Mediterranean\"[Majr] OR \"Mediterranean diet\"[ti] OR \"Fruit\"[Majr] OR fruit*[ti] OR \"Vegetables\"[Majr] OR vegetable*[ti] OR \"Edible Grain\"[Majr] OR cereal*[ti] OR grain*[ti] OR \"Fabaceae\"[Majr] OR legume*[ti] OR bean*[ti] OR \"Dairy Products\"[Majr] OR dairy[ti] OR \"Seafood\"[Majr] OR \"Meat\"[Majr] OR \"Olive Oil\"[Majr] OR \"Alcohols\"[Majr]) AND (\"Sleep\"[Majr] OR \"Sleep Wake Disorders\"[Majr] OR sleep*[ti] OR insomnia*[ti])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-          "results_count": 2562,
-          "true_positives": 11,
-          "recall": 0.4782608695652174,
-          "nnr_proxy": 232.9090909090909
-        },
-        {
-          "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"Mediterranean diet\"[tiab] OR \"MedDiet\"[tiab] OR \"Fruit\"[Mesh] OR fruit*[tiab] OR \"Vegetables\"[Mesh] OR vegetable*[tiab] OR \"Edible Grain\"[Mesh] OR cereal*[tiab] OR grain*[tiab] OR \"Fabaceae\"[Mesh] OR legume*[tiab] OR bean*[tiab] OR \"Dairy Products\"[Mesh] OR dairy[tiab] OR milk[tiab] OR yogurt[tiab] OR cheese[tiab] OR \"Seafood\"[Mesh] OR \"Fishes\"[Mesh] OR fish[tiab] OR seafood[tiab] OR \"Meat\"[Mesh] OR meat[tiab] OR poultry[tiab] OR \"Olive Oil\"[Mesh] OR \"olive oil\"[tiab] OR \"Alcohols\"[Mesh] OR \"Alcohol Drinking\"[Mesh] OR alcohol*[tiab] OR wine[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Wake Disorders\"[Mesh] OR sleep*[tiab] OR insomnia*[tiab] OR dyssomnia*[tiab] OR parasomnia*[tiab] OR somnolence[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication]) AND humans[Filter]",
-          "results_count": 19050,
-          "true_positives": 20,
-          "recall": 0.8695652173913043,
-          "nnr_proxy": 952.5
-        },
-        {
-          "query_text": "((\"Diet, Mediterranean\"[Mesh] OR \"Mediterranean diet\"[ti] OR \"MedDiet\"[ti] OR \"Fruit\"[Mesh] OR fruit*[ti] OR \"Vegetables\"[Mesh] OR vegetable*[ti] OR \"Edible Grain\"[Mesh] OR cereal*[ti] OR grain*[ti] OR \"Fabaceae\"[Mesh] OR legume*[ti] OR bean*[ti] OR \"Dairy Products\"[Mesh] OR dairy[ti] OR milk[ti] OR yogurt[ti] OR cheese[ti] OR \"Seafood\"[Mesh] OR fish[ti] OR \"Meat\"[Mesh] OR meat[ti] OR \"Olive Oil\"[Mesh] OR \"olive oil\"[ti] OR \"Alcohols\"[Mesh] OR alcohol*[ti]) AND (\"Sleep\"[Mesh] OR \"Sleep Wake Disorders\"[Mesh] OR sleep*[ti] OR insomnia*[ti])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-          "results_count": 3384,
-          "true_positives": 13,
-          "recall": 0.5652173913043478,
-          "nnr_proxy": 260.3076923076923
-        },
-        {
-          "query_text": "((\"Diet, Mediterranean\"[Majr] OR \"Mediterranean diet\"[tiab] OR \"Fruit\"[Majr] OR \"Vegetables\"[Majr] OR \"Edible Grain\"[Majr] OR \"Fabaceae\"[Majr] OR \"Dairy Products\"[Majr] OR \"Seafood\"[Majr] OR \"Meat\"[Majr] OR \"Olive Oil\"[Majr] OR \"Alcohols\"[Majr]) AND (\"Sleep\"[Majr] OR \"Sleep Wake Disorders\"[Majr])) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-          "results_count": 4215,
-          "true_positives": 11,
-          "recall": 0.4782608695652174,
-          "nnr_proxy": 383.1818181818182
+          "query_text": "((((\"Diet, Mediterranean\"[Mesh] OR \"mediterranean diet\"[tiab] OR \"mediterranean diet adherence\"[tiab] OR ((legume*[tiab] OR fish[tiab] OR \"olive oil\"[tiab] OR alcohol[tiab]) AND (diet*[tiab] OR intake[tiab] OR consumption[tiab]))) AND (\"Sleep\"[Mesh] OR sleep[tiab] OR \"sleep quality\"[tiab] OR \"sleep duration\"[tiab] OR \"daytime sleepiness\"[tiab] OR sleepiness[tiab]) AND (\"Adult\"[Mesh] OR adult*[tiab])) AND (cohort[tiab] OR observational[tiab] OR \"cross-sectional\"[tiab] OR \"case-control\"[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])",
+          "results_count": 5224,
+          "true_positives": 19,
+          "recall": 0.8260869565217391,
+          "nnr_proxy": 274.94736842105266
         }
       ]
     },
-    "sleep_apnea": {
-      "study_id": "sleep_apnea",
+    "Cid_Verdejo_2024_Paper": {
+      "study_id": "Cid_Verdejo_2024_Paper",
       "schema_version": "1.0",
-      "collection_timestamp": "2026-01-23T09:49:59.326519Z",
+      "collection_timestamp": "2026-04-09T07:37:46.343579Z",
       "metadata": {
         "domain": "sleep medicine",
         "databases": [
@@ -170,133 +889,269 @@
           "embase"
         ],
         "num_queries": 12,
-        "date_range": {
-          "start": "1900-01-01",
-          "end": "2021-03-01"
-        },
-        "has_embase": false,
-        "gold_size": 11
+        "has_embase": true,
+        "gold_size": 10
       },
       "gold_standard": {
         "pmids": [
-          "32045010",
-          "31464350",
-          "30735921",
-          "28738188",
-          "28408829",
-          "26765405",
-          "25810019",
-          "26156952",
-          "25794635",
-          "24205289",
-          "21828324"
+          "24417585",
+          "9493526",
+          "31085074",
+          "22668619",
+          "28513083",
+          "35095085",
+          "17618147",
+          "26527206",
+          "21707698",
+          "36648354"
         ],
-        "count": 11
+        "count": 10
       },
       "aggregation_strategies": [
         {
           "name": "consensus_k2",
-          "recall": 0.2727272727272727,
-          "precision": 0.0416666666666666,
-          "f1": 0.072289156626506,
-          "jaccard": 0.0375,
-          "overlap_coeff": 0.2727272727272727,
-          "retrieved_count": 72,
-          "true_positives": 3,
-          "false_negatives": 8
-        },
-        {
-          "name": "two_stage_screen",
-          "recall": 0.3636363636363636,
-          "precision": 0.0283687943262411,
-          "f1": 0.0526315789473684,
-          "jaccard": 0.027027027027027,
-          "overlap_coeff": 0.3636363636363636,
-          "retrieved_count": 141,
-          "true_positives": 4,
-          "false_negatives": 7
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0,
+          "jaccard": 0.0,
+          "overlap_coeff": 0.0,
+          "retrieved_count": 1,
+          "true_positives": 0,
+          "false_negatives": 10
         },
         {
           "name": "precision_gated_union",
-          "recall": 1.0,
-          "precision": 0.0056093829678735,
-          "f1": 0.011156186612576,
-          "jaccard": 0.0056093829678735,
-          "overlap_coeff": 1.0,
-          "retrieved_count": 1961,
-          "true_positives": 11,
-          "false_negatives": 0
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0,
+          "jaccard": 0.0,
+          "overlap_coeff": 0.0,
+          "retrieved_count": 7,
+          "true_positives": 0,
+          "false_negatives": 10
         },
         {
           "name": "time_stratified_hybrid",
-          "recall": 1.0,
-          "precision": 0.0056093829678735,
-          "f1": 0.011156186612576,
-          "jaccard": 0.0056093829678735,
-          "overlap_coeff": 1.0,
-          "retrieved_count": 1961,
-          "true_positives": 11,
-          "false_negatives": 0
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0,
+          "jaccard": 0.0,
+          "overlap_coeff": 0.0,
+          "retrieved_count": 7,
+          "true_positives": 0,
+          "false_negatives": 10
+        },
+        {
+          "name": "two_stage_screen",
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0,
+          "jaccard": 0.0,
+          "overlap_coeff": 0.0,
+          "retrieved_count": 7,
+          "true_positives": 0,
+          "false_negatives": 10
         },
         {
           "name": "weighted_vote",
-          "recall": 1.0,
-          "precision": 0.0056093829678735,
-          "f1": 0.011156186612576,
-          "jaccard": 0.0056093829678735,
-          "overlap_coeff": 1.0,
-          "retrieved_count": 1961,
-          "true_positives": 11,
-          "false_negatives": 0
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0,
+          "jaccard": 0.0,
+          "overlap_coeff": 0.0,
+          "retrieved_count": 7,
+          "true_positives": 0,
+          "false_negatives": 10
         }
       ],
       "source_files": {
-        "aggregates_csv": "aggregates_eval/sleep_apnea/sets_summary_20260115-143544.csv",
-        "gold_standard_csv": "studies/sleep_apnea/gold_pmids_sleep_apnea.csv",
-        "benchmark_csv": "benchmark_outputs/sleep_apnea/summary_20251121-150455.csv"
+        "aggregates_csv": "aggregates_eval/Cid_Verdejo_2024_Paper/sets_summary_20260327-102434.csv",
+        "gold_standard_csv": "studies/Cid_Verdejo_2024_Paper/gold_pmids_Cid_Verdejo_2024_Paper.csv",
+        "benchmark_csv": "benchmark_outputs/Cid_Verdejo_2024_Paper/summary_20260327-102434.csv"
       },
       "query_performance": [
         {
-          "query_text": "(((\"Sleep Apnea Syndromes\"[Mesh]) OR (\"Sleep Apnea, Obstructive\"[Mesh]) OR (\"Sleep Apnea, Central\"[Mesh])) AND ((\"Dementia\"[Mesh]) OR (\"Alzheimer Disease\"[Mesh]) OR (\"Lewy Body Disease\"[Mesh]) OR (\"Dementia, Vascular\"[Mesh]) OR (\"Frontotemporal Dementia\"[Mesh]) OR (\"Parkinson Disease\"[Mesh]) OR (\"Cognitive Dysfunction\"[Mesh]))) AND (\"2010/04/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-          "results_count": 5053,
-          "true_positives": 7,
-          "recall": 0.6363636363636364,
-          "nnr_proxy": 721.8571428571429
+          "query_text": "((\"Bruxism\"[Mesh] OR \"sleep bruxism\"[tiab] OR \"sleep-related bruxism\"[tiab] OR \"sleep related bruxism\"[tiab] OR bruxism[tiab] OR \"rhythmic masticatory muscle activity\"[tiab] OR RMMA[tiab] OR \"masticatory muscle activity\"[tiab] OR MMA[tiab] OR \"oromotor activity\"[tiab] OR \"oral motor activity\"[tiab] OR OMA[tiab] OR \"sleep-related oromotor activity\"[tiab] OR \"sleep related oromotor activity\"[tiab]) AND (\"Electromyography\"[Mesh] OR electromyograph*[tiab] OR EMG[tiab] OR \"portable electromyography\"[tiab] OR \"portable electromyographic\"[tiab] OR \"portable EMG\"[tiab] OR \"ambulatory electromyography\"[tiab] OR \"ambulatory electromyographic\"[tiab] OR \"portable device\"[tiab] OR \"portable devices\"[tiab]) AND (\"Polysomnography\"[Mesh] OR polysomnograph*[tiab] OR PSG[tiab] OR \"audio-video\"[tiab] OR \"audio video\"[tiab]))",
+          "results_count": 329,
+          "true_positives": 10,
+          "recall": 1.0,
+          "nnr_proxy": 32.9
         },
         {
-          "query_text": "((\"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep-disordered breathing\"[tiab] OR \"sleep disordered breathing\"[tiab] OR \"SDB\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"obstructive sleep apnoea\"[tiab] OR \"OSA\"[tiab] OR \"hypopnea\"[tiab] OR \"hypopnoea\"[tiab] OR \"apnea-hypopnea index\"[tiab] OR \"AHI\"[tiab]) AND (\"dementia*\"[tiab] OR \"Alzheimer's disease\"[tiab] OR \"Alzheimer disease\"[tiab] OR \"AD\"[tiab] OR \"Lewy body*\"[tiab] OR \"vascular dementia\"[tiab] OR \"frontotemporal dementia\"[tiab] OR \"FTD\"[tiab] OR \"cognitive decline\"[tiab] OR \"cognitive impairment\"[tiab] OR \"neurocognitive disorder*\"[tiab])) AND (\"2010/04/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-          "results_count": 6032,
-          "true_positives": 6,
-          "recall": 0.5454545454545454,
-          "nnr_proxy": 1005.3333333333334
+          "query_text": "((\"Bruxism\"[Mesh] OR \"sleep bruxism\"[tiab] OR \"sleep-related bruxism\"[tiab] OR \"sleep related bruxism\"[tiab] OR bruxism[tiab] OR \"rhythmic masticatory muscle activity\"[tiab] OR RMMA[tiab] OR \"masticatory muscle activity\"[tiab] OR MMA[tiab] OR \"oromotor activity\"[tiab] OR \"oral motor activity\"[tiab] OR OMA[tiab] OR \"sleep-related oromotor activity\"[tiab] OR \"sleep related oromotor activity\"[tiab]) AND (\"Electromyography\"[Mesh] OR electromyograph*[tiab] OR EMG[tiab] OR \"portable electromyography\"[tiab] OR \"portable electromyographic\"[tiab] OR \"portable EMG\"[tiab] OR \"ambulatory electromyography\"[tiab] OR \"ambulatory electromyographic\"[tiab] OR \"portable device\"[tiab] OR \"portable devices\"[tiab]) AND (\"Polysomnography\"[Mesh] OR polysomnograph*[tiab] OR PSG[tiab]) AND (\"Sensitivity and Specificity\"[Mesh] OR diagnos*[tiab] OR valid*[tiab] OR accuracy[tiab] OR \"diagnostic yield\"[tiab] OR sensitivity[tiab] OR specificity[tiab] OR compar*[tiab] OR agreement[tiab] OR \"reference standard\"[tiab] OR \"gold standard\"[tiab] OR \"intraclass correlation\"[tiab] OR kappa[tiab]))",
+          "results_count": 256,
+          "true_positives": 10,
+          "recall": 1.0,
+          "nnr_proxy": 25.6
         },
         {
-          "query_text": "(((\"Sleep Apnea Syndromes\"[Mesh]) OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep-disordered breathing\"[tiab] OR \"obstructive sleep apnea\"[tiab]) AND ((\"Dementia\"[Mesh]) OR \"dementia*\"[tiab] OR \"Alzheimer Disease\"[Mesh] OR \"Alzheimer's disease\"[tiab] OR \"cognitive decline\"[tiab] OR \"cognitive impairment\"[tiab])) AND (\"2010/04/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-          "results_count": 5187,
-          "true_positives": 6,
-          "recall": 0.5454545454545454,
-          "nnr_proxy": 864.5
+          "query_text": "((\"sleep bruxism\"[ti] OR \"sleep-related bruxism\"[ti] OR \"sleep related bruxism\"[ti] OR \"rhythmic masticatory muscle activity\"[ti] OR RMMA[ti] OR \"masticatory muscle activity\"[ti] OR MMA[ti] OR \"sleep-related oromotor activity\"[ti] OR \"sleep related oromotor activity\"[ti]) AND (electromyograph*[tiab] OR EMG[tiab] OR \"portable electromyography\"[tiab] OR \"portable electromyographic\"[tiab] OR \"portable EMG\"[tiab] OR \"portable device\"[tiab] OR \"portable devices\"[tiab]) AND (\"Polysomnography\"[Mesh] OR polysomnograph*[tiab] OR PSG[tiab]) AND (diagnos*[tiab] OR valid*[tiab] OR accuracy[tiab] OR \"diagnostic yield\"[tiab] OR sensitivity[tiab] OR specificity[tiab] OR compar*[tiab] OR agreement[tiab] OR \"reference standard\"[tiab] OR \"gold standard\"[tiab]))",
+          "results_count": 150,
+          "true_positives": 8,
+          "recall": 0.8,
+          "nnr_proxy": 18.75
         },
         {
-          "query_text": "((\"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep-disordered breathing\"[tiab] OR \"sleep disordered breathing\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"obstructive sleep apnoea\"[tiab] OR \"hypopnea\"[tiab] OR \"hypopnoea\"[tiab] OR \"apnea-hypopnea index\"[tiab]) AND (\"dementia*\"[tiab] OR \"Alzheimer's disease\"[tiab] OR \"Alzheimer disease\"[tiab] OR (\"Lewy body\"[tiab] AND dementia[tiab]) OR \"vascular dementia\"[tiab] OR \"frontotemporal dementia\"[tiab] OR \"cognitive decline\"[tiab] OR \"cognitive impairment\"[tiab] OR \"neurocognitive disorder*\"[tiab])) AND (\"2010/04/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-          "results_count": 5363,
+          "query_text": "((\"sleep bruxism\"[ti] OR \"sleep-related bruxism\"[ti] OR \"sleep related bruxism\"[ti] OR \"rhythmic masticatory muscle activity\"[ti] OR RMMA[ti] OR \"sleep-related oromotor activity\"[ti] OR \"sleep related oromotor activity\"[ti]) AND (electromyograph*[tiab] OR EMG[tiab] OR \"portable electromyography\"[tiab] OR \"portable electromyographic\"[tiab] OR \"portable EMG\"[tiab] OR \"portable device\"[tiab] OR \"portable devices\"[tiab]) AND (polysomnograph*[tiab] OR PSG[tiab]) AND (diagnos*[tiab] OR valid*[tiab] OR accuracy[tiab] OR \"diagnostic yield\"[tiab] OR sensitivity[tiab] OR specificity[tiab] OR compar*[tiab] OR agreement[tiab]))",
+          "results_count": 57,
           "true_positives": 6,
-          "recall": 0.5454545454545454,
-          "nnr_proxy": 893.8333333333334
+          "recall": 0.6,
+          "nnr_proxy": 9.5
         },
         {
-          "query_text": "(((\"Sleep Apnea Syndromes\"[Mesh]) OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"sleep-disordered breathing\"[tiab]) AND ((\"Dementia\"[Mesh]) OR \"dementia*\"[tiab] OR \"Alzheimer Disease\"[Mesh] OR \"Alzheimer's disease\"[tiab] OR \"Lewy Body Disease\"[Mesh] OR \"Dementia, Vascular\"[Mesh] OR \"cognitive decline\"[tiab])) AND (\"2010/04/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-          "results_count": 3676,
+          "query_text": "((\"sleep bruxism\"[ti] OR \"sleep-related bruxism\"[ti] OR \"sleep related bruxism\"[ti] OR \"rhythmic masticatory muscle activity\"[ti] OR RMMA[ti] OR \"sleep-related oromotor activity\"[ti] OR \"sleep related oromotor activity\"[ti]) AND (electromyograph*[ti] OR \"portable electromyography\"[ti] OR \"portable electromyographic\"[ti] OR \"portable EMG\"[ti] OR \"portable device\"[ti] OR \"portable devices\"[ti]) AND (polysomnograph*[ti] OR PSG[ti]) AND (diagnos*[tiab] OR valid*[tiab] OR \"diagnostic yield\"[tiab] OR sensitivity[tiab] OR specificity[tiab] OR agreement[tiab] OR \"reference standard\"[tiab] OR \"gold standard\"[tiab]))",
+          "results_count": 30,
+          "true_positives": 5,
+          "recall": 0.5,
+          "nnr_proxy": 6.0
+        },
+        {
+          "query_text": "((\"sleep bruxism\"[ti] OR \"sleep-related bruxism\"[ti] OR \"sleep related bruxism\"[ti] OR \"rhythmic masticatory muscle activity\"[tiab] OR RMMA[tiab] OR \"sleep-related oromotor activity\"[tiab] OR \"sleep related oromotor activity\"[tiab]) AND (electromyograph*[tiab] OR EMG[tiab] OR \"portable electromyography\"[tiab] OR \"portable electromyographic\"[tiab] OR \"portable EMG\"[tiab] OR \"portable device\"[tiab] OR \"portable devices\"[tiab]) AND (polysomnograph*[tiab] OR PSG[tiab]) AND (diagnos*[tiab] OR valid*[tiab] OR accuracy[tiab] OR \"diagnostic yield\"[tiab] OR sensitivity[tiab] OR specificity[tiab] OR compar*[tiab] OR agreement[tiab] OR \"reference standard\"[tiab] OR \"gold standard\"[tiab]) AND (observational[tiab] OR nonrandomized[tiab] OR non-randomized[tiab]))",
+          "results_count": 7,
+          "true_positives": 0,
+          "recall": 0.0,
+          "nnr_proxy": 7.0
+        }
+      ]
+    },
+    "Medeiros_2023": {
+      "study_id": "Medeiros_2023",
+      "schema_version": "1.0",
+      "collection_timestamp": "2026-04-09T07:37:46.405880Z",
+      "metadata": {
+        "domain": "sleep medicine",
+        "databases": [
+          "pubmed",
+          "scopus",
+          "wos",
+          "embase"
+        ],
+        "num_queries": 12,
+        "has_embase": true,
+        "gold_size": 6
+      },
+      "gold_standard": {
+        "pmids": [
+          "17542949",
+          "25468623",
+          "27136501",
+          "30690224",
+          "33130179",
+          "32586679"
+        ],
+        "count": 6
+      },
+      "aggregation_strategies": [
+        {
+          "name": "precision_gated_union",
+          "recall": 0.1666666666666666,
+          "precision": 0.0769230769230769,
+          "f1": 0.1052631578947368,
+          "jaccard": 0.0555555555555555,
+          "overlap_coeff": 0.1666666666666666,
+          "retrieved_count": 13,
+          "true_positives": 1,
+          "false_negatives": 5
+        },
+        {
+          "name": "time_stratified_hybrid",
+          "recall": 0.1666666666666666,
+          "precision": 0.0769230769230769,
+          "f1": 0.1052631578947368,
+          "jaccard": 0.0555555555555555,
+          "overlap_coeff": 0.1666666666666666,
+          "retrieved_count": 13,
+          "true_positives": 1,
+          "false_negatives": 5
+        },
+        {
+          "name": "two_stage_screen",
+          "recall": 0.1666666666666666,
+          "precision": 0.0769230769230769,
+          "f1": 0.1052631578947368,
+          "jaccard": 0.0555555555555555,
+          "overlap_coeff": 0.1666666666666666,
+          "retrieved_count": 13,
+          "true_positives": 1,
+          "false_negatives": 5
+        },
+        {
+          "name": "weighted_vote",
+          "recall": 0.1666666666666666,
+          "precision": 0.0769230769230769,
+          "f1": 0.1052631578947368,
+          "jaccard": 0.0555555555555555,
+          "overlap_coeff": 0.1666666666666666,
+          "retrieved_count": 13,
+          "true_positives": 1,
+          "false_negatives": 5
+        },
+        {
+          "name": "consensus_k2",
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0,
+          "jaccard": 0.0,
+          "overlap_coeff": 0.0,
+          "retrieved_count": 4,
+          "true_positives": 0,
+          "false_negatives": 6
+        }
+      ],
+      "source_files": {
+        "aggregates_csv": "aggregates_eval/Medeiros_2023/sets_summary_20260408-075206.csv",
+        "gold_standard_csv": "studies/Medeiros_2023/gold_pmids_Medeiros_2023.csv",
+        "benchmark_csv": "benchmark_outputs/Medeiros_2023/summary_20260408-075205.csv"
+      },
+      "query_performance": [
+        {
+          "query_text": "((\"Child\"[Mesh] OR \"Preschool Child\"[Mesh] OR \"Adolescent\"[Mesh] OR child*[tiab] OR adolescen*[tiab] OR teen*[tiab] OR teenager*[tiab] OR youth[tiab] OR preschool*[tiab]) AND (\"Sleep\"[Mesh] OR \"Sleep Deprivation\"[Mesh] OR \"Sleep Quality\"[Mesh] OR \"sleep duration\"[tiab] OR \"sleep time\"[tiab] OR \"sleep quality\"[tiab] OR \"short sleep duration\"[tiab] OR \"long sleep duration\"[tiab] OR \"poor sleep quality\"[tiab] OR \"sleep disturbance\"[tiab] OR \"sleep disturbances\"[tiab] OR \"sleep restriction\"[tiab] OR ((sleep[tiab] OR sleeping[tiab]) AND (duration[tiab] OR time[tiab] OR quality[tiab]))) AND (\"Inflammation\"[Mesh] OR \"C-Reactive Protein\"[Mesh] OR \"Interleukin-6\"[Mesh] OR \"Tumor Necrosis Factor-alpha\"[Mesh] OR \"Adiponectin\"[Mesh] OR inflammation[tiab] OR \"inflammatory profile\"[tiab] OR \"inflammatory biomarker\"[tiab] OR \"inflammatory biomarkers\"[tiab] OR \"C-reactive protein\"[tiab] OR CRP[tiab] OR \"interleukin 6\"[tiab] OR \"IL-6\"[tiab] OR adiponectin[tiab] OR \"TNF alpha\"[tiab] OR \"TNF-alpha\"[tiab] OR \"tumor necrosis factor alpha\"[tiab]))",
+          "results_count": 9043,
           "true_positives": 6,
-          "recall": 0.5454545454545454,
-          "nnr_proxy": 612.6666666666666
+          "recall": 1.0,
+          "nnr_proxy": 1507.1666666666667
+        },
+        {
+          "query_text": "((\"Child\"[Mesh] OR \"Preschool Child\"[Mesh] OR \"Adolescent\"[Mesh] OR child*[tiab] OR adolescen*[tiab] OR teen*[tiab] OR teenager*[tiab] OR youth[tiab] OR preschool*[tiab]) AND (\"Sleep Deprivation\"[Mesh] OR \"Sleep Quality\"[Mesh] OR \"sleep duration\"[tiab] OR \"sleep time\"[tiab] OR \"sleep quality\"[tiab] OR \"short sleep duration\"[tiab] OR \"long sleep duration\"[tiab] OR \"poor sleep quality\"[tiab] OR \"sleep disturbance\"[tiab] OR \"sleep disturbances\"[tiab] OR \"sleep restriction\"[tiab]) AND (\"C-Reactive Protein\"[Mesh] OR \"Interleukin-6\"[Mesh] OR \"Tumor Necrosis Factor-alpha\"[Mesh] OR \"Adiponectin\"[Mesh] OR \"inflammatory biomarker\"[tiab] OR \"inflammatory biomarkers\"[tiab] OR \"C-reactive protein\"[tiab] OR CRP[tiab] OR \"interleukin 6\"[tiab] OR \"IL-6\"[tiab] OR adiponectin[tiab] OR \"TNF alpha\"[tiab] OR \"TNF-alpha\"[tiab] OR \"tumor necrosis factor alpha\"[tiab]))",
+          "results_count": 596,
+          "true_positives": 6,
+          "recall": 1.0,
+          "nnr_proxy": 99.33333333333331
+        },
+        {
+          "query_text": "(((\"Sleep Quality\"[Mesh] OR \"Sleep Deprivation\"[Mesh] OR \"sleep duration\"[tiab] OR \"sleep time\"[tiab] OR \"sleep quality\"[tiab] OR \"short sleep duration\"[tiab] OR \"long sleep duration\"[tiab] OR \"poor sleep quality\"[tiab] OR \"sleep disturbance\"[tiab]) AND (\"C-Reactive Protein\"[Majr] OR \"Interleukin-6\"[Majr] OR \"Tumor Necrosis Factor-alpha\"[Majr] OR \"Adiponectin\"[Majr] OR \"C-reactive protein\"[tiab] OR CRP[tiab] OR \"interleukin 6\"[tiab] OR \"IL-6\"[tiab] OR adiponectin[tiab] OR \"TNF alpha\"[tiab] OR \"TNF-alpha\"[tiab] OR \"tumor necrosis factor alpha\"[tiab]) AND (\"Child\"[Mesh] OR \"Preschool Child\"[Mesh] OR \"Adolescent\"[Mesh] OR child*[tiab] OR adolescen*[tiab] OR teen*[tiab] OR teenager*[tiab] OR youth[tiab] OR preschool*[tiab]) AND (\"Cohort Studies\"[Mesh] OR \"Cross-Sectional Studies\"[Mesh] OR \"Case-Control Studies\"[Mesh] OR observational[tiab] OR cohort[tiab] OR prospective[tiab] OR \"cross-sectional\"[tiab] OR \"case-control\"[tiab] OR \"case control\"[tiab])) AND humans[Filter])",
+          "results_count": 124,
+          "true_positives": 1,
+          "recall": 0.1666666666666666,
+          "nnr_proxy": 124.0
+        },
+        {
+          "query_text": "((\"sleep duration\"[ti] OR \"sleep time\"[ti] OR \"sleep quality\"[ti] OR \"short sleep duration\"[ti] OR \"long sleep duration\"[ti] OR \"poor sleep quality\"[ti] OR \"sleep disturbance\"[ti]) AND (\"C-reactive protein\"[ti] OR CRP[ti] OR \"interleukin 6\"[ti] OR \"IL-6\"[ti] OR adiponectin[ti] OR \"TNF alpha\"[ti] OR \"TNF-alpha\"[ti] OR \"tumor necrosis factor alpha\"[ti] OR inflammation[ti]) AND (child*[tiab] OR adolescen*[tiab] OR teen*[tiab] OR teenager*[tiab] OR youth[tiab] OR preschool*[tiab]))",
+          "results_count": 25,
+          "true_positives": 1,
+          "recall": 0.1666666666666666,
+          "nnr_proxy": 25.0
+        },
+        {
+          "query_text": "(((\"Sleep Quality\"[Majr] OR \"Sleep Deprivation\"[Majr] OR \"sleep duration\"[ti] OR \"sleep time\"[ti] OR \"sleep quality\"[ti] OR \"sleep disturbance\"[ti]) AND (\"C-Reactive Protein\"[Majr] OR \"Interleukin-6\"[Majr] OR \"Tumor Necrosis Factor-alpha\"[Majr] OR \"Adiponectin\"[Majr] OR \"C-reactive protein\"[ti] OR CRP[ti] OR \"interleukin 6\"[ti] OR \"IL-6\"[ti] OR adiponectin[ti] OR \"TNF alpha\"[ti] OR \"TNF-alpha\"[ti] OR \"tumor necrosis factor alpha\"[ti]) AND (child*[tiab] OR adolescen*[tiab] OR teen*[tiab] OR teenager*[tiab] OR youth[tiab] OR preschool*[tiab])) AND humans[Filter])",
+          "results_count": 468,
+          "true_positives": 6,
+          "recall": 1.0,
+          "nnr_proxy": 78.0
+        },
+        {
+          "query_text": "((\"sleep duration\"[ti] OR \"sleep time\"[ti] OR \"sleep quality\"[ti] OR \"short sleep duration\"[ti] OR \"long sleep duration\"[ti] OR \"poor sleep quality\"[ti] OR \"sleep disturbance\"[ti]) AND (\"C-reactive protein\"[ti] OR CRP[ti] OR \"interleukin 6\"[ti] OR \"IL-6\"[ti] OR adiponectin[ti] OR \"TNF alpha\"[ti] OR \"TNF-alpha\"[ti] OR \"tumor necrosis factor alpha\"[ti] OR inflammation[ti]) AND (child*[tiab] OR adolescen*[tiab] OR teen*[tiab] OR teenager*[tiab] OR youth[tiab] OR preschool*[tiab]) AND (observational[tiab] OR cohort[tiab] OR prospective[tiab] OR \"cross-sectional\"[tiab] OR \"case-control\"[tiab] OR \"case control\"[tiab]))",
+          "results_count": 15,
+          "true_positives": 1,
+          "recall": 0.1666666666666666,
+          "nnr_proxy": 15.0
         }
       ]
     },
     "ai_2022": {
       "study_id": "ai_2022",
       "schema_version": "1.0",
-      "collection_timestamp": "2026-01-23T09:49:59.332928Z",
+      "collection_timestamp": "2026-04-09T07:37:46.452473Z",
       "metadata": {
         "domain": "artificial intelligence",
         "databases": [
@@ -306,136 +1161,288 @@
           "embase"
         ],
         "num_queries": 12,
-        "date_range": {
-          "start": "1990-01-01",
-          "end": "2024-12-31"
-        },
         "has_embase": true,
         "gold_size": 14
       },
       "gold_standard": {
         "pmids": [
+          "18388205",
           "14764433",
+          "32209641",
+          "34160576",
           "18071053",
           "18838624",
-          "32209641",
           "32851326",
-          "34160576",
           "21708802",
-          "31927221",
           "20648668",
           "27939257",
-          "18388205",
-          "19286627",
-          "19732317",
-          "21521626"
+          "19848356",
+          "21521626",
+          "31927221",
+          "19286627"
         ],
         "count": 14
       },
       "aggregation_strategies": [
         {
           "name": "consensus_k2",
-          "recall": 0.3571428571428571,
-          "precision": 0.0102459016393442,
-          "f1": 0.0199203187250996,
-          "jaccard": 0.0100603621730382,
-          "overlap_coeff": 0.3571428571428571,
-          "retrieved_count": 488,
-          "true_positives": 5,
-          "false_negatives": 9
+          "recall": 0.1428571428571428,
+          "precision": 0.0168067226890756,
+          "f1": 0.0300751879699248,
+          "jaccard": 0.015267175572519,
+          "overlap_coeff": 0.1428571428571428,
+          "retrieved_count": 119,
+          "true_positives": 2,
+          "false_negatives": 12
         },
         {
           "name": "precision_gated_union",
           "recall": 0.3571428571428571,
-          "precision": 0.0089928057553956,
-          "f1": 0.0175438596491228,
-          "jaccard": 0.0088495575221238,
+          "precision": 0.0150602409638554,
+          "f1": 0.0289017341040462,
+          "jaccard": 0.0146627565982404,
           "overlap_coeff": 0.3571428571428571,
-          "retrieved_count": 556,
+          "retrieved_count": 332,
           "true_positives": 5,
           "false_negatives": 9
         },
         {
           "name": "time_stratified_hybrid",
           "recall": 0.3571428571428571,
-          "precision": 0.0089928057553956,
-          "f1": 0.0175438596491228,
-          "jaccard": 0.0088495575221238,
+          "precision": 0.0150602409638554,
+          "f1": 0.0289017341040462,
+          "jaccard": 0.0146627565982404,
           "overlap_coeff": 0.3571428571428571,
-          "retrieved_count": 556,
+          "retrieved_count": 332,
           "true_positives": 5,
           "false_negatives": 9
         },
         {
           "name": "two_stage_screen",
           "recall": 0.3571428571428571,
-          "precision": 0.0089928057553956,
-          "f1": 0.0175438596491228,
-          "jaccard": 0.0088495575221238,
+          "precision": 0.0150602409638554,
+          "f1": 0.0289017341040462,
+          "jaccard": 0.0146627565982404,
           "overlap_coeff": 0.3571428571428571,
-          "retrieved_count": 556,
+          "retrieved_count": 332,
           "true_positives": 5,
           "false_negatives": 9
         },
         {
           "name": "weighted_vote",
           "recall": 0.3571428571428571,
-          "precision": 0.0089928057553956,
-          "f1": 0.0175438596491228,
-          "jaccard": 0.0088495575221238,
+          "precision": 0.0150602409638554,
+          "f1": 0.0289017341040462,
+          "jaccard": 0.0146627565982404,
           "overlap_coeff": 0.3571428571428571,
-          "retrieved_count": 556,
+          "retrieved_count": 332,
           "true_positives": 5,
           "false_negatives": 9
         }
       ],
       "source_files": {
-        "aggregates_csv": "aggregates_eval/ai_2022/sets_summary_20260121-093646.csv",
+        "aggregates_csv": "aggregates_eval/ai_2022/sets_summary_20260327-102906.csv",
         "gold_standard_csv": "studies/ai_2022/gold_pmids_ai_2022.csv",
-        "benchmark_csv": "benchmark_outputs/ai_2022/summary_20260121-093645.csv"
+        "benchmark_csv": "benchmark_outputs/ai_2022/summary_20260327-102905.csv"
       },
       "query_performance": [
         {
-          "query_text": "((((\"Sleep Apnea Syndromes\"[Mesh] OR \"Snoring\"[Mesh]) OR (\"sleep disordered breathing\"[tiab] OR \"sleep apnea\"[tiab] OR \"SDB\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"OSA\"[tiab] OR \"snoring\"[tiab])) AND ((\"Blood Pressure\"[Mesh] OR \"Hypertension\"[Mesh]) OR (\"blood pressure\"[tiab] OR \"hypertension\"[tiab] OR \"BP\"[tiab] OR \"nondipping\"[tiab] OR \"non-dipping\"[tiab])) AND ((\"Child\"[Mesh] OR \"Adolescent\"[Mesh] OR \"Infant\"[Mesh]) OR (\"child*\"[tiab] OR \"adolescen*\"[tiab] OR \"p*ediatric\"[tiab] OR \"infan*\"[tiab] OR \"teen*\"[tiab]))) AND (\"1990/01/01\"[Date - Publication] : \"2024/12/31\"[Date - Publication])",
-          "results_count": 552,
-          "true_positives": 5,
-          "recall": 0.3571428571428571,
-          "nnr_proxy": 110.4
+          "query_text": "((\"Sleep Apnea Syndromes\"[Mesh] OR \"Sleep Apnea, Obstructive\"[Mesh] OR \"Snoring\"[Mesh] OR \"sleep disordered breathing\"[tiab] OR \"sleep-disordered breathing\"[tiab] OR \"sleep related breathing disorder\"[tiab] OR \"sleep related breathing disorders\"[tiab] OR \"sleep-related breathing disorder\"[tiab] OR \"sleep-related breathing disorders\"[tiab] OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"obstructive sleep apnoea\"[tiab] OR \"primary snoring\"[tiab] OR snor*[tiab] OR ((OSA[tiab] OR OSAS[tiab]) AND sleep[tiab])) AND (\"Blood Pressure\"[Mesh] OR \"Blood Pressure Monitoring, Ambulatory\"[Mesh] OR \"blood pressure\"[tiab] OR \"ambulatory blood pressure\"[tiab] OR \"blood pressure monitoring\"[tiab] OR \"systolic blood pressure\"[tiab] OR \"diastolic blood pressure\"[tiab] OR \"mean blood pressure\"[tiab] OR \"blood pressure load\"[tiab] OR \"BP load\"[tiab] OR nondipping[tiab] OR \"non-dipping\"[tiab] OR \"SBP index\"[tiab]) AND (\"Child\"[Mesh] OR \"Adolescent\"[Mesh] OR child*[tiab] OR adolescen*[tiab] OR pediatric*[tiab] OR paediatric*[tiab] OR youth*[tiab] OR teen*[tiab]))",
+          "results_count": 1455,
+          "true_positives": 14,
+          "recall": 1.0,
+          "nnr_proxy": 103.92857142857144
         },
         {
-          "query_text": "(((\"Sleep Apnea Syndromes\"[Mesh]) OR (\"sleep disordered breathing\"[tiab] OR \"sleep apnea\"[tiab] OR \"snoring\"[tiab])) AND ((\"Blood Pressure\"[Mesh]) OR (\"blood pressure\"[tiab] OR \"hypertension\"[tiab])) AND ((\"Child\"[Mesh] OR \"Adolescent\"[Mesh]) OR (\"child*\"[tiab] OR \"adolescen*\"[tiab] OR \"pediatric\"[tiab]))) AND (\"1990/01/01\"[Date - Publication] : \"2024/12/31\"[Date - Publication])",
-          "results_count": 491,
-          "true_positives": 5,
-          "recall": 0.3571428571428571,
-          "nnr_proxy": 98.2
+          "query_text": "((\"Sleep Apnea Syndromes\"[Mesh] OR \"Sleep Apnea, Obstructive\"[Mesh] OR \"Snoring\"[Mesh] OR \"sleep disordered breathing\"[tiab] OR \"sleep-disordered breathing\"[tiab] OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"obstructive sleep apnoea\"[tiab] OR \"primary snoring\"[tiab]) AND (\"Blood Pressure\"[Mesh] OR \"Blood Pressure Monitoring, Ambulatory\"[Mesh] OR \"blood pressure\"[tiab] OR \"ambulatory blood pressure\"[tiab] OR \"blood pressure monitoring\"[tiab] OR \"systolic blood pressure\"[tiab] OR \"diastolic blood pressure\"[tiab] OR \"mean blood pressure\"[tiab] OR \"blood pressure load\"[tiab] OR nondipping[tiab] OR \"non-dipping\"[tiab] OR \"SBP index\"[tiab]) AND (\"Child\"[Mesh] OR \"Adolescent\"[Mesh] OR child*[tiab] OR adolescen*[tiab] OR pediatric*[tiab] OR paediatric*[tiab] OR youth*[tiab]))",
+          "results_count": 1428,
+          "true_positives": 14,
+          "recall": 1.0,
+          "nnr_proxy": 102.0
         },
         {
-          "query_text": "(((\"Sleep Apnea, Obstructive\"[majr] OR \"Snoring\"[majr]) OR (\"sleep disordered breathing\"[ti] OR \"obstructive sleep apnea\"[ti])) AND ((\"Hypertension\"[majr]) OR (\"blood pressure\"[ti] OR \"hypertension\"[ti])) AND ((\"Child\"[majr] OR \"Adolescent\"[majr]) OR (\"pediatric\"[ti] OR \"child\"[ti]))) AND (\"1990/01/01\"[Date - Publication] : \"2024/12/31\"[Date - Publication])",
-          "results_count": 10,
-          "true_positives": 1,
-          "recall": 0.0714285714285714,
-          "nnr_proxy": 10.0
+          "query_text": "((\"Sleep Apnea Syndromes\"[Majr] OR \"Sleep Apnea, Obstructive\"[Majr] OR \"Snoring\"[Majr] OR \"sleep disordered breathing\"[ti] OR \"sleep-disordered breathing\"[ti] OR \"obstructive sleep apnea\"[ti] OR \"obstructive sleep apnoea\"[ti] OR \"primary snoring\"[ti]) AND (\"Blood Pressure\"[Majr] OR \"blood pressure\"[ti] OR \"ambulatory blood pressure\"[ti] OR \"systolic blood pressure\"[ti] OR \"diastolic blood pressure\"[ti] OR \"mean blood pressure\"[ti] OR \"blood pressure load\"[ti] OR \"non-dipping\"[tiab] OR \"SBP index\"[tiab]) AND (\"Child\"[Mesh] OR \"Adolescent\"[Mesh] OR child*[tiab] OR adolescen*[tiab] OR pediatric*[tiab] OR paediatric*[tiab]))",
+          "results_count": 139,
+          "true_positives": 10,
+          "recall": 0.7142857142857143,
+          "nnr_proxy": 13.9
         },
         {
-          "query_text": "(((\"Sleep Apnea Syndromes\"[Mesh]) OR (\"sleep disordered breathing\"[tiab] OR \"sleep apnea\"[tiab] OR \"snoring\"[tiab])) AND ((\"Blood Pressure\"[Mesh]) OR (\"blood pressure\"[tiab] OR \"hypertension\"[tiab])) AND ((\"Child\"[Mesh] OR \"Adolescent\"[Mesh]) OR (\"child*\"[tiab] OR \"adolescen*\"[tiab] OR \"pediatric\"[tiab]))) AND (\"1990/01/01\"[Date - Publication] : \"2024/12/31\"[Date - Publication]) AND (humans[Filter] AND english[Filter])",
-          "results_count": 410,
-          "true_positives": 4,
-          "recall": 0.2857142857142857,
-          "nnr_proxy": 102.5
+          "query_text": "((\"sleep disordered breathing\"[ti] OR \"sleep-disordered breathing\"[ti] OR \"sleep apnea\"[ti] OR \"sleep apnoea\"[ti] OR \"obstructive sleep apnea\"[ti] OR \"obstructive sleep apnoea\"[ti] OR \"primary snoring\"[ti]) AND (\"blood pressure\"[ti] OR \"ambulatory blood pressure\"[ti] OR \"systolic blood pressure\"[ti] OR \"diastolic blood pressure\"[ti] OR \"mean blood pressure\"[ti] OR \"blood pressure load\"[ti]) AND (child*[tiab] OR adolescen*[tiab] OR pediatric*[tiab] OR paediatric*[tiab]))",
+          "results_count": 103,
+          "true_positives": 8,
+          "recall": 0.5714285714285714,
+          "nnr_proxy": 12.875
         },
         {
-          "query_text": "(((\"Sleep Apnea Syndromes\"[Mesh]) OR (\"sleep disordered breathing\"[ti] OR \"sleep apnea\"[ti] OR \"snoring\"[ti])) AND ((\"Blood Pressure\"[Mesh]) OR (\"blood pressure\"[ti] OR \"hypertension\"[ti])) AND ((\"Child\"[Mesh] OR \"Adolescent\"[Mesh]) OR (\"child*\"[tiab] OR \"adolescen*\"[tiab] OR \"pediatric\"[tiab]))) AND (\"1990/01/01\"[Date - Publication] : \"2024/12/31\"[Date - Publication])",
-          "results_count": 141,
-          "true_positives": 5,
-          "recall": 0.3571428571428571,
-          "nnr_proxy": 28.2
+          "query_text": "((\"Sleep Apnea Syndromes\"[Majr] OR \"Sleep Apnea, Obstructive\"[Majr] OR \"sleep disordered breathing\"[ti] OR \"sleep-disordered breathing\"[ti] OR \"obstructive sleep apnea\"[ti] OR \"obstructive sleep apnoea\"[ti] OR \"primary snoring\"[ti]) AND (\"blood pressure\"[ti] OR \"ambulatory blood pressure\"[ti] OR \"systolic blood pressure\"[ti] OR \"diastolic blood pressure\"[ti] OR \"blood pressure load\"[ti] OR \"non-dipping\"[tiab]) AND (child*[tiab] OR adolescen*[tiab] OR pediatric*[tiab] OR paediatric*[tiab]))",
+          "results_count": 117,
+          "true_positives": 10,
+          "recall": 0.7142857142857143,
+          "nnr_proxy": 11.7
         },
         {
-          "query_text": "(((\"Sleep Apnea Syndromes\"[majr]) OR (\"sleep disordered breathing\"[tiab] OR \"sleep apnea\"[tiab] OR \"snoring\"[tiab])) AND ((\"Blood Pressure\"[majr]) OR (\"blood pressure\"[tiab] OR \"hypertension\"[tiab])) AND ((\"Child\"[Mesh] OR \"Adolescent\"[Mesh]) OR (\"child*\"[tiab] OR \"adolescen*\"[tiab] OR \"pediatric\"[tiab]))) AND (\"1990/01/01\"[Date - Publication] : \"2024/12/31\"[Date - Publication])",
-          "results_count": 477,
-          "true_positives": 5,
-          "recall": 0.3571428571428571,
-          "nnr_proxy": 95.4
+          "query_text": "(((\"Sleep Apnea Syndromes\"[Mesh] OR \"Sleep Apnea, Obstructive\"[Mesh] OR \"Snoring\"[Mesh] OR \"sleep disordered breathing\"[tiab] OR \"sleep-disordered breathing\"[tiab] OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"obstructive sleep apnoea\"[tiab] OR \"primary snoring\"[tiab]) AND (\"Blood Pressure\"[Mesh] OR \"Blood Pressure Monitoring, Ambulatory\"[Mesh] OR \"blood pressure\"[tiab] OR \"ambulatory blood pressure\"[tiab] OR \"blood pressure monitoring\"[tiab] OR \"systolic blood pressure\"[tiab] OR \"diastolic blood pressure\"[tiab] OR \"mean blood pressure\"[tiab] OR \"blood pressure load\"[tiab] OR nondipping[tiab] OR \"non-dipping\"[tiab] OR \"SBP index\"[tiab]) AND (\"Child\"[Mesh] OR \"Adolescent\"[Mesh] OR child*[tiab] OR adolescen*[tiab] OR pediatric*[tiab] OR paediatric*[tiab] OR youth*[tiab]) AND (cohort[tiab] OR longitudinal[tiab] OR observational[tiab] OR \"case-control\"[tiab] OR \"case control\"[tiab] OR \"cross-sectional\"[tiab] OR \"cross sectional\"[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])",
+          "results_count": 408,
+          "true_positives": 7,
+          "recall": 0.5,
+          "nnr_proxy": 58.285714285714285
+        }
+      ]
+    },
+    "Nexha_2024": {
+      "study_id": "Nexha_2024",
+      "schema_version": "1.0",
+      "collection_timestamp": "2026-04-09T07:37:46.485020Z",
+      "metadata": {
+        "domain": "sleep medicine",
+        "databases": [
+          "pubmed",
+          "scopus",
+          "wos",
+          "embase"
+        ],
+        "num_queries": 12,
+        "has_embase": true,
+        "date_range": {
+          "start": "0001-01-01",
+          "end": "2019-07-31"
+        },
+        "gold_size": 24
+      },
+      "gold_standard": {
+        "pmids": [
+          "10220004",
+          "22417163",
+          "22749440",
+          "2616693",
+          "17969462",
+          "17716275",
+          "2244799",
+          "9104690",
+          "21721857",
+          "2255751",
+          "18789826",
+          "20795885",
+          "9376643",
+          "1897612",
+          "3177000",
+          "35226173",
+          "7803596",
+          "9104689",
+          "31357135",
+          "11074230",
+          "34595778",
+          "2603926",
+          "23329007",
+          "8771612"
+        ],
+        "count": 24
+      },
+      "aggregation_strategies": [
+        {
+          "name": "consensus_k2",
+          "recall": 0.12,
+          "precision": 0.1428571428571428,
+          "f1": 0.1304347826086956,
+          "jaccard": 0.0697674418604651,
+          "overlap_coeff": 0.1428571428571428,
+          "retrieved_count": 21,
+          "true_positives": 3,
+          "false_negatives": 22
+        },
+        {
+          "name": "precision_gated_union",
+          "recall": 0.36,
+          "precision": 0.0714285714285714,
+          "f1": 0.119205298013245,
+          "jaccard": 0.0633802816901408,
+          "overlap_coeff": 0.36,
+          "retrieved_count": 126,
+          "true_positives": 9,
+          "false_negatives": 16
+        },
+        {
+          "name": "time_stratified_hybrid",
+          "recall": 0.36,
+          "precision": 0.0714285714285714,
+          "f1": 0.119205298013245,
+          "jaccard": 0.0633802816901408,
+          "overlap_coeff": 0.36,
+          "retrieved_count": 126,
+          "true_positives": 9,
+          "false_negatives": 16
+        },
+        {
+          "name": "two_stage_screen",
+          "recall": 0.36,
+          "precision": 0.0714285714285714,
+          "f1": 0.119205298013245,
+          "jaccard": 0.0633802816901408,
+          "overlap_coeff": 0.36,
+          "retrieved_count": 126,
+          "true_positives": 9,
+          "false_negatives": 16
+        },
+        {
+          "name": "weighted_vote",
+          "recall": 0.36,
+          "precision": 0.0714285714285714,
+          "f1": 0.119205298013245,
+          "jaccard": 0.0633802816901408,
+          "overlap_coeff": 0.36,
+          "retrieved_count": 126,
+          "true_positives": 9,
+          "false_negatives": 16
+        }
+      ],
+      "source_files": {
+        "aggregates_csv": "aggregates_eval/Nexha_2024/sets_summary_20260408-080440.csv",
+        "gold_standard_csv": "studies/Nexha_2024/gold_pmids_Nexha_2024.csv",
+        "benchmark_csv": "benchmark_outputs/Nexha_2024/summary_20260408-080439.csv"
+      },
+      "query_performance": [
+        {
+          "query_text": "((\"Premenstrual Syndrome\"[Mesh] OR \"Premenstrual Dysphoric Disorder\"[Mesh] OR PMS[tiab] OR PMDD[tiab] OR \"premenstrual syndrome\"[tiab] OR \"premenstrual syndromes\"[tiab] OR \"premenstrual dysphoric disorder\"[tiab]) AND (\"Circadian Rhythm\"[Mesh] OR \"Biological Clocks\"[Mesh] OR \"Melatonin\"[Mesh] OR \"biological rhythm\"[tiab] OR \"biological rhythms\"[tiab] OR \"circadian rhythm\"[tiab] OR \"circadian rhythms\"[tiab] OR chronobiolog*[tiab] OR melatonin[tiab] OR \"sleep disruption\"[tiab] OR \"sleep disruptions\"[tiab] OR \"sleep disturbance\"[tiab] OR \"sleep disturbances\"[tiab] OR \"sleep quality\"[tiab] OR polysomnograph*[tiab] OR \"sleep EEG\"[tiab] OR diurnal[tiab] OR \"body temperature\"[tiab] OR ((cortisol[tiab] OR prolactin[tiab] OR TSH[tiab] OR \"thyroid stimulating hormone\"[tiab]) AND (circadian[tiab] OR diurnal[tiab] OR rhythm*[tiab])))) AND (\"0001/01/01\"[Date - Publication] : \"2019/07/31\"[Date - Publication])",
+          "results_count": 593,
+          "true_positives": 24,
+          "recall": 0.96,
+          "nnr_proxy": 24.708333333333332
+        },
+        {
+          "query_text": "((\"Premenstrual Syndrome\"[Mesh] OR \"Premenstrual Dysphoric Disorder\"[Mesh] OR PMS[tiab] OR PMDD[tiab] OR \"premenstrual syndrome\"[tiab] OR \"premenstrual syndromes\"[tiab] OR \"premenstrual dysphoric disorder\"[tiab]) AND (\"Circadian Rhythm\"[Mesh] OR \"Melatonin\"[Mesh] OR \"biological rhythm\"[tiab] OR \"biological rhythms\"[tiab] OR \"circadian rhythm\"[tiab] OR \"circadian rhythms\"[tiab] OR chronobiolog*[tiab] OR melatonin[tiab] OR \"sleep disturbance\"[tiab] OR \"sleep disturbances\"[tiab] OR \"sleep quality\"[tiab] OR polysomnograph*[tiab] OR \"sleep EEG\"[tiab] OR \"body temperature\"[tiab] OR ((cortisol[tiab] OR prolactin[tiab] OR TSH[tiab] OR \"thyroid stimulating hormone\"[tiab]) AND (circadian[tiab] OR diurnal[tiab] OR rhythm*[tiab])))) AND (\"0001/01/01\"[Date - Publication] : \"2019/07/31\"[Date - Publication])",
+          "results_count": 567,
+          "true_positives": 24,
+          "recall": 0.96,
+          "nnr_proxy": 23.625
+        },
+        {
+          "query_text": "(((\"Premenstrual Syndrome\"[Majr] OR \"Premenstrual Dysphoric Disorder\"[Majr] OR \"premenstrual syndrome\"[ti] OR \"premenstrual dysphoric disorder\"[ti] OR PMS[ti] OR PMDD[ti]) AND (\"Circadian Rhythm\"[Majr] OR \"Melatonin\"[Majr] OR \"biological rhythm\"[ti] OR \"biological rhythms\"[ti] OR \"circadian rhythm\"[ti] OR \"circadian rhythms\"[ti] OR chronobiolog*[ti] OR melatonin[ti] OR \"sleep quality\"[ti] OR polysomnograph*[ti] OR \"body temperature\"[ti])) AND humans[Filter]) NOT (case reports[pt] OR review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt]) AND (\"0001/01/01\"[Date - Publication] : \"2019/07/31\"[Date - Publication])",
+          "results_count": 25,
+          "true_positives": 7,
+          "recall": 0.28,
+          "nnr_proxy": 3.5714285714285716
+        },
+        {
+          "query_text": "((\"premenstrual syndrome\"[ti] OR \"premenstrual dysphoric disorder\"[ti] OR PMS[ti] OR PMDD[ti]) AND (\"biological rhythm\"[ti] OR \"biological rhythms\"[ti] OR \"circadian rhythm\"[ti] OR \"circadian rhythms\"[ti] OR chronobiolog*[ti] OR melatonin[ti] OR \"sleep disturbance\"[ti] OR \"sleep disturbances\"[ti] OR \"sleep quality\"[ti] OR polysomnograph*[ti] OR \"body temperature\"[ti])) AND (\"0001/01/01\"[Date - Publication] : \"2019/07/31\"[Date - Publication])",
+          "results_count": 58,
+          "true_positives": 14,
+          "recall": 0.56,
+          "nnr_proxy": 4.142857142857143
+        },
+        {
+          "query_text": "(((\"Premenstrual Syndrome\"[Majr] OR \"Premenstrual Dysphoric Disorder\"[Majr] OR \"premenstrual syndrome\"[ti] OR \"premenstrual dysphoric disorder\"[ti] OR PMS[ti] OR PMDD[ti]) AND (\"biological rhythm\"[ti] OR \"biological rhythms\"[ti] OR \"circadian rhythm\"[ti] OR \"circadian rhythms\"[ti] OR chronobiolog*[ti] OR melatonin[ti] OR \"sleep disturbance\"[ti] OR \"sleep quality\"[ti] OR polysomnograph*[ti])) AND humans[Filter]) AND (\"0001/01/01\"[Date - Publication] : \"2019/07/31\"[Date - Publication])",
+          "results_count": 322,
+          "true_positives": 21,
+          "recall": 0.84,
+          "nnr_proxy": 15.333333333333334
+        },
+        {
+          "query_text": "((((\"Premenstrual Syndrome\"[Mesh] OR \"Premenstrual Dysphoric Disorder\"[Mesh] OR PMS[tiab] OR PMDD[tiab] OR \"premenstrual syndrome\"[tiab] OR \"premenstrual syndromes\"[tiab] OR \"premenstrual dysphoric disorder\"[tiab]) AND (\"Circadian Rhythm\"[Mesh] OR \"Melatonin\"[Mesh] OR \"biological rhythm\"[tiab] OR \"biological rhythms\"[tiab] OR \"circadian rhythm\"[tiab] OR \"circadian rhythms\"[tiab] OR chronobiolog*[tiab] OR melatonin[tiab] OR \"sleep disturbance\"[tiab] OR \"sleep disturbances\"[tiab] OR \"sleep quality\"[tiab] OR polysomnograph*[tiab] OR \"sleep EEG\"[tiab] OR \"body temperature\"[tiab] OR ((cortisol[tiab] OR prolactin[tiab] OR TSH[tiab] OR \"thyroid stimulating hormone\"[tiab]) AND (circadian[tiab] OR diurnal[tiab] OR rhythm*[tiab])))) AND (cross-sectional[tiab] OR longitudinal[tiab] OR prospective[tiab] OR observational[tiab] OR \"clinical trial\"[tiab] OR trial[tiab] OR \"Clinical Trial\"[Publication Type])) AND humans[Filter]) NOT (case reports[pt] OR review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt]) AND (\"0001/01/01\"[Date - Publication] : \"2019/07/31\"[Date - Publication])",
+          "results_count": 167,
+          "true_positives": 10,
+          "recall": 0.4,
+          "nnr_proxy": 16.7
         }
       ]
     }

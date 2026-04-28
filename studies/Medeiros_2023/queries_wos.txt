@@ -1,0 +1,17 @@
+# Q1: High-recall
+TS=((child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND ("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance" OR "sleep disturbances" OR "sleep restriction" OR (sleep NEAR/2 duration) OR (sleep NEAR/2 quality)) AND (inflammation OR "inflammatory profile" OR "inflammatory biomarker" OR "inflammatory biomarkers" OR "c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR "tumor necrosis factor alpha"))
+
+# Q2: Balanced
+TS=((child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND ("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance" OR "sleep disturbances" OR "sleep restriction") AND ("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR "tumor necrosis factor alpha" OR "inflammatory biomarker" OR "inflammatory biomarkers"))
+
+# Q3: High-precision
+TI=("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance") AND TI=("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha") AND TS=(child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND TS=(observational OR cohort OR prospective OR "cross-sectional" OR "case-control" OR "case control") AND DT=(Article)
+
+# Q4: Balanced + scope_only
+TI=("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance") AND TI=("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR inflammation) AND TS=(child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*)
+
+# Q5: Balanced + proximity_or_scope_fallback
+TS=((child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND ((sleep NEAR/2 duration) OR (sleep NEAR/2 time) OR (sleep NEAR/2 quality) OR ("short sleep" NEAR/2 duration) OR ("long sleep" NEAR/2 duration) OR (sleep NEAR/2 disturbance) OR (sleep NEAR/2 restriction)) AND ("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR "tumor necrosis factor alpha"))
+
+# Q6: Balanced + design_plus_scope
+TI=("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance") AND TI=("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR inflammation) AND TS=(child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND TS=(observational OR cohort OR prospective OR "cross-sectional" OR "case-control" OR "case control") AND DT=(Article)

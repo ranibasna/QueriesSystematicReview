@@ -1,0 +1,17 @@
+# Q1: High-recall
+TITLE-ABS-KEY((child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND ("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance" OR "sleep disturbances" OR "sleep restriction" OR (sleep W/2 duration) OR (sleep W/2 quality)) AND (inflammation OR "inflammatory profile" OR "inflammatory biomarker" OR "inflammatory biomarkers" OR "c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR "tumor necrosis factor alpha"))
+
+# Q2: Balanced
+TITLE-ABS-KEY((child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND ("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance" OR "sleep disturbances" OR "sleep restriction") AND ("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR "tumor necrosis factor alpha" OR "inflammatory biomarker" OR "inflammatory biomarkers"))
+
+# Q3: High-precision
+TITLE("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance") AND TITLE("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha") AND TITLE-ABS-KEY(child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND TITLE-ABS-KEY(observational OR cohort OR prospective OR "cross-sectional" OR "case-control" OR "case control") AND DOCTYPE(ar)
+
+# Q4: Balanced + scope_only
+TITLE("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance") AND TITLE("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR inflammation) AND TITLE-ABS-KEY(child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*)
+
+# Q5: Balanced + proximity_or_scope_fallback
+TITLE-ABS-KEY((child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND ((sleep W/2 duration) OR (sleep W/2 time) OR (sleep W/2 quality) OR ("short sleep" W/2 duration) OR ("long sleep" W/2 duration) OR (sleep W/2 disturbance) OR (sleep W/2 restriction)) AND ("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR "tumor necrosis factor alpha"))
+
+# Q6: Balanced + design_plus_scope
+TITLE("sleep duration" OR "sleep time" OR "sleep quality" OR "short sleep duration" OR "long sleep duration" OR "poor sleep quality" OR "sleep disturbance") AND TITLE("c-reactive protein" OR CRP OR "interleukin 6" OR "IL-6" OR adiponectin OR "TNF alpha" OR "TNF-alpha" OR inflammation) AND TITLE-ABS-KEY(child* OR adolescen* OR teen* OR teenager* OR youth OR preschool*) AND TITLE-ABS-KEY(observational OR cohort OR prospective OR "cross-sectional" OR "case-control" OR "case control") AND DOCTYPE(ar)

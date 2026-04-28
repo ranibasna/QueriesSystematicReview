@@ -1,0 +1,3545 @@
+{
+  "e02b90d21c139bc63b31e0504f656174d274062c29c4abe99f353d84e5da5054": {
+    "query": "('premenstrual syndrome'/exp OR 'premenstrual dysphoric disorder'/exp OR pms:ti,ab OR pmdd:ti,ab OR 'premenstrual syndrome':ti,ab OR 'premenstrual syndromes':ti,ab OR 'premenstrual dysphoric disorder':ti,ab) AND ('circadian rhythm'/exp OR 'melatonin'/exp OR 'biological rhythm':ti,ab OR 'biological rhythms':ti,ab OR 'circadian rhythm':ti,ab OR 'circadian rhythms':ti,ab OR chronobiolog*:ti,ab OR melatonin:ti,ab OR 'sleep disturbance':ti,ab OR 'sleep disturbances':ti,ab OR 'sleep quality':ti,ab OR polysomnograph*:ti,ab OR 'sleep eeg':ti,ab OR 'body temperature':ti,ab OR (((cortisol OR prolactin OR TSH OR 'thyroid stimulating hormone') ADJ3 (circadian OR diurnal OR rhythm*)):ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 354,
+    "retrieved_dois": [
+      "10.1001/jama.280.18.1556-JMN1111-3-1",
+      "10.1002/14651858.CD010503.pub2",
+      "10.1002/ajmg.a.63312",
+      "10.1002/ana.24226",
+      "10.1002/brb3.70383",
+      "10.1002/ijgo.70752",
+      "10.1002/j.2051-5545.2008.tb00180.x",
+      "10.1002/mgg3.2035",
+      "10.1007/BF01468755",
+      "10.1007/BF02211800",
+      "10.1007/s00192-023-05622-1",
+      "10.1007/s00404-020-05628-w",
+      "10.1007/s00405-023-08095-6",
+      "10.1007/s00737-002-0139-1",
+      "10.1007/s00737-005-0100-1",
+      "10.1007/s00737-011-0238-y",
+      "10.1007/s00737-013-0327-1",
+      "10.1007/s00737-018-0914-2",
+      "10.1007/s00737-019-00984-2",
+      "10.1007/s00737-022-01220-0",
+      "10.1007/s00737-022-01283-z",
+      "10.1007/s00737-023-01380-7",
+      "10.1007/s00737-026-01691-5",
+      "10.1007/s10874-023-09456-5",
+      "10.1007/s11325-017-1615-1",
+      "10.1007/s11325-020-02105-1",
+      "10.1007/s11845-024-03824-0",
+      "10.1007/s11920-011-0233-z",
+      "10.1007/s11920-025-01586-9",
+      "10.1007/s12325-008-0072-4",
+      "10.1007/s13105-022-00923-3",
+      "10.1007/s40264-023-01289-1",
+      "10.1007/s41105-019-00247-8",
+      "10.1007/s41782-025-00301-1",
+      "10.1007/s42399-025-02243-1",
+      "10.1007/s43032-022-00952-9",
+      "10.1007/s43032-023-01172-5",
+      "10.1016/0002-9378(95)90297-X",
+      "10.1016/0006-3223(94)91210-6",
+      "10.1016/0013-4694(85)91050-8",
+      "10.1016/0143-4179(88)90073-X",
+      "10.1016/0165-1781(91)90070-6",
+      "10.1016/0165-1781(96)02905-8",
+      "10.1016/0306-4530(88)90036-4",
+      "10.1016/0306-4530(90)90034-7",
+      "10.1016/S0006-3223(00)00876-3",
+      "10.1016/S0011-393X(02)80038-8",
+      "10.1016/S0016-5085(09)62261-7",
+      "10.1016/S0022-3999(98)00061-0",
+      "10.1016/S0165-1781(98)00128-0",
+      "10.1016/S0165-1781(99)00043-8",
+      "10.1016/S0168-3659(99)00252-7",
+      "10.1016/S0302-2838(21)00538-8",
+      "10.1016/S0304-3940(00)00826-0",
+      "10.1016/S0893-133X(01)00340-2",
+      "10.1016/S1086-5802(16)30106-1",
+      "10.1016/S1098-3597(04)80015-2",
+      "10.1016/S1297-9589(02)00007-3",
+      "10.1016/j.anr.2024.10.006",
+      "10.1016/j.atmosenv.2004.03.040",
+      "10.1016/j.biopsych.2021.02.796",
+      "10.1016/j.biopsych.2024.02.806",
+      "10.1016/j.biopsych.2025.02.567",
+      "10.1016/j.compbiomed.2025.109705",
+      "10.1016/j.ctim.2023.102916",
+      "10.1016/j.ecoenv.2024.116875",
+      "10.1016/j.ejmg.2023.104750",
+      "10.1016/j.eurpsy.2017.12.016",
+      "10.1016/j.hermed.2018.02.002",
+      "10.1016/j.hermed.2023.100751",
+      "10.1016/j.hrthm.2014.02.011",
+      "10.1016/j.ijheh.2018.05.006",
+      "10.1016/j.ijnurstu.2019.04.013",
+      "10.1016/j.jaclp.2022.10.101",
+      "10.1016/j.jad.2024.05.155",
+      "10.1016/j.jad.2026.121593",
+      "10.1016/j.jconrel.2009.12.024",
+      "10.1016/j.jcv.2015.07.148",
+      "10.1016/j.jpag.2024.08.005",
+      "10.1016/j.jpag.2025.08.001",
+      "10.1016/j.jpag.2025.10.009",
+      "10.1016/j.jpsychires.2020.12.005",
+      "10.1016/j.jpsychores.2009.01.011",
+      "10.1016/j.jpsychores.2021.110570",
+      "10.1016/j.jsams.2024.02.008",
+      "10.1016/j.jsgi.2005.05.002",
+      "10.1016/j.jsmc.2007.10.001",
+      "10.1016/j.jsmc.2008.01.006",
+      "10.1016/j.jsmc.2009.04.011",
+      "10.1016/j.jsmc.2018.04.002",
+      "10.1016/j.jsmc.2022.02.004",
+      "10.1016/j.jsmc.2023.06.003",
+      "10.1016/j.jval.2024.03.2125",
+      "10.1016/j.kjms.2012.08.017",
+      "10.1016/j.mex.2025.103771",
+      "10.1016/j.msard.2020.102559",
+      "10.1016/j.neuroscience.2008.02.077",
+      "10.1016/j.pain.2010.02.041",
+      "10.1016/j.pcl.2010.10.006",
+      "10.1016/j.pediatrneurol.2021.06.002",
+      "10.1016/j.pop.2025.01.003",
+      "10.1016/j.psc.2006.09.002",
+      "10.1016/j.psc.2010.01.007",
+      "10.1016/j.psychres.2007.11.017",
+      "10.1016/j.psychres.2017.01.031",
+      "10.1016/j.psychres.2018.04.008",
+      "10.1016/j.psym.2020.03.004",
+      "10.1016/j.psyneuen.2019.104372",
+      "10.1016/j.revhom.2018.01.019",
+      "10.1016/j.scitotenv.2023.163807",
+      "10.1016/j.scitotenv.2025.180995",
+      "10.1016/j.sleep.2006.09.011",
+      "10.1016/j.sleep.2012.05.012",
+      "10.1016/j.sleep.2013.11.471",
+      "10.1016/j.sleep.2019.11.827",
+      "10.1016/j.sleep.2019.11.948",
+      "10.1016/j.sleep.2021.07.017",
+      "10.1016/j.sleep.2021.08.029",
+      "10.1016/j.sleep.2023.11.034",
+      "10.1016/j.sleep.2023.11.202",
+      "10.1016/j.sleep.2025.108679",
+      "10.1016/j.sleep.2025.108721",
+      "10.1016/j.smrv.2005.09.004",
+      "10.1016/j.smrv.2025.102069",
+      "10.1016/j.yfrne.2023.101120",
+      "10.1016/s0015-0282(16)59045-1",
+      "10.1016/s0140-6736(05)78901-7",
+      "10.1016/s0733-8619(18)30891-0",
+      "10.1017/S1092852900019611",
+      "10.1024/0040-5930.57.2.76",
+      "10.1024/0040-5930.59.4.175",
+      "10.1038/npp.2017.265",
+      "10.1038/s41386-025-02281-2",
+      "10.1038/s41598-025-23040-9",
+      "10.1038/s41598-025-26534-8",
+      "10.1038/s41598-025-90581-4",
+      "10.1046/j.1365-2125.2003.01811.x",
+      "10.1046/j.1440-1819.1999.00489.x",
+      "10.1055/a-1519-7517",
+      "10.1055/a-2371-0763",
+      "10.1055/s-0044-1793829",
+      "10.1055/s-2007-1021426",
+      "10.1055/s-2008-1067968",
+      "10.1080/00325481.1989.11704456",
+      "10.1080/0167482X.2022.2095999",
+      "10.1080/027868201300082021",
+      "10.1080/07420520500398007",
+      "10.1080/07420528.2018.1533561",
+      "10.1080/07853890.2023.2269574",
+      "10.1080/09291016.2015.1048952",
+      "10.1080/09513590.2021.1968820",
+      "10.1080/09593330.2018.1561759",
+      "10.1080/10409230601146219",
+      "10.1080/13548506.2024.2439136",
+      "10.1080/13697130400001802",
+      "10.1080/17425247.2018.1537261",
+      "10.1080/19390211.2023.2301398",
+      "10.1080/24750573.2017.1326735",
+      "10.1089/acm.2008.0447",
+      "10.1089/jpm.2009.0378",
+      "10.1089/jwh.2014.4911",
+      "10.1089/jwh.2014.Ab01.abstracts",
+      "10.1089/neu.2024.59782.abstract",
+      "10.1093/ajhp/52.24.2799",
+      "10.1093/ecco-jcc/jjw019",
+      "10.1093/eurheartj/ehx502.P1675",
+      "10.1093/eurheartj/ehy566.P6656",
+      "10.1093/jxb/51.342.61",
+      "10.1093/ofid/ofad500.606",
+      "10.1093/sleep/13.3.253",
+      "10.1093/sleep/14.5.419",
+      "10.1093/sleep/18.8.689",
+      "10.1093/sleep/30.10.1283",
+      "10.1093/sleep/zsab072.177",
+      "10.1093/sleep/zsab072.735",
+      "10.1093/sleep/zsab171",
+      "10.1093/sleep/zsaf090.1216",
+      "10.1093/sleep/zsw062",
+      "10.1093/sleep/zsz067.672",
+      "10.1097/00002826-198610000-00006",
+      "10.1097/00002826-198908000-00012",
+      "10.1097/00003081-199209000-00020",
+      "10.1097/00003081-199209000-00023",
+      "10.1097/00006842-199005000-00008",
+      "10.1097/00129300-200106000-00004",
+      "10.1097/01.AOG.0000124804.81095.7f",
+      "10.1097/01.PSY.0000021945.35402.0D",
+      "10.1097/01.yic.0000195660.37267.cf",
+      "10.1097/CPM.0000000000000263",
+      "10.1097/GME.0000000000001251",
+      "10.1097/GME.0000000000002471",
+      "10.1097/MD.0000000000034223",
+      "10.1097/MS9.0000000000002013",
+      "10.1097/shk.0000000000002356",
+      "10.1101/2025.01.13.25320449",
+      "10.1111/bdi.12161",
+      "10.1111/bdi.12189",
+      "10.1111/bdi.12480/abstract",
+      "10.1111/bdi.12618",
+      "10.1111/bdi.12745",
+      "10.1111/bdi.12939",
+      "10.1111/bdi.13014",
+      "10.1111/bdi.70046",
+      "10.1111/cge.14361",
+      "10.1111/j.1365-2869.2010.00868.x",
+      "10.1111/j.1365-2869.2012.01007.x",
+      "10.1111/j.1440-1819.1997.tb02606.x",
+      "10.1111/j.1468-1331.2011.03551.x",
+      "10.1111/j.1479-8425.2009.00410-3.x",
+      "10.1111/j.1479-8425.2009.00426.x",
+      "10.1111/j.1479-8425.2010.00457-4.x",
+      "10.1111/j.1479-8425.2011.00491.x",
+      "10.1111/j.1479-8425.2011.00521.x",
+      "10.1111/j.1600-079X.1999.tb00600.x",
+      "10.1111/jne.13043",
+      "10.1111/jog.15585",
+      "10.1111/jog.16279",
+      "10.1111/jpi.70081",
+      "10.1111/jsr.12213",
+      "10.1111/jsr.12446",
+      "10.1111/jsr.13181",
+      "10.1111/jsr.14380",
+      "10.1111/nmo.70133",
+      "10.1111/pcn.12484",
+      "10.1111/ppc.12628",
+      "10.1111/tmi.12574",
+      "10.1111/tog.12885",
+      "10.1123/ijsnem.2026-0008",
+      "10.1124/jpet.113.203653",
+      "10.1136/bcr-2017-220778",
+      "10.1136/bmjopen-2025-102698",
+      "10.1136/bmjsem-2023-001810",
+      "10.1136/thoraxjnl-2014-205982",
+      "10.1155/2010/259345",
+      "10.1155/2010/967435",
+      "10.1158/1055-9965.EPI-09-1318",
+      "10.1159/000122184",
+      "10.1159/000122370",
+      "10.1159/000477094",
+      "10.1159/000501249",
+      "10.1159/000531588",
+      "10.1159/000545547",
+      "10.1176/ajp.144.6.762",
+      "10.1176/ajp.148.10.1329",
+      "10.1176/ajp.149.12.1762",
+      "10.1176/ajp.152.3.404",
+      "10.1176/appi.ajp.2017.17070803",
+      "10.1176/appi.psychotherapy.20210002",
+      "10.1177/003693307401900119",
+      "10.1177/02601060251380475",
+      "10.1177/0310057x0503300414",
+      "10.1177/10538127251345961",
+      "10.1177/2053369119875386",
+      "10.1177/23969873221087559",
+      "10.1177/27683605251392784",
+      "10.1186/1740-3391-8-5",
+      "10.1186/2050-6511-15-40",
+      "10.1186/s11689-024-09572-7",
+      "10.1186/s12884-026-08845-4",
+      "10.1186/s12888-025-07126-2",
+      "10.1186/s12905-022-01897-6",
+      "10.1186/s12905-023-02600-z",
+      "10.1186/s12905-023-02629-0",
+      "10.1186/s12905-023-02752-y",
+      "10.1186/s12905-024-02971-x",
+      "10.1186/s12905-024-03210-z",
+      "10.1186/s12905-024-03219-4",
+      "10.1186/s12905-024-03395-3",
+      "10.1186/s12905-025-03940-8",
+      "10.1186/s12905-025-03996-6",
+      "10.1186/s12919-024-00297-y",
+      "10.1186/s13023-025-03598-3",
+      "10.1192/j.eurpsy.2024.1437",
+      "10.1210/endocr/bqab117",
+      "10.1210/jc.81.2.728",
+      "10.1258/mi.2008.008019",
+      "10.12891/ceog3894.2018",
+      "10.12891/ceog4201.2018",
+      "10.12998/wjcc.v12.i22.4992",
+      "10.1371/journal.pone.0040891",
+      "10.1371/journal.pone.0051929",
+      "10.1371/journal.pone.0079529",
+      "10.1371/journal.pone.0332135",
+      "10.1556/650.2022.32489",
+      "10.1556/650.2022.32496",
+      "10.1586/14737175.7.11s.S45",
+      "10.1586/17512433.2016.1142371",
+      "10.1592/phco.20.19.1409.34857",
+      "10.16948/zktipb.309006",
+      "10.17749/2313-7347.2019.13.4.337-344",
+      "10.18565/aig.2024.138",
+      "10.2139/ssrn.5473136",
+      "10.2165/00003495-199856040-00016",
+      "10.2165/00023210-200115040-00003",
+      "10.2174/2211556011666220510141329",
+      "10.2196/57599",
+      "10.22038/IJBMS.2022.63378.13985",
+      "10.2217/whe.13.62",
+      "10.25258/ijddt.10.2.6",
+      "10.26355/eurrev_202207_29280",
+      "10.3109/02770909709055398",
+      "10.3109/07420528.2010.503331",
+      "10.3109/07420528.2011.567365",
+      "10.3109/09513590.2011.650769",
+      "10.3109/10401239109147989",
+      "10.3109/13625187.2012.673963",
+      "10.31688/ABMU.2021.56.2.05",
+      "10.31887/dcns.2011.13.1/rjoffe",
+      "10.3233/THC-229008",
+      "10.3389/fendo.2022.1084249",
+      "10.3389/fendo.2022.838886",
+      "10.3389/fendo.2023.1263823",
+      "10.3389/fendo.2023.1266806",
+      "10.3389/fnins.2023.1155900",
+      "10.3389/fphys.2022.954760",
+      "10.3389/fphys.2023.1110526",
+      "10.3389/fphys.2025.1663657",
+      "10.3389/fpsyt.2017.00301",
+      "10.3389/fpsyt.2022.913821",
+      "10.3389/fpsyt.2023.1306194",
+      "10.3389/fpubh.2023.1203280",
+      "10.3390/healthcare13222862",
+      "10.3390/ijerph18073647",
+      "10.3390/ijerph19031439",
+      "10.3390/ijms24044039",
+      "10.3390/jcm13072106",
+      "10.3390/jcm14248619",
+      "10.37506/4fcz7k84",
+      "10.3760/cma.j.issn.1009-2587.2011.06.005",
+      "10.38212/2224-6614.3565",
+      "10.3923/ijp.2023.485.504",
+      "10.4040/jkan.19230",
+      "10.4088/JCP.10r06580",
+      "10.4103/0022-3859.166509",
+      "10.4103/indianjpsychiatry.indianjpsychiatry_48_25",
+      "10.4103/njcp.njcp_780_24",
+      "10.4274/jtsm.galenos.2021.08379",
+      "10.47009/jamp.2023.5.3.72",
+      "10.47009/jamp.2025.7.1.48",
+      "10.5334/jcr.154",
+      "10.5455/njppp.2017.7.0935427102017",
+      "10.5455/njppp.2019.9.1133209112018",
+      "10.5455/njppp.2023.13.08404202318092023",
+      "10.5530/pj.2025.17.44",
+      "10.55730/1300-0144.5981",
+      "10.5664/jcsm.10726",
+      "10.5664/jcsm.7208",
+      "10.5664/jcsm.7764",
+      "10.5664/jcsm.8692",
+      "10.5665/sleep.2194",
+      "10.5692/clinicalneurol.cn-001951",
+      "10.62347/CSXZ5615",
+      "10.7326/M17-3320",
+      "10.7860/JCDR/2023/62015.17708"
+    ],
+    "retrieved_pmids": [
+      "10220004",
+      "10450590",
+      "10459690",
+      "10482337",
+      "10496143",
+      "10699290",
+      "10704767",
+      "10730101",
+      "10938796",
+      "10959472",
+      "11074230",
+      "11130212",
+      "1129296",
+      "11463133",
+      "1152342",
+      "11682284",
+      "1170519",
+      "11755220",
+      "12018035",
+      "12140352",
+      "1214962",
+      "12510198",
+      "12659785",
+      "12680880",
+      "1443271",
+      "15121571",
+      "1521388",
+      "1521391",
+      "15457811",
+      "15490770",
+      "15669555",
+      "15979539",
+      "16041296",
+      "16119494",
+      "16195781",
+      "16393708",
+      "16436934",
+      "16437026",
+      "16618548",
+      "1682986",
+      "16922346",
+      "1695014",
+      "17085776",
+      "17118284",
+      "17364682",
+      "17383933",
+      "1759095",
+      "17969462",
+      "17969862",
+      "18039068",
+      "18440718",
+      "18568441",
+      "18714078",
+      "1876626",
+      "18789826",
+      "1897612",
+      "19029878",
+      "1928464",
+      "19616145",
+      "19678775",
+      "20056124",
+      "20304557",
+      "20332276",
+      "20385338",
+      "20557233",
+      "20795885",
+      "21281847",
+      "21485752",
+      "21721857",
+      "21733480",
+      "2191132",
+      "21918807",
+      "2192429",
+      "2217327",
+      "2228813",
+      "22316208",
+      "22340787",
+      "22417163",
+      "2244799",
+      "2255751",
+      "22749440",
+      "22815856",
+      "23115397",
+      "23284821",
+      "23329007",
+      "23347812",
+      "23667248",
+      "2410221",
+      "24161307",
+      "24278145",
+      "24467468",
+      "24561163",
+      "25052847",
+      "25259837",
+      "25741",
+      "25790587",
+      "2595211",
+      "26294685",
+      "26440391",
+      "2678072",
+      "2762687",
+      "27868343",
+      "2804996",
+      "28152471",
+      "28257559",
+      "28364490",
+      "28963116",
+      "28965460",
+      "29318566",
+      "29404595",
+      "29704826",
+      "2976949",
+      "29853291",
+      "29991421",
+      "30098748",
+      "3021323",
+      "30276477",
+      "30324813",
+      "30395733",
+      "30570370",
+      "31053204",
+      "31129552",
+      "31214782",
+      "31221931",
+      "31357135",
+      "31630609",
+      "3177000",
+      "32317111",
+      "32445135",
+      "32514756",
+      "32666918",
+      "3288859",
+      "32895348",
+      "3296791",
+      "32984973",
+      "33012081",
+      "33035965",
+      "33302160",
+      "33807463",
+      "34125877",
+      "3414379",
+      "3419555",
+      "34240212",
+      "34265497",
+      "34311492",
+      "34325981",
+      "34409910",
+      "34508987",
+      "34597954",
+      "34696598",
+      "35162469",
+      "35226173",
+      "35488093",
+      "3549364",
+      "35659080",
+      "35811498",
+      "35879750",
+      "35895486",
+      "35895550",
+      "35916790",
+      "35996993",
+      "36520251",
+      "36530105",
+      "36623609",
+      "36717461",
+      "36835450",
+      "36963463",
+      "37146814",
+      "37198960",
+      "37392087",
+      "37417631",
+      "37485700",
+      "3750467",
+      "37641079",
+      "37658359",
+      "37854248",
+      "37857364",
+      "37874397",
+      "37950208",
+      "38070375",
+      "38176542",
+      "38213037",
+      "38272005",
+      "38373995",
+      "38501513",
+      "38503666",
+      "38851435",
+      "38907183",
+      "38915045",
+      "39142114",
+      "39154955",
+      "39363263",
+      "39375682",
+      "39428514",
+      "39448073",
+      "39491721",
+      "39572028",
+      "39647837",
+      "39889448",
+      "39913073",
+      "39952094",
+      "39979390",
+      "40022277",
+      "40102980",
+      "40147024",
+      "40163850",
+      "40342331",
+      "40412907",
+      "40509570",
+      "40556080",
+      "40701580",
+      "40803655",
+      "40849627",
+      "40887792",
+      "40898198",
+      "40980957",
+      "41004653",
+      "41105610",
+      "41109475",
+      "41184955",
+      "41198846",
+      "41203840",
+      "41213572",
+      "41274126",
+      "41289768",
+      "41392924",
+      "41397339",
+      "41525193",
+      "41723340",
+      "41831494",
+      "4375671",
+      "4421423",
+      "4434911",
+      "47017",
+      "4760262",
+      "4820013",
+      "4851284",
+      "590617",
+      "6539122",
+      "7640726",
+      "7645647",
+      "768798",
+      "7803596",
+      "7833960",
+      "7864267",
+      "8103994",
+      "8164939",
+      "8520187",
+      "8560136",
+      "8588355",
+      "8636295",
+      "8748566",
+      "8771612",
+      "8887186",
+      "9065978",
+      "9104689",
+      "9104690",
+      "9376643",
+      "9428300",
+      "944385",
+      "9453191",
+      "9472125",
+      "9526177",
+      "9806111",
+      "9859857"
+    ],
+    "pmids": [
+      "10220004",
+      "10450590",
+      "10459690",
+      "10482337",
+      "10496143",
+      "10699290",
+      "10704767",
+      "10730101",
+      "10938796",
+      "10959472",
+      "11074230",
+      "11130212",
+      "1129296",
+      "11463133",
+      "1152342",
+      "11682284",
+      "1170519",
+      "11755220",
+      "12018035",
+      "12140352",
+      "1214962",
+      "12510198",
+      "12659785",
+      "12680880",
+      "1443271",
+      "15121571",
+      "1521388",
+      "1521391",
+      "15457811",
+      "15490770",
+      "15669555",
+      "15979539",
+      "16041296",
+      "16119494",
+      "16195781",
+      "16393708",
+      "16436934",
+      "16437026",
+      "16618548",
+      "1682986",
+      "16922346",
+      "1695014",
+      "17085776",
+      "17118284",
+      "17364682",
+      "17383933",
+      "1759095",
+      "17969462",
+      "17969862",
+      "18039068",
+      "18440718",
+      "18568441",
+      "18714078",
+      "1876626",
+      "18789826",
+      "1897612",
+      "19029878",
+      "1928464",
+      "19616145",
+      "19678775",
+      "20056124",
+      "20304557",
+      "20332276",
+      "20385338",
+      "20557233",
+      "20795885",
+      "21281847",
+      "21485752",
+      "21721857",
+      "21733480",
+      "2191132",
+      "21918807",
+      "2192429",
+      "2217327",
+      "2228813",
+      "22316208",
+      "22340787",
+      "22417163",
+      "2244799",
+      "2255751",
+      "22749440",
+      "22815856",
+      "23115397",
+      "23284821",
+      "23329007",
+      "23347812",
+      "23667248",
+      "2410221",
+      "24161307",
+      "24278145",
+      "24467468",
+      "24561163",
+      "25052847",
+      "25259837",
+      "25741",
+      "25790587",
+      "2595211",
+      "26294685",
+      "26440391",
+      "2678072",
+      "2762687",
+      "27868343",
+      "2804996",
+      "28152471",
+      "28257559",
+      "28364490",
+      "28963116",
+      "28965460",
+      "29318566",
+      "29404595",
+      "29704826",
+      "2976949",
+      "29853291",
+      "29991421",
+      "30098748",
+      "3021323",
+      "30276477",
+      "30324813",
+      "30395733",
+      "30570370",
+      "31053204",
+      "31129552",
+      "31214782",
+      "31221931",
+      "31357135",
+      "31630609",
+      "3177000",
+      "32317111",
+      "32445135",
+      "32514756",
+      "32666918",
+      "3288859",
+      "32895348",
+      "3296791",
+      "32984973",
+      "33012081",
+      "33035965",
+      "33302160",
+      "33807463",
+      "34125877",
+      "3414379",
+      "3419555",
+      "34240212",
+      "34265497",
+      "34311492",
+      "34325981",
+      "34409910",
+      "34508987",
+      "34597954",
+      "34696598",
+      "35162469",
+      "35226173",
+      "35488093",
+      "3549364",
+      "35659080",
+      "35811498",
+      "35879750",
+      "35895486",
+      "35895550",
+      "35916790",
+      "35996993",
+      "36520251",
+      "36530105",
+      "36623609",
+      "36717461",
+      "36835450",
+      "36963463",
+      "37146814",
+      "37198960",
+      "37392087",
+      "37417631",
+      "37485700",
+      "3750467",
+      "37641079",
+      "37658359",
+      "37854248",
+      "37857364",
+      "37874397",
+      "37950208",
+      "38070375",
+      "38176542",
+      "38213037",
+      "38272005",
+      "38373995",
+      "38501513",
+      "38503666",
+      "38851435",
+      "38907183",
+      "38915045",
+      "39142114",
+      "39154955",
+      "39363263",
+      "39375682",
+      "39428514",
+      "39448073",
+      "39491721",
+      "39572028",
+      "39647837",
+      "39889448",
+      "39913073",
+      "39952094",
+      "39979390",
+      "40022277",
+      "40102980",
+      "40147024",
+      "40163850",
+      "40342331",
+      "40412907",
+      "40509570",
+      "40556080",
+      "40701580",
+      "40803655",
+      "40849627",
+      "40887792",
+      "40898198",
+      "40980957",
+      "41004653",
+      "41105610",
+      "41109475",
+      "41184955",
+      "41198846",
+      "41203840",
+      "41213572",
+      "41274126",
+      "41289768",
+      "41392924",
+      "41397339",
+      "41525193",
+      "41723340",
+      "41831494",
+      "4375671",
+      "4421423",
+      "4434911",
+      "47017",
+      "4760262",
+      "4820013",
+      "4851284",
+      "590617",
+      "6539122",
+      "7640726",
+      "7645647",
+      "768798",
+      "7803596",
+      "7833960",
+      "7864267",
+      "8103994",
+      "8164939",
+      "8520187",
+      "8560136",
+      "8588355",
+      "8636295",
+      "8748566",
+      "8771612",
+      "8887186",
+      "9065978",
+      "9104689",
+      "9104690",
+      "9376643",
+      "9428300",
+      "944385",
+      "9453191",
+      "9472125",
+      "9526177",
+      "9806111",
+      "9859857"
+    ],
+    "records": [
+      {
+        "title": "Prevalence of Sleep Disorders in Adults with Attention Deficit Hyperactivity Disorder (ADHD): The Impact of Comorbidity and ADHD Subtype",
+        "first_author": "Adamis",
+        "year": 2026,
+        "doi": "10.1007/s42399-025-02243-1"
+      },
+      {
+        "title": "Updated insight into the pathophysiology of premenstrual dysphoric disorder and therapeutic approaches",
+        "first_author": "Sultana",
+        "year": 2026,
+        "pmid": "41831494",
+        "doi": "10.1016/j.jad.2026.121593"
+      },
+      {
+        "title": "Knowledge, support, and networking for Phelan-McDermid syndrome: a study protocol",
+        "first_author": "Colnaghi",
+        "year": 2026,
+        "doi": "10.1016/j.mex.2025.103771"
+      },
+      {
+        "title": "Interpretable prediction of anxiety symptoms during pregnancy via machine learning and SHAP",
+        "first_author": "Xu",
+        "year": 2026,
+        "doi": "10.1007/s00737-026-01691-5"
+      },
+      {
+        "title": "Fear of childbirth mediates the relationship between premenstrual syndrome and postpartum depression in Chinese postpartum women: a multicenter cross-sectional study",
+        "first_author": "Li",
+        "year": 2026,
+        "pmid": "41723340",
+        "doi": "10.1186/s12884-026-08845-4"
+      },
+      {
+        "title": "Altered sleep EEG spectral dynamics across the menstrual cycle in premenstrual dysphoric disorder",
+        "first_author": "Moderie",
+        "year": 2026,
+        "pmid": "41289768",
+        "doi": "10.1016/j.sleep.2025.108679"
+      },
+      {
+        "title": "Effects of medications on sleep quality, insomnia, and circadian rhythm in adults with ADHD: A pragmatic longitudinal study",
+        "first_author": "Adamis",
+        "year": 2026,
+        "pmid": "41397339",
+        "doi": "10.1016/j.sleep.2025.108721"
+      },
+      {
+        "title": "Effect of Relaxation Training and Self-Managementstrategies on Pain and Distress in Young Adults Withprimary Dysmenorrhea– A Pre-Post Experimental Design",
+        "first_author": "Rishitha",
+        "year": 2026,
+        "doi": "10.37506/4fcz7k84"
+      },
+      {
+        "title": "The Effect of Footbath on Premenstrual Syndrome, Sleep Quality, and Quality of Life in University Students with Premenstrual Syndrome: A Randomized Controlled Trial",
+        "first_author": "Yücesoy",
+        "year": 2026,
+        "pmid": "41213572",
+        "doi": "10.1177/27683605251392784"
+      },
+      {
+        "title": "MENSTRUAL CYCLE-RELATED SLEEP DISTURBANCE AND EXPERIMENTAL HORMONE SUPPLEMENTATION IN A HIGHRISK PSYCHIATRIC SAMPLE",
+        "first_author": "Nagpal",
+        "year": 2026,
+        "doi": "10.1038/s41386-025-02281-2"
+      },
+      {
+        "title": "Creatine and Omega-3 Co-Supplementation with or Without Vitex to Support Performance, Recovery, and Mood Across the Menstrual Cycle in Active Women",
+        "first_author": "Salehian",
+        "year": 2026,
+        "doi": "10.1123/ijsnem.2026-0008"
+      },
+      {
+        "title": "Strong influence of NO-NO(2)-Ox on brown carbon (BrC) absorption characteristics: Seasonal and diurnal variations",
+        "first_author": "Tripathi",
+        "year": 2025,
+        "pmid": "41274126",
+        "doi": "10.1016/j.scitotenv.2025.180995"
+      },
+      {
+        "title": "Clinical profiling and medical management of Israeli individuals with Phelan McDermid syndrome",
+        "first_author": "Chorin",
+        "year": 2025,
+        "pmid": "40102980",
+        "doi": "10.1186/s13023-025-03598-3"
+      },
+      {
+        "title": "The effect of exercise on menstrual symptoms: a randomized controlled trial",
+        "first_author": "Koçak",
+        "year": 2025,
+        "pmid": "40849627",
+        "doi": "10.1186/s12905-025-03940-8"
+      },
+      {
+        "title": "Career advancement and fertility intention among working women in Japan: a cross-sectional survey study",
+        "first_author": "Yoshida",
+        "year": 2025,
+        "pmid": "40898198",
+        "doi": "10.1186/s12905-025-03996-6"
+      },
+      {
+        "title": "Effects of sleep quality on the default mode network and on anxiety-depression symptoms in premenstrual syndrome",
+        "first_author": "Qin",
+        "year": 2025,
+        "pmid": "41184955",
+        "doi": "10.1186/s12888-025-07126-2"
+      },
+      {
+        "title": "Exploring the Association Between Sleep Quality and Menstrual Abnormalities in Adolescents",
+        "first_author": "Zhang",
+        "year": 2025,
+        "pmid": "40803655",
+        "doi": "10.1016/j.jpag.2025.08.001"
+      },
+      {
+        "title": "DASS-21 Stress, but Not Anxiety or Depression, Is Associated with Premenstrual Stress",
+        "first_author": "Turner",
+        "year": 2025,
+        "doi": "10.3390/jcm14248619"
+      },
+      {
+        "title": "Prevalence and associated factors of migraine among female college students with premenstrual syndrome",
+        "first_author": "He",
+        "year": 2025,
+        "pmid": "41203840",
+        "doi": "10.1038/s41598-025-26534-8"
+      },
+      {
+        "title": "The relationship between premenstrual syndrome and circadian rhythm, depressive mood, and anxiety",
+        "first_author": "Yamak",
+        "year": 2025,
+        "pmid": "41198846",
+        "doi": "10.1038/s41598-025-23040-9"
+      },
+      {
+        "title": "Sleep Disturbances, Fatigue and Immune Markers in the Irritable Bowel Syndrome and Inflammatory Bowel Disease, a Systematic Review",
+        "first_author": "Fowler",
+        "year": 2025,
+        "pmid": "40887792",
+        "doi": "10.1111/nmo.70133"
+      },
+      {
+        "title": "The Relationship Between Premenstrual Dysphoric Symptoms, Perceived Stress, and Sleep Quality Among Nursing Students: A Cross-Sectional Study",
+        "first_author": "Innab",
+        "year": 2025,
+        "doi": "10.3390/healthcare13222862"
+      },
+      {
+        "title": "Phasic social and behavioral stress is associated with biological stress in cyclical women with premenstrual syndrome",
+        "first_author": "Ozgocer",
+        "year": 2025,
+        "doi": "10.2139/ssrn.5473136"
+      },
+      {
+        "title": "Fear of childbirth in primipara women and its correlation with premenstrual syndrome: A cross-sectional study",
+        "first_author": "Li",
+        "year": 2025,
+        "pmid": "41105610",
+        "doi": "10.1371/journal.pone.0332135"
+      },
+      {
+        "title": "The effect of nutrition education on premenstrual syndrome: Randomized controlled study",
+        "first_author": "Mataracı-Değirmenci",
+        "year": 2025,
+        "pmid": "41004653",
+        "doi": "10.1177/02601060251380475"
+      },
+      {
+        "title": "Melatonin-Producing Microorganisms: A Rising Research Interest in Their Melatonin Biosynthesis and Effects on Crops",
+        "first_author": "Kang",
+        "year": 2025,
+        "pmid": "40980957",
+        "doi": "10.1111/jpi.70081"
+      },
+      {
+        "title": "A Study of Psychiatric Symptoms Affecting Perceived Criticism in Female Bipolar Patient, Depressive Patient and Healthy Volunteers",
+        "first_author": "Naruse",
+        "year": 2025,
+        "doi": "10.1111/bdi.70046"
+      },
+      {
+        "title": "Exploring alterations in sleep-related physiological and psychological outcomes across the menstrual cycle in young, healthy women without sleep disorders: A US-based pilot study protocol",
+        "first_author": "Conti",
+        "year": 2025,
+        "pmid": "40701580",
+        "doi": "10.1136/bmjopen-2025-102698"
+      },
+      {
+        "title": "Unraveling the Impact of Obesity on Premenstrual Syndrome: Insights into Eating Habits, Weight Loss, and Premenstrual Symptoms",
+        "first_author": "Facanha",
+        "year": 2025,
+        "doi": "10.1159/000545547"
+      },
+      {
+        "title": "Sleep is altered during menstruation but not inflammatory parameters: Results from polysomnography of EPISONO database",
+        "first_author": "Ishikura",
+        "year": 2025,
+        "pmid": "39448073",
+        "doi": "10.1111/jsr.14380"
+      },
+      {
+        "title": "Exploring the Impact of Myofascial Release on Mental Health and Sleep Quality",
+        "first_author": "Takefuji",
+        "year": 2025,
+        "doi": "10.1007/s41782-025-00301-1"
+      },
+      {
+        "title": "Integrative Medicine in Women",
+        "first_author": "Kennard",
+        "year": 2025,
+        "pmid": "40412907",
+        "doi": "10.1016/j.pop.2025.01.003"
+      },
+      {
+        "title": "Investigating the associations between chronotype, physical activity, premenstrual syndrome, hunger, and food choice among Turkish women",
+        "first_author": "Arslan",
+        "year": 2025,
+        "pmid": "39647837",
+        "doi": "10.1080/13548506.2024.2439136"
+      },
+      {
+        "title": "The Relationship between Violence Tendency and Premenstrual Symptoms among University Students: A Cross-Sectional Study in Turkey",
+        "first_author": "Kutlu",
+        "year": 2025,
+        "pmid": "40556080",
+        "doi": "10.4103/njcp.njcp_780_24"
+      },
+      {
+        "title": "329. Predicting Affective Switching via Sleep Behavior Tracked by Wearables Devices in Individuals With Premenstrual Dysphoric Disorder",
+        "first_author": "Brown",
+        "year": 2025,
+        "doi": "10.1016/j.biopsych.2025.02.567"
+      },
+      {
+        "title": "How Extensively is Herbal Medicine Used as a Therapy for Insomnia? A Bibliometric Study",
+        "first_author": "Saleh",
+        "year": 2025,
+        "doi": "10.5530/pj.2025.17.44"
+      },
+      {
+        "title": "AUTONOMIC DYSREGULATION DURING SLEEP IN PREMENSTRUAL DYSPHORIC DISORDER",
+        "first_author": "Moderie",
+        "year": 2025,
+        "doi": "10.1093/sleep/zsaf090.1216"
+      },
+      {
+        "title": "Chronotherapeutic Treatments for Psychiatric Disorders: A Narrative Review of Recent Literature",
+        "first_author": "Swanson",
+        "year": 2025,
+        "pmid": "39913073",
+        "doi": "10.1007/s11920-025-01586-9"
+      },
+      {
+        "title": "Effects of ubiquinol intake on improving menstrual symptoms among female healthcare workers: An open-label pilot study",
+        "first_author": "Kinoshita",
+        "year": 2025,
+        "pmid": "40147024",
+        "doi": "10.1111/jog.16279"
+      },
+      {
+        "title": "The impact of pharmacotherapy for premenstrual dysphoric disorder on sleep",
+        "first_author": "Meth",
+        "year": 2025,
+        "pmid": "39952094",
+        "doi": "10.1016/j.smrv.2025.102069"
+      },
+      {
+        "title": "Accelerometry-Assessed Physical Activity and Circadian Rhythm to Detect Clinical Disability Status in Multiple Sclerosis: Cross-Sectional Study",
+        "first_author": "Bou",
+        "year": 2025,
+        "pmid": "40163850",
+        "doi": "10.2196/57599"
+      },
+      {
+        "title": "Nightmares Fluctuate Across the Menstrual Cycle and May be More Pronounced in Women With Premenstrual Syndrome",
+        "first_author": "Dobler",
+        "year": 2025,
+        "pmid": "40022277",
+        "doi": "10.1002/brb3.70383"
+      },
+      {
+        "title": "Machine learning model for menstrual cycle phase classification and ovulation day detection based on sleeping heart rate under free-living conditions",
+        "first_author": "Masuda",
+        "year": 2025,
+        "pmid": "39889448",
+        "doi": "10.1016/j.compbiomed.2025.109705"
+      },
+      {
+        "title": "PORTABLE SLEEP MONITORS AS DIGITAL BIOMARKERS COMPARED TO POLYSOMNOGRAPHY IN PATIENTS WITH TRAUMATIC BRAIN INJURY: SYSTEMATIC REVIEW AND META-ANALYSIS (PRISMA)",
+        "first_author": "Van",
+        "year": 2025,
+        "doi": "10.1089/neu.2024.59782.abstract"
+      },
+      {
+        "title": "Association between sleep quality and premenstrual syndrome in young women in a cross-sectional study",
+        "first_author": "Mighani",
+        "year": 2025,
+        "pmid": "39979390",
+        "doi": "10.1038/s41598-025-90581-4"
+      },
+      {
+        "title": "Genetic contributions to premenstrual symptoms: revisiting the role of the ESR1 gene",
+        "first_author": "Lahnsteiner",
+        "year": 2025,
+        "doi": "10.1101/2025.01.13.25320449"
+      },
+      {
+        "title": "The impact of menstrual cycle phase and symptoms on sleep, recovery, and stress in elite female basketball athletes: a longitudinal study",
+        "first_author": "Kullik",
+        "year": 2025,
+        "doi": "10.3389/fphys.2025.1663657"
+      },
+      {
+        "title": "PREVALENCE AND DETERMINANTS OF PREMENSTRUAL DYSPHORIC DISORDER: A CROSS-SECTIONAL STUDY IN WOMEN ATTENDING A TERTIARY CARE HOSPITAL IN INDIA",
+        "first_author": "Pragathi",
+        "year": 2025,
+        "doi": "10.47009/jamp.2025.7.1.48"
+      },
+      {
+        "title": "Acute effects of virtual reality-based relaxation and exergaming on primary dysmenorrhea symptoms",
+        "first_author": "Yildirim",
+        "year": 2025,
+        "pmid": "40342331",
+        "doi": "10.55730/1300-0144.5981"
+      },
+      {
+        "title": "Impact of oryzanol plus femoston on efficacy, sleep quality, and quality of life in perimenopausal syndrome patients",
+        "first_author": "Liu",
+        "year": 2025,
+        "doi": "10.62347/CSXZ5615"
+      },
+      {
+        "title": "Comparison of resistance and stretching exercises in women with primary dysmenorrhea: A randomized controlled trial",
+        "first_author": "Öz",
+        "year": 2025,
+        "pmid": "40509570",
+        "doi": "10.1177/10538127251345961"
+      },
+      {
+        "title": "Psychosocial and menstrual correlates of premenstrual disorders: A community-based study",
+        "first_author": "Itoi",
+        "year": 2025,
+        "pmid": "41392924",
+        "doi": "10.1002/ijgo.70752"
+      },
+      {
+        "title": "Multi-Site Pain During Menstruation in Adolescents is Associated With Impaired Functioning Across Various Domains: A Cross-Sectional Observational Study",
+        "first_author": "Seidman",
+        "year": 2025,
+        "pmid": "41109475",
+        "doi": "10.1016/j.jpag.2025.10.009"
+      },
+      {
+        "title": "Effects of chamomile and L-theanine beverage on menstrual pain, menstrual symptoms, mood, and sleep quality in young women experiencing primary dysmenorrhea: A randomized, double-blind, placebo-controlled study",
+        "first_author": "Soh",
+        "year": 2025,
+        "pmid": "41525193",
+        "doi": "10.38212/2224-6614.3565"
+      },
+      {
+        "title": "Prevalence of premenstrual syndrome (PMS) in a tertiary care hospital in Telangana",
+        "first_author": "Kausar",
+        "year": 2025,
+        "doi": "10.4103/indianjpsychiatry.indianjpsychiatry_48_25"
+      },
+      {
+        "title": "Spatio-temporal variability and possible source identification of criteria pollutants from Ahmedabad-a megacity of Western India",
+        "first_author": "Bano",
+        "year": 2024,
+        "doi": "10.1007/s10874-023-09456-5"
+      },
+      {
+        "title": "The impact of COVID-19 on menstrual cycle’s alterations, in relation to depression and sleep disturbances: a prospective observational study in a population of medical students",
+        "first_author": "Polese",
+        "year": 2024,
+        "pmid": "38373995",
+        "doi": "10.1186/s12905-024-02971-x"
+      },
+      {
+        "title": "Comparison of premenstrual symptoms, psychological well-being, and nutritional status between Palestinian women with and without polycystic ovarian syndrome: a case-control study",
+        "first_author": "Almahareeq",
+        "year": 2024,
+        "pmid": "38907183",
+        "doi": "10.1186/s12905-024-03210-z"
+      },
+      {
+        "title": "Prevalence and determinant factors of premenstrual syndrome among secondary and preparatory school students in Dessie city administration, Northeast Ethiopia",
+        "first_author": "Wochekaw",
+        "year": 2024,
+        "pmid": "38915045",
+        "doi": "10.1186/s12905-024-03219-4"
+      },
+      {
+        "title": "Clinical, developmental and serotonemia phenotyping of a sample of 70 Italian patients with Phelan-McDermid Syndrome",
+        "first_author": "Asta",
+        "year": 2024,
+        "pmid": "39363263",
+        "doi": "10.1186/s11689-024-09572-7"
+      },
+      {
+        "title": "Biological rhythms in premenstrual syndrome and premenstrual dysphoric disorder: a systematic review",
+        "first_author": "Nexha",
+        "year": 2024,
+        "pmid": "39375682",
+        "doi": "10.1186/s12905-024-03395-3"
+      },
+      {
+        "title": "The Impact of Menstrual Disorders on Sleep Quality in Adolescents: An Observational Study",
+        "first_author": "Kocabey",
+        "year": 2024,
+        "pmid": "39154955",
+        "doi": "10.1016/j.jpag.2024.08.005"
+      },
+      {
+        "title": "Premenstrual Symptoms Risk Factors Among Newly Graduated Nurses in Shift Work: A Prospective Longitudinal Study",
+        "first_author": "Huh",
+        "year": 2024,
+        "pmid": "39491721",
+        "doi": "10.1016/j.anr.2024.10.006"
+      },
+      {
+        "title": "Innovative Approaches to Digital Health in Ovulation Detection: A Review of Current Methods and Emerging Technologies",
+        "first_author": "Shkodzik",
+        "year": 2024,
+        "pmid": "39572028",
+        "doi": "10.1055/s-0044-1793829"
+      },
+      {
+        "title": "Sleep Disorders in Women: What Should a Gynecologist Know?",
+        "first_author": "Aksan",
+        "year": 2024,
+        "doi": "10.1055/a-2371-0763"
+      },
+      {
+        "title": "A case of propriospinal myoclonus at sleep onset in which video-polysomnography with additional surface electromyogram was useful for diagnosis",
+        "first_author": "Fujii",
+        "year": 2024,
+        "pmid": "39428514",
+        "doi": "10.5692/clinicalneurol.cn-001951"
+      },
+      {
+        "title": "Airway bacterial microbiome signatures correlate with occupational pneumoconiosis progression",
+        "first_author": "Ma",
+        "year": 2024,
+        "pmid": "39142114",
+        "doi": "10.1016/j.ecoenv.2024.116875"
+      },
+      {
+        "title": "Female reproductive health disturbance associated with COVID-19 pandemic persists despite improving mental health-a longitudinal observational study",
+        "first_author": "Lonergan",
+        "year": 2024,
+        "doi": "10.1007/s11845-024-03824-0"
+      },
+      {
+        "title": "Actigraphic monitoring of sleep and circadian rest-activity rhythm in individuals with major depressive disorder or depressive symptoms: A meta-analysis",
+        "first_author": "Ho",
+        "year": 2024,
+        "pmid": "38851435",
+        "doi": "10.1016/j.jad.2024.05.155"
+      },
+      {
+        "title": "Clinical efficacy of gamma-oryzanol combined with Femoston for perimenopausal syndrome",
+        "first_author": "Kuang",
+        "year": 2024,
+        "doi": "10.12998/wjcc.v12.i22.4992"
+      },
+      {
+        "title": "EXTRACELLULAR CIRP RENDERS CIRCADIAN MACROPHAGE IMMUNE TOLERANCE IN SEPSIS",
+        "first_author": "Zhou",
+        "year": 2024,
+        "doi": "10.1097/shk.0000000000002356"
+      },
+      {
+        "title": "Determinants of body image in reproductive-age women: A cross-sectional investigation",
+        "first_author": "Dózsa-Juhász",
+        "year": 2024,
+        "doi": "10.1186/s12919-024-00297-y"
+      },
+      {
+        "title": "Exploring the effect of the menstrual cycle or oral contraception on elite athletes' training responses when workload is not objectively quantifiable: The MILS approach and findings from female Olympians",
+        "first_author": "De",
+        "year": 2024,
+        "doi": "10.1136/bmjsem-2023-001810"
+      },
+      {
+        "title": "The prevalence of menstrual cycle symptoms and their association with mental health and sleep in German exercising women and athletes",
+        "first_author": "Kullik",
+        "year": 2024,
+        "pmid": "38503666",
+        "doi": "10.1016/j.jsams.2024.02.008"
+      },
+      {
+        "title": "PCR247 Multidimensional Examination of Factors Determining Body Image Among Women of Reproductive Age in Hungary",
+        "first_author": "Dózsa-Juhász",
+        "year": 2024,
+        "doi": "10.1016/j.jval.2024.03.2125"
+      },
+      {
+        "title": "307. The Relationship Between Neuropsychiatric Symptoms and Language Ability in Phelan-McDermid Syndrome",
+        "first_author": "Friedman",
+        "year": 2024,
+        "doi": "10.1016/j.biopsych.2024.02.806"
+      },
+      {
+        "title": "Saffron extract as an emerging novel therapeutic option in reproduction and sexual health: Recent advances and future prospectives",
+        "first_author": "Goyal",
+        "year": 2024,
+        "doi": "10.1097/MS9.0000000000002013"
+      },
+      {
+        "title": "A Female-Specific Treatment Group for ADHD—Description of the Programme and Qualitative Analysis of First Experiences",
+        "first_author": "de",
+        "year": 2024,
+        "doi": "10.3390/jcm13072106"
+      },
+      {
+        "title": "Successful treatment of Premenstrual dysphoric disorder with irritable bowel syndrome using sulpiride",
+        "first_author": "Alageel",
+        "year": 2024,
+        "doi": "10.1192/j.eurpsy.2024.1437"
+      },
+      {
+        "title": "The impact of comorbid premenstrual syndrome or premenstrual dysphoric disorder on the clinical characteristics of bipolar disorder among Han Chinese women",
+        "first_author": "Liang",
+        "year": 2024,
+        "pmid": "37874397",
+        "doi": "10.1007/s00737-023-01380-7"
+      },
+      {
+        "title": "Depression in Women: Potential Biological and Sociocultural Factors Driving the Sex Effect",
+        "first_author": "Di",
+        "year": 2024,
+        "pmid": "38272005",
+        "doi": "10.1159/000531588"
+      },
+      {
+        "title": "Melatonin supplementation improves work capacity and mental health of overweight nurses",
+        "first_author": "Santos",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.202"
+      },
+      {
+        "title": "Obstructive sleep apnea diagnosis and beyond using portable monitors",
+        "first_author": "Abu",
+        "year": 2024,
+        "pmid": "38070375",
+        "doi": "10.1016/j.sleep.2023.11.034"
+      },
+      {
+        "title": "Assessment of relationship between premenstrual syndrome symptoms with sleep quality and menstrual attitudes in medical students: A cross-sectional study",
+        "first_author": "Ramamoorthy",
+        "year": 2024,
+        "doi": "10.5455/njppp.2023.13.08404202318092023"
+      },
+      {
+        "title": "Electroencephalography findings in menstrually-related mood disorders: A critical review",
+        "first_author": "Kaltsouni",
+        "year": 2024,
+        "pmid": "38176542",
+        "doi": "10.1016/j.yfrne.2023.101120"
+      },
+      {
+        "title": "EXPERIENCE OF USING A COMBINED MELATONIN-CONTAINING DRUG IN THE CORRECTION OF SLEEP DISORDERS IN WOMEN",
+        "first_author": "Stenyaeva",
+        "year": 2024,
+        "doi": "10.18565/aig.2024.138"
+      },
+      {
+        "title": "Effects of the PREMEN-CALM® in the Management of the Premenstrual Syndrome: A Randomized, Double-Blind, Placebo-Controlled Pilot Study",
+        "first_author": "Herrera",
+        "year": 2024,
+        "pmid": "38213037",
+        "doi": "10.1080/19390211.2023.2301398"
+      },
+      {
+        "title": "Mood, Sleep, and Cognitive Function 101",
+        "first_author": "Williams",
+        "year": 2024,
+        "doi": "10.1097/GME.0000000000002471"
+      },
+      {
+        "title": "Effects of sleep pattern, duration, and quality on premenstrual syndrome and primary dysmenorrhea in korean high school girls",
+        "first_author": "Jeong",
+        "year": 2023,
+        "pmid": "37641079",
+        "doi": "10.1186/s12905-023-02600-z"
+      },
+      {
+        "title": "Menstrual disturbances and its association with sleep disturbances: a systematic review",
+        "first_author": "Jeon",
+        "year": 2023,
+        "pmid": "37658359",
+        "doi": "10.1186/s12905-023-02629-0"
+      },
+      {
+        "title": "The Menstrual Cycle and Sleep",
+        "first_author": "Alzueta",
+        "year": 2023,
+        "pmid": "38501513",
+        "doi": "10.1016/j.jsmc.2023.06.003"
+      },
+      {
+        "title": "Investigating influencing factors on premenstrual syndrome (PMS) among female college students",
+        "first_author": "Yi",
+        "year": 2023,
+        "pmid": "37950208",
+        "doi": "10.1186/s12905-023-02752-y"
+      },
+      {
+        "title": "Therapeutic applications of lemon balm (Melissa officinalis) for obstetrics and gynecological health issues: A systematic review",
+        "first_author": "Alimoradi",
+        "year": 2023,
+        "doi": "10.1016/j.hermed.2023.100751"
+      },
+      {
+        "title": "537. Safety and Effectiveness of Ensitrelvir for the Treatment of COVID-19 in Japanese Clinical Practice: A Post-marketing Surveillance (Interim Analysis)",
+        "first_author": "Ogura",
+        "year": 2023,
+        "doi": "10.1093/ofid/ofad500.606"
+      },
+      {
+        "title": "Home monitoring for clinically suspected obstructive sleep apnea in pregnancy",
+        "first_author": "Wang",
+        "year": 2023,
+        "pmid": "37485700",
+        "doi": "10.5664/jcsm.10726"
+      },
+      {
+        "title": "Can portable sleep monitors replace polysomnography for diagnosis of pediatric OSA: a systematic review and meta-analysis",
+        "first_author": "Tuohuti",
+        "year": 2023,
+        "doi": "10.1007/s00405-023-08095-6"
+      },
+      {
+        "title": "The Effect of Progressive Muscle Relaxation Technique and Myofascial Release Technique on Pain Threshold in Women with Premenstrual Syndrome",
+        "first_author": "Demiralp",
+        "year": 2023,
+        "doi": "10.1007/s00192-023-05622-1"
+      },
+      {
+        "title": "Tracking changes in atmospheric particulate matter at a semi-urban site in Central France over the past decade",
+        "first_author": "Jiao",
+        "year": 2023,
+        "pmid": "37146814",
+        "doi": "10.1016/j.scitotenv.2023.163807"
+      },
+      {
+        "title": "Sleep disturbances in Phelan-McDermid syndrome: Clinical and metabolic profiling of 56 individuals",
+        "first_author": "Moffitt",
+        "year": 2023,
+        "pmid": "37198960",
+        "doi": "10.1111/cge.14361"
+      },
+      {
+        "title": "Updated consensus guidelines on the management of Phelan–McDermid syndrome",
+        "first_author": "Srivastava",
+        "year": 2023,
+        "pmid": "37392087",
+        "doi": "10.1002/ajmg.a.63312"
+      },
+      {
+        "title": "The effect of progressive muscle relaxation technique and myofascial release technique on premenstrual symptoms, blood circulation, and quality of life in women with premenstrual syndrome: A single-blind randomized controlled study",
+        "first_author": "Demiralp",
+        "year": 2023,
+        "pmid": "37417631",
+        "doi": "10.1097/MD.0000000000034223"
+      },
+      {
+        "title": "Long-Term Follow-Up Result of Connective Tissue Manipulation in Young Women with Primary Dysmenorrhea: Different Intervention Durations",
+        "first_author": "Yagci",
+        "year": 2023,
+        "pmid": "36717461",
+        "doi": "10.1007/s43032-023-01172-5"
+      },
+      {
+        "title": "Menopause and mental health",
+        "first_author": "Swaminathan",
+        "year": 2023,
+        "doi": "10.1111/tog.12885"
+      },
+      {
+        "title": "Consensus recommendations on sleeping problems in Phelan-McDermid syndrome",
+        "first_author": "San",
+        "year": 2023,
+        "pmid": "36963463",
+        "doi": "10.1016/j.ejmg.2023.104750"
+      },
+      {
+        "title": "Physiotherapy Interventions as an Adjunct Approach in Patients with Primary Dysmenorrhea: A Narrative Review",
+        "first_author": "Sharma",
+        "year": 2023,
+        "doi": "10.7860/JCDR/2023/62015.17708"
+      },
+      {
+        "title": "Associated Risks Connected to Griffonia Simplicifolia's interaction with other medications",
+        "first_author": "Costantino",
+        "year": 2023,
+        "doi": "10.1007/s40264-023-01289-1"
+      },
+      {
+        "title": "Effects of acupoint application therapy combined with chinese herbal medicine on perimenopausal syndrome: A systematic review and meta-analysis of randomized controlled trails",
+        "first_author": "Xing",
+        "year": 2023,
+        "pmid": "36623609",
+        "doi": "10.1016/j.ctim.2023.102916"
+      },
+      {
+        "title": "Relationship between sleep quality and severity of premenstrual syndrome in adolescents",
+        "first_author": "Firdaus",
+        "year": 2023,
+        "doi": "10.1111/jog.15585"
+      },
+      {
+        "title": "The Efficacy of Self-Management Strategies for Females with Endometriosis: a Systematic Review",
+        "first_author": "Mardon",
+        "year": 2023,
+        "pmid": "35488093",
+        "doi": "10.1007/s43032-022-00952-9"
+      },
+      {
+        "title": "A 1-week sleep and light intervention improves mood in premenstrual dysphoric disorder in association with shifting melatonin offset time earlier",
+        "first_author": "Parry",
+        "year": 2023,
+        "pmid": "36520251",
+        "doi": "10.1007/s00737-022-01283-z"
+      },
+      {
+        "title": "Melatonin in Dermatologic Allergic Diseases and Other Skin Conditions: Current Trends and Reports",
+        "first_author": "Bešlić",
+        "year": 2023,
+        "pmid": "36835450",
+        "doi": "10.3390/ijms24044039"
+      },
+      {
+        "title": "Melatonin for premenstrual syndrome: A potential remedy but not ready",
+        "first_author": "Yin",
+        "year": 2023,
+        "doi": "10.3389/fendo.2022.1084249"
+      },
+      {
+        "title": "Menstrual cycle and hormonal contraceptive phases’ effect on elite rowers’ training, performance and wellness",
+        "first_author": "Antero",
+        "year": 2023,
+        "doi": "10.3389/fphys.2023.1110526"
+      },
+      {
+        "title": "A novel method for conformity assessment testing of patient monitors for post-market surveillance purposes",
+        "first_author": "Badnjevic",
+        "year": 2023,
+        "pmid": "36530105",
+        "doi": "10.3233/THC-229008"
+      },
+      {
+        "title": "Obstructive sleep apnea event detection using explainable deep learning models for a portable monitor",
+        "first_author": "Alarcón",
+        "year": 2023,
+        "doi": "10.3389/fnins.2023.1155900"
+      },
+      {
+        "title": "Editorial: Circadian rhythm in metabolism and endocrinology",
+        "first_author": "Rodriguez-Fernandez",
+        "year": 2023,
+        "doi": "10.3389/fendo.2023.1263823"
+      },
+      {
+        "title": "Risperidone Pharmacogenetics: The Impact of Star Alleles' Predicted Phenotypes on Global Safety in Autistic Children",
+        "first_author": "Shilbayeh",
+        "year": 2023,
+        "doi": "10.3923/ijp.2023.485.504"
+      },
+      {
+        "title": "35 years of light treatment for mental disorders in the Netherlands",
+        "first_author": "Meesters",
+        "year": 2023,
+        "pmid": "37857364",
+        "doi": "10.1080/07853890.2023.2269574"
+      },
+      {
+        "title": "ASSOCIATION OF SLEEP HYGIENE AND QUALITY WITH MENSTRUAL HEALTH AMONG YOUNG WOMEN",
+        "first_author": "Sugapriya",
+        "year": 2023,
+        "doi": "10.47009/jamp.2023.5.3.72"
+      },
+      {
+        "title": "Female-specific pharmacotherapy in ADHD: premenstrual adjustment of psychostimulant dosage",
+        "first_author": "de",
+        "year": 2023,
+        "doi": "10.3389/fpsyt.2023.1306194"
+      },
+      {
+        "title": "The potential role of the orexin system in premenstrual syndrome",
+        "first_author": "Dong",
+        "year": 2023,
+        "doi": "10.3389/fendo.2023.1266806"
+      },
+      {
+        "title": "Development and validation of risk prediction model for premenstrual syndrome in nurses: results from the nurses-based the TARGET cohort study",
+        "first_author": "Li",
+        "year": 2023,
+        "pmid": "37854248",
+        "doi": "10.3389/fpubh.2023.1203280"
+      },
+      {
+        "title": "Prevalence of menstrual symptoms change and influencing factors among international female students studying in china during acculturation period",
+        "first_author": "Alkhatib",
+        "year": 2022,
+        "pmid": "35879750",
+        "doi": "10.1186/s12905-022-01897-6"
+      },
+      {
+        "title": "(98) The Role of Lithium in the Management of Altered Mental Status in Phelan-McDermid Syndrome: A Case Report",
+        "first_author": "Charara",
+        "year": 2022,
+        "doi": "10.1016/j.jaclp.2022.10.101"
+      },
+      {
+        "title": "Nutritional supplementation in premenstrual síndrome",
+        "first_author": "Herrera",
+        "year": 2022,
+        "doi": "10.1007/s13105-022-00923-3"
+      },
+      {
+        "title": "Influence of life habits on the menstrual cycle symptomatology of young women",
+        "first_author": "Rangel",
+        "year": 2022,
+        "doi": "10.1007/s13105-022-00923-3"
+      },
+      {
+        "title": "Sleep and Phelan-McDermid Syndrome: Lessons from the International Registry and the scientific literature",
+        "first_author": "Moffitt",
+        "year": 2022,
+        "pmid": "35996993",
+        "doi": "10.1002/mgg3.2035"
+      },
+      {
+        "title": "Perceived impact of the menstrual cycle and hormonal contraceptives on physical exercise and performance in 1,086 athletes from 57 sports",
+        "first_author": "Ekenros",
+        "year": 2022,
+        "doi": "10.3389/fphys.2022.954760"
+      },
+      {
+        "title": "Saffron and its active ingredients against human disorders: A literature review on existing clinical evidence",
+        "first_author": "Omidkhoda",
+        "year": 2022,
+        "doi": "10.22038/IJBMS.2022.63378.13985"
+      },
+      {
+        "title": "Poor Sleep Quality and Factors Among Reproductive-Age Women in Southwest Ethiopia",
+        "first_author": "Bogale",
+        "year": 2022,
+        "doi": "10.3389/fpsyt.2022.913821"
+      },
+      {
+        "title": "Premenstrual syndrome and premenstrual dysphoric disorder. II. Diagnosis and treatment",
+        "first_author": "Kovács",
+        "year": 2022,
+        "pmid": "35895486",
+        "doi": "10.1556/650.2022.32496"
+      },
+      {
+        "title": "Premenstrual syndrome and premenstrual dysphoric disorder. I. Epidemiology and etiology",
+        "first_author": "Kovács",
+        "year": 2022,
+        "pmid": "35895550",
+        "doi": "10.1556/650.2022.32489"
+      },
+      {
+        "title": "Telehealth Social Rhythm Therapy to Reduce Mood Symptoms and Suicide Risk Among Adolescents and Young AdultsWith Bipolar Disorder",
+        "first_author": "Sankar",
+        "year": 2022,
+        "pmid": "34696598",
+        "doi": "10.1176/appi.psychotherapy.20210002"
+      },
+      {
+        "title": "Menstrual Cycle Effects on Sleep",
+        "first_author": "Baker",
+        "year": 2022,
+        "pmid": "35659080",
+        "doi": "10.1016/j.jsmc.2022.02.004"
+      },
+      {
+        "title": "Social Jetlag and Its Effects on Adolescent Mental Health",
+        "first_author": "Çelik",
+        "year": 2022,
+        "doi": "10.4274/jtsm.galenos.2021.08379"
+      },
+      {
+        "title": "CHRONOBIOLOGY AND THE EFFECT OF PMS ON STROKE INCIDENCE",
+        "first_author": "Świȩczkowski",
+        "year": 2022,
+        "doi": "10.1177/23969873221087559"
+      },
+      {
+        "title": "Investigating biological rhythms disruptions across the menstrual cycle in women with comorbid bipolar disorder and premenstrual dysphoric disorder",
+        "first_author": "El",
+        "year": 2022,
+        "pmid": "35226173",
+        "doi": "10.1007/s00737-022-01220-0"
+      },
+      {
+        "title": "Female Reproductive Health Disturbance Experienced During the COVID-19 Pandemic Correlates With Mental Health Disturbance and Sleep Quality",
+        "first_author": "Maher",
+        "year": 2022,
+        "doi": "10.3389/fendo.2022.838886"
+      },
+      {
+        "title": "Comprehensive Review of Ethnopharmacological and Phytochemical Aspects of Nutraceuticals in Psychiatric Disorders",
+        "first_author": "Patel",
+        "year": 2022,
+        "doi": "10.2174/2211556011666220510141329"
+      },
+      {
+        "title": "Relationship between premenstrual syndrome and sleep quality among nursing and medical students",
+        "first_author": "Erbil",
+        "year": 2022,
+        "pmid": "32984973",
+        "doi": "10.1111/ppc.12628"
+      },
+      {
+        "title": "COVID-19-Associated Mental Health Impact on Menstrual Function Aspects: Dysmenorrhea & Premenstrual Syndrome, and Genitourinary Tract Health: A Cross Sectional Study among Jordanian Medical Students",
+        "first_author": "Aolymat",
+        "year": 2022,
+        "pmid": "35162469",
+        "doi": "10.3390/ijerph19031439"
+      },
+      {
+        "title": "Sleep Disorders in Pregnancy, Influencing Factors and Quality of Life",
+        "first_author": "Kadloǧlu",
+        "year": 2022,
+        "pmid": "34311492",
+        "doi": "10.1055/a-1519-7517"
+      },
+      {
+        "title": "Depressive symptoms and menstrual distress according to the menstrual phase in nurses: the Korea Nurses’ Health Study",
+        "first_author": "Kim",
+        "year": 2022,
+        "pmid": "35811498",
+        "doi": "10.1080/0167482X.2022.2095999"
+      },
+      {
+        "title": "Exploring the physical activity level and sleep quality among a cohort of healthy females in Egypt: a cross-sectional survey",
+        "first_author": "Kamel",
+        "year": 2022,
+        "pmid": "35916790",
+        "doi": "10.26355/eurrev_202207_29280"
+      },
+      {
+        "title": "Effects of exogenous melatonin on sleep and circadian rhythms in women with premenstrual dysphoric disorder",
+        "first_author": "Moderie",
+        "year": 2021,
+        "pmid": "34240212",
+        "doi": "10.1093/sleep/zsab171"
+      },
+      {
+        "title": "Effect of Rosa damascena on improvement of adults’ sleep quality: a systematic review and meta-analysis of randomized controlled trials",
+        "first_author": "Ghorbani",
+        "year": 2021,
+        "pmid": "34508987",
+        "doi": "10.1016/j.sleep.2021.07.017"
+      },
+      {
+        "title": "Diagnostic accuracy of level IV portable sleep monitors versus polysomnography for pediatric obstructive sleep apnea: a systematic review and meta-analysis",
+        "first_author": "Gao",
+        "year": 2021,
+        "pmid": "34597954",
+        "doi": "10.1016/j.sleep.2021.08.029"
+      },
+      {
+        "title": "Steroid stress hormone changes throughout the menstrual cycle: A rise in evening aldosterone concentration in early luteal phase precedes the symptoms of premenstrual syndrome",
+        "first_author": "Izakova",
+        "year": 2021,
+        "doi": "10.1111/jne.13043"
+      },
+      {
+        "title": "Subjective sleep quality and characteristics across the menstrual cycle in women with and without Generalized Anxiety Disorder",
+        "first_author": "Li",
+        "year": 2021,
+        "pmid": "34265497",
+        "doi": "10.1016/j.jpsychores.2021.110570"
+      },
+      {
+        "title": "The Neurological Manifestations of Phelan-McDermid Syndrome",
+        "first_author": "Frank",
+        "year": 2021,
+        "pmid": "34325981",
+        "doi": "10.1016/j.pediatrneurol.2021.06.002"
+      },
+      {
+        "title": "Circadian rhythms within the female hpg axis: From physiology to etiology",
+        "first_author": "Shao",
+        "year": 2021,
+        "pmid": "34125877",
+        "doi": "10.1210/endocr/bqab117"
+      },
+      {
+        "title": "P0147 Re-evaluation of the acute cystitis symptom score in multinational settings",
+        "first_author": "Alidjanov",
+        "year": 2021,
+        "doi": "10.1016/S0302-2838(21)00538-8"
+      },
+      {
+        "title": "The relationship between premenstrual syndrome and the quality of sleep among egyptian women: An observational study",
+        "first_author": "Kamel",
+        "year": 2021,
+        "doi": "10.31688/ABMU.2021.56.2.05"
+      },
+      {
+        "title": "Identification of Novel Genetic Variants in Women With Premenstrual Dysphoric Disorder",
+        "first_author": "Mazzu",
+        "year": 2021,
+        "doi": "10.1016/j.biopsych.2021.02.796"
+      },
+      {
+        "title": "Sleep disparities in adolescent women: Role of pubertal development, menstrual cycle and premenstrual symptoms",
+        "first_author": "Kaur",
+        "year": 2021,
+        "doi": "10.1093/sleep/zsab072.177"
+      },
+      {
+        "title": "Effects of exogenous melatonin on sleep, circadian rhythms, and mood in women with premenstrual dysphoric disorder",
+        "first_author": "Moderie",
+        "year": 2021,
+        "doi": "10.1093/sleep/zsab072.735"
+      },
+      {
+        "title": "Premenstrual symptoms and work: Exploring female staff experiences and recommendations for workplaces",
+        "first_author": "Hardy",
+        "year": 2021,
+        "pmid": "33807463",
+        "doi": "10.3390/ijerph18073647"
+      },
+      {
+        "title": "Sleep and circadian rhythm disruption is corrected by lithium in a case of bipolar disorder with familial BRCA1 mutation",
+        "first_author": "Federoff",
+        "year": 2021,
+        "pmid": "33012081",
+        "doi": "10.1111/bdi.13014"
+      },
+      {
+        "title": "Prevalence of hormone-related mood disorder symptoms in women with ADHD",
+        "first_author": "Dorani",
+        "year": 2021,
+        "pmid": "33302160",
+        "doi": "10.1016/j.jpsychires.2020.12.005"
+      },
+      {
+        "title": "Sleep quality and excessive daytime sleepiness in women with Premenstrual Syndrome",
+        "first_author": "Conzatti",
+        "year": 2021,
+        "pmid": "34409910",
+        "doi": "10.1080/09513590.2021.1968820"
+      },
+      {
+        "title": "Sleep disturbance is associated with an increased risk of menstrual problems in female Chinese university students",
+        "first_author": "Xing",
+        "year": 2020,
+        "pmid": "32445135",
+        "doi": "10.1007/s11325-020-02105-1"
+      },
+      {
+        "title": "New-Onset Abnormal Vocalizations in an Adult Woman With Down Syndrome",
+        "first_author": "Palumbo",
+        "year": 2020,
+        "pmid": "32317111",
+        "doi": "10.1016/j.psym.2020.03.004"
+      },
+      {
+        "title": "Working ability in individuals with different disease courses of multiple sclerosis: Factors beyond physical impairment",
+        "first_author": "Renner",
+        "year": 2020,
+        "pmid": "33035965",
+        "doi": "10.1016/j.msard.2020.102559"
+      },
+      {
+        "title": "Changes in the objective measures of sleep between the initial nights of menses and the nights during the midfollicular phase of the menstrual cycle in collegiate female athletes",
+        "first_author": "Koikawa",
+        "year": 2020,
+        "pmid": "32666918",
+        "doi": "10.5664/jcsm.8692"
+      },
+      {
+        "title": "Effect of zinc supplementation on quality of life and sleep quality in young women with premenstrual syndrome: a randomized, double-blind, placebo-controlled trial",
+        "first_author": "Jafari",
+        "year": 2020,
+        "pmid": "32514756",
+        "doi": "10.1007/s00404-020-05628-w"
+      },
+      {
+        "title": "Determinants of sleep quality in inflammatory bowel diseases",
+        "first_author": "Sochal",
+        "year": 2020,
+        "doi": "10.1111/jsr.13181"
+      },
+      {
+        "title": "Secondary Data Analysis on the Factors Influencing Premenstrual Symptoms of Shift Work Nurses: Focused on the Sleep and Occupational Stress",
+        "first_author": "Baek",
+        "year": 2020,
+        "pmid": "32895348",
+        "doi": "10.4040/jkan.19230"
+      },
+      {
+        "title": "The blocking effect of atmospheric particles by forest and wetland at different air quality grades in Beijing China",
+        "first_author": "Cong",
+        "year": 2020,
+        "pmid": "30570370",
+        "doi": "10.1080/09593330.2018.1561759"
+      },
+      {
+        "title": "Poor sleep and emotion dysregulation mediate the association between depressive and premenstrual symptoms in young adult women",
+        "first_author": "Meers",
+        "year": 2020,
+        "pmid": "31214782",
+        "doi": "10.1007/s00737-019-00984-2"
+      },
+      {
+        "title": "Biological rhythms disruption in comorbid bipolar disorder and premenstrual dysphoric disorder",
+        "first_author": "Caropreso",
+        "year": 2020,
+        "doi": "10.1111/bdi.12939"
+      },
+      {
+        "title": "Investigating biological rhythm disruptions across the menstrual cycle in women with comorbid bipolar and premenstrual dysphoric disorder",
+        "first_author": "El-Dahr",
+        "year": 2020,
+        "doi": "10.1111/bdi.12939"
+      },
+      {
+        "title": "Effects of melatonin on some bone mineralization biomarkers fooverweight or obese perimenopause women; a possible role in osteoporosis treatment",
+        "first_author": "Dawood",
+        "year": 2020,
+        "doi": "10.25258/ijddt.10.2.6"
+      },
+      {
+        "title": "Relationship of women’s reproductive health and menstrual problems with sleep and circadian rhythm",
+        "first_author": "Komada",
+        "year": 2020,
+        "doi": "10.1007/s41105-019-00247-8"
+      },
+      {
+        "title": "Developmental trajectory of sleep disturbances in a shank3 mouse model of autism",
+        "first_author": "Schoch",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.948"
+      },
+      {
+        "title": "Mood and sleep improvement with critically-timed wake and light interventions in premenstrual, peripartum vs. perimenopausal depression depend on specific underlying melatonin and sleep circadian phase disturbances",
+        "first_author": "Parry",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.827"
+      },
+      {
+        "title": "Stress, mood, and cortisol during daily life in women with Premenstrual Dysphoric Disorder (PMDD)",
+        "first_author": "Beddig",
+        "year": 2019,
+        "pmid": "31357135",
+        "doi": "10.1016/j.psyneuen.2019.104372"
+      },
+      {
+        "title": "There is increasing evidence to suggest that brain inflammation could play a key role in the aetiology of psychiatric illness. Could inflammation be a cause of the premenstrual syndromes PMS and PMDD?",
+        "first_author": "Bannister",
+        "year": 2019,
+        "pmid": "31630609",
+        "doi": "10.1177/2053369119875386"
+      },
+      {
+        "title": "Effects of Yoga on Quality of Sleep of Women With Premenstrual Syndrome",
+        "first_author": "Ghaffarilaleh",
+        "year": 2019,
+        "pmid": "31221931"
+      },
+      {
+        "title": "Childhood adversity and sleep are associated with symptom severity in perinatal women presenting for psychiatric care",
+        "first_author": "Menke",
+        "year": 2019,
+        "pmid": "30276477",
+        "doi": "10.1007/s00737-018-0914-2"
+      },
+      {
+        "title": "The impact of rotating work schedules, chronotype, and restless legs syndrome/Willis-Ekbom disease on sleep quality among female hospital nurses and midwives: A cross-sectional survey",
+        "first_author": "Uekata",
+        "year": 2019,
+        "pmid": "31129552",
+        "doi": "10.1016/j.ijnurstu.2019.04.013"
+      },
+      {
+        "title": "Association between sleep and menstrual problems in chinese female university students",
+        "first_author": "Zhou",
+        "year": 2019,
+        "doi": "10.1093/sleep/zsz067.672"
+      },
+      {
+        "title": "The influence of endogenous DHEAS on mood in women with bipolar disorder with and without comorbid PMDD",
+        "first_author": "Syan",
+        "year": 2019,
+        "doi": "10.1111/bdi.12745"
+      },
+      {
+        "title": "Social jetlag and menstrual symptoms among female university students",
+        "first_author": "Komada",
+        "year": 2019,
+        "pmid": "30395733",
+        "doi": "10.1080/07420528.2018.1533561"
+      },
+      {
+        "title": "Effect of sleep quality on cognition and psychomotor skill in women with premenstrual syndrome",
+        "first_author": "Prabhavathi",
+        "year": 2019,
+        "doi": "10.5455/njppp.2019.9.1133209112018"
+      },
+      {
+        "title": "Validation of the medibyte portable monitor for the diagnosis of sleep apnea in pediatric patients",
+        "first_author": "Masoud",
+        "year": 2019,
+        "pmid": "31053204",
+        "doi": "10.5664/jcsm.7764"
+      },
+      {
+        "title": "Significance of the pineal gland hormone melatonin in maintaining the health of women of reproductive age (a review)",
+        "first_author": "Danilova",
+        "year": 2019,
+        "doi": "10.17749/2313-7347.2019.13.4.337-344"
+      },
+      {
+        "title": "Sleep and light therapy for peri-menopausal depression",
+        "first_author": "Parry",
+        "year": 2018,
+        "doi": "10.1097/GME.0000000000001251"
+      },
+      {
+        "title": "Overcoming multiple drug resistance in cancer using polymeric micelles",
+        "first_author": "Kesharwani",
+        "year": 2018,
+        "pmid": "30324813",
+        "doi": "10.1080/17425247.2018.1537261"
+      },
+      {
+        "title": "Menstrual Cycle Effects on Sleep",
+        "first_author": "Baker",
+        "year": 2018,
+        "pmid": "30098748",
+        "doi": "10.1016/j.jsmc.2018.04.002"
+      },
+      {
+        "title": "Diagnostic accuracy of level IV portable sleep monitors versus polysomnography for obstructive sleep apnea: a systematic review and meta-analysis",
+        "first_author": "Abrahamyan",
+        "year": 2018,
+        "pmid": "29318566",
+        "doi": "10.1007/s11325-017-1615-1"
+      },
+      {
+        "title": "Utility of respiratory monitoring algorithms present in new generation pacemakers in patients with atrial fibrillation",
+        "first_author": "Goncalves",
+        "year": 2018,
+        "doi": "10.1093/eurheartj/ehy566.P6656"
+      },
+      {
+        "title": "Sleep disturbances in midlife women at the cusp of the menopausal transition",
+        "first_author": "Jones",
+        "year": 2018,
+        "pmid": "29991421",
+        "doi": "10.5664/jcsm.7208"
+      },
+      {
+        "title": "A double-blinded, randomized, placebo controlled, parallel study of pollen pistil extract (Sèrèlys) on women reporting irritability as predominant PMS symptom",
+        "first_author": "Winther",
+        "year": 2018,
+        "doi": "10.1016/j.hermed.2018.02.002"
+      },
+      {
+        "title": "Premenstrual syndrome and sleep disturbances: Results from the Sao Paulo Epidemiologic Sleep Study",
+        "first_author": "Nicolau",
+        "year": 2018,
+        "pmid": "29704826",
+        "doi": "10.1016/j.psychres.2018.04.008"
+      },
+      {
+        "title": "The effects of particulate matter on atopic dermatitis symptoms are influenced by weather type: Application of spatial synoptic classification (SSC)",
+        "first_author": "Kim",
+        "year": 2018,
+        "pmid": "29853291",
+        "doi": "10.1016/j.ijheh.2018.05.006"
+      },
+      {
+        "title": "Australian government report on the clinical effectiveness of homeopathy: Analysis and proposals",
+        "first_author": "Poitevin",
+        "year": 2018,
+        "doi": "10.1016/j.revhom.2018.01.019"
+      },
+      {
+        "title": "Brain structure and function in women with co-morbid bipolar and premenstrual dysphoric disorder",
+        "first_author": "Syan",
+        "year": 2018,
+        "doi": "10.1111/bdi.12618"
+      },
+      {
+        "title": "Succesfull treatment with lithium in an adult patient with phelan-McDermid syndrome caused by a heterozygous truncating mutation in the SHANK3 gene",
+        "first_author": "Egger",
+        "year": 2018,
+        "doi": "10.1016/j.eurpsy.2017.12.016"
+      },
+      {
+        "title": "Relationship between the cortisol-estradiol phase difference and affect in women",
+        "first_author": "Butler",
+        "year": 2018,
+        "doi": "10.5334/jcr.154"
+      },
+      {
+        "title": "Should this patient receive hormone therapy for her menopausal symptoms? Grand rounds discussion from beth Israel deaconess medical center",
+        "first_author": "Reynolds",
+        "year": 2018,
+        "pmid": "29404595",
+        "doi": "10.7326/M17-3320"
+      },
+      {
+        "title": "Brain structure and function in women with Comorbid bipolar and premenstrual dysphoric disorder",
+        "first_author": "Syan",
+        "year": 2018,
+        "doi": "10.3389/fpsyt.2017.00301"
+      },
+      {
+        "title": "Study of psychological predictors and sleep quality in different grades of premenstrual syndrome",
+        "first_author": "Prabhavathi",
+        "year": 2018,
+        "doi": "10.5455/njppp.2017.7.0935427102017"
+      },
+      {
+        "title": "Sleep in Women Across the Stages of Life",
+        "first_author": "Pusalavidyasagar",
+        "year": 2018,
+        "doi": "10.1097/CPM.0000000000000263"
+      },
+      {
+        "title": "The effect of physical activity on the levels of the hormones, serotonin and melatonin in premenstrual syndrome",
+        "first_author": "Bakay",
+        "year": 2018,
+        "doi": "10.12891/ceog4201.2018"
+      },
+      {
+        "title": "Adolescent bladder endometriosis initially diagnosed as premenarchal disease: A case report and review of the literature",
+        "first_author": "Fujishiro",
+        "year": 2018,
+        "doi": "10.12891/ceog3894.2018"
+      },
+      {
+        "title": "Critically-timed wake and light therapy: Mood effects on premenstrual, peripartum and menopausal depression depend on melatonin-sleep timing",
+        "first_author": "Parry",
+        "year": 2019,
+        "doi": "10.1159/000501249"
+      },
+      {
+        "title": "What symptoms trigger symptom-onset serotonin reuptake inhibitor treatment in premenstrual dysphoric disorder? a prospective evaluation",
+        "first_author": "Forray",
+        "year": 2017,
+        "doi": "10.1038/npp.2017.265"
+      },
+      {
+        "title": "For women with PMDD, acute changes in ovarian steroids, but not enduring higher levels, precipitate symptoms",
+        "first_author": "Parry",
+        "year": 2017,
+        "pmid": "28965460",
+        "doi": "10.1176/appi.ajp.2017.17070803"
+      },
+      {
+        "title": "Diagnosis of obstructive sleep apnea syndrome by algorithms of respiratory monitoring incorporated in pacemakers in populations with high pretest probability",
+        "first_author": "Rigueira",
+        "year": 2017,
+        "doi": "10.1093/eurheartj/ehx502.P1675"
+      },
+      {
+        "title": "Use of Light Therapy by Office-Based Physicians",
+        "first_author": "Winkler-Pjrek",
+        "year": 2017,
+        "doi": "10.1159/000477094"
+      },
+      {
+        "title": "Neurobiological correlates of co-morbid bipolar and premenstrual dysphoric disorder",
+        "first_author": "Syan",
+        "year": 2017,
+        "doi": "10.1111/bdi.12480/abstract"
+      },
+      {
+        "title": "Non-contraceptive oestrogen-containing preparations for controlling symptoms of premenstrual syndrome",
+        "first_author": "Naheed",
+        "year": 2017,
+        "pmid": "28257559",
+        "doi": "10.1002/14651858.CD010503.pub2"
+      },
+      {
+        "title": "Subtle persistent working memory and selective attention deficits in women with premenstrual syndrome",
+        "first_author": "Slyepchenko",
+        "year": 2017,
+        "pmid": "28152471",
+        "doi": "10.1016/j.psychres.2017.01.031"
+      },
+      {
+        "title": "Effectiveness of ramelteon for residual sleep disturbances (hypersomnia) in a patient with premenstrual dysphoric disorder",
+        "first_author": "Yamada",
+        "year": 2017,
+        "pmid": "27868343",
+        "doi": "10.1111/pcn.12484"
+      },
+      {
+        "title": "Sleep disturbances in individuals with phelan-mcdermid syndrome: Correlation with caregivers' sleep quality and daytime functioning",
+        "first_author": "Bro",
+        "year": 2017,
+        "pmid": "28364490",
+        "doi": "10.1093/sleep/zsw062"
+      },
+      {
+        "title": "Phelan-McDermid syndrome due to SHANK3 mutation in an intellectually disabled adult male: Successful treatment with lithium",
+        "first_author": "Egger",
+        "year": 2017,
+        "pmid": "28963116",
+        "doi": "10.1136/bcr-2017-220778"
+      },
+      {
+        "title": "The effect of a sleep hygiene interventions in women with premenstrual syndrome",
+        "first_author": "Gürkan",
+        "year": 2017,
+        "doi": "10.16948/zktipb.309006"
+      },
+      {
+        "title": "Total oxidant–antioxidant and paraoxonase-1 levels in premenstrual dysphoric disorder: A follow-up study",
+        "first_author": "Ozcan",
+        "year": 2017,
+        "doi": "10.1080/24750573.2017.1326735"
+      },
+      {
+        "title": "The role of the new generation pacemakers in sleep apnea screening",
+        "first_author": "Dias",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Insomnia during the last month of pregnancy predicts postpartum depression",
+        "first_author": "Saruis",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Sleep/wake patterns and menstruation for Restless legs syndrome in the Korean female high-school students",
+        "first_author": "Choi",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Treatment of Premenstrual Dysphoric Disorder: Therapeutic Challenges",
+        "first_author": "Pearlstein",
+        "year": 2016,
+        "doi": "10.1586/17512433.2016.1142371"
+      },
+      {
+        "title": "Mental health is associated with disease course in a sub-group of inflammatory disease bowel patients with Crohn's disease and ulcerative colitis: A multicentre observational study by the Osaka Gut Forum",
+        "first_author": "Araki",
+        "year": 2016,
+        "doi": "10.1093/ecco-jcc/jjw019"
+      },
+      {
+        "title": "Scoring criteria for portable monitor recordings: A comparison of four hypopnoea definitions in a population-based cohort",
+        "first_author": "Vat",
+        "year": 2015,
+        "pmid": "26294685",
+        "doi": "10.1136/thoraxjnl-2014-205982"
+      },
+      {
+        "title": "Utility of portable monitoring in the diagnosis of obstructive sleep apnea",
+        "first_author": "Krishnaswamy",
+        "year": 2015,
+        "pmid": "26440391",
+        "doi": "10.4103/0022-3859.166509"
+      },
+      {
+        "title": "The effect of vitamin B1 on sleep disorders associated with premenstrual syndrome",
+        "first_author": "Abdollahifard",
+        "year": 2015,
+        "doi": "10.1111/tmi.12574"
+      },
+      {
+        "title": "A case of intrafamilial Human Parechovirus type 3 infections resulting in sepsis-like illness in a neonate but hand, foot and mouth disease in an elder sibling",
+        "first_author": "Yun",
+        "year": 2015,
+        "doi": "10.1016/j.jcv.2015.07.148"
+      },
+      {
+        "title": "Effects of chronotype and environmental factors upon sleep and mental health in Japanese students aged 18-40 yrs",
+        "first_author": "Takeuchi",
+        "year": 2015,
+        "doi": "10.1080/09291016.2015.1048952"
+      },
+      {
+        "title": "Are at-home sleep studies performed using portable monitors (PMs) as effective at diagnosing obstructive sleep apnea (OSA) in adults as sleep laboratory-based polysomnography (PSG)?",
+        "first_author": "Walia",
+        "year": 2014,
+        "pmid": "25790587"
+      },
+      {
+        "title": "SHANK3 overexpression causes manic-like behaviour with unique pharmacogenetic properties",
+        "first_author": "Holder",
+        "year": 2014,
+        "doi": "10.1002/ana.24226"
+      },
+      {
+        "title": "Effects of bright light therapy on the hospital employees with depressive symptoms and/or daytime sleepiness",
+        "first_author": "Miura",
+        "year": 2014,
+        "doi": "10.1111/jsr.12213"
+      },
+      {
+        "title": "Circadian rhythm disruption in women with bipoloar and premenstrual dysphoric disorder during remission: Preliminary results",
+        "first_author": "Syan",
+        "year": 2014,
+        "doi": "10.1089/jwh.2014.Ab01.abstracts"
+      },
+      {
+        "title": "Circadian rhythm disruption in women with bipolar and premenstrual dysphoric disorder during remission: Preliminary results",
+        "first_author": "Syan",
+        "year": 2014,
+        "doi": "10.1111/bdi.12189"
+      },
+      {
+        "title": "Women with bipolar disorder: A lifetime challenge from diagnosis to treatment",
+        "first_author": "Özerdem",
+        "year": 2014,
+        "pmid": "24467468",
+        "doi": "10.1111/bdi.12161"
+      },
+      {
+        "title": "A pacemaker transthoracic impedance sensor with an advanced algorithm to identify severe sleep apnea: The DREAM European study",
+        "first_author": "Defaye",
+        "year": 2014,
+        "pmid": "24561163",
+        "doi": "10.1016/j.hrthm.2014.02.011"
+      },
+      {
+        "title": "Effects of sex and gender on adaptation to space: Behavioral health",
+        "first_author": "Goel",
+        "year": 2014,
+        "pmid": "25259837",
+        "doi": "10.1089/jwh.2014.4911"
+      },
+      {
+        "title": "Melatonin analgesia is associated with improvement of the descending endogenous pain-modulating system in fibromyalgia: a phase II, randomized, double-dummy, controlled trial",
+        "first_author": "de",
+        "year": 2014,
+        "pmid": "25052847",
+        "doi": "10.1186/2050-6511-15-40"
+      },
+      {
+        "title": "Propiospinal myoclonus at sleep onset (PSM) after spinal anesthesia in a patient with restless legs syndrome (RLS) and periodic limb movements during sleep (PLMS): A case report",
+        "first_author": "Maria",
+        "year": 2013,
+        "doi": "10.1016/j.sleep.2013.11.471"
+      },
+      {
+        "title": "Selected neurophysiological, psychological, and behavioral influences on subjective sleep quality in nurses: A structure equation model",
+        "first_author": "Chung",
+        "year": 2013,
+        "pmid": "24278145",
+        "doi": "10.1371/journal.pone.0079529"
+      },
+      {
+        "title": "Treatment of premenstrual dysphoric disorder",
+        "first_author": "Rapkin",
+        "year": 2013,
+        "pmid": "24161307",
+        "doi": "10.2217/whe.13.62"
+      },
+      {
+        "title": "Estrous cycle regulation of extrasynaptic d-containing GABA(A) receptor-mediated tonic inhibition and limbic epileptogenesis",
+        "first_author": "Wu",
+        "year": 2013,
+        "pmid": "23667248",
+        "doi": "10.1124/jpet.113.203653"
+      },
+      {
+        "title": "Allopregnanolone serum concentrations and diurnal cortisol secretion in women with premenstrual dysphoric disorder",
+        "first_author": "Segebladh",
+        "year": 2013,
+        "pmid": "23329007",
+        "doi": "10.1007/s00737-013-0327-1"
+      },
+      {
+        "title": "Factors associated with premenstrual syndrome - A survey of new female university students",
+        "first_author": "Cheng",
+        "year": 2013,
+        "pmid": "23347812",
+        "doi": "10.1016/j.kjms.2012.08.017"
+      },
+      {
+        "title": "Pilot Investigation of the Circadian Plasma Melatonin Rhythm across the Menstrual Cycle in a Small Group of Women with Premenstrual Dysphoric Disorder",
+        "first_author": "Shechter",
+        "year": 2012,
+        "pmid": "23284821",
+        "doi": "10.1371/journal.pone.0051929"
+      },
+      {
+        "title": "Portable diagnostic devices for identifying obstructive sleep apnea among commercial motor vehicle drivers: Considerations and unanswered questions",
+        "first_author": "Zhang",
+        "year": 2012,
+        "pmid": "23115397",
+        "doi": "10.5665/sleep.2194"
+      },
+      {
+        "title": "Perceived poor sleep quality in the absence of polysomnographic sleep disturbance in women with severe premenstrual syndrome",
+        "first_author": "Baker",
+        "year": 2012,
+        "pmid": "22417163",
+        "doi": "10.1111/j.1365-2869.2012.01007.x"
+      },
+      {
+        "title": "Nocturnal polysomnographic sleep across the menstrual cycle in premenstrual dysphoric disorder",
+        "first_author": "Shechter",
+        "year": 2012,
+        "pmid": "22749440",
+        "doi": "10.1016/j.sleep.2012.05.012"
+      },
+      {
+        "title": "Subjective sleep quality in premenstrual syndrome.",
+        "first_author": "Ozisik",
+        "year": 2012,
+        "pmid": "22316208",
+        "doi": "10.3109/09513590.2011.650769"
+      },
+      {
+        "title": "Concordance of sleep and pain outcomes of diverse interventions: An umbrella review",
+        "first_author": "Doufas",
+        "year": 2012,
+        "pmid": "22815856",
+        "doi": "10.1371/journal.pone.0040891"
+      },
+      {
+        "title": "Periovulatory symptoms among users of the Sympto-Thermal Method (STM)",
+        "first_author": "Barranco",
+        "year": 2012,
+        "doi": "10.3109/13625187.2012.673963"
+      },
+      {
+        "title": "Subjective sleep quality in premenstrual syndrome",
+        "first_author": "Ozisik",
+        "year": 2012,
+        "doi": "10.3109/09513590.2011.650769"
+      },
+      {
+        "title": "Effect of melatonin on proliferation and apoptosis of fibroblasts in human hypertrophic scar",
+        "first_author": "Xie",
+        "year": 2011,
+        "pmid": "22340787",
+        "doi": "10.3760/cma.j.issn.1009-2587.2011.06.005"
+      },
+      {
+        "title": "The relationship between bipolar disorder, seasonality, and premenstrual symptoms",
+        "first_author": "Kim",
+        "year": 2011,
+        "pmid": "21918807",
+        "doi": "10.1007/s11920-011-0233-z"
+      },
+      {
+        "title": "That time of the month; That time of life-the impact of premenstrual dysphoric disorder and the menopausal transition",
+        "first_author": "Carter",
+        "year": 2011,
+        "doi": "10.1007/s00737-011-0238-y"
+      },
+      {
+        "title": "Sex differences and menstrual-related effects on sleep",
+        "first_author": "Baker",
+        "year": 2011,
+        "doi": "10.1111/j.1479-8425.2011.00521.x"
+      },
+      {
+        "title": "Subjective sleep quality in premenstrual syndrome",
+        "first_author": "Ozisik",
+        "year": 2011,
+        "doi": "10.1111/j.1468-1331.2011.03551.x"
+      },
+      {
+        "title": "Homeopathic treatments in psychiatry: A systematic review of randomized placebo-controlled studies",
+        "first_author": "Davidson",
+        "year": 2011,
+        "pmid": "21733480",
+        "doi": "10.4088/JCP.10r06580"
+      },
+      {
+        "title": "Reduced phase-advance of plasma melatonin after bright morning light in the luteal, but not follicular, menstrual cycle phase in premenstrual dysphoric disorder: An extended study",
+        "first_author": "Parry",
+        "year": 2011,
+        "pmid": "21721857",
+        "doi": "10.3109/07420528.2011.567365"
+      },
+      {
+        "title": "Durability, safety, ease of use and reliability of a type-3 portable monitor and a sheet-style type-4 portable monitor",
+        "first_author": "Kadotani",
+        "year": 2011,
+        "doi": "10.1111/j.1479-8425.2011.00491.x"
+      },
+      {
+        "title": "Herbal Medicines in Pediatric Neuropsychiatry",
+        "first_author": "Feucht",
+        "year": 2011,
+        "pmid": "21281847",
+        "doi": "10.1016/j.pcl.2010.10.006"
+      },
+      {
+        "title": "Hormone treatment of depression",
+        "first_author": "Joffe",
+        "year": 2011,
+        "pmid": "21485752",
+        "doi": "10.31887/dcns.2011.13.1/rjoffe"
+      },
+      {
+        "title": "Sleep, hormones, and circadian rhythms throughout the menstrual cycle in healthy women and women with premenstrual dysphoric disorder",
+        "first_author": "Boivin",
+        "year": 2010,
+        "doi": "10.1155/2010/259345"
+      },
+      {
+        "title": "Sleep and the endocrine brain",
+        "first_author": "Mong",
+        "year": 2010,
+        "doi": "10.1155/2010/967435"
+      },
+      {
+        "title": "Sleep restriction and circadian disruption: Effects on appetite, snack choice and cravings",
+        "first_author": "Heath",
+        "year": 2010,
+        "doi": "10.1111/j.1479-8425.2010.00457-4.x"
+      },
+      {
+        "title": "Early versus late wake therapy effects on mood and sleep in pregnancy and postpartum depression",
+        "first_author": "Parry",
+        "year": 2010,
+        "doi": "10.1111/j.1365-2869.2010.00868.x"
+      },
+      {
+        "title": "Increased sensitivity to light-induced melatonin suppression in premenstrual dysphoric disorder",
+        "first_author": "Parry",
+        "year": 2010,
+        "pmid": "20795885",
+        "doi": "10.3109/07420528.2010.503331"
+      },
+      {
+        "title": "Challenges and Opportunities to Manage Depression During the Menopausal Transition and Beyond",
+        "first_author": "Soares",
+        "year": 2010,
+        "pmid": "20385338",
+        "doi": "10.1016/j.psc.2010.01.007"
+      },
+      {
+        "title": "Soliciting an herbal medicine and supplement use history at hospice admission",
+        "first_author": "Holmes",
+        "year": 2010,
+        "pmid": "20557233",
+        "doi": "10.1089/jpm.2009.0378"
+      },
+      {
+        "title": "Weak evidence of bright light effects on human LH and FSH",
+        "first_author": "Kripke",
+        "year": 2010,
+        "doi": "10.1186/1740-3391-8-5"
+      },
+      {
+        "title": "The effect of the menstrual cycle on affective modulation of pain and nociception in healthy women",
+        "first_author": "Rhudy",
+        "year": 2010,
+        "pmid": "20304557",
+        "doi": "10.1016/j.pain.2010.02.041"
+      },
+      {
+        "title": "Reproducibility of plasma and urine biomarkers among premenopausal and postmenopausal women from the nurses health studies",
+        "first_author": "Kotsopoulos",
+        "year": 2010,
+        "pmid": "20332276",
+        "doi": "10.1158/1055-9965.EPI-09-1318"
+      },
+      {
+        "title": "Effect of temporally controlled release of dexamethasone on in vivo chondrogenic differentiation of mesenchymal stromal cells",
+        "first_author": "Bae",
+        "year": 2010,
+        "pmid": "20056124",
+        "doi": "10.1016/j.jconrel.2009.12.024"
+      },
+      {
+        "title": "Sleep and melatonin in depressive disorders during the menstrual cycle, pregnancy, postpartum and menopause",
+        "first_author": "Parry",
+        "year": 2009,
+        "doi": "10.1111/j.1479-8425.2009.00410-3.x"
+      },
+      {
+        "title": "Relation between peri-menstrual symptoms and sleep-wakefulness cycle",
+        "first_author": "Kawauchi",
+        "year": 2009,
+        "doi": "10.1111/j.1479-8425.2009.00426.x"
+      },
+      {
+        "title": "Portable Monitoring",
+        "first_author": "Collop",
+        "year": 2009,
+        "doi": "10.1016/j.jsmc.2009.04.011"
+      },
+      {
+        "title": "Vitex agnus-castus (chaste-tree/berry) in the treatment of menopause-related complaints",
+        "first_author": "Van",
+        "year": 2009,
+        "pmid": "19678775",
+        "doi": "10.1089/acm.2008.0447"
+      },
+      {
+        "title": "Morningness/eveningness and menstrual symptoms in adolescent females",
+        "first_author": "Negriff",
+        "year": 2009,
+        "pmid": "19616145",
+        "doi": "10.1016/j.jpsychores.2009.01.011"
+      },
+      {
+        "title": "Do gastroenterologists evaluate patient GERD symptom severity and treatment outcome more accurately than other medical specialists? Usefulness of a combined patient self-assessment questionnaire (ReQuest®) and a physician symptom likert scale",
+        "first_author": "Sobrino-Cossio",
+        "year": 2009,
+        "doi": "10.1016/S0016-5085(09)62261-7"
+      },
+      {
+        "title": "The efficacy of Femal in women with premenstrual syndrome: A randomised, double-blind, parallel-group, placebo-controlled, multicentre study",
+        "first_author": "Gerhardsen",
+        "year": 2008,
+        "pmid": "18568441",
+        "doi": "10.1007/s12325-008-0072-4"
+      },
+      {
+        "title": "Late, but not early, wake therapy reduces morning plasma melatonin: Relationship to mood in Premenstrual Dysphoric Disorder",
+        "first_author": "Parry",
+        "year": 2008,
+        "pmid": "18789826",
+        "doi": "10.1016/j.psychres.2007.11.017"
+      },
+      {
+        "title": "The unique challenges of managing depression in mid-life women",
+        "first_author": "Dennerstein",
+        "year": 2008,
+        "doi": "10.1002/j.2051-5545.2008.tb00180.x"
+      },
+      {
+        "title": "Depression during menopausal transition: A review of treatment strategies and pathophysiological correlates",
+        "first_author": "Frey",
+        "year": 2008,
+        "pmid": "18714078",
+        "doi": "10.1258/mi.2008.008019"
+      },
+      {
+        "title": "Hormones and the auditory system: A review of physiology and pathophysiology",
+        "first_author": "Al-Mana",
+        "year": 2008,
+        "pmid": "18440718",
+        "doi": "10.1016/j.neuroscience.2008.02.077"
+      },
+      {
+        "title": "Sleep Disturbances in Women: Psychiatric Considerations",
+        "first_author": "Soares",
+        "year": 2008,
+        "doi": "10.1016/j.jsmc.2008.01.006"
+      },
+      {
+        "title": "Sleep and Menstrual-Related Disorders",
+        "first_author": "Baker",
+        "year": 2008,
+        "doi": "10.1016/j.jsmc.2007.10.001"
+      },
+      {
+        "title": "Bright light therapy",
+        "first_author": "Prasko",
+        "year": 2008,
+        "pmid": "19029878"
+      },
+      {
+        "title": "Biological clocks and the practice of psychiatry",
+        "first_author": "Schulz",
+        "year": 2007,
+        "pmid": "17969862"
+      },
+      {
+        "title": "Sleep quality and the sleep electroencephalogram in women with severe premenstrual syndrome",
+        "first_author": "Baker",
+        "year": 2007,
+        "pmid": "17969462",
+        "doi": "10.1093/sleep/30.10.1283"
+      },
+      {
+        "title": "Circadian rhythms, sleep, and the menstrual cycle",
+        "first_author": "Baker",
+        "year": 2007,
+        "pmid": "17383933",
+        "doi": "10.1016/j.sleep.2006.09.011"
+      },
+      {
+        "title": "Women, anxiety and mood: a review of nomenclature, comorbidity and epidemiology.",
+        "first_author": "Alexander",
+        "year": 2007,
+        "pmid": "18039068",
+        "doi": "10.1586/14737175.7.11s.S45"
+      },
+      {
+        "title": "GABAA receptors: Properties and trafficking",
+        "first_author": "Michels",
+        "year": 2007,
+        "pmid": "17364682",
+        "doi": "10.1080/10409230601146219"
+      },
+      {
+        "title": "Sleep Disorders in Women: Clinical Evidence and Treatment Strategies",
+        "first_author": "Soares",
+        "year": 2006,
+        "pmid": "17118284",
+        "doi": "10.1016/j.psc.2006.09.002"
+      },
+      {
+        "title": "Phytotherapy--one more possibility in the treatment of premenstrual syndrome",
+        "first_author": "Lazarov",
+        "year": 2006,
+        "pmid": "16922346"
+      },
+      {
+        "title": "Sleep, rhythms and women's mood. Part II. Menopause",
+        "first_author": "Parry",
+        "year": 2006,
+        "pmid": "16618548",
+        "doi": "10.1016/j.smrv.2005.09.004"
+      },
+      {
+        "title": "Biological rhythm disturbances in mood disorders",
+        "first_author": "Wirz-Justice",
+        "year": 2006,
+        "pmid": "16436934",
+        "doi": "10.1097/01.yic.0000195660.37267.cf"
+      },
+      {
+        "title": "Safety and efficacy of ginkgo (ginkgo biloba) during pregnancy and lactation",
+        "first_author": "Dugoua",
+        "year": 2006,
+        "pmid": "17085776"
+      },
+      {
+        "title": "Insomnia in women: An overlooked epidemic?",
+        "first_author": "Soares",
+        "year": 2005,
+        "pmid": "16195781",
+        "doi": "10.1007/s00737-005-0100-1"
+      },
+      {
+        "title": "Association between moringness-eveningness preference and mental/physical premenstrual symptoms in Japanese females 12 to 31 years of age",
+        "first_author": "Takeuchi",
+        "year": 2005,
+        "pmid": "16393708",
+        "doi": "10.1080/07420520500398007"
+      },
+      {
+        "title": "Light therapy for seasonal and nonseasonal depression: Efficacy, protocol, safety, and side effects",
+        "first_author": "Terman",
+        "year": 2005,
+        "pmid": "16041296",
+        "doi": "10.1017/S1092852900019611"
+      },
+      {
+        "title": "Antidepressant drug use in pregnancy",
+        "first_author": "Niebyl",
+        "year": 2005,
+        "pmid": "15979539",
+        "doi": "10.1016/j.jsgi.2005.05.002"
+      },
+      {
+        "title": "A survey of Chinese herbal medicine intake amongst preoperative patients in Hong Kong",
+        "first_author": "Critchley",
+        "year": 2005,
+        "pmid": "16119494",
+        "doi": "10.1177/0310057x0503300414"
+      },
+      {
+        "title": "Women and insomnia",
+        "first_author": "Miller",
+        "year": 2004,
+        "pmid": "15457811",
+        "doi": "10.1016/S1098-3597(04)80015-2"
+      },
+      {
+        "title": "Influence of a continuous combined HRT (2 mg estradiol valerate and 2 mg dienogest) on postmenopausal depression",
+        "first_author": "Rudolph",
+        "year": 2004,
+        "pmid": "15669555",
+        "doi": "10.1080/13697130400001802"
+      },
+      {
+        "title": "A case-study of fine particle concentrations and fluxes measured in a busy street canyon in Manchester, UK",
+        "first_author": "Longley",
+        "year": 2004,
+        "doi": "10.1016/j.atmosenv.2004.03.040"
+      },
+      {
+        "title": "Premenstrual syndrome as a predictor of menopausal symptoms",
+        "first_author": "Freeman",
+        "year": 2004,
+        "pmid": "15121571",
+        "doi": "10.1097/01.AOG.0000124804.81095.7f"
+      },
+      {
+        "title": "Endocrine aspects of headaches in children and adolescents",
+        "first_author": "Weitz",
+        "year": 2004,
+        "pmid": "16437026"
+      },
+      {
+        "title": "Controlled-release oxycodone--a therapeutic option for severe neuropathic pain. Two multicenter observational studies",
+        "first_author": "Wörz",
+        "year": 2003,
+        "pmid": "15490770"
+      },
+      {
+        "title": "Quality, efficacy and safety of complementary medicines: Fashions, facts and the future. Part II: Efficacy and safety",
+        "first_author": "Barnes",
+        "year": 2003,
+        "pmid": "12680880",
+        "doi": "10.1046/j.1365-2125.2003.01811.x"
+      },
+      {
+        "title": "Premenstrual dysphoric disorder: Approach and treatment",
+        "first_author": "Bianchi-Demicheli",
+        "year": 2003,
+        "pmid": "12659785",
+        "doi": "10.1016/S1297-9589(02)00007-3"
+      },
+      {
+        "title": "Critical appraisal of effects of estrogen replacement therapy on symptoms of depressed mood",
+        "first_author": "Stoppe",
+        "year": 2002,
+        "pmid": "12510198",
+        "doi": "10.1007/s00737-002-0139-1"
+      },
+      {
+        "title": "Assessment of the effects of the herbal remedy femal on the symptoms of Premenstrual Syndrome: A randomized, double-blind, placebo-controlled study",
+        "first_author": "Winther",
+        "year": 2002,
+        "doi": "10.1016/S0011-393X(02)80038-8"
+      },
+      {
+        "title": "Influence of ovarian cycle on the central nervous system",
+        "first_author": "Kuhl",
+        "year": 2002,
+        "pmid": "12018035",
+        "doi": "10.1024/0040-5930.59.4.175"
+      },
+      {
+        "title": "Changes in nociceptive flexion reflex threshold across the menstrual cycle in healthy women",
+        "first_author": "Tassorelli",
+        "year": 2002,
+        "pmid": "12140352",
+        "doi": "10.1097/01.PSY.0000021945.35402.0D"
+      },
+      {
+        "title": "Menstrual and circadian variations in time perception in healthy women and women with premenstrual syndrome.",
+        "first_author": "Morofushi",
+        "year": 2001,
+        "pmid": "11755220"
+      },
+      {
+        "title": "Chronobiological basis of female-specific mood disorders",
+        "first_author": "Parry",
+        "year": 2001,
+        "pmid": "11682284",
+        "doi": "10.1016/S0893-133X(01)00340-2"
+      },
+      {
+        "title": "Management of progressive migraine",
+        "first_author": "Saper",
+        "year": 2001,
+        "doi": "10.1097/00129300-200106000-00004"
+      },
+      {
+        "title": "The role of central serotonergic dysfunction in the aetiology of premenstrual dysphoric disorder: Therapeutic implications",
+        "first_author": "Parry",
+        "year": 2001,
+        "pmid": "11463133",
+        "doi": "10.2165/00023210-200115040-00003"
+      },
+      {
+        "title": "Aerosol concentrations during the 1999 Fresno exposure studies as functions of size, season, and meterology",
+        "first_author": "Lawless",
+        "year": 2001,
+        "doi": "10.1080/027868201300082021"
+      },
+      {
+        "title": "Cortisol circadian rhythms during the menstrual cycle and with sleep deprivation in premenstrual dysphoric disorder and normal control subjects",
+        "first_author": "Parry",
+        "year": 2000,
+        "pmid": "11074230",
+        "doi": "10.1016/S0006-3223(00)00876-3"
+      },
+      {
+        "title": "Root hydraulic conductance: Diurnal aquaporin expression and the effects of nutrient stress",
+        "first_author": "Clarkson",
+        "year": 2000,
+        "pmid": "10938796",
+        "doi": "10.1093/jxb/51.342.61"
+      },
+      {
+        "title": "The antidepressant nefazodone. A review of its pharmacology, clinical efficacy, adverse effects, dosage, and administration.",
+        "first_author": "Khouzam",
+        "year": 2000,
+        "pmid": "10959472"
+      },
+      {
+        "title": "Menstrual changes in sleep, rectal temperature and melatonin rhythms in a subject with premenstrual syndrome",
+        "first_author": "Shinohara",
+        "year": 2000,
+        "pmid": "10704767",
+        "doi": "10.1016/S0304-3940(00)00826-0"
+      },
+      {
+        "title": "New clinical applications of transdermal testosterone delivery in men and women",
+        "first_author": "Mazer",
+        "year": 2000,
+        "pmid": "10699290",
+        "doi": "10.1016/S0168-3659(99)00252-7"
+      },
+      {
+        "title": "Antidepressive therapy by modifying sleep",
+        "first_author": "Haug",
+        "year": 2000,
+        "pmid": "10730101",
+        "doi": "10.1024/0040-5930.57.2.76"
+      },
+      {
+        "title": "Peak expiratory flow rate and premenstrual symptoms in healthy nonasthmatic women",
+        "first_author": "Chong",
+        "year": 2000,
+        "pmid": "11130212",
+        "doi": "10.1592/phco.20.19.1409.34857"
+      },
+      {
+        "title": "Melatonin and the reduction or alleviation of stress",
+        "first_author": "Kirby",
+        "year": 1999,
+        "pmid": "10496143",
+        "doi": "10.1111/j.1600-079X.1999.tb00600.x"
+      },
+      {
+        "title": "Sex, steroids, and sleep: A review",
+        "first_author": "Manber",
+        "year": 1999,
+        "pmid": "10450590"
+      },
+      {
+        "title": "A controlled study of light therapy in women with late luteal phase dysphoric disorder",
+        "first_author": "Lam",
+        "year": 1999,
+        "pmid": "10482337",
+        "doi": "10.1016/S0165-1781(99)00043-8"
+      },
+      {
+        "title": "Diurnal fluctuation of sleep propensity across the menstrual cycle",
+        "first_author": "Shibui",
+        "year": 1999,
+        "pmid": "10459690",
+        "doi": "10.1046/j.1440-1819.1999.00489.x"
+      },
+      {
+        "title": "Sleep EEG studies during early and late partial sleep deprivation in premenstrual dysphoric disorder and normal control subjects",
+        "first_author": "Parry",
+        "year": 1999,
+        "pmid": "10220004",
+        "doi": "10.1016/S0165-1781(98)00128-0"
+      },
+      {
+        "title": "Salivary cortisol in women with and without perimenstrual mood changes",
+        "first_author": "Odber",
+        "year": 1998,
+        "pmid": "9859857",
+        "doi": "10.1016/S0022-3999(98)00061-0"
+      },
+      {
+        "title": "Dawn's early light to twilight's last gleaming",
+        "first_author": "Lamberg",
+        "year": 1998,
+        "doi": "10.1001/jama.280.18.1556-JMN1111-3-1"
+      },
+      {
+        "title": "Mexiletine. A review of its therapeutic use in painful diabetic neuropathy",
+        "first_author": "Javis",
+        "year": 1998,
+        "pmid": "9806111",
+        "doi": "10.2165/00003495-199856040-00016"
+      },
+      {
+        "title": "Understanding premenstrual syndrome (multiple letters) [4]",
+        "first_author": "Fry",
+        "year": 1998,
+        "doi": "10.1016/s0140-6736(05)78901-7"
+      },
+      {
+        "title": "Menstrual-linked asthma",
+        "first_author": "Agarwal",
+        "year": 1997,
+        "pmid": "9428300",
+        "doi": "10.3109/02770909709055398"
+      },
+      {
+        "title": "Excessive twitch movements in rapid eye movement sleep with daytime sleepiness",
+        "first_author": "Mizuma",
+        "year": 1997,
+        "pmid": "9472125",
+        "doi": "10.1111/j.1440-1819.1997.tb02606.x"
+      },
+      {
+        "title": "Circadian changes in body temperature during the menstrual cycle of healthy adult females and patients suffering from premenstrual syndrome",
+        "first_author": "Nakayama",
+        "year": 1997,
+        "pmid": "9526177"
+      },
+      {
+        "title": "Cyclic eating disorders",
+        "first_author": "Kochman",
+        "year": 1997,
+        "pmid": "9453191"
+      },
+      {
+        "title": "Blunted phase-shift responses to morning bright light in premenstrual dysphoric disorder.",
+        "first_author": "Parry",
+        "year": 1997,
+        "pmid": "9376643"
+      },
+      {
+        "title": "Temperature circadian rhythms during the menstrual cycle and sleep deprivation in premenstrual dysphoric disorder and normal comparison subjects.",
+        "first_author": "Parry",
+        "year": 1997,
+        "pmid": "9104689"
+      },
+      {
+        "title": "Plasma melatonin circadian rhythms during the menstrual cycle and after light therapy in premenstrual dysphoric disorder and normal control subjects.",
+        "first_author": "Parry",
+        "year": 1997,
+        "pmid": "9104690"
+      },
+      {
+        "title": "Psychobiology of premenstrual dysphoric disorder",
+        "first_author": "Parry",
+        "year": 1997,
+        "pmid": "9065978",
+        "doi": "10.1055/s-2008-1067968"
+      },
+      {
+        "title": "Treatment of dysmenorrhea and premenstrual syndrome",
+        "first_author": "Fankhauser",
+        "year": 1996,
+        "doi": "10.1016/S1086-5802(16)30106-1"
+      },
+      {
+        "title": "The female brain hypoestrogenic continuum from the premenstrual syndrome to menopause: A hypothesis and review of supporting data",
+        "first_author": "Arpels",
+        "year": 1996,
+        "pmid": "8887186"
+      },
+      {
+        "title": "Circadian rhythms of prolactin and thyroid-stimulating hormone during the menstrual cycle and early versus late sleep deprivation in premenstrual dysphoric disorder",
+        "first_author": "Parry",
+        "year": 1996,
+        "pmid": "8771612",
+        "doi": "10.1016/0165-1781(96)02905-8"
+      },
+      {
+        "title": "Sleep and the sleep electroencephalogram across the menstrual cycle in young healthy women",
+        "first_author": "Driver",
+        "year": 1996,
+        "pmid": "8636295",
+        "doi": "10.1210/jc.81.2.728"
+      },
+      {
+        "title": "Chronobiology of depression",
+        "first_author": "Giedke",
+        "year": 1995,
+        "pmid": "8588355"
+      },
+      {
+        "title": "New actigraphic assessment method for periodic leg movements (PLM)",
+        "first_author": "Kazenwadel",
+        "year": 1995,
+        "pmid": "8560136",
+        "doi": "10.1093/sleep/18.8.689"
+      },
+      {
+        "title": "Hormones and depression: What are the facts about premenstrual syndrome, menopause, and hormone replacement therapy?",
+        "first_author": "Pearlstein",
+        "year": 1995,
+        "pmid": "7645647",
+        "doi": "10.1016/0002-9378(95)90297-X"
+      },
+      {
+        "title": "Efficacy of progesterone vaginal suppositories in alleviation of nervous symptoms in patients with premenstrual syndrome",
+        "first_author": "Baker",
+        "year": 1995,
+        "pmid": "8520187",
+        "doi": "10.1007/BF02211800"
+      },
+      {
+        "title": "Two cases of premenstrual sleep terrors and injurious sleep-walking",
+        "first_author": "Schenck",
+        "year": 1995,
+        "pmid": "7640726"
+      },
+      {
+        "title": "Early versus late partial sleep deprivation in patients with premenstrual dysphoric disorder and normal comparison subjects",
+        "first_author": "Parry",
+        "year": 1995,
+        "pmid": "7864267",
+        "doi": "10.1176/ajp.152.3.404"
+      },
+      {
+        "title": "Nefazodone: A new antidepressant",
+        "first_author": "Ellingrod",
+        "year": 1995,
+        "pmid": "8748566",
+        "doi": "10.1093/ajhp/52.24.2799"
+      },
+      {
+        "title": "Body image changes over the menstrual cycle in normal women",
+        "first_author": "Carr-Nangle",
+        "year": 1994,
+        "pmid": "7833960"
+      },
+      {
+        "title": "Neuroendocrine effects of light therapy in late luteal phase dysphoric disorder",
+        "first_author": "Parry",
+        "year": 1994,
+        "pmid": "7803596",
+        "doi": "10.1016/0006-3223(94)91210-6"
+      },
+      {
+        "title": "Periovulatory β-endorphin levels in premenstrual syndrome",
+        "first_author": "Chuong",
+        "year": 1994,
+        "pmid": "8164939"
+      },
+      {
+        "title": "Dopamine D(2) receptor alteration in patients with periodic movements in sleep (nocturnal myoclonus)",
+        "first_author": "Staedt",
+        "year": 1993,
+        "pmid": "8103994"
+      },
+      {
+        "title": "Does light therapy present an ocular hazard? [12]",
+        "first_author": "Reme",
+        "year": 1992,
+        "pmid": "1443271",
+        "doi": "10.1176/ajp.149.12.1762"
+      },
+      {
+        "title": "Clinician's approach to the diagnosis and management of premenstrual syndrome",
+        "first_author": "Johnson",
+        "year": 1992,
+        "pmid": "1521391",
+        "doi": "10.1097/00003081-199209000-00023"
+      },
+      {
+        "title": "Female-specific mood disorders",
+        "first_author": "Steiner",
+        "year": 1992,
+        "pmid": "1521388",
+        "doi": "10.1097/00003081-199209000-00020"
+      },
+      {
+        "title": "Mood variability: A study of four groups",
+        "first_author": "Cowdry",
+        "year": 1991,
+        "pmid": "1928464"
+      },
+      {
+        "title": "Periodic leg movements in sleep in patients with fibromyalgia",
+        "first_author": "Finestone",
+        "year": 1991,
+        "doi": "10.3109/10401239109147989"
+      },
+      {
+        "title": "Sleep-related eating disorders: Polysomnographic correlates of a heterogeneous syndrome distinct from daytime eating disorders",
+        "first_author": "Schenck",
+        "year": 1991,
+        "pmid": "1759095",
+        "doi": "10.1093/sleep/14.5.419"
+      },
+      {
+        "title": "High nocturnal body temperature in premenstrual syndrome and late luteal phase dysphoric disorder",
+        "first_author": "Severino",
+        "year": 1991,
+        "pmid": "1897612",
+        "doi": "10.1176/ajp.148.10.1329"
+      },
+      {
+        "title": "A clinical and polysomnographic comparison of neuroleptic-induced akathisia and the idiopathic restless legs syndrome",
+        "first_author": "Walters",
+        "year": 1991,
+        "pmid": "1682986"
+      },
+      {
+        "title": "Atenolol in premenstrual syndrome: A test of the melatonin hypothesis",
+        "first_author": "Parry",
+        "year": 1991,
+        "pmid": "1876626",
+        "doi": "10.1016/0165-1781(91)90070-6"
+      },
+      {
+        "title": "Sleep and the reproductive cycle: a review.",
+        "first_author": "Mauri",
+        "year": 1990,
+        "pmid": "2228813"
+      },
+      {
+        "title": "Altered waveform of plasma nocturnal melatonin secretion in premenstrual depression",
+        "first_author": "Parry",
+        "year": 1990,
+        "pmid": "2244799"
+      },
+      {
+        "title": "Melatonin and phototherapy in premenstrual depression.",
+        "first_author": "Parry",
+        "year": 1990,
+        "pmid": "2217327"
+      },
+      {
+        "title": "Urinary 6-sulphatoxy melatonin levels within the menstrual cycle and in patients with premenstrual syndrome",
+        "first_author": "McIntyre",
+        "year": 1990,
+        "pmid": "2255751",
+        "doi": "10.1016/0306-4530(90)90034-7"
+      },
+      {
+        "title": "Circadian and circatrigintan rhythms of biogenic amines in premenstrual syndrome (PMS)",
+        "first_author": "Odink",
+        "year": 1990,
+        "pmid": "1695014",
+        "doi": "10.1097/00006842-199005000-00008"
+      },
+      {
+        "title": "Computer detection and analysis of periodic movements in sleep",
+        "first_author": "Kayed",
+        "year": 1990,
+        "pmid": "2192429",
+        "doi": "10.1093/sleep/13.3.253"
+      },
+      {
+        "title": "Plasma glucose and insulin levels during the menstrual cycles of normal women and premenstrual syndrome patients",
+        "first_author": "Spellacy",
+        "year": 1990,
+        "pmid": "2191132"
+      },
+      {
+        "title": "Sleep, mood, and the menstrual cycle",
+        "first_author": "Parry",
+        "year": 1990,
+        "doi": "10.1055/s-2007-1021426"
+      },
+      {
+        "title": "The effects of L-Dopa on periodic leg movements and sleep organization in narcolepsy",
+        "first_author": "Boivin",
+        "year": 1989,
+        "pmid": "2804996",
+        "doi": "10.1097/00002826-198908000-00012"
+      },
+      {
+        "title": "Seasonal affective disorder. Shedding light on a dark subject",
+        "first_author": "Chung",
+        "year": 1989,
+        "pmid": "2678072",
+        "doi": "10.1080/00325481.1989.11704456"
+      },
+      {
+        "title": "Polysomnographic assessment of DIMS: Empirical evaluation of its diagnostic value",
+        "first_author": "Edinger",
+        "year": 1989,
+        "pmid": "2762687"
+      },
+      {
+        "title": "Relationship between periodic movements in sleep and vigilance: analysis of the role of circadian rhythms",
+        "first_author": "Mento",
+        "year": 1989,
+        "pmid": "2595211"
+      },
+      {
+        "title": "Premenstrual symptom changes and plasma β-endorphin/β-lipotropin throughout the menstrual cycle",
+        "first_author": "Hamilton",
+        "year": 1988,
+        "pmid": "2976949",
+        "doi": "10.1016/0306-4530(88)90036-4"
+      },
+      {
+        "title": "Sleep in the premenstrual phase: a self-report study of PMS patients and normal controls",
+        "first_author": "Mauri",
+        "year": 1988,
+        "pmid": "3177000"
+      },
+      {
+        "title": "Opioid treatment of periodic movements in sleep in patients without restless legs",
+        "first_author": "Kavey",
+        "year": 1988,
+        "pmid": "3419555",
+        "doi": "10.1016/0143-4179(88)90073-X"
+      },
+      {
+        "title": "Frequent occurrence of myoclonus while awake and at rest, body rocking and marching in place in a subpopulation of patients with restless legs syndrome",
+        "first_author": "Walters",
+        "year": 1988,
+        "pmid": "3414379"
+      },
+      {
+        "title": "Premenstrual changes. Impaired hormonal homeostasis",
+        "first_author": "Hallbreich",
+        "year": 1988,
+        "pmid": "3288859",
+        "doi": "10.1016/s0733-8619(18)30891-0"
+      },
+      {
+        "title": "Treatment of a patient with seasonal premenstrual syndrome",
+        "first_author": "Parry",
+        "year": 1987,
+        "pmid": "3296791",
+        "doi": "10.1176/ajp.144.6.762"
+      },
+      {
+        "title": "Conditioning exercise decreases premenstrual symptoms: A prospective, controlled 6-month trial",
+        "first_author": "Prior",
+        "year": 1987,
+        "pmid": "3549364",
+        "doi": "10.1016/s0015-0282(16)59045-1"
+      },
+      {
+        "title": "Restless legs syndrome and periodic movements in sleep: Physiopathology and treatment with L-dopa",
+        "first_author": "Montplaisir",
+        "year": 1986,
+        "pmid": "3021323",
+        "doi": "10.1097/00002826-198610000-00006"
+      },
+      {
+        "title": "Changes in the sleep EEG of women with premenstrual dysphoria. Possible relationship with a manic depressive state",
+        "first_author": "Undén",
+        "year": 1986,
+        "pmid": "3750467"
+      },
+      {
+        "title": "Excessive fragmentary myoclonus in NREM sleep: A report of 38 cases",
+        "first_author": "Broughton",
+        "year": 1985,
+        "pmid": "2410221",
+        "doi": "10.1016/0013-4694(85)91050-8"
+      },
+      {
+        "title": "Circadian hormone secretory profiles in women with severe premenstrual tension syndrome",
+        "first_author": "Steiner",
+        "year": 1984,
+        "pmid": "6539122"
+      },
+      {
+        "title": "Regulation of pineal rhythms in chickens: inhibition of dark-time N-acetyltransferase activity",
+        "first_author": "Binkley",
+        "year": 1978,
+        "pmid": "25741"
+      },
+      {
+        "title": "Separation of non-melatonin antiovulatory substances from bovine pineal powder by ultrafiltration.",
+        "first_author": "Ota",
+        "year": 1977,
+        "pmid": "590617"
+      },
+      {
+        "title": "Epilepsy of the developmental age and control of seizure-releasing factors",
+        "first_author": "Huber",
+        "year": 1976,
+        "pmid": "944385"
+      },
+      {
+        "title": "Adrenal rhythmicity in the immature pseudopregnant rat",
+        "first_author": "Ramaley",
+        "year": 1975,
+        "pmid": "1129296"
+      },
+      {
+        "title": "Spontaneous changes in weight, leg volume, renin, aldosterone and sex hormones in patients with cyclical oedema",
+        "first_author": "Oelkers",
+        "year": 1975,
+        "pmid": "1152342",
+        "doi": "10.1007/BF01468755"
+      },
+      {
+        "title": "Rhythms of progesterone and corticosterone in the PMS treated rat: relationship to ovulation",
+        "first_author": "Ramaley",
+        "year": 1975,
+        "pmid": "1170519",
+        "doi": "10.1159/000122370"
+      },
+      {
+        "title": "Inhibition of ovulation induced with PMS and HCG by a melatonin free extract of bovine pineal powder",
+        "first_author": "Ota",
+        "year": 1975,
+        "pmid": "1214962"
+      },
+      {
+        "title": "Ovulation in PMS treated rats with gonadotropin releasing hormone after pentobarbital and melatonin block",
+        "first_author": "Sorrentino",
+        "year": 1975,
+        "pmid": "768798"
+      },
+      {
+        "title": "Migraine and reporoductive hormones throughout the menstrual cycle.",
+        "first_author": "Epstein",
+        "year": 1975,
+        "pmid": "47017"
+      },
+      {
+        "title": "Delayed ovulation in rats exposed to continuous light: influence of the level of illumination",
+        "first_author": "McCormack",
+        "year": 1974,
+        "pmid": "4851284"
+      },
+      {
+        "title": "Physiological and psychological effects of progesterone in man",
+        "first_author": "Carter",
+        "year": 1974,
+        "pmid": "4421423"
+      },
+      {
+        "title": "Rhythms of progesterone and corticosterone after PMS induced puberty: effects of ovariectomy",
+        "first_author": "Ramaley",
+        "year": 1974,
+        "pmid": "4434911"
+      },
+      {
+        "title": "Influence of intraocularly injected pineal indoles on PMS induced ovulation in immature rats",
+        "first_author": "Pomerantz",
+        "year": 1974,
+        "pmid": "4375671"
+      },
+      {
+        "title": "Renal excretion of water and solutes in physiological and induced ovulation",
+        "first_author": "Parboosingh",
+        "year": 1974,
+        "pmid": "4820013",
+        "doi": "10.1177/003693307401900119"
+      },
+      {
+        "title": "The influence of melatonin administered subcutaneously, intravenously, or intraocularly upon ovulation in the PMS treated immature rat",
+        "first_author": "Pomerantz",
+        "year": 1973,
+        "pmid": "4760262",
+        "doi": "10.1159/000122184"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

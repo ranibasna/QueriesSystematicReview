@@ -1,7 +1,7 @@
 # Gold Standard Generation Report
 
 **Study**: lang_2024
-**Generated**: 2026-01-26
+**Generated**: QueriesSystematicReview
 **Confidence Threshold**: 0.85
 
 ## Summary Statistics
@@ -27,17 +27,4 @@
 
 ## Lookup Sources
 
-- **PubMed (Automated)**: 4 (66.7%)
-- **Manual Lookup**: 2 (33.3%)
-
-## Quality Assessment
-
-✅ **100% DOI Coverage** - Excellent identifier coverage
-✅ **100% PMID Coverage** - All studies have PubMed IDs
-✅ **No Missing Identifiers** - All studies can be matched in evaluation
-
-## Next Steps
-
-1. Use `gold_pmids_lang_2024.csv` for PMID-based evaluation
-2. Use `gold_pmids_lang_2024_detailed.csv` for multi-database evaluation (includes DOIs)
-3. Run evaluation workflow with: `python scripts/score_search_strategies.py`
+- **PubMed**: 6 (100.0%)

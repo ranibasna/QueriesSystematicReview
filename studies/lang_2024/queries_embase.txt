@@ -1,0 +1,17 @@
+# Q1: High-recall
+(('sleep deprivation'/exp OR 'sleep duration':ti,ab OR 'sleep quantity':ti,ab OR 'short sleep':ti,ab OR 'short sleep duration':ti,ab OR 'total sleep time':ti,ab OR 'sleep hours':ti,ab OR 'insufficient sleep':ti,ab) AND ('obesity'/exp OR 'overweight'/exp OR 'body mass index'/exp OR obesity:ti,ab OR obese:ti,ab OR overweight:ti,ab OR 'body mass index':ti,ab OR bmi:ti,ab))
+
+# Q2: Balanced
+(('sleep deprivation'/exp OR 'sleep duration':ti,ab OR 'sleep quantity':ti,ab OR 'short sleep':ti,ab OR 'short sleep duration':ti,ab OR 'total sleep time':ti,ab OR 'insufficient sleep':ti,ab) AND ('obesity'/exp OR 'overweight'/exp OR 'body mass index'/exp OR obesity:ti,ab OR obese:ti,ab OR overweight:ti,ab OR 'body mass index':ti,ab OR bmi:ti,ab) AND (sex:ti,ab OR gender:ti,ab OR male:ti,ab OR female:ti,ab OR men:ti,ab OR women:ti,ab))
+
+# Q3: High-precision
+(('sleep duration':ti OR 'short sleep':ti OR 'short sleep duration':ti OR 'total sleep time':ti) AND (obesity:ti OR overweight:ti OR 'body mass index':ti OR bmi:ti) AND (sex:ti,ab OR gender:ti,ab OR male:ti,ab OR female:ti,ab OR men:ti,ab OR women:ti,ab) AND (cohort:ti,ab OR prospective:ti,ab OR retrospective:ti,ab OR longitudinal:ti,ab OR 'follow-up':ti,ab OR incidence:ti,ab OR incident*:ti,ab))
+
+# Q4: Balanced + scope_only
+(('sleep duration':ti OR 'short sleep':ti OR 'short sleep duration':ti OR 'total sleep time':ti) AND (obesity:ti OR overweight:ti OR 'body mass index':ti OR bmi:ti) AND (sex:ti,ab OR gender:ti,ab OR male:ti,ab OR female:ti,ab OR men:ti,ab OR women:ti,ab))
+
+# Q5: Balanced + design_plus_scope
+(('sleep duration':ti OR 'short sleep':ti OR 'short sleep duration':ti OR 'total sleep time':ti) AND (obesity:ti OR overweight:ti OR 'body mass index':ti OR bmi:ti) AND (sex:ti,ab OR gender:ti,ab OR male:ti,ab OR female:ti,ab OR men:ti,ab OR women:ti,ab) AND (cohort:ti,ab OR prospective:ti,ab OR retrospective:ti,ab OR longitudinal:ti,ab OR 'follow-up':ti,ab OR incidence:ti,ab OR incident*:ti,ab))
+
+# Q6: Balanced + design_plus_filter
+(('sleep deprivation'/exp OR 'sleep duration':ti,ab OR 'sleep quantity':ti,ab OR 'short sleep':ti,ab OR 'short sleep duration':ti,ab OR 'total sleep time':ti,ab OR 'insufficient sleep':ti,ab) AND ('obesity'/exp OR 'overweight'/exp OR 'body mass index'/exp OR obesity:ti,ab OR obese:ti,ab OR overweight:ti,ab OR 'body mass index':ti,ab OR bmi:ti,ab) AND (sex:ti,ab OR gender:ti,ab OR male:ti,ab OR female:ti,ab OR men:ti,ab OR women:ti,ab) AND ('adult'/exp OR adult*:ti,ab) AND (cohort:ti,ab OR prospective:ti,ab OR retrospective:ti,ab OR longitudinal:ti,ab OR 'follow-up':ti,ab OR incidence:ti,ab OR incident*:ti,ab))

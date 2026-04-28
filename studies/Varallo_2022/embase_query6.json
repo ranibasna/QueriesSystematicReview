@@ -1,0 +1,507 @@
+{
+  "0768c34b83fd943063b6d90755dfa09a98676d6fd523fe668b0c17e37dd1038d": {
+    "query": "(('sleep disorder'/exp OR 'sleep apnea syndrome'/exp OR 'narcolepsy'/exp OR sleep disturbance*:ti,ab OR sleep disorder*:ti,ab OR insomnia:ti,ab OR hypersomnia:ti,ab OR narcolep*:ti,ab OR 'sleep apnea':ti,ab OR 'sleep apnoea':ti,ab OR 'obstructive sleep apnea':ti,ab OR 'obstructive sleep apnoea':ti,ab OR 'sleep quality':ti,ab OR 'sleep quantity':ti,ab OR 'sleep duration':ti,ab) AND ('postoperative pain'/exp OR 'postoperative pain':ti,ab OR 'post-operative pain':ti,ab OR 'postsurgical pain':ti,ab OR 'post-surgical pain':ti,ab OR 'persistent postoperative pain':ti,ab OR 'persistent postsurgical pain':ti,ab OR 'chronic postoperative pain':ti,ab OR 'chronic postsurgical pain':ti,ab OR cpsp:ti,ab) AND (preoperat*:ti,ab OR presurg*:ti,ab OR perioperat*:ti,ab OR 'pre-operative':ti,ab OR 'peri-operative':ti,ab) AND (chronic*:ti,ab OR persistent*:ti,ab OR '3 month*':ti,ab OR 'three month*':ti,ab OR 'follow-up':ti,ab) AND ('adult'/exp OR adult*:ti,ab) AND (prospective:ti,ab OR longitudinal:ti,ab OR cohort:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 53,
+    "retrieved_dois": [
+      "10.1001/archoto.2007.27",
+      "10.1002/ejp.1761",
+      "10.1002/ejp.70218",
+      "10.1002/lary.20024",
+      "10.1002/lio2.70322",
+      "10.1007/s00402-024-05559-0",
+      "10.1007/s00405-010-1419-4",
+      "10.1007/s00405-017-4449-3",
+      "10.1007/s00464-024-11400-x",
+      "10.1007/s00586-025-09402-x",
+      "10.1007/s11701-025-02339-9",
+      "10.1016/j.amjoto.2021.103197",
+      "10.1016/j.anorl.2018.09.001",
+      "10.1016/j.arth.2023.04.055",
+      "10.1016/j.bja.2023.10.015",
+      "10.1016/j.bpa.2017.11.002",
+      "10.1016/j.jclinane.2016.05.020",
+      "10.1016/j.jclinane.2026.112123",
+      "10.1016/j.jisako.2026.101082",
+      "10.1016/j.jpain.2014.11.015",
+      "10.1016/j.jpain.2017.01.004",
+      "10.1016/j.jpain.2017.02.254",
+      "10.1016/j.jpain.2021.04.008",
+      "10.1016/j.smrv.2022.101630",
+      "10.1053/j.jvca.2023.02.046",
+      "10.1053/j.sart.2023.12.005",
+      "10.1080/07853890.2025.2599608",
+      "10.1093/bjs/znab396.010",
+      "10.1097/AJP.0000000000001143",
+      "10.1097/j.pain.0000000000002977",
+      "10.1111/aas.14319",
+      "10.1111/jsr.12751",
+      "10.1111/papr.12468",
+      "10.1136/bmjopen-2025-105832",
+      "10.1136/rapm-2025-ESRA.625",
+      "10.1136/rapm-2025-ESRA.657",
+      "10.1177/0194599819858142",
+      "10.1177/10225536251357319",
+      "10.1186/s12871-025-02959-6",
+      "10.1186/s13018-019-1446-9",
+      "10.1186/s13018-024-04778-w",
+      "10.1186/s13741-018-0105-8",
+      "10.1186/s43163-022-00268-0",
+      "10.1213/ANE.0000000000000194",
+      "10.1258/002221503770716241",
+      "10.1515/sjpain-2021-0026",
+      "10.21276/SSR-IIJLS.2025.11.5.10",
+      "10.3389/fmed.2025.1587685",
+      "10.3389/fnagi.2025.1523642",
+      "10.5152/B-ENT.2023.231362",
+      "10.5606/tftrd.2025.15481",
+      "10.5664/jcsm.11452",
+      "10.62713/aic.4446"
+    ],
+    "retrieved_pmids": [
+      "14653923",
+      "18283155",
+      "18300666",
+      "19117287",
+      "21085977",
+      "24781572",
+      "25540939",
+      "27334311",
+      "27687412",
+      "28131699",
+      "28190091",
+      "29739543",
+      "30430999",
+      "31752947",
+      "33682177",
+      "33964413",
+      "34087967",
+      "34492427",
+      "35594644",
+      "37105852",
+      "37142067",
+      "37343150",
+      "37440337",
+      "37709280",
+      "37953200",
+      "38811979",
+      "39271495",
+      "39492571",
+      "39966710",
+      "40307626",
+      "40685958",
+      "40780715",
+      "41026213",
+      "41353591",
+      "41505879",
+      "41607043",
+      "41708008",
+      "41834541"
+    ],
+    "pmids": [
+      "14653923",
+      "18283155",
+      "18300666",
+      "19117287",
+      "21085977",
+      "24781572",
+      "25540939",
+      "27334311",
+      "27687412",
+      "28131699",
+      "28190091",
+      "29739543",
+      "30430999",
+      "31752947",
+      "33682177",
+      "33964413",
+      "34087967",
+      "34492427",
+      "35594644",
+      "37105852",
+      "37142067",
+      "37343150",
+      "37440337",
+      "37709280",
+      "37953200",
+      "38811979",
+      "39271495",
+      "39492571",
+      "39966710",
+      "40307626",
+      "40685958",
+      "40780715",
+      "41026213",
+      "41353591",
+      "41505879",
+      "41607043",
+      "41708008",
+      "41834541"
+    ],
+    "records": [
+      {
+        "title": "Low-dose deflazacort reduces postoperative pain and inflammation following primary total knee arthroplasty: A randomized controlled trial",
+        "first_author": "Soundarrajan",
+        "year": 2026,
+        "pmid": "41708008",
+        "doi": "10.1016/j.jisako.2026.101082"
+      },
+      {
+        "title": "Multidisciplinary Team-Based Perioperative Care in Patients Undergoing Oblique Lumbar Interbody Fusion: Assessing Safety and Surgical Stress in Lumbar Degeneration",
+        "first_author": "Liu",
+        "year": 2026,
+        "pmid": "41834541",
+        "doi": "10.62713/aic.4446"
+      },
+      {
+        "title": "Impact of preoperative sleep disturbance on perioperative neurocognitive disorders in older adults undergoing major non-cardiac surgery: A multicenter prospective cohort study",
+        "first_author": "Chen",
+        "year": 2026,
+        "pmid": "41505879",
+        "doi": "10.1016/j.jclinane.2026.112123"
+      },
+      {
+        "title": "Impact of structured psychological support on anxiety and recovery in anterior cervical discectomy and fusion: a randomized controlled trial",
+        "first_author": "Jin",
+        "year": 2026,
+        "pmid": "41026213",
+        "doi": "10.1007/s00586-025-09402-x"
+      },
+      {
+        "title": "A Longitudinal Study on the Pain Trajectories and Affected Factors in Patients With Pulmonary Nodules Following Video-Assisted Thoracoscopic Surgery",
+        "first_author": "Liu",
+        "year": 2026,
+        "pmid": "41607043",
+        "doi": "10.1002/ejp.70218"
+      },
+      {
+        "title": "Effect of improving sleep quality the night before surgery with zolpidem on postoperative gastrointestinal function in patients undergoing laparoscopic partial colorectal resection: a randomized, double-blind, controlled trial",
+        "first_author": "Gao",
+        "year": 2025,
+        "pmid": "39966710",
+        "doi": "10.1186/s12871-025-02959-6"
+      },
+      {
+        "title": "A prospective study comparing sleep quality using Pittsburgh Sleep Quality Index at 8 weeks after robotic-assisted versus conventional total knee arthroplasty: a single-center study",
+        "first_author": "Londhe",
+        "year": 2025,
+        "pmid": "40307626",
+        "doi": "10.1007/s11701-025-02339-9"
+      },
+      {
+        "title": "Does the preoperative presence of central sensitization affect sleep quality and pain after total knee arthroplasty?",
+        "first_author": "Mansız-Kaplan",
+        "year": 2025,
+        "doi": "10.5606/tftrd.2025.15481"
+      },
+      {
+        "title": "Role of Pain in Adults Undergoing Soft Tissue and Maxillomandibular Advancement Surgery for Obstructive Sleep Apnea",
+        "first_author": "Ansari",
+        "year": 2025,
+        "doi": "10.1002/lio2.70322"
+      },
+      {
+        "title": "Postoperative Recovery Beyond Pain: The Underrecognized Burden of Sleep and Appetite Impairments After Total Hip and Knee Arthroplasty",
+        "first_author": "Biswal",
+        "year": 2025,
+        "doi": "10.21276/SSR-IIJLS.2025.11.5.10"
+      },
+      {
+        "title": "NEW STUFF ON THE SCENE. ROLE OF NONPHARMACOLOGICAL TREATMENTS",
+        "first_author": "Lavand'hommep",
+        "year": 2025,
+        "doi": "10.1136/rapm-2025-ESRA.657"
+      },
+      {
+        "title": "METHADONE FOR PERIOPERATIVE PAIN MANAGEMENT IN PAEDIATRIC PATIENTS",
+        "first_author": "De",
+        "year": 2025,
+        "doi": "10.1136/rapm-2025-ESRA.625"
+      },
+      {
+        "title": "Perioperative intranasal dexmedetomidine for the prevention of chronic postsurgical pain following thoracoscopic surgery: protocol for a multicentre randomised controlled trial",
+        "first_author": "Xu",
+        "year": 2025,
+        "pmid": "40780715",
+        "doi": "10.1136/bmjopen-2025-105832"
+      },
+      {
+        "title": "Effect of arthroscopic repair on sleep disturbances in rotator cuff tear patients: A prospective cohort study analyzing short-term postoperative pain correlations",
+        "first_author": "Kim",
+        "year": 2025,
+        "pmid": "40685958",
+        "doi": "10.1177/10225536251357319"
+      },
+      {
+        "title": "Adults with Down syndrome and obstructive sleep apnea treated with hypoglossal nerve stimulation",
+        "first_author": "Huyett",
+        "year": 2025,
+        "pmid": "39492571",
+        "doi": "10.5664/jcsm.11452"
+      },
+      {
+        "title": "Impact of impaired intrinsic capacity on postoperative frailty in elderly patients undergoing colorectal surgery: study protocol for a single-center, prospective, cohort study",
+        "first_author": "Wang",
+        "year": 2025,
+        "doi": "10.3389/fnagi.2025.1523642"
+      },
+      {
+        "title": "Effect of preoperative sleep quality on rapid postoperative recovery from non-traumatic rotator cuff injuries",
+        "first_author": "Mou",
+        "year": 2025,
+        "doi": "10.3389/fmed.2025.1587685"
+      },
+      {
+        "title": "Identification of risk factors and development of predictive models for chronic postsurgical pain after modified radical mastectomy",
+        "first_author": "Gong",
+        "year": 2025,
+        "pmid": "41353591",
+        "doi": "10.1080/07853890.2025.2599608"
+      },
+      {
+        "title": "Endoscopic sleeve gastroplasty in an ambulatory setting: An evidence",
+        "first_author": "Kalifi",
+        "year": 2024,
+        "doi": "10.1007/s00464-024-11400-x"
+      },
+      {
+        "title": "Evolution and characteristics of nocturnal knee pain after knee arthroplasty",
+        "first_author": "Daxhelet",
+        "year": 2024,
+        "pmid": "39271495",
+        "doi": "10.1007/s00402-024-05559-0"
+      },
+      {
+        "title": "Predicting pain and function with the neutrophil-to-lymphocyte ratio in patients following primary reverse total shoulder arthroplasty",
+        "first_author": "Nasr",
+        "year": 2024,
+        "doi": "10.1053/j.sart.2023.12.005"
+      },
+      {
+        "title": "Risk factors of chronic postoperative pain after total knee arthroplasty: a systematic review",
+        "first_author": "Li",
+        "year": 2024,
+        "pmid": "38811979",
+        "doi": "10.1186/s13018-024-04778-w"
+      },
+      {
+        "title": "Preoperative psychological symptoms and chronic postsurgical pain: analysis of the prospective China Surgery and Anaesthesia Cohort study",
+        "first_author": "Chen",
+        "year": 2024,
+        "pmid": "37953200",
+        "doi": "10.1016/j.bja.2023.10.015"
+      },
+      {
+        "title": "Prolonged effects of dexamethasone following total knee arthroplasty: A pre-planned sub-study of the DEX-2-TKA trial",
+        "first_author": "Derby",
+        "year": 2024,
+        "pmid": "37709280",
+        "doi": "10.1111/aas.14319"
+      },
+      {
+        "title": "Patient-Reported Outcomes of Barbed Reposition Pharyngoplasty in Unilevel Palatal Snoring: A Prospective Pilot Study",
+        "first_author": "Parys",
+        "year": 2024,
+        "doi": "10.5152/B-ENT.2023.231362"
+      },
+      {
+        "title": "Perioperative insomnia trajectories and functional outcomes after total knee arthroplasty",
+        "first_author": "Hamilton",
+        "year": 2023,
+        "pmid": "37343150",
+        "doi": "10.1097/j.pain.0000000000002977"
+      },
+      {
+        "title": "Preoperative Predictors of Prolonged Opioid Use in the 6 Months after Total Knee Arthroplasty",
+        "first_author": "Larach",
+        "year": 2023,
+        "pmid": "37440337",
+        "doi": "10.1097/AJP.0000000000001143"
+      },
+      {
+        "title": "Predictors of Chronic Pain in Elderly Patients Undergoing Total Knee and Hip Arthroplasty: A Prospective Observational Study",
+        "first_author": "Tang",
+        "year": 2023,
+        "pmid": "37142067",
+        "doi": "10.1016/j.arth.2023.04.055"
+      },
+      {
+        "title": "A Single Preoperative Dose of S-Ketamine Has No Beneficial Effect on Chronic Postsurgical Pain in Patients Undergoing Video-Assisted Thoracoscopic Surgical Lung Lesion Resection: A Prospective Randomized Controlled Study",
+        "first_author": "Zhou",
+        "year": 2023,
+        "pmid": "37105852",
+        "doi": "10.1053/j.jvca.2023.02.046"
+      },
+      {
+        "title": "Comparative study between single-stage multilevel surgery and staged surgery for management of snoring and/or obstructive sleep apnea",
+        "first_author": "Gafar",
+        "year": 2022,
+        "doi": "10.1186/s43163-022-00268-0"
+      },
+      {
+        "title": "Sleep disturbances and sleep disorders as risk factors for chronic postsurgical pain: A systematic review and meta-analysis",
+        "first_author": "Varallo",
+        "year": 2022,
+        "pmid": "35594644",
+        "doi": "10.1016/j.smrv.2022.101630"
+      },
+      {
+        "title": "Barbed reposition pharyngoplasty (BRP) in obstructive sleep apnea treatment: State of the art",
+        "first_author": "Iannella",
+        "year": 2022,
+        "pmid": "34492427",
+        "doi": "10.1016/j.amjoto.2021.103197"
+      },
+      {
+        "title": "Sex Differences, Sleep Disturbance and Risk of Persistent Pain Associated With Groin Hernia Surgery: A Nationwide Register-Based Cohort Study",
+        "first_author": "Bjurström",
+        "year": 2021,
+        "pmid": "33964413",
+        "doi": "10.1016/j.jpain.2021.04.008"
+      },
+      {
+        "title": "Sex differences, sleep disturbance and risk of persistent pain associated with groin hernia surgery: A nationwide register-based cohort study",
+        "first_author": "Bjurström",
+        "year": 2021,
+        "doi": "10.1093/bjs/znab396.010"
+      },
+      {
+        "title": "Preoperative sleep quality and adverse pain outcomes after total hip arthroplasty",
+        "first_author": "Bjurström",
+        "year": 2021,
+        "pmid": "33682177",
+        "doi": "10.1002/ejp.1761"
+      },
+      {
+        "title": "Breast reconstruction after breast cancer surgery - Persistent pain and quality of life 1-8 years after breast reconstruction",
+        "first_author": "Honkanen",
+        "year": 2021,
+        "pmid": "34087967",
+        "doi": "10.1515/sjpain-2021-0026"
+      },
+      {
+        "title": "Preoperative sleep quality affects postoperative pain and function after total joint arthroplasty: a prospective cohort study",
+        "first_author": "Luo",
+        "year": 2019,
+        "pmid": "31752947",
+        "doi": "10.1186/s13018-019-1446-9"
+      },
+      {
+        "title": "Co-barbed: Modified coblation-assisted barbed reposition pharyngoplasty in obstructive sleep apnea",
+        "first_author": "Bahgat",
+        "year": 2019,
+        "doi": "10.1177/0194599819858142"
+      },
+      {
+        "title": "Transoral robotic surgery of the tongue base for obstructive sleep apnea: Preliminary results",
+        "first_author": "de",
+        "year": 2018,
+        "pmid": "30430999",
+        "doi": "10.1016/j.anorl.2018.09.001"
+      },
+      {
+        "title": "Predictors of chronic prescription opioid use after orthopedic surgery: Derivation of a clinical prediction rule. 11 Medical and Health Sciences 1117 Public Health and Health Services 11 Medical and Health Sciences 1103 Clinical Sciences",
+        "first_author": "Rhon",
+        "year": 2018,
+        "doi": "10.1186/s13741-018-0105-8"
+      },
+      {
+        "title": "Does preoperative insomnia explain persistent pain after breast cancer treatments?",
+        "first_author": "Grén",
+        "year": 2018,
+        "doi": "10.1111/jsr.12751"
+      },
+      {
+        "title": "Special indications for Opioid Free Anaesthesia and Analgesia, patient and procedure related: Including obesity, sleep apnoea, chronic obstructive pulmonary disease, complex regional pain syndromes, opioid addiction and cancer surgery",
+        "first_author": "Sultana",
+        "year": 2017,
+        "pmid": "29739543",
+        "doi": "10.1016/j.bpa.2017.11.002"
+      },
+      {
+        "title": "Longitudinal and Temporal Associations Between Daily Pain and Sleep Patterns After Major Pediatric Surgery",
+        "first_author": "Rabbitts",
+        "year": 2017,
+        "pmid": "28131699",
+        "doi": "10.1016/j.jpain.2017.01.004"
+      },
+      {
+        "title": "Comparison of fiber delivered CO(2) laser and electrocautery in transoral robot assisted tongue base surgery",
+        "first_author": "Karaman",
+        "year": 2017,
+        "pmid": "28190091",
+        "doi": "10.1007/s00405-017-4449-3"
+      },
+      {
+        "title": "Neurophysiological and Clinical Effects of Laparoscopic Retroperitoneal Triple Neurectomy in Patients with Refractory Postherniorrhaphy Neuropathic Inguinodynia",
+        "first_author": "Bjurström",
+        "year": 2017,
+        "pmid": "27334311",
+        "doi": "10.1111/papr.12468"
+      },
+      {
+        "title": "A prospective study of predictors of chronic pain after thoracic surgery",
+        "first_author": "Bayman",
+        "year": 2017,
+        "doi": "10.1016/j.jpain.2017.02.254"
+      },
+      {
+        "title": "Insomnia may increase anesthetic requirement",
+        "first_author": "Erden",
+        "year": 2016,
+        "pmid": "27687412",
+        "doi": "10.1016/j.jclinane.2016.05.020"
+      },
+      {
+        "title": "Presurgical psychosocial predictors of acute postsurgical pain and quality of life in children undergoing major surgery",
+        "first_author": "Rabbitts",
+        "year": 2015,
+        "pmid": "25540939",
+        "doi": "10.1016/j.jpain.2014.11.015"
+      },
+      {
+        "title": "Cognitive dysfunction after fast-track hip and knee replacement",
+        "first_author": "Krenk",
+        "year": 2014,
+        "pmid": "24781572",
+        "doi": "10.1213/ANE.0000000000000194"
+      },
+      {
+        "title": "Complications of hyoid suspension in the treatment of obstructive sleep apnea syndrome",
+        "first_author": "Richard",
+        "year": 2011,
+        "pmid": "21085977",
+        "doi": "10.1007/s00405-010-1419-4"
+      },
+      {
+        "title": "Comparison of three common tonsillectomy techniques: A prospective randomized, double-blinded clinical study",
+        "first_author": "Wilson",
+        "year": 2009,
+        "pmid": "19117287",
+        "doi": "10.1002/lary.20024"
+      },
+      {
+        "title": "Microdebrider-assisted extended uvulopalatoplasty: An effective and safe technique for selected patients with obstructive sleep apnea syndrome",
+        "first_author": "Huang",
+        "year": 2008,
+        "pmid": "18283155",
+        "doi": "10.1001/archoto.2007.27"
+      },
+      {
+        "title": "Comparison of a continuous temperature-controlled cryotherapy device to a simple icing regimen following outpatient knee arthroscopy.",
+        "first_author": "Woolf",
+        "year": 2008,
+        "pmid": "18300666"
+      },
+      {
+        "title": "Celon® radiofrequency thermo-ablative palatoplasty for snoring - A pilot study",
+        "first_author": "Tatla",
+        "year": 2003,
+        "pmid": "14653923",
+        "doi": "10.1258/002221503770716241"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

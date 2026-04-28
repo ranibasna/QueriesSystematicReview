@@ -1,0 +1,64 @@
+{
+  "0a4f04d8476f4dd1a6817000ef29d14572525a4f5b54b1dd8435c294ae7fc126": {
+    "query": "((('sleep disorder'/mj OR 'sleep apnea syndrome'/mj OR 'narcolepsy'/mj) OR sleep disturbance*:ti OR sleep disorder*:ti OR insomnia:ti OR hypersomnia:ti OR narcolep*:ti OR 'sleep apnea':ti OR 'obstructive sleep apnea':ti OR 'sleep quality':ti) AND (('postoperative pain'/mj OR 'postoperative pain':ti OR 'postsurgical pain':ti OR 'persistent postoperative pain':ti OR 'chronic postsurgical pain':ti OR cpsp:ti,ab) AND (chronic*:ti,ab OR persistent*:ti,ab OR '3 month*':ti,ab OR 'follow-up':ti,ab)) AND (preoperat*:ti,ab OR presurg*:ti,ab OR perioperat*:ti,ab) AND ('adult'/exp OR adult*:ti,ab) AND (prospective:ti,ab OR longitudinal:ti,ab OR cohort:ti,ab OR 'follow-up':ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 5,
+    "retrieved_dois": [
+      "10.1002/ejp.1761",
+      "10.1016/j.jclinane.2016.05.020",
+      "10.1016/j.smrv.2022.101630",
+      "10.1186/s13018-019-1446-9",
+      "10.3389/fmed.2025.1587685"
+    ],
+    "retrieved_pmids": [
+      "27687412",
+      "31752947",
+      "33682177",
+      "35594644"
+    ],
+    "pmids": [
+      "27687412",
+      "31752947",
+      "33682177",
+      "35594644"
+    ],
+    "records": [
+      {
+        "title": "Effect of preoperative sleep quality on rapid postoperative recovery from non-traumatic rotator cuff injuries",
+        "first_author": "Mou",
+        "year": 2025,
+        "doi": "10.3389/fmed.2025.1587685"
+      },
+      {
+        "title": "Sleep disturbances and sleep disorders as risk factors for chronic postsurgical pain: A systematic review and meta-analysis",
+        "first_author": "Varallo",
+        "year": 2022,
+        "pmid": "35594644",
+        "doi": "10.1016/j.smrv.2022.101630"
+      },
+      {
+        "title": "Preoperative sleep quality and adverse pain outcomes after total hip arthroplasty",
+        "first_author": "Bjurström",
+        "year": 2021,
+        "pmid": "33682177",
+        "doi": "10.1002/ejp.1761"
+      },
+      {
+        "title": "Preoperative sleep quality affects postoperative pain and function after total joint arthroplasty: a prospective cohort study",
+        "first_author": "Luo",
+        "year": 2019,
+        "pmid": "31752947",
+        "doi": "10.1186/s13018-019-1446-9"
+      },
+      {
+        "title": "Insomnia may increase anesthetic requirement",
+        "first_author": "Erden",
+        "year": 2016,
+        "pmid": "27687412",
+        "doi": "10.1016/j.jclinane.2016.05.020"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

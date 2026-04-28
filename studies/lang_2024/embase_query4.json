@@ -1,0 +1,2396 @@
+{
+  "63a2ec90ddfc5fa98c21d33bcdfbf3e2097ca07123e9accefa5f0a460fd38b22": {
+    "query": "(('sleep duration':ti OR 'short sleep':ti OR 'short sleep duration':ti OR 'total sleep time':ti) AND (obesity:ti OR overweight:ti OR 'body mass index':ti OR bmi:ti) AND (sex:ti,ab OR gender:ti,ab OR male:ti,ab OR female:ti,ab OR men:ti,ab OR women:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 246,
+    "retrieved_dois": [
+      "10.1001/archinte.166.16.1701",
+      "10.1001/archpedi.162.4.305",
+      "10.1001/archpediatrics.2010.143",
+      "10.1002/ajhb.22603",
+      "10.1002/ajhb.23668",
+      "10.1002/ajhb.23836",
+      "10.1002/alz70861_108052",
+      "10.1002/cncr.34951",
+      "10.1002/oby.20558",
+      "10.1002/oby.24195",
+      "10.1002/oby.70103",
+      "10.1002/osp4.303",
+      "10.1002/osp4.32",
+      "10.1002/osp4.640",
+      "10.1007/BF03324704",
+      "10.1007/s00038-011-0239-7",
+      "10.1007/s00787-021-01731-8",
+      "10.1007/s10900-024-01344-7",
+      "10.1007/s11325-011-0583-0",
+      "10.1007/s11845-013-1005-z",
+      "10.1007/s11845-019-02110-8",
+      "10.1007/s12529-013-9293-2",
+      "10.1007/s12529-017-9635-6",
+      "10.1007/s12603-022-1823-7",
+      "10.1007/s13410-020-00871-y",
+      "10.1007/s43032-020-00176-9",
+      "10.1016/S0735-1097(18)32391-X",
+      "10.1016/j.diabres.2009.06.027",
+      "10.1016/j.diabres.2018.03.010",
+      "10.1016/j.gene.2025.149880",
+      "10.1016/j.jadohealth.2023.05.018",
+      "10.1016/j.jns.2025.124123",
+      "10.1016/j.jpeds.2014.06.052",
+      "10.1016/j.jpeds.2018.10.027",
+      "10.1016/j.jsmc.2023.06.015",
+      "10.1016/j.lanwpc.2020.100025",
+      "10.1016/j.numecd.2024.06.008",
+      "10.1016/j.obmed.2019.100126",
+      "10.1016/j.orcp.2013.11.004",
+      "10.1016/j.orcp.2015.08.010",
+      "10.1016/j.orcp.2020.03.004",
+      "10.1016/j.orcp.2022.10.001",
+      "10.1016/j.pedhc.2010.12.002",
+      "10.1016/j.physbeh.2021.113345",
+      "10.1016/j.pmedr.2020.101199",
+      "10.1016/j.sleep.2009.03.002",
+      "10.1016/j.sleep.2009.11.013",
+      "10.1016/j.sleep.2010.09.007",
+      "10.1016/j.sleep.2010.12.015",
+      "10.1016/j.sleep.2012.03.016",
+      "10.1016/j.sleep.2012.06.013",
+      "10.1016/j.sleep.2012.06.019",
+      "10.1016/j.sleep.2012.12.007",
+      "10.1016/j.sleep.2013.11.367",
+      "10.1016/j.sleep.2014.09.009",
+      "10.1016/j.sleep.2014.12.011",
+      "10.1016/j.sleep.2017.05.017",
+      "10.1016/j.sleep.2017.09.025",
+      "10.1016/j.sleep.2019.01.017",
+      "10.1016/j.sleep.2019.11.1024",
+      "10.1016/j.sleep.2019.11.611",
+      "10.1016/j.sleep.2019.11.892",
+      "10.1016/j.sleep.2019.12.014",
+      "10.1016/j.sleep.2019.12.025",
+      "10.1016/j.sleep.2022.03.004",
+      "10.1016/j.sleep.2022.05.233",
+      "10.1016/j.sleep.2023.11.208",
+      "10.1016/j.sleh.2020.01.017",
+      "10.1016/j.sleh.2020.05.005",
+      "10.1016/j.sleh.2021.01.007",
+      "10.1017/S0029665115004346",
+      "10.1017/S0029665120005418",
+      "10.1038/ejcn.2013.204",
+      "10.1038/ijo.2008.198",
+      "10.1038/ijo.2008.4",
+      "10.1038/ijo.2011.149",
+      "10.1038/ijo.2013.147",
+      "10.1038/ijo.2013.172",
+      "10.1038/ijo.2013.4",
+      "10.1038/ijo.2017.223",
+      "10.1038/nutd.2012.17",
+      "10.1038/oby.2008.586",
+      "10.1038/oby.2011.226",
+      "10.1038/oby.2011.381",
+      "10.1038/s41366-025-01768-8",
+      "10.1038/s41366-025-01980-6",
+      "10.1038/s41598-019-45951-0",
+      "10.1038/s41598-025-90695-9",
+      "10.1038/sj.ijo.0801434",
+      "10.1038/srep16160",
+      "10.1080/03014460.2023.2213479",
+      "10.1080/08035250600731965",
+      "10.1080/08870446.2016.1163360",
+      "10.1080/08870446.2025.2553182",
+      "10.1080/15402002.2014.940105",
+      "10.1089/chi.2015.0252",
+      "10.1089/chi.2018.0247",
+      "10.1089/chi.2022.0070",
+      "10.1093/ajcn/87.2.310",
+      "10.1093/aje/kwt180",
+      "10.1093/aje/kwu222",
+      "10.1093/ajh/hpt128",
+      "10.1093/ajh/hpt157",
+      "10.1093/pubmed/fdy135",
+      "10.1093/sleep/31.5.619",
+      "10.1093/sleep/32.9.1183",
+      "10.1093/sleep/33.2.161",
+      "10.1093/sleep/33.5.593",
+      "10.1093/sleep/33.6.753",
+      "10.1093/sleep/zsaa056.402",
+      "10.1093/sleep/zsab072.137",
+      "10.1093/sleep/zsac226",
+      "10.1093/sleep/zsae067.0017",
+      "10.1093/sleep/zsae067.0869",
+      "10.1093/sleep/zsz001",
+      "10.1093/sleep/zsz067.209",
+      "10.1093/sleepj/zsx050.814",
+      "10.1097/DBP.0000000000000369",
+      "10.1097/JOM.0000000000001165",
+      "10.1097/MD.0000000000011939",
+      "10.1097/PSY.0b013e3182583b27",
+      "10.1101/2024.10.30.24316315",
+      "10.1111/apa.14238",
+      "10.1111/dme.12378_1",
+      "10.1111/dme.70051",
+      "10.1111/ijpo.12698",
+      "10.1111/j.1365-2869.2007.00569.x",
+      "10.1111/j.1365-2869.2010.00840.x",
+      "10.1111/j.1365-2869.2010.00868.x",
+      "10.1111/j.1365-2869.2011.00989.x",
+      "10.1111/j.1365-2869.2012.01013.x",
+      "10.1111/j.1365-2869.2012.01044.x",
+      "10.1111/j.1467-789X.2010.00763-7.x",
+      "10.1111/j.1467-789X.2011.00889.x",
+      "10.1111/j.1521-0391.2013.12093.x",
+      "10.1111/j.2047-6310.2011.00008.x",
+      "10.1111/josh.12583",
+      "10.1111/jpc.14711",
+      "10.1111/jsr.12213",
+      "10.1111/jsr.12446",
+      "10.1111/jsr.12502",
+      "10.1111/jsr.12776",
+      "10.1111/jsr.14291",
+      "10.1111/obr.12150",
+      "10.1111/obr.13115",
+      "10.1111/ppe.12814",
+      "10.1136/archdischild-2012-302724.0047",
+      "10.1136/bmjopen-2011-000561",
+      "10.1136/jim-2018-000939.384",
+      "10.1155/2012/476914",
+      "10.1159/000207438",
+      "10.1159/000321348",
+      "10.1159/000334393",
+      "10.1159/000371847",
+      "10.1159/000468958",
+      "10.1159/000489691",
+      "10.1159/000515911",
+      "10.1159/000519418",
+      "10.1159/000526562",
+      "10.1159/000538577",
+      "10.1159/000540094",
+      "10.1161/circ.139.suppl_1.P268",
+      "10.1161/circ.143.suppl_1.039",
+      "10.1177/1059840520901335",
+      "10.1177/1740774510368298",
+      "10.1177/2042018815616549",
+      "10.1186/1756-0500-7-20",
+      "10.1186/s12872-024-04089-2",
+      "10.1186/s12877-022-03543-0",
+      "10.1186/s12877-023-03857-7",
+      "10.1186/s12887-019-1429-3",
+      "10.1186/s12887-022-03587-6",
+      "10.1186/s12889-015-1793-3",
+      "10.1186/s12889-015-2359-0",
+      "10.1186/s12889-016-2913-4",
+      "10.1186/s12889-018-5470-1",
+      "10.1186/s12889-020-09801-3",
+      "10.1186/s12889-022-14068-x",
+      "10.1186/s12889-023-15413-4",
+      "10.1186/s12889-025-22640-4",
+      "10.1186/s12902-021-00913-4",
+      "10.1186/s12955-016-0434-6",
+      "10.1186/s12966-024-01587-6",
+      "10.1186/s13098-020-0524-9",
+      "10.1353/hpu.2017.0115",
+      "10.1371/journal.pone.0056756",
+      "10.1371/journal.pone.0112433",
+      "10.1371/journal.pone.0123672",
+      "10.1371/journal.pone.0235049",
+      "10.1371/journal.pone.0247746",
+      "10.1371/journal.pone.0255285",
+      "10.1371/journal.pone.0319085",
+      "10.1378/chest.1119939",
+      "10.1515/ijamh-2021-0041",
+      "10.1515/jpem-2020-0399",
+      "10.1515/jpem-2024-0302",
+      "10.1542/peds.2006-2597",
+      "10.1542/peds.2006-3295",
+      "10.1556/650.2019.31469",
+      "10.1590/1980-549720210031",
+      "10.1590/1984-0462/2024/42/2023058",
+      "10.16462/j.cnki.zhjbkz.2021.03.011",
+      "10.16462/j.cnki.zhjbkz.2021.05.019",
+      "10.16462/j.cnki.zhjbkz.2022.04.008",
+      "10.2147/NDT.S74829",
+      "10.2169/internalmedicine.50.5844",
+      "10.2188/jea.JE20100019",
+      "10.22074/ijfs.2023.1983273.1413",
+      "10.231/JIM.0b013e3182152a03",
+      "10.2337/db15742931",
+      "10.2337/db22-1439-P",
+      "10.3109/02770903.2013.873807",
+      "10.3109/07420528.2012.675253",
+      "10.3109/17477160903473739",
+      "10.3346/jkms.2016.31.12.1996",
+      "10.3346/jkms.2018.33.e345",
+      "10.3389/fendo.2021.735952",
+      "10.3389/fendo.2022.877100",
+      "10.3389/fpubh.2023.1053421",
+      "10.3390/ijerph14060566",
+      "10.3390/ijerph15040758",
+      "10.3390/ijerph15050854",
+      "10.3390/ijerph17061962",
+      "10.3390/medicina58081037",
+      "10.3390/nu15030510",
+      "10.3390/nu16060835",
+      "10.3390/nu16223950",
+      "10.3390/nu17162662",
+      "10.3390/nu9070780",
+      "10.3390/toxics12070503",
+      "10.3945/ajcn.114.095026",
+      "10.3967/bes2017.023",
+      "10.4067/S0034-98872011000700010",
+      "10.4103/1817-1737.98845",
+      "10.4278/ajhp.140509-QUAN-198",
+      "10.5114/ms.2017.70343",
+      "10.5539/gjhs.v7n3p134",
+      "10.5539/gjhs.v8n1p107",
+      "10.5664/jcsm.27023",
+      "10.5664/jcsm.27704",
+      "10.5664/jcsm.7272",
+      "10.5664/jcsm.7374",
+      "10.5664/jcsm.7732",
+      "10.5665/sleep.1810",
+      "10.5665/sleep.2636",
+      "org/10.1016/j.orcp.2014.10.130"
+    ],
+    "retrieved_pmids": [
+      "11126224",
+      "16882569",
+      "16983047",
+      "17309765",
+      "17473079",
+      "17564401",
+      "17726359",
+      "17974739",
+      "18198800",
+      "18253159",
+      "18258619",
+      "18391138",
+      "18517032",
+      "18936766",
+      "19180067",
+      "19442580",
+      "19631400",
+      "19750923",
+      "20175399",
+      "20191932",
+      "20233160",
+      "20363668",
+      "20423926",
+      "20469801",
+      "20545836",
+      "20550015",
+      "20699599",
+      "20819966",
+      "21327855",
+      "21377926",
+      "21689984",
+      "21792170",
+      "21892668",
+      "22032104",
+      "22041348",
+      "22051827",
+      "22151014",
+      "22282051",
+      "22434739",
+      "22462655",
+      "22494030",
+      "22525467",
+      "22547885",
+      "22621351",
+      "22633283",
+      "22726712",
+      "22841029",
+      "22841032",
+      "23385490",
+      "23419528",
+      "23419602",
+      "23457611",
+      "23633755",
+      "23836704",
+      "23924757",
+      "24049160",
+      "24100421",
+      "24129360",
+      "24320738",
+      "24405869",
+      "25066064",
+      "25105727",
+      "25130760",
+      "25187053",
+      "25263835",
+      "25281691",
+      "25314720",
+      "25314721",
+      "25393729",
+      "25454984",
+      "25527757",
+      "25721246",
+      "25862120",
+      "25924872",
+      "25948448",
+      "26030064",
+      "26234983",
+      "26363524",
+      "26446623",
+      "26537869",
+      "26559711",
+      "26921272",
+      "26961765",
+      "27012481",
+      "27447782",
+      "27822941",
+      "28106613",
+      "28127709",
+      "28220585",
+      "28427485",
+      "28587107",
+      "28752979",
+      "28895585",
+      "28899534",
+      "28930798",
+      "29176096",
+      "29221771",
+      "29333647",
+      "29364541",
+      "29526681",
+      "29662031",
+      "29693616",
+      "29737671",
+      "29747605",
+      "30092896",
+      "30107483",
+      "30212927",
+      "30324729",
+      "30353810",
+      "30497764",
+      "30595686",
+      "30649528",
+      "30744602",
+      "30810346",
+      "30862439",
+      "30952226",
+      "31263172",
+      "31387375",
+      "31721041",
+      "31821651",
+      "31973678",
+      "32044556",
+      "32058229",
+      "32192114",
+      "32331866",
+      "32527625",
+      "32603369",
+      "32665187",
+      "32729172",
+      "33198684",
+      "33524425",
+      "33581702",
+      "33624130",
+      "33651799",
+      "33707104",
+      "34076093",
+      "34303322",
+      "34329345",
+      "34410021",
+      "34724664",
+      "34952580",
+      "35338983",
+      "35671522",
+      "35842762",
+      "36013503",
+      "36045412",
+      "36068546",
+      "36130143",
+      "36273990",
+      "36394395",
+      "36434541",
+      "36755902",
+      "36771217",
+      "36922806",
+      "37173647",
+      "37267056",
+      "37395694",
+      "37432142",
+      "38126602",
+      "38501514",
+      "38542746",
+      "38565757",
+      "38566134",
+      "39047704",
+      "39079836",
+      "39354336",
+      "39599735",
+      "39938888",
+      "39994316",
+      "40043063",
+      "40189712",
+      "40217195",
+      "40247658",
+      "40871690",
+      "40891046",
+      "41205781",
+      "41436889"
+    ],
+    "pmids": [
+      "11126224",
+      "16882569",
+      "16983047",
+      "17309765",
+      "17473079",
+      "17564401",
+      "17726359",
+      "17974739",
+      "18198800",
+      "18253159",
+      "18258619",
+      "18391138",
+      "18517032",
+      "18936766",
+      "19180067",
+      "19442580",
+      "19631400",
+      "19750923",
+      "20175399",
+      "20191932",
+      "20233160",
+      "20363668",
+      "20423926",
+      "20469801",
+      "20545836",
+      "20550015",
+      "20699599",
+      "20819966",
+      "21327855",
+      "21377926",
+      "21689984",
+      "21792170",
+      "21892668",
+      "22032104",
+      "22041348",
+      "22051827",
+      "22151014",
+      "22282051",
+      "22434739",
+      "22462655",
+      "22494030",
+      "22525467",
+      "22547885",
+      "22621351",
+      "22633283",
+      "22726712",
+      "22841029",
+      "22841032",
+      "23385490",
+      "23419528",
+      "23419602",
+      "23457611",
+      "23633755",
+      "23836704",
+      "23924757",
+      "24049160",
+      "24100421",
+      "24129360",
+      "24320738",
+      "24405869",
+      "25066064",
+      "25105727",
+      "25130760",
+      "25187053",
+      "25263835",
+      "25281691",
+      "25314720",
+      "25314721",
+      "25393729",
+      "25454984",
+      "25527757",
+      "25721246",
+      "25862120",
+      "25924872",
+      "25948448",
+      "26030064",
+      "26234983",
+      "26363524",
+      "26446623",
+      "26537869",
+      "26559711",
+      "26921272",
+      "26961765",
+      "27012481",
+      "27447782",
+      "27822941",
+      "28106613",
+      "28127709",
+      "28220585",
+      "28427485",
+      "28587107",
+      "28752979",
+      "28895585",
+      "28899534",
+      "28930798",
+      "29176096",
+      "29221771",
+      "29333647",
+      "29364541",
+      "29526681",
+      "29662031",
+      "29693616",
+      "29737671",
+      "29747605",
+      "30092896",
+      "30107483",
+      "30212927",
+      "30324729",
+      "30353810",
+      "30497764",
+      "30595686",
+      "30649528",
+      "30744602",
+      "30810346",
+      "30862439",
+      "30952226",
+      "31263172",
+      "31387375",
+      "31721041",
+      "31821651",
+      "31973678",
+      "32044556",
+      "32058229",
+      "32192114",
+      "32331866",
+      "32527625",
+      "32603369",
+      "32665187",
+      "32729172",
+      "33198684",
+      "33524425",
+      "33581702",
+      "33624130",
+      "33651799",
+      "33707104",
+      "34076093",
+      "34303322",
+      "34329345",
+      "34410021",
+      "34724664",
+      "34952580",
+      "35338983",
+      "35671522",
+      "35842762",
+      "36013503",
+      "36045412",
+      "36068546",
+      "36130143",
+      "36273990",
+      "36394395",
+      "36434541",
+      "36755902",
+      "36771217",
+      "36922806",
+      "37173647",
+      "37267056",
+      "37395694",
+      "37432142",
+      "38126602",
+      "38501514",
+      "38542746",
+      "38565757",
+      "38566134",
+      "39047704",
+      "39079836",
+      "39354336",
+      "39599735",
+      "39938888",
+      "39994316",
+      "40043063",
+      "40189712",
+      "40217195",
+      "40247658",
+      "40871690",
+      "40891046",
+      "41205781",
+      "41436889"
+    ],
+    "records": [
+      {
+        "title": "Influence of sleep duration on cumulative genetic effects on obesity and related anthropometric traits among preschool children",
+        "first_author": "Zhang",
+        "year": 2026,
+        "pmid": "41205781",
+        "doi": "10.1016/j.gene.2025.149880"
+      },
+      {
+        "title": "Short sleep and obesity in midlife and the risk of cognitive decline and incident dementia in late life: the Whitehall II cohort study",
+        "first_author": "Park",
+        "year": 2025,
+        "doi": "10.1016/j.jns.2025.124123"
+      },
+      {
+        "title": "Short sleep and obesity in midlife and the risk of cognitive decline and incident dementa in late life: The Whitehall Ii cohort study",
+        "first_author": "Park",
+        "year": 2025,
+        "doi": "10.1002/alz70861_108052"
+      },
+      {
+        "title": "Associations of Sleep Duration and Quality with Risk of Obesity, Diabetes, and Metabolic Syndrome",
+        "first_author": "Coleman",
+        "year": 2025,
+        "doi": "10.1002/oby.70103"
+      },
+      {
+        "title": "Longitudinal interplay among body mass index, sleep duration, and phone dependency in adolescents: data from six waves of two nationally representative cohorts",
+        "first_author": "Yu",
+        "year": 2025,
+        "pmid": "40891046",
+        "doi": "10.1080/08870446.2025.2553182"
+      },
+      {
+        "title": "Relationships Between Consumption of High-Saturated-Fat Foods, Sleep Duration, BMI, Depression, Age and Sex, and Emotional Eating in Peruvian Adolescents: A Cross-Sectional Study",
+        "first_author": "Calizaya-Milla",
+        "year": 2025,
+        "pmid": "40871690",
+        "doi": "10.3390/nu17162662"
+      },
+      {
+        "title": "Association between accelerometer-measured irregular sleep duration and longitudinal changes in body mass index in older adults",
+        "first_author": "Kianersi",
+        "year": 2025,
+        "pmid": "40189712",
+        "doi": "10.1038/s41366-025-01768-8"
+      },
+      {
+        "title": "Association between sleep duration and obesity in patients with type 2 diabetes: A longitudinal study",
+        "first_author": "Makhdom",
+        "year": 2025,
+        "pmid": "40247658",
+        "doi": "10.1111/dme.70051"
+      },
+      {
+        "title": "The associations between BMI, body appreciation, body image flexibility, sleep duration and loneliness in workers in southern China",
+        "first_author": "Zhao",
+        "year": 2025,
+        "pmid": "40217195",
+        "doi": "10.1186/s12889-025-22640-4"
+      },
+      {
+        "title": "Associations between body mass index and sleep duration in Brazilian children and adolescents: the moderating role of screen time",
+        "first_author": "Borfe",
+        "year": 2025,
+        "pmid": "39938888",
+        "doi": "10.1515/jpem-2024-0302"
+      },
+      {
+        "title": "Short sleep duration is a significant risk factor of obesity: A multicenter observational study of healthy adults in Japan",
+        "first_author": "Takahashi",
+        "year": 2025,
+        "pmid": "40043063",
+        "doi": "10.1371/journal.pone.0319085"
+      },
+      {
+        "title": "Sex differences in the relationship between short sleep duration and obesity among koreans",
+        "first_author": "Kim",
+        "year": 2025,
+        "pmid": "39994316",
+        "doi": "10.1038/s41598-025-90695-9"
+      },
+      {
+        "title": "Prospective associations of sleep duration and screen time with transition from overweight/obesity to normal BMI in U.S. adolescents",
+        "first_author": "Al-Shoaibi",
+        "year": 2025,
+        "pmid": "41436889",
+        "doi": "10.1038/s41366-025-01980-6"
+      },
+      {
+        "title": "Longitudinal associations of screen time, physical activity, and sleep duration with body mass index in U.S. youth",
+        "first_author": "Zink",
+        "year": 2024,
+        "pmid": "38566134",
+        "doi": "10.1186/s12966-024-01587-6"
+      },
+      {
+        "title": "Screen time, sleep duration, leisure physical activity, obesity, and cardiometabolic risk in children and adolescents: a cross-lagged 2-year study",
+        "first_author": "Sehn",
+        "year": 2024,
+        "pmid": "39354336",
+        "doi": "10.1186/s12872-024-04089-2"
+      },
+      {
+        "title": "The Interaction Effect of Obesity with Sleep Duration on Urinary Incontinence in Adult Females: A Cross-Sectional Study of the NHANES Database",
+        "first_author": "Nan",
+        "year": 2024,
+        "pmid": "39047704",
+        "doi": "10.1159/000540094"
+      },
+      {
+        "title": "Obesity Risk Was Associated with Alcohol Intake and Sleep Duration Among Korean Men: The 2016–2020 Korea National Health and Nutrition Examination Survey",
+        "first_author": "Kim",
+        "year": 2024,
+        "pmid": "39599735",
+        "doi": "10.3390/nu16223950"
+      },
+      {
+        "title": "Association between Accelerometer-Measured Irregular Sleep Duration and Longitudinal Changes in Body Mass Index in Older Adults",
+        "first_author": "Kianersi",
+        "year": 2024,
+        "doi": "10.1101/2024.10.30.24316315"
+      },
+      {
+        "title": "Does Bedtime Matter? Sleep Timing, Sleep Duration, and Overweight Status in Midwestern Latinx Youth",
+        "first_author": "Jones",
+        "year": 2024,
+        "doi": "10.1002/oby.24195"
+      },
+      {
+        "title": "Sex differences in the association between short sleep duration and obesity: A systematic-review and meta-analysis",
+        "first_author": "Lange",
+        "year": 2024,
+        "pmid": "39079836",
+        "doi": "10.1016/j.numecd.2024.06.008"
+      },
+      {
+        "title": "Adverse Childhood Experiences May Dampen the Protective Role of Sleep Duration on Adolescent Obesity Risk",
+        "first_author": "Covington",
+        "year": 2024,
+        "pmid": "38565757",
+        "doi": "10.1007/s10900-024-01344-7"
+      },
+      {
+        "title": "Chrononutrition and excessive screen time, and smoking and alcohol consumption as predictors for short sleep and obesity in adolescents: Growing Up in Scotland study",
+        "first_author": "Louise",
+        "year": 2024,
+        "doi": "10.1111/jsr.14291"
+      },
+      {
+        "title": "Bidirectional relationships between poor emotional well-being, short sleep duration and obesity across childhood and adolescence: Growing up in Scotland study",
+        "first_author": "Gale",
+        "year": 2024,
+        "doi": "10.1111/jsr.14291"
+      },
+      {
+        "title": "Influence of Age, Obesity, Smoking, Sleep duration and Sleep Quality on Concentration, Morphology, and Sperm Motility: A Cross-Sectional Study",
+        "first_author": "Budihastuti",
+        "year": 2024,
+        "doi": "10.22074/ijfs.2023.1983273.1413"
+      },
+      {
+        "title": "Gender- and Obesity-Specific Association of Co-Exposure to Personal Care Product and Plasticizing Chemicals and Short Sleep Duration among Adults: Evidence from the National Health and Nutrition Examination Survey 2011–2016",
+        "first_author": "Bigambo",
+        "year": 2024,
+        "doi": "10.3390/toxics12070503"
+      },
+      {
+        "title": "CIRCADIAN PHASE ALIGNMENT AND SLEEP DURATION IN OVERWEIGHT ADULTS: ASSOCIATIONS WITH CARDIOMETABOLIC RISK FACTORS",
+        "first_author": "Baron",
+        "year": 2024,
+        "doi": "10.1093/sleep/zsae067.0017"
+      },
+      {
+        "title": "ASSOCIATION BETWEEN ACCELEROMETERMEASURED IRREGULAR SLEEP DURATION AND INCIDENCE OF OBESITY IN OLDER ADULTS",
+        "first_author": "Kianersi",
+        "year": 2024,
+        "doi": "10.1093/sleep/zsae067.0869"
+      },
+      {
+        "title": "CIRCADIAN PHASE ALIGNMENT AND SLEEP DURATION IN OVERWEIGHT ADULTS: ASSOCIATIONS WITH CARDIOMETABOLIC RISK FACTORS",
+        "first_author": "Baron",
+        "year": 2024,
+        "doi": "10.1093/sleep/zsae067.0017"
+      },
+      {
+        "title": "ASSOCIATION BETWEEN ACCELEROMETERMEASURED IRREGULAR SLEEP DURATION AND INCIDENCE OF OBESITY IN OLDER ADULTS",
+        "first_author": "Kianersi",
+        "year": 2024,
+        "doi": "10.1093/sleep/zsae067.0869"
+      },
+      {
+        "title": "The associations between body mass index and total sleep duration in infants - preliminary results from BeE-School project",
+        "first_author": "Cunha",
+        "year": 2024,
+        "doi": "10.1159/000538577"
+      },
+      {
+        "title": "Association of Korean Healthy Eating Index and Sleep Duration with Obesity in Korean Adults: Based on the 7th Korea National Health and Nutrition Examination Survey 2016–2018",
+        "first_author": "Namgung",
+        "year": 2024,
+        "pmid": "38542746",
+        "doi": "10.3390/nu16060835"
+      },
+      {
+        "title": "Sleep duration and bedtime are associated with BMI among adults in a Brazilian National Survey",
+        "first_author": "Longo-Silva",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.208"
+      },
+      {
+        "title": "Association between sleep duration and latency, nocturnal awakenings, and body mass index among infants",
+        "first_author": "de",
+        "year": 2024,
+        "pmid": "38126602",
+        "doi": "10.1590/1984-0462/2024/42/2023058"
+      },
+      {
+        "title": "An Update on Sleep Duration, Obesity, and Mortality Risk in Women",
+        "first_author": "Full",
+        "year": 2023,
+        "pmid": "38501514",
+        "doi": "10.1016/j.jsmc.2023.06.015"
+      },
+      {
+        "title": "Association of habitual sleep duration and its trajectory with the risk of cancer according to sex and body mass index in a population-based cohort",
+        "first_author": "Ning",
+        "year": 2023,
+        "pmid": "37432142",
+        "doi": "10.1002/cncr.34951"
+      },
+      {
+        "title": "The Impact of Longitudinal Patterns of Adolescent Sleep Duration on Adult C-Reactive Protein (CRP), Waist-To-Height Ratio, and Body Mass Index (BMI) Among Black and White Individuals",
+        "first_author": "Stager",
+        "year": 2023,
+        "pmid": "37395694",
+        "doi": "10.1016/j.jadohealth.2023.05.018"
+      },
+      {
+        "title": "The association between sleep duration and detailed measures of obesity: A cross sectional analysis in the ADDITION-PRO study",
+        "first_author": "Andersen",
+        "year": 2023,
+        "doi": "10.1002/osp4.640"
+      },
+      {
+        "title": "Sleep duration affects the sequential change of body mass index and muscle strength: a contribution to dynapenic obesity",
+        "first_author": "Zhang",
+        "year": 2023,
+        "pmid": "37173647",
+        "doi": "10.1186/s12877-023-03857-7"
+      },
+      {
+        "title": "The Mediating Effect of Sleep Duration on the Association between Food Insecurity and Childhood Obesity",
+        "first_author": "Sawadogo",
+        "year": 2023,
+        "pmid": "35671522",
+        "doi": "10.1089/chi.2022.0070"
+      },
+      {
+        "title": "Temporal relationship between sleep duration and obesity among Chinese Han people and ethnic minorities",
+        "first_author": "Xu",
+        "year": 2023,
+        "pmid": "36922806",
+        "doi": "10.1186/s12889-023-15413-4"
+      },
+      {
+        "title": "Association of sleep duration with underweight and obesity in older adults: A cross-sectional study of the Chinese longitudinal healthy longevity survey",
+        "first_author": "Zhao",
+        "year": 2023,
+        "pmid": "36394395",
+        "doi": "10.1002/ajhb.23836"
+      },
+      {
+        "title": "Sleep Duration, Body Mass Index, and Dietary Behaviour among KSU Students",
+        "first_author": "Alafif",
+        "year": 2023,
+        "pmid": "36771217",
+        "doi": "10.3390/nu15030510"
+      },
+      {
+        "title": "The association between daytime sleep and general obesity risk differs by sleep duration in Iranian adults",
+        "first_author": "Mohammadifard",
+        "year": 2023,
+        "pmid": "37267056",
+        "doi": "10.1080/03014460.2023.2213479"
+      },
+      {
+        "title": "Sleep duration, plasma metabolites, and obesity and diabetes: a metabolome-wide association study in US women",
+        "first_author": "Fritz",
+        "year": 2023,
+        "pmid": "36130143",
+        "doi": "10.1093/sleep/zsac226"
+      },
+      {
+        "title": "Habitual night sleep duration is associated with general obesity and visceral obesity among Chinese women, independent of sleep quality",
+        "first_author": "He",
+        "year": 2023,
+        "pmid": "36755902",
+        "doi": "10.3389/fpubh.2023.1053421"
+      },
+      {
+        "title": "Associations between cumulative risk, childhood sleep duration, and body mass index across childhood",
+        "first_author": "Phu",
+        "year": 2022,
+        "pmid": "36068546",
+        "doi": "10.1186/s12887-022-03587-6"
+      },
+      {
+        "title": "Longitudinal associations of insufficient sleep duration and insomnia with obesity from adolescence to young adulthood in the GINIplus and LISA studies",
+        "first_author": "Wang",
+        "year": 2022,
+        "doi": "10.1016/j.sleep.2022.05.233"
+      },
+      {
+        "title": "Association of sleep duration with sarcopenic obesity in multi-ethnic older adults: findings from the WCHAT Study",
+        "first_author": "Yang",
+        "year": 2022,
+        "pmid": "36434541",
+        "doi": "10.1186/s12877-022-03543-0"
+      },
+      {
+        "title": "Short sleep duration at night in 2.5-year-old children is associated with childhood obesity at age 5.5 years: The Japanese children cohort study",
+        "first_author": "Sari",
+        "year": 2022,
+        "pmid": "36273990",
+        "doi": "10.1016/j.orcp.2022.10.001"
+      },
+      {
+        "title": "Association between overweight, obesity and sleep duration and related lifestyle behaviors is gender and educational stages dependent among children and adolescents aged 6-17 years: a cross-sectional study in Henan",
+        "first_author": "Wang",
+        "year": 2022,
+        "pmid": "36045412",
+        "doi": "10.1186/s12889-022-14068-x"
+      },
+      {
+        "title": "Impact of Short Sleep Duration on the Incidence of Obesity and Overweight among Children and Adolescents",
+        "first_author": "Han",
+        "year": 2022,
+        "pmid": "36013503",
+        "doi": "10.3390/medicina58081037"
+      },
+      {
+        "title": "Age and Sex Differences in the Association of Sleep Duration and Overweight/Obesity among Chinese Participants Age above 45 Years: A Cohort Study",
+        "first_author": "Yao",
+        "year": 2022,
+        "pmid": "35842762",
+        "doi": "10.1007/s12603-022-1823-7"
+      },
+      {
+        "title": "Association between Sleep Duration, Bedtime, and Hyperglycemia or Overweight/Obesity among Japanese Children",
+        "first_author": "Shiozaki",
+        "year": 2022,
+        "doi": "10.2337/db22-1439-P"
+      },
+      {
+        "title": "Gender-Specific Association Between Sleep Duration and Body Mass Index in Rural China",
+        "first_author": "Ren",
+        "year": 2022,
+        "doi": "10.3389/fendo.2022.877100"
+      },
+      {
+        "title": "Association of overweight, obesity and insufficient sleep duration and related lifestyle factors among school children and adolescents",
+        "first_author": "Almulla",
+        "year": 2022,
+        "pmid": "34303322",
+        "doi": "10.1515/ijamh-2021-0041"
+      },
+      {
+        "title": "Sex differences in the association between short sleep duration and obesity among US adults: findings from NHANES, 2015–2020",
+        "first_author": "Mercy",
+        "year": 2022,
+        "pmid": "35338983",
+        "doi": "10.1016/j.sleep.2022.03.004"
+      },
+      {
+        "title": "Sleep duration, risk of obesity, and parental perceptions of residential neighborhood environments in 6-9 years-old children",
+        "first_author": "Machado-Rodrigues",
+        "year": 2022,
+        "pmid": "34410021",
+        "doi": "10.1002/ajhb.23668"
+      },
+      {
+        "title": "Sleep duration and problem behaviour in 8-year-old children in the Childhood Obesity Project",
+        "first_author": "Guerlich",
+        "year": 2022,
+        "pmid": "33624130",
+        "doi": "10.1007/s00787-021-01731-8"
+      },
+      {
+        "title": "Associations of Sleep Duration and Screen Time with Incidence of Overweight in European Children: The IDEFICS/I.Family Cohort",
+        "first_author": "Guzmán",
+        "year": 2022,
+        "pmid": "34724664",
+        "doi": "10.1159/000519418"
+      },
+      {
+        "title": "A cross-section study of the correlations between BMI and sleep duration or sleep quality based on Hainan cohort study",
+        "first_author": "Yan",
+        "year": 2022,
+        "doi": "10.16462/j.cnki.zhjbkz.2022.04.008"
+      },
+      {
+        "title": "Short sleep duration is associated with the hyperuricemia of female patients with obesity",
+        "first_author": "Nozaki",
+        "year": 2022,
+        "doi": "10.1159/000526562"
+      },
+      {
+        "title": "Gender differences in the association between sleep duration and body mass index, percentage of body fat and visceral fat area among chinese adults: a cross-sectional study",
+        "first_author": "Fan",
+        "year": 2021,
+        "pmid": "34952580",
+        "doi": "10.1186/s12902-021-00913-4"
+      },
+      {
+        "title": "Associations Between Sleep Duration, Wake-Up Time, Bedtime, and Abdominal Obesity: Results From 9559 Chinese Children Aged 7–18 Years",
+        "first_author": "Liu",
+        "year": 2021,
+        "doi": "10.3389/fendo.2021.735952"
+      },
+      {
+        "title": "The effect of sleep duration on the association between food insecurity and childhood obesity",
+        "first_author": "Sawadogo",
+        "year": 2021,
+        "doi": "10.1111/ppe.12814"
+      },
+      {
+        "title": "Unhealthy lifestyles and brain condition: Examining the relations of BMI, living alone, alcohol intake, short sleep, smoking, and lack of exercise with gray matter volume",
+        "first_author": "Kokubun",
+        "year": 2021,
+        "pmid": "34329345",
+        "doi": "10.1371/journal.pone.0255285"
+      },
+      {
+        "title": "Relationship between sleep duration and quality and glycated hemoglobin, body mass index, and self-reported health in Marshallese adults",
+        "first_author": "McElfish",
+        "year": 2021,
+        "pmid": "33707104",
+        "doi": "10.1016/j.sleh.2021.01.007"
+      },
+      {
+        "title": "The association between sleep duration, eating habits and obesity of school-aged children",
+        "first_author": "Zeng",
+        "year": 2021,
+        "doi": "10.16462/j.cnki.zhjbkz.2021.05.019"
+      },
+      {
+        "title": "The associations between body mass index and sleep duration in infants and toddlers: A cross-sectional study",
+        "first_author": "Duarte",
+        "year": 2021,
+        "doi": "10.1159/000515911"
+      },
+      {
+        "title": "Insomnia and short sleep uniquely predict obesity, hypertension, and diabetes",
+        "first_author": "Knowlden",
+        "year": 2021,
+        "doi": "10.1161/circ.143.suppl_1.039"
+      },
+      {
+        "title": "Short sleep and insomnia as independent predictors of obesity, hypertension, and diabetes",
+        "first_author": "Knowlden",
+        "year": 2021,
+        "doi": "10.1093/sleep/zsab072.137"
+      },
+      {
+        "title": "Association between habitual sleep duration/quality and appetite markers in individuals with obesity",
+        "first_author": "Nymo",
+        "year": 2021,
+        "pmid": "33524425",
+        "doi": "10.1016/j.physbeh.2021.113345"
+      },
+      {
+        "title": "The interplay of sleep duration, working hours, and obesity in Korean male workers: The 2010-2015 Korea National Health and Nutrition Examination Survey",
+        "first_author": "Eum",
+        "year": 2021,
+        "pmid": "33651799",
+        "doi": "10.1371/journal.pone.0247746"
+      },
+      {
+        "title": "Correlation between sleep duration and overweight/obesity among children and adolescents aged 7-18 in Henan province",
+        "first_author": "Wang",
+        "year": 2021,
+        "doi": "10.16462/j.cnki.zhjbkz.2021.03.011"
+      },
+      {
+        "title": "Beyond sleep duration: Sleep timing as a risk factor for childhood obesity",
+        "first_author": "Skjåkødegård",
+        "year": 2021,
+        "pmid": "32729172",
+        "doi": "10.1111/ijpo.12698"
+      },
+      {
+        "title": "Interaction effect between long sleep duration in early pregnancy and prepregnancy overweight/obesity on gestational diabetes mellitus",
+        "first_author": "Wang",
+        "year": 2021,
+        "doi": "10.1007/s13410-020-00871-y"
+      },
+      {
+        "title": "Sleep duration and overweight: Is there a relationship in adolescence?",
+        "first_author": "Corrêa",
+        "year": 2021,
+        "doi": "10.1590/1980-549720210031"
+      },
+      {
+        "title": "Combination of sleep duration, TV time and body mass index is associated with cardiometabolic risk moderated by age in youth",
+        "first_author": "Sehn",
+        "year": 2021,
+        "pmid": "33581702",
+        "doi": "10.1515/jpem-2020-0399"
+      },
+      {
+        "title": "Sleep duration and overweight: is there a relationship in adolescence?",
+        "first_author": "Corrêa",
+        "year": 2021,
+        "pmid": "34076093",
+        "doi": "10.1590/1980-549720210031"
+      },
+      {
+        "title": "Role of sleep duration and obesity-related health behaviors in young children",
+        "first_author": "Gazmararian",
+        "year": 2020,
+        "doi": "10.1016/j.pmedr.2020.101199"
+      },
+      {
+        "title": "Association Between Sleep Duration, Obesity, and School Failure Among Adolescents",
+        "first_author": "Litsfeldt",
+        "year": 2020,
+        "pmid": "31973678",
+        "doi": "10.1177/1059840520901335"
+      },
+      {
+        "title": "Association between sleep duration and differences between weekday and weekend sleep with body mass index & waist circumference among Black women in Sistertalk II",
+        "first_author": "Ash",
+        "year": 2020,
+        "pmid": "32665187",
+        "doi": "10.1016/j.sleh.2020.05.005"
+      },
+      {
+        "title": "The importance of cardiorespiratory fitness and sleep duration in early CVD prevention: BMI, resting heart rate and questions about sleep patterns are suggested in risk assessment of young adults, 18-25 years : The cross-sectional lifestyle, biomarkers and atherosclerosis (LBA) study",
+        "first_author": "Fernström",
+        "year": 2020,
+        "pmid": "33198684",
+        "doi": "10.1186/s12889-020-09801-3"
+      },
+      {
+        "title": "Sex differences in the relationship between social media use, short sleep duration, and body mass index among adolescents",
+        "first_author": "Sampasa-Kanyinga",
+        "year": 2020,
+        "pmid": "32331866",
+        "doi": "10.1016/j.sleh.2020.01.017"
+      },
+      {
+        "title": "Overweight in the pluri-ethnic adolescent population of New Caledonia: Dietary patterns, sleep duration and screen time",
+        "first_author": "Frayon",
+        "year": 2020,
+        "doi": "10.1016/j.lanwpc.2020.100025"
+      },
+      {
+        "title": "Sleep duration and obesity in adulthood: An updated systematic review and meta-analysis",
+        "first_author": "Bacaro",
+        "year": 2020,
+        "pmid": "32527625",
+        "doi": "10.1016/j.orcp.2020.03.004"
+      },
+      {
+        "title": "Associations between sleep duration and insulin resistance in European children and adolescents considering the mediating role of abdominal obesity",
+        "first_author": "Thumann",
+        "year": 2020,
+        "pmid": "32603369",
+        "doi": "10.1371/journal.pone.0235049"
+      },
+      {
+        "title": "Sleep duration and physical function in people with severe obesity: a prospective cross-sectional study",
+        "first_author": "Ahern",
+        "year": 2020,
+        "pmid": "31721041",
+        "doi": "10.1007/s11845-019-02110-8"
+      },
+      {
+        "title": "Time spent watching television impacts on body mass index in youth with obesity, but only in those with shortest sleep duration",
+        "first_author": "Golshevsky",
+        "year": 2020,
+        "pmid": "31821651",
+        "doi": "10.1111/jpc.14711"
+      },
+      {
+        "title": "Age and sex differences in the association between sleep duration and general and abdominal obesity at 6-year follow-up: the rural Chinese cohort study",
+        "first_author": "Zhou",
+        "year": 2020,
+        "pmid": "32058229",
+        "doi": "10.1016/j.sleep.2019.12.025"
+      },
+      {
+        "title": "Sleep duration rather than sleep timing is associated with obesity in adolescents",
+        "first_author": "Sunwoo",
+        "year": 2020,
+        "pmid": "32044556",
+        "doi": "10.1016/j.sleep.2019.12.014"
+      },
+      {
+        "title": "Sleep duration and sleep disturbance related to obesity, health, motor vehicle safety, and daytime functioning in Israel: Data from the 2017 Israel social survey",
+        "first_author": "Rosenberg",
+        "year": 2020,
+        "doi": "10.1093/sleep/zsaa056.402"
+      },
+      {
+        "title": "Association of sleep duration and overweight/obesity among children in China",
+        "first_author": "Fan",
+        "year": 2020,
+        "pmid": "32192114",
+        "doi": "10.3390/ijerph17061962"
+      },
+      {
+        "title": "Night shift work, short sleep and obesity",
+        "first_author": "Brum",
+        "year": 2020,
+        "doi": "10.1186/s13098-020-0524-9"
+      },
+      {
+        "title": "Maternal obesity is associated with sedentary behavior, increased sleep duration, and heightened obesity risk in female offspring",
+        "first_author": "Kislal",
+        "year": 2020,
+        "doi": "10.1007/s43032-020-00176-9"
+      },
+      {
+        "title": "Sleep duration and blood pressure in Spanish children with obesity",
+        "first_author": "Gimeno",
+        "year": 2020,
+        "doi": "10.1017/S0029665120005418"
+      },
+      {
+        "title": "Increasing sleep duration improves insulin sensitivity in adolescents with obesity: A Sleep Manipulation in Adolescents at Risk of Type 2 Diabetes study",
+        "first_author": "Dutil",
+        "year": 2020,
+        "doi": "10.1111/obr.13115"
+      },
+      {
+        "title": "Relationship between visceral fat obesity, sleep duration, and lifestyle habits among Japanese occupational population (FUJITSU Cardiovascular and Respiratory Observational Study-3; FACT-3)",
+        "first_author": "Sekizuka",
+        "year": 2019,
+        "doi": "10.1016/j.obmed.2019.100126"
+      },
+      {
+        "title": "Daytime sleepiness is associated with higher BMI in insomnia with objective normal sleep duration",
+        "first_author": "Ren",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.892"
+      },
+      {
+        "title": "Sleep duration rather than sleep timing is associated with obesity in adolescents",
+        "first_author": "Sunwoo",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.1024"
+      },
+      {
+        "title": "Association between sleep duration, bed time and obesity in community-dwelling hong kong chinese elderly: a population-based study",
+        "first_author": "Lee",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.611"
+      },
+      {
+        "title": "Associations of sleep duration and quality with serum and hepatic lipids: The Netherlands Epidemiology of Obesity Study",
+        "first_author": "Bos",
+        "year": 2019,
+        "pmid": "30324729",
+        "doi": "10.1111/jsr.12776"
+      },
+      {
+        "title": "Objectively measured sleep duration and plasma glucose values following an oral glucose tolerance test amongst pregnant women with obesity in the UK",
+        "first_author": "Redfern",
+        "year": 2019,
+        "pmid": "30862439",
+        "doi": "10.1016/j.sleep.2019.01.017"
+      },
+      {
+        "title": "Association of Sleep Duration with Obesity and Cardiometabolic Risk Factors in Children and Adolescents: A Population-Based Study",
+        "first_author": "Seo",
+        "year": 2019,
+        "pmid": "31263172",
+        "doi": "10.1038/s41598-019-45951-0"
+      },
+      {
+        "title": "Long sleep duration predicts a higher risk of obesity in adults: a meta-analysis of prospective cohort studies",
+        "first_author": "Liu",
+        "year": 2019,
+        "pmid": "30107483",
+        "doi": "10.1093/pubmed/fdy135"
+      },
+      {
+        "title": "Sleep Duration and Risk of Obesity by Sex: Nine-Year Follow-Up of the Young Lives Study in Peru",
+        "first_author": "Mercado-Gonzales",
+        "year": 2019,
+        "pmid": "30810346",
+        "doi": "10.1089/chi.2018.0247"
+      },
+      {
+        "title": "Sleep duration differentially affects brain activation in response to food images in adolescents with overweight/obesity compared to adolescents with normal weight",
+        "first_author": "Jensen",
+        "year": 2019,
+        "pmid": "30649528",
+        "doi": "10.1093/sleep/zsz001"
+      },
+      {
+        "title": "Healthcare financial hardship and habitual sleep duration, impact on sleep disparities, and impact on the sleep-obesity relationship",
+        "first_author": "Liang",
+        "year": 2019,
+        "doi": "10.1093/sleep/zsz067.209"
+      },
+      {
+        "title": "Long and short sleep and obesity in the Women's Health Study",
+        "first_author": "Durazo",
+        "year": 2019,
+        "doi": "10.1161/circ.139.suppl_1.P268"
+      },
+      {
+        "title": "Cross-sectional associations of objectively assessed sleep duration with physical activity, BMI and television viewing in German primary school children",
+        "first_author": "Kobel",
+        "year": 2019,
+        "pmid": "30744602",
+        "doi": "10.1186/s12887-019-1429-3"
+      },
+      {
+        "title": "Too Late and Not Enough: School Year Sleep Duration, Timing, and Circadian Misalignment Are Associated with Reduced Insulin Sensitivity in Adolescents with Overweight/Obesity",
+        "first_author": "Simon",
+        "year": 2019,
+        "pmid": "30497764",
+        "doi": "10.1016/j.jpeds.2018.10.027"
+      },
+      {
+        "title": "Total Sleep Time and BMI z-score Are Associated with Physical Function Mobility, Peer Relationship, and Pain Interference in Children Undergoing Routine Polysomnography: A PROMIS approach",
+        "first_author": "Bhushan",
+        "year": 2019,
+        "pmid": "30952226",
+        "doi": "10.5664/jcsm.7732"
+      },
+      {
+        "title": "Poor sleep quality and inadequate sleep duration related to obesity in two Roma subgroups in Transylvania",
+        "first_author": "Szabo",
+        "year": 2019,
+        "pmid": "31387375",
+        "doi": "10.1556/650.2019.31469"
+      },
+      {
+        "title": "Sleep duration, quality, and sleep-disordered breathing are associated with hepatic steatosis and insulin resistance in adolescent girls with obesity and PCOS",
+        "first_author": "Rahat",
+        "year": 2019,
+        "doi": "10.1136/jim-2018-000939.384"
+      },
+      {
+        "title": "Association of Sleep Duration and Obesity According to Gender and Age in Korean Adults: Results from the Korea National Health and Nutrition Examination Survey 2007-2015",
+        "first_author": "Cho",
+        "year": 2018,
+        "pmid": "30595686",
+        "doi": "10.3346/jkms.2018.33.e345"
+      },
+      {
+        "title": "Sleep duration, timing, variability and measures of adiposity among 8- to 12-year-old children with obesity",
+        "first_author": "Zhou",
+        "year": 2018,
+        "doi": "10.1002/osp4.303"
+      },
+      {
+        "title": "Insufficient sleep duration is associated with dietary habits, screen time, and obesity in children",
+        "first_author": "Tambalis",
+        "year": 2018,
+        "pmid": "30353810",
+        "doi": "10.5664/jcsm.7374"
+      },
+      {
+        "title": "Mediating effects of body mass index, physical activity, and emotional distress on the relationship between short sleep and cardiovascular disease",
+        "first_author": "Seixas",
+        "year": 2018,
+        "pmid": "30212927",
+        "doi": "10.1097/MD.0000000000011939"
+      },
+      {
+        "title": "Association between sleep duration, quality and body mass index in the Korean population",
+        "first_author": "Park",
+        "year": 2018,
+        "pmid": "30092896",
+        "doi": "10.5664/jcsm.7272"
+      },
+      {
+        "title": "Cross-sectional study of randomly selected 18-year-old students showed that body mass index was only associated with sleep duration in girls",
+        "first_author": "Kjartansdottir",
+        "year": 2018,
+        "pmid": "29364541",
+        "doi": "10.1111/apa.14238"
+      },
+      {
+        "title": "Gender-dependent association between sleep duration and overweight incidence in CHINESE school children: a national follow-up study",
+        "first_author": "Cao",
+        "year": 2018,
+        "pmid": "29747605",
+        "doi": "10.1186/s12889-018-5470-1"
+      },
+      {
+        "title": "Sleep duration, obesity and insulin resistance in a multi-ethnic UK population at high risk of diabetes",
+        "first_author": "Brady",
+        "year": 2018,
+        "pmid": "29526681",
+        "doi": "10.1016/j.diabres.2018.03.010"
+      },
+      {
+        "title": "Association between sleep duration and overweight/obesity at age 7-18 in Shenyang, China in 2010 and 2014",
+        "first_author": "Sun",
+        "year": 2018,
+        "pmid": "29693616",
+        "doi": "10.3390/ijerph15050854"
+      },
+      {
+        "title": "Beyond energy intake and physical activity: Self-reported nightly sleep duration was associated with obesity indices",
+        "first_author": "Chen",
+        "year": 2018,
+        "doi": "10.1159/000489691"
+      },
+      {
+        "title": "The associations between sleep duration and sleep quality with body-mass index in a large sample of young adults",
+        "first_author": "Krističević",
+        "year": 2018,
+        "pmid": "29662031",
+        "doi": "10.3390/ijerph15040758"
+      },
+      {
+        "title": "Habitual sleep duration and sleep duration variation are independently associated with body mass index",
+        "first_author": "Xu",
+        "year": 2018,
+        "pmid": "28895585",
+        "doi": "10.1038/ijo.2017.223"
+      },
+      {
+        "title": "Effect of short and long sleep duration in predicting obesity among various racial groups of a large multi-ethnic organization",
+        "first_author": "Aziz",
+        "year": 2018,
+        "doi": "10.1016/S0735-1097(18)32391-X"
+      },
+      {
+        "title": "Effect of Sleep Duration, Diet, and Physical Activity on Obesity and Overweight Elementary School Students in Shanghai",
+        "first_author": "Zhang",
+        "year": 2018,
+        "pmid": "29333647",
+        "doi": "10.1111/josh.12583"
+      },
+      {
+        "title": "Prevalence of Obesity, No Leisure-Time Physical Activity, and Short Sleep Duration among Occupational Groups in 29 States",
+        "first_author": "Birdsey",
+        "year": 2017,
+        "pmid": "28930798",
+        "doi": "10.1097/JOM.0000000000001165"
+      },
+      {
+        "title": "The sex-specific interaction between food responsiveness and sleep duration explaining body mass index among children",
+        "first_author": "Larsen",
+        "year": 2017,
+        "pmid": "29221771",
+        "doi": "10.1016/j.sleep.2017.09.025"
+      },
+      {
+        "title": "Gene-by-environment interactions of the CLOCK, PEMT, and GHRELIN loci with average sleep duration in relation to obesity traits using a cohort of 643 New Zealand European children",
+        "first_author": "Krishnan",
+        "year": 2017,
+        "pmid": "28899534",
+        "doi": "10.1016/j.sleep.2017.05.017"
+      },
+      {
+        "title": "Sleep duration is associated with body fat and muscle mass and waist-to-height ratio beyond conventional obesity parameters in Korean adolescent boys",
+        "first_author": "Nam",
+        "year": 2017,
+        "pmid": "28220585",
+        "doi": "10.1111/jsr.12502"
+      },
+      {
+        "title": "Major Change in Body Weight over 5 Years and Total Sleep Time: Investigation of Effect Modification by Sex and Obesity in a Large e-Cohort",
+        "first_author": "Andreeva",
+        "year": 2017,
+        "pmid": "28127709",
+        "doi": "10.1007/s12529-017-9635-6"
+      },
+      {
+        "title": "The consumption of dietary antioxidant vitamins modifies the risk of obesity among korean men with short sleep duration",
+        "first_author": "Doo",
+        "year": 2017,
+        "doi": "10.3390/nu9070780"
+      },
+      {
+        "title": "Sleep Duration and Abdominal Obesity in Elderly in China",
+        "first_author": "Luo",
+        "year": 2017,
+        "pmid": "28752979"
+      },
+      {
+        "title": "Sleep duration, sleep quality, body mass index, and waist circumference among young adults from 24 low- and middle-income and two high-income countries",
+        "first_author": "Peltzer",
+        "year": 2017,
+        "pmid": "28587107",
+        "doi": "10.3390/ijerph14060566"
+      },
+      {
+        "title": "Habitual sleep duration and quality in individuals with obesity and appetite markers",
+        "first_author": "Kleppe",
+        "year": 2017,
+        "doi": "10.1159/000468958"
+      },
+      {
+        "title": "Short sleep duration in relation to fuel selection in overweight and obese subjects",
+        "first_author": "Poggiogalle",
+        "year": 2017,
+        "doi": "10.1159/000468958"
+      },
+      {
+        "title": "Self-reported sleep duration and daytime napping are associated with risk of overweight/obesity: A cross-sectional study among adults in South West China",
+        "first_author": "Zhang",
+        "year": 2017,
+        "doi": "10.1159/000468958"
+      },
+      {
+        "title": "New Pathways From Short Sleep to Obesity? Associations Between Short Sleep and \"Secondary\" Eating and Drinking Behavior",
+        "first_author": "Tajeu",
+        "year": 2017,
+        "pmid": "26559711",
+        "doi": "10.4278/ajhp.140509-QUAN-198"
+      },
+      {
+        "title": "Gender-specific Association of Sleep Duration with Body Mass Index, Waist Circumference, and Body Fat in Chinese Adults",
+        "first_author": "Yan",
+        "year": 2017,
+        "pmid": "28427485",
+        "doi": "10.3967/bes2017.023"
+      },
+      {
+        "title": "Relationship of Sleep Duration and Regularity with Dietary Intake Among Preschool-Aged Children with Obesity from Low-Income Families",
+        "first_author": "Petrov",
+        "year": 2017,
+        "pmid": "28106613",
+        "doi": "10.1097/DBP.0000000000000369"
+      },
+      {
+        "title": "Sleep duration is a pathway linking sleep timing to obesity in midlife women",
+        "first_author": "Schreiber",
+        "year": 2017,
+        "doi": "10.1093/sleepj/zsx050.814"
+      },
+      {
+        "title": "Sleep duration and the risk of obesity-A cross-sectional study",
+        "first_author": "Suliga",
+        "year": 2017,
+        "doi": "10.5114/ms.2017.70343"
+      },
+      {
+        "title": "Short Sleep Duration is Associated with Obesity in Hispanic Manufacturing Workers",
+        "first_author": "Benham",
+        "year": 2017,
+        "pmid": "29176096",
+        "doi": "10.1353/hpu.2017.0115"
+      },
+      {
+        "title": "The Association between Self-reported Sleep Duration and Body Mass Index among Korean Adolescents",
+        "first_author": "Lee",
+        "year": 2016,
+        "pmid": "27822941",
+        "doi": "10.3346/jkms.2016.31.12.1996"
+      },
+      {
+        "title": "Nighttime Sleep Duration and Sleep Behaviors among Toddlers from Low-Income Families: Associations with Obesogenic Behaviors and Obesity and the Role of Parenting",
+        "first_author": "Hager",
+        "year": 2016,
+        "pmid": "27447782",
+        "doi": "10.1089/chi.2015.0252"
+      },
+      {
+        "title": "Fat mass, lean mass, and the risk of obesity according to sleep duration in Korean adults: A cross-sectional study",
+        "first_author": "Kim",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "The relationship between body mass index and sleep duration in children: A cross-cultural self-report study",
+        "first_author": "Martoni",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Relationships between BMI and sleep duration and efficiency among older adults ages 70 and above",
+        "first_author": "Shochat",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Sex and age group differences in the associations between sleep duration and BMI from adolescence to young adulthood",
+        "first_author": "Ames",
+        "year": 2016,
+        "pmid": "27012481",
+        "doi": "10.1080/08870446.2016.1163360"
+      },
+      {
+        "title": "Association between sleep duration and obesity is modified by dietary macronutrients intake in Korean",
+        "first_author": "Doo",
+        "year": 2016,
+        "pmid": "26363524",
+        "doi": "10.1016/j.orcp.2015.08.010"
+      },
+      {
+        "title": "A change in objective sleep duration is associated with a change in the serum adiponectin level of women with overweight or obesity undergoing weight loss intervention",
+        "first_author": "Sawamoto",
+        "year": 2016,
+        "doi": "10.1002/osp4.32"
+      },
+      {
+        "title": "Relationship between sleep duration and obesity in Chilean elderly",
+        "first_author": "Durdn-Agiiero",
+        "year": 2016,
+        "pmid": "29737671"
+      },
+      {
+        "title": "Sleep duration and risk of obesity among a sample of Victorian school children",
+        "first_author": "Morrissey",
+        "year": 2016,
+        "pmid": "26961765",
+        "doi": "10.1186/s12889-016-2913-4"
+      },
+      {
+        "title": "An investigation of the associations among sleep duration and quality, body mass index and insulin resistance in newly diagnosed type 2 diabetes mellitus patients",
+        "first_author": "Arora",
+        "year": 2016,
+        "doi": "10.1177/2042018815616549"
+      },
+      {
+        "title": "Relative Contribution of Obesity, Sedentary Behaviors and Dietary Habits to Sleep Duration Among Kuwaiti Adolescents",
+        "first_author": "Al-Haifi",
+        "year": 2016,
+        "pmid": "26234983",
+        "doi": "10.5539/gjhs.v8n1p107"
+      },
+      {
+        "title": "Are physical activity, sedentary behaviors and sleep duration associated with body mass index-for-age and health-related quality of life among high school boys and girls?",
+        "first_author": "Jalali-Farahani",
+        "year": 2016,
+        "pmid": "26921272",
+        "doi": "10.1186/s12955-016-0434-6"
+      },
+      {
+        "title": "Body weight, BMI and gestational weight gain are predictors of short sleep duration amongst pregnant women at risk of gestational diabetes",
+        "first_author": "Alafif",
+        "year": 2016,
+        "doi": "10.1017/S0029665115004346"
+      },
+      {
+        "title": "Habitual Sleep Duration and Risk of Childhood Obesity: Systematic Review and Dose-response Meta-analysis of Prospective Cohort Studies",
+        "first_author": "Ruan",
+        "year": 2015,
+        "pmid": "26537869",
+        "doi": "10.1038/srep16160"
+      },
+      {
+        "title": "Association between sleep duration and obesity is age- and gender-dependent in Chinese urban children aged 6-18 years: a cross-sectional study",
+        "first_author": "Cao",
+        "year": 2015,
+        "pmid": "26446623",
+        "doi": "10.1186/s12889-015-2359-0"
+      },
+      {
+        "title": "The Relationship of Sleep Duration with Obesity and Sarcopenia in Community-Dwelling Older Adults",
+        "first_author": "Chien",
+        "year": 2015,
+        "pmid": "25721246",
+        "doi": "10.1159/000371847"
+      },
+      {
+        "title": "Differences in overweight and obesity among children from migrant and native origin: The role of physical activity, dietary intake, and sleep duration",
+        "first_author": "Labree",
+        "year": 2015,
+        "pmid": "26030064",
+        "doi": "10.1371/journal.pone.0123672"
+      },
+      {
+        "title": "Impact of combinations of short sleep duration or physical inactivity and overweight on glycemic control in Japanese patients with type 2 diabetes",
+        "first_author": "Mariko",
+        "year": 2015,
+        "doi": "10.2337/db15742931"
+      },
+      {
+        "title": "Association between short sleep and body mass index, hypertension among acute coronary syndrome patients in coronary care unit",
+        "first_author": "Sepahvand",
+        "year": 2015,
+        "pmid": "25948448",
+        "doi": "10.5539/gjhs.v7n3p134"
+      },
+      {
+        "title": "Association between subjective actual sleep duration, subjective sleep need, age, body mass index, and gender in a large sample of young adults",
+        "first_author": "Kalak",
+        "year": 2015,
+        "doi": "10.2147/NDT.S74829"
+      },
+      {
+        "title": "Habitual sleep duration is associated with BMI and macronutrient intake and may be modified by CLOCK genetic variants",
+        "first_author": "Dashti",
+        "year": 2015,
+        "pmid": "25527757",
+        "doi": "10.3945/ajcn.114.095026"
+      },
+      {
+        "title": "Sleep duration associated with body mass index among Chinese adults",
+        "first_author": "Sun",
+        "year": 2015,
+        "pmid": "25862120",
+        "doi": "10.1016/j.sleep.2014.12.011"
+      },
+      {
+        "title": "Acute Changes in Sleep Duration on Eating Behaviors and Appetite-Regulating Hormones in Overweight/Obese Adults",
+        "first_author": "Hart",
+        "year": 2015,
+        "pmid": "25105727",
+        "doi": "10.1080/15402002.2014.940105"
+      },
+      {
+        "title": "WHO European Childhood Obesity Surveillance Initiative: associations between sleep duration, screen time and food consumption frequencies",
+        "first_author": "Börnhorst",
+        "year": 2015,
+        "pmid": "25924872",
+        "doi": "10.1186/s12889-015-1793-3"
+      },
+      {
+        "title": "Is it time for bed? Short sleep duration increases risk of obesity in Mexican American children",
+        "first_author": "Martinez",
+        "year": 2014,
+        "pmid": "25454984",
+        "doi": "10.1016/j.sleep.2014.09.009"
+      },
+      {
+        "title": "Sleep duration and risk of overweight and obesity among Victorian Primary School children",
+        "first_author": "Morrissey",
+        "year": 2014,
+        "doi": "org/10.1016/j.orcp.2014.10.130"
+      },
+      {
+        "title": "Short sleep duration and childhood obesity: Cross-sectional analysis in Peru and patterns in four developing countries",
+        "first_author": "Carrillo-Larco",
+        "year": 2014,
+        "pmid": "25393729",
+        "doi": "10.1371/journal.pone.0112433"
+      },
+      {
+        "title": "Sleep duration, sleep quality, and obesity risk among older adults from six middle-income countries: findings from the study on global AGEing and adult health (SAGE)",
+        "first_author": "Gildner",
+        "year": 2014,
+        "pmid": "25130760",
+        "doi": "10.1002/ajhb.22603"
+      },
+      {
+        "title": "Sleep duration and obesity among adolescents transitioning to adulthood: Do results differ by sex?",
+        "first_author": "Suglia",
+        "year": 2014,
+        "pmid": "25066064",
+        "doi": "10.1016/j.jpeds.2014.06.052"
+      },
+      {
+        "title": "Habitual sleep variability, not sleep duration, is associated with abdominal obesity in adolescents-Penn State Child Cohort Study (PSCC)",
+        "first_author": "Liao",
+        "year": 2014,
+        "doi": "10.1111/jsr.12213"
+      },
+      {
+        "title": "Impact of conjoint trajectories of body mass index and marijuana use on short sleep duration",
+        "first_author": "Brook",
+        "year": 2014,
+        "pmid": "25187053",
+        "doi": "10.1111/j.1521-0391.2013.12093.x"
+      },
+      {
+        "title": "Differences in overweight and obesity among children from migrant and native Dutch origin: the role of physical activity, dietary intake, and sleep duration",
+        "first_author": "Labree",
+        "year": 2014,
+        "doi": "10.1111/obr.12150"
+      },
+      {
+        "title": "Short sleep duration and obesity among children in four developing countries from America, Asia and Africa: A cross-sectional analysis",
+        "first_author": "Carrillo-Larco",
+        "year": 2014,
+        "doi": "10.1111/obr.12150"
+      },
+      {
+        "title": "Do screen time and sleep duration associated with abdominal obesity among children?",
+        "first_author": "Woon",
+        "year": 2014,
+        "doi": "10.1111/obr.12150"
+      },
+      {
+        "title": "Contrasting relationships between sleep duration and central obesity in South Asians and White Europeans with Type 2 diabetes",
+        "first_author": "Tahrani",
+        "year": 2014,
+        "doi": "10.1111/dme.12378_1"
+      },
+      {
+        "title": "Sleep duration and body mass index and waist circumference among Us adults",
+        "first_author": "Ford",
+        "year": 2014,
+        "pmid": "23836704",
+        "doi": "10.1002/oby.20558"
+      },
+      {
+        "title": "An examination of comorbid asthma and obesity: Assessing differences in physical activity, sleep duration, health-related quality of life and parental distress",
+        "first_author": "Fedele",
+        "year": 2014,
+        "pmid": "24320738",
+        "doi": "10.3109/02770903.2013.873807"
+      },
+      {
+        "title": "Stochastic variability in stress, sleep duration, and sleep quality across the distribution of body mass index: insights from quantile regression.",
+        "first_author": "Yang",
+        "year": 2014,
+        "pmid": "23385490",
+        "doi": "10.1007/s12529-013-9293-2"
+      },
+      {
+        "title": "Sleep duration and plasma leptin concentrations in early pregnancy among lean and overweight/obese women: a cross sectional study.",
+        "first_author": "Qiu",
+        "year": 2014,
+        "pmid": "24405869",
+        "doi": "10.1186/1756-0500-7-20"
+      },
+      {
+        "title": "Short sleep duration and large variability in sleep duration are independently associated with dietary risk factors for obesity in Danish school children",
+        "first_author": "Kjeldsen",
+        "year": 2014,
+        "pmid": "23924757",
+        "doi": "10.1038/ijo.2013.147"
+      },
+      {
+        "title": "Unveiling the longitudinal association between short sleep duration and the incidence of obesity: The Penn State Cohort",
+        "first_author": "Vgontzas",
+        "year": 2014,
+        "pmid": "24100421",
+        "doi": "10.1038/ijo.2013.172"
+      },
+      {
+        "title": "Relationship between habitual sleep duration, obesity and depressive symptoms in patients with sleep apnoea",
+        "first_author": "Gylen",
+        "year": 2014,
+        "pmid": "25263835",
+        "doi": "10.1016/j.orcp.2013.11.004"
+      },
+      {
+        "title": "Sleep duration and total and cause-specific mortality in a large US cohort: Interrelationships with physical activity, sedentary behavior, and body mass index",
+        "first_author": "Xiao",
+        "year": 2014,
+        "pmid": "25281691",
+        "doi": "10.1093/aje/kwu222"
+      },
+      {
+        "title": "A large prospective investigation of sleep duration,weight change, and obesity in the NIH-AARP diet and health study cohort",
+        "first_author": "Xiao",
+        "year": 2013,
+        "pmid": "24049160",
+        "doi": "10.1093/aje/kwt180"
+      },
+      {
+        "title": "Short sleep duration is associated with a lower mean satiety quotient in overweight and obese men",
+        "first_author": "Mcneil",
+        "year": 2013,
+        "pmid": "24129360",
+        "doi": "10.1038/ejcn.2013.204"
+      },
+      {
+        "title": "Beyond sleep duration: Distinct sleep dimensions are associated with obesity in children and adolescents",
+        "first_author": "Jarrin",
+        "year": 2013,
+        "doi": "10.1016/j.sleep.2013.11.367"
+      },
+      {
+        "title": "Sleep duration and hypertension with special emphasis on sex and obesity",
+        "first_author": "Kawada",
+        "year": 2013,
+        "pmid": "25314720",
+        "doi": "10.1093/ajh/hpt128"
+      },
+      {
+        "title": "Response to \"Sleep duration and hypertension with special emphasis on gender and obesity\"",
+        "first_author": "Gangwisch",
+        "year": 2013,
+        "pmid": "25314721",
+        "doi": "10.1093/ajh/hpt157"
+      },
+      {
+        "title": "Sleep duration and physical function in severe obesity",
+        "first_author": "Ahern",
+        "year": 2013,
+        "doi": "10.1007/s11845-013-1005-z"
+      },
+      {
+        "title": "Short sleep duration combined with obstructive sleep apnea is associated with visceral obesity in Korean adults",
+        "first_author": "Kim",
+        "year": 2013,
+        "pmid": "23633755",
+        "doi": "10.5665/sleep.2636"
+      },
+      {
+        "title": "The association between short sleep and obesity after controlling for demographic, lifestyle, work and health related factors",
+        "first_author": "Di",
+        "year": 2013,
+        "pmid": "23419528",
+        "doi": "10.1016/j.sleep.2012.12.007"
+      },
+      {
+        "title": "Beyond sleep duration: Distinct sleep dimensions are associated with obesity in children and adolescents",
+        "first_author": "Jarrin",
+        "year": 2013,
+        "pmid": "23419602",
+        "doi": "10.1038/ijo.2013.4"
+      },
+      {
+        "title": "Optimal Sleep Duration in the Subarctic with Respect to Obesity Risk Is 8-9 Hours",
+        "first_author": "Johnsen",
+        "year": 2013,
+        "pmid": "23457611",
+        "doi": "10.1371/journal.pone.0056756"
+      },
+      {
+        "title": "Sleep duration and overweight among elementary schoolchildren: A population-based study in Japan",
+        "first_author": "Ochiai",
+        "year": 2012,
+        "pmid": "22525467"
+      },
+      {
+        "title": "Association of sleep duration with obesity among US high school students",
+        "first_author": "Lowry",
+        "year": 2012,
+        "doi": "10.1155/2012/476914"
+      },
+      {
+        "title": "Weekend catch-up sleep is associated with decreased risk of being overweight among fifth-grade students with short sleep duration",
+        "first_author": "Kim",
+        "year": 2012,
+        "pmid": "22494030",
+        "doi": "10.1111/j.1365-2869.2012.01013.x"
+      },
+      {
+        "title": "Both short and long sleep duration maybe associated with childhood obesity",
+        "first_author": "Li",
+        "year": 2012,
+        "doi": "10.1136/archdischild-2012-302724.0047"
+      },
+      {
+        "title": "Sleep duration and weight loss among overweight/obese women enrolled in a behavioral weight loss program",
+        "first_author": "O'Brien",
+        "year": 2012,
+        "doi": "10.1038/nutd.2012.17"
+      },
+      {
+        "title": "Association between weight gain, obesity, and sleep duration: A large-scale 3-year cohort study",
+        "first_author": "Kobayashi",
+        "year": 2012,
+        "pmid": "21892668",
+        "doi": "10.1007/s11325-011-0583-0"
+      },
+      {
+        "title": "The association between sleep duration and weight in treatment-seeking preschoolers with obesity",
+        "first_author": "Clifford",
+        "year": 2012,
+        "pmid": "22841032",
+        "doi": "10.1016/j.sleep.2012.06.019"
+      },
+      {
+        "title": "Sleep duration and central obesity in women - Differences between short sleepers and long sleepers",
+        "first_author": "Theorell-Haglöw",
+        "year": 2012,
+        "pmid": "22841029",
+        "doi": "10.1016/j.sleep.2012.06.013"
+      },
+      {
+        "title": "Gender differences in the associations between selfreported short sleep duration and obesity risk: The Tromsø study",
+        "first_author": "Johnsen",
+        "year": 2012,
+        "doi": "10.1111/j.1365-2869.2012.01044.x"
+      },
+      {
+        "title": "Sex differences in the association between sleep duration, diet and body mass index: A birth cohort study",
+        "first_author": "Tatone-Tokuda",
+        "year": 2012,
+        "pmid": "22151014",
+        "doi": "10.1111/j.1365-2869.2011.00989.x"
+      },
+      {
+        "title": "Is shortened sleep duration a risk factor for overweight and obesity during adolescence? A review of the empirical literature",
+        "first_author": "Guidolin",
+        "year": 2012,
+        "pmid": "22633283",
+        "doi": "10.1016/j.sleep.2012.03.016"
+      },
+      {
+        "title": "Prevalence of short sleep duration and its association with obesity among adolescents 15- to 19-year olds: A cross-sectional study from three major cities in Saudi Arabia",
+        "first_author": "Al-Hazzaa",
+        "year": 2012,
+        "doi": "10.4103/1817-1737.98845"
+      },
+      {
+        "title": "Wired at a Young Age: The Effect of Caffeine and Technology on Sleep Duration and Body Mass Index in School-Aged Children",
+        "first_author": "Calamaro",
+        "year": 2012,
+        "pmid": "22726712",
+        "doi": "10.1016/j.pedhc.2010.12.002"
+      },
+      {
+        "title": "Independent effects of sleep duration and Body Mass Index on the risk of a work-related injury: Evidence from the US national health interview survey (2004-2010)",
+        "first_author": "Lombardi",
+        "year": 2012,
+        "pmid": "22621351",
+        "doi": "10.3109/07420528.2012.675253"
+      },
+      {
+        "title": "Association between sleep duration and psychological health in overweight and obese children in Korea.",
+        "first_author": "Kim",
+        "year": 2012,
+        "pmid": "22462655"
+      },
+      {
+        "title": "A quantile regression approach to re-investigate the relationship between sleep duration and body mass index in Taiwan.",
+        "first_author": "Chen",
+        "year": 2012,
+        "pmid": "21327855",
+        "doi": "10.1007/s00038-011-0239-7"
+      },
+      {
+        "title": "Sleep duration and BMI in a sample of young adults",
+        "first_author": "Meyer",
+        "year": 2012,
+        "pmid": "22282051",
+        "doi": "10.1038/oby.2011.381"
+      },
+      {
+        "title": "Sleep duration and body mass index in twins: A gene-environment interaction",
+        "first_author": "Watson",
+        "year": 2012,
+        "pmid": "22547885",
+        "doi": "10.5665/sleep.1810"
+      },
+      {
+        "title": "Relation of sleep duration on obesity and metabolic syndrome in korean adolescents",
+        "first_author": "Lee",
+        "year": 2012,
+        "doi": "10.1159/000207438"
+      },
+      {
+        "title": "Association of employees' sleep duration and body mass index: Exploring potential mediating and confounding factors",
+        "first_author": "Jarczok",
+        "year": 2012,
+        "doi": "10.1097/PSY.0b013e3182583b27"
+      },
+      {
+        "title": "Short sleep and obesity in a large national cohort of Thai adults",
+        "first_author": "Yiengprugsawan",
+        "year": 2012,
+        "doi": "10.1136/bmjopen-2011-000561"
+      },
+      {
+        "title": "Relation between sleep duration and BMI varies by age and sex in youth age 8-19",
+        "first_author": "Storfer-Isser",
+        "year": 2012,
+        "pmid": "22434739",
+        "doi": "10.1111/j.2047-6310.2011.00008.x"
+      },
+      {
+        "title": "Association of short sleep duration with obesity, diabetes, fatty liver and behavioral factors in Japanese men",
+        "first_author": "Hsieh",
+        "year": 2011,
+        "pmid": "22041348",
+        "doi": "10.2169/internalmedicine.50.5844"
+      },
+      {
+        "title": "Shortened sleep duration is associated with increased BMI and decreased physical activity",
+        "first_author": "Hart",
+        "year": 2011,
+        "doi": "10.1038/oby.2011.226"
+      },
+      {
+        "title": "Longitudinal association of sleep duration with incident obesity in primary schoolchildren",
+        "first_author": "Kim",
+        "year": 2011,
+        "doi": "10.1038/oby.2011.226"
+      },
+      {
+        "title": "Short sleep duration is associated with increased obesity markers in European adolescents: Effect of physical activity and dietary habits. the HELENA study",
+        "first_author": "Garaulet",
+        "year": 2011,
+        "pmid": "21792170",
+        "doi": "10.1038/ijo.2011.149"
+      },
+      {
+        "title": "Association of short sleep duration and body mass index in teen adolescents",
+        "first_author": "Casturi",
+        "year": 2011,
+        "doi": "10.1378/chest.1119939"
+      },
+      {
+        "title": "Relationship between sleep duration, diet and BMI in 4- to 14-year-old Danish children",
+        "first_author": "Hoppe",
+        "year": 2011,
+        "doi": "10.1159/000334393"
+      },
+      {
+        "title": "Short sleep duration is independently associated with overweight and obesity in Quebec children",
+        "first_author": "Chaput",
+        "year": 2011,
+        "pmid": "22032104"
+      },
+      {
+        "title": "Associations of sleep duration with obesity and serum lipid profile in children and adolescents",
+        "first_author": "Kong",
+        "year": 2011,
+        "pmid": "21689984",
+        "doi": "10.1016/j.sleep.2010.12.015"
+      },
+      {
+        "title": "Screen viewing, body mass index, cigarette smoking and sleep duration in Belgrade university student population: Results of an observational, cross-sectional study",
+        "first_author": "Pantic",
+        "year": 2011,
+        "pmid": "22051827",
+        "doi": "10.4067/S0034-98872011000700010"
+      },
+      {
+        "title": "Determination of relationship between obesity, sleep duration and neck circumferences",
+        "first_author": "Saka",
+        "year": 2011,
+        "doi": "10.1111/j.1467-789X.2011.00889.x"
+      },
+      {
+        "title": "Association of onset of obesity with sleep duration and shift work among Japanese adults",
+        "first_author": "Itani",
+        "year": 2011,
+        "pmid": "21377926",
+        "doi": "10.1016/j.sleep.2010.09.007"
+      },
+      {
+        "title": "Sleep duration modifies the heritability of body mass index",
+        "first_author": "Watson",
+        "year": 2011,
+        "doi": "10.231/JIM.0b013e3182152a03"
+      },
+      {
+        "title": "Shortened sleep duration does not predict obesity in adolescents",
+        "first_author": "Calamaro",
+        "year": 2010,
+        "pmid": "20545836",
+        "doi": "10.1111/j.1365-2869.2010.00840.x"
+      },
+      {
+        "title": "A 4-year study of the association between short sleep duration and change in body mass index in Japanese male workers",
+        "first_author": "Nishiura",
+        "year": 2010,
+        "pmid": "20699599",
+        "doi": "10.2188/jea.JE20100019"
+      },
+      {
+        "title": "Sao Paulo epidemiological study: Correlation between body mass index, sleep duration and sleep quality",
+        "first_author": "Moraes",
+        "year": 2010,
+        "doi": "10.1111/j.1365-2869.2010.00868.x"
+      },
+      {
+        "title": "Self-reported sleep duration, obesity, mood and gender in patients with sleep-disordered breathing",
+        "first_author": "Saaresranta",
+        "year": 2010,
+        "doi": "10.1111/j.1365-2869.2010.00868.x"
+      },
+      {
+        "title": "Sleep duration and body mass index in university students",
+        "first_author": "Lopes",
+        "year": 2010,
+        "doi": "10.1111/j.1365-2869.2010.00868.x"
+      },
+      {
+        "title": "Association between sleep duration and obesity-related anthropometric indexes in healthy prepubertal children",
+        "first_author": "Galcheva",
+        "year": 2010,
+        "doi": "10.1159/000321348"
+      },
+      {
+        "title": "Association between short sleep duration and obesity, dietary intake and physical activity: The Indian Migration Study",
+        "first_author": "Kinra",
+        "year": 2010,
+        "doi": "10.1111/j.1467-789X.2010.00763-7.x"
+      },
+      {
+        "title": "No association between sleep duration and BMI among university students",
+        "first_author": "Schuna",
+        "year": 2010,
+        "doi": "10.1111/j.1467-789X.2010.00763-7.x"
+      },
+      {
+        "title": "Can the relation between short sleep duration and obesity be observed in early childhood?",
+        "first_author": "Klingenberg",
+        "year": 2010,
+        "doi": "10.1111/j.1467-789X.2010.00763-7.x"
+      },
+      {
+        "title": "Treatment of obesity with extension of sleep duration: A randomized, prospective, controlled trial",
+        "first_author": "Cizza",
+        "year": 2010,
+        "pmid": "20423926",
+        "doi": "10.1177/1740774510368298"
+      },
+      {
+        "title": "Dietary patterns only partially explain the effect of short sleep duration on the incidence of obesity",
+        "first_author": "Nishiura",
+        "year": 2010,
+        "pmid": "20550015",
+        "doi": "10.1093/sleep/33.6.753"
+      },
+      {
+        "title": "The relationship between school day sleep duration and body mass index in Norwegian children (aged 1012)",
+        "first_author": "Danielsen",
+        "year": 2010,
+        "pmid": "20233160",
+        "doi": "10.3109/17477160903473739"
+      },
+      {
+        "title": "Associations between short sleep duration and central obesity in women",
+        "first_author": "Theorell-Haglöw",
+        "year": 2010,
+        "pmid": "20469801",
+        "doi": "10.1093/sleep/33.5.593"
+      },
+      {
+        "title": "Sleep duration and obesity in a population-based study",
+        "first_author": "Anic",
+        "year": 2010,
+        "pmid": "20363668",
+        "doi": "10.1016/j.sleep.2009.11.013"
+      },
+      {
+        "title": "A twin study of sleep duration and body mass index",
+        "first_author": "Watson",
+        "year": 2010,
+        "pmid": "20191932",
+        "doi": "10.5664/jcsm.27704"
+      },
+      {
+        "title": "Association of short sleep duration with weight gain and obesity at 1-year follow-up: A large-scale prospective study",
+        "first_author": "Watanabe",
+        "year": 2010,
+        "pmid": "20175399",
+        "doi": "10.1093/sleep/33.2.161"
+      },
+      {
+        "title": "Shortened nighttime sleep duration in early life and subsequent childhood obesity",
+        "first_author": "Bell",
+        "year": 2010,
+        "pmid": "20819966",
+        "doi": "10.1001/archpediatrics.2010.143"
+      },
+      {
+        "title": "A 4-year study of the association between short sleep duration and change in body mass index in Japanese male workers",
+        "first_author": "Nishiura",
+        "year": 2010,
+        "pmid": "20699599"
+      },
+      {
+        "title": "Relationships of sleep duration with sleep disturbances, basic socio-demographic factors, and BMI in Chinese people",
+        "first_author": "Xiang",
+        "year": 2009,
+        "pmid": "19442580",
+        "doi": "10.1016/j.sleep.2009.03.002"
+      },
+      {
+        "title": "The association of sleep duration and type 2 diabetes in Korean male adults with abdominal obesity: The Korean National Health and Nutrition Examination Survey 2005",
+        "first_author": "Kim",
+        "year": 2009,
+        "pmid": "19631400",
+        "doi": "10.1016/j.diabres.2009.06.027"
+      },
+      {
+        "title": "Sleep duration and obesity in children: Is the association dependent on age and choice of the outcome parameter?",
+        "first_author": "Bayer",
+        "year": 2009,
+        "pmid": "19750923",
+        "doi": "10.1093/sleep/32.9.1183"
+      },
+      {
+        "title": "The association between sleep duration and general and abdominal obesity in Koreans: Data from the Korean national health and nutrition examination survey, 2001 and 2005",
+        "first_author": "Park",
+        "year": 2009,
+        "pmid": "19180067",
+        "doi": "10.1038/oby.2008.586"
+      },
+      {
+        "title": "The association between sleep duration and obesity in older adults",
+        "first_author": "Patel",
+        "year": 2008,
+        "pmid": "18936766",
+        "doi": "10.1038/ijo.2008.198"
+      },
+      {
+        "title": "Short sleep duration and obesity: The role of emotional stress and sleep disturbances",
+        "first_author": "Vgontzas",
+        "year": 2008,
+        "pmid": "18253159",
+        "doi": "10.1038/ijo.2008.4"
+      },
+      {
+        "title": "Meta-analysis of short sleep duration and obesity in children and adults",
+        "first_author": "Cappuccio",
+        "year": 2008,
+        "pmid": "18517032",
+        "doi": "10.1093/sleep/31.5.619"
+      },
+      {
+        "title": "Short sleep duration in infancy and risk of childhood overweight",
+        "first_author": "Taveras",
+        "year": 2008,
+        "pmid": "18391138",
+        "doi": "10.1001/archpedi.162.4.305"
+      },
+      {
+        "title": "Sleep duration, general and abdominal obesity, and weight change among the older adult population of Spain",
+        "first_author": "López-García",
+        "year": 2008,
+        "pmid": "18258619",
+        "doi": "10.1093/ajcn/87.2.310"
+      },
+      {
+        "title": "Short sleep times predict obesity in internal medicine clinic patients",
+        "first_author": "Buscemi",
+        "year": 2007,
+        "pmid": "18198800",
+        "doi": "10.5664/jcsm.27023"
+      },
+      {
+        "title": "Shorter sleep duration is associated with increased risk for being overweight at ages 9 to 12 years",
+        "first_author": "Lumeng",
+        "year": 2007,
+        "pmid": "17974739",
+        "doi": "10.1542/peds.2006-3295"
+      },
+      {
+        "title": "Is overweight/obesity associated with short sleep duration in older women?",
+        "first_author": "Chaput",
+        "year": 2007,
+        "pmid": "17726359",
+        "doi": "10.1007/BF03324704"
+      },
+      {
+        "title": "Sleep duration and overweight in adolescents: Self-reported sleep hours versus time diaries",
+        "first_author": "Knutson",
+        "year": 2007,
+        "pmid": "17473079",
+        "doi": "10.1542/peds.2006-2597"
+      },
+      {
+        "title": "The association between sleep duration, body mass index and metabolic measures in the Hordaland Health Study",
+        "first_author": "Bjorvatn",
+        "year": 2007,
+        "pmid": "17309765",
+        "doi": "10.1111/j.1365-2869.2007.00569.x"
+      },
+      {
+        "title": "Sleep duration and body mass index in a rural population",
+        "first_author": "Kohatsu",
+        "year": 2006,
+        "pmid": "16983047",
+        "doi": "10.1001/archinte.166.16.1701"
+      },
+      {
+        "title": "Sleep duration and overweight among Australian children and adolescents",
+        "first_author": "Eisenmann",
+        "year": 2006,
+        "pmid": "16882569",
+        "doi": "10.1080/08035250600731965"
+      },
+      {
+        "title": "The association between obesity and short sleep duration: a population-based study.",
+        "first_author": "Singh",
+        "year": 2005,
+        "pmid": "17564401"
+      },
+      {
+        "title": "Time spent watching television, sleep duration and obesity in adults living in Valencia, Spain",
+        "first_author": "Vioque",
+        "year": 2000,
+        "pmid": "11126224",
+        "doi": "10.1038/sj.ijo.0801434"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

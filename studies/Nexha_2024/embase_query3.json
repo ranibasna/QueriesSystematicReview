@@ -1,0 +1,201 @@
+{
+  "f7b73b3a48612629fb9ec91ae2a196d53f28c74e49c478730984ce3cdaced129": {
+    "query": "(('premenstrual syndrome'/mj OR 'premenstrual dysphoric disorder'/mj OR 'premenstrual syndrome':ti OR 'premenstrual dysphoric disorder':ti OR pms:ti OR pmdd:ti) AND ('circadian rhythm'/mj OR 'melatonin'/mj OR 'biological rhythm':ti OR 'biological rhythms':ti OR 'circadian rhythm':ti OR 'circadian rhythms':ti OR chronobiolog*:ti OR melatonin:ti OR 'sleep quality':ti OR polysomnograph*:ti OR 'body temperature':ti)) AND (cross-sectional:ti,ab OR longitudinal:ti,ab OR prospective:ti,ab OR observational:ti,ab OR 'clinical trial':ti,ab OR trial:ti,ab)",
+    "provider": "embase_manual",
+    "results_count": 20,
+    "retrieved_dois": [
+      "10.1007/s00404-020-05628-w",
+      "10.1007/s00737-022-01220-0",
+      "10.1016/0165-1781(96)02905-8",
+      "10.1016/S0006-3223(00)00876-3",
+      "10.1038/s41598-025-23040-9",
+      "10.1038/s41598-025-90581-4",
+      "10.1089/jwh.2014.Ab01.abstracts",
+      "10.1093/sleep/zsab072.735",
+      "10.1093/sleep/zsab171",
+      "10.1111/bdi.12189",
+      "10.1111/bdi.12939",
+      "10.1111/jne.13043",
+      "10.1111/jog.15585",
+      "10.1111/ppc.12628",
+      "10.1177/27683605251392784",
+      "10.1186/s12888-025-07126-2",
+      "10.1186/s12905-024-03395-3",
+      "10.3390/healthcare13222862",
+      "10.38212/2224-6614.3565",
+      "10.5455/njppp.2023.13.08404202318092023"
+    ],
+    "retrieved_pmids": [
+      "11074230",
+      "32514756",
+      "32984973",
+      "34240212",
+      "35226173",
+      "39375682",
+      "39979390",
+      "41184955",
+      "41198846",
+      "41213572",
+      "41525193",
+      "8771612",
+      "9104689"
+    ],
+    "pmids": [
+      "11074230",
+      "32514756",
+      "32984973",
+      "34240212",
+      "35226173",
+      "39375682",
+      "39979390",
+      "41184955",
+      "41198846",
+      "41213572",
+      "41525193",
+      "8771612",
+      "9104689"
+    ],
+    "records": [
+      {
+        "title": "The Effect of Footbath on Premenstrual Syndrome, Sleep Quality, and Quality of Life in University Students with Premenstrual Syndrome: A Randomized Controlled Trial",
+        "first_author": "Yücesoy",
+        "year": 2026,
+        "pmid": "41213572",
+        "doi": "10.1177/27683605251392784"
+      },
+      {
+        "title": "Effects of sleep quality on the default mode network and on anxiety-depression symptoms in premenstrual syndrome",
+        "first_author": "Qin",
+        "year": 2025,
+        "pmid": "41184955",
+        "doi": "10.1186/s12888-025-07126-2"
+      },
+      {
+        "title": "The relationship between premenstrual syndrome and circadian rhythm, depressive mood, and anxiety",
+        "first_author": "Yamak",
+        "year": 2025,
+        "pmid": "41198846",
+        "doi": "10.1038/s41598-025-23040-9"
+      },
+      {
+        "title": "The Relationship Between Premenstrual Dysphoric Symptoms, Perceived Stress, and Sleep Quality Among Nursing Students: A Cross-Sectional Study",
+        "first_author": "Innab",
+        "year": 2025,
+        "doi": "10.3390/healthcare13222862"
+      },
+      {
+        "title": "Association between sleep quality and premenstrual syndrome in young women in a cross-sectional study",
+        "first_author": "Mighani",
+        "year": 2025,
+        "pmid": "39979390",
+        "doi": "10.1038/s41598-025-90581-4"
+      },
+      {
+        "title": "Effects of chamomile and L-theanine beverage on menstrual pain, menstrual symptoms, mood, and sleep quality in young women experiencing primary dysmenorrhea: A randomized, double-blind, placebo-controlled study",
+        "first_author": "Soh",
+        "year": 2025,
+        "pmid": "41525193",
+        "doi": "10.38212/2224-6614.3565"
+      },
+      {
+        "title": "Biological rhythms in premenstrual syndrome and premenstrual dysphoric disorder: a systematic review",
+        "first_author": "Nexha",
+        "year": 2024,
+        "pmid": "39375682",
+        "doi": "10.1186/s12905-024-03395-3"
+      },
+      {
+        "title": "Assessment of relationship between premenstrual syndrome symptoms with sleep quality and menstrual attitudes in medical students: A cross-sectional study",
+        "first_author": "Ramamoorthy",
+        "year": 2024,
+        "doi": "10.5455/njppp.2023.13.08404202318092023"
+      },
+      {
+        "title": "Relationship between sleep quality and severity of premenstrual syndrome in adolescents",
+        "first_author": "Firdaus",
+        "year": 2023,
+        "doi": "10.1111/jog.15585"
+      },
+      {
+        "title": "Investigating biological rhythms disruptions across the menstrual cycle in women with comorbid bipolar disorder and premenstrual dysphoric disorder",
+        "first_author": "El",
+        "year": 2022,
+        "pmid": "35226173",
+        "doi": "10.1007/s00737-022-01220-0"
+      },
+      {
+        "title": "Relationship between premenstrual syndrome and sleep quality among nursing and medical students",
+        "first_author": "Erbil",
+        "year": 2022,
+        "pmid": "32984973",
+        "doi": "10.1111/ppc.12628"
+      },
+      {
+        "title": "Effects of exogenous melatonin on sleep and circadian rhythms in women with premenstrual dysphoric disorder",
+        "first_author": "Moderie",
+        "year": 2021,
+        "pmid": "34240212",
+        "doi": "10.1093/sleep/zsab171"
+      },
+      {
+        "title": "Steroid stress hormone changes throughout the menstrual cycle: A rise in evening aldosterone concentration in early luteal phase precedes the symptoms of premenstrual syndrome",
+        "first_author": "Izakova",
+        "year": 2021,
+        "doi": "10.1111/jne.13043"
+      },
+      {
+        "title": "Effects of exogenous melatonin on sleep, circadian rhythms, and mood in women with premenstrual dysphoric disorder",
+        "first_author": "Moderie",
+        "year": 2021,
+        "doi": "10.1093/sleep/zsab072.735"
+      },
+      {
+        "title": "Effect of zinc supplementation on quality of life and sleep quality in young women with premenstrual syndrome: a randomized, double-blind, placebo-controlled trial",
+        "first_author": "Jafari",
+        "year": 2020,
+        "pmid": "32514756",
+        "doi": "10.1007/s00404-020-05628-w"
+      },
+      {
+        "title": "Biological rhythms disruption in comorbid bipolar disorder and premenstrual dysphoric disorder",
+        "first_author": "Caropreso",
+        "year": 2020,
+        "doi": "10.1111/bdi.12939"
+      },
+      {
+        "title": "Circadian rhythm disruption in women with bipoloar and premenstrual dysphoric disorder during remission: Preliminary results",
+        "first_author": "Syan",
+        "year": 2014,
+        "doi": "10.1089/jwh.2014.Ab01.abstracts"
+      },
+      {
+        "title": "Circadian rhythm disruption in women with bipolar and premenstrual dysphoric disorder during remission: Preliminary results",
+        "first_author": "Syan",
+        "year": 2014,
+        "doi": "10.1111/bdi.12189"
+      },
+      {
+        "title": "Cortisol circadian rhythms during the menstrual cycle and with sleep deprivation in premenstrual dysphoric disorder and normal control subjects",
+        "first_author": "Parry",
+        "year": 2000,
+        "pmid": "11074230",
+        "doi": "10.1016/S0006-3223(00)00876-3"
+      },
+      {
+        "title": "Temperature circadian rhythms during the menstrual cycle and sleep deprivation in premenstrual dysphoric disorder and normal comparison subjects.",
+        "first_author": "Parry",
+        "year": 1997,
+        "pmid": "9104689"
+      },
+      {
+        "title": "Circadian rhythms of prolactin and thyroid-stimulating hormone during the menstrual cycle and early versus late sleep deprivation in premenstrual dysphoric disorder",
+        "first_author": "Parry",
+        "year": 1996,
+        "pmid": "8771612",
+        "doi": "10.1016/0165-1781(96)02905-8"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

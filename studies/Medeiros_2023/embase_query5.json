@@ -1,0 +1,159 @@
+{
+  "06a488302dff8d6e36f0a1637ba8f71c8ac6a46d1d9d404371bc6469b114925e": {
+    "query": "((('child'/exp OR 'adolescent'/exp OR child*:ti,ab OR adolescen*:ti,ab OR teen*:ti,ab OR teenager*:ti,ab OR youth:ti,ab OR preschool*:ti,ab) AND (((sleep ADJ2 duration):ti,ab OR (sleep ADJ2 time):ti,ab OR (sleep ADJ2 quality):ti,ab OR (('short sleep' ADJ2 duration):ti,ab) OR (('long sleep' ADJ2 duration):ti,ab) OR (sleep ADJ2 disturbance):ti,ab OR (sleep ADJ2 restriction):ti,ab)) AND ('c-reactive protein':ti,ab OR crp:ti,ab OR 'interleukin 6':ti,ab OR 'il-6':ti,ab OR adiponectin:ti,ab OR 'tnf alpha':ti,ab OR 'tnf-alpha':ti,ab OR 'tumor necrosis factor alpha':ti,ab)))",
+    "provider": "embase_manual",
+    "results_count": 16,
+    "retrieved_dois": [
+      "10.1001/jamapsychiatry.2024.0796",
+      "10.1007/s10865-016-9742-x",
+      "10.1007/s40675-015-0025-9",
+      "10.1016/j.bbi.2016.12.026",
+      "10.1016/j.envres.2014.07.026",
+      "10.1016/j.jadohealth.2023.05.018",
+      "10.1016/j.pmedr.2023.102327",
+      "10.1016/j.sleep.2014.10.005",
+      "10.1093/sleep/zsx156",
+      "10.1097/PSY.0000000000000343",
+      "10.1111/bjd.21028",
+      "10.1111/jsr.12446",
+      "10.1161/01.CIR.0000161819.76138.5E",
+      "10.1177/00099228251348266",
+      "10.51470/bca.2022.22.2.4213",
+      "10.5664/jcsm.10678"
+    ],
+    "retrieved_pmids": [
+      "15837952",
+      "25173056",
+      "25468623",
+      "27098168",
+      "28041986",
+      "29155987",
+      "37323001",
+      "37395694",
+      "38717746",
+      "40528786"
+    ],
+    "pmids": [
+      "15837952",
+      "25173056",
+      "25468623",
+      "27098168",
+      "28041986",
+      "29155987",
+      "37323001",
+      "37395694",
+      "38717746",
+      "40528786"
+    ],
+    "records": [
+      {
+        "title": "Associations Between Sleep Quality and Asthma Control, Pulmonary Inflammation, Asthma Severity, Exercise Capacity, and Quality of Life in Children With Asthma: A Cross-sectional Study",
+        "first_author": "Leite",
+        "year": 2025,
+        "pmid": "40528786",
+        "doi": "10.1177/00099228251348266"
+      },
+      {
+        "title": "Role of Inflammation in Short Sleep Duration Across Childhood and Psychosis in Young Adulthood",
+        "first_author": "Morales-Muñoz",
+        "year": 2024,
+        "pmid": "38717746",
+        "doi": "10.1001/jamapsychiatry.2024.0796"
+      },
+      {
+        "title": "The Impact of Longitudinal Patterns of Adolescent Sleep Duration on Adult C-Reactive Protein (CRP), Waist-To-Height Ratio, and Body Mass Index (BMI) Among Black and White Individuals",
+        "first_author": "Stager",
+        "year": 2023,
+        "pmid": "37395694",
+        "doi": "10.1016/j.jadohealth.2023.05.018"
+      },
+      {
+        "title": "Are sleep time and quality associated with inflammation in children and adolescents? A systematic review",
+        "first_author": "Medeiros-Oliveira",
+        "year": 2023,
+        "doi": "10.1016/j.pmedr.2023.102327"
+      },
+      {
+        "title": "Sleep disturbance, but not depression severity, is associated with inflammation in children and adolescents",
+        "first_author": "Strumberger",
+        "year": 2023,
+        "pmid": "37323001",
+        "doi": "10.5664/jcsm.10678"
+      },
+      {
+        "title": "Elevated C-reactive protein levels in patients with atopic dermatitis who have sleep disturbance are associated with the development of cardiovascular comorbidities and increased mortality: a multicentre cohort study",
+        "first_author": "Parthasarathy",
+        "year": 2022,
+        "doi": "10.1111/bjd.21028"
+      },
+      {
+        "title": "SLEEP DURATION AND LEVEL OF SALIVARY C-REACTIVE PROTEIN IN ADOLESCENT STUDENTS STUDYING IN DIFFERENT SCHOOL START TIMING",
+        "first_author": "Chandrakar",
+        "year": 2022,
+        "doi": "10.51470/bca.2022.22.2.4213"
+      },
+      {
+        "title": "Sleep duration trajectories and systemic inflammation in young adults: Results from the national longitudinal study of adolescent to adult health (add health)",
+        "first_author": "Bakour",
+        "year": 2017,
+        "pmid": "29155987",
+        "doi": "10.1093/sleep/zsx156"
+      },
+      {
+        "title": "Insomnia symptoms with objective short sleep duration are associated with systemic inflammation in adolescents",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2017,
+        "pmid": "28041986",
+        "doi": "10.1016/j.bbi.2016.12.026"
+      },
+      {
+        "title": "Insomnia is associated with increased C-reactive protein levels in adolescents: Role of objective short sleep duration",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Linking childhood abuse and hypertension: sleep disturbance and inflammation as mediators",
+        "first_author": "Petrov",
+        "year": 2016,
+        "pmid": "27098168",
+        "doi": "10.1007/s10865-016-9742-x"
+      },
+      {
+        "title": "Short nocturnal sleep duration and fatigue moderate the relationship between daytime napping and inflammation in black and white men",
+        "first_author": "Jakubowski",
+        "year": 2016,
+        "doi": "10.1097/PSY.0000000000000343"
+      },
+      {
+        "title": "The Association Between Sleep Duration and Leptin, Ghrelin, and Adiponectin Among Children and Adolescents",
+        "first_author": "Hagen",
+        "year": 2015,
+        "doi": "10.1007/s40675-015-0025-9"
+      },
+      {
+        "title": "Sleep duration during the school week is associated with C-reactive protein risk groups in healthy adolescents",
+        "first_author": "Hall",
+        "year": 2015,
+        "pmid": "25468623",
+        "doi": "10.1016/j.sleep.2014.10.005"
+      },
+      {
+        "title": "Low-level mercury in children: Associations with sleep duration and cytokines TNF-α and IL-6",
+        "first_author": "Gump",
+        "year": 2014,
+        "pmid": "25173056",
+        "doi": "10.1016/j.envres.2014.07.026"
+      },
+      {
+        "title": "Variation of C-reactive protein levels in adolescents: Association with sleep-disordered breathing and sleep duration",
+        "first_author": "Larkin",
+        "year": 2005,
+        "pmid": "15837952",
+        "doi": "10.1161/01.CIR.0000161819.76138.5E"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

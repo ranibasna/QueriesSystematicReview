@@ -1,0 +1,13 @@
+{
+  "ef1d83bec1dd4dc749f5040cca1de292ed3e8f0fe107ee665c73f0d0eea9723b": {
+    "query": "('generalized epilepsy'/exp OR 'genetic generalized epilepsy':ti,ab OR 'genetic generalised epilepsy':ti,ab OR 'idiopathic generalized epilepsy':ti,ab OR 'idiopathic generalised epilepsy':ti,ab OR 'juvenile myoclonic epilepsy':ti,ab OR 'childhood absence epilepsy':ti,ab OR 'juvenile absence epilepsy':ti,ab) AND ((sleep ADJ3 (quality OR architecture OR macrostructure OR microstructure OR questionnair* OR disorder*)):ti,ab) AND (cohort:ti,ab OR 'cross-sectional':ti,ab OR observational:ti,ab)",
+    "provider": "embase_manual",
+    "results_count": 0,
+    "retrieved_dois": [],
+    "retrieved_pmids": [],
+    "pmids": [],
+    "records": [],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

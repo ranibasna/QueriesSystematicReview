@@ -1,0 +1,17 @@
+# Q1: High-recall
+TITLE-ABS-KEY((("white noise" OR "pink noise" OR "broadband noise" OR "broad band noise" OR "masking noise" OR "acoustic noise" OR "continuous noise" OR "continuous broadband acoustic noise" OR "noise machine*" OR "sound machine*" OR "sleep sound*" OR "natural sound*" OR "nature sound*" OR "ocean wave*" OR rainfall OR waterfall* OR "flowing water" OR "water sound*" OR "broadband acoustic noise" OR (noise W/3 (white OR pink OR broadband OR acoustic OR masking OR continuous OR machine* OR sound*))) AND (sleep OR "sleep onset" OR "sleep onset latency" OR "sleep latency" OR "sleep continuity" OR "sleep quality" OR "sleep efficiency" OR "total sleep time" OR "wakefulness after sleep onset" OR WASO OR wakefulness OR awakening* OR arousal* OR "sleep fragmentation" OR "sleep architecture" OR "sleep maintenance"))) AND PUBYEAR < 2020
+
+# Q2: Balanced
+TITLE-ABS-KEY((("white noise" OR "pink noise" OR "broadband noise" OR "masking noise" OR "acoustic noise" OR "continuous noise" OR "noise machine*" OR "sound machine*" OR "natural sound*" OR "broadband acoustic noise") AND ("sleep onset latency" OR "sleep latency" OR "sleep continuity" OR "sleep quality" OR "sleep efficiency" OR "total sleep time" OR "wakefulness after sleep onset" OR WASO OR wakefulness OR awakening* OR arousal* OR "sleep fragmentation" OR "sleep architecture" OR sleep))) AND DOCTYPE(ar OR cp) AND PUBYEAR < 2020
+
+# Q3: High-precision
+TITLE("white noise" OR "pink noise" OR "broadband noise" OR "masking noise" OR "noise machine" OR "sound machine" OR "acoustic noise" OR "continuous noise") AND TITLE("sleep latency" OR "sleep quality" OR "sleep efficiency" OR "sleep fragmentation" OR "sleep continuity" OR wakefulness OR sleep) AND DOCTYPE(ar OR cp) AND PUBYEAR < 2020
+
+# Q4: Balanced + scope_only
+TITLE("white noise" OR "pink noise" OR "broadband noise" OR "masking noise" OR "noise machine" OR "sound machine" OR "acoustic noise" OR "continuous noise") AND TITLE(sleep OR "sleep latency" OR "sleep quality" OR "sleep efficiency" OR "sleep fragmentation" OR "sleep continuity" OR wakefulness) AND PUBYEAR < 2020
+
+# Q5: Balanced + scope_plus_filter
+TITLE("white noise" OR "pink noise" OR "broadband noise" OR "masking noise" OR "noise machine" OR "sound machine" OR "acoustic noise" OR "continuous noise") AND TITLE-ABS-KEY("sleep onset latency" OR "sleep latency" OR "sleep quality" OR "sleep efficiency" OR "wakefulness after sleep onset" OR WASO OR "sleep continuity" OR "sleep fragmentation" OR wakefulness OR sleep) AND DOCTYPE(ar OR cp) AND PUBYEAR < 2020
+
+# Q6: Balanced + proximity_or_scope_fallback
+TITLE-ABS-KEY((("white noise" OR "pink noise" OR "broadband noise" OR "masking noise" OR "noise machine*" OR "sound machine*" OR "acoustic noise" OR "continuous noise") W/5 (sleep OR latency OR quality OR efficiency OR wakefulness OR awakening* OR arousal* OR fragmentation OR continuity))) AND DOCTYPE(ar OR cp) AND PUBYEAR < 2020

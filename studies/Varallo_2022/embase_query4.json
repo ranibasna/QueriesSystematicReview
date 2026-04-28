@@ -1,0 +1,13 @@
+{
+  "f32cf9b753ebcf1bd41fb4d25d2ac6d748f0dc00f92d77232c9335f977de3de8": {
+    "query": "((sleep disturbance*:ti OR sleep disorder*:ti OR insomnia:ti OR 'sleep apnea':ti OR 'obstructive sleep apnea':ti OR 'sleep quality':ti) AND ('postoperative pain':ti OR 'postsurgical pain':ti OR 'persistent postoperative pain':ti OR 'chronic postsurgical pain':ti OR cpsp:ti) AND (preoperat*:ti,ab OR presurg*:ti,ab OR perioperat*:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 0,
+    "retrieved_dois": [],
+    "retrieved_pmids": [],
+    "pmids": [],
+    "records": [],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

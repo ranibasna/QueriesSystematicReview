@@ -1,0 +1,17 @@
+# Q1: High-recall
+TS=((("sleep bruxism" OR "sleep-related bruxism" OR "sleep related bruxism" OR bruxism OR "rhythmic masticatory muscle activity" OR RMMA OR "masticatory muscle activity" OR MMA OR "oromotor activity" OR "oral motor activity" OR OMA OR "sleep-related oromotor activity" OR "sleep related oromotor activity") AND (electromyograph* OR EMG OR "portable electromyography" OR "portable electromyographic" OR "portable EMG" OR "ambulatory electromyography" OR "ambulatory electromyographic" OR "portable device" OR "portable devices") AND (polysomnograph* OR PSG OR "audio-video" OR "audio video")))
+
+# Q2: Balanced
+TS=((("sleep bruxism" OR "sleep-related bruxism" OR "sleep related bruxism" OR bruxism OR "rhythmic masticatory muscle activity" OR RMMA OR "masticatory muscle activity" OR MMA OR "oromotor activity" OR "oral motor activity" OR OMA OR "sleep-related oromotor activity" OR "sleep related oromotor activity") AND (electromyograph* OR EMG OR "portable electromyography" OR "portable electromyographic" OR "portable EMG" OR "ambulatory electromyography" OR "ambulatory electromyographic" OR "portable device" OR "portable devices") AND (polysomnograph* OR PSG) AND (diagnos* OR valid* OR accuracy OR "diagnostic yield" OR sensitivity OR specificity OR compar* OR agreement OR "reference standard" OR "gold standard" OR "intraclass correlation" OR kappa)))
+
+# Q3: High-precision
+TI=("sleep bruxism" OR "sleep-related bruxism" OR "sleep related bruxism" OR "rhythmic masticatory muscle activity" OR RMMA OR "sleep-related oromotor activity" OR "sleep related oromotor activity") AND TS=(electromyograph* OR EMG OR "portable electromyography" OR "portable electromyographic" OR "portable EMG" OR "portable device" OR "portable devices") AND TS=(polysomnograph* OR PSG) AND TS=(diagnos* OR valid* OR accuracy OR "diagnostic yield" OR sensitivity OR specificity OR compar* OR agreement OR "reference standard" OR "gold standard")
+
+# Q4: Balanced + scope_only
+TI=("sleep bruxism" OR "sleep-related bruxism" OR "sleep related bruxism" OR "rhythmic masticatory muscle activity" OR RMMA OR "sleep-related oromotor activity" OR "sleep related oromotor activity") AND TI=(electromyograph* OR "portable electromyography" OR "portable electromyographic" OR "portable EMG") AND TS=(polysomnograph* OR PSG) AND TS=(diagnos* OR valid* OR accuracy OR "diagnostic yield" OR sensitivity OR specificity OR compar* OR agreement)
+
+# Q5: Balanced + proximity_or_scope_fallback
+TS=(((("sleep bruxism" OR "sleep-related bruxism" OR "sleep related bruxism" OR "rhythmic masticatory muscle activity" OR RMMA OR "sleep-related oromotor activity" OR "sleep related oromotor activity") NEAR/5 (electromyograph* OR "portable electromyography" OR "portable electromyographic" OR "portable EMG" OR "portable device" OR "portable devices")) AND (polysomnograph* OR PSG) AND (diagnos* OR valid* OR "diagnostic yield" OR sensitivity OR specificity OR agreement OR "reference standard" OR "gold standard")))
+
+# Q6: Balanced + design_plus_scope
+TI=("sleep bruxism" OR "sleep-related bruxism" OR "sleep related bruxism") AND TS=(electromyograph* OR EMG OR "portable electromyography" OR "portable electromyographic" OR "portable EMG" OR "portable device" OR "portable devices") AND TS=(polysomnograph* OR PSG) AND TS=(diagnos* OR valid* OR accuracy OR "diagnostic yield" OR sensitivity OR specificity OR compar* OR agreement OR "reference standard" OR "gold standard") AND TS=(observational OR nonrandomized OR non-randomized)

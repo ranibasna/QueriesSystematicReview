@@ -1,0 +1,425 @@
+{
+  "4fbbe77a1d9dda93201ed739bdb6b37b24ebc6e57aa714ba4f767f1d43286e0b": {
+    "query": "((('white noise':ti OR 'pink noise':ti OR 'broadband noise':ti OR 'masking noise':ti OR 'noise machine':ti OR 'sound machine':ti OR 'acoustic noise':ti OR 'continuous noise':ti) AND ('sleep onset latency':ti,ab OR 'sleep latency':ti,ab OR 'sleep quality':ti,ab OR 'sleep efficiency':ti,ab OR 'wakefulness after sleep onset':ti,ab OR waso:ti,ab OR 'sleep continuity':ti,ab OR 'sleep fragmentation':ti,ab OR wakefulness:ti,ab OR sleep:ti,ab)) NOT ('review'/it OR 'systematic review'/it OR 'meta analysis'/it OR 'letter'/it OR 'editorial'/it))",
+    "provider": "embase_manual",
+    "results_count": 42,
+    "retrieved_dois": [
+      "10.1002/jhm.70025",
+      "10.1002/pmrj.12519",
+      "10.1016/0003-6870(76)90153-8",
+      "10.1016/0013-4694(74)90030-3",
+      "10.1016/j.bja.2019.04.024",
+      "10.1016/j.explore.2023.09.002",
+      "10.1016/j.explore.2026.103365",
+      "10.1016/j.ibneur.2023.08.419",
+      "10.1016/j.iccn.2025.104239",
+      "10.1016/j.ijnurstu.2021.103934",
+      "10.1016/j.ijporl.2024.111982",
+      "10.1016/j.ijpsycho.2021.07.036",
+      "10.1016/j.jopan.2025.10.009",
+      "10.1016/j.jtbi.2012.04.006",
+      "10.1016/j.mcpsp.2021.100209",
+      "10.1016/j.neulet.2023.137212",
+      "10.1016/j.pedn.2024.05.008",
+      "10.1016/j.sleep.2004.12.004",
+      "10.1016/j.sleep.2021.03.031",
+      "10.1038/s41598-025-14774-7",
+      "10.1080/15459624.2025.2595953",
+      "10.1093/sleep/zsaa056.1189",
+      "10.1093/sleep/zsab072.263",
+      "10.1093/sleep/zsaf090.0246",
+      "10.1093/sleep/zsag001",
+      "10.1097/JNR.0000000000000211",
+      "10.1097/JPN.0000000000000902",
+      "10.1097/NMC.0000000000001076",
+      "10.1111/jsr.14291",
+      "10.1111/nicc.12742",
+      "10.1136/adc.65.1.135",
+      "10.1177/10738584251403967",
+      "10.21037/apm-22-1269",
+      "10.2486/indhealth.31.35",
+      "10.3389/fnhum.2023.1302836",
+      "10.4103/nah.nah_111_24",
+      "10.4103/nah.nah_132_25",
+      "10.4103/nah.nah_31_25",
+      "10.4103/nah.nah_32_23",
+      "10.4103/nah.nah_35_23",
+      "10.4103/nah.nah_95_25",
+      "10.4295/audiology.23.50"
+    ],
+    "retrieved_pmids": [
+      "16139772",
+      "22726808",
+      "2405784",
+      "29315202",
+      "33975075",
+      "34049045",
+      "3413207",
+      "34931413",
+      "36747385",
+      "36966962",
+      "37806925",
+      "38358237",
+      "38729891",
+      "38776720",
+      "39345068",
+      "39787561",
+      "39836946",
+      "39998280",
+      "40790345",
+      "40932078",
+      "41454554",
+      "41482898",
+      "41564366",
+      "41586790",
+      "41627391",
+      "41761732",
+      "41800673",
+      "41825187",
+      "4336955",
+      "8240696",
+      "8340228"
+    ],
+    "pmids": [
+      "16139772",
+      "22726808",
+      "2405784",
+      "29315202",
+      "33975075",
+      "34049045",
+      "3413207",
+      "34931413",
+      "36747385",
+      "36966962",
+      "37806925",
+      "38358237",
+      "38729891",
+      "38776720",
+      "39345068",
+      "39787561",
+      "39836946",
+      "39998280",
+      "40790345",
+      "40932078",
+      "41454554",
+      "41482898",
+      "41564366",
+      "41586790",
+      "41627391",
+      "41761732",
+      "41800673",
+      "41825187",
+      "4336955",
+      "8240696",
+      "8340228"
+    ],
+    "records": [
+      {
+        "title": "The effectiveness of white noise for sleep quality in patients admitted to the intensive care unit: a randomized controlled trial",
+        "first_author": "Nien",
+        "year": 2026,
+        "pmid": "41761732",
+        "doi": "10.1016/j.iccn.2025.104239"
+      },
+      {
+        "title": "Pink noise/earplugs and nighttime environmental noise on sleep",
+        "first_author": "Lillehei",
+        "year": 2026,
+        "pmid": "41825187",
+        "doi": "10.1016/j.explore.2026.103365"
+      },
+      {
+        "title": "Comparison of the Effect of the White Noise and Sound Reduction on Behavioral Responses of Premature Infants Under Noninvasive Ventilation",
+        "first_author": "Mohseni",
+        "year": 2026,
+        "pmid": "39836946",
+        "doi": "10.1097/JPN.0000000000000902"
+      },
+      {
+        "title": "Efficacy of pink noise and earplugs for mitigating the effects of intermittent environmental noise exposure on sleep",
+        "first_author": "Basner",
+        "year": 2026,
+        "pmid": "41627391",
+        "doi": "10.1093/sleep/zsag001"
+      },
+      {
+        "title": "Echoes of Pink Noise: A Hypothesized Mechanism for Enhancing Sleep-Dependent Memory Consolidation with Auditory Stimulation",
+        "first_author": "Sabaghypour",
+        "year": 2026,
+        "pmid": "41454554",
+        "doi": "10.1177/10738584251403967"
+      },
+      {
+        "title": "The Effect of White Noise on Sleep Quality, Comfort, and Satisfaction in Patients Undergoing Lumbar Disk Herniation Surgery: A Randomized Controlled Trial",
+        "first_author": "Kizilkaya",
+        "year": 2026,
+        "pmid": "41586790",
+        "doi": "10.1016/j.jopan.2025.10.009"
+      },
+      {
+        "title": "Spectral frequency and broadband noise analysis of the firefighter environment: Potential implications for cardiac health",
+        "first_author": "Blando",
+        "year": 2026,
+        "pmid": "41564366",
+        "doi": "10.1080/15459624.2025.2595953"
+      },
+      {
+        "title": "Comparative Effects of Music Therapy Versus White Noise on Sleep Quality and Psychological Resilience of Night-Shift Nurses: Retrospective Cohort Study",
+        "first_author": "Zhang",
+        "year": 2026,
+        "pmid": "41800673",
+        "doi": "10.4103/nah.nah_132_25"
+      },
+      {
+        "title": "Effect of White Noise Therapy Combined with Cognitive Behavioural Therapy on Clinical Symptoms, Psychological Stress and Sleep Quality in Depressed Patients",
+        "first_author": "Wang",
+        "year": 2025,
+        "pmid": "41482898",
+        "doi": "10.4103/nah.nah_95_25"
+      },
+      {
+        "title": "Task-based functional connectivity in infants after exposure to regular white noise during natural sleep measured by fNIRS",
+        "first_author": "Li",
+        "year": 2025,
+        "pmid": "40790345",
+        "doi": "10.1038/s41598-025-14774-7"
+      },
+      {
+        "title": "Effect of White Noise Combined with Cognitive Behavioral Therapy on Anxiety and Depression Disorder among College Students: A Retrospective Analysis",
+        "first_author": "Li",
+        "year": 2025,
+        "pmid": "40932078",
+        "doi": "10.4103/nah.nah_31_25"
+      },
+      {
+        "title": "NEUROBEHAVIORAL OUTCOMES IMMEDIATELY FOLLOWING A DAYTIME SLEEP OPPORTUNITY WITH PINK NOISE",
+        "first_author": "Hilditch",
+        "year": 2025,
+        "doi": "10.1093/sleep/zsaf090.0246"
+      },
+      {
+        "title": "IMPACT AND EFFICACY OF SOUND MACHINE ON SLEEP IN HOSPITALIZED ADULTS: A SYSTEMATIC REVIEW",
+        "first_author": "Khandelwal",
+        "year": 2025,
+        "doi": "10.1002/jhm.70025"
+      },
+      {
+        "title": "White Noise Exposure During Sleep in Infants and Children: How Much is too Much?",
+        "first_author": "Beal",
+        "year": 2025,
+        "pmid": "39998280",
+        "doi": "10.1097/NMC.0000000000001076"
+      },
+      {
+        "title": "Effects of White Noise Intervention on Sleep Quality and Immunological Indicators of Patients with Breast Cancer Undergoing Neoadjuvant Chemotherapy",
+        "first_author": "Yin",
+        "year": 2024,
+        "pmid": "39787561",
+        "doi": "10.4103/nah.nah_111_24"
+      },
+      {
+        "title": "The effects of blue light on sleep with the exposure to white noise and ambient sounds in foundation year university students",
+        "first_author": "Hou",
+        "year": 2024,
+        "doi": "10.1111/jsr.14291"
+      },
+      {
+        "title": "The effect of facilitated tucking and white noise on stress and sleep of newborns receiving nasal continuous positive airway pressure",
+        "first_author": "Suna",
+        "year": 2024,
+        "pmid": "38729891",
+        "doi": "10.1016/j.pedn.2024.05.008"
+      },
+      {
+        "title": "Effects of the Combination of Noise Reduction Earplugs with White Noise and Rational Emotional Therapy on Emotional States of Inpatients with Colorectal Cancer",
+        "first_author": "Wang",
+        "year": 2024,
+        "pmid": "39345068",
+        "doi": "10.4103/nah.nah_35_23"
+      },
+      {
+        "title": "White noise use among children undergoing sound field audiometry: A preliminary study",
+        "first_author": "Ma",
+        "year": 2024,
+        "pmid": "38776720",
+        "doi": "10.1016/j.ijporl.2024.111982"
+      },
+      {
+        "title": "The effects of massage therapy and white noise application on premature infants’ sleep",
+        "first_author": "Düken",
+        "year": 2024,
+        "pmid": "37806925",
+        "doi": "10.1016/j.explore.2023.09.002"
+      },
+      {
+        "title": "THE EFFECTS OF WHITE NOISE EXPOSURE ON INTER-CELL COMMUNICATION, ULTRA-STRUCTURAL CHANGES AND BEHAVIOR IN RATS",
+        "first_author": "Pochkhidze",
+        "year": 2023,
+        "doi": "10.1016/j.ibneur.2023.08.419"
+      },
+      {
+        "title": "Effect of White Noise Intervention Combined with Multi-dimensional Nursing Mode on Sleep Quality and Incidence of Nosocomial Infection in Patients Undergoing Hip Replacement",
+        "first_author": "Tian",
+        "year": 2023,
+        "pmid": "38358237",
+        "doi": "10.4103/nah.nah_32_23"
+      },
+      {
+        "title": "Reduced connectivity of primary auditory and motor cortices during exposure to auditory white noise",
+        "first_author": "Pinardi",
+        "year": 2023,
+        "pmid": "36966962",
+        "doi": "10.1016/j.neulet.2023.137212"
+      },
+      {
+        "title": "Overnight exposure to pink noise could jeopardize sleep-dependent insight and pattern detection",
+        "first_author": "Vickrey",
+        "year": 2023,
+        "doi": "10.3389/fnhum.2023.1302836"
+      },
+      {
+        "title": "Effect of the sound of the mother's heartbeat combined with white noise on heart rate, weight, and sleep in premature infants: a retrospective comparative cohort study",
+        "first_author": "Zhang",
+        "year": 2023,
+        "pmid": "36747385",
+        "doi": "10.21037/apm-22-1269"
+      },
+      {
+        "title": "Impact of a white noise app on sleep quality among critically ill patients",
+        "first_author": "Warjri",
+        "year": 2022,
+        "pmid": "34931413",
+        "doi": "10.1111/nicc.12742"
+      },
+      {
+        "title": "Pink and White Noise in Resting EEG: Major Depressive Disorder Versus Healthy Controls",
+        "first_author": "Mills",
+        "year": 2021,
+        "doi": "10.1016/j.ijpsycho.2021.07.036"
+      },
+      {
+        "title": "The effects of white noise on sleep and duration in individuals living in a high noise environment in New York City",
+        "first_author": "Ebben",
+        "year": 2021,
+        "pmid": "34049045",
+        "doi": "10.1016/j.sleep.2021.03.031"
+      },
+      {
+        "title": "Mothers' voices and white noise on premature infants' physiological reactions in a neonatal intensive care unit: A multi-arm randomized controlled trial",
+        "first_author": "Liao",
+        "year": 2021,
+        "pmid": "33975075",
+        "doi": "10.1016/j.ijnurstu.2021.103934"
+      },
+      {
+        "title": "Field test of sound machine shows significant improvement in perceived sleep but not objective sleep",
+        "first_author": "Danoff-Burg",
+        "year": 2021,
+        "doi": "10.1093/sleep/zsab072.263"
+      },
+      {
+        "title": "The effect of white noise on high school students’ sleep quality at Unit B of Rajawali Girls Dormitory Makassar",
+        "first_author": "Umbas",
+        "year": 2021,
+        "doi": "10.1016/j.mcpsp.2021.100209"
+      },
+      {
+        "title": "Closed-loop electroencephalogram-based modulated pink noise to facilitate falling asleep",
+        "first_author": "Garcia-Molina",
+        "year": 2020,
+        "doi": "10.1093/sleep/zsaa056.1189"
+      },
+      {
+        "title": "The use of white noise machines to improve sleep in the spinal cord injured patient",
+        "first_author": "Levin",
+        "year": 2020,
+        "doi": "10.1002/pmrj.12519"
+      },
+      {
+        "title": "Active noise cancelling headphones with white noise to aid sleep in non-ventilated, non-delirious critical care patients: a randomised crossover trial",
+        "first_author": "Owen",
+        "year": 2019,
+        "doi": "10.1016/j.bja.2019.04.024"
+      },
+      {
+        "title": "The Effects of White Noise on Agitated Behaviors, Mental Status, and Activities of Daily Living in Older Adults With Dementia",
+        "first_author": "Lin",
+        "year": 2018,
+        "pmid": "29315202",
+        "doi": "10.1097/JNR.0000000000000211"
+      },
+      {
+        "title": "Pink noise: Effect on complexity synchronization of brain activity and sleep consolidation",
+        "first_author": "Zhou",
+        "year": 2012,
+        "pmid": "22726808",
+        "doi": "10.1016/j.jtbi.2012.04.006"
+      },
+      {
+        "title": "The influence of white noise on sleep in subjects exposed to ICU noise",
+        "first_author": "Stanchina",
+        "year": 2005,
+        "pmid": "16139772",
+        "doi": "10.1016/j.sleep.2004.12.004"
+      },
+      {
+        "title": "Sleep induction effects of steady 60 dB (A) pink noise",
+        "first_author": "Kawada",
+        "year": 1993,
+        "pmid": "8340228",
+        "doi": "10.2486/indhealth.31.35"
+      },
+      {
+        "title": "White noise does not induce fetal sleep",
+        "first_author": "Zimmer",
+        "year": 1993,
+        "pmid": "8240696"
+      },
+      {
+        "title": "White noise and sleep induction",
+        "first_author": "Spencer",
+        "year": 1990,
+        "pmid": "2405784",
+        "doi": "10.1136/adc.65.1.135"
+      },
+      {
+        "title": "Variations of Cyclic Alternating Pattern Rate and homeostasis of sleep organization: A controlled study on the effects of white noise and zolpidem",
+        "first_author": "Terzano",
+        "year": 1988,
+        "pmid": "3413207"
+      },
+      {
+        "title": "Stability of SVR with white noise during sleep",
+        "first_author": "Itabashi",
+        "year": 1980,
+        "doi": "10.4295/audiology.23.50"
+      },
+      {
+        "title": "Continuous noise interferes with work by masking auditory feedback and inner speech",
+        "first_author": "Poulton",
+        "year": 1976,
+        "doi": "10.1016/0003-6870(76)90153-8"
+      },
+      {
+        "title": "The effect of white noise on the somatosensory evoked response in sleeping newborn infants",
+        "first_author": "Wolff",
+        "year": 1974,
+        "doi": "10.1016/0013-4694(74)90030-3"
+      },
+      {
+        "title": "The effect of white noise on the somatosensory evoked response in sleeping newborn infants",
+        "first_author": "Wolff",
+        "year": 1974,
+        "doi": "10.1016/0013-4694(74)90030-3"
+      },
+      {
+        "title": "The effects of continuous, high intensity, white noise on the human sleep cycle.",
+        "first_author": "Scott",
+        "year": 1972,
+        "pmid": "4336955"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

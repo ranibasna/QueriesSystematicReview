@@ -1,0 +1,17 @@
+# Q1: High-recall
+TITLE-ABS-KEY(("sleep duration" OR "sleep quantity" OR "short sleep" OR "short sleep duration" OR "total sleep time" OR "sleep hours" OR "insufficient sleep") AND (obesity OR obese OR overweight OR "body mass index" OR bmi))
+
+# Q2: Balanced
+TITLE-ABS-KEY(("sleep duration" OR "sleep quantity" OR "short sleep" OR "short sleep duration" OR "total sleep time" OR "insufficient sleep") AND (obesity OR obese OR overweight OR "body mass index" OR bmi) AND (sex OR gender OR male OR female OR men OR women))
+
+# Q3: High-precision
+TITLE("sleep duration" OR "short sleep" OR "short sleep duration" OR "total sleep time") AND TITLE(obesity OR overweight OR "body mass index" OR bmi) AND TITLE-ABS-KEY(sex OR gender OR male OR female OR men OR women) AND TITLE-ABS-KEY(cohort OR prospective OR retrospective OR longitudinal OR "follow-up" OR incidence OR incident*)
+
+# Q4: Balanced + scope_only
+TITLE("sleep duration" OR "short sleep" OR "short sleep duration" OR "total sleep time") AND TITLE(obesity OR overweight OR "body mass index" OR bmi) AND TITLE-ABS-KEY(sex OR gender OR male OR female OR men OR women)
+
+# Q5: Balanced + design_plus_scope
+TITLE("sleep duration" OR "short sleep" OR "short sleep duration" OR "total sleep time") AND TITLE(obesity OR overweight OR "body mass index" OR bmi) AND TITLE-ABS-KEY(sex OR gender OR male OR female OR men OR women) AND TITLE-ABS-KEY(cohort OR prospective OR retrospective OR longitudinal OR "follow-up" OR incidence OR incident*)
+
+# Q6: Balanced + design_plus_filter
+TITLE-ABS-KEY(("sleep duration" OR "sleep quantity" OR "short sleep" OR "short sleep duration" OR "total sleep time" OR "insufficient sleep") AND (obesity OR obese OR overweight OR "body mass index" OR bmi) AND (sex OR gender OR male OR female OR men OR women)) AND TITLE-ABS-KEY(adult*) AND TITLE-ABS-KEY(cohort OR prospective OR retrospective OR longitudinal OR "follow-up" OR incidence OR incident*) AND DOCTYPE(ar)

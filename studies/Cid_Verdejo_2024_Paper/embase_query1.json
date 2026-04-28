@@ -1,0 +1,2237 @@
+{
+  "c1bf24a57a31ad29a423e838f5886fba003d67d245f642a1541d38a3e950b036": {
+    "query": "(('bruxism'/exp OR 'sleep bruxism':ti,ab OR 'sleep-related bruxism':ti,ab OR 'sleep related bruxism':ti,ab OR bruxism:ti,ab OR 'rhythmic masticatory muscle activity':ti,ab OR RMMA:ti,ab OR 'masticatory muscle activity':ti,ab OR MMA:ti,ab OR 'oromotor activity':ti,ab OR 'oral motor activity':ti,ab OR OMA:ti,ab OR 'sleep-related oromotor activity':ti,ab OR 'sleep related oromotor activity':ti,ab) AND ('electromyography'/exp OR electromyograph*:ti,ab OR EMG:ti,ab OR 'portable electromyography':ti,ab OR 'portable electromyographic':ti,ab OR 'portable EMG':ti,ab OR 'ambulatory electromyography':ti,ab OR 'ambulatory electromyographic':ti,ab OR 'portable device':ti,ab OR 'portable devices':ti,ab) AND ('polysomnography'/exp OR polysomnograph*:ti,ab OR PSG:ti,ab OR 'audio-video':ti,ab OR 'audio video':ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 209,
+    "retrieved_dois": [
+      "10.1002/1531-8257(199909)14:5<865::AID-MDS1025>3.0.CO;2-0",
+      "10.1002/ejp.70032",
+      "10.1002/mds.21661",
+      "10.1002/mds.21885",
+      "10.1007/BF02291404",
+      "10.1007/s00784-016-1794-3",
+      "10.1007/s00784-017-2092-4",
+      "10.1007/s00784-021-04314-8",
+      "10.1007/s00784-022-04398-w",
+      "10.1007/s00784-025-06454-7",
+      "10.1007/s10072-011-0905-9",
+      "10.1007/s11325-012-0710-6",
+      "10.1007/s11325-015-1156-4",
+      "10.1007/s11325-015-1283-y",
+      "10.1007/s11325-019-01915-2",
+      "10.1007/s11325-021-02460-7",
+      "10.1007/s11325-024-03090-5",
+      "10.1007/s11325-025-03518-6",
+      "10.1007/s11940-016-0396-3",
+      "10.1007/s40675-018-0105-8",
+      "10.1007/s40675-018-0106-7",
+      "10.1007/s41105-018-0176-4",
+      "10.1007/s41105-021-00370-5",
+      "10.1016/S0003-9969(00)00044-3",
+      "10.1016/S0924-9338(12)75233-1",
+      "10.1016/S1876-2018(11)60277-3",
+      "10.1016/j.ajodo.2004.02.007",
+      "10.1016/j.archoralbio.2006.03.002",
+      "10.1016/j.bjoms.2021.03.005",
+      "10.1016/j.cden.2012.01.003",
+      "10.1016/j.chest.2019.07.032",
+      "10.1016/j.compbiomed.2022.105224",
+      "10.1016/j.compbiomed.2022.106100",
+      "10.1016/j.identj.2024.06.001",
+      "10.1016/j.jdent.2015.10.002",
+      "10.1016/j.jdent.2021.103711",
+      "10.1016/j.jdent.2026.106583",
+      "10.1016/j.jpor.2008.08.001",
+      "10.1016/j.jpor.2016.06.003",
+      "10.1016/j.jpor.2019.04.003",
+      "10.1016/j.jsmc.2007.05.013",
+      "10.1016/j.jsmc.2009.04.004",
+      "10.1016/j.jsmc.2015.05.005",
+      "10.1016/j.jsmc.2021.02.001",
+      "10.1016/j.jsmc.2021.02.010",
+      "10.1016/j.mcna.2010.02.010",
+      "10.1016/j.neubiorev.2021.06.008",
+      "10.1016/j.neures.2010.07.2350",
+      "10.1016/j.oooo.2011.10.008",
+      "10.1016/j.pop.2005.02.004",
+      "10.1016/j.prosdent.2015.02.025",
+      "10.1016/j.prrv.2006.04.176",
+      "10.1016/j.sleep.2008.08.001",
+      "10.1016/j.sleep.2015.02.1432",
+      "10.1016/j.sleep.2015.02.179",
+      "10.1016/j.sleep.2015.05.024",
+      "10.1016/j.sleep.2019.06.009",
+      "10.1016/j.sleep.2019.08.025",
+      "10.1016/j.sleep.2019.11.535",
+      "10.1016/j.sleep.2019.11.755",
+      "10.1016/j.sleep.2022.05.794",
+      "10.1016/j.sleep.2022.11.040",
+      "10.1016/j.sleep.2023.11.222",
+      "10.1016/j.sleep.2024.08.032",
+      "10.1016/j.sleep.2025.106662",
+      "10.1016/j.slsci.2015.08.002",
+      "10.1016/j.smrv.2022.101721",
+      "10.1016/j.smrv.2024.101906",
+      "10.1016/j.smrv.2024.101994",
+      "10.1016/j.toxicon.2014.11.190",
+      "10.1016/j.tripleo.2007.03.009",
+      "10.1016/j.tripleo.2010.02.013",
+      "10.1017/S1461145714000741",
+      "10.1038/sj.bdj.2018.757",
+      "10.1055/s-2001-16164",
+      "10.1080/07853890.2021.1897389",
+      "10.1080/08869634.2015.1106811",
+      "10.1080/08869634.2019.1578032",
+      "10.1080/08869634.2020.1747715",
+      "10.1080/08869634.2021.2014167",
+      "10.1080/08869634.2025.2473728",
+      "10.1093/sleep/26.7.888",
+      "10.1093/sleep/zsaa056.788",
+      "10.1093/sleep/zsac181",
+      "10.1093/sleep/zsaf206",
+      "10.1097/WNP.0b013e3182120fed",
+      "10.1109/JBHI.2017.2741522",
+      "10.1111/cid.12015",
+      "10.1111/head.14892",
+      "10.1111/ipd.12308",
+      "10.1111/j.1365-2842.2004.01313.x",
+      "10.1111/j.1365-2842.2007.01781.x",
+      "10.1111/j.1365-2842.2008.01875.x",
+      "10.1111/j.1365-2842.2008.01881.x",
+      "10.1111/j.1365-2842.2008.01902.x",
+      "10.1111/j.1365-2842.2008.01911.x",
+      "10.1111/j.1365-2842.2011.02203.x",
+      "10.1111/j.1365-2842.2011.02232.x",
+      "10.1111/j.1365-2869.1997.00259.x",
+      "10.1111/j.1365-2869.2012.01005.x",
+      "10.1111/j.1365-2869.2012.01044.x",
+      "10.1111/j.1479-8425.2003.00068.x",
+      "10.1111/j.1479-8425.2011.00518.x",
+      "10.1111/j.1479-8425.2011.00521.x",
+      "10.1111/j.1528-1167.2008.01760.x",
+      "10.1111/j.1600-0722.2011.00822.x",
+      "10.1111/joor.12011",
+      "10.1111/joor.12069",
+      "10.1111/joor.12112",
+      "10.1111/joor.12131",
+      "10.1111/joor.12159",
+      "10.1111/joor.12201",
+      "10.1111/joor.12207",
+      "10.1111/joor.12252",
+      "10.1111/joor.12310",
+      "10.1111/joor.12320",
+      "10.1111/joor.12322",
+      "10.1111/joor.12353",
+      "10.1111/joor.12520",
+      "10.1111/joor.12558",
+      "10.1111/joor.12663",
+      "10.1111/joor.12694",
+      "10.1111/joor.12760",
+      "10.1111/joor.12833",
+      "10.1111/joor.12913",
+      "10.1111/joor.12932",
+      "10.1111/joor.13170",
+      "10.1111/joor.13182",
+      "10.1111/joor.13388",
+      "10.1111/joor.13416",
+      "10.1111/joor.13468",
+      "10.1111/joor.13474",
+      "10.1111/joor.13514",
+      "10.1111/joor.13696",
+      "10.1111/joor.70165",
+      "10.1111/jsr.12440",
+      "10.1111/jsr.12481",
+      "10.1111/jsr.12608",
+      "10.1111/jsr.12619",
+      "10.1111/jsr.12751",
+      "10.1111/jsr.12922",
+      "10.1111/jsr.13740",
+      "10.1111/jsr.13858",
+      "10.1111/jsr.14074",
+      "10.1111/jsr.14250",
+      "10.1111/jsr.70287",
+      "10.11607/ijp.3331",
+      "10.11607/ijp.6196",
+      "10.11607/jop.1029",
+      "10.11607/jop.921",
+      "10.11607/ofph.2068",
+      "10.1177/0022034510393516",
+      "10.1177/00220345960750010601",
+      "10.1186/2046-4053-3-42",
+      "10.1186/s12903-024-04351-1",
+      "10.1186/s13643-016-0397-z",
+      "10.1186/s40510-018-0228-y",
+      "10.1212/01.CON.0000427207.13553.68",
+      "10.1212/WNL.0000000000004951",
+      "10.1212/WNL.58.4.644",
+      "10.12871/00039829201922",
+      "10.1378/chest.107.6.1545",
+      "10.1378/chest.15-0822",
+      "10.1378/chest.90.3.424",
+      "10.15412/J.BCN.03070312",
+      "10.1586/14737175.2014.885382",
+      "10.1590/0004-282X20190098",
+      "10.17219/dmp/156400",
+      "10.17219/dmp/172243",
+      "10.17219/dmp/186553",
+      "10.17219/dmp/210439",
+      "10.2186/jpr.JPR_D_20_00012",
+      "10.2186/jpr.JPR_D_21_00219",
+      "10.2334/josnusd.21-0421",
+      "10.23804/ejpd.2023.24.03.02",
+      "10.29271/jcpsp.2024.10.1221",
+      "10.31688/ABMU.2022.57.4.06",
+      "10.3389/fneur.2025.1577869",
+      "10.3389/fpsyt.2024.1362429",
+      "10.3390/JCM7100327",
+      "10.3390/bios13030395",
+      "10.3390/brainsci11020146",
+      "10.3390/brainsci11101317",
+      "10.3390/brainsci15070691",
+      "10.3390/brainsci15090985",
+      "10.3390/ijerph17238960",
+      "10.3390/jcm12082997",
+      "10.3390/jcm13133835",
+      "10.3390/jcm14186521",
+      "10.3390/jcm14248799",
+      "10.3390/jcm8060766",
+      "10.3390/jcm8091344",
+      "10.3390/jcm8101653",
+      "10.3390/jcm9010016",
+      "10.3390/toxins12030168",
+      "10.3390/toxins14040282",
+      "10.3390/toxins17080384",
+      "10.3889/OAMJMS.2020.3727",
+      "10.4103/ecdt.ecdt_117_22",
+      "10.5125/JKAOMS.2021.47.2.149",
+      "10.5357/koubyou.66.76",
+      "10.5455/NYS.20151216020804",
+      "10.5664/jcsm.10344",
+      "10.5664/jcsm.3532",
+      "10.5664/jcsm.6510",
+      "10.5664/jcsm.8612",
+      "10.5664/jcsm.9940",
+      "10.5935/1984-0063.20220005",
+      "10.7518/hxkq.2020.01.010"
+    ],
+    "retrieved_pmids": [
+      "10332150",
+      "10495054",
+      "10576172",
+      "10973562",
+      "11298262",
+      "11332529",
+      "11385780",
+      "11575195",
+      "11737566",
+      "11865148",
+      "12421329",
+      "12651932",
+      "12705309",
+      "12756932",
+      "14655925",
+      "15265208",
+      "15520695",
+      "15895838",
+      "15935187",
+      "1630642",
+      "16584706",
+      "16798595",
+      "17190030",
+      "17618147",
+      "17657812",
+      "18228567",
+      "18254794",
+      "18482341",
+      "18557915",
+      "18699968",
+      "18780532",
+      "18976275",
+      "19026595",
+      "19125838",
+      "19318067",
+      "19548407",
+      "19639069",
+      "20194385",
+      "20451035",
+      "20451831",
+      "20552084",
+      "21248360",
+      "21299589",
+      "21399519",
+      "21564315",
+      "21707698",
+      "22203333",
+      "22404768",
+      "22480810",
+      "22668619",
+      "23121262",
+      "23151302",
+      "23385700",
+      "23424717",
+      "23630682",
+      "23690359",
+      "23700983",
+      "24179965",
+      "24237356",
+      "24401352",
+      "24417585",
+      "24491141",
+      "24596907",
+      "24634627",
+      "24655114",
+      "24886985",
+      "24942041",
+      "25040303",
+      "25413839",
+      "25790946",
+      "26004173",
+      "26010126",
+      "26059761",
+      "26095208",
+      "26225899",
+      "26329448",
+      "26422019",
+      "26432658",
+      "26455540",
+      "26527206",
+      "27000072",
+      "27077268",
+      "27354030",
+      "27374364",
+      "27426276",
+      "27474257",
+      "27996170",
+      "28086992",
+      "28095970",
+      "28255752",
+      "28477392",
+      "28586093",
+      "28829322",
+      "28859236",
+      "28892317",
+      "28960626",
+      "29343468",
+      "29926505",
+      "30019357",
+      "30033479",
+      "30237554",
+      "30371687",
+      "30588653",
+      "30774008",
+      "3084202",
+      "31034542",
+      "31085074",
+      "31264730",
+      "31402440",
+      "31553390",
+      "31573129",
+      "31655318",
+      "31746005",
+      "31821529",
+      "31926031",
+      "32035303",
+      "32037767",
+      "32145817",
+      "32182879",
+      "32241246",
+      "32501212",
+      "33276496",
+      "33281172",
+      "33772835",
+      "33983628",
+      "33985649",
+      "33985661",
+      "34090993",
+      "34118294",
+      "34370185",
+      "34862565",
+      "34889722",
+      "34955330",
+      "34955491",
+      "35091364",
+      "35095085",
+      "35195761",
+      "35212262",
+      "35448891",
+      "35907210",
+      "36182761",
+      "36305239",
+      "36305587",
+      "36441158",
+      "36446166",
+      "36516603",
+      "36648354",
+      "36781409",
+      "36979607",
+      "37073471",
+      "37077152",
+      "37191494",
+      "3743157",
+      "37668461",
+      "37869762",
+      "37922734",
+      "38295573",
+      "38572841",
+      "38745301",
+      "38803083",
+      "38958854",
+      "38971708",
+      "39182463",
+      "39341028",
+      "39410693",
+      "39740030",
+      "40035138",
+      "40062531",
+      "40312792",
+      "40632308",
+      "40638984",
+      "40693738",
+      "40864060",
+      "41055174",
+      "41217663",
+      "41581017",
+      "41669869",
+      "41720287",
+      "7781344",
+      "7809570",
+      "7812224",
+      "8500248",
+      "8655758",
+      "8924755",
+      "9085035",
+      "9161232",
+      "9294496",
+      "9493526",
+      "9656889"
+    ],
+    "pmids": [
+      "10332150",
+      "10495054",
+      "10576172",
+      "10973562",
+      "11298262",
+      "11332529",
+      "11385780",
+      "11575195",
+      "11737566",
+      "11865148",
+      "12421329",
+      "12651932",
+      "12705309",
+      "12756932",
+      "14655925",
+      "15265208",
+      "15520695",
+      "15895838",
+      "15935187",
+      "1630642",
+      "16584706",
+      "16798595",
+      "17190030",
+      "17618147",
+      "17657812",
+      "18228567",
+      "18254794",
+      "18482341",
+      "18557915",
+      "18699968",
+      "18780532",
+      "18976275",
+      "19026595",
+      "19125838",
+      "19318067",
+      "19548407",
+      "19639069",
+      "20194385",
+      "20451035",
+      "20451831",
+      "20552084",
+      "21248360",
+      "21299589",
+      "21399519",
+      "21564315",
+      "21707698",
+      "22203333",
+      "22404768",
+      "22480810",
+      "22668619",
+      "23121262",
+      "23151302",
+      "23385700",
+      "23424717",
+      "23630682",
+      "23690359",
+      "23700983",
+      "24179965",
+      "24237356",
+      "24401352",
+      "24417585",
+      "24491141",
+      "24596907",
+      "24634627",
+      "24655114",
+      "24886985",
+      "24942041",
+      "25040303",
+      "25413839",
+      "25790946",
+      "26004173",
+      "26010126",
+      "26059761",
+      "26095208",
+      "26225899",
+      "26329448",
+      "26422019",
+      "26432658",
+      "26455540",
+      "26527206",
+      "27000072",
+      "27077268",
+      "27354030",
+      "27374364",
+      "27426276",
+      "27474257",
+      "27996170",
+      "28086992",
+      "28095970",
+      "28255752",
+      "28477392",
+      "28586093",
+      "28829322",
+      "28859236",
+      "28892317",
+      "28960626",
+      "29343468",
+      "29926505",
+      "30019357",
+      "30033479",
+      "30237554",
+      "30371687",
+      "30588653",
+      "30774008",
+      "3084202",
+      "31034542",
+      "31085074",
+      "31264730",
+      "31402440",
+      "31553390",
+      "31573129",
+      "31655318",
+      "31746005",
+      "31821529",
+      "31926031",
+      "32035303",
+      "32037767",
+      "32145817",
+      "32182879",
+      "32241246",
+      "32501212",
+      "33276496",
+      "33281172",
+      "33772835",
+      "33983628",
+      "33985649",
+      "33985661",
+      "34090993",
+      "34118294",
+      "34370185",
+      "34862565",
+      "34889722",
+      "34955330",
+      "34955491",
+      "35091364",
+      "35095085",
+      "35195761",
+      "35212262",
+      "35448891",
+      "35907210",
+      "36182761",
+      "36305239",
+      "36305587",
+      "36441158",
+      "36446166",
+      "36516603",
+      "36648354",
+      "36781409",
+      "36979607",
+      "37073471",
+      "37077152",
+      "37191494",
+      "3743157",
+      "37668461",
+      "37869762",
+      "37922734",
+      "38295573",
+      "38572841",
+      "38745301",
+      "38803083",
+      "38958854",
+      "38971708",
+      "39182463",
+      "39341028",
+      "39410693",
+      "39740030",
+      "40035138",
+      "40062531",
+      "40312792",
+      "40632308",
+      "40638984",
+      "40693738",
+      "40864060",
+      "41055174",
+      "41217663",
+      "41581017",
+      "41669869",
+      "41720287",
+      "7781344",
+      "7809570",
+      "7812224",
+      "8500248",
+      "8655758",
+      "8924755",
+      "9085035",
+      "9161232",
+      "9294496",
+      "9493526",
+      "9656889"
+    ],
+    "records": [
+      {
+        "title": "Advances in the understanding of pediatric sleep bruxism: A narrative review of recent literature",
+        "first_author": "Al-Jewair",
+        "year": 2026,
+        "pmid": "41720287",
+        "doi": "10.1016/j.jdent.2026.106583"
+      },
+      {
+        "title": "Number of masseteric electromyographic waveforms during analysis periods with/without excluding time zones after going to bed and before getting up in sleep bruxism assessment",
+        "first_author": "Takahashi",
+        "year": 2026,
+        "pmid": "40062531",
+        "doi": "10.1080/08869634.2025.2473728"
+      },
+      {
+        "title": "Examining the Influence of Glycemic Management During Sleep on Sleep-Related Bruxism: A Pilot Study",
+        "first_author": "Taniwaki",
+        "year": 2026,
+        "pmid": "41669869",
+        "doi": "10.1111/joor.70165"
+      },
+      {
+        "title": "Electromyography Frequency Spectrum Is a Better Indicator of Sleep Bruxism Severity Related to Temporomandibular Disorder Pain Than Conventional Masticatory Muscle Activation and Bruxism Time Indices—A Pilot Study",
+        "first_author": "Pitkänen",
+        "year": 2026,
+        "pmid": "41581017",
+        "doi": "10.1111/jsr.70287"
+      },
+      {
+        "title": "Predicting and assessing the impacts of risk factors for sleep bruxism in an apneic population using a nomogram",
+        "first_author": "De",
+        "year": 2026,
+        "pmid": "40693738",
+        "doi": "10.1093/sleep/zsaf206"
+      },
+      {
+        "title": "Sleep bruxism and pediatric obstructive sleep apnea: exploring their chronological overlap and clinical significance",
+        "first_author": "Eisa",
+        "year": 2025,
+        "pmid": "41217663",
+        "doi": "10.1007/s11325-025-03518-6"
+      },
+      {
+        "title": "Effect of Occlusal Splint Guidance on Masseter Muscle Activity During Sleep in Adults with Sleep Bruxism: A Preliminary Randomized Crossover Clinical Trial",
+        "first_author": "Matsuyama",
+        "year": 2025,
+        "doi": "10.3390/jcm14248799"
+      },
+      {
+        "title": "Sleep bruxism and sleep architecture in chronic migraine: A polysomnographic study",
+        "first_author": "Błaszczyk",
+        "year": 2025,
+        "pmid": "41055174",
+        "doi": "10.17219/dmp/210439"
+      },
+      {
+        "title": "NRGAMTE: Neurophysiological Residual Gated Attention Multimodal Transformer Encoder for Sleep Disorder Detection",
+        "first_author": "Subramaniam",
+        "year": 2025,
+        "doi": "10.3390/brainsci15090985"
+      },
+      {
+        "title": "Polysomnographic and Electromyographic Evaluation of Sleep Bruxism in Young Colombian Adults: Case-Control Study",
+        "first_author": "López-Soto",
+        "year": 2025,
+        "doi": "10.3390/jcm14186521"
+      },
+      {
+        "title": "Association between children's sleep bruxism with that of their parents/guardians: A systematic review and meta-analysis",
+        "first_author": "Santos-Júnior",
+        "year": 2025,
+        "pmid": "40638984",
+        "doi": "10.1016/j.sleep.2025.106662"
+      },
+      {
+        "title": "Factors Influencing the Effectiveness of Botulinum Toxin Therapy in Bruxism Management",
+        "first_author": "Furuhata",
+        "year": 2025,
+        "pmid": "40864060",
+        "doi": "10.3390/toxins17080384"
+      },
+      {
+        "title": "Occlusion, jaw function and nocturnal muscle tone in obstructive sleep apnea with and without sleep bruxism",
+        "first_author": "Sambale",
+        "year": 2025,
+        "pmid": "40632308",
+        "doi": "10.1007/s00784-025-06454-7"
+      },
+      {
+        "title": "Letter to the Editor: Prevalence of Painful Temporomandibular Disorders and Overlapping Primary Headaches Among Young Adults",
+        "first_author": "Anjum",
+        "year": 2025,
+        "pmid": "40312792",
+        "doi": "10.1002/ejp.70032"
+      },
+      {
+        "title": "A Permutation Entropy Method for Sleep Disorder Screening",
+        "first_author": "Duarte",
+        "year": 2025,
+        "doi": "10.3390/brainsci15070691"
+      },
+      {
+        "title": "Sleep Bruxism in Thai Obstructive Sleep Apnea Patients",
+        "first_author": "Kaongampanich",
+        "year": 2025,
+        "pmid": "38971708",
+        "doi": "10.1016/j.identj.2024.06.001"
+      },
+      {
+        "title": "Effects of the low Fowler's sleep position and methazolamide treatment on sleep bruxism: A randomized controlled trial",
+        "first_author": "Zhong",
+        "year": 2025,
+        "pmid": "38803083",
+        "doi": "10.1111/jsr.14250"
+      },
+      {
+        "title": "Exploring the associations of sleep bruxism and obstructive sleep apnea with migraine among patients with temporomandibular disorder: A polysomnographic study",
+        "first_author": "Błaszczyk",
+        "year": 2025,
+        "pmid": "39740030",
+        "doi": "10.1111/head.14892"
+      },
+      {
+        "title": "Efficacy of botulinum toxin type A in bruxism management: A systematic review",
+        "first_author": "Yacoub",
+        "year": 2025,
+        "pmid": "40035138",
+        "doi": "10.17219/dmp/186553"
+      },
+      {
+        "title": "Arginase and ceruloplasmin activity in the serum of patients with polysomnography-detected sleep bruxism",
+        "first_author": "Martynowicz",
+        "year": 2025,
+        "doi": "10.3389/fneur.2025.1577869"
+      },
+      {
+        "title": "Sleep bruxism (SB) may be not associated with obstructive sleep apnea (OSA): A comprehensive assessment employing a systematic review and meta-analysis",
+        "first_author": "Błaszczyk",
+        "year": 2024,
+        "pmid": "39182463",
+        "doi": "10.1016/j.smrv.2024.101994"
+      },
+      {
+        "title": "Association between sleep bruxism and snoring in adults: An observational study",
+        "first_author": "Polmann",
+        "year": 2024,
+        "pmid": "39341028",
+        "doi": "10.1016/j.sleep.2024.08.032"
+      },
+      {
+        "title": "Genetics and sleep bruxism: a systematic review and meta-analysis of studies with twins",
+        "first_author": "Pereira",
+        "year": 2024,
+        "pmid": "38958854",
+        "doi": "10.1007/s11325-024-03090-5"
+      },
+      {
+        "title": "Diagnosis of Bruxism in Adults: A Systematic Review",
+        "first_author": "Raja",
+        "year": 2024,
+        "pmid": "39410693",
+        "doi": "10.29271/jcpsp.2024.10.1221"
+      },
+      {
+        "title": "Sleep Bruxism and Obstructive Sleep Apnea Are Not Risk Factors for Tension-Type Headache (TTH): A Polysomnographic Study",
+        "first_author": "Błaszczyk",
+        "year": 2024,
+        "doi": "10.3390/jcm13133835"
+      },
+      {
+        "title": "The effect of sleep position on sleep bruxism in adults with obstructive sleep apnea",
+        "first_author": "Kuang",
+        "year": 2024,
+        "pmid": "38572841",
+        "doi": "10.1111/joor.13696"
+      },
+      {
+        "title": "Is sleep bruxism in obstructive sleep apnea only an oral health related problem?",
+        "first_author": "Sambale",
+        "year": 2024,
+        "pmid": "38745301",
+        "doi": "10.1186/s12903-024-04351-1"
+      },
+      {
+        "title": "A 24% prevalence of excessive fragmentary myoclonus in 500 consecutive sleep laboratory patients",
+        "first_author": "Bergmann",
+        "year": 2024,
+        "pmid": "37922734",
+        "doi": "10.1111/jsr.14074"
+      },
+      {
+        "title": "Instrumental assessment of sleep bruxism: A systematic review and meta-analysis",
+        "first_author": "Cid-Verdejo",
+        "year": 2024,
+        "pmid": "38295573",
+        "doi": "10.1016/j.smrv.2024.101906"
+      },
+      {
+        "title": "Bruxism and excessive daytime sleepiness",
+        "first_author": "Costa",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.222"
+      },
+      {
+        "title": "Why am I grinding and clenching? Exploration of personality traits, coping strategies, oral parafunctional behaviors, and severe sleep bruxism in a polysomnographic study",
+        "first_author": "Wieczorek",
+        "year": 2024,
+        "doi": "10.3389/fpsyt.2024.1362429"
+      },
+      {
+        "title": "Sleep architecture and vitamin D in hypertensives with obstructive sleep apnea: A polysomnographic study",
+        "first_author": "Kanclerska",
+        "year": 2024,
+        "pmid": "37869762",
+        "doi": "10.17219/dmp/172243"
+      },
+      {
+        "title": "Reciprocal first night effect on rhythmic and non-rhythmic oromotor episodes in moderate to severe primary sleep bruxism: A retrospective physiological study",
+        "first_author": "Haraki",
+        "year": 2024,
+        "pmid": "37077152",
+        "doi": "10.1111/joor.13474"
+      },
+      {
+        "title": "Research routes on awake bruxism metrics: Implications of the updated bruxism definition and evaluation strategies",
+        "first_author": "Bracci",
+        "year": 2024,
+        "pmid": "37191494",
+        "doi": "10.1111/joor.13514"
+      },
+      {
+        "title": "Relationship between Down Syndrome, orofacial pain, masticatory muscles and sleep disorders",
+        "first_author": "Dicieri-Pereira",
+        "year": 2022,
+        "doi": "10.5935/1984-0063.20220005"
+      },
+      {
+        "title": "Is camera recording crucial for the correct diagnosis of sleep bruxism in polysomnography?",
+        "first_author": "Smardz",
+        "year": 2023,
+        "pmid": "36781409",
+        "doi": "10.1111/jsr.13858"
+      },
+      {
+        "title": "The association between sleep bruxism and awake bruxism: Polysomnographic and electromyographic recordings in women with and without myofascial pain",
+        "first_author": "Chattrattrai",
+        "year": 2023,
+        "pmid": "37073471",
+        "doi": "10.1111/joor.13468"
+      },
+      {
+        "title": "Bruxism in children: What do we know? Narrative Review of the current evidence",
+        "first_author": "Storari",
+        "year": 2023,
+        "pmid": "37668461",
+        "doi": "10.23804/ejpd.2023.24.03.02"
+      },
+      {
+        "title": "Polysomnography in women: Is there any difference between childbearing period and menopause?",
+        "first_author": "El",
+        "year": 2023,
+        "doi": "10.4103/ecdt.ecdt_117_22"
+      },
+      {
+        "title": "Sleep Bruxism and Orofacial Pain in Patients with Sleep Disorders: A Controlled Cohort Study",
+        "first_author": "Bartolucci",
+        "year": 2023,
+        "doi": "10.3390/jcm12082997"
+      },
+      {
+        "title": "Diagnostic accuracy of a portable device (Bruxoff®) to measure sleep bruxism",
+        "first_author": "Yanez-Regonesi",
+        "year": 2023,
+        "pmid": "36648354",
+        "doi": "10.1111/joor.13416"
+      },
+      {
+        "title": "Recent Progress in Long-Term Sleep Monitoring Technology",
+        "first_author": "Yin",
+        "year": 2023,
+        "pmid": "36979607",
+        "doi": "10.3390/bios13030395"
+      },
+      {
+        "title": "Dental sleep-related conditions and the role of oral healthcare providers: A scoping review",
+        "first_author": "Huang",
+        "year": 2023,
+        "pmid": "36446166",
+        "doi": "10.1016/j.smrv.2022.101721"
+      },
+      {
+        "title": "Diagnostic accuracy of ambulatory polysomnography with electroencephalogram for detection of sleep bruxism–related masticatory muscle activity",
+        "first_author": "Abe",
+        "year": 2023,
+        "pmid": "36305587",
+        "doi": "10.5664/jcsm.10344"
+      },
+      {
+        "title": "Sleep-related factors and orofacial pain symptoms associated with rhythmic masticatory muscle activity frequency scored by polysomnography recordings: A case-control study",
+        "first_author": "Barbon",
+        "year": 2023,
+        "pmid": "36516603",
+        "doi": "10.1016/j.sleep.2022.11.040"
+      },
+      {
+        "title": "Therapies for sleep bruxism in dentistry: A critical evaluation of systematic reviews",
+        "first_author": "Cerón",
+        "year": 2023,
+        "pmid": "36441158",
+        "doi": "10.17219/dmp/156400"
+      },
+      {
+        "title": "The influence of age on the frequency of rhythmic masticatory muscle activity during sleep in general population differs from that in clinical research samples",
+        "first_author": "Dal",
+        "year": 2023,
+        "pmid": "36305239",
+        "doi": "10.1111/joor.13388"
+      },
+      {
+        "title": "Deep learning enables accurate automatic sleep staging based on ambulatory forehead EEG",
+        "first_author": "Leino",
+        "year": 2022,
+        "doi": "10.1016/j.sleep.2022.05.794"
+      },
+      {
+        "title": "THERAPEUTIC APPROACHES TO NOCTURNAL BRUXISM – A SYSTEMATIC REVIEW",
+        "first_author": "Miron",
+        "year": 2022,
+        "doi": "10.31688/ABMU.2022.57.4.06"
+      },
+      {
+        "title": "A review of automated sleep disorder detection",
+        "first_author": "Xu",
+        "year": 2022,
+        "pmid": "36182761",
+        "doi": "10.1016/j.compbiomed.2022.106100"
+      },
+      {
+        "title": "Down syndrome: orofacial pain, masticatory muscle hypotonia, and sleep disorders",
+        "first_author": "Dicieri-Pereira",
+        "year": 2022,
+        "pmid": "35907210",
+        "doi": "10.1093/sleep/zsac181"
+      },
+      {
+        "title": "Polysomnographic characteristics of sleep-related bruxism: What are the determinant factors for temporomandibular disorders?",
+        "first_author": "Ahci",
+        "year": 2022,
+        "pmid": "34889722",
+        "doi": "10.1080/08869634.2021.2014167"
+      },
+      {
+        "title": "Comparison of the occurrence of sleep bruxism under accustomed conditions at home and under polysomnography conditions in a sleep laboratory",
+        "first_author": "Sakuma",
+        "year": 2022,
+        "pmid": "35095085",
+        "doi": "10.2186/jpr.JPR_D_21_00219"
+      },
+      {
+        "title": "Combined effects of botulinum toxin injection and oral appliance therapy on sleep bruxism: A randomized controlled trial",
+        "first_author": "Kim",
+        "year": 2022,
+        "doi": "10.1111/jsr.13740"
+      },
+      {
+        "title": "Effects of vibratory feedback stimuli through an oral appliance on sleep bruxism: a 6-week intervention trial",
+        "first_author": "Ohara",
+        "year": 2022,
+        "pmid": "34370185",
+        "doi": "10.1007/s11325-021-02460-7"
+      },
+      {
+        "title": "Accuracy of sleep bruxism scoring based on electromyography traces of different jaw muscles in individuals with obstructive sleep apnea",
+        "first_author": "Li",
+        "year": 2022,
+        "pmid": "35212262",
+        "doi": "10.5664/jcsm.9940"
+      },
+      {
+        "title": "Validation of a new diagnostic method for quantification of sleep bruxism activity",
+        "first_author": "Ommerborn",
+        "year": 2022,
+        "pmid": "35195761",
+        "doi": "10.1007/s00784-022-04398-w"
+      },
+      {
+        "title": "Isolated mandibular sleep-related rhythmic movement disorder: A case report",
+        "first_author": "Roethlisberger",
+        "year": 2022,
+        "pmid": "32241246",
+        "doi": "10.1080/08869634.2020.1747715"
+      },
+      {
+        "title": "Validity of clinical diagnostic criteria for sleep bruxism by comparison with a reference standard using masseteric electromyogram obtained with an ultraminiature electromyographic device",
+        "first_author": "Mikami",
+        "year": 2022,
+        "doi": "10.1007/s41105-021-00370-5"
+      },
+      {
+        "title": "Botulinum Toxin Therapy for Oromandibular Dystonia and Other Movement Disorders in the Stomatognathic System",
+        "first_author": "Yoshida",
+        "year": 2022,
+        "pmid": "35448891",
+        "doi": "10.3390/toxins14040282"
+      },
+      {
+        "title": "Automated identification of sleep disorders using wavelet-based features extracted from electrooculogram and electromyogram signals",
+        "first_author": "Sharma",
+        "year": 2022,
+        "pmid": "35091364",
+        "doi": "10.1016/j.compbiomed.2022.105224"
+      },
+      {
+        "title": "Variability of sleep bruxism-findings from consecutive nights of monitoring",
+        "first_author": "Ohlmann",
+        "year": 2022,
+        "pmid": "34862565",
+        "doi": "10.1007/s00784-021-04314-8"
+      },
+      {
+        "title": "Efficacy of botulinum-A for nocturnal bruxism pain and the occurrence of bruxism events: a meta-analysis and systematic review",
+        "first_author": "Cheng",
+        "year": 2022,
+        "pmid": "34955330",
+        "doi": "10.1016/j.bjoms.2021.03.005"
+      },
+      {
+        "title": "A pilot study to test the validity of a piezoelectric intra-splint force detector for monitoring of sleep bruxism in comparison to portable polysomnography",
+        "first_author": "Aoki",
+        "year": 2022,
+        "pmid": "34955491",
+        "doi": "10.2334/josnusd.21-0421"
+      },
+      {
+        "title": "Sleep, function, behaviour and cognition in a cohort of children with down syndrome",
+        "first_author": "Chawla",
+        "year": 2021,
+        "doi": "10.3390/brainsci11101317"
+      },
+      {
+        "title": "Orofacial musculoskeletal pain: An evidence-based bio-psycho-social matrix model",
+        "first_author": "Ettlin",
+        "year": 2021,
+        "pmid": "34118294",
+        "doi": "10.1016/j.neubiorev.2021.06.008"
+      },
+      {
+        "title": "A lack of specific motor patterns between rhythmic/non-rhythmic masticatory muscle activity and bodily movements in sleep bruxism",
+        "first_author": "Imai",
+        "year": 2021,
+        "pmid": "33281172",
+        "doi": "10.2186/jpr.JPR_D_20_00012"
+      },
+      {
+        "title": "Effect of contingent vibratory stimulus via an oral appliance on sleep bruxism after the splint adaptation period",
+        "first_author": "Nakazato",
+        "year": 2021,
+        "pmid": "33983628",
+        "doi": "10.1111/joor.13182"
+      },
+      {
+        "title": "Sleep bruxism and temporomandibular disorders: A scoping review of the literature",
+        "first_author": "Manfredini",
+        "year": 2021,
+        "pmid": "34090993",
+        "doi": "10.1016/j.jdent.2021.103711"
+      },
+      {
+        "title": "Signal acquisition and analysis of ambulatory electromyographic recordings for the assessment of sleep bruxism: A scoping review",
+        "first_author": "Thymi",
+        "year": 2021,
+        "pmid": "33772835",
+        "doi": "10.1111/joor.13170"
+      },
+      {
+        "title": "The Clinical Evaluation of Sleep-Related Movement Disorders",
+        "first_author": "Anguizola",
+        "year": 2021,
+        "pmid": "33985649",
+        "doi": "10.1016/j.jsmc.2021.02.001"
+      },
+      {
+        "title": "Sleep Bruxism: An Integrated Clinical View",
+        "first_author": "Bornhardt",
+        "year": 2021,
+        "pmid": "33985661",
+        "doi": "10.1016/j.jsmc.2021.02.010"
+      },
+      {
+        "title": "Implant complications in bruxism patients",
+        "first_author": "Song",
+        "year": 2021,
+        "doi": "10.5125/JKAOMS.2021.47.2.149"
+      },
+      {
+        "title": "Consecutive controlled case series on effectiveness of opipramol in severe sleep bruxism management—preliminary study on new therapeutic path",
+        "first_author": "Wieckiewicz",
+        "year": 2021,
+        "doi": "10.3390/brainsci11020146"
+      },
+      {
+        "title": "Heart rate changes associated with rhythmic masticatory muscle activities and limb movements in sleep bruxers: Preliminary findings",
+        "first_author": "Lu",
+        "year": 2021,
+        "pmid": "30774008",
+        "doi": "10.1080/08869634.2019.1578032"
+      },
+      {
+        "title": "Sleep bruxism: the complexity of a definitive diagnosis-case report",
+        "first_author": "De",
+        "year": 2021,
+        "doi": "10.1080/07853890.2021.1897389"
+      },
+      {
+        "title": "Quantitative analyses of jaw-opening muscle activity during the active phase of jaw-closing muscles in sleep bruxism",
+        "first_author": "Maeda",
+        "year": 2020,
+        "pmid": "31573129",
+        "doi": "10.1111/jsr.12922"
+      },
+      {
+        "title": "The relationship between simple snoring and sleep bruxism: A polysomnographic study",
+        "first_author": "Michalek-Zrabkowska",
+        "year": 2020,
+        "pmid": "33276496",
+        "doi": "10.3390/ijerph17238960"
+      },
+      {
+        "title": "The effects of mandibular advancement appliance therapy on jaw-closing muscle activity during sleep in patients with obstructive sleep apnea: A 3-6 months follow-up",
+        "first_author": "Aarab",
+        "year": 2020,
+        "pmid": "32501212",
+        "doi": "10.5664/jcsm.8612"
+      },
+      {
+        "title": "Polysomnographic scoring of sleep bruxism events is accurate even in the absence of video recording but unreliable with EMG-only setups",
+        "first_author": "Miettinen",
+        "year": 2020,
+        "pmid": "31402440",
+        "doi": "10.1007/s11325-019-01915-2"
+      },
+      {
+        "title": "The meaning of the masticatory muscle tonic-type electromyographic pathway correlated with sleep bruxism and sleep-related breathing disorders - A polysomnographic study",
+        "first_author": "Smardz",
+        "year": 2020,
+        "pmid": "32035303",
+        "doi": "10.1016/j.sleep.2019.08.025"
+      },
+      {
+        "title": "Coherence of jaw and neck muscle activity during sleep bruxism",
+        "first_author": "Gouw",
+        "year": 2020,
+        "pmid": "31926031",
+        "doi": "10.1111/joor.12932"
+      },
+      {
+        "title": "Mandibular movement monitoring with artificial intelligence analysis for the diagnosis of sleep bruxism",
+        "first_author": "Martinot",
+        "year": 2020,
+        "doi": "10.1093/sleep/zsaa056.788"
+      },
+      {
+        "title": "Bruxism Relieved Under CPAP Treatment in a Patient With OSA Syndrome",
+        "first_author": "Martinot",
+        "year": 2020,
+        "pmid": "32145817",
+        "doi": "10.1016/j.chest.2019.07.032"
+      },
+      {
+        "title": "Association of masticatory muscle activity with sleep arousal and other concomitant movements during sleep",
+        "first_author": "Miki",
+        "year": 2020,
+        "pmid": "31746005",
+        "doi": "10.1111/joor.12913"
+      },
+      {
+        "title": "Study on the correlation between the mandibular masticatory muscle movement and sleep tooth wear",
+        "first_author": "Zeng",
+        "year": 2020,
+        "pmid": "32037767",
+        "doi": "10.7518/hxkq.2020.01.010"
+      },
+      {
+        "title": "The relationship between sleep bruxism intensity and renalase concentration—An enzyme involved in hypertension development",
+        "first_author": "Martynowicz",
+        "year": 2020,
+        "doi": "10.3390/jcm9010016"
+      },
+      {
+        "title": "Severity of sleep bruxism and its implications for the stomatognathic system in healthy subjects",
+        "first_author": "Palinkas",
+        "year": 2020,
+        "doi": "10.3889/OAMJMS.2020.3727"
+      },
+      {
+        "title": "Botulinum toxin therapy for managing sleep bruxism: A randomized and placebo—controlled trial",
+        "first_author": "Shim",
+        "year": 2020,
+        "pmid": "32182879",
+        "doi": "10.3390/toxins12030168"
+      },
+      {
+        "title": "Comorbid episodes of primary bruxism and bruxism as an epileptic activity-related motor event",
+        "first_author": "Bušková",
+        "year": 2019,
+        "pmid": "31655318",
+        "doi": "10.1016/j.sleep.2019.06.009"
+      },
+      {
+        "title": "A randomized controlled trial of botulinum toxin for treating sleep bruxism: a polysomnographic evaluation",
+        "first_author": "Park",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.535"
+      },
+      {
+        "title": "A new solution to major limitation of HSAT: wearable printed sensor for sleep quantification and comorbid detection",
+        "first_author": "Miettinen",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.755"
+      },
+      {
+        "title": "The bruxism construct: From cut-off points to a continuum spectrum",
+        "first_author": "Manfredini",
+        "year": 2019,
+        "pmid": "31264730",
+        "doi": "10.1111/joor.12833"
+      },
+      {
+        "title": "The relationship between sleep bruxism and obstructive sleep apnea based on polysomnographic findings",
+        "first_author": "Martynowicz",
+        "year": 2019,
+        "doi": "10.3390/jcm8101653"
+      },
+      {
+        "title": "Influence of sleep bruxism severity on masticatory efficiency: electromyographic analysis",
+        "first_author": "Palinkas",
+        "year": 2019,
+        "pmid": "31821529",
+        "doi": "10.12871/00039829201922"
+      },
+      {
+        "title": "Correlation between sleep bruxism, stress, and depression—a polysomnographic study",
+        "first_author": "Smardz",
+        "year": 2019,
+        "doi": "10.3390/jcm8091344"
+      },
+      {
+        "title": "Evaluation of biofeedback usefulness in masticatory muscle activity management—a systematic review",
+        "first_author": "Florjanski",
+        "year": 2019,
+        "doi": "10.3390/jcm8060766"
+      },
+      {
+        "title": "Prevalence of Sleep Bruxism and Its Association with Obstructive Sleep Apnea in Adult Patients: A Retrospective Polysomnographic Investigation",
+        "first_author": "Tan",
+        "year": 2019,
+        "pmid": "30371687",
+        "doi": "10.11607/ofph.2068"
+      },
+      {
+        "title": "Validity of single-channel masseteric electromyography by using an ultraminiature wearable electromyographic device for diagnosis of sleep bruxism",
+        "first_author": "Maeda",
+        "year": 2019,
+        "pmid": "31085074",
+        "doi": "10.1016/j.jpor.2019.04.003"
+      },
+      {
+        "title": "Characterisation of the relationships between rhythmic masticatory muscle activities and limb movements in patients with sleep bruxism",
+        "first_author": "Han",
+        "year": 2019,
+        "pmid": "30588653",
+        "doi": "10.1111/joor.12760"
+      },
+      {
+        "title": "Current Methods of Bruxism Diagnosis: A Short Communication",
+        "first_author": "Pigozzi",
+        "year": 2019,
+        "pmid": "31034542",
+        "doi": "10.11607/ijp.6196"
+      },
+      {
+        "title": "Obstructive sleep apnea and Parkinson's disease: Characteristics and associated factors",
+        "first_author": "Sobreira-Neto",
+        "year": 2019,
+        "pmid": "31553390",
+        "doi": "10.1590/0004-282X20190098"
+      },
+      {
+        "title": "Effects of invisible orthodontic retainers on masticatory muscles activity during sleep: a controlled trial",
+        "first_author": "Manfredini",
+        "year": 2018,
+        "pmid": "30033479",
+        "doi": "10.1186/s40510-018-0228-y"
+      },
+      {
+        "title": "International consensus on the assessment of bruxism: Report of a work in progress",
+        "first_author": "Lobbezoo",
+        "year": 2018,
+        "pmid": "29926505",
+        "doi": "10.1111/joor.12663"
+      },
+      {
+        "title": "Evaluation of intensity of sleep Bruxism in arterial hypertension",
+        "first_author": "Martynowicz",
+        "year": 2018,
+        "doi": "10.3390/JCM7100327"
+      },
+      {
+        "title": "Is the number of sleep bruxism bursts under condition with polysomnography in sleep laboratory the same as that under accustomed condition at home?",
+        "first_author": "Sakuma",
+        "year": 2018,
+        "doi": "10.1007/s41105-018-0176-4"
+      },
+      {
+        "title": "Masticatory muscle stretching for the management of sleep bruxism: A randomised controlled trial",
+        "first_author": "Gouw",
+        "year": 2018,
+        "pmid": "30019357",
+        "doi": "10.1111/joor.12694"
+      },
+      {
+        "title": "Sleep bruxism: an overview for clinicians",
+        "first_author": "Beddis",
+        "year": 2018,
+        "pmid": "30237554",
+        "doi": "10.1038/sj.bdj.2018.757"
+      },
+      {
+        "title": "A randomized controlled trial of botulinum toxin for treating sleep bruxism: A polysomnographic evaluation",
+        "first_author": "Park",
+        "year": 2018,
+        "doi": "10.1111/jsr.12751"
+      },
+      {
+        "title": "Comparison of rhythmic masticatory muscle activity during non-rapid eye movement sleep in guinea pigs and humans",
+        "first_author": "Kato",
+        "year": 2018,
+        "pmid": "28960626",
+        "doi": "10.1111/jsr.12608"
+      },
+      {
+        "title": "Success Rate and Technical Quality of Home Polysomnography with Self-Applicable Electrode Set in Subjects with Possible Sleep Bruxism",
+        "first_author": "Miettinen",
+        "year": 2018,
+        "pmid": "28829322",
+        "doi": "10.1109/JBHI.2017.2741522"
+      },
+      {
+        "title": "Sleep-Related Bruxism",
+        "first_author": "Carra",
+        "year": 2018,
+        "doi": "10.1007/s40675-018-0105-8"
+      },
+      {
+        "title": "Differential Diagnosis of Nocturnal Movements",
+        "first_author": "Bhat",
+        "year": 2018,
+        "doi": "10.1007/s40675-018-0106-7"
+      },
+      {
+        "title": "Onabotulinum toxin-A injections for sleep bruxism",
+        "first_author": "Ondo",
+        "year": 2018,
+        "pmid": "29343468",
+        "doi": "10.1212/WNL.0000000000004951"
+      },
+      {
+        "title": "Agreement between jaw-muscle activity measurement with portable single-channel electromyography and polysomnography in children",
+        "first_author": "Restrepo",
+        "year": 2018,
+        "pmid": "28586093",
+        "doi": "10.1111/ipd.12308"
+      },
+      {
+        "title": "Oral appliances for managing sleep bruxism in adults: a systematic review from 2007 to 2017",
+        "first_author": "Jokubauskas",
+        "year": 2018,
+        "pmid": "28859236",
+        "doi": "10.1111/joor.12558"
+      },
+      {
+        "title": "Is bruxism associated with obstructive sleep apnoea in children?",
+        "first_author": "Zainuddin",
+        "year": 2017,
+        "doi": "10.1111/jsr.12619"
+      },
+      {
+        "title": "Validity of different tools to assess sleep bruxism: a meta-analysis",
+        "first_author": "Casett",
+        "year": 2017,
+        "pmid": "28477392",
+        "doi": "10.1111/joor.12520"
+      },
+      {
+        "title": "Association between patterns of jaw motor activity during sleep and clinical signs and symptoms of sleep bruxism",
+        "first_author": "Yoshida",
+        "year": 2017,
+        "pmid": "27996170",
+        "doi": "10.1111/jsr.12481"
+      },
+      {
+        "title": "Is there enough evidence to use botulinum toxin injections for bruxism management? A systematic literature review",
+        "first_author": "De",
+        "year": 2017,
+        "pmid": "28255752",
+        "doi": "10.1007/s00784-017-2092-4"
+      },
+      {
+        "title": "A randomised, open-label, crossover study of the dopamine agonist, pramipexole, in patients with sleep bruxism",
+        "first_author": "Cahlin",
+        "year": 2017,
+        "pmid": "27426276",
+        "doi": "10.1111/jsr.12440"
+      },
+      {
+        "title": "Therapies for bruxism: A systematic review and network meta-analysis (protocol)",
+        "first_author": "Mesko",
+        "year": 2017,
+        "pmid": "28086992",
+        "doi": "10.1186/s13643-016-0397-z"
+      },
+      {
+        "title": "Cyclic alternating pattern associated with catathrenia and bruxism in a 10-year-old patient",
+        "first_author": "Villafuerte-Trisolini",
+        "year": 2017,
+        "pmid": "28095970",
+        "doi": "10.5664/jcsm.6510"
+      },
+      {
+        "title": "Mandibular movement during sleep bruxism associated with current tooth attrition",
+        "first_author": "Okura",
+        "year": 2017,
+        "pmid": "27354030",
+        "doi": "10.1016/j.jpor.2016.06.003"
+      },
+      {
+        "title": "Sleep Bruxism: State of the art and management",
+        "first_author": "Grobet",
+        "year": 2017,
+        "pmid": "28892317"
+      },
+      {
+        "title": "Evaluation of genetic factors involved in nocturnal electromyographic activity of masticatory muscles in twins",
+        "first_author": "Takaoka",
+        "year": 2017,
+        "pmid": "27000072",
+        "doi": "10.1007/s00784-016-1794-3"
+      },
+      {
+        "title": "Evaluation of a Proton Pump Inhibitor for Sleep Bruxism: A Randomized Clinical Trial",
+        "first_author": "Ohmure",
+        "year": 2016,
+        "pmid": "27474257"
+      },
+      {
+        "title": "Impact of sleep bruxism on masseter and temporalis muscles and bite force",
+        "first_author": "Palinkas",
+        "year": 2016,
+        "pmid": "27077268",
+        "doi": "10.1080/08869634.2015.1106811"
+      },
+      {
+        "title": "Diagnostic validity of the use of a portable single-channel electromyography device for sleep bruxism",
+        "first_author": "Stuginski-Barbosa",
+        "year": 2016,
+        "pmid": "26527206",
+        "doi": "10.1007/s11325-015-1283-y"
+      },
+      {
+        "title": "Current Treatments of Bruxism",
+        "first_author": "Guaita",
+        "year": 2016,
+        "doi": "10.1007/s11940-016-0396-3"
+      },
+      {
+        "title": "Letter to the Editor",
+        "first_author": "Grossi",
+        "year": 2016,
+        "pmid": "26432658",
+        "doi": "10.1111/joor.12353"
+      },
+      {
+        "title": "Sleep bruxism in respiratory medicine practice",
+        "first_author": "Mayer",
+        "year": 2016,
+        "pmid": "26225899",
+        "doi": "10.1378/chest.15-0822"
+      },
+      {
+        "title": "Repetitive arm movements during sleep: A polysomnographic assessment",
+        "first_author": "Torabi-Nami",
+        "year": 2016,
+        "doi": "10.15412/J.BCN.03070312"
+      },
+      {
+        "title": "BruxApp: The ecological momentary assessment of awake bruxism",
+        "first_author": "Manfredini",
+        "year": 2016,
+        "pmid": "27374364"
+      },
+      {
+        "title": "The effect of rapid palatal expansion on sleep bruxism in children",
+        "first_author": "Bellerive",
+        "year": 2015,
+        "pmid": "25790946",
+        "doi": "10.1007/s11325-015-1156-4"
+      },
+      {
+        "title": "Sleep bruxism in individuals with and without attrition-type tooth wear: An exploratory matched case-control electromyographic study",
+        "first_author": "Jonsgar",
+        "year": 2015,
+        "pmid": "26455540",
+        "doi": "10.1016/j.jdent.2015.10.002"
+      },
+      {
+        "title": "Sleep architectures in young adults with a high number of rhythmic masticatory muscle activity",
+        "first_author": "Haraki",
+        "year": 2015,
+        "doi": "10.1016/j.sleep.2015.02.179"
+      },
+      {
+        "title": "Sleep quality in sleep bruxism patients using oral appliances: A retrospective analysis of two studies",
+        "first_author": "Abe",
+        "year": 2015,
+        "doi": "10.1016/j.sleep.2015.02.1432"
+      },
+      {
+        "title": "Ictal bruxism treated with temporal lobectomy",
+        "first_author": "Guaita",
+        "year": 2015,
+        "pmid": "26422019",
+        "doi": "10.1016/j.sleep.2015.05.024"
+      },
+      {
+        "title": "Ssessment of interobserver concordance in polysomnography scoring of sleep bruxism",
+        "first_author": "Ferraz",
+        "year": 2015,
+        "doi": "10.1016/j.slsci.2015.08.002"
+      },
+      {
+        "title": "Management of sleep bruxism in adults: a qualitative systematic literature review",
+        "first_author": "Manfredini",
+        "year": 2015,
+        "pmid": "26095208",
+        "doi": "10.1111/joor.12322"
+      },
+      {
+        "title": "Agreement between clinical and portable EMG/ECG diagnosis of sleep bruxism",
+        "first_author": "Castroflorio",
+        "year": 2015,
+        "pmid": "26059761",
+        "doi": "10.1111/joor.12320"
+      },
+      {
+        "title": "Validity of self-reported sleep bruxism among myofascial temporomandibular disorder patients and controls",
+        "first_author": "Raphael",
+        "year": 2015,
+        "pmid": "26010126",
+        "doi": "10.1111/joor.12310"
+      },
+      {
+        "title": "Treatment resistant depression and sleep apnea: A case report",
+        "first_author": "Sünbül",
+        "year": 2015,
+        "doi": "10.5455/NYS.20151216020804"
+      },
+      {
+        "title": "Evaluation of various treatment modalities in sleep bruxism",
+        "first_author": "Singh",
+        "year": 2015,
+        "pmid": "26004173",
+        "doi": "10.1016/j.prosdent.2015.02.025"
+      },
+      {
+        "title": "Do sleep hygiene measures and progressive muscle relaxation influence sleep bruxism? Report of a randomised controlled trial",
+        "first_author": "Valiente",
+        "year": 2015,
+        "pmid": "25413839",
+        "doi": "10.1111/joor.12252"
+      },
+      {
+        "title": "Overview on Sleep Bruxism for Sleep Medicine Clinicians",
+        "first_author": "Carra",
+        "year": 2015,
+        "pmid": "26329448",
+        "doi": "10.1016/j.jsmc.2015.05.005"
+      },
+      {
+        "title": "Pilot study to establish proof of principle for the use of onabotulinumtoxinA (Botox) in the treatment of nocturnal bruxism with associated craniofacial pain",
+        "first_author": "Syna",
+        "year": 2015,
+        "doi": "10.1016/j.toxicon.2014.11.190"
+      },
+      {
+        "title": "Diagnostic accuracy of portable instrumental devices to measure sleep bruxism: a systematic literature review of polysomnographic studies",
+        "first_author": "Manfredini",
+        "year": 2014,
+        "pmid": "25040303",
+        "doi": "10.1111/joor.12207"
+      },
+      {
+        "title": "Long-term use of occlusal appliance has impact on sleep structure",
+        "first_author": "Sjoholm",
+        "year": 2014,
+        "pmid": "24942041",
+        "doi": "10.1111/joor.12201"
+      },
+      {
+        "title": "Influence of experimental oesophageal acidification on masseter muscle activity, cervicofacial behaviour and autonomic nervous activity in wakefulness",
+        "first_author": "Ohmure",
+        "year": 2014,
+        "pmid": "24655114",
+        "doi": "10.1111/joor.12159"
+      },
+      {
+        "title": "Is bruxism a risk factor for dental implants? A systematic review of the literature",
+        "first_author": "Manfredini",
+        "year": 2014,
+        "pmid": "23151302",
+        "doi": "10.1111/cid.12015"
+      },
+      {
+        "title": "Evaluation of efficacy and safety of an occlusal splint vs. gabapentin in the treatment of sleep bruxism",
+        "first_author": "Abdollahian",
+        "year": 2014,
+        "doi": "10.1017/S1461145714000741"
+      },
+      {
+        "title": "Sleep problems and their effect in ADHD",
+        "first_author": "Kirov",
+        "year": 2014,
+        "pmid": "24491141",
+        "doi": "10.1586/14737175.2014.885382"
+      },
+      {
+        "title": "Detection of sleep bruxism: Comparison between an electromyographic and electrocardiographic portable holter and polysomnography",
+        "first_author": "Castroflorio",
+        "year": 2014,
+        "pmid": "24417585",
+        "doi": "10.1111/joor.12131"
+      },
+      {
+        "title": "Effects of botulinum toxin on jaw motor events during sleep in sleep bruxism patients: A polysomnographic evaluation",
+        "first_author": "Shim",
+        "year": 2014,
+        "pmid": "24634627",
+        "doi": "10.5664/jcsm.3532"
+      },
+      {
+        "title": "Analysis of the effects of a mandibular advancement device on sleep bruxism using polysomnography, the BiteStrip, the sleep assessment questionnaire, and occlusal force.",
+        "first_author": "Mainieri",
+        "year": 2014,
+        "pmid": "24596907"
+      },
+      {
+        "title": "Polysomnographic analysis of bruxism",
+        "first_author": "Trindade",
+        "year": 2014,
+        "pmid": "24401352"
+      },
+      {
+        "title": "Biofeedback for treatment of awake and sleep bruxism in adults: Systematic review protocol",
+        "first_author": "Ilovar",
+        "year": 2014,
+        "pmid": "24886985",
+        "doi": "10.1186/2046-4053-3-42"
+      },
+      {
+        "title": "Effect of contingent electrical stimulation on masticatory muscle activity and pain in patients with a myofascial temporomandibular disorder and sleep bruxism.",
+        "first_author": "Raphael",
+        "year": 2013,
+        "pmid": "23424717",
+        "doi": "10.11607/jop.1029"
+      },
+      {
+        "title": "Identification of sleep bruxism with an ambulatory wireless recording system.",
+        "first_author": "Inano",
+        "year": 2013,
+        "pmid": "24179965"
+      },
+      {
+        "title": "Prevalence of sleep bruxism in children: A systematic review of the literature",
+        "first_author": "Manfredini",
+        "year": 2013,
+        "pmid": "23700983",
+        "doi": "10.1111/joor.12069"
+      },
+      {
+        "title": "Polysomnographic study of the prevalence of sleep bruxism in a population sample.",
+        "first_author": "Maluly",
+        "year": 2013,
+        "pmid": "23690359"
+      },
+      {
+        "title": "Epidemiology of bruxism in adults: a systematic review of the literature.",
+        "first_author": "Manfredini",
+        "year": 2013,
+        "pmid": "23630682",
+        "doi": "10.11607/jop.921"
+      },
+      {
+        "title": "Sleep-related movement disorders",
+        "first_author": "Silber",
+        "year": 2013,
+        "pmid": "23385700",
+        "doi": "10.1212/01.CON.0000427207.13553.68"
+      },
+      {
+        "title": "Masticatory muscle sleep background electromyographic activity is elevated in myofascial temporomandibular disorder patients",
+        "first_author": "Raphael",
+        "year": 2013,
+        "pmid": "24237356",
+        "doi": "10.1111/joor.12112"
+      },
+      {
+        "title": "Bruxism defined and graded: An international consensus",
+        "first_author": "Lobbezoo",
+        "year": 2013,
+        "pmid": "23121262",
+        "doi": "10.1111/joor.12011"
+      },
+      {
+        "title": "Identification of sleep bruxism with an ambulatory wireless recording system",
+        "first_author": "Inano",
+        "year": 2013,
+        "pmid": "24179965",
+        "doi": "10.11607/ijp.3331"
+      },
+      {
+        "title": "Sensorimotor cortical activation in patients with sleep bruxism",
+        "first_author": "Kervancioglu",
+        "year": 2012,
+        "pmid": "22404768",
+        "doi": "10.1111/j.1365-2869.2012.01005.x"
+      },
+      {
+        "title": "Signs and symptoms of sleep disordered breathing (SDB) in patients with nocturnal bruxism (NB)",
+        "first_author": "Prehn",
+        "year": 2012,
+        "doi": "10.1007/s11325-012-0710-6"
+      },
+      {
+        "title": "A randomised single blinded cross-over controlled trial study of two occlusal splints for sleep bruxism treatment in thai subjects",
+        "first_author": "Chalidapongse",
+        "year": 2012,
+        "doi": "10.1007/s11325-012-0710-6"
+      },
+      {
+        "title": "A novel therapy approach for sleep bruxism in child with cerebral palsy-long-term follow-up",
+        "first_author": "Giannasi",
+        "year": 2012,
+        "doi": "10.1007/s11325-012-0710-6"
+      },
+      {
+        "title": "Scoring sleep bruxism in absence of audio-video recording: Risk of moderate overestimation",
+        "first_author": "Carra",
+        "year": 2012,
+        "doi": "10.1111/j.1365-2869.2012.01044.x"
+      },
+      {
+        "title": "Heritability of sleep bruxism: A polysomnographic study",
+        "first_author": "Khoury",
+        "year": 2012,
+        "doi": "10.1111/j.1365-2869.2012.01044.x"
+      },
+      {
+        "title": "Evaluation of efficacy and safety of an occlusal splint vs. gabapentin in the treatment of sleep bruxism",
+        "first_author": "Abdollahian",
+        "year": 2012,
+        "doi": "10.1016/S0924-9338(12)75233-1"
+      },
+      {
+        "title": "Sleep-related movement disorders",
+        "first_author": "Merlino",
+        "year": 2012,
+        "pmid": "22203333",
+        "doi": "10.1007/s10072-011-0905-9"
+      },
+      {
+        "title": "Validation of the Bitestrip versus polysomnography in the diagnosis of patients with a clinical history of sleep bruxism",
+        "first_author": "Mainieri",
+        "year": 2012,
+        "pmid": "22668619",
+        "doi": "10.1016/j.oooo.2011.10.008"
+      },
+      {
+        "title": "Sleep Bruxism: A Comprehensive Overview for the Dental Clinician Interested in Sleep Medicine",
+        "first_author": "Carra",
+        "year": 2012,
+        "pmid": "22480810",
+        "doi": "10.1016/j.cden.2012.01.003"
+      },
+      {
+        "title": "Comparison of ambulatory and polysomnographic recording of jaw muscle activity during sleep in normal subjects",
+        "first_author": "Yamaguchi",
+        "year": 2012,
+        "pmid": "21707698",
+        "doi": "10.1111/j.1365-2842.2011.02232.x"
+      },
+      {
+        "title": "Sleep bruxism: from human research to clinical perspective",
+        "first_author": "Carra",
+        "year": 2011,
+        "doi": "10.1111/j.1479-8425.2011.00521.x"
+      },
+      {
+        "title": "Sleep bruxism: Transfer knowledge between human research and basic science",
+        "first_author": "Kato",
+        "year": 2011,
+        "doi": "10.1111/j.1479-8425.2011.00521.x"
+      },
+      {
+        "title": "The Patterns of close-open jaw movement during sleep in normal subjects",
+        "first_author": "Okura",
+        "year": 2011,
+        "doi": "10.1111/j.1479-8425.2011.00518.x"
+      },
+      {
+        "title": "Sleep bruxism and sleep arousal: An experimental challenge to assess the role of cyclic alternating pattern",
+        "first_author": "Carra",
+        "year": 2011,
+        "pmid": "21299589",
+        "doi": "10.1111/j.1365-2842.2011.02203.x"
+      },
+      {
+        "title": "Evaluation of efficacy and safety of an occlusal splint vs. Gabapentin in the treatment of sleep bruxism",
+        "first_author": "Abdollahian",
+        "year": 2011,
+        "doi": "10.1016/S1876-2018(11)60277-3"
+      },
+      {
+        "title": "Assessment of sleep parameters during contingent electrical stimulation in subjects with jaw muscle activity during sleep: A polysomnographic study",
+        "first_author": "Jadidi",
+        "year": 2011,
+        "pmid": "21564315",
+        "doi": "10.1111/j.1600-0722.2011.00822.x"
+      },
+      {
+        "title": "Influence of experimental esophageal acidification on sleep bruxism: A randomized trial",
+        "first_author": "Ohmure",
+        "year": 2011,
+        "pmid": "21248360",
+        "doi": "10.1177/0022034510393516"
+      },
+      {
+        "title": "Primary sleep disorders and paroxysmal nocturnal nonepileptic events in adults with epilepsy from the perspective of sleep specialists",
+        "first_author": "Grigg-Damberger",
+        "year": 2011,
+        "pmid": "21399519",
+        "doi": "10.1097/WNP.0b013e3182120fed"
+      },
+      {
+        "title": "Effects of psychological stress on sleep bruxism activities",
+        "first_author": "Kawai",
+        "year": 2010,
+        "doi": "10.1016/j.neures.2010.07.2350"
+      },
+      {
+        "title": "Relationship between bruxism and temporomandibular disorders: A systematic review of literature from 1998 to 2008",
+        "first_author": "Manfredini",
+        "year": 2010,
+        "pmid": "20451831",
+        "doi": "10.1016/j.tripleo.2010.02.013"
+      },
+      {
+        "title": "REM Sleep Behavior Disorder",
+        "first_author": "Frenette",
+        "year": 2010,
+        "pmid": "20451035",
+        "doi": "10.1016/j.mcna.2010.02.010"
+      },
+      {
+        "title": "Analysis of the influence of a mandibular advancement device on sleep and sleep bruxism scores by means of the BiteStrip and the Sleep Assessment Questionnaire.",
+        "first_author": "Saueressig",
+        "year": 2010,
+        "pmid": "20552084"
+      },
+      {
+        "title": "Transient morning headache: recognizing the role of sleep bruxism and sleep-disordered breathing.",
+        "first_author": "Lavigne",
+        "year": 2010,
+        "pmid": "20194385"
+      },
+      {
+        "title": "Influence of motion and posture of the head on data obtained using the newly developed ultraminiature cordless bruxism measurement system",
+        "first_author": "Mikami",
+        "year": 2009,
+        "pmid": "19318067",
+        "doi": "10.1016/j.jpor.2008.08.001"
+      },
+      {
+        "title": "Differentiating Nocturnal Movements: Leg Movements, Parasomnias, and Seizures",
+        "first_author": "Rama",
+        "year": 2009,
+        "doi": "10.1016/j.jsmc.2009.04.004"
+      },
+      {
+        "title": "Long term PSG in a bruxist patient: The role of daily anxiety",
+        "first_author": "Dal'Fabro",
+        "year": 2009,
+        "pmid": "19026595",
+        "doi": "10.1016/j.sleep.2008.08.001"
+      },
+      {
+        "title": "Tooth wear in young subjects: a discriminator between sleep bruxers and controls?",
+        "first_author": "Abe",
+        "year": 2009,
+        "pmid": "19639069"
+      },
+      {
+        "title": "Effect of an adjustable mandibular advancement appliance on sleep bruxism: a crossover sleep laboratory study.",
+        "first_author": "Landry-Schönbeck",
+        "year": 2009,
+        "pmid": "19548407"
+      },
+      {
+        "title": "Specific increase in non-functional masseter bursts in subjects aware of tooth-clenching during wakefulness",
+        "first_author": "Katase-Akiyama",
+        "year": 2009,
+        "pmid": "18976275",
+        "doi": "10.1111/j.1365-2842.2008.01911.x"
+      },
+      {
+        "title": "Sleep-related tongue biting may not be a sign of epilepsy: A case of sleep-related faciomandibular myoclonus",
+        "first_author": "Dylgjeri",
+        "year": 2009,
+        "pmid": "19125838",
+        "doi": "10.1111/j.1528-1167.2008.01760.x"
+      },
+      {
+        "title": "Ambulatory polysomnography for the assessment of sleep bruxism.",
+        "first_author": "Doering",
+        "year": 2008,
+        "pmid": "18699968",
+        "doi": "10.1111/j.1365-2842.2008.01902.x"
+      },
+      {
+        "title": "Bruxism and sleep efficiency measured at home with wireless devices.",
+        "first_author": "Ahlberg",
+        "year": 2008,
+        "pmid": "18482341",
+        "doi": "10.1111/j.1365-2842.2008.01875.x"
+      },
+      {
+        "title": "Bruxism physiology and pathology: An overview for clinicians",
+        "first_author": "Lavigne",
+        "year": 2008,
+        "pmid": "18557915",
+        "doi": "10.1111/j.1365-2842.2008.01881.x"
+      },
+      {
+        "title": "Association between rhythmic masticatory muscle activity during sleep and masticatory myofascial pain: A polysomnographic study",
+        "first_author": "Nunes",
+        "year": 2008,
+        "pmid": "18780532"
+      },
+      {
+        "title": "Association between bruxism and nocturnal groaning",
+        "first_author": "Manconi",
+        "year": 2008,
+        "pmid": "18228567",
+        "doi": "10.1002/mds.21885"
+      },
+      {
+        "title": "Effect of conditioning electrical stimuli on temporalis electromyographic activity during sleep",
+        "first_author": "Jadidi",
+        "year": 2008,
+        "pmid": "18254794",
+        "doi": "10.1111/j.1365-2842.2007.01781.x"
+      },
+      {
+        "title": "Sleep-related faciomandibular myoclonus: A sleep-related movement disorder different from bruxism",
+        "first_author": "Loi",
+        "year": 2007,
+        "pmid": "17657812",
+        "doi": "10.1002/mds.21661"
+      },
+      {
+        "title": "Diagnostic Methods in Pediatric Sleep Medicine",
+        "first_author": "Sheldon",
+        "year": 2007,
+        "doi": "10.1016/j.jsmc.2007.05.013"
+      },
+      {
+        "title": "Validation of the BiteStrip screener for sleep bruxism",
+        "first_author": "Shochat",
+        "year": 2007,
+        "pmid": "17618147",
+        "doi": "10.1016/j.tripleo.2007.03.009"
+      },
+      {
+        "title": "Sleep bruxism and temporomandibular disorder: Clinical and polysomnographic evaluation",
+        "first_author": "Camparis",
+        "year": 2006,
+        "pmid": "16584706",
+        "doi": "10.1016/j.archoralbio.2006.03.002"
+      },
+      {
+        "title": "The occurrence of spontaneous functional and nonfunctional orofacial activities in subjects without pain under laboratory conditions: A descriptive study",
+        "first_author": "Kato",
+        "year": 2006,
+        "pmid": "17190030"
+      },
+      {
+        "title": "Practical aspects of scoring sleep in children",
+        "first_author": "Kheirandish-Gozal",
+        "year": 2006,
+        "pmid": "16798595",
+        "doi": "10.1016/j.prrv.2006.04.176"
+      },
+      {
+        "title": "Disorders of sleep: An overview",
+        "first_author": "Ting",
+        "year": 2005,
+        "pmid": "15935187",
+        "doi": "10.1016/j.pop.2005.02.004"
+      },
+      {
+        "title": "Controlled Assessment of the Efficacy of Occlusal Stabilization Splints on Sleep Bruxism",
+        "first_author": "Van",
+        "year": 2005,
+        "pmid": "15895838"
+      },
+      {
+        "title": "Relationships among nocturnal jaw muscle activities, decreased esophageal pH, and sleep positions",
+        "first_author": "Miyawaki",
+        "year": 2004,
+        "pmid": "15520695",
+        "doi": "10.1016/j.ajodo.2004.02.007"
+      },
+      {
+        "title": "Craniomandibular pain, oral parafunctions, and psychological stress in a longitudinal case study",
+        "first_author": "Van",
+        "year": 2004,
+        "pmid": "15265208",
+        "doi": "10.1111/j.1365-2842.2004.01313.x"
+      },
+      {
+        "title": "Relationship between masseter muscle activity and sleep-disordered breathing",
+        "first_author": "Inoko",
+        "year": 2004,
+        "doi": "10.1111/j.1479-8425.2003.00068.x"
+      },
+      {
+        "title": "Bruxism force detection by a piezoelectric film-based recording device in sleeping humans",
+        "first_author": "Baba",
+        "year": 2003,
+        "pmid": "12756932"
+      },
+      {
+        "title": "Association between nocturnal bruxism and gastroesophageal reflux",
+        "first_author": "Miyawaki",
+        "year": 2003,
+        "pmid": "14655925",
+        "doi": "10.1093/sleep/26.7.888"
+      },
+      {
+        "title": "Evidence that experimentally induced sleep bruxism is a consequence of transient arousal.",
+        "first_author": "Kato",
+        "year": 2003,
+        "pmid": "12651932"
+      },
+      {
+        "title": "Evaluation of sleep bruxism by polysomnographic analysis in patients with dental implants.",
+        "first_author": "Tosun",
+        "year": 2003,
+        "pmid": "12705309"
+      },
+      {
+        "title": "Influence of a bite-plane according to Jeanmonod, on bruxism activity during sleep.",
+        "first_author": "Okkerse",
+        "year": 2002,
+        "pmid": "12421329"
+      },
+      {
+        "title": "Familial nocturnal facio-mandibular myoclonus mimicking sleep bruxism",
+        "first_author": "Vetrugno",
+        "year": 2002,
+        "pmid": "11865148",
+        "doi": "10.1212/WNL.58.4.644"
+      },
+      {
+        "title": "Influence of nocturnal bruxism on the stomatognathic system. Part I: a new device for measuring mandibular movements during sleep.",
+        "first_author": "Amemori",
+        "year": 2001,
+        "pmid": "11737566"
+      },
+      {
+        "title": "Sleep and motor activity",
+        "first_author": "Rotte",
+        "year": 2001,
+        "doi": "10.1055/s-2001-16164"
+      },
+      {
+        "title": "Effect of jaw muscle pain and soreness evoked by capsaicin before sleep on orofacial motor activity during sleep.",
+        "first_author": "Arima",
+        "year": 2001,
+        "pmid": "11575195"
+      },
+      {
+        "title": "Rhythmic masticatory muscle activity during sleep in humans",
+        "first_author": "Lavigne",
+        "year": 2001,
+        "pmid": "11332529"
+      },
+      {
+        "title": "The relationship between selective sleep deprivation, nocturnal jaw-muscle activity and pain in healthy men.",
+        "first_author": "Arima",
+        "year": 2001,
+        "pmid": "11298262"
+      },
+      {
+        "title": "Sleep bruxism in patients with sleep-disordered breathing",
+        "first_author": "Sjöholm",
+        "year": 2000,
+        "pmid": "10973562",
+        "doi": "10.1016/S0003-9969(00)00044-3"
+      },
+      {
+        "title": "Bruxism: well known, but difficult to fathom",
+        "first_author": "De",
+        "year": 2000,
+        "pmid": "11385780"
+      },
+      {
+        "title": "A controlled daytime challenge of motor performance and vigilance in sleep bruxers",
+        "first_author": "Major",
+        "year": 1999,
+        "pmid": "10576172"
+      },
+      {
+        "title": "Idiopathic myoclonus in the oromandibular region during sleep: A possible source of confusion in sleep bruxism diagnosis",
+        "first_author": "Kato",
+        "year": 1999,
+        "pmid": "10495054",
+        "doi": "10.1002/1531-8257(199909)14:5<865::AID-MDS1025>3.0.CO;2-0"
+      },
+      {
+        "title": "Influence of bruxism during sleep on stomatognathic system",
+        "first_author": "Amemori",
+        "year": 1999,
+        "pmid": "10332150",
+        "doi": "10.5357/koubyou.66.76"
+      },
+      {
+        "title": "Triazolam improves sleep but fails to alter pain in TMD patients.",
+        "first_author": "DeNucci",
+        "year": 1998,
+        "pmid": "9656889"
+      },
+      {
+        "title": "Reliability of scoring EMG orofacial events: Polysomnography compared with ambulatory recordings",
+        "first_author": "Gallo",
+        "year": 1997,
+        "pmid": "9493526",
+        "doi": "10.1111/j.1365-2869.1997.00259.x"
+      },
+      {
+        "title": "Effects of the D2 receptor agonist bromocriptine on sleep bruxism: report of two single-patient clinical trials.",
+        "first_author": "Lobbezoo",
+        "year": 1997,
+        "pmid": "9294496"
+      },
+      {
+        "title": "Motor activity in sleep bruxism with concomitant jaw muscle pain. A retrospective pilot study.",
+        "first_author": "Lavigne",
+        "year": 1997,
+        "pmid": "9085035"
+      },
+      {
+        "title": "Sleep bruxism: Validity of clinical research diagnostic criteria in a controlled polysomnographic study",
+        "first_author": "Lavigne",
+        "year": 1996,
+        "pmid": "8655758",
+        "doi": "10.1177/00220345960750010601"
+      },
+      {
+        "title": "Criteria for the detection of sleep-associated bruxism in humans.",
+        "first_author": "Ikeda",
+        "year": 1996,
+        "pmid": "9161232"
+      },
+      {
+        "title": "The effect of propranolol on sleep bruxism: Hypothetical considerations based on a case study",
+        "first_author": "Sjöholm",
+        "year": 1996,
+        "pmid": "8924755",
+        "doi": "10.1007/BF02291404"
+      },
+      {
+        "title": "Familial aggregates in obstructive sleep apnea syndrome",
+        "first_author": "Guilleminault",
+        "year": 1995,
+        "pmid": "7781344",
+        "doi": "10.1378/chest.107.6.1545"
+      },
+      {
+        "title": "Sleep bruxism as a manifestation of subclinical rapid eye movement sleep behavior disorder",
+        "first_author": "Tachibana",
+        "year": 1994,
+        "pmid": "7809570"
+      },
+      {
+        "title": "A system for analysis of sleep and nocturnal activity in craniomandibular muscles.",
+        "first_author": "Vilmann",
+        "year": 1994,
+        "pmid": "7812224"
+      },
+      {
+        "title": "The effects of severe bruxism on sleep architecture: A preliminary report",
+        "first_author": "Boutros",
+        "year": 1993,
+        "pmid": "8500248"
+      },
+      {
+        "title": "Periodic, aperiodic, and rhythmic motor disorders of sleep.",
+        "first_author": "Dyken",
+        "year": 1992,
+        "pmid": "1630642"
+      },
+      {
+        "title": "Effect of sleep position on sleep apnea and parafunctional activity",
+        "first_author": "Phillips",
+        "year": 1986,
+        "pmid": "3743157",
+        "doi": "10.1378/chest.90.3.424"
+      },
+      {
+        "title": "Night sleep investigations in bruxism",
+        "first_author": "Wieselmann",
+        "year": 1986,
+        "pmid": "3084202"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

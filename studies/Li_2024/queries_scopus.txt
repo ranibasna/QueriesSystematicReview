@@ -1,0 +1,17 @@
+# Query 1: High-recall - sleep disturbance and female infertility
+TITLE-ABS-KEY((sleep OR "sleep disorder*" OR "sleep disturbance*" OR "sleep dysfunction*" OR "sleep breathing disorder*" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep apnea" OR "sleep apnoea" OR "circadian dysrhythmia" OR "circadian rhythm disorder*") AND ("female infertil*" OR "fertility treatment*" OR "in vitro fertilization" OR "in vitro fertilisation" OR IVF OR "assisted reproduction" OR "assisted reproductive technolog*" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND (female* OR woman OR women))
+
+# Query 2: Balanced - preserved core blocks plus article filter
+TITLE-ABS-KEY(("sleep disorder*" OR "sleep disturbance*" OR "sleep dysfunction*" OR "sleep breathing disorder*" OR "obstructive sleep apnea" OR "sleep apnea" OR "circadian dysrhythmia") AND ("female infertil*" OR "fertility treatment*" OR "in vitro fertilization" OR IVF OR "assisted reproduction" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND (female* OR woman OR women)) AND DOCTYPE(ar)
+
+# Query 3: High-precision - title emphasis with observational design terms
+TITLE("sleep disturbance*" OR "sleep disorder*" OR "obstructive sleep apnea" OR "circadian dysrhythmia") AND TITLE-ABS-KEY("female infertil*" OR "in vitro fertilization" OR "fertility treatment*" OR "assisted reproduction" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND TITLE-ABS-KEY(female* OR woman OR women) AND TITLE-ABS-KEY(observational OR cohort OR prospective OR "cross-sectional" OR "cross sectional") AND DOCTYPE(ar)
+
+# Query 4: Balanced + proximity_or_scope_fallback - proximity-based tightening
+TITLE-ABS-KEY(((sleep W/2 disturbance*) OR (sleep W/2 disorder*) OR ("sleep breathing" W/2 disorder*) OR ("obstructive sleep" W/2 apnea) OR (circadian W/2 dysrhythmia)) AND ((female W/2 infertil*) OR (fertility W/2 treatment*) OR ("in vitro" W/2 fertilization) OR (assisted W/2 reproduction) OR ((infertil* OR subfertil*) W/3 (female* OR woman OR women))) AND (female* OR woman OR women)) AND DOCTYPE(ar)
+
+# Query 5: Balanced + design_plus_filter - observational layer plus article filter
+TITLE-ABS-KEY(("sleep disorder*" OR "sleep disturbance*" OR "sleep dysfunction*" OR "sleep breathing disorder*" OR "obstructive sleep apnea" OR "sleep apnea" OR "circadian dysrhythmia") AND ("female infertil*" OR "fertility treatment*" OR "in vitro fertilization" OR IVF OR "assisted reproduction" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND (female* OR woman OR women) AND (observational OR cohort OR prospective OR "cross-sectional" OR "cross sectional")) AND DOCTYPE(ar)
+
+# Query 6: Balanced + scope_plus_filter - title-focused sleep block plus article filter
+TITLE("sleep disturbance*" OR "sleep disorder*" OR "obstructive sleep apnea" OR "circadian dysrhythmia") AND TITLE-ABS-KEY("female infertil*" OR "fertility treatment*" OR "in vitro fertilization" OR "assisted reproduction" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND TITLE-ABS-KEY(female* OR woman OR women) AND DOCTYPE(ar)

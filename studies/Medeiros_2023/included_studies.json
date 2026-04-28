@@ -1,0 +1,180 @@
+{
+  "study_name": "Medeiros_2023",
+  "source_file": "studies/Medeiros_2023/paper_Medeiros_2023.md",
+  "total_included_studies": 6,
+  "extraction_method": "manual_llm_assisted",
+  "included_studies": [
+    {
+      "reference_number": 1,
+      "first_author": "El-Sheikh",
+      "year": 2007,
+      "title": "The association between children's sleep disruption and salivary interleukin-6",
+      "journal": "Journal of Sleep Research",
+      "authors": [
+        "El-Sheikh, Mona",
+        "Buckhalt, J.A.",
+        "Granger, D.A.",
+        "Erath, S.A.",
+        "Acebo, C."
+      ],
+      "doi": "10.1111/j.1365-2869.2007.00593.x",
+      "pmid": "17542949",
+      "volume": "16",
+      "issue": "2",
+      "pages": "188-197",
+      "raw_citation": "El-sheikh, MONA, Buckhalt, J.A., Granger, D.A., Erath, S.A., Acebo, C., 2007. The association between children s sleep disruption and salivary interleukin-6. J Sleep Res 16 (2), 188-197.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9936305732484076,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 2,
+      "first_author": "Hall",
+      "year": 2015,
+      "title": "Sleep duration during the school week is associated with C-reactive protein risk groups in healthy adolescents",
+      "journal": "Sleep Medicine",
+      "authors": [
+        "Hall, M.H.",
+        "Lee, L.",
+        "Matthews, K.A."
+      ],
+      "doi": "10.1016/j.sleep.2014.10.005",
+      "pmid": "25468623",
+      "volume": "16",
+      "issue": "1",
+      "pages": "73-78",
+      "raw_citation": "Hall, M.H., Lee, L., Matthews, K.A., 2015. Sleep duration during the school week is associated with C-reactive protein risk groups in healthy adolescents. Sleep Med. 16 (1), 73-78.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.995475113122172,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 3,
+      "first_author": "Park",
+      "year": 2016,
+      "title": "Sleep and inflammation during adolescence",
+      "journal": "Psychosomatic Medicine",
+      "authors": [
+        "Park, H.",
+        "Tsai, K.M.",
+        "Dahl, R.E.",
+        "Irwin, M.R.",
+        "McCreath, H.",
+        "Seeman, T.E.",
+        "Fuligni, A.J."
+      ],
+      "doi": "10.1097/PSY.0000000000000340",
+      "pmid": "27136501",
+      "volume": "78",
+      "issue": "6",
+      "pages": "677-685",
+      "raw_citation": "Park, H., Tsai, K.M., Dahl, R.E., Irwin, M.R., McCreath, H., Seeman, T.E., Fuligni, A.J., 2016. Sleep and inflammation during adolescence. Psychosom. Med. 78 (6), 677-685.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9879518072289156,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 4,
+      "first_author": "Chiang",
+      "year": 2019,
+      "title": "Daily interpersonal stress, sleep duration, and gene regulation during late adolescence",
+      "journal": "Psychoneuroendocrinology",
+      "authors": [
+        "Chiang, J.J.",
+        "Cole, S.W.",
+        "Bower, J.E.",
+        "Irwin, M.R.",
+        "Taylor, S.E.",
+        "Arevalo, J.",
+        "Fuligni, A.J."
+      ],
+      "doi": "10.1016/j.psyneuen.2018.11.026",
+      "pmid": "30690224",
+      "volume": "103",
+      "issue": null,
+      "pages": "147-155",
+      "raw_citation": "Chiang, J.J., Cole, S.W., Bower, J.E., Irwin, M.R., Taylor, S.E., Arevalo, J., Fuligni, A.J., 2019. Daily interpersonal stress, sleep duration, and gene regulation during late adolescence. Psychoneuroendocrinology 103, 147-155.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9942857142857143,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 5,
+      "first_author": "LaVoy",
+      "year": 2020,
+      "title": "Bidirectional relationships between sleep and biomarkers of stress and immunity in youth",
+      "journal": "International Journal of Psychophysiology",
+      "authors": [
+        "LaVoy, E.C.",
+        "Palmer, C.A.",
+        "So, C.",
+        "Alfano, C.A."
+      ],
+      "doi": "10.1016/j.ijpsycho.2020.10.010",
+      "pmid": "33130179",
+      "volume": "158",
+      "issue": null,
+      "pages": "331-339",
+      "raw_citation": "LaVoy, E.C., Palmer, C.A., So, C., Alfano, C.A., 2020. Bidirectional relationships between sleep and biomarkers of stress and immunity in youth. Int. J. Psychophysiol. 158, 331-339.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9943502824858758,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 6,
+      "first_author": "Park",
+      "year": 2020,
+      "title": "Sleep and Inflammation During Adolescents' Transition to Young Adulthood",
+      "journal": "Journal of Adolescent Health",
+      "authors": [
+        "Park, H.",
+        "Chiang, J.J.",
+        "Bower, J.E.",
+        "Irwin, M.R.",
+        "Almeida, D.M.",
+        "Seeman, T.E.",
+        "McCreath, H.",
+        "Fuligni, A.J."
+      ],
+      "doi": "10.1016/j.jadohealth.2020.04.015",
+      "pmid": "32586679",
+      "volume": "67",
+      "issue": "6",
+      "pages": "821-828",
+      "raw_citation": "Park, H., Chiang, J.J., Bower, J.E., Irwin, M.R., Almeida, D.M., Seeman, T.E., McCreath, H., Fuligni, A.J., 2020. Sleep and Inflammation During Adolescents' Transition to Young Adulthood. J. Adolesc. Health 67 (6), 821-828.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.993103448275862,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    }
+  ],
+  "statistics": {
+    "total_studies": 6,
+    "with_doi": 6,
+    "with_pmid": 6,
+    "with_identifiers": 6,
+    "doi_coverage_percent": 100.0,
+    "pmid_coverage_percent": 100.0,
+    "identifier_coverage_percent": 100.0,
+    "pubmed_matches": 6,
+    "europepmc_matches": 0,
+    "crossref_matches": 0
+  }
+}

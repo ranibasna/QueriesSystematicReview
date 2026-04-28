@@ -1,0 +1,13 @@
+{
+  "8f8f5d7ba0d7866957c36597bdc46f5f1452e3738cb8e645972dc187d65ad55f": {
+    "query": "((((('white noise' OR 'pink noise' OR 'broadband noise' OR 'masking noise' OR 'noise machine*' OR 'sound machine*' OR 'acoustic noise' OR 'continuous noise') ADJ5 (sleep OR latency OR quality OR efficiency OR wakefulness OR awakening* OR arousal* OR fragmentation OR continuity)):ti,ab)) NOT ('review'/it OR 'systematic review'/it OR 'meta analysis'/it OR 'letter'/it OR 'editorial'/it))",
+    "provider": "embase_manual",
+    "results_count": 0,
+    "retrieved_dois": [],
+    "retrieved_pmids": [],
+    "pmids": [],
+    "records": [],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

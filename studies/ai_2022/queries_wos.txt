@@ -1,17 +1,17 @@
-# High-recall: Broad topic search across all SDB, BP, and pediatric terms
-TS=("sleep disordered breathing" OR "sleep-disordered breathing" OR "SDB" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "OSA" OR "OSAS" OR "upper airway resistance" OR "snoring") AND TS=("blood pressure" OR "hypertension" OR "systolic" OR "diastolic" OR "ambulatory blood pressure" OR "ABPM" OR "nondipping" OR "non-dipping" OR "BP load" OR "prehypertension") AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric" OR "infant" OR "youth" OR "juvenile" OR "teenager" OR "school-age")
+# Q1: High-recall
+TS=((("sleep disordered breathing" OR "sleep-disordered breathing" OR "sleep related breathing disorder" OR "sleep related breathing disorders" OR "sleep-related breathing disorder" OR "sleep-related breathing disorders" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring" OR snor* OR ((OSA OR OSAS) NEAR/2 sleep)) AND ("blood pressure" OR "ambulatory blood pressure" OR "blood pressure monitoring" OR "systolic blood pressure" OR "diastolic blood pressure" OR "mean blood pressure" OR "blood pressure load" OR "BP load" OR nondipping OR "non-dipping" OR "SBP index") AND (child* OR adolescen* OR pediatric* OR paediatric* OR youth* OR teen*)))
 
-# Balanced: Core SDB and BP terms with publication year filter
-TS=("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TS=("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND PY=(1990-2025)
+# Q2: Balanced
+TS=((("sleep disordered breathing" OR "sleep-disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring") AND ("blood pressure" OR "ambulatory blood pressure" OR "blood pressure monitoring" OR "systolic blood pressure" OR "diastolic blood pressure" OR "mean blood pressure" OR "blood pressure load" OR nondipping OR "non-dipping" OR "SBP index") AND (child* OR adolescen* OR pediatric* OR paediatric* OR youth*)))
 
-# High-precision: SDB restricted to title field
-TI=("sleep disordered breathing" OR "sleep apnea" OR "obstructive sleep apnea") AND TS=("blood pressure" OR "hypertension") AND TS=("child" OR "children" OR "adolescent" OR "pediatric") AND PY=(1990-2025)
+# Q3: High-precision
+TI=("sleep disordered breathing" OR "sleep-disordered breathing" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring") AND TI=("blood pressure" OR "ambulatory blood pressure" OR "systolic blood pressure" OR "diastolic blood pressure" OR "mean blood pressure" OR "blood pressure load") AND TS=(child* OR adolescen* OR pediatric* OR paediatric*)
 
-# Micro-variant 1 (Filter-based): Balanced query with document type filter
-TS=("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TS=("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND DT=(Article OR Review) AND PY=(1990-2025)
+# Q4: Balanced + scope_only
+TI=("sleep disordered breathing" OR "sleep-disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring") AND TI=("blood pressure" OR "ambulatory blood pressure" OR "systolic blood pressure" OR "diastolic blood pressure" OR "blood pressure load") AND TS=(child* OR adolescen* OR pediatric* OR paediatric*)
 
-# Micro-variant 2 (Field/Scope-based): SDB concept restricted to title
-TI=("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TS=("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND PY=(1990-2025)
+# Q5: Balanced + proximity_or_scope_fallback
+TS=(((("sleep disordered breathing" OR "sleep-disordered breathing" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring" OR snor*) NEAR/5 ("blood pressure" OR "ambulatory blood pressure" OR "systolic blood pressure" OR "diastolic blood pressure" OR "blood pressure load" OR "non-dipping")) AND (child* OR adolescen* OR pediatric* OR paediatric*)))
 
-# Micro-variant 3 (Proximity-based): SDB and BP concepts within 10 words
-TS=(("sleep apnea" OR "sleep disordered breathing" OR "obstructive sleep apnea") NEAR/10 ("blood pressure" OR "hypertension")) AND TS=("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND PY=(1990-2025)
+# Q6: Balanced + design_plus_filter
+TS=((("sleep disordered breathing" OR "sleep-disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring") AND ("blood pressure" OR "ambulatory blood pressure" OR "blood pressure monitoring" OR "systolic blood pressure" OR "diastolic blood pressure" OR "mean blood pressure" OR "blood pressure load" OR nondipping OR "non-dipping" OR "SBP index") AND (child* OR adolescen* OR pediatric* OR paediatric* OR youth*))) AND TS=(cohort OR longitudinal OR observational OR "case-control" OR "case control" OR "cross-sectional" OR "cross sectional") AND DT=(Article)

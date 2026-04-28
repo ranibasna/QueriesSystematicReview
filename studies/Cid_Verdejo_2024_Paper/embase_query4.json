@@ -1,0 +1,84 @@
+{
+  "b69b6fdd75752a0d355080d1bb56c0cc17e299dfb7afae2b1d839b5c8a13cde8": {
+    "query": "(('sleep bruxism':ti OR 'sleep-related bruxism':ti OR 'sleep related bruxism':ti OR 'rhythmic masticatory muscle activity':ti OR RMMA:ti OR 'sleep-related oromotor activity':ti OR 'sleep related oromotor activity':ti) AND (electromyograph*:ti OR 'portable electromyography':ti OR 'portable electromyographic':ti OR 'portable EMG':ti) AND (polysomnograph*:ti,ab OR PSG:ti,ab) AND (diagnos*:ti,ab OR valid*:ti,ab OR accuracy:ti,ab OR 'diagnostic yield':ti,ab OR sensitivity:ti,ab OR specificity:ti,ab OR compar*:ti,ab OR agreement:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 7,
+    "retrieved_dois": [
+      "10.1007/s11325-015-1283-y",
+      "10.1016/j.jpor.2019.04.003",
+      "10.1016/j.sleep.2019.08.025",
+      "10.1111/joor.12131",
+      "10.1111/jsr.70287",
+      "10.3390/jcm14186521",
+      "10.5664/jcsm.9940"
+    ],
+    "retrieved_pmids": [
+      "24417585",
+      "26527206",
+      "31085074",
+      "32035303",
+      "35212262",
+      "41581017"
+    ],
+    "pmids": [
+      "24417585",
+      "26527206",
+      "31085074",
+      "32035303",
+      "35212262",
+      "41581017"
+    ],
+    "records": [
+      {
+        "title": "Electromyography Frequency Spectrum Is a Better Indicator of Sleep Bruxism Severity Related to Temporomandibular Disorder Pain Than Conventional Masticatory Muscle Activation and Bruxism Time Indices—A Pilot Study",
+        "first_author": "Pitkänen",
+        "year": 2026,
+        "pmid": "41581017",
+        "doi": "10.1111/jsr.70287"
+      },
+      {
+        "title": "Polysomnographic and Electromyographic Evaluation of Sleep Bruxism in Young Colombian Adults: Case-Control Study",
+        "first_author": "López-Soto",
+        "year": 2025,
+        "doi": "10.3390/jcm14186521"
+      },
+      {
+        "title": "Accuracy of sleep bruxism scoring based on electromyography traces of different jaw muscles in individuals with obstructive sleep apnea",
+        "first_author": "Li",
+        "year": 2022,
+        "pmid": "35212262",
+        "doi": "10.5664/jcsm.9940"
+      },
+      {
+        "title": "The meaning of the masticatory muscle tonic-type electromyographic pathway correlated with sleep bruxism and sleep-related breathing disorders - A polysomnographic study",
+        "first_author": "Smardz",
+        "year": 2020,
+        "pmid": "32035303",
+        "doi": "10.1016/j.sleep.2019.08.025"
+      },
+      {
+        "title": "Validity of single-channel masseteric electromyography by using an ultraminiature wearable electromyographic device for diagnosis of sleep bruxism",
+        "first_author": "Maeda",
+        "year": 2019,
+        "pmid": "31085074",
+        "doi": "10.1016/j.jpor.2019.04.003"
+      },
+      {
+        "title": "Diagnostic validity of the use of a portable single-channel electromyography device for sleep bruxism",
+        "first_author": "Stuginski-Barbosa",
+        "year": 2016,
+        "pmid": "26527206",
+        "doi": "10.1007/s11325-015-1283-y"
+      },
+      {
+        "title": "Detection of sleep bruxism: Comparison between an electromyographic and electrocardiographic portable holter and polysomnography",
+        "first_author": "Castroflorio",
+        "year": 2014,
+        "pmid": "24417585",
+        "doi": "10.1111/joor.12131"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

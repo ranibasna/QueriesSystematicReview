@@ -1,0 +1,17 @@
+# Q1: High-recall
+TS=(("sleep duration" OR "sleep quantity" OR "short sleep" OR "short sleep duration" OR "total sleep time" OR "sleep hours" OR "insufficient sleep") AND (obesity OR obese OR overweight OR "body mass index" OR BMI))
+
+# Q2: Balanced
+TS=(("sleep duration" OR "sleep quantity" OR "short sleep" OR "short sleep duration" OR "total sleep time" OR "insufficient sleep") AND (obesity OR obese OR overweight OR "body mass index" OR BMI) AND (sex OR gender OR male OR female OR men OR women))
+
+# Q3: High-precision
+TI=("sleep duration" OR "short sleep" OR "short sleep duration" OR "total sleep time") AND TI=(obesity OR overweight OR "body mass index" OR BMI) AND TS=(sex OR gender OR male OR female OR men OR women) AND TS=(cohort OR prospective OR retrospective OR longitudinal OR "follow-up" OR incidence OR incident*)
+
+# Q4: Balanced + scope_only
+TI=("sleep duration" OR "short sleep" OR "short sleep duration" OR "total sleep time") AND TI=(obesity OR overweight OR "body mass index" OR BMI) AND TS=(sex OR gender OR male OR female OR men OR women)
+
+# Q5: Balanced + design_plus_scope
+TI=("sleep duration" OR "short sleep" OR "short sleep duration" OR "total sleep time") AND TI=(obesity OR overweight OR "body mass index" OR BMI) AND TS=(sex OR gender OR male OR female OR men OR women) AND TS=(cohort OR prospective OR retrospective OR longitudinal OR "follow-up" OR incidence OR incident*)
+
+# Q6: Balanced + design_plus_filter
+TS=(("sleep duration" OR "sleep quantity" OR "short sleep" OR "short sleep duration" OR "total sleep time" OR "insufficient sleep") AND (obesity OR obese OR overweight OR "body mass index" OR BMI) AND (sex OR gender OR male OR female OR men OR women)) AND TS=(adult*) AND TS=(cohort OR prospective OR retrospective OR longitudinal OR "follow-up" OR incidence OR incident*) AND DT=(Article)

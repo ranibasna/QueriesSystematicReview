@@ -1,0 +1,13 @@
+{
+  "da8282321aa8ace6dd546b45eb57a721f86914fec0800981397fb51e67f69ebf": {
+    "query": "((((mediterranean ADJ2 diet):ti,ab OR (('olive oil' OR fish OR legume*) ADJ3 (diet* OR intake OR consumption)):ti,ab) AND ((sleep ADJ2 quality):ti,ab OR (sleep ADJ2 duration):ti,ab OR (daytime ADJ1 sleepiness):ti,ab OR sleepiness:ti,ab OR somnolence:ti,ab OR sleep:ti,ab) AND ('adult'/exp OR adult*:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 0,
+    "retrieved_dois": [],
+    "retrieved_pmids": [],
+    "pmids": [],
+    "records": [],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

@@ -1,17 +1,17 @@
-# High-recall: Broad text search across all SDB, BP, and pediatric terms
-TITLE-ABS-KEY("sleep disordered breathing" OR "sleep-disordered breathing" OR "SDB" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "OSA" OR "OSAS" OR "upper airway resistance" OR "snoring") AND TITLE-ABS-KEY("blood pressure" OR "hypertension" OR "systolic" OR "diastolic" OR "ambulatory blood pressure" OR "ABPM" OR "nondipping" OR "non-dipping" OR "BP load" OR "prehypertension") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric" OR "infant" OR "youth" OR "juvenile" OR "teenager" OR "school-age")
+# Q1: High-recall
+TITLE-ABS-KEY((("sleep disordered breathing" OR "sleep-disordered breathing" OR "sleep related breathing disorder" OR "sleep related breathing disorders" OR "sleep-related breathing disorder" OR "sleep-related breathing disorders" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring" OR snor* OR ((OSA OR OSAS) W/2 sleep)) AND ("blood pressure" OR "ambulatory blood pressure" OR "blood pressure monitoring" OR "systolic blood pressure" OR "diastolic blood pressure" OR "mean blood pressure" OR "blood pressure load" OR "BP load" OR nondipping OR "non-dipping" OR "SBP index") AND (child* OR adolescen* OR pediatric* OR paediatric* OR youth* OR teen*)))
 
-# Balanced: Core SDB and BP terms with date filter
-TITLE-ABS-KEY("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TITLE-ABS-KEY("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND (PUBYEAR > 1989 AND PUBYEAR < 2026)
+# Q2: Balanced
+TITLE-ABS-KEY((("sleep disordered breathing" OR "sleep-disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring") AND ("blood pressure" OR "ambulatory blood pressure" OR "blood pressure monitoring" OR "systolic blood pressure" OR "diastolic blood pressure" OR "mean blood pressure" OR "blood pressure load" OR nondipping OR "non-dipping" OR "SBP index") AND (child* OR adolescen* OR pediatric* OR paediatric* OR youth*)))
 
-# High-precision: SDB restricted to title field
-TITLE("sleep disordered breathing" OR "sleep apnea" OR "obstructive sleep apnea") AND TITLE-ABS-KEY("blood pressure" OR "hypertension") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "pediatric") AND (PUBYEAR > 1989 AND PUBYEAR < 2026)
+# Q3: High-precision
+TITLE("sleep disordered breathing" OR "sleep-disordered breathing" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring") AND TITLE("blood pressure" OR "ambulatory blood pressure" OR "systolic blood pressure" OR "diastolic blood pressure" OR "mean blood pressure" OR "blood pressure load") AND TITLE-ABS-KEY(child* OR adolescen* OR pediatric* OR paediatric*)
 
-# Micro-variant 1 (Filter-based): Balanced query with document type filter
-TITLE-ABS-KEY("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TITLE-ABS-KEY("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND DOCTYPE(ar OR re) AND (PUBYEAR > 1989 AND PUBYEAR < 2026)
+# Q4: Balanced + scope_only
+TITLE("sleep disordered breathing" OR "sleep-disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring") AND TITLE("blood pressure" OR "ambulatory blood pressure" OR "systolic blood pressure" OR "diastolic blood pressure" OR "blood pressure load") AND TITLE-ABS-KEY(child* OR adolescen* OR pediatric* OR paediatric*)
 
-# Micro-variant 2 (Field/Scope-based): SDB concept restricted to title
-TITLE("sleep disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "snoring") AND TITLE-ABS-KEY("blood pressure" OR "hypertension" OR "ambulatory blood pressure") AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND (PUBYEAR > 1989 AND PUBYEAR < 2026)
+# Q5: Balanced + proximity_or_scope_fallback
+TITLE-ABS-KEY(((("sleep disordered breathing" OR "sleep-disordered breathing" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring" OR snor*) W/5 ("blood pressure" OR "ambulatory blood pressure" OR "systolic blood pressure" OR "diastolic blood pressure" OR "blood pressure load" OR "non-dipping")) AND (child* OR adolescen* OR pediatric* OR paediatric*)))
 
-# Micro-variant 3 (Proximity-based): SDB and BP concepts within 10 words
-TITLE-ABS-KEY(("sleep apnea" OR "sleep disordered breathing" OR "obstructive sleep apnea") W/10 ("blood pressure" OR "hypertension")) AND TITLE-ABS-KEY("child" OR "children" OR "adolescent" OR "adolescents" OR "pediatric" OR "paediatric") AND (PUBYEAR > 1989 AND PUBYEAR < 2026)
+# Q6: Balanced + design_plus_filter
+TITLE-ABS-KEY((("sleep disordered breathing" OR "sleep-disordered breathing" OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "primary snoring") AND ("blood pressure" OR "ambulatory blood pressure" OR "blood pressure monitoring" OR "systolic blood pressure" OR "diastolic blood pressure" OR "mean blood pressure" OR "blood pressure load" OR nondipping OR "non-dipping" OR "SBP index") AND (child* OR adolescen* OR pediatric* OR paediatric* OR youth*))) AND TITLE-ABS-KEY(cohort OR longitudinal OR observational OR "case-control" OR "case control" OR "cross-sectional" OR "cross sectional") AND DOCTYPE(ar)

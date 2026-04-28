@@ -1,0 +1,17 @@
+# Q1: High-recall
+TITLE-ABS-KEY(("mediterranean diet" OR "mediterranean diet adherence" OR ((fruit* OR vegetable* OR cereal* OR legume* OR "dairy product" OR "dairy products" OR fish OR meat OR "olive oil" OR alcohol) AND (diet* OR intake OR consumption))) AND (sleep OR "sleep quality" OR "sleep duration" OR "daytime sleepiness" OR sleepiness OR somnolence))
+
+# Q2: Balanced
+TITLE-ABS-KEY(("mediterranean diet" OR "mediterranean diet adherence" OR ((legume* OR fish OR "olive oil" OR alcohol) AND (diet* OR intake OR consumption))) AND (sleep OR "sleep quality" OR "sleep duration" OR "daytime sleepiness" OR sleepiness) AND adult*)
+
+# Q3: High-precision
+TITLE("mediterranean diet" OR "mediterranean diet adherence") AND TITLE-ABS-KEY("sleep quality" OR "sleep duration" OR "daytime sleepiness" OR sleep) AND TITLE-ABS-KEY(adult*) AND DOCTYPE(ar)
+
+# Q4: Balanced + scope_only
+TITLE("mediterranean diet" OR "mediterranean diet adherence") AND TITLE("sleep quality" OR "sleep duration" OR "daytime sleepiness" OR sleep) AND TITLE-ABS-KEY(adult*)
+
+# Q5: Balanced + proximity_or_scope_fallback
+TITLE-ABS-KEY(((mediterranean W/2 diet) OR (("olive oil" OR fish OR legume*) W/3 (diet* OR intake OR consumption))) AND ((sleep W/2 quality) OR (sleep W/2 duration) OR (daytime W/1 sleepiness) OR sleepiness OR somnolence OR sleep) AND adult*)
+
+# Q6: Balanced + design_plus_filter
+TITLE-ABS-KEY(("mediterranean diet" OR "mediterranean diet adherence" OR ((legume* OR fish OR "olive oil" OR alcohol) AND (diet* OR intake OR consumption))) AND (sleep OR "sleep quality" OR "sleep duration" OR "daytime sleepiness" OR sleepiness) AND adult* AND (cohort OR observational OR "cross-sectional" OR "case-control")) AND DOCTYPE(ar)

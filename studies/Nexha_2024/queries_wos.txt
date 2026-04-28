@@ -1,0 +1,17 @@
+# Q1: High-recall
+TS=((("premenstrual syndrome" OR "premenstrual syndromes" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND ("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep disruption" OR "sleep disruptions" OR "sleep disturbance" OR "sleep disturbances" OR "sleep quality" OR polysomnograph* OR "sleep eeg" OR diurnal OR "body temperature" OR ((cortisol OR prolactin OR TSH OR "thyroid stimulating hormone") AND (circadian OR diurnal OR rhythm*))))) AND PY=(1900-2019)
+
+# Q2: Balanced
+TS=((("premenstrual syndrome" OR "premenstrual syndromes" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND ("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep disturbance" OR "sleep disturbances" OR "sleep quality" OR polysomnograph* OR "sleep eeg" OR "body temperature" OR ((cortisol OR prolactin OR TSH OR "thyroid stimulating hormone") AND (circadian OR diurnal OR rhythm*))))) AND PY=(1900-2019)
+
+# Q3: High-precision
+TI=("premenstrual syndrome" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND TI=("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep quality" OR polysomnograph* OR "body temperature") AND TS=(cross-sectional OR longitudinal OR prospective OR observational OR "clinical trial" OR trial) AND DT=(Article) AND PY=(1900-2019)
+
+# Q4: Balanced + scope_only
+TI=("premenstrual syndrome" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND TI=("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep disturbance" OR "sleep quality" OR polysomnograph* OR "body temperature") AND PY=(1900-2019)
+
+# Q5: Balanced + proximity_or_scope_fallback
+TS=((("premenstrual syndrome" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND ((biological NEAR/1 rhythm*) OR (circadian NEAR/1 rhythm*) OR chronobiolog* OR melatonin OR (sleep NEAR/2 (disruption* OR disturbance* OR quality OR eeg)) OR (body NEAR/1 temperature) OR ((cortisol OR prolactin OR TSH OR "thyroid stimulating hormone") NEAR/3 (circadian OR diurnal OR rhythm*))))) AND PY=(1900-2019)
+
+# Q6: Balanced + design_plus_filter
+TS=((("premenstrual syndrome" OR "premenstrual syndromes" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND ("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep disturbance" OR "sleep disturbances" OR "sleep quality" OR polysomnograph* OR "sleep eeg" OR "body temperature" OR ((cortisol OR prolactin OR TSH OR "thyroid stimulating hormone") AND (circadian OR diurnal OR rhythm*))))) AND TS=(cross-sectional OR longitudinal OR prospective OR observational OR "clinical trial" OR trial) AND DT=(Article) AND PY=(1900-2019)

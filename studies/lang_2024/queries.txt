@@ -1,0 +1,17 @@
+# Q1: High-recall
+(("Sleep"[Mesh] OR "Sleep Deprivation"[Mesh] OR "sleep duration"[tiab] OR "sleep quantity"[tiab] OR "short sleep"[tiab] OR "short sleep duration"[tiab] OR "total sleep time"[tiab] OR "sleep hours"[tiab] OR "insufficient sleep"[tiab]) AND ("Obesity"[Mesh] OR "Overweight"[Mesh] OR "Body Mass Index"[Mesh] OR obesity[tiab] OR obese[tiab] OR overweight[tiab] OR "body mass index"[tiab] OR BMI[tiab]))
+
+# Q2: Balanced
+(("Sleep Deprivation"[Mesh] OR "sleep duration"[tiab] OR "sleep quantity"[tiab] OR "short sleep"[tiab] OR "short sleep duration"[tiab] OR "total sleep time"[tiab] OR "insufficient sleep"[tiab]) AND ("Obesity"[Mesh] OR "Overweight"[Mesh] OR "Body Mass Index"[Mesh] OR obesity[tiab] OR obese[tiab] OR overweight[tiab] OR "body mass index"[tiab] OR BMI[tiab]) AND ("Sex Factors"[Mesh] OR sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab]))
+
+# Q3: High-precision
+((("sleep duration"[ti] OR "sleep quantity"[ti] OR "short sleep"[ti] OR "short sleep duration"[ti] OR "total sleep time"[ti]) AND (obesity[ti] OR overweight[ti] OR "body mass index"[ti] OR BMI[ti]) AND (sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab])) AND (cohort[tiab] OR prospective[tiab] OR retrospective[tiab] OR longitudinal[tiab] OR "follow-up"[tiab] OR incidence[tiab] OR incident*[tiab]))
+
+# Q4: Balanced + scope_only
+(("sleep duration"[ti] OR "sleep quantity"[ti] OR "short sleep"[ti] OR "short sleep duration"[ti] OR "total sleep time"[ti]) AND (obesity[ti] OR overweight[ti] OR "body mass index"[ti] OR BMI[ti]) AND (sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab]))
+
+# Q5: Balanced + design_plus_scope
+((("sleep duration"[ti] OR "sleep quantity"[ti] OR "short sleep"[ti] OR "short sleep duration"[ti] OR "total sleep time"[ti]) AND (obesity[ti] OR overweight[ti] OR "body mass index"[ti] OR BMI[ti]) AND (sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab])) AND (cohort[tiab] OR prospective[tiab] OR retrospective[tiab] OR longitudinal[tiab] OR "follow-up"[tiab] OR incidence[tiab] OR incident*[tiab]))
+
+# Q6: Balanced + design_plus_filter
+(((("Sleep Deprivation"[Mesh] OR "sleep duration"[tiab] OR "sleep quantity"[tiab] OR "short sleep"[tiab] OR "short sleep duration"[tiab] OR "total sleep time"[tiab] OR "insufficient sleep"[tiab]) AND ("Obesity"[Mesh] OR "Overweight"[Mesh] OR "Body Mass Index"[Mesh] OR obesity[tiab] OR obese[tiab] OR overweight[tiab] OR "body mass index"[tiab] OR BMI[tiab]) AND ("Sex Factors"[Mesh] OR sex[tiab] OR gender[tiab] OR male[tiab] OR female[tiab] OR men[tiab] OR women[tiab])) AND ("Adult"[Mesh] OR adult*[tiab]) AND (cohort[tiab] OR prospective[tiab] OR retrospective[tiab] OR longitudinal[tiab] OR "follow-up"[tiab] OR incidence[tiab] OR incident*[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])

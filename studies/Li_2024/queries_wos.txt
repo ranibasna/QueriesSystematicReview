@@ -1,0 +1,17 @@
+# Query 1: High-recall - sleep disturbance and female infertility
+TS=((sleep OR "sleep disorder*" OR "sleep disturbance*" OR "sleep dysfunction*" OR "sleep breathing disorder*" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep apnea" OR "sleep apnoea" OR "circadian dysrhythmia" OR "circadian rhythm disorder*") AND ("female infertil*" OR "fertility treatment*" OR "in vitro fertilization" OR "in vitro fertilisation" OR IVF OR "assisted reproduction" OR "assisted reproductive technolog*" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND (female* OR woman OR women))
+
+# Query 2: Balanced - preserved core blocks plus article filter
+TS=(("sleep disorder*" OR "sleep disturbance*" OR "sleep dysfunction*" OR "sleep breathing disorder*" OR "obstructive sleep apnea" OR "sleep apnea" OR "circadian dysrhythmia") AND ("female infertil*" OR "fertility treatment*" OR "in vitro fertilization" OR IVF OR "assisted reproduction" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND (female* OR woman OR women)) AND DT=(Article)
+
+# Query 3: High-precision - title emphasis with observational design terms
+TI=("sleep disturbance*" OR "sleep disorder*" OR "obstructive sleep apnea" OR "circadian dysrhythmia") AND TS=("female infertil*" OR "in vitro fertilization" OR "fertility treatment*" OR "assisted reproduction" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND TS=(female* OR woman OR women) AND TS=(observational OR cohort OR prospective OR "cross-sectional" OR "cross sectional") AND DT=(Article)
+
+# Query 4: Balanced + proximity_or_scope_fallback - proximity-based tightening
+TS=(((sleep NEAR/2 disturbance*) OR (sleep NEAR/2 disorder*) OR ("sleep breathing" NEAR/2 disorder*) OR ("obstructive sleep" NEAR/2 apnea) OR (circadian NEAR/2 dysrhythmia)) AND ((female NEAR/2 infertil*) OR (fertility NEAR/2 treatment*) OR ("in vitro" NEAR/2 fertilization) OR (assisted NEAR/2 reproduction) OR ((infertil* OR subfertil*) NEAR/3 (female* OR woman OR women))) AND (female* OR woman OR women)) AND DT=(Article)
+
+# Query 5: Balanced + design_plus_filter - observational layer plus article filter
+TS=(("sleep disorder*" OR "sleep disturbance*" OR "sleep dysfunction*" OR "sleep breathing disorder*" OR "obstructive sleep apnea" OR "sleep apnea" OR "circadian dysrhythmia") AND ("female infertil*" OR "fertility treatment*" OR "in vitro fertilization" OR IVF OR "assisted reproduction" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND (female* OR woman OR women) AND (observational OR cohort OR prospective OR "cross-sectional" OR "cross sectional")) AND DT=(Article)
+
+# Query 6: Balanced + scope_plus_filter - title-focused sleep block plus article filter
+TI=("sleep disturbance*" OR "sleep disorder*" OR "obstructive sleep apnea" OR "circadian dysrhythmia") AND TS=("female infertil*" OR "fertility treatment*" OR "in vitro fertilization" OR "assisted reproduction" OR ((infertil* OR subfertil*) AND (female* OR woman OR women))) AND TS=(female* OR woman OR women) AND DT=(Article)

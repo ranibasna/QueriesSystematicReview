@@ -1,0 +1,927 @@
+{
+  "249d1eb337aed88bd4a49742225220880782ebd7ac7c24d4590c9000ad77770d": {
+    "query": "((('sleep quality'/exp OR 'sleep deprivation'/exp OR 'sleep duration':ti,ab OR 'sleep time':ti,ab OR 'sleep quality':ti,ab OR 'short sleep duration':ti,ab OR 'long sleep duration':ti,ab OR 'poor sleep quality':ti,ab OR 'sleep disturbance':ti,ab) AND ('c reactive protein'/mj OR 'interleukin 6'/mj OR 'tumor necrosis factor alpha'/mj OR 'adiponectin'/mj OR 'c-reactive protein':ti,ab OR crp:ti,ab OR 'interleukin 6':ti,ab OR 'il-6':ti,ab OR adiponectin:ti,ab OR 'tnf alpha':ti,ab OR 'tnf-alpha':ti,ab OR 'tumor necrosis factor alpha':ti,ab) AND ('child'/exp OR 'adolescent'/exp OR child*:ti,ab OR adolescen*:ti,ab OR teen*:ti,ab OR teenager*:ti,ab OR youth:ti,ab OR preschool*:ti,ab) AND ('cohort analysis'/exp OR 'cross-sectional study'/exp OR 'case control study'/exp OR observational:ti,ab OR cohort:ti,ab OR prospective:ti,ab OR 'cross-sectional':ti,ab OR 'case-control':ti,ab OR 'case control':ti,ab)))",
+    "provider": "embase_manual",
+    "results_count": 100,
+    "retrieved_dois": [
+      "10.1001/jamadermatol.2021.2657",
+      "10.1001/jamanetworkopen.2025.8855",
+      "10.1001/jamapsychiatry.2024.0796",
+      "10.1002/nur.21935",
+      "10.1002/osp4.303",
+      "10.1016/S1875-9572(09)60067-X",
+      "10.1016/j.ajog.2014.10.173",
+      "10.1016/j.ajog.2018.11.626",
+      "10.1016/j.bbi.2009.05.006",
+      "10.1016/j.bbi.2012.04.005",
+      "10.1016/j.bbi.2016.12.026",
+      "10.1016/j.bbih.2022.100429",
+      "10.1016/j.bbih.2025.101098",
+      "10.1016/j.cgh.2019.04.013",
+      "10.1016/j.cyto.2025.156998",
+      "10.1016/j.ebiom.2018.05.033",
+      "10.1016/j.envres.2014.07.026",
+      "10.1016/j.gene.2025.149880",
+      "10.1016/j.jaac.2018.09.338",
+      "10.1016/j.jaac.2024.08.264",
+      "10.1016/j.jped.2023.10.007",
+      "10.1016/j.msom.2020.10.004",
+      "10.1016/j.physbeh.2024.114510",
+      "10.1016/j.pnpbp.2025.111443",
+      "10.1016/j.psyneuen.2021.105241",
+      "10.1016/j.schres.2021.12.049",
+      "10.1016/j.sleep.2014.04.010",
+      "10.1016/j.sleep.2015.06.014",
+      "10.1016/j.sleep.2017.06.002",
+      "10.1016/j.sleep.2018.08.019",
+      "10.1016/j.sleep.2019.07.028",
+      "10.1016/j.sleep.2022.08.007",
+      "10.1016/j.sleep.2023.11.338",
+      "10.1016/j.sleep.2025.106661",
+      "10.1016/j.sleep.2025.106877",
+      "10.1016/j.socscimed.2021.114098",
+      "10.1016/j.ypmed.2024.108003",
+      "10.1017/cts.2017.287",
+      "10.1038/s41390-021-01611-6",
+      "10.1038/s41398-021-01744-6",
+      "10.1038/srep39017",
+      "10.1080/17477160903154953",
+      "10.1093/abm/kaz070",
+      "10.1093/cdn/nzac061.005",
+      "10.1093/ecco-jcc/jjac190.0352",
+      "10.1093/neuonc/noac079.484",
+      "10.1093/sleep/zsaa256",
+      "10.1093/sleep/zsab072.592",
+      "10.1093/sleep/zsac079.187",
+      "10.1093/sleep/zsae067.0199",
+      "10.1097/MPG.0000000000000868",
+      "10.1097/MPG.0000000000003823",
+      "10.1097/NCC.0000000000001325",
+      "10.1097/PSY.0b013e31829cc3e7",
+      "10.1101/2022.06.06.22276028",
+      "10.1111/bdi.12746",
+      "10.1111/bjd.21028",
+      "10.1111/jcpp.13755",
+      "10.1111/jsr.12446",
+      "10.1123/jpah.2015-0123",
+      "10.1123/jpah.2022-0468",
+      "10.1136/bmjresp-2021-bssconf.50",
+      "10.1139/apnm-2016-0026",
+      "10.1155/2014/605280",
+      "10.1159/000478672",
+      "10.1159/000515911",
+      "10.1159/000518127",
+      "10.11607/ofph.1570",
+      "10.1161/cir.151.suppl_1.019",
+      "10.1161/circ.149.suppl-1.23",
+      "10.1177/1099800418791047",
+      "10.1177/10998004241238237",
+      "10.1186/1129-2377-14-75",
+      "10.1186/ar4054",
+      "10.1186/s12883-025-04359-2",
+      "10.1186/s12887-024-05066-6",
+      "10.1186/s12969-023-00879-8",
+      "10.1186/s12969-025-01138-8",
+      "10.1186/s40608-018-0208-2",
+      "10.1188/11.ONF.E365-E372",
+      "10.1371/journal.pone.0232932",
+      "10.1371/journal.pone.0310847",
+      "10.1507/endocrj.K10E-145",
+      "10.1515/jpem-2021-0745",
+      "10.1542/peds.2010-0497",
+      "10.15448/1980-6108.2016.3.22898",
+      "10.2337/db16-861-1374",
+      "10.2337/db24-1978-LB",
+      "10.3389/fmed.2023.1175483",
+      "10.3389/fneur.2022.952317",
+      "10.3390/diseases13090283",
+      "10.3390/nu17111759",
+      "10.3390/pediatric16040081",
+      "10.3945/ajcn.2010.29667",
+      "10.48047/jcdr.2024.15.11.53",
+      "10.5603/PiAP.2016.0032",
+      "10.5664/jcsm.10678",
+      "10.5664/jcsm.7566",
+      "10.62347/IFQZ7957",
+      "10.7717/peerj.13965"
+    ],
+    "retrieved_pmids": [
+      "15631322",
+      "19856866",
+      "20733266",
+      "21106915",
+      "21262888",
+      "21875833",
+      "22554493",
+      "23058191",
+      "23864582",
+      "24011175",
+      "24680337",
+      "24991089",
+      "25156749",
+      "25173056",
+      "25988561",
+      "26429748",
+      "26800571",
+      "27128479",
+      "27306435",
+      "27672067",
+      "27966597",
+      "28041986",
+      "28899517",
+      "29903569",
+      "30071743",
+      "30384138",
+      "30621826",
+      "30710373",
+      "30981000",
+      "31809944",
+      "32043152",
+      "32413063",
+      "33249510",
+      "33932814",
+      "34126291",
+      "34400791",
+      "34468686",
+      "34873150",
+      "35074530",
+      "35822712",
+      "36041378",
+      "36597271",
+      "37295784",
+      "37323001",
+      "37944959",
+      "38043583",
+      "38448370",
+      "38479583",
+      "38717746",
+      "38754737",
+      "39354381",
+      "39453947",
+      "40408110",
+      "40507028",
+      "40651550",
+      "40682935",
+      "40752314",
+      "40838965",
+      "40993579",
+      "41205289",
+      "41205781"
+    ],
+    "pmids": [
+      "15631322",
+      "19856866",
+      "20733266",
+      "21106915",
+      "21262888",
+      "21875833",
+      "22554493",
+      "23058191",
+      "23864582",
+      "24011175",
+      "24680337",
+      "24991089",
+      "25156749",
+      "25173056",
+      "25988561",
+      "26429748",
+      "26800571",
+      "27128479",
+      "27306435",
+      "27672067",
+      "27966597",
+      "28041986",
+      "28899517",
+      "29903569",
+      "30071743",
+      "30384138",
+      "30621826",
+      "30710373",
+      "30981000",
+      "31809944",
+      "32043152",
+      "32413063",
+      "33249510",
+      "33932814",
+      "34126291",
+      "34400791",
+      "34468686",
+      "34873150",
+      "35074530",
+      "35822712",
+      "36041378",
+      "36597271",
+      "37295784",
+      "37323001",
+      "37944959",
+      "38043583",
+      "38448370",
+      "38479583",
+      "38717746",
+      "38754737",
+      "39354381",
+      "39453947",
+      "40408110",
+      "40507028",
+      "40651550",
+      "40682935",
+      "40752314",
+      "40838965",
+      "40993579",
+      "41205289",
+      "41205781"
+    ],
+    "records": [
+      {
+        "title": "Influence of sleep duration on cumulative genetic effects on obesity and related anthropometric traits among preschool children",
+        "first_author": "Zhang",
+        "year": 2026,
+        "pmid": "41205781",
+        "doi": "10.1016/j.gene.2025.149880"
+      },
+      {
+        "title": "Association between lipopolysaccharide-binding protein levels and disease severity in pediatric narcolepsy: A cross-sectional study",
+        "first_author": "Liu",
+        "year": 2026,
+        "pmid": "41205289",
+        "doi": "10.1016/j.sleep.2025.106877"
+      },
+      {
+        "title": "Immediate perineal cryotherapy during labor: effects on early postpartum pain, edema, and pelvic floor recovery in primiparous women",
+        "first_author": "Lin",
+        "year": 2026,
+        "doi": "10.62347/IFQZ7957"
+      },
+      {
+        "title": "Association between cytokines and neuropsychiatric symptoms in paediatric narcolepsy patients: a cross-sectional study",
+        "first_author": "Wei",
+        "year": 2025,
+        "pmid": "40993579",
+        "doi": "10.1186/s12883-025-04359-2"
+      },
+      {
+        "title": "Associations of lifetime stressors and health behaviors with inflammation in young adults previously placed in youth residential care",
+        "first_author": "Bürgin",
+        "year": 2025,
+        "doi": "10.1016/j.bbih.2025.101098"
+      },
+      {
+        "title": "Appetite adipokines and insulin resistance shape the link between sleep quality and cardiac structure in youths with cardiometabolic risk: the BCAMS study",
+        "first_author": "He",
+        "year": 2025,
+        "pmid": "40682935",
+        "doi": "10.1016/j.cyto.2025.156998"
+      },
+      {
+        "title": "Changes in attention deficit and adipokine levels in children with sleep-disordered breathing",
+        "first_author": "Luo",
+        "year": 2025,
+        "pmid": "40752314",
+        "doi": "10.1016/j.sleep.2025.106661"
+      },
+      {
+        "title": "Detection of Serum Levels of Interleukins-17, 21, 6 and Tumor Necrosis Factor-α in Patients with Patchy Alopecia Areata and Their Association with Disease Severity",
+        "first_author": "Abu-El-Azayem",
+        "year": 2025,
+        "doi": "10.3390/diseases13090283"
+      },
+      {
+        "title": "The Level of Psychological Distress Is Associated with Circadian Rhythm, Sleep Quality, and Inflammatory Markers in Adolescent and Young Adults with Gynecological Cancer",
+        "first_author": "Luo",
+        "year": 2025,
+        "pmid": "40838965",
+        "doi": "10.1097/NCC.0000000000001325"
+      },
+      {
+        "title": "The sleep-mood connection: Temperament modulates neuroinflammation, clock genes, and dopaminergic receptors expression in rats",
+        "first_author": "Lima",
+        "year": 2025,
+        "pmid": "40651550",
+        "doi": "10.1016/j.pnpbp.2025.111443"
+      },
+      {
+        "title": "Effects of Nutritional Education and Diet on Obesity and Asthma Progression in Children and Adolescents",
+        "first_author": "Soczewka",
+        "year": 2025,
+        "pmid": "40507028",
+        "doi": "10.3390/nu17111759"
+      },
+      {
+        "title": "Mediators of the Association Between Child Education and Adult Health",
+        "first_author": "Bleil",
+        "year": 2025,
+        "pmid": "40408110",
+        "doi": "10.1001/jamanetworkopen.2025.8855"
+      },
+      {
+        "title": "Association Of Sleep Irregularity And Variability With Leptin And Adiponectin Levels In Adolescents",
+        "first_author": "Ballester-Navarro",
+        "year": 2025,
+        "doi": "10.1161/cir.151.suppl_1.019"
+      },
+      {
+        "title": "Clinical and genetic features of confirmed FMF and symptomatic heterozygotes: a cohort study of 185 patients",
+        "first_author": "Mahé",
+        "year": 2025,
+        "doi": "10.1186/s12969-025-01138-8"
+      },
+      {
+        "title": "Role of endothelial dysfunction in sleep-disordered breathing in egyptian children with sickle cell disease",
+        "first_author": "Youssry",
+        "year": 2024,
+        "pmid": "39354381",
+        "doi": "10.1186/s12887-024-05066-6"
+      },
+      {
+        "title": "Salivary IL-1 Beta Level Associated with Poor Sleep Quality in Children/Adolescents with Autism Spectrum Disorder",
+        "first_author": "Fuentes-Albero",
+        "year": 2024,
+        "doi": "10.3390/pediatric16040081"
+      },
+      {
+        "title": "4.19 Associations Between Early-Life Adversity, Adiponectin, and Sleep",
+        "first_author": "Tan",
+        "year": 2024,
+        "doi": "10.1016/j.jaac.2024.08.264"
+      },
+      {
+        "title": "Plasma and breast milk adipokines in women across the first year postpartum and their association with maternal depressive symptoms and infant neurodevelopment: Protocol for the APPLE prospective cohort study",
+        "first_author": "Rebelo",
+        "year": 2024,
+        "pmid": "39453947",
+        "doi": "10.1371/journal.pone.0310847"
+      },
+      {
+        "title": "Role of Inflammation in Short Sleep Duration Across Childhood and Psychosis in Young Adulthood",
+        "first_author": "Morales-Muñoz",
+        "year": 2024,
+        "pmid": "38717746",
+        "doi": "10.1001/jamapsychiatry.2024.0796"
+      },
+      {
+        "title": "Association of lifestyle behaviors and oral health care needs: Mediating effects of inflammatory markers",
+        "first_author": "Li",
+        "year": 2024,
+        "pmid": "38754737",
+        "doi": "10.1016/j.ypmed.2024.108003"
+      },
+      {
+        "title": "Factors Associated With the Cardiovascular Health of Black and Latino Adults With Type 2 Diabetes",
+        "first_author": "McCarthy",
+        "year": 2024,
+        "pmid": "38448370",
+        "doi": "10.1177/10998004241238237"
+      },
+      {
+        "title": "Comparing Safety Profiles: Low-Temperature Plasma Excision vs. Traditional Adenoidectomy for Adenoid Hypertrophy",
+        "first_author": "Gu",
+        "year": 2024,
+        "pmid": "37944959"
+      },
+      {
+        "title": "Sleep Duration during Pregnancy and Cardiometabolic Biomarkers-A Multiracial Pregnancy Cohort",
+        "first_author": "Chen",
+        "year": 2024,
+        "doi": "10.2337/db24-1978-LB"
+      },
+      {
+        "title": "Associations between immune biomarkers and symptoms of anxiety, depression, and insomnia in paediatric inflammatory bowel disease: A preliminary longitudinal analysis",
+        "first_author": "Ballesio",
+        "year": 2024,
+        "pmid": "38479583",
+        "doi": "10.1016/j.physbeh.2024.114510"
+      },
+      {
+        "title": "CIRCADIAN MISALIGNMENT, CARDIAC-AUTONOMIC AND INFLAMMATORY PATHWAYS, AND METABOLIC SYNDROME IN ADOLESCENTS",
+        "first_author": "Morales-Ghinaglia",
+        "year": 2024,
+        "doi": "10.1093/sleep/zsae067.0199"
+      },
+      {
+        "title": "CIRCADIAN MISALIGNMENT, CARDIAC-AUTONOMIC AND INFLAMMATORY PATHWAYS, AND METABOLIC SYNDROME IN ADOLESCENTS",
+        "first_author": "Morales-Ghinaglia",
+        "year": 2024,
+        "doi": "10.1093/sleep/zsae067.0199"
+      },
+      {
+        "title": "Replacing screen time, with physical activity and sleep time: influence on cardiovascular indicators and inflammatory markers in Brazilian children",
+        "first_author": "Reis",
+        "year": 2024,
+        "pmid": "38043583",
+        "doi": "10.1016/j.jped.2023.10.007"
+      },
+      {
+        "title": "Multidimensional Association of Sleep With Health Behaviors and Cardiometabolic Risk in Adolescents",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2024,
+        "doi": "10.1161/circ.149.suppl-1.23"
+      },
+      {
+        "title": "Multidimensional sleep health is associated with worse cardiometabolic health in adolescent females with Polycystic Ovary Syndrome (PCOS) and obesity",
+        "first_author": "Simon",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.338"
+      },
+      {
+        "title": "Evaluating the levels of Salivary biomarker C-reactive protein in children with sleep problems and Class II malocclusion before and after twin-block therapy",
+        "first_author": "Thakar",
+        "year": 2024,
+        "doi": "10.48047/jcdr.2024.15.11.53"
+      },
+      {
+        "title": "Sleep disturbance, but not depression severity, is associated with inflammation in children and adolescents",
+        "first_author": "Strumberger",
+        "year": 2023,
+        "pmid": "37323001",
+        "doi": "10.5664/jcsm.10678"
+      },
+      {
+        "title": "Association Between Sleep Time and Pro- and Anti-Inflammatory Biomarkers Is Mediated by Abdominal Obesity Among Adolescents",
+        "first_author": "De",
+        "year": 2023,
+        "pmid": "37295784",
+        "doi": "10.1123/jpah.2022-0468"
+      },
+      {
+        "title": "Pain perception and sleep disturbances of children suffering from Chronic Non-bacterial Osteomyelitis (CNO)",
+        "first_author": "Butbul",
+        "year": 2023,
+        "doi": "10.1186/s12969-023-00879-8"
+      },
+      {
+        "title": "The role of inflammation in the prospective associations between early childhood sleep problems and ADHD at 10 years: findings from a UK birth cohort study",
+        "first_author": "Morales-Muñoz",
+        "year": 2023,
+        "pmid": "36597271",
+        "doi": "10.1111/jcpp.13755"
+      },
+      {
+        "title": "CHRONIC PAIN IS COMMON IN PAEDIATRIC INFLAMMATORY BOWEL DISEASE AND IMPACTS QUALITY OF LIFE",
+        "first_author": "Mardare",
+        "year": 2023,
+        "doi": "10.1097/MPG.0000000000003823"
+      },
+      {
+        "title": "Chronic pain is common in Paediatric Inflammatory Bowel Disease and impacts quality of life",
+        "first_author": "Mardare",
+        "year": 2023,
+        "doi": "10.1093/ecco-jcc/jjac190.0352"
+      },
+      {
+        "title": "The relationship between sleep and salivary and serum inflammatory biomarkers in adolescents",
+        "first_author": "Alqaderi",
+        "year": 2023,
+        "doi": "10.3389/fmed.2023.1175483"
+      },
+      {
+        "title": "Duration, timing, and consistency of sleep in relation to inflammatory cytokines in Mexican adolescents",
+        "first_author": "Zhang",
+        "year": 2022,
+        "pmid": "36041378",
+        "doi": "10.1016/j.sleep.2022.08.007"
+      },
+      {
+        "title": "Associations between pro-inflammatory cytokines and fatigue in pregnant women",
+        "first_author": "Xia",
+        "year": 2022,
+        "doi": "10.7717/peerj.13965"
+      },
+      {
+        "title": "Evaluation of multiple consensus criteria for autoimmune encephalitis and temporal analysis of symptoms in a pediatric encephalitis cohort",
+        "first_author": "Pointon",
+        "year": 2022,
+        "doi": "10.3389/fneur.2022.952317"
+      },
+      {
+        "title": "Visceral adiposity is related to insulin sensitivity and inflammation in adolescents with obesity and mild sleep disordered breathing",
+        "first_author": "Vajravelu",
+        "year": 2022,
+        "pmid": "35822712",
+        "doi": "10.1515/jpem-2021-0745"
+      },
+      {
+        "title": "The role of inflammation in the prospective associations between early childhood sleep problems and ADHD at 10 years: Findings from a UK birth cohort study",
+        "first_author": "Muñoz",
+        "year": 2022,
+        "doi": "10.1101/2022.06.06.22276028"
+      },
+      {
+        "title": "Melatonin as an immunomodulator in children with Down syndrome",
+        "first_author": "Huggard",
+        "year": 2022,
+        "pmid": "34400791",
+        "doi": "10.1038/s41390-021-01611-6"
+      },
+      {
+        "title": "Association Between Longitudinal Changes in Body Mass Index (BMI) and Body Fat With Cardiometabolic Risk Factors in Indian Children and Adolescents",
+        "first_author": "Bandyopadhyay",
+        "year": 2022,
+        "doi": "10.1093/cdn/nzac061.005"
+      },
+      {
+        "title": "HIGH LEVELS OF SLEEP DISTURBANCE ACROSS EARLY CHILDHOOD INCREASES CARDIOMETABOLIC DISEASE RISK INDEX IN EARLY ADOLESCENCE: LONGITUDINAL SLEEP ANALYSIS USING THE HOME STUDY",
+        "first_author": "Duraccio",
+        "year": 2022,
+        "doi": "10.1093/sleep/zsac079.187"
+      },
+      {
+        "title": "INFLAMMATORY BIOMARKERS AND PSYCHOLOGICAL SEQUELA IN PEDIATRIC BRAIN TUMOR SURVIVORS",
+        "first_author": "Turner",
+        "year": 2022,
+        "doi": "10.1093/neuonc/noac079.484"
+      },
+      {
+        "title": "Sleep duration trajectories associated with levels of specific serum cytokines at age 5: A longitudinal study in preschoolers from the EDEN birth cohort",
+        "first_author": "Radmanish",
+        "year": 2022,
+        "doi": "10.1016/j.bbih.2022.100429"
+      },
+      {
+        "title": "Elevated C-reactive protein levels in patients with atopic dermatitis who have sleep disturbance are associated with the development of cardiovascular comorbidities and increased mortality: a multicentre cohort study",
+        "first_author": "Parthasarathy",
+        "year": 2022,
+        "doi": "10.1111/bjd.21028"
+      },
+      {
+        "title": "Correlates of psychotic like experiences (PLEs) during Pandemic: An online study investigating a possible link between the SARS-CoV-2 infection and PLEs among adolescents",
+        "first_author": "Yilmaz",
+        "year": 2022,
+        "pmid": "35074530",
+        "doi": "10.1016/j.schres.2021.12.049"
+      },
+      {
+        "title": "Moderators of inflammation-related depression: a prospective study of breast cancer survivors",
+        "first_author": "Manigault",
+        "year": 2021,
+        "pmid": "34873150",
+        "doi": "10.1038/s41398-021-01744-6"
+      },
+      {
+        "title": "Association of Atopic Dermatitis and Mental Health Outcomes across Childhood: A Longitudinal Cohort Study",
+        "first_author": "Kern",
+        "year": 2021,
+        "pmid": "34468686",
+        "doi": "10.1001/jamadermatol.2021.2657"
+      },
+      {
+        "title": "Sleep and immune biomarkers in non-clinical population: Research project among preschoolers from the EDEN cohort",
+        "first_author": "Plancoulaine",
+        "year": 2021,
+        "doi": "10.1016/j.msom.2020.10.004"
+      },
+      {
+        "title": "IL-6, sTNF-R2, and CRP in the context of sleep, circadian preference, and health in adolescents with eveningness chronotype: Cross-sectional and longitudinal treatment effects",
+        "first_author": "Dolsen",
+        "year": 2021,
+        "pmid": "33932814",
+        "doi": "10.1016/j.psyneuen.2021.105241"
+      },
+      {
+        "title": "The ratio of morning cortisol to CRP prospectively predicts first-onset depression in at-risk adolescents",
+        "first_author": "Landau",
+        "year": 2021,
+        "pmid": "34126291",
+        "doi": "10.1016/j.socscimed.2021.114098"
+      },
+      {
+        "title": "Blunted rest-activity rhythms link to higher body mass index and inflammatory markers in children",
+        "first_author": "Qian",
+        "year": 2021,
+        "pmid": "33249510",
+        "doi": "10.1093/sleep/zsaa256"
+      },
+      {
+        "title": "24-hour movement behaviors and cardiometabolic risk factors in children: A isotemporal substitution analysis",
+        "first_author": "Reis",
+        "year": 2021,
+        "doi": "10.1159/000515911"
+      },
+      {
+        "title": "Sleep trajectories between the age of 2 and 5 are associated with blood cytokine levels at age 5 in the eden birth-cohort study",
+        "first_author": "Radmanish",
+        "year": 2021,
+        "doi": "10.1093/sleep/zsab072.592"
+      },
+      {
+        "title": "The Relationship of Lifestyle Determinants with Immunological and Hormonal Biomarkers in Adolescents with Down syndrome. The UP&DOWN Study",
+        "first_author": "Gutierrez-Hervas",
+        "year": 2021,
+        "doi": "10.1159/000518127"
+      },
+      {
+        "title": "ROLE of SLEEP DURATION in CARDIOVASCULAR MORTALITY among PATIENTS with CHRONIC KIDNEY DISEASE",
+        "first_author": "Banerjee",
+        "year": 2021,
+        "doi": "10.1136/bmjresp-2021-bssconf.50"
+      },
+      {
+        "title": "Adiposity, Depression Symptoms and Inflammation in Hispanic/Latino Youth: Results From HCHS/SOL Youth",
+        "first_author": "Nguyen-Rodriguez",
+        "year": 2020,
+        "pmid": "32043152",
+        "doi": "10.1093/abm/kaz070"
+      },
+      {
+        "title": "Trust as a mediator in the relationship between childhood sexual abuse and IL-6 level in adulthood",
+        "first_author": "Ng",
+        "year": 2020,
+        "pmid": "32413063",
+        "doi": "10.1371/journal.pone.0232932"
+      },
+      {
+        "title": "Association of LEP-rs7799039 and ADIPOQ-rs2241766 polymorphisms with sleep duration in preschool age children",
+        "first_author": "Kroll",
+        "year": 2020,
+        "pmid": "31809944",
+        "doi": "10.1016/j.sleep.2019.07.028"
+      },
+      {
+        "title": "Clock Gene Disruption Is an Initial Manifestation of Inflammatory Bowel Diseases",
+        "first_author": "Weintraub",
+        "year": 2020,
+        "pmid": "30981000",
+        "doi": "10.1016/j.cgh.2019.04.013"
+      },
+      {
+        "title": "Identifying clusters from multidimensional symptom trajectories in postpartum women",
+        "first_author": "Paul",
+        "year": 2019,
+        "pmid": "30710373",
+        "doi": "10.1002/nur.21935"
+      },
+      {
+        "title": "Replication of neurocognitive subgroups in a large cohort of patients with bipolar disorder",
+        "first_author": "Shanahan",
+        "year": 2019,
+        "doi": "10.1111/bdi.12746"
+      },
+      {
+        "title": "Evaluation of home polysomnography findings, quality of sleep, and fatigue in inflammatory bowel disease: A case series",
+        "first_author": "Paixão",
+        "year": 2019,
+        "pmid": "30621826",
+        "doi": "10.5664/jcsm.7566"
+      },
+      {
+        "title": "Sleep disorders and endothelial dysfunction in children with sickle cell anemia",
+        "first_author": "Ramos-Machado",
+        "year": 2019,
+        "pmid": "30384138",
+        "doi": "10.1016/j.sleep.2018.08.019"
+      },
+      {
+        "title": "604: Association of inflammation, oxidative stress and obstructive sleep apnea in pregnancy with neonatal adiposity",
+        "first_author": "Farabi",
+        "year": 2019,
+        "doi": "10.1016/j.ajog.2018.11.626"
+      },
+      {
+        "title": "Obesity moderates the complex relationships between inflammation, oxidative stress, sleep quality and depressive symptoms",
+        "first_author": "Rigobon",
+        "year": 2018,
+        "doi": "10.1186/s40608-018-0208-2"
+      },
+      {
+        "title": "Sleep duration, timing, variability and measures of adiposity among 8- to 12-year-old children with obesity",
+        "first_author": "Zhou",
+        "year": 2018,
+        "doi": "10.1002/osp4.303"
+      },
+      {
+        "title": "5.45 Relationship Between MDD and Sleep Disturbance in Adolescents",
+        "first_author": "Reddy",
+        "year": 2018,
+        "doi": "10.1016/j.jaac.2018.09.338"
+      },
+      {
+        "title": "Sleep, Lifestyle Behaviors, and Cardiometabolic Health Markers in Overweight/Obese Young Adults: A Pilot Study Using the SenseWear® Armband",
+        "first_author": "Cha",
+        "year": 2018,
+        "pmid": "30071743",
+        "doi": "10.1177/1099800418791047"
+      },
+      {
+        "title": "Loss of Cardio-Protective Effects at the CDH13 Locus Due to Gene-Sleep Interaction: The BCAMS Study",
+        "first_author": "Li",
+        "year": 2018,
+        "pmid": "29903569",
+        "doi": "10.1016/j.ebiom.2018.05.033"
+      },
+      {
+        "title": "Metabolic biomarkers in community obese children: effect of obstructive sleep apnea and its treatment",
+        "first_author": "Alonso-Álvarez",
+        "year": 2017,
+        "pmid": "28899517",
+        "doi": "10.1016/j.sleep.2017.06.002"
+      },
+      {
+        "title": "Sleep, biological stress, and health in a community sample of toddlers living in socioeconomically disadvantaged homes",
+        "first_author": "Ordway",
+        "year": 2017,
+        "doi": "10.1017/cts.2017.287"
+      },
+      {
+        "title": "Insomnia symptoms with objective short sleep duration are associated with systemic inflammation in adolescents",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2017,
+        "pmid": "28041986",
+        "doi": "10.1016/j.bbi.2016.12.026"
+      },
+      {
+        "title": "Lifestyle consequences on the immune system in adolescence",
+        "first_author": "Marcos",
+        "year": 2017,
+        "doi": "10.1159/000478672"
+      },
+      {
+        "title": "Association between sleep duration and cardiac structure in youths at risk for metabolic syndrome",
+        "first_author": "Feng",
+        "year": 2016,
+        "pmid": "27966597",
+        "doi": "10.1038/srep39017"
+      },
+      {
+        "title": "Insomnia is associated with increased C-reactive protein levels in adolescents: Role of objective short sleep duration",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Physical Activity, Sedentary Time, and Sleep and the Association With Inflammatory Markers and Adiponectin in 8- to 11-Year-Old Danish Children",
+        "first_author": "Nielsen",
+        "year": 2016,
+        "pmid": "26800571",
+        "doi": "10.1123/jpah.2015-0123"
+      },
+      {
+        "title": "Associations between sleep duration, sedentary time, physical activity, and health indicators among Canadian children and youth using compositional analyses",
+        "first_author": "Carson",
+        "year": 2016,
+        "pmid": "27306435",
+        "doi": "10.1139/apnm-2016-0026"
+      },
+      {
+        "title": "Association Between Chlamydia pneumoniae and Migraine: A Study from a Tertiary Center in India",
+        "first_author": "Chaudhuri",
+        "year": 2016,
+        "pmid": "27128479",
+        "doi": "10.11607/ofph.1570"
+      },
+      {
+        "title": "Profile of obese patients with metabolic syndrome eligible for bariatric surgery at a private clinic in Porto Alegre, Rio Grande do Sul, Brazil",
+        "first_author": "Junges",
+        "year": 2016,
+        "doi": "10.15448/1980-6108.2016.3.22898"
+      },
+      {
+        "title": "Effect of obesity and metabolic syndrome on severity, quality of life, sleep quality and inflammatory markers in patients of asthma in India",
+        "first_author": "Singh",
+        "year": 2016,
+        "pmid": "27672067",
+        "doi": "10.5603/PiAP.2016.0032"
+      },
+      {
+        "title": "Sleep duration and cardiometabolic risk in children and adolescents: Does adipokines play a mediating role?",
+        "first_author": "Li",
+        "year": 2016,
+        "doi": "10.2337/db16-861-1374"
+      },
+      {
+        "title": "The interactive effects of nocturnal sleep and daytime naps in relation to serum C-reactive protein",
+        "first_author": "Mantua",
+        "year": 2015,
+        "pmid": "26429748",
+        "doi": "10.1016/j.sleep.2015.06.014"
+      },
+      {
+        "title": "Short sleep duration is related to emerging cardiovascular risk factors in obese children",
+        "first_author": "Navarro-Solera",
+        "year": 2015,
+        "pmid": "25988561",
+        "doi": "10.1097/MPG.0000000000000868"
+      },
+      {
+        "title": "Maternal psychosocial stress and immune/ inflammatory markers in pregnancy",
+        "first_author": "Borders",
+        "year": 2015,
+        "doi": "10.1016/j.ajog.2014.10.173"
+      },
+      {
+        "title": "Self-reported sleep duration, white blood cell counts and cytokine profiles in European adolescents: the HELENA study",
+        "first_author": "Pérez",
+        "year": 2014,
+        "doi": "10.1016/j.sleep.2014.04.010"
+      },
+      {
+        "title": "Inflammatory markers and obstructive sleep apnea in obese children: The NANOS study",
+        "first_author": "Gileles-Hillel",
+        "year": 2014,
+        "pmid": "24991089",
+        "doi": "10.1155/2014/605280"
+      },
+      {
+        "title": "Low-level mercury in children: Associations with sleep duration and cytokines TNF-α and IL-6",
+        "first_author": "Gump",
+        "year": 2014,
+        "pmid": "25173056",
+        "doi": "10.1016/j.envres.2014.07.026"
+      },
+      {
+        "title": "Self-reported sleep duration, white blood cell counts and cytokine profiles in European adolescents: The HELENA study",
+        "first_author": "Pérez",
+        "year": 2014,
+        "pmid": "25156749",
+        "doi": "10.1016/j.sleep.2014.04.010"
+      },
+      {
+        "title": "Relationship between plasma vascular endothelial growth factor and tumor necrosis factor-alpha and obstructive sleep apnea hypopnea syndrome in children",
+        "first_author": "Li",
+        "year": 2014,
+        "pmid": "24680337"
+      },
+      {
+        "title": "Disturbed sleep and inflammatory cytokines in depressed and nondepressed pregnant women: An exploratory analysis of pregnancy outcomes",
+        "first_author": "Okun",
+        "year": 2013,
+        "pmid": "23864582",
+        "doi": "10.1097/PSY.0b013e31829cc3e7"
+      },
+      {
+        "title": "Cardiovascular disease risk in women with migraine",
+        "first_author": "Rockett",
+        "year": 2013,
+        "pmid": "24011175",
+        "doi": "10.1186/1129-2377-14-75"
+      },
+      {
+        "title": "Sleep disturbances are associated with increased pain, disease activity, depression, and anxiety in ankylosing spondylitis: A case-control study",
+        "first_author": "Li",
+        "year": 2012,
+        "pmid": "23058191",
+        "doi": "10.1186/ar4054"
+      },
+      {
+        "title": "Early life stress and inflammatory mechanisms of fatigue in the Coronary Artery Risk Development in Young Adults (CARDIA) study",
+        "first_author": "Cho",
+        "year": 2012,
+        "pmid": "22554493",
+        "doi": "10.1016/j.bbi.2012.04.005"
+      },
+      {
+        "title": "Disturbed sleep in pediatric patients with Leukemia: The Potential role of interleukin-6 (-174GC) and tumor necrosis factor (-308GA) polymorphism",
+        "first_author": "Vallance",
+        "year": 2011,
+        "pmid": "21875833",
+        "doi": "10.1188/11.ONF.E365-E372"
+      },
+      {
+        "title": "Sleep duration, sleep regularity, body weight, and metabolic homeostasis in school-aged children",
+        "first_author": "Spruyt",
+        "year": 2011,
+        "pmid": "21262888",
+        "doi": "10.1542/peds.2010-0497"
+      },
+      {
+        "title": "Serum adipocyte fatty acid-binding protein, retinol-binding protein 4, and adiponectin concentrations in relation to the development of the metabolic syndrome in Korean boys: A 3-y prospective cohort study",
+        "first_author": "Choi",
+        "year": 2011,
+        "pmid": "21106915",
+        "doi": "10.3945/ajcn.2010.29667"
+      },
+      {
+        "title": "Subjective sleep duration and quality influence diet composition and circulating adipocytokines and ghrelin levels in teen-age girls",
+        "first_author": "Al-Disi",
+        "year": 2010,
+        "pmid": "20733266",
+        "doi": "10.1507/endocrj.K10E-145"
+      },
+      {
+        "title": "Sleep Quality and Immune Mediators in Asthmatic Children",
+        "first_author": "Wang",
+        "year": 2009,
+        "pmid": "19856866",
+        "doi": "10.1016/S1875-9572(09)60067-X"
+      },
+      {
+        "title": "Psychological and physiological consequences of chronic partial sleep loss in young parents-preliminary data and future intentions",
+        "first_author": "Berndt",
+        "year": 2009,
+        "doi": "10.1016/j.bbi.2009.05.006"
+      },
+      {
+        "title": "Adipocytokines and ghrelin levels of teenage Arab girls as influenced by diet and sleeping patterns",
+        "first_author": "Al-Disi",
+        "year": 2009,
+        "doi": "10.1080/17477160903154953"
+      },
+      {
+        "title": "Sleep-related breathing disorders in small children with nocturnal acid gastro-oesophageal reflux.",
+        "first_author": "Wasilewska",
+        "year": 2004,
+        "pmid": "15631322"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

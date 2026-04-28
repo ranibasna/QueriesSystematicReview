@@ -1,0 +1,922 @@
+{
+  "3a38d7914943faacf9b3911c133d3d05738048ab41f50d279b9af2e209816b0b": {
+    "query": "(('sleep apnea syndrome'/mj OR 'snoring'/mj OR 'sleep disordered breathing':ti OR 'sleep-disordered breathing':ti OR 'obstructive sleep apnea':ti OR 'obstructive sleep apnoea':ti OR 'primary snoring':ti) AND ('blood pressure'/mj OR 'blood pressure':ti OR 'ambulatory blood pressure':ti OR 'systolic blood pressure':ti OR 'diastolic blood pressure':ti OR 'mean blood pressure':ti OR 'blood pressure load':ti OR 'non-dipping':ti,ab OR 'sbp index':ti,ab) AND ('child'/exp OR 'adolescent'/exp OR child*:ti,ab OR adolescen*:ti,ab OR pediatric*:ti,ab OR paediatric*:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 93,
+    "retrieved_dois": [
+      "10.1001/archpedi.157.9.901",
+      "10.1001/archpedi.161.2.172",
+      "10.1001/jamacardio.2021.2003",
+      "10.1001/jamanetworkopen.2025.38744",
+      "10.1001/jamaoto.2017.3127",
+      "10.1001/jamaoto.2018.0451",
+      "10.1001/jamaoto.2025.2555",
+      "10.1002/lary.29455",
+      "10.1002/lary.30058",
+      "10.1002/ped4.12163",
+      "10.1002/ppul.20188",
+      "10.1002/ppul.20808",
+      "10.1002/ppul.22595",
+      "10.1007/s00467-010-1577-z",
+      "10.1007/s00467-020-04544-0",
+      "10.1016/S0140-6736(94)92084-2",
+      "10.1016/S152605421070033-6",
+      "10.1016/j.gheart.2016.03.082",
+      "10.1016/j.ijporl.2012.02.041",
+      "10.1016/j.jash.2015.11.010",
+      "10.1016/j.jash.2017.12.010",
+      "10.1016/j.jpeds.2009.03.041",
+      "10.1016/j.jpeds.2011.12.034",
+      "10.1016/j.jpeds.2016.11.032",
+      "10.1016/j.jpeds.2017.11.043",
+      "10.1016/j.jpeds.2018.03.072",
+      "10.1016/j.jpeds.2022.03.024",
+      "10.1016/j.sleep.2009.10.007",
+      "10.1016/j.sleep.2013.01.015",
+      "10.1016/j.sleep.2013.07.014",
+      "10.1016/j.sleep.2013.09.011",
+      "10.1016/j.sleep.2013.09.017",
+      "10.1016/j.sleep.2014.05.022",
+      "10.1016/j.sleep.2019.07.027",
+      "10.1016/j.sleep.2019.11.435",
+      "10.1016/j.sleep.2021.06.017",
+      "10.1016/j.sleep.2023.11.729",
+      "10.1016/j.smrv.2013.04.006",
+      "10.1016/j.smrv.2022.101663",
+      "10.1038/s41390-021-01841-8",
+      "10.1093/sleep/zsaa056.909",
+      "10.1093/sleep/zsad254",
+      "10.1093/sleep/zsad284",
+      "10.1093/sleep/zsaf090.1070",
+      "10.1093/sleep/zsz044",
+      "10.1097/01.hjh.0000491513.96475.ce",
+      "10.1097/HJH.0000000000001123",
+      "10.1097/MBP.0000000000000642",
+      "10.1097/MD.0000000000001568",
+      "10.1111/coa.14286",
+      "10.1111/j.1365-2869.2010.00868.x",
+      "10.1111/j.1400-1843.2010.01864.x",
+      "10.1111/j.1439-054X.2006.00089.x",
+      "10.1111/j.1440-1754.2011.02014.x",
+      "10.1111/j.1479-8425.2009.00410-2.x",
+      "10.1111/j.1479-8425.2012.00580.x",
+      "10.1111/jch.13605",
+      "10.1111/jsr.12446",
+      "10.1111/jsr.12618",
+      "10.1111/jsr.13280",
+      "10.1111/jsr.70049",
+      "10.1136/adc.88.2.139",
+      "10.1136/thoraxjnl-2019-213692",
+      "10.1136/thx.2007.091132",
+      "10.1155/ijhy/1945725",
+      "10.1161/HYPERTENSIONAHA.107.099762",
+      "10.1161/HYPERTENSIONAHA.108.116756",
+      "10.1161/HYPERTENSIONAHA.108.118083",
+      "10.1164/ajrccm.157.4.9704080",
+      "10.1164/ajrccm.170.4.952",
+      "10.1164/ajrccm.176.10.1054",
+      "10.1164/ajrccm.178.8.882",
+      "10.1164/ajrccm.2025.211.Abstracts.A7094",
+      "10.1164/rccm.200309-1305oc",
+      "10.1164/rccm.201111-2000RR",
+      "10.1177/01939459251340492",
+      "10.1177/0194599815573927",
+      "10.1177/0194599818785627i",
+      "10.1177/0194599818825462",
+      "10.1203/01.PDR.0000099791.39621.62",
+      "10.1378/chest.101.2.379",
+      "10.1542/peds.2010-3431",
+      "10.1542/peds.2013-1379",
+      "10.15557/PiMR.2015.0008",
+      "10.23749/mdl.v108i4.6427",
+      "10.3389/fendo.2025.1510737",
+      "10.3390/children9121849",
+      "10.3390/ijms252413344",
+      "10.3969/j.issn.1674-8115.2019.12.016",
+      "10.5114/POLP.2020.97167",
+      "10.5664/jcsm.8360",
+      "10.5665/sleep.2890",
+      "10.5935/1808-8694.20120004"
+    ],
+    "retrieved_pmids": [
+      "12538317",
+      "12963596",
+      "14605262",
+      "14764433",
+      "15302627",
+      "15666367",
+      "17283303",
+      "1735259",
+      "17651640",
+      "17984311",
+      "18071053",
+      "18336763",
+      "18388205",
+      "18433043",
+      "18832557",
+      "18838622",
+      "18838624",
+      "19540515",
+      "19953924",
+      "20605109",
+      "21535282",
+      "21708802",
+      "22284918",
+      "22429512",
+      "22615200",
+      "22931724",
+      "23108816",
+      "23768837",
+      "23850404",
+      "23904682",
+      "24157094",
+      "24210606",
+      "24239497",
+      "24344109",
+      "25488600",
+      "25953912",
+      "26725017",
+      "27648717",
+      "27939257",
+      "28853425",
+      "29277419",
+      "29450504",
+      "29753541",
+      "29801057",
+      "30668275",
+      "30958878",
+      "31222948",
+      "31751907",
+      "32043963",
+      "32209641",
+      "32232636",
+      "33535275",
+      "33599298",
+      "34160576",
+      "34225175",
+      "34785780",
+      "35156724",
+      "35314156",
+      "36087456",
+      "37141920",
+      "38092701",
+      "38092705",
+      "39769109",
+      "39835615",
+      "40170220",
+      "40411382",
+      "40875240",
+      "41129152",
+      "7915347",
+      "9563725"
+    ],
+    "pmids": [
+      "12538317",
+      "12963596",
+      "14605262",
+      "14764433",
+      "15302627",
+      "15666367",
+      "17283303",
+      "1735259",
+      "17651640",
+      "17984311",
+      "18071053",
+      "18336763",
+      "18388205",
+      "18433043",
+      "18832557",
+      "18838622",
+      "18838624",
+      "19540515",
+      "19953924",
+      "20605109",
+      "21535282",
+      "21708802",
+      "22284918",
+      "22429512",
+      "22615200",
+      "22931724",
+      "23108816",
+      "23768837",
+      "23850404",
+      "23904682",
+      "24157094",
+      "24210606",
+      "24239497",
+      "24344109",
+      "25488600",
+      "25953912",
+      "26725017",
+      "27648717",
+      "27939257",
+      "28853425",
+      "29277419",
+      "29450504",
+      "29753541",
+      "29801057",
+      "30668275",
+      "30958878",
+      "31222948",
+      "31751907",
+      "32043963",
+      "32209641",
+      "32232636",
+      "33535275",
+      "33599298",
+      "34160576",
+      "34225175",
+      "34785780",
+      "35156724",
+      "35314156",
+      "36087456",
+      "37141920",
+      "38092701",
+      "38092705",
+      "39769109",
+      "39835615",
+      "40170220",
+      "40411382",
+      "40875240",
+      "41129152",
+      "7915347",
+      "9563725"
+    ],
+    "records": [
+      {
+        "title": "Cardiovascular Risk Through Hypoxic Burden in Children with Sleep Apnea: A Secondary Analysis of a Nonrandomized Clinical Trial",
+        "first_author": "Mediano",
+        "year": 2025,
+        "pmid": "41129152",
+        "doi": "10.1001/jamanetworkopen.2025.38744"
+      },
+      {
+        "title": "Adenotonsillectomy and Blood Pressure in Children With Mild Obstructive Sleep-Disordered Breathing An Exploratory Analysis of the PATS Randomized Clinical Trial",
+        "first_author": "Cabrera",
+        "year": 2025,
+        "pmid": "40875240",
+        "doi": "10.1001/jamaoto.2025.2555"
+      },
+      {
+        "title": "Relationship of Circadian Blood Pressure Dysregulation With Left Ventricular Structure and Function in Children With Obstructive Sleep Apnea",
+        "first_author": "Witter",
+        "year": 2025,
+        "pmid": "40170220",
+        "doi": "10.1111/jsr.70049"
+      },
+      {
+        "title": "Factors Associated With Blood Pressure in School-Age Children With Obstructive Sleep Apnea",
+        "first_author": "Phillips",
+        "year": 2025,
+        "pmid": "40411382",
+        "doi": "10.1177/01939459251340492"
+      },
+      {
+        "title": "Interplay of Weight Status and Sleep Autonomic Function in Mediating and Moderating the Link Between Disease Severity and Blood Pressure in Paediatric Obstructive Sleep Apnoea",
+        "first_author": "Chao",
+        "year": 2025,
+        "pmid": "39835615",
+        "doi": "10.1111/coa.14286"
+      },
+      {
+        "title": "IMPACT OF SLEEP APNEA, SHORT SLEEP, AND INSOMNIA SYMPTOMS ON BLOOD PRESSURE MATURATIONAL TRAJECTORIES",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2025,
+        "doi": "10.1093/sleep/zsaf090.1070"
+      },
+      {
+        "title": "Impact of Adenotonsillectomy on Blood Pressure Trajectories in Children With Mild Obstructive Sleep Disordered Breathing",
+        "first_author": "Cabrera",
+        "year": 2025,
+        "doi": "10.1164/ajrccm.2025.211.Abstracts.A7094"
+      },
+      {
+        "title": "Association between obstructive sleep apnea hypopnea syndrome and arteriosclerosis in patients with type 2 diabetes mellitus: mediating effect of blood pressure",
+        "first_author": "Wang",
+        "year": 2025,
+        "doi": "10.3389/fendo.2025.1510737"
+      },
+      {
+        "title": "Childhood Obstructive Sleep Apnea and Systemic Blood Pressure and Kidney Function: A Systematic Review and Meta-Analysis",
+        "first_author": "Rodriguez-Lopez",
+        "year": 2025,
+        "doi": "10.1155/ijhy/1945725"
+      },
+      {
+        "title": "Exploring the Interplay of Gut Microbiota and Systemic Inflammation in Pediatric Obstructive Sleep Apnea Syndrome and Its Impact on Blood Pressure Status: A Cross-Sectional Study",
+        "first_author": "Huang",
+        "year": 2024,
+        "pmid": "39769109",
+        "doi": "10.3390/ijms252413344"
+      },
+      {
+        "title": "Circadian blood pressure dysregulation in children with obstructive sleep apnea",
+        "first_author": "Ferdous",
+        "year": 2024,
+        "pmid": "38092705",
+        "doi": "10.1093/sleep/zsad254"
+      },
+      {
+        "title": "Disruption of blood pressure circadian rhythm in children with obstructive sleep apnea—is it a pathway leading to cardiovascular morbidities?",
+        "first_author": "Chan",
+        "year": 2024,
+        "pmid": "38092701",
+        "doi": "10.1093/sleep/zsad284"
+      },
+      {
+        "title": "Association between Sleep Apnoea-Specific Hypoxic Burden and blood pressure in children with OSA",
+        "first_author": "Au",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.729"
+      },
+      {
+        "title": "Obstructive sleep apnea and ambulatory blood pressure abnormalities in children with chronic kidney disease",
+        "first_author": "Kumar",
+        "year": 2023,
+        "pmid": "37141920",
+        "doi": "10.1097/MBP.0000000000000642"
+      },
+      {
+        "title": "Ambulatory Blood Pressure Variability after Adenotonsillectomy in Childhood Sleep Apnea",
+        "first_author": "Kang",
+        "year": 2022,
+        "pmid": "35156724",
+        "doi": "10.1002/lary.30058"
+      },
+      {
+        "title": "Prevalence of High Blood Pressure in Pediatric Patients with Sleep-Disordered Breathing, Reversibility after Treatment: The KIDS TRIAL Study Protocol",
+        "first_author": "Castillo-García",
+        "year": 2022,
+        "doi": "10.3390/children9121849"
+      },
+      {
+        "title": "Blood pressure and childhood obstructive sleep apnea: A systematic review and meta-analysis",
+        "first_author": "Ai",
+        "year": 2022,
+        "pmid": "36087456",
+        "doi": "10.1016/j.smrv.2022.101663"
+      },
+      {
+        "title": "Blood pressure variability in children with obesity and sleep-disordered breathing following positive airway pressure treatment",
+        "first_author": "Myette",
+        "year": 2022,
+        "pmid": "34785780",
+        "doi": "10.1038/s41390-021-01841-8"
+      },
+      {
+        "title": "Office Blood Pressure Monitoring in Children with Obesity and Obstructive Sleep Apnea",
+        "first_author": "Kang",
+        "year": 2022,
+        "pmid": "35314156",
+        "doi": "10.1016/j.jpeds.2022.03.024"
+      },
+      {
+        "title": "Association of pediatric obstructive sleep apnea with elevated blood pressure and orthostatic hypertension in adolescence",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2021,
+        "pmid": "34160576",
+        "doi": "10.1001/jamacardio.2021.2003"
+      },
+      {
+        "title": "24-Hour Ambulatory Blood Pressure Variability in Children with Obstructive Sleep Apnea",
+        "first_author": "Kang",
+        "year": 2021,
+        "pmid": "33599298",
+        "doi": "10.1002/lary.29455"
+      },
+      {
+        "title": "Ambulatory blood pressure monitoring in children undergoing polysomnography",
+        "first_author": "DelRosso",
+        "year": 2021,
+        "pmid": "33535275",
+        "doi": "10.1111/jsr.13280"
+      },
+      {
+        "title": "Effect of adenotonsillectomy on blood pressure in children with obstructive sleep apnea: a meta-analysis",
+        "first_author": "Kang",
+        "year": 2021,
+        "pmid": "34225175",
+        "doi": "10.1016/j.sleep.2021.06.017"
+      },
+      {
+        "title": "Frequency of moderate-to-severe obstructive sleep apnea syndrome among children with snoring and blood pressure in the hypertensive range",
+        "first_author": "Malakasioti",
+        "year": 2020,
+        "pmid": "32232636",
+        "doi": "10.1007/s00467-020-04544-0"
+      },
+      {
+        "title": "Adenotonsillotomy Resolving Snoring Ameliorates Blood Pressure and Vascular Structure in Children – A Preliminary Report",
+        "first_author": "Stańczyk",
+        "year": 2020,
+        "doi": "10.5114/POLP.2020.97167"
+      },
+      {
+        "title": "The relationship between sleep-disordered breathing, blood pressure, and urinary cortisol and catecholamines in children",
+        "first_author": "Brooks",
+        "year": 2020,
+        "pmid": "32043963",
+        "doi": "10.5664/jcsm.8360"
+      },
+      {
+        "title": "Childhood OSA is an independent determinant of blood pressure in adulthood: Longitudinal follow-up study",
+        "first_author": "Chan",
+        "year": 2020,
+        "pmid": "32209641",
+        "doi": "10.1136/thoraxjnl-2019-213692"
+      },
+      {
+        "title": "Ambulatory blood pressure monitoring in children with obstructive sleep apnea syndrome",
+        "first_author": "Geng",
+        "year": 2020,
+        "doi": "10.1093/sleep/zsaa056.909"
+      },
+      {
+        "title": "Trajectory of ambulatory blood pressure after adenotonsillectomy in children with obstructive sleep apnea: comparison at three- and six-month follow-up",
+        "first_author": "Kang",
+        "year": 2020,
+        "pmid": "31751907",
+        "doi": "10.1016/j.sleep.2019.07.027"
+      },
+      {
+        "title": "Correlation between blood pressure and level of catecholamine in children with obstructive sleep apnea hypopnea syndrome",
+        "first_author": "Chen",
+        "year": 2019,
+        "doi": "10.3969/j.issn.1674-8115.2019.12.016"
+      },
+      {
+        "title": "Ambulatory blood pressure monitoring in children with obstructive sleep apnea syndrome",
+        "first_author": "Geng",
+        "year": 2019,
+        "doi": "10.1002/ped4.12163"
+      },
+      {
+        "title": "Gender differences in the effects of sleep disordered breathing in children on blood pressure, sleep, quality of life, executive function and behaviour",
+        "first_author": "Ong",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.435"
+      },
+      {
+        "title": "The association of obstructive sleep apnea and left ventricular hypertrophy in obese and overweight children with history of elevated blood pressure",
+        "first_author": "Hanlon",
+        "year": 2019,
+        "pmid": "31222948",
+        "doi": "10.1111/jch.13605"
+      },
+      {
+        "title": "Effect of Adenotonsillectomy on Ambulatory Blood Pressure in Pediatric Obstructive Sleep Apnea: 6-Month Follow-up Study",
+        "first_author": "Kang",
+        "year": 2019,
+        "pmid": "30668275",
+        "doi": "10.1177/0194599818825462"
+      },
+      {
+        "title": "The impact of central and obstructive respiratory events on cerebral oxygenation in children with sleep disordered breathing",
+        "first_author": "Tamanyan",
+        "year": 2019,
+        "pmid": "30958878",
+        "doi": "10.1093/sleep/zsz044"
+      },
+      {
+        "title": "Effect of adenotonsillectomy on 24-hour ambulatory blood pressure in children with obstructive sleep apnea: Prospective 6-month follow-up study",
+        "first_author": "Hsu",
+        "year": 2018,
+        "doi": "10.1177/0194599818785627i"
+      },
+      {
+        "title": "24-Hour Ambulatory Blood Pressure after Adenotonsillectomy in Childhood Sleep Apnea",
+        "first_author": "Hsu",
+        "year": 2018,
+        "pmid": "29753541",
+        "doi": "10.1016/j.jpeds.2018.03.072"
+      },
+      {
+        "title": "Blood pressure changes after adenotonsillectomy in children with obstructive sleep apnea",
+        "first_author": "Ghadami",
+        "year": 2018,
+        "pmid": "29801057",
+        "doi": "10.1001/jamaoto.2018.0451"
+      },
+      {
+        "title": "Systolic Blood Pressure Elevation in Children with Obstructive Sleep Apnea Is Improved with Positive Airway Pressure Use",
+        "first_author": "DelRosso",
+        "year": 2018,
+        "pmid": "29277419",
+        "doi": "10.1016/j.jpeds.2017.11.043"
+      },
+      {
+        "title": "Association of adenotonsillectomy with blood pressure among hypertensive and nonhypertensive children with obstructive sleep apnea",
+        "first_author": "Lee",
+        "year": 2018,
+        "pmid": "29450504",
+        "doi": "10.1001/jamaoto.2017.3127"
+      },
+      {
+        "title": "Severe obstructive sleep apnea in children with elevated blood pressure",
+        "first_author": "Hinkle",
+        "year": 2018,
+        "doi": "10.1016/j.jash.2017.12.010"
+      },
+      {
+        "title": "Obstructive sleep apnoea severity in children is associated with increased central aortic systolic blood pressure",
+        "first_author": "Walter",
+        "year": 2017,
+        "doi": "10.1111/jsr.12618"
+      },
+      {
+        "title": "Obstructive Sleep Apnea Syndrome (OSAS) and Cardiovascular System",
+        "first_author": "Lombardi",
+        "year": 2017,
+        "pmid": "28853425",
+        "doi": "10.23749/mdl.v108i4.6427"
+      },
+      {
+        "title": "Comparisons of Office and 24-Hour Ambulatory Blood Pressure Monitoring in Children with Obstructive Sleep Apnea",
+        "first_author": "Kang",
+        "year": 2017,
+        "pmid": "27939257",
+        "doi": "10.1016/j.jpeds.2016.11.032"
+      },
+      {
+        "title": "Sleep-disordered breathing is associated with blood pressure and carotid arterial stiffness in obese children",
+        "first_author": "Tagetti",
+        "year": 2017,
+        "pmid": "27648717",
+        "doi": "10.1097/HJH.0000000000001123"
+      },
+      {
+        "title": "Childhood inflammation predicts sleep apnoea and blood pressure reactivity in adolescence: The Penn State Child Cohort",
+        "first_author": "Gaines",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Sleep disordered breathing is associated with blood pressure and carotid arterial stiffness in a sample of obese children",
+        "first_author": "Tagetti",
+        "year": 2016,
+        "doi": "10.1097/01.hjh.0000491513.96475.ce"
+      },
+      {
+        "title": "Ambulatory blood pressure monitoring and high risk of obstructive sleep apnea in hispanic adolescents",
+        "first_author": "Sayago",
+        "year": 2016,
+        "doi": "10.1016/j.gheart.2016.03.082"
+      },
+      {
+        "title": "Obstructive sleep apnea and periodic limb movement disorder in a population of children with hypertension and/or nocturnal nondipping blood pressures",
+        "first_author": "Hartzell",
+        "year": 2016,
+        "pmid": "26725017",
+        "doi": "10.1016/j.jash.2015.11.010"
+      },
+      {
+        "title": "Blood pressure after surgery among obese and nonobese children with obstructive sleep apnea",
+        "first_author": "Kuo",
+        "year": 2015,
+        "pmid": "25953912",
+        "doi": "10.1177/0194599815573927"
+      },
+      {
+        "title": "Plasma renin levels and renin-blood pressure relationship in normal-weight and overweight children with obstructive sleep apnea and matched controls",
+        "first_author": "Shamsuzzaman",
+        "year": 2015,
+        "pmid": "25488600",
+        "doi": "10.1016/j.sleep.2014.05.022"
+      },
+      {
+        "title": "Do children who snore have a higher blood pressure than their peers?",
+        "first_author": "Stańczyk",
+        "year": 2015,
+        "doi": "10.15557/PiMR.2015.0008"
+      },
+      {
+        "title": "Analysis of 24-hour ambulatory blood pressure monitoring in children with obstructive sleep apnea: A hospital-based study",
+        "first_author": "Kang",
+        "year": 2015,
+        "doi": "10.1097/MD.0000000000001568"
+      },
+      {
+        "title": "Blood pressure regulation, autonomic control and sleep disordered breathing in children",
+        "first_author": "Nisbet",
+        "year": 2014,
+        "pmid": "23850404",
+        "doi": "10.1016/j.smrv.2013.04.006"
+      },
+      {
+        "title": "Acute and chronic effects of sleep duration on blood pressure",
+        "first_author": "Au",
+        "year": 2014,
+        "pmid": "24344109",
+        "doi": "10.1542/peds.2013-1379"
+      },
+      {
+        "title": "Long-term changes in blood pressure control in elementary school-aged children with sleep-disordered breathing",
+        "first_author": "Vlahandonis",
+        "year": 2014,
+        "pmid": "24239497",
+        "doi": "10.1016/j.sleep.2013.09.011"
+      },
+      {
+        "title": "Improvement of sleep-disordered breathing in children is associated with a reduction in overnight blood pressure",
+        "first_author": "Vlahandonis",
+        "year": 2013,
+        "pmid": "24157094",
+        "doi": "10.1016/j.sleep.2013.07.014"
+      },
+      {
+        "title": "The effect of childhood obstructive sleep apnea on ambulatory blood pressure is modulated by the distribution of respiratory events during rapid eye movement and nonrapid eye movement sleep",
+        "first_author": "Au",
+        "year": 2013,
+        "pmid": "24210606",
+        "doi": "10.1016/j.sleep.2013.09.017"
+      },
+      {
+        "title": "Impaired blood pressure control in children with obstructive sleep apnea",
+        "first_author": "Walter",
+        "year": 2013,
+        "pmid": "23768837",
+        "doi": "10.1016/j.sleep.2013.01.015"
+      },
+      {
+        "title": "Preschool children with obstructive sleep apnea: The beginnings of elevated blood pressure?",
+        "first_author": "Nisbet",
+        "year": 2013,
+        "pmid": "23904682",
+        "doi": "10.5665/sleep.2890"
+      },
+      {
+        "title": "Ambulatory blood pressure monitoring in chinese children with obstructive sleep apnea/hypopnea syndrome",
+        "first_author": "Xu",
+        "year": 2013,
+        "pmid": "22615200",
+        "doi": "10.1002/ppul.22595"
+      },
+      {
+        "title": "Sleep disordered breathing does not affect nocturnal dipping of blood pressure in preschool children",
+        "first_author": "Nisbet",
+        "year": 2012,
+        "doi": "10.1111/j.1479-8425.2012.00580.x"
+      },
+      {
+        "title": "Improvement of sleep disordered breathing in children is associated with a reduction in overnight blood pressure",
+        "first_author": "Vlahandonis",
+        "year": 2012,
+        "doi": "10.1111/j.1479-8425.2012.00580.x"
+      },
+      {
+        "title": "Children with obstructive sleep apnoea have significantly increased blood pressure variability",
+        "first_author": "Walter",
+        "year": 2012,
+        "doi": "10.1111/j.1479-8425.2012.00580.x"
+      },
+      {
+        "title": "Children with obstructive sleep apnoea have significantly dampened baroreflex responses to changes in blood pressure",
+        "first_author": "Walter",
+        "year": 2012,
+        "doi": "10.1111/j.1479-8425.2012.00580.x"
+      },
+      {
+        "title": "Comparing the clinical profile of non obese children with sleep apnea and snoring",
+        "first_author": "Stefanini",
+        "year": 2012,
+        "pmid": "23108816",
+        "doi": "10.5935/1808-8694.20120004"
+      },
+      {
+        "title": "Effects of sleep patterns and obesity on increases in blood pressure in a 5-year period: Report from the Tucson children's assessment of sleep apnea study",
+        "first_author": "Archbold",
+        "year": 2012,
+        "pmid": "22284918",
+        "doi": "10.1016/j.jpeds.2011.12.034"
+      },
+      {
+        "title": "[Clinical features of respiratory failure and heart failure in patients with sleep disordered breathing].",
+        "first_author": "Gao",
+        "year": 2012,
+        "pmid": "22931724"
+      },
+      {
+        "title": "Ambulatory blood pressure monitoring in children with obstructive sleep apnea and primary snoring",
+        "first_author": "Weber",
+        "year": 2012,
+        "pmid": "22429512",
+        "doi": "10.1016/j.ijporl.2012.02.041"
+      },
+      {
+        "title": "Cord-blood vitamin D levels and risk of recurrent wheezing, effect of sleep-disordered breathing on blood pressure in children, and long-term impact of bronchopulmonary dysplasia",
+        "first_author": "Popatia",
+        "year": 2012,
+        "doi": "10.1164/rccm.201111-2000RR"
+      },
+      {
+        "title": "Snoring is not associated with adverse effects on blood pressure, arterial structure or function in 8-year-old children: The Childhood Asthma Prevention Study (CAPS)",
+        "first_author": "Marshall",
+        "year": 2011,
+        "pmid": "21535282",
+        "doi": "10.1111/j.1440-1754.2011.02014.x"
+      },
+      {
+        "title": "Elevated blood pressure during sleep and wake in children with sleep-disordered breathing",
+        "first_author": "Horne",
+        "year": 2011,
+        "pmid": "21708802",
+        "doi": "10.1542/peds.2010-3431"
+      },
+      {
+        "title": "Short sleep duration is associated with elevated 24-hour ambulatory blood pressure independent of the effect of obstructive sleep apnoea (OSA) in normal weight adolescents",
+        "first_author": "Li",
+        "year": 2010,
+        "doi": "10.1111/j.1400-1843.2010.01864.x"
+      },
+      {
+        "title": "Effects of sleep-disordered breathing severity on blood pressure in primary school children",
+        "first_author": "Horne",
+        "year": 2010,
+        "doi": "10.1111/j.1365-2869.2010.00868.x"
+      },
+      {
+        "title": "Sleep disordered breathing in children with ambulatory blood pressure monitoring and renin angiotensin system evaluation",
+        "first_author": "Bolte",
+        "year": 2010,
+        "doi": "10.1007/s00467-010-1577-z"
+      },
+      {
+        "title": "Blood pressure in Chinese children with obstructive sleep apnea/hypopnea syndrome",
+        "first_author": "Xu",
+        "year": 2010,
+        "doi": "10.1016/S152605421070033-6"
+      },
+      {
+        "title": "Ambulatory blood pressure before and after adenotonsillectomy in children with obstructive sleep apnea",
+        "first_author": "Ng",
+        "year": 2010,
+        "pmid": "20605109",
+        "doi": "10.1016/j.sleep.2009.10.007"
+      },
+      {
+        "title": "Determinants of blood pressure and heart rate in children with sleep disordered breathing",
+        "first_author": "O'driscoll",
+        "year": 2009,
+        "doi": "10.1111/j.1479-8425.2009.00410-2.x"
+      },
+      {
+        "title": "Cardiovascular effects of sleep disordered breathing in children: Blood pressure remains elevated independent of respiratory events",
+        "first_author": "Walter",
+        "year": 2009,
+        "doi": "10.1111/j.1479-8425.2009.00410-2.x"
+      },
+      {
+        "title": "Blood Pressure is Elevated in Children with Primary Snoring",
+        "first_author": "Li",
+        "year": 2009,
+        "pmid": "19540515",
+        "doi": "10.1016/j.jpeds.2009.03.041"
+      },
+      {
+        "title": "Relevance of sleep apnea-associated heart rate variability to morning blood pressure",
+        "first_author": "Xu",
+        "year": 2009,
+        "pmid": "19953924"
+      },
+      {
+        "title": "Sleep-disordered breathing and blood pressure in children",
+        "first_author": "Egan",
+        "year": 2008,
+        "pmid": "18838622",
+        "doi": "10.1161/HYPERTENSIONAHA.108.118083"
+      },
+      {
+        "title": "Blood pressure associated with sleep-disordered breathing in a population sample of children",
+        "first_author": "Bixler",
+        "year": 2008,
+        "pmid": "18838624",
+        "doi": "10.1161/HYPERTENSIONAHA.108.116756"
+      },
+      {
+        "title": "Blood pressure after adenotonsillectomy in children with obstructive sleep-disordered breathing",
+        "first_author": "Kaditis",
+        "year": 2008,
+        "pmid": "18832557",
+        "doi": "10.1164/ajrccm.178.8.882"
+      },
+      {
+        "title": "Ambulatory blood pressure in children with obstructive sleep apnoea: A community based study",
+        "first_author": "Li",
+        "year": 2008,
+        "pmid": "18388205",
+        "doi": "10.1136/thx.2007.091132"
+      },
+      {
+        "title": "Absence of blood pressure, metabolic, and inflammatory marker changes after adenotonsillectomy for sleep apnea in greek children",
+        "first_author": "Apostolidou",
+        "year": 2008,
+        "pmid": "18433043",
+        "doi": "10.1002/ppul.20808"
+      },
+      {
+        "title": "Activity-adjusted 24-hour ambulatory blood pressure and cardiac remodeling in children with sleep disordered breathing",
+        "first_author": "Amin",
+        "year": 2008,
+        "pmid": "18071053",
+        "doi": "10.1161/HYPERTENSIONAHA.107.099762"
+      },
+      {
+        "title": "A multi-center study on the association between sleep apnea and prevalence of hypertension",
+        "first_author": "Chen",
+        "year": 2007,
+        "pmid": "18336763"
+      },
+      {
+        "title": "Blood pressure and OSAS in children [1]",
+        "first_author": "Ng",
+        "year": 2007,
+        "pmid": "17984311",
+        "doi": "10.1164/ajrccm.176.10.1054"
+      },
+      {
+        "title": "A statistical study of the blood pressure in snoring population of Guangxi",
+        "first_author": "Liu",
+        "year": 2007,
+        "pmid": "17651640"
+      },
+      {
+        "title": "Sleep-disordered breathing and blood pressure in children: A meta-analysis",
+        "first_author": "Zintzaras",
+        "year": 2007,
+        "pmid": "17283303",
+        "doi": "10.1001/archpedi.161.2.172"
+      },
+      {
+        "title": "Nocturnal and diurnal regulation of heart rate variability, blood pressure, and baroreflex sensitivity in children with obstructive sleep apnoea syndrome",
+        "first_author": "Weller",
+        "year": 2006,
+        "doi": "10.1111/j.1439-054X.2006.00089.x"
+      },
+      {
+        "title": "Comparison of blood pressure measurements in children with and without habitual snoring",
+        "first_author": "Kaditis",
+        "year": 2005,
+        "pmid": "15666367",
+        "doi": "10.1002/ppul.20188"
+      },
+      {
+        "title": "Blood pressure in children with sleep-disordered breathing [2] (multiple letters)",
+        "first_author": "Ng",
+        "year": 2004,
+        "pmid": "15302627",
+        "doi": "10.1164/ajrccm.170.4.952"
+      },
+      {
+        "title": "Twenty-four-hour ambulatory blood pressure in children with sleep-disordered breathing",
+        "first_author": "Amin",
+        "year": 2004,
+        "pmid": "14764433",
+        "doi": "10.1164/rccm.200309-1305oc"
+      },
+      {
+        "title": "Abnormal Blood Pressure in Prepubertal Children with Sleep-Disordered Breathing",
+        "first_author": "Guilleminault",
+        "year": 2004,
+        "pmid": "14605262",
+        "doi": "10.1203/01.PDR.0000099791.39621.62"
+      },
+      {
+        "title": "Blood pressure elevation associated with sleep-related breathing disorder in a community sample of white and hispanic children: The Tucson children's assessment of sleep apnea study",
+        "first_author": "Enright",
+        "year": 2003,
+        "pmid": "12963596",
+        "doi": "10.1001/archpedi.157.9.901"
+      },
+      {
+        "title": "Blood pressure in sleep disordered breathing",
+        "first_author": "Kohyama",
+        "year": 2003,
+        "pmid": "12538317",
+        "doi": "10.1136/adc.88.2.139"
+      },
+      {
+        "title": "Blood pressure in children with obstructive sleep apnea",
+        "first_author": "Marcus",
+        "year": 1998,
+        "pmid": "9563725",
+        "doi": "10.1164/ajrccm.157.4.9704080"
+      },
+      {
+        "title": "Blood pressure, snoring, obesity, and nocturnal hypoxaemia",
+        "first_author": "Hoffstein",
+        "year": 1994,
+        "pmid": "7915347",
+        "doi": "10.1016/S0140-6736(94)92084-2"
+      },
+      {
+        "title": "Evening-to-morning blood pressure variations in snoring patients with and without obstructive sleep apnea",
+        "first_author": "Hoffstein",
+        "year": 1992,
+        "pmid": "1735259",
+        "doi": "10.1378/chest.101.2.379"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

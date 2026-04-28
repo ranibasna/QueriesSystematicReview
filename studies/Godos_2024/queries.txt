@@ -1,0 +1,17 @@
+# Q1: High-recall
+(("Diet, Mediterranean"[Mesh] OR "mediterranean diet"[tiab] OR "mediterranean diet adherence"[tiab] OR ((fruit*[tiab] OR vegetable*[tiab] OR cereal*[tiab] OR legume*[tiab] OR "dairy product"[tiab] OR "dairy products"[tiab] OR fish[tiab] OR meat[tiab] OR "olive oil"[tiab] OR alcohol[tiab]) AND (diet*[tiab] OR intake[tiab] OR consumption[tiab]))) AND ("Sleep"[Mesh] OR "Somnolence"[Mesh] OR sleep[tiab] OR "sleep quality"[tiab] OR "sleep duration"[tiab] OR "daytime sleepiness"[tiab] OR sleepiness[tiab] OR somnolence[tiab]))
+
+# Q2: Balanced
+(("Diet, Mediterranean"[Mesh] OR "mediterranean diet"[tiab] OR "mediterranean diet adherence"[tiab] OR ((legume*[tiab] OR fish[tiab] OR "olive oil"[tiab] OR alcohol[tiab]) AND (diet*[tiab] OR intake[tiab] OR consumption[tiab]))) AND ("Sleep"[Mesh] OR sleep[tiab] OR "sleep quality"[tiab] OR "sleep duration"[tiab] OR "daytime sleepiness"[tiab] OR sleepiness[tiab]) AND ("Adult"[Mesh] OR adult*[tiab]))
+
+# Q3: High-precision
+((("Diet, Mediterranean"[Majr] OR "mediterranean diet"[ti] OR "mediterranean diet adherence"[ti]) AND ("sleep quality"[ti] OR "sleep duration"[ti] OR "daytime sleepiness"[ti] OR sleep[ti])) AND ("Adult"[Mesh] OR adult*[tiab]))
+
+# Q4: Balanced + scope_only
+(("mediterranean diet"[ti] OR "mediterranean diet adherence"[ti]) AND ("sleep quality"[ti] OR "sleep duration"[ti] OR "daytime sleepiness"[ti] OR sleep[ti]) AND ("Adult"[Mesh] OR adult*[tiab]))
+
+# Q5: Balanced + filter_only
+((("Diet, Mediterranean"[Mesh] OR "mediterranean diet"[tiab] OR "mediterranean diet adherence"[tiab] OR ((legume*[tiab] OR fish[tiab] OR "olive oil"[tiab] OR alcohol[tiab]) AND (diet*[tiab] OR intake[tiab] OR consumption[tiab]))) AND ("Sleep"[Mesh] OR sleep[tiab] OR "sleep quality"[tiab] OR "sleep duration"[tiab] OR "daytime sleepiness"[tiab] OR sleepiness[tiab]) AND ("Adult"[Mesh] OR adult*[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])
+
+# Q6: Balanced + design_plus_filter
+(((("Diet, Mediterranean"[Mesh] OR "mediterranean diet"[tiab] OR "mediterranean diet adherence"[tiab] OR ((legume*[tiab] OR fish[tiab] OR "olive oil"[tiab] OR alcohol[tiab]) AND (diet*[tiab] OR intake[tiab] OR consumption[tiab]))) AND ("Sleep"[Mesh] OR sleep[tiab] OR "sleep quality"[tiab] OR "sleep duration"[tiab] OR "daytime sleepiness"[tiab] OR sleepiness[tiab]) AND ("Adult"[Mesh] OR adult*[tiab])) AND (cohort[tiab] OR observational[tiab] OR "cross-sectional"[tiab] OR "case-control"[tiab])) AND humans[Filter]) NOT (review[pt] OR meta-analysis[pt] OR letter[pt] OR editorial[pt] OR comment[pt])

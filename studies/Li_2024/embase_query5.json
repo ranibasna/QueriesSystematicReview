@@ -1,0 +1,2147 @@
+{
+  "458953e813176dceaa804eff8ef80f9a3486dda9083bfd8c135aa9082da546a7": {
+    "query": "# Query 5: Balanced + design_plus_filter - observational layer plus human filter\n((('sleep disorder'/exp OR 'sleep apnea syndrome'/exp OR 'sleep disorder*':ti,ab OR 'sleep disturbance*':ti,ab OR 'sleep dysfunction*':ti,ab OR 'sleep breathing disorder*':ti,ab OR 'obstructive sleep apnea':ti,ab OR 'sleep apnea':ti,ab OR 'circadian dysrhythmia':ti,ab) AND ('female infertility'/exp OR infertility/exp OR 'in vitro fertilization'/exp OR 'assisted reproductive technology'/exp OR 'female infertil*':ti,ab OR 'fertility treatment*':ti,ab OR 'in vitro fertilization':ti,ab OR ivf:ti,ab OR 'assisted reproduction':ti,ab OR ((infertil*:ti,ab OR subfertil*:ti,ab) AND (female*:ti,ab OR woman:ti,ab OR women:ti,ab))) AND ('female'/exp OR female*:ti,ab OR woman:ti,ab OR women:ti,ab) AND (observational:ti,ab OR cohort:ti,ab OR prospective:ti,ab OR 'cross-sectional':ti,ab OR 'cross sectional':ti,ab)) AND 'human'/de)",
+    "provider": "embase_manual",
+    "results_count": 239,
+    "retrieved_dois": [
+      "10.1001/jamapsychiatry.2020.3786",
+      "10.1002/14651858.CD001396.pub2",
+      "10.1002/14651858.CD001396.pub3",
+      "10.1002/14651858.CD003415.pub2",
+      "10.1002/14651858.CD003415.pub3",
+      "10.1002/ana.26649",
+      "10.1002/art.23198",
+      "10.1002/brb3.70293",
+      "10.1002/brb3.70627",
+      "10.1002/ijgo.70879",
+      "10.1002/mus.26420",
+      "10.1002/nau.23949",
+      "10.1002/oby.70126",
+      "10.1002/pds.1591",
+      "10.1002/pon.4476",
+      "10.1002/ppul.24428",
+      "10.1002/rmb2.70001",
+      "10.1007/s00240-014-0708-6",
+      "10.1007/s00403-024-03466-3",
+      "10.1007/s00404-024-07814-6",
+      "10.1007/s00404-025-08287-x",
+      "10.1007/s00464-019-06704-2",
+      "10.1007/s00520-007-0380-2",
+      "10.1007/s00520-016-3209-z",
+      "10.1007/s00520-019-04820-2",
+      "10.1007/s10067-012-2052-y",
+      "10.1007/s10620-022-07445-4",
+      "10.1007/s10815-021-02260-8",
+      "10.1007/s10815-022-02643-5",
+      "10.1007/s10815-025-03763-4",
+      "10.1007/s11325-019-01946-9",
+      "10.1007/s11325-021-02328-w",
+      "10.1007/s11325-021-02376-2",
+      "10.1007/s11325-021-02498-7",
+      "10.1007/s11325-022-02770-4",
+      "10.1007/s11325-023-02802-7",
+      "10.1007/s11325-024-02996-4",
+      "10.1007/s11325-024-02998-2",
+      "10.1007/s11325-025-03399-9",
+      "10.1007/s11695-015-1750-3",
+      "10.1007/s11695-024-07624-4",
+      "10.1007/s11695-025-08047-5",
+      "10.1007/s43032-020-00176-9",
+      "10.1007/s43032-021-00685-1",
+      "10.1007/s43032-023-01375-w",
+      "10.1016/S0015-0282(01)01693-4",
+      "10.1016/S0015-0282(01)02979-X",
+      "10.1016/S0015-0282(16)55790-2",
+      "10.1016/S0140-6736(24)00538-5",
+      "10.1016/S0960-9776(21)00263-0",
+      "10.1016/S1472-6483(10)60711-0",
+      "10.1016/S2468-2667(23)00145-7",
+      "10.1016/j.bpobgyn.2006.07.001",
+      "10.1016/j.chest.2023.11.017",
+      "10.1016/j.clinthera.2025.05.003",
+      "10.1016/j.comppsych.2025.152649",
+      "10.1016/j.eclinm.2022.101392",
+      "10.1016/j.ejogrb.2026.114950",
+      "10.1016/j.fertnstert.2003.09.064",
+      "10.1016/j.fertnstert.2007.08.020",
+      "10.1016/j.fertnstert.2011.07.719",
+      "10.1016/j.fertnstert.2013.07.780",
+      "10.1016/j.fertnstert.2013.07.900",
+      "10.1016/j.fertnstert.2013.09.010",
+      "10.1016/j.fertnstert.2018.08.021",
+      "10.1016/j.fertnstert.2019.02.105",
+      "10.1016/j.fertnstert.2020.08.1192",
+      "10.1016/j.fertnstert.2020.08.1281",
+      "10.1016/j.fertnstert.2021.07.1085",
+      "10.1016/j.fertnstert.2021.07.620",
+      "10.1016/j.fertnstert.2022.08.198",
+      "10.1016/j.fertnstert.2022.08.205",
+      "10.1016/j.fertnstert.2022.08.206",
+      "10.1016/j.fertnstert.2022.09.200",
+      "10.1016/j.fertnstert.2022.10.015",
+      "10.1016/j.fertnstert.2023.08.922",
+      "10.1016/j.fertnstert.2024.07.695",
+      "10.1016/j.fertnstert.2025.05.132",
+      "10.1016/j.fertnstert.2025.07.251",
+      "10.1016/j.fertnstert.2025.07.390",
+      "10.1016/j.fertnstert.2025.07.416",
+      "10.1016/j.fertnstert.2025.07.470",
+      "10.1016/j.fertnstert.2025.07.538",
+      "10.1016/j.fertnstert.2025.07.625",
+      "10.1016/j.gine.2025.101034",
+      "10.1016/j.hsr.2023.100110",
+      "10.1016/j.jad.2025.119517",
+      "10.1016/j.jcjd.2023.10.244",
+      "10.1016/j.jep.2020.112768",
+      "10.1016/j.jogc.2022.01.012",
+      "10.1016/j.jogoh.2024.102722",
+      "10.1016/j.jpsychores.2025.112346",
+      "10.1016/j.jval.2022.09.2096",
+      "10.1016/j.maturitas.2023.01.007",
+      "10.1016/j.maturitas.2023.107899",
+      "10.1016/j.maturitas.2025.108557",
+      "10.1016/j.msard.2022.104305",
+      "10.1016/j.neurol.2016.08.003",
+      "10.1016/j.parkreldis.2023.105408",
+      "10.1016/j.rbmo.2018.09.003",
+      "10.1016/j.rbmo.2025.105040",
+      "10.1016/j.sleep.2022.09.026",
+      "10.1016/j.sleep.2023.11.054",
+      "10.1016/j.sleep.2024.11.038",
+      "10.1016/j.sleep.2025.01.013",
+      "10.1016/j.sleepx.2025.100151",
+      "10.1016/j.tjog.2018.11.031",
+      "10.1016/j.ygyno.2023.05.001",
+      "10.1016/s0015-0282(16)54779-7",
+      "10.1016/s0015-0282(16)58351-4",
+      "10.1038/s41366-025-01880-9",
+      "10.1038/s41431-024-01664-1",
+      "10.1055/s-0032-1306275",
+      "10.1055/s-0038-1675159",
+      "10.1080/0167482X.2022.2069008",
+      "10.1080/09513590.2020.1793941",
+      "10.1080/13697137.2016.1183625",
+      "10.1089/cap.2007.0048",
+      "10.1089/jwh.2020.29033.abstracts",
+      "10.1093/aje/kwad223",
+      "10.1093/ckj/sfae049",
+      "10.1093/humrep/13.7.2009",
+      "10.1093/humrep/17.10.2615",
+      "10.1093/humrep/26.s1.87",
+      "10.1093/humrep/33.Supplement_1.1",
+      "10.1093/humrep/deaa192",
+      "10.1093/humrep/deab130.480",
+      "10.1093/humrep/deac040",
+      "10.1093/humrep/deac106.P-374",
+      "10.1093/humrep/deac106.P-687",
+      "10.1093/humrep/deac106.P-726",
+      "10.1093/humrep/dead093.1081",
+      "10.1093/humrep/deaf097.037",
+      "10.1093/humrep/deaf097.216",
+      "10.1093/humrep/deaf097.964",
+      "10.1093/ibd/izaf204",
+      "10.1093/sleep/zsx186",
+      "10.1097/00019616-199609000-00006",
+      "10.1097/GCO.0000000000000554",
+      "10.1097/GCO.0b013e32833e4a35",
+      "10.1097/GME.0000000000001379",
+      "10.1097/GME.0000000000001456",
+      "10.1097/GME.0000000000001639",
+      "10.1097/GME.0000000000001733",
+      "10.1097/GME.0000000000002229",
+      "10.1097/GME.0000000000002288",
+      "10.1097/MD.0000000000028766",
+      "10.1097/MD.0000000000041514",
+      "10.1097/RD9.0000000000000051",
+      "10.1097/gme.0b013e3181728467",
+      "10.1111/ajo.70081",
+      "10.1111/aogs.13421",
+      "10.1111/aogs.14008",
+      "10.1111/cob.12143",
+      "10.1111/dom.16290",
+      "10.1111/eci.12435",
+      "10.1111/imj.70180",
+      "10.1111/jdi.70021",
+      "10.1111/jocn.12306",
+      "10.1136/bmjopen-2024-088945",
+      "10.1142/S0192415X18500738",
+      "10.1155/2022/1925668",
+      "10.1155/ogi/4749954",
+      "10.1158/1538-7445.SABCS15-P4-11-13",
+      "10.1161/JAHA.125.044014",
+      "10.1177/17588359251356105",
+      "10.1177/2284026520905396",
+      "10.1177/22840265251314992",
+      "10.1183/13993003.congress-2019.PA901",
+      "10.1186/1471-2393-13-29",
+      "10.1186/s12889-018-5221-3",
+      "10.1186/s12905-024-03164-2",
+      "10.1186/s12905-024-03185-x",
+      "10.1186/s12905-024-03210-z",
+      "10.1186/s12905-024-03446-9",
+      "10.1186/s12905-024-03508-y",
+      "10.1186/s12969-025-01138-8",
+      "10.1186/s12982-026-01696-6",
+      "10.1200/JCO.2010.32.5704",
+      "10.1210/clinem/dgab474",
+      "10.1210/clinem/dgag078",
+      "10.1210/jendso/bvac150.1409",
+      "10.1210/jendso/bvae163.1561",
+      "10.1258/136218006777525721",
+      "10.1371/journal.pone.0223329",
+      "10.1371/journal.pone.0259822",
+      "10.1371/journal.pone.0260842",
+      "10.1371/journal.pone.0279923",
+      "10.1371/journal.pone.0307412",
+      "10.1515/jpm-2015-0149",
+      "10.1517/14740338.2013.830710",
+      "10.17116/rosakush20252504186",
+      "10.2147/IJWH.S322718",
+      "10.2147/IJWH.S446490",
+      "10.2147/IJWH.S468644",
+      "10.2147/IJWH.S498231",
+      "10.2147/IJWH.S571454",
+      "10.2164/jandrol.110.012351",
+      "10.2174/2772434416666211129105145",
+      "10.31083/CEOG39785",
+      "10.31083/j.ceog5003054",
+      "10.3109/0167482X.2015.1124852",
+      "10.3109/13697137.2014.913284",
+      "10.31838/ijpr/2021.13.03.204",
+      "10.31901/24566330.2021/21.03.782",
+      "10.3233/JND-180328",
+      "10.33545/gynae.2026.v10.i1o.2008",
+      "10.3389/fendo.2021.779456",
+      "10.3389/fendo.2022.818567",
+      "10.3389/fendo.2022.838886",
+      "10.3389/fendo.2022.849794",
+      "10.3389/fendo.2023.1178396",
+      "10.3389/fendo.2024.1340131",
+      "10.3389/fendo.2024.1497722",
+      "10.3389/fpsyt.2024.1345815",
+      "10.3390/ijms25020747",
+      "10.3390/jcm13020492",
+      "10.3390/jcm14176310",
+      "10.3390/jpm12060933",
+      "10.3390/nu15020320",
+      "10.3390/obesities6010006",
+      "10.3760/cma.j.cn101441-20220218-00072",
+      "10.3892/etm.2021.10956",
+      "10.4103/amit.amit_25_24",
+      "10.4158/EP15820.OR",
+      "10.48047/ijprt/16.01.141",
+      "10.5005/JP-JOURNALS-10016-1204",
+      "10.5005/jp-journals-10006-1833",
+      "10.51470/bca.2025.25.1.437",
+      "10.53555/7af16323",
+      "10.53555/knc1m340",
+      "10.54029/2024ZVT",
+      "10.5664/jcsm.10780",
+      "10.5664/jcsm.9372",
+      "10.5935/1518-0557.20230071",
+      "10.5935/1518-0557.20240103",
+      "10.7860/JCDR/2016/17058.7106",
+      "10.7860/JCDR/2018/36441.12199",
+      "10.7897/2277-4343.07271"
+    ],
+    "retrieved_pmids": [
+      "11287024",
+      "11821089",
+      "12351537",
+      "15136100",
+      "16776858",
+      "17054168",
+      "17084674",
+      "1730334",
+      "17697500",
+      "18068159",
+      "18204940",
+      "18240234",
+      "18315449",
+      "18395880",
+      "18791485",
+      "19356340",
+      "19370564",
+      "19370587",
+      "20724926",
+      "21537042",
+      "21546616",
+      "22517559",
+      "22903700",
+      "23363654",
+      "23744611",
+      "23829562",
+      "24073801",
+      "24140033",
+      "24742007",
+      "25139150",
+      "25823182",
+      "26340138",
+      "26821967",
+      "27166135",
+      "27174039",
+      "27219094",
+      "27665240",
+      "29136234",
+      "29566648",
+      "29845939",
+      "29975790",
+      "30248060",
+      "30298749",
+      "30316414",
+      "30340939",
+      "30452068",
+      "30638474",
+      "30677147",
+      "31044307",
+      "31082843",
+      "31264380",
+      "31290760",
+      "31603907",
+      "31630370",
+      "32201301",
+      "32666854",
+      "32744037",
+      "32810080",
+      "32866965",
+      "32981061",
+      "33295952",
+      "33470756",
+      "33624218",
+      "33983110",
+      "34013438",
+      "34180998",
+      "34374922",
+      "34519958",
+      "34767594",
+      "34844551",
+      "34910749",
+      "35018557",
+      "35119037",
+      "35246801",
+      "35259255",
+      "35400519",
+      "35531877",
+      "36306629",
+      "36322231",
+      "36435629",
+      "36609819",
+      "36678191",
+      "36806931",
+      "36827391",
+      "36877353",
+      "36966460",
+      "37105015",
+      "37182434",
+      "37527458",
+      "37593900",
+      "37633677",
+      "37853154",
+      "37968336",
+      "37979718",
+      "38043463",
+      "38185245",
+      "38255828",
+      "38308749",
+      "38315317",
+      "38782004",
+      "38824522",
+      "38877485",
+      "38907183",
+      "38997468",
+      "39226269",
+      "39460776",
+      "39549117",
+      "39580400",
+      "39661244",
+      "39672092",
+      "39707272",
+      "39719295",
+      "39892082",
+      "39924965",
+      "39928759",
+      "39983032",
+      "39996368",
+      "40143709",
+      "40441644",
+      "40480878",
+      "40525280",
+      "40627095",
+      "40632455",
+      "40801450",
+      "40815907",
+      "40865394",
+      "41032035",
+      "41308609",
+      "41361728",
+      "41367152",
+      "41371752",
+      "41504792",
+      "41548348",
+      "41559246",
+      "41700659",
+      "41742375",
+      "8358525",
+      "8458448",
+      "8641510",
+      "9740468"
+    ],
+    "pmids": [
+      "11287024",
+      "11821089",
+      "12351537",
+      "15136100",
+      "16776858",
+      "17054168",
+      "17084674",
+      "1730334",
+      "17697500",
+      "18068159",
+      "18204940",
+      "18240234",
+      "18315449",
+      "18395880",
+      "18791485",
+      "19356340",
+      "19370564",
+      "19370587",
+      "20724926",
+      "21537042",
+      "21546616",
+      "22517559",
+      "22903700",
+      "23363654",
+      "23744611",
+      "23829562",
+      "24073801",
+      "24140033",
+      "24742007",
+      "25139150",
+      "25823182",
+      "26340138",
+      "26821967",
+      "27166135",
+      "27174039",
+      "27219094",
+      "27665240",
+      "29136234",
+      "29566648",
+      "29845939",
+      "29975790",
+      "30248060",
+      "30298749",
+      "30316414",
+      "30340939",
+      "30452068",
+      "30638474",
+      "30677147",
+      "31044307",
+      "31082843",
+      "31264380",
+      "31290760",
+      "31603907",
+      "31630370",
+      "32201301",
+      "32666854",
+      "32744037",
+      "32810080",
+      "32866965",
+      "32981061",
+      "33295952",
+      "33470756",
+      "33624218",
+      "33983110",
+      "34013438",
+      "34180998",
+      "34374922",
+      "34519958",
+      "34767594",
+      "34844551",
+      "34910749",
+      "35018557",
+      "35119037",
+      "35246801",
+      "35259255",
+      "35400519",
+      "35531877",
+      "36306629",
+      "36322231",
+      "36435629",
+      "36609819",
+      "36678191",
+      "36806931",
+      "36827391",
+      "36877353",
+      "36966460",
+      "37105015",
+      "37182434",
+      "37527458",
+      "37593900",
+      "37633677",
+      "37853154",
+      "37968336",
+      "37979718",
+      "38043463",
+      "38185245",
+      "38255828",
+      "38308749",
+      "38315317",
+      "38782004",
+      "38824522",
+      "38877485",
+      "38907183",
+      "38997468",
+      "39226269",
+      "39460776",
+      "39549117",
+      "39580400",
+      "39661244",
+      "39672092",
+      "39707272",
+      "39719295",
+      "39892082",
+      "39924965",
+      "39928759",
+      "39983032",
+      "39996368",
+      "40143709",
+      "40441644",
+      "40480878",
+      "40525280",
+      "40627095",
+      "40632455",
+      "40801450",
+      "40815907",
+      "40865394",
+      "41032035",
+      "41308609",
+      "41361728",
+      "41367152",
+      "41371752",
+      "41504792",
+      "41548348",
+      "41559246",
+      "41700659",
+      "41742375",
+      "8358525",
+      "8458448",
+      "8641510",
+      "9740468"
+    ],
+    "records": [
+      {
+        "title": "Unmet clinical needs in women with polycystic ovary syndrome regarding chronic non-communicable diseases: A cross‑sectional study",
+        "first_author": "Theis",
+        "year": 2026,
+        "pmid": "41504792",
+        "doi": "10.1007/s00404-025-08287-x"
+      },
+      {
+        "title": "Knowledge, perceived causes, and psychosocial consequences of infertility among women in a Nigerian tertiary hospital",
+        "first_author": "Atekoja",
+        "year": 2026,
+        "doi": "10.1186/s12982-026-01696-6"
+      },
+      {
+        "title": "Epidemiology and Natural History of Preclinical and Clinical Obesity: Insights From a UK Cohort",
+        "first_author": "Zahid",
+        "year": 2026,
+        "pmid": "41559246",
+        "doi": "10.1002/oby.70126"
+      },
+      {
+        "title": "Childhood Sleep Behaviours and Polycystic Ovary Syndrome Risk in Adolescence: The Raine Study Cohort Longitudinal Study",
+        "first_author": "Abdul",
+        "year": 2026,
+        "pmid": "41742375",
+        "doi": "10.1210/clinem/dgag078"
+      },
+      {
+        "title": "Multidimensional factors increase menstrual distress in patients with endometriosis",
+        "first_author": "Vannuccini",
+        "year": 2026,
+        "pmid": "41548348",
+        "doi": "10.1016/j.ejogrb.2026.114950"
+      },
+      {
+        "title": "Ovovid trial: the effect of a probiotic micronutrients supplement on oocyte retrieval and quality in oocyte donors. A double blind, randomized controlled trial",
+        "first_author": "Bontá",
+        "year": 2026,
+        "pmid": "41361728",
+        "doi": "10.1007/s10815-025-03763-4"
+      },
+      {
+        "title": "A Scoping Systematic Review of Cannabis Use in Endometriosis",
+        "first_author": "McLaren",
+        "year": 2026,
+        "pmid": "41367152",
+        "doi": "10.1111/ajo.70081"
+      },
+      {
+        "title": "Gender Differences in the Outcomes of Laparoscopic Sleeve Gastrectomy (LSG)",
+        "first_author": "Pinto",
+        "year": 2026,
+        "doi": "10.3390/obesities6010006"
+      },
+      {
+        "title": "Observational study on Effectivenessof micronized progesterone versus dydrogesterone in supporting high risk pregnancy",
+        "first_author": "Gupta",
+        "year": 2026,
+        "doi": "10.33545/gynae.2026.v10.i1o.2008"
+      },
+      {
+        "title": "Long-term risk of psychiatric disorders in women with endometriosis: A retrospective cohort study",
+        "first_author": "Shih",
+        "year": 2026,
+        "pmid": "41308609",
+        "doi": "10.1016/j.comppsych.2025.152649"
+      },
+      {
+        "title": "Sleep Disruption and Shift Work Associate with Increased Risk of Reproductive Endocrine Disorders: Evidence from UK Biobank and Mendelian Randomization",
+        "first_author": "Zhang",
+        "year": 2026,
+        "doi": "10.2147/IJWH.S571454"
+      },
+      {
+        "title": "Mediating role of sleep disorders in the association between depression and infertility: A cross-sectional study using the National Health and nutrition examination survey",
+        "first_author": "Zhang",
+        "year": 2026,
+        "pmid": "41700659",
+        "doi": "10.1002/ijgo.70879"
+      },
+      {
+        "title": "A PROSPECTIVE STUDY OF PREVALENCE OF PCOD IN PATIENTS VISITING OPD OF GOVT GENERAL HOSPITAL",
+        "first_author": "Priyanka",
+        "year": 2026,
+        "doi": "10.48047/ijprt/16.01.141"
+      },
+      {
+        "title": "Determining the relationship between sleep quality and reproductive health issues in fertile and infertile men and women: A cross-sectional study",
+        "first_author": "habibi",
+        "year": 2025,
+        "doi": "10.1016/j.sleepx.2025.100151"
+      },
+      {
+        "title": "Association Between Uterine Fibroids and Risk of Atherosclerotic Cardiovascular Disease",
+        "first_author": "DiTosto",
+        "year": 2025,
+        "pmid": "41371752",
+        "doi": "10.1161/JAHA.125.044014"
+      },
+      {
+        "title": "THE SLEEP STUDY: SLEEP LENGTH AND EUPLOID EMBRYO TRANSFER PROTOCOL USING THE OURA RING TO ASSESS THE EFFECT OF SLEEP PARAMETERS ON TRANSFER OUTCOMES",
+        "first_author": "Cromack",
+        "year": 2025,
+        "doi": "10.1016/j.fertnstert.2025.07.416"
+      },
+      {
+        "title": "SOCIAL DETERMINANTS OF HEALTH AFFECT ATHEROSCLEROTIC CARDIOVASCULAR DISEASE (ASCVD) OUTCOMES IN WOMEN WITH POLYCYSTIC OVARY SYNDROME (PCOS): A PROSPECTIVE LONGITUDINAL COHORT STUDY",
+        "first_author": "Alur-Gupta",
+        "year": 2025,
+        "doi": "10.1016/j.fertnstert.2025.07.251"
+      },
+      {
+        "title": "A GLOBAL CROSS-SECTIONAL STUDY OF REAL-TIME PROGESTERONE USE AND PATIENT EXPERIENCES ACROSS THE REPRODUCTIVE LIFESPAN",
+        "first_author": "Morgan",
+        "year": 2025,
+        "doi": "10.1016/j.fertnstert.2025.07.538"
+      },
+      {
+        "title": "DEVELOPMENT OF NEW CARDIOVASCULAR DISEASE (CVD) RISK FACTORS IN REPRODUCTIVE-AGED WOMEN WITH POLYCYSTIC OVARY SYNDROME (PCOS) DIFFERS BY RACE: A PROSPECTIVE LONGITUDINAL COHORT STUDY",
+        "first_author": "Alur-Gupta",
+        "year": 2025,
+        "doi": "10.1016/j.fertnstert.2025.07.625"
+      },
+      {
+        "title": "COUNTING EGGS NOT SHEEP: POOR SLEEP IS NOT ASSOCIATED WITH OVARIAN RESERVE DURING FERTILITY TREATMENT",
+        "first_author": "Kamat",
+        "year": 2025,
+        "doi": "10.1016/j.fertnstert.2025.07.390"
+      },
+      {
+        "title": "THE SLEEP–STRESS AXIS: A HIDDEN CONTRIBUTOR TO IVF SUCCESS?",
+        "first_author": "Cromack",
+        "year": 2025,
+        "doi": "10.1016/j.fertnstert.2025.07.470"
+      },
+      {
+        "title": "Menopause and Inflammatory Bowel Disease: A Systematic Review",
+        "first_author": "Kale",
+        "year": 2025,
+        "pmid": "41032035",
+        "doi": "10.1093/ibd/izaf204"
+      },
+      {
+        "title": "Evaluation of a weight management service in the Northern Territory, Australia",
+        "first_author": "Wood",
+        "year": 2025,
+        "pmid": "40801450",
+        "doi": "10.1111/imj.70180"
+      },
+      {
+        "title": "Uncovering safety signals of duloxetine: Real-world evidence from the FAERS database",
+        "first_author": "Liu",
+        "year": 2025,
+        "pmid": "40441644",
+        "doi": "10.1016/j.jad.2025.119517"
+      },
+      {
+        "title": "Sleep and idiopathic infertility: a case-control study of 360 participants",
+        "first_author": "Caetano",
+        "year": 2025,
+        "pmid": "40865394",
+        "doi": "10.1016/j.rbmo.2025.105040"
+      },
+      {
+        "title": "Psychological Stress in Patients Undergoing Intrauterine Insemination With Husband’s Sperm: Prevalence, Influencing Factors, and Impact on Conception Success—A Retrospective Cohort Study",
+        "first_author": "Ran",
+        "year": 2025,
+        "doi": "10.31083/CEOG39785"
+      },
+      {
+        "title": "Female Fertility Outcome Following Bariatric Surgery: Five-Year Follow Up",
+        "first_author": "Shehata",
+        "year": 2025,
+        "pmid": "40632455",
+        "doi": "10.1007/s11695-025-08047-5"
+      },
+      {
+        "title": "Natural vs. Assisted Conception: Sleep and Emotional Health from Pregnancy to Postpartum—An Exploratory Study",
+        "first_author": "Evagorou",
+        "year": 2025,
+        "doi": "10.3390/jcm14176310"
+      },
+      {
+        "title": "Psychosomatic comorbidity in endometriosis: A multi-center, cross-sectional study identifying an underestimated factor in current medical support",
+        "first_author": "Candan",
+        "year": 2025,
+        "pmid": "40815907",
+        "doi": "10.1016/j.jpsychores.2025.112346"
+      },
+      {
+        "title": "EVALUATING ELIGIBILITY FOR ANTI-OBESITY MEDICAL THERAPIES IN PEOPLE WITH OBESITY: INSIGHTS FROM PHASE 1 IMPLEMENTATION",
+        "first_author": "Nadeem",
+        "year": 2025,
+        "doi": "10.1038/s41366-025-01880-9"
+      },
+      {
+        "title": "Obstructive sleep apnea as a predictive indicator for in vitro fertilization and embryo transfer outcomes in patients with polycystic ovary syndrome: a prospective cohort study",
+        "first_author": "Li",
+        "year": 2025,
+        "pmid": "40627095",
+        "doi": "10.1007/s11325-025-03399-9"
+      },
+      {
+        "title": "Characteristics and Treatment Patterns of People Without Type 2 Diabetes Diagnoses Who Use Tirzepatide in the United States",
+        "first_author": "Gibble",
+        "year": 2025,
+        "pmid": "40480878",
+        "doi": "10.1016/j.clinthera.2025.05.003"
+      },
+      {
+        "title": "Association between difficulty sleeping and mild cognitive impairment in Latin American postmenopausal women. A REDLINC study",
+        "first_author": "Monterrosa-Castro",
+        "year": 2025,
+        "doi": "10.1016/j.maturitas.2025.108557"
+      },
+      {
+        "title": "Investigating the impact of sleep disorders on intracytoplasmic sperm injection outcome: A prospective observational study",
+        "first_author": "Abd",
+        "year": 2025,
+        "doi": "10.1016/j.gine.2025.101034"
+      },
+      {
+        "title": "EVALUATING MOOD DISORDERS AND FUNCTIONAL WELL-BEING OF PATIENTS WITH PREMATURE OVARIAN INSUFFICIENCY",
+        "first_author": "Nwokolo",
+        "year": 2025,
+        "doi": "10.1016/j.fertnstert.2025.05.132"
+      },
+      {
+        "title": "Impact of the COVID-19 pandemic on patients affected by endometriosis: A questionnaire-based cross-sectional online survey",
+        "first_author": "Saponara",
+        "year": 2025,
+        "doi": "10.1177/22840265251314992"
+      },
+      {
+        "title": "Relation between obesity and health disorders as revealed by the J-ORBIT clinical information collection system directly linked to electronic medical records (J-ORBIT 1)",
+        "first_author": "Nishikage",
+        "year": 2025,
+        "pmid": "40143709",
+        "doi": "10.1111/jdi.70021"
+      },
+      {
+        "title": "Association of Sleep, Inflammation and Female Infertility: A Cross-Sectional Survey and Genetic Approach",
+        "first_author": "Xin",
+        "year": 2025,
+        "pmid": "40525280",
+        "doi": "10.1002/brb3.70627"
+      },
+      {
+        "title": "Sleep characteristics and ovarian reserve in women undergoing assisted reproductive technology",
+        "first_author": "Du",
+        "year": 2025,
+        "doi": "10.1093/humrep/deaf097.037"
+      },
+      {
+        "title": "Sleep patterns and the incidence of premature ovarian insufficiency: evidence from the UK biobank and NHANES study",
+        "first_author": "Li",
+        "year": 2025,
+        "doi": "10.1093/humrep/deaf097.216"
+      },
+      {
+        "title": "A 37-year prospective study of polycystic ovary syndrome (PCOS) patients: impact of free testosterone levels in youth on long-term morbidity and mortality",
+        "first_author": "Kugelman",
+        "year": 2025,
+        "doi": "10.1093/humrep/deaf097.964"
+      },
+      {
+        "title": "Real-world use and effectiveness of tirzepatide among individuals without type 2 diabetes: Results from the Optum Market Clarity database",
+        "first_author": "Hankosky",
+        "year": 2025,
+        "pmid": "39996368",
+        "doi": "10.1111/dom.16290"
+      },
+      {
+        "title": "Association between snoring and in vitro fertilization outcomes among infertile women",
+        "first_author": "Wang",
+        "year": 2025,
+        "pmid": "39892082",
+        "doi": "10.1016/j.sleep.2025.01.013"
+      },
+      {
+        "title": "A PROSPECTIVE COHORT STUDY ON ASSESSMENT OF HEALTHRELATED QUALITY OF LIFE AND MANAGEMENT OF PATIENTS WITH POLYCYSTIC OVARY SYNDROME",
+        "first_author": "Parapuram",
+        "year": 2025,
+        "doi": "10.51470/bca.2025.25.1.437"
+      },
+      {
+        "title": "Physical activity associated with age at menopause: A Mendelian randomization study",
+        "first_author": "Sun",
+        "year": 2025,
+        "pmid": "39928759",
+        "doi": "10.1097/MD.0000000000041514"
+      },
+      {
+        "title": "Relationship Between Sleep Disturbances and In Vitro Fertilization Outcomes in Infertile Women: A Systematic Review and Meta-Analysis",
+        "first_author": "Habibi",
+        "year": 2025,
+        "pmid": "39924965",
+        "doi": "10.1002/brb3.70293"
+      },
+      {
+        "title": "Impact of sleep characteristics on IVF/ICSI outcomes: A prospective cohort study",
+        "first_author": "Bariya",
+        "year": 2025,
+        "pmid": "39672092",
+        "doi": "10.1016/j.sleep.2024.11.038"
+      },
+      {
+        "title": "Long-Term Outcome of One-Anastomosis Gastric Bypass: 10-Year Follow-Up of a Single Institution Series",
+        "first_author": "Makkapati",
+        "year": 2025,
+        "pmid": "39661244",
+        "doi": "10.1007/s11695-024-07624-4"
+      },
+      {
+        "title": "A Cohort Study on Factors Affecting Sleep Quality in Women Undergoing Intrauterine Sperm Insemination (IUI) Treatment",
+        "first_author": "Vafaeian",
+        "year": 2025,
+        "doi": "10.1155/ogi/4749954"
+      },
+      {
+        "title": "ASSESSMENT OF HEALTHCARE PROVIDER’S OPINION ABOUT SYMPTOMS & COMPLICATIONS OF PCOs: A MULTICENTERED STUDY",
+        "first_author": "Ahmad",
+        "year": 2025,
+        "doi": "10.53555/knc1m340"
+      },
+      {
+        "title": "Insomnia and Female Reproductive Diseases: A Cross-Sectional and Mendelian Randomization Study",
+        "first_author": "Fang",
+        "year": 2025,
+        "doi": "10.2147/IJWH.S498231"
+      },
+      {
+        "title": "Perception of fertility, quality of life, and depression in women undergoing assisted reproductive treatment",
+        "first_author": "Lourenço",
+        "year": 2025,
+        "pmid": "39983032",
+        "doi": "10.5935/1518-0557.20240103"
+      },
+      {
+        "title": "Evaluation of the effectiveness of hormone therapy in patients with premature ovarian insufficiency",
+        "first_author": "Titchenko",
+        "year": 2025,
+        "doi": "10.17116/rosakush20252504186"
+      },
+      {
+        "title": "Menopause-related side effects in HR+ early breast cancer: insights from clinical practice",
+        "first_author": "Dimitrijevic",
+        "year": 2025,
+        "doi": "10.1177/17588359251356105"
+      },
+      {
+        "title": "A Multicenter Phase II Study on Photodynamic Therapy Using Talaporfin Sodium (ME2906) and a Semiconductor Laser (PNL6405CIN) for Intraepithelial Tumors of the Cervix",
+        "first_author": "Murakami",
+        "year": 2025,
+        "doi": "10.1002/rmb2.70001"
+      },
+      {
+        "title": "Two faces of latin anti mda-5 juvenile dermatomyositis",
+        "first_author": "Ramírez",
+        "year": 2025,
+        "doi": "10.1186/s12969-025-01138-8"
+      },
+      {
+        "title": "Use of complementary and alternative medicine among females with polycystic ovary syndrome in Jordan: A cross-sectional study",
+        "first_author": "Awwad",
+        "year": 2024,
+        "pmid": "39719295",
+        "doi": "10.1136/bmjopen-2024-088945"
+      },
+      {
+        "title": "Combined impact of sleep and obesity on female infertility in the NHANES 2017–2020",
+        "first_author": "Wang",
+        "year": 2024,
+        "pmid": "38824522",
+        "doi": "10.1186/s12905-024-03164-2"
+      },
+      {
+        "title": "Sleep disorders in patients with endometriosis; a cross-sectional study",
+        "first_author": "Chaichian",
+        "year": 2024,
+        "pmid": "38877485",
+        "doi": "10.1186/s12905-024-03185-x"
+      },
+      {
+        "title": "Comparison of premenstrual symptoms, psychological well-being, and nutritional status between Palestinian women with and without polycystic ovarian syndrome: a case-control study",
+        "first_author": "Almahareeq",
+        "year": 2024,
+        "pmid": "38907183",
+        "doi": "10.1186/s12905-024-03210-z"
+      },
+      {
+        "title": "Characterizing clinical and hormonal profiles of acne in north African women with polycystic ovary syndrome",
+        "first_author": "Ben",
+        "year": 2024,
+        "pmid": "39460776",
+        "doi": "10.1007/s00403-024-03466-3"
+      },
+      {
+        "title": "Intraoperative ultrasound for uterine septum resection: a systematic review and meta-analysis",
+        "first_author": "Galati",
+        "year": 2024,
+        "pmid": "39549117",
+        "doi": "10.1007/s00404-024-07814-6"
+      },
+      {
+        "title": "Risk of polycystic ovary syndrome: a population-based analysis of sociodemographic factors, healthcare access, health behaviors, and health status",
+        "first_author": "Alenzi",
+        "year": 2024,
+        "pmid": "39580400",
+        "doi": "10.1186/s12905-024-03446-9"
+      },
+      {
+        "title": "Sleep disturbances and female infertility: a systematic review",
+        "first_author": "Li",
+        "year": 2024,
+        "pmid": "39707272",
+        "doi": "10.1186/s12905-024-03508-y"
+      },
+      {
+        "title": "ASSOCIATIONS OF SLEEP CHARACTERISTICS WITH REPRODUCTIVE HORMONES AND THYROID FUNCTIONS AMONG WOMEN WITH INFERTILITY: A CROSS-SECTIONAL STUDY",
+        "first_author": "Li",
+        "year": 2024,
+        "doi": "10.1016/j.fertnstert.2024.07.695"
+      },
+      {
+        "title": "Association Between Sleep and Physical Activity Among Women with Obesity and Infertility",
+        "first_author": "Brûlé",
+        "year": 2024,
+        "doi": "10.1210/jendso/bvae163.1561"
+      },
+      {
+        "title": "EFFECT OF DIANE-35 AND METFORMIN ON LIVER AND KIDNEY OF POLYCYSTIC OVARIAN SYNDROME PATIENTS",
+        "first_author": "Khursheed",
+        "year": 2024,
+        "doi": "10.53555/7af16323"
+      },
+      {
+        "title": "Myhre syndrome in adulthood: clinical variability and emerging genotype-phenotype correlations",
+        "first_author": "Vanbelleghem",
+        "year": 2024,
+        "pmid": "38997468",
+        "doi": "10.1038/s41431-024-01664-1"
+      },
+      {
+        "title": "Health and socioeconomic well-being of women with endometriosis and provoked vestibulodynia: Longitudinal insights from Swedish registry data",
+        "first_author": "Mühlrad",
+        "year": 2024,
+        "pmid": "39226269",
+        "doi": "10.1371/journal.pone.0307412"
+      },
+      {
+        "title": "Bariatric surgery for spontaneous ovulation in women living with polycystic ovary syndrome: the BAMBINI multicentre, open-label, randomised controlled trial",
+        "first_author": "Samarasinghe",
+        "year": 2024,
+        "pmid": "38782004",
+        "doi": "10.1016/S0140-6736(24)00538-5"
+      },
+      {
+        "title": "Implications of obstructive sleep apnea on reproductive health: a study on anti-Mullerian hormone levels",
+        "first_author": "Yildiz",
+        "year": 2024,
+        "pmid": "38308749",
+        "doi": "10.1007/s11325-024-02998-2"
+      },
+      {
+        "title": "How do phases of the menstrual cycle affect sleep? A polysomnographic study of the EPISONO database",
+        "first_author": "Ishikura",
+        "year": 2024,
+        "pmid": "38315317",
+        "doi": "10.1007/s11325-024-02996-4"
+      },
+      {
+        "title": "Quality of information and decision regrets during fertility-sparing management for atypical hyperplasia and endometrial cancer in a prospective cohort study",
+        "first_author": "Grenot",
+        "year": 2024,
+        "pmid": "38185245",
+        "doi": "10.1016/j.jogoh.2024.102722"
+      },
+      {
+        "title": "Switching from immediate- to extended-release cysteamine in patients with nephropathic cystinosis: from clinical trials to clinical practice",
+        "first_author": "Ariceta",
+        "year": 2024,
+        "doi": "10.1093/ckj/sfae049"
+      },
+      {
+        "title": "Maternal Sleeping Problems Before and After Childbirth - A Systematic Review",
+        "first_author": "Witkowska-Zimny",
+        "year": 2024,
+        "doi": "10.2147/IJWH.S446490"
+      },
+      {
+        "title": "Relationship Between Steroid Hormone Profile and Premenstrual Syndrome in Women Consulting for Infertility or Recurrent Miscarriage",
+        "first_author": "Turner",
+        "year": 2024,
+        "pmid": "37853154",
+        "doi": "10.1007/s43032-023-01375-w"
+      },
+      {
+        "title": "Long-Term Efficacy and Safety of Pitolisant for Residual Sleepiness Due to OSA",
+        "first_author": "Pépin",
+        "year": 2024,
+        "pmid": "37979718",
+        "doi": "10.1016/j.chest.2023.11.017"
+      },
+      {
+        "title": "Sleep Disturbances in Early Gestation and the Risks of Hypertensive Disorders of Pregnancy: A Prospective Cohort Study",
+        "first_author": "Zhu",
+        "year": 2024,
+        "pmid": "37968336",
+        "doi": "10.1093/aje/kwad223"
+      },
+      {
+        "title": "Impact of violence against women on quality of life and menopause-related disorders",
+        "first_author": "Mendoza-Huertas",
+        "year": 2024,
+        "pmid": "38043463",
+        "doi": "10.1016/j.maturitas.2023.107899"
+      },
+      {
+        "title": "Night shift work and menopause: Association between climacteric symptoms, reported psychic symptoms, and hormonal profile of female night shift workers during the menopause",
+        "first_author": "Saraiva",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.054"
+      },
+      {
+        "title": "Resveratrol for the Management of Human Health: How Far Have We Come? A Systematic Review of Resveratrol Clinical Trials to Highlight Gaps and Opportunities",
+        "first_author": "Brown",
+        "year": 2024,
+        "pmid": "38255828",
+        "doi": "10.3390/ijms25020747"
+      },
+      {
+        "title": "Multimorbidity of Psoriasis: A Large-Scale Population Study of Its Associated Comorbidities",
+        "first_author": "Almenara-Blasco",
+        "year": 2024,
+        "doi": "10.3390/jcm13020492"
+      },
+      {
+        "title": "Vulvodynia prevalence and associated psychosexual problems in middle-aged diabetics at a tertiary care hospital in Pakistan",
+        "first_author": "Nisar",
+        "year": 2024,
+        "doi": "10.54029/2024ZVT"
+      },
+      {
+        "title": "Association between bedtime and female infertility: a secondary analysis from a cross-sectional study",
+        "first_author": "Zhang",
+        "year": 2024,
+        "doi": "10.3389/fendo.2024.1340131"
+      },
+      {
+        "title": "Association between polyunsaturated fatty acids and depression in women with infertility: a cross-sectional study based on the National Health and Nutrition Examination Survey",
+        "first_author": "Hong",
+        "year": 2024,
+        "doi": "10.3389/fpsyt.2024.1345815"
+      },
+      {
+        "title": "Identification of Psychological Symptom Clusters and Their Influencing Factors in Women Undergoing Assisted Reproductive Technology in China: a Cross-Sectional Study",
+        "first_author": "Song",
+        "year": 2024,
+        "doi": "10.2147/IJWH.S468644"
+      },
+      {
+        "title": "Effect of obstructive sleep apnea on in vitro fertilization outcomes in women with polycystic ovary syndrome",
+        "first_author": "Zhang",
+        "year": 2024,
+        "pmid": "37593900",
+        "doi": "10.5664/jcsm.10780"
+      },
+      {
+        "title": "Sleep quality during pregnancy following assisted reproductive technology and natural conceiving: a prospective birth cohort study",
+        "first_author": "Xie",
+        "year": 2024,
+        "doi": "10.3389/fendo.2024.1497722"
+      },
+      {
+        "title": "A Prospective Observational Study to Determine Perinatal Outcome of Second Twin According to Mode of Delivery in a Tertiary Care Hospital",
+        "first_author": "Patel",
+        "year": 2024,
+        "doi": "10.4103/amit.amit_25_24"
+      },
+      {
+        "title": "Premature Menopause",
+        "first_author": "Kapoor",
+        "year": 2024,
+        "doi": "10.1097/GME.0000000000002288"
+      },
+      {
+        "title": "Fertility preservation in patients with endometriosis: Which are the treatments that shows the better results",
+        "first_author": "Passos",
+        "year": 2024,
+        "doi": "10.5935/1518-0557.20230071"
+      },
+      {
+        "title": "Premature Menopause",
+        "first_author": "Kapoor",
+        "year": 2023,
+        "doi": "10.1097/GME.0000000000002288"
+      },
+      {
+        "title": "ASSOCIATION OF PHYSICAL CAPACITY WITH LEVEL OF PHYSICAL ACTIVITY AND SLEEP IN WOMEN WITH OBESITY AND INFERTILITY",
+        "first_author": "Brûlé",
+        "year": 2023,
+        "doi": "10.1016/j.jcjd.2023.10.244"
+      },
+      {
+        "title": "Sleep and obstructive sleep apnea in women with infertility",
+        "first_author": "Ibrahim",
+        "year": 2023,
+        "pmid": "36609819",
+        "doi": "10.1007/s11325-022-02770-4"
+      },
+      {
+        "title": "Relationship between sleep disorders and female infertility among US reproductive-aged women",
+        "first_author": "Zhao",
+        "year": 2023,
+        "pmid": "36877353",
+        "doi": "10.1007/s11325-023-02802-7"
+      },
+      {
+        "title": "DECLINE IN SERUM ANTI MULLERIAN HORMONE LEVELS AND INCREASE OF SERUM PROLACTIN LEVELS IN YOUNG NORTH AFRICAN WOMEN AGED BETWEEN 25 AND 35 YEARS OLD DURING THE PERIOD BETWEEN 2013 AND 2021",
+        "first_author": "Benkhalifa",
+        "year": 2023,
+        "doi": "10.1016/j.fertnstert.2023.08.922"
+      },
+      {
+        "title": "Preterm birth and the risk of multimorbidity in adolescence: a multiregister-based cohort study",
+        "first_author": "Heikkilä",
+        "year": 2023,
+        "pmid": "37633677",
+        "doi": "10.1016/S2468-2667(23)00145-7"
+      },
+      {
+        "title": "A recapitulation of the polycystic ovarian disorder in adult women and the risk of disease associated with the polycystic ovarian disorder",
+        "first_author": "Chahar",
+        "year": 2023,
+        "doi": "10.1016/j.hsr.2023.100110"
+      },
+      {
+        "title": "Exploring the relationship between history of infertility and the experience of menopausal symptoms",
+        "first_author": "Fitz",
+        "year": 2023,
+        "pmid": "37527458",
+        "doi": "10.1097/GME.0000000000002229"
+      },
+      {
+        "title": "Neurologic Manifestations of Long COVID Differ Based on Acute COVID-19 Severity",
+        "first_author": "Perez",
+        "year": 2023,
+        "pmid": "36966460",
+        "doi": "10.1002/ana.26649"
+      },
+      {
+        "title": "Comparison of the effect of levonorgestrel-intrauterine system with or without oral megestrol acetate on fertility-preserving treatment in patients with atypical endometrial hyperplasia: A prospective, open-label, randomized controlled phase II study",
+        "first_author": "Xu",
+        "year": 2023,
+        "pmid": "37182434",
+        "doi": "10.1016/j.ygyno.2023.05.001"
+      },
+      {
+        "title": "Investigation on the treatment motivations and barriers of infertility patients in China",
+        "first_author": "Li",
+        "year": 2023,
+        "doi": "10.3760/cma.j.cn101441-20220218-00072"
+      },
+      {
+        "title": "Diagnosis across a cohort of “atypical” atypical and complex parkinsonism",
+        "first_author": "Malaquias",
+        "year": 2023,
+        "pmid": "37105015",
+        "doi": "10.1016/j.parkreldis.2023.105408"
+      },
+      {
+        "title": "Natural vs. surgical postmenopause and psychological symptoms confound the effect of menopause on executive functioning domains of cognitive experience",
+        "first_author": "Page",
+        "year": 2023,
+        "pmid": "36806931",
+        "doi": "10.1016/j.maturitas.2023.01.007"
+      },
+      {
+        "title": "Association of sleep characteristics and night shift work with self-reported diagnosis of polycystic ovary syndrome: a questionnaire-based cross-sectional study",
+        "first_author": "Shao",
+        "year": 2023,
+        "doi": "10.1097/RD9.0000000000000051"
+      },
+      {
+        "title": "Multiple Sclerosis Prodrome in 23 MS Patients",
+        "first_author": "Naoures",
+        "year": 2023,
+        "doi": "10.1016/j.msard.2022.104305"
+      },
+      {
+        "title": "Infertility Prevalence and Associated Factors among Women in Seoul, South Korea: A Cross-Sectional Study",
+        "first_author": "Lee",
+        "year": 2023,
+        "doi": "10.31083/j.ceog5003054"
+      },
+      {
+        "title": "Health outcomes of patients with type 2 diabetes following bariatric surgery: Results from a publicly funded initiative",
+        "first_author": "O’Moore-Sullivan",
+        "year": 2023,
+        "pmid": "36827391",
+        "doi": "10.1371/journal.pone.0279923"
+      },
+      {
+        "title": "Assessing the Hepatic Safety of Epigallocatechin Gallate (EGCG) in Reproductive-Aged Women",
+        "first_author": "Siblini",
+        "year": 2023,
+        "pmid": "36678191",
+        "doi": "10.3390/nu15020320"
+      },
+      {
+        "title": "The impact of sleep on in vitro fertilization embryo transfer outcomes: a prospective study",
+        "first_author": "Liu",
+        "year": 2023,
+        "pmid": "36435629",
+        "doi": "10.1016/j.fertnstert.2022.10.015"
+      },
+      {
+        "title": "Sleep characteristics before assisted reproductive technology treatment predict reproductive outcomes: a prospective cohort study of Chinese infertile women",
+        "first_author": "Li",
+        "year": 2023,
+        "doi": "10.3389/fendo.2023.1178396"
+      },
+      {
+        "title": "Fertility treatments and the risk for long-term respiratory morbidity of the offspring; a sibling analysis",
+        "first_author": "Lavi",
+        "year": 2023,
+        "doi": "10.1093/humrep/dead093.1081"
+      },
+      {
+        "title": "Sleep quality is associated with the weight of newborns after in vitro fertilization (IVF)/intra-cytoplasmic sperm injection (ICSI)",
+        "first_author": "Mengye",
+        "year": 2022,
+        "pmid": "35018557",
+        "doi": "10.1007/s11325-021-02498-7"
+      },
+      {
+        "title": "Self-reported history of comorbidities and markers of ovarian reserve among subfertile women",
+        "first_author": "Mínguez-Alarcón",
+        "year": 2022,
+        "pmid": "36322231",
+        "doi": "10.1007/s10815-022-02643-5"
+      },
+      {
+        "title": "Pregnancy outcomes in infertility patients diagnosed with sleep disordered breathing with wireless wearable sensors",
+        "first_author": "Walter",
+        "year": 2022,
+        "pmid": "36306629",
+        "doi": "10.1016/j.sleep.2022.09.026"
+      },
+      {
+        "title": "PCR161 Being Active Is Not Enough – Combination of Physical Activity, Sedentary Behaviour and Sleep Characteristic Shows More Positive Effect on Infertility Related Quality of Life in Women Undergoing Art",
+        "first_author": "Prémusz",
+        "year": 2022,
+        "doi": "10.1016/j.jval.2022.09.2096"
+      },
+      {
+        "title": "Epidemic of Subclinical Ovulatory Disturbances During SARS-COV2 Pandemic-an Experiment of Nature",
+        "first_author": "Barr",
+        "year": 2022,
+        "doi": "10.1210/jendso/bvac150.1409"
+      },
+      {
+        "title": "INFERTILITY AND INVOLUNTARY CHILDLESSNESS ARE ASSOCIATED WITH DEPRESSIVE AND ANXIETY SYMPTOMS IN MENOPAUSE: SWAN ANALYSES",
+        "first_author": "Fitz",
+        "year": 2022,
+        "doi": "10.1016/j.fertnstert.2022.08.198"
+      },
+      {
+        "title": "EMBRYOLOGIST BURNOUT: PHYSICAL AND PSYCHOLOGICAL SYMPTOMS AND OCCUPATIONAL CHALLENGES CURRENTLY REPORTED BY U S EMBRYOLOGISTS",
+        "first_author": "Murphy",
+        "year": 2022,
+        "doi": "10.1016/j.fertnstert.2022.08.205"
+      },
+      {
+        "title": "ASSESSING THE EFFECTIVENESS OF A PREGNANCY-SPECIFIC OBSTRUCTIVE SLEEP APNEA SCREENING TOOL IN NON-PREGNANT, REPRODUCTIVE-AGED WOMEN",
+        "first_author": "Bui",
+        "year": 2022,
+        "doi": "10.1016/j.fertnstert.2022.08.206"
+      },
+      {
+        "title": "THE IMPACT OF SLEEP ON IN VITRO FERTILIZATION-EMBRYO TRANSFER OUTCOMES: A PROSPECTIVE STUDY",
+        "first_author": "Liu",
+        "year": 2022,
+        "doi": "10.1016/j.fertnstert.2022.09.200"
+      },
+      {
+        "title": "Prevalence of Self-Reported Venous Thromboembolism and Cardiovascular Risk Factors in Patients with Ulcerative Colitis: The GETAID FOCUS Study",
+        "first_author": "Guillo",
+        "year": 2022,
+        "pmid": "35246801",
+        "doi": "10.1007/s10620-022-07445-4"
+      },
+      {
+        "title": "Women's quality of sleep and in vitro fertilization success",
+        "first_author": "Limena",
+        "year": 2022,
+        "doi": "10.1093/humrep/deac106.P-726"
+      },
+      {
+        "title": "Sleep parameters and sleep disorders in male and female subjects presenting idiopathic infertility: the ALIFERT case-control study",
+        "first_author": "Sermondade",
+        "year": 2022,
+        "doi": "10.1093/humrep/deac106.P-687"
+      },
+      {
+        "title": "Serum progesterone levels on the of embryo transfer in replacement cycles (HRT-ET): soft capsules vs suppositories may make a difference",
+        "first_author": "Kohls",
+        "year": 2022,
+        "doi": "10.1093/humrep/deac106.P-374"
+      },
+      {
+        "title": "A Prospective Cohort Study of Metformin as an Adjuvant Therapy for Infertile Women With Endometrial Complex Hyperplasia/Complex Atypical Hyperplasia and Their Subsequent Assisted Reproductive Technology Outcomes",
+        "first_author": "Kong",
+        "year": 2022,
+        "doi": "10.3389/fendo.2022.849794"
+      },
+      {
+        "title": "Risk of Infertility in Males with Obstructive Sleep Apnea: A Nationwide, Population-based, Nested Case‒Control Study",
+        "first_author": "Lin",
+        "year": 2022,
+        "doi": "10.3390/jpm12060933"
+      },
+      {
+        "title": "Associations of sleep characteristics with outcomes of IVF/ICSI treatment: A prospective cohort study",
+        "first_author": "Yao",
+        "year": 2022,
+        "pmid": "35259255",
+        "doi": "10.1093/humrep/deac040"
+      },
+      {
+        "title": "Sleep Behavior and Self-Reported Infertility: A Cross-Sectional Analysis Among U.S. Women",
+        "first_author": "Liang",
+        "year": 2022,
+        "doi": "10.3389/fendo.2022.818567"
+      },
+      {
+        "title": "Health conditions in adults with HIV compared with the general population: A population-based cross-sectional analysis",
+        "first_author": "Morales",
+        "year": 2022,
+        "doi": "10.1016/j.eclinm.2022.101392"
+      },
+      {
+        "title": "Female Reproductive Health Disturbance Experienced During the COVID-19 Pandemic Correlates With Mental Health Disturbance and Sleep Quality",
+        "first_author": "Maher",
+        "year": 2022,
+        "doi": "10.3389/fendo.2022.838886"
+      },
+      {
+        "title": "Guideline No. 425a: Cannabis Use Throughout Women's Lifespans – Part 1: Fertility, Contraception, Menopause, and Pelvic Pain",
+        "first_author": "Robert",
+        "year": 2022,
+        "pmid": "35400519",
+        "doi": "10.1016/j.jogc.2022.01.012"
+      },
+      {
+        "title": "Analysis of the proportion and clinical characteristics of obstructive sleep apnea in women with polycystic ovary syndrome",
+        "first_author": "Yang",
+        "year": 2022,
+        "pmid": "34013438",
+        "doi": "10.1007/s11325-021-02376-2"
+      },
+      {
+        "title": "Resilience, Perceived Stress, and Depressed Mood in Women Under in Vitro Fertilization Treatment",
+        "first_author": "Fernandez-Ferrera",
+        "year": 2022,
+        "pmid": "34519958",
+        "doi": "10.1007/s43032-021-00685-1"
+      },
+      {
+        "title": "The efficacy and safety of triptorelin-therapy following conservative surgery for deep infiltrating endometriosis: A multicenter, prospective, non-interventional study in China",
+        "first_author": "Zhu",
+        "year": 2022,
+        "pmid": "35119037",
+        "doi": "10.1097/MD.0000000000028766"
+      },
+      {
+        "title": "Maternal and neonatal outcomes following in vitro fertilization: A cohort study in Romania",
+        "first_author": "Bănică",
+        "year": 2022,
+        "doi": "10.3892/etm.2021.10956"
+      },
+      {
+        "title": "Sleep, depression, anxiety and fatigue in women with premature ovarian insufficiency",
+        "first_author": "Ates",
+        "year": 2022,
+        "pmid": "35531877",
+        "doi": "10.1080/0167482X.2022.2069008"
+      },
+      {
+        "title": "RETRACTED: Analysis of Current Situation and Influencing Factors of Psychological Distress in Patients with Lung Cancer during Perioperative Period",
+        "first_author": "He",
+        "year": 2022,
+        "doi": "10.1155/2022/1925668"
+      },
+      {
+        "title": "Perceived stress and sleep quality before oocyte pick-up, embryo transfer, and pregnancy test in women receiving in vitro fertilization treatment",
+        "first_author": "Kirca",
+        "year": 2021,
+        "pmid": "33624218",
+        "doi": "10.1007/s11325-021-02328-w"
+      },
+      {
+        "title": "Obstructive sleep apnea increases risk of female infertility: A 14-year nationwide population-based study",
+        "first_author": "Lim",
+        "year": 2021,
+        "pmid": "34910749",
+        "doi": "10.1371/journal.pone.0260842"
+      },
+      {
+        "title": "Obesity Exacerbates Irritable Bowel Syndrome-Related Sleep and Psychiatric Disorders in Women With Polycystic Ovary Syndrome",
+        "first_author": "Tseng",
+        "year": 2021,
+        "doi": "10.3389/fendo.2021.779456"
+      },
+      {
+        "title": "Chronic diseases associated with increased likelihood of hospitalization and mortality in 68,913 COVID-19 confirmed cases in Spain: A population-based cohort study",
+        "first_author": "Gimeno-Miguel",
+        "year": 2021,
+        "pmid": "34767594",
+        "doi": "10.1371/journal.pone.0259822"
+      },
+      {
+        "title": "Mixed Sexually Transmitted Infections in Infertile Couples: Empirical Treatment and Influence on Semen Quality",
+        "first_author": "Yasynetskyi",
+        "year": 2021,
+        "pmid": "34844551",
+        "doi": "10.2174/2772434416666211129105145"
+      },
+      {
+        "title": "Sleep Habits of Women with Infertility",
+        "first_author": "Eisenberg",
+        "year": 2021,
+        "pmid": "34180998",
+        "doi": "10.1210/clinem/dgab474"
+      },
+      {
+        "title": "Objective sleep duration and timing predicts completion of in vitro fertilization cycle",
+        "first_author": "Pimolsri",
+        "year": 2021,
+        "pmid": "34374922",
+        "doi": "10.1007/s10815-021-02260-8"
+      },
+      {
+        "title": "Association of obstructive sleep apnea risk with depression and anxiety symptoms in women with polycystic ovary syndrome",
+        "first_author": "Zhou",
+        "year": 2021,
+        "pmid": "33983110",
+        "doi": "10.5664/jcsm.9372"
+      },
+      {
+        "title": "Association of SNP rs700519 in CYP19A1 gene with polycystic ovary syndrome (PCOS) among females of quetta, Pakistan",
+        "first_author": "Ajmal",
+        "year": 2021,
+        "doi": "10.31901/24566330.2021/21.03.782"
+      },
+      {
+        "title": "EARLY PREGNANCY OUTCOMES AFTER IVF AND SLEEP DISORDERED BREATHING",
+        "first_author": "Walter",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.620"
+      },
+      {
+        "title": "PREVALENCE OF OBSTRUCTIVE SLEEP APNEA IN WOMEN SEEKING FERTILITY TREATMENT",
+        "first_author": "Cooney",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.1085"
+      },
+      {
+        "title": "PREVALENCE OF OBSTRUCTIVE SLEEP APNEA IN WOMEN SEEKING FERTILITY TREATMENT",
+        "first_author": "Cooney",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.1085"
+      },
+      {
+        "title": "COVID-19 pandemic: the emotional impact comparing men and women on assisted reproductive treatment",
+        "first_author": "Hentschke",
+        "year": 2021,
+        "doi": "10.1093/humrep/deab130.480"
+      },
+      {
+        "title": "Menopausal symptoms in women with premature ovarian insufficiency: prevalence, severity, and associated factors",
+        "first_author": "Huang",
+        "year": 2021,
+        "pmid": "33470756",
+        "doi": "10.1097/GME.0000000000001733"
+      },
+      {
+        "title": "Tolerability of luteinising hormone releasing hormoneanalogue (LHRH) therapy in patients with early breast cancer treatedat the Institute for Oncology and Radiology of Serbia (IORS)",
+        "first_author": "Dimitrijevic",
+        "year": 2021,
+        "doi": "10.1016/S0960-9776(21)00263-0"
+      },
+      {
+        "title": "Association of Youth Depression with Subsequent Somatic Diseases and Premature Death",
+        "first_author": "Leone",
+        "year": 2021,
+        "pmid": "33295952",
+        "doi": "10.1001/jamapsychiatry.2020.3786"
+      },
+      {
+        "title": "Is sleep deficit associated with infertility and recurrent pregnancy losses? Results from a prospective cohort study",
+        "first_author": "Stocker",
+        "year": 2021,
+        "pmid": "32981061",
+        "doi": "10.1111/aogs.14008"
+      },
+      {
+        "title": "A cross-sectional survey to study the prevalence of polycystic ovarian syndrome and to create its awareness",
+        "first_author": "Shaik",
+        "year": 2021,
+        "doi": "10.31838/ijpr/2021.13.03.204"
+      },
+      {
+        "title": "Impact of ivf on the timing and symptoms of menopause",
+        "first_author": "Muharam",
+        "year": 2021,
+        "doi": "10.2147/IJWH.S322718"
+      },
+      {
+        "title": "Assessment of menopausal symptoms and quality of life in women with premature ovarian failure after hematopoietic stem-cell transplantation for hematologic diseases",
+        "first_author": "Su",
+        "year": 2021,
+        "pmid": "32810080",
+        "doi": "10.1097/GME.0000000000001639"
+      },
+      {
+        "title": "Association of polycystic ovary syndrome or anovulatory infertility with offspring psychiatric and mild neurodevelopmental disorders: a Finnish population-based cohort study",
+        "first_author": "Chen",
+        "year": 2020,
+        "pmid": "32866965",
+        "doi": "10.1093/humrep/deaa192"
+      },
+      {
+        "title": "The impact of depression, self-esteem, and body image on sleep quality in patients with PCOS: a cross-sectional study",
+        "first_author": "Azizi",
+        "year": 2020,
+        "pmid": "31630370",
+        "doi": "10.1007/s11325-019-01946-9"
+      },
+      {
+        "title": "SLEEP DURATION AND TIMING ARE NOT ASSOCIATED WITH ANTIMULLERIAN HORMONE LEVELS",
+        "first_author": "Martin",
+        "year": 2020,
+        "doi": "10.1016/j.fertnstert.2020.08.1281"
+      },
+      {
+        "title": "POLYCYSTIC OVARY SYNDROME KNOWLEDGE AMONGST PRIMARY CARE PROVIDERS AND GENERALIST OBSTETRICIAN GYNECOLOGISTS",
+        "first_author": "Stevenson",
+        "year": 2020,
+        "doi": "10.1016/j.fertnstert.2020.08.1192"
+      },
+      {
+        "title": "Clinical research linking Traditional Chinese Medicine constitution types with diseases: a literature review of 1639 observational studies",
+        "first_author": "Liang",
+        "year": 2020,
+        "pmid": "32744037"
+      },
+      {
+        "title": "Safety and clinical effectiveness of Withania Somnifera (Linn.) Dunal root in human ailments",
+        "first_author": "Tandon",
+        "year": 2020,
+        "pmid": "32201301",
+        "doi": "10.1016/j.jep.2020.112768"
+      },
+      {
+        "title": "Menstrual characteristics, bleeding and other non-pelvic-pain symptoms in women presenting with severe endometriotic disease",
+        "first_author": "Markham",
+        "year": 2020,
+        "doi": "10.1177/2284026520905396"
+      },
+      {
+        "title": "A prospective study of oral estrogen versus transdermal estrogen (gel) for hormone replacement frozen embryo transfer cycles",
+        "first_author": "Garimella",
+        "year": 2020,
+        "pmid": "32666854",
+        "doi": "10.1080/09513590.2020.1793941"
+      },
+      {
+        "title": "Assessing the likelihood of obstructive sleep apnea among infertile population using stopbang and modified berlin questionnaire: A cross-sectional study",
+        "first_author": "Andiappan",
+        "year": 2020,
+        "doi": "10.5005/JP-JOURNALS-10016-1204"
+      },
+      {
+        "title": "Prevalence of hysteroscopic findings in postmenopausal bleeding patients and its correlation with clinicohistopathologic diagnosis",
+        "first_author": "Godi",
+        "year": 2020,
+        "doi": "10.5005/jp-journals-10006-1833"
+      },
+      {
+        "title": "Patient-reported outcomes of the relative severity of side effects from cancer radiotherapy",
+        "first_author": "Williams",
+        "year": 2020,
+        "pmid": "31044307",
+        "doi": "10.1007/s00520-019-04820-2"
+      },
+      {
+        "title": "Female sleep patterns and spontaneous abortion in a north american preconception cohort",
+        "first_author": "Willis",
+        "year": 2020,
+        "doi": "10.1007/s43032-020-00176-9"
+      },
+      {
+        "title": "Factors associated with endometrial hyperplasia or cancer symptoms in overweight and obese premenopausal women",
+        "first_author": "Cheskin",
+        "year": 2020,
+        "doi": "10.1089/jwh.2020.29033.abstracts"
+      },
+      {
+        "title": "Differences in presentations of women presenting to the menopause units with premature ovarian insufficiency or menopause at the expected age",
+        "first_author": "Gomaa",
+        "year": 2019,
+        "doi": "10.1097/GME.0000000000001456"
+      },
+      {
+        "title": "Evaluation of clinical manifestations, health risks, and quality of life among women with polycystic ovary syndrome",
+        "first_author": "Sidra",
+        "year": 2019,
+        "pmid": "31603907",
+        "doi": "10.1371/journal.pone.0223329"
+      },
+      {
+        "title": "Fertility treatments and the risk of pediatric obstructive sleep apnea in the offspring—Results from a population-based cohort study",
+        "first_author": "Imterat",
+        "year": 2019,
+        "pmid": "31264380",
+        "doi": "10.1002/ppul.24428"
+      },
+      {
+        "title": "Sleep quality and fatigue in women with premature ovarian insufficiency receiving hormone therapy: A comparative study",
+        "first_author": "Benetti-Pinto",
+        "year": 2019,
+        "pmid": "31290760",
+        "doi": "10.1097/GME.0000000000001379"
+      },
+      {
+        "title": "Association of obstructive sleep apnea with female infertility-A 13-year nationwide population-based retrospective study",
+        "first_author": "Wang",
+        "year": 2019,
+        "doi": "10.1183/13993003.congress-2019.PA901"
+      },
+      {
+        "title": "Sleep and female reproduction",
+        "first_author": "Willis",
+        "year": 2019,
+        "pmid": "31082843",
+        "doi": "10.1097/GCO.0000000000000554"
+      },
+      {
+        "title": "Predictors of bladder capacity in interstitial cystitis/bladder pain syndrome",
+        "first_author": "Walker",
+        "year": 2019,
+        "doi": "10.1002/nau.23949"
+      },
+      {
+        "title": "Knowledge of long term health sequelae among women with polycystic ovary syndrome",
+        "first_author": "Reschke",
+        "year": 2019,
+        "doi": "10.1016/j.fertnstert.2019.02.105"
+      },
+      {
+        "title": "The myotonic dystrophy experience: a North American cross-sectional study",
+        "first_author": "Hagerman",
+        "year": 2019,
+        "pmid": "30677147",
+        "doi": "10.1002/mus.26420"
+      },
+      {
+        "title": "Bariatric surgery in patients with body mass index<35: A systematic review and meta analysis",
+        "first_author": "Smith",
+        "year": 2019,
+        "doi": "10.1007/s00464-019-06704-2"
+      },
+      {
+        "title": "Association of emotional distress and quality of sleep among women receiving in-vitro fertilization treatment",
+        "first_author": "Huang",
+        "year": 2019,
+        "pmid": "30638474",
+        "doi": "10.1016/j.tjog.2018.11.031"
+      },
+      {
+        "title": "Infertility Treatments and Long-Term Neurologic Morbidity of the Offspring",
+        "first_author": "Levin",
+        "year": 2019,
+        "pmid": "30452068",
+        "doi": "10.1055/s-0038-1675159"
+      },
+      {
+        "title": "Oral versus transdermal oestrogen delivery for endometrial preparation before embryo transfer: a prospective, comparative, randomized clinical trial",
+        "first_author": "Molina",
+        "year": 2018,
+        "pmid": "30340939",
+        "doi": "10.1016/j.rbmo.2018.09.003"
+      },
+      {
+        "title": "The mental health of mothers and fathers during pregnancy and early parenthood after successful oocyte donation treatment: A nested case-control study",
+        "first_author": "Sälevaara",
+        "year": 2018,
+        "pmid": "29975790",
+        "doi": "10.1111/aogs.13421"
+      },
+      {
+        "title": "Measurement of menopausal symptoms using greene climacteric scale in a tertiary care centre in Uttarakhand, India",
+        "first_author": "Mundhra",
+        "year": 2018,
+        "doi": "10.7860/JCDR/2018/36441.12199"
+      },
+      {
+        "title": "Beyond fertility: polycystic ovary syndrome and long-term health",
+        "first_author": "Cooney",
+        "year": 2018,
+        "pmid": "30316414",
+        "doi": "10.1016/j.fertnstert.2018.08.021"
+      },
+      {
+        "title": "Circadian rhythm disruption in polycystic ovary syndrome",
+        "first_author": "Wang",
+        "year": 2018,
+        "doi": "10.1093/humrep/33.Supplement_1.1"
+      },
+      {
+        "title": "Outpatient clinic for users of anabolic androgenic steroids: An overview",
+        "first_author": "Smit",
+        "year": 2018,
+        "pmid": "29845939"
+      },
+      {
+        "title": "Estimating the health consequences of flight attendant work: comparing flight attendant health to the general population in a cross-sectional study",
+        "first_author": "McNeely",
+        "year": 2018,
+        "pmid": "29566648",
+        "doi": "10.1186/s12889-018-5221-3"
+      },
+      {
+        "title": "Non-Apnea sleep disorder increases the risk of subsequent female infertility—A nationwide population-Based cohort study",
+        "first_author": "Wang",
+        "year": 2018,
+        "pmid": "29136234",
+        "doi": "10.1093/sleep/zsx186"
+      },
+      {
+        "title": "The Most Commonly Treated Acupuncture Indications in the United States: A Cross-Sectional Study",
+        "first_author": "Wang",
+        "year": 2018,
+        "pmid": "30298749",
+        "doi": "10.1142/S0192415X18500738"
+      },
+      {
+        "title": "Myotonic Dystrophy Type 2 - Data from the Serbian Registry",
+        "first_author": "Bozovic",
+        "year": 2018,
+        "pmid": "30248060",
+        "doi": "10.3233/JND-180328"
+      },
+      {
+        "title": "Quality of information and decision regret during fertility sparing management for atypical hyperplasia and endometrial cancer",
+        "first_author": "Haim",
+        "year": 2017,
+        "doi": "10.1002/pon.4476"
+      },
+      {
+        "title": "Effect of sleep disorders on threatened premature delivery",
+        "first_author": "Ota",
+        "year": 2017,
+        "pmid": "27219094",
+        "doi": "10.1515/jpm-2015-0149"
+      },
+      {
+        "title": "Unravelling the myotonic dystrophy type 1 clinical spectrum: A systematic registry-based study with implications for disease classification",
+        "first_author": "De",
+        "year": 2016,
+        "pmid": "27665240",
+        "doi": "10.1016/j.neurol.2016.08.003"
+      },
+      {
+        "title": "Factors determining the use of hormonal therapy and phytotherapy in Spanish postmenopausal women",
+        "first_author": "Mendoza",
+        "year": 2016,
+        "pmid": "27174039",
+        "doi": "10.1080/13697137.2016.1183625"
+      },
+      {
+        "title": "Weigh Forward: A clinical audit of weight management in Australian general practice",
+        "first_author": "Hemmes",
+        "year": 2016,
+        "pmid": "27166135",
+        "doi": "10.1111/cob.12143"
+      },
+      {
+        "title": "An Ayurveda approach to combat toxicity of chemo-radiotherapy in cancer patients",
+        "first_author": "Malvika",
+        "year": 2016,
+        "doi": "10.7897/2277-4343.07271"
+      },
+      {
+        "title": "Cancer-specific distress, life satisfaction and parenting concerns in young breast cancer survivors",
+        "first_author": "Burgmann",
+        "year": 2016,
+        "doi": "10.1158/1538-7445.SABCS15-P4-11-13"
+      },
+      {
+        "title": "Risk of psychiatric disorders following pelvic inflammatory disease: A nationwide population-based retrospective cohort study",
+        "first_author": "Shen",
+        "year": 2016,
+        "pmid": "26821967",
+        "doi": "10.3109/0167482X.2015.1124852"
+      },
+      {
+        "title": "Open-label, prospective, investigator initiated study to access the clinical role of oral natural or synthetic progesterone during stimulated IUI cycles for unexplained infertility",
+        "first_author": "Malhotra",
+        "year": 2016,
+        "doi": "10.7860/JCDR/2016/17058.7106"
+      },
+      {
+        "title": "Influences on the factors of fertility desires after reproductive-age women with breast cancer undergoing chemotherapy",
+        "first_author": "Hsieh",
+        "year": 2016,
+        "doi": "10.1007/s00520-016-3209-z"
+      },
+      {
+        "title": "Performance of free versus total cortisol following cosyntropin stimulation testing in an outpatient setting",
+        "first_author": "Bancos",
+        "year": 2015,
+        "pmid": "26340138",
+        "doi": "10.4158/EP15820.OR"
+      },
+      {
+        "title": "Should infertility in obese women with polycystic ovarian be considered an indication for bariatric surgery?",
+        "first_author": "Butterworth",
+        "year": 2015,
+        "doi": "10.1007/s11695-015-1750-3"
+      },
+      {
+        "title": "Adipocytokines, insulinresistance and androgen excess in women",
+        "first_author": "Georgescu",
+        "year": 2015,
+        "doi": "10.1111/eci.12435"
+      },
+      {
+        "title": "Symptoms, health behavior and understanding of menopause therapy in women with premature menopause",
+        "first_author": "Gibson-Helm",
+        "year": 2014,
+        "pmid": "24742007",
+        "doi": "10.3109/13697137.2014.913284"
+      },
+      {
+        "title": "Comparative evaluation of efficacy of use of naftopidil and/or celecoxib for medical treatment of distal ureteral stones",
+        "first_author": "Lv",
+        "year": 2014,
+        "pmid": "25139150",
+        "doi": "10.1007/s00240-014-0708-6"
+      },
+      {
+        "title": "Somatic symptoms, psychological distress and sleep disturbance among infertile women with intrauterine insemination treatment",
+        "first_author": "Lin",
+        "year": 2014,
+        "pmid": "23829562",
+        "doi": "10.1111/jocn.12306"
+      },
+      {
+        "title": "Factors affecting patient's perception of anticancer treatments side-effects: An observational study",
+        "first_author": "Russo",
+        "year": 2014,
+        "pmid": "24073801",
+        "doi": "10.1517/14740338.2013.830710"
+      },
+      {
+        "title": "Evaluation of the awareness and perception of professional students in medicine, business and law schools of Karachi, regarding the use of (recreational) cannabis",
+        "first_author": "Khalid",
+        "year": 2014,
+        "pmid": "25823182"
+      },
+      {
+        "title": "Subcutaneous progesterone versus vaginal progesterone gel for luteal phase support in in vitro fertilization: A noninferiority randomized controlled study",
+        "first_author": "Lockwood",
+        "year": 2014,
+        "pmid": "24140033",
+        "doi": "10.1016/j.fertnstert.2013.09.010"
+      },
+      {
+        "title": "Obesity and polycystic ovarian syndrome: Is there a link between dysfunctional sleep and IVF outcomes?",
+        "first_author": "Flyckt",
+        "year": 2013,
+        "doi": "10.1016/j.fertnstert.2013.07.900"
+      },
+      {
+        "title": "Self-reported sleep quality in women with endometriosis",
+        "first_author": "Leone",
+        "year": 2013,
+        "doi": "10.1016/j.fertnstert.2013.07.780"
+      },
+      {
+        "title": "Selective serotonin reuptake inhibitors for premenstrual syndrome",
+        "first_author": "Marjoribanks",
+        "year": 2013,
+        "pmid": "23744611",
+        "doi": "10.1002/14651858.CD001396.pub3"
+      },
+      {
+        "title": "Characteristics of first-time fathers of advanced age: A Norwegian population-based study",
+        "first_author": "Nilsen",
+        "year": 2013,
+        "pmid": "23363654",
+        "doi": "10.1186/1471-2393-13-29"
+      },
+      {
+        "title": "Screening for the presence of FMR1 premutation alleles in a Spanish population with fibromyalgia",
+        "first_author": "Martorell",
+        "year": 2012,
+        "pmid": "22903700",
+        "doi": "10.1007/s10067-012-2052-y"
+      },
+      {
+        "title": "Perioperative management of pheochromocytoma/paraganglioma: Is there a state of the art?",
+        "first_author": "Mannelli",
+        "year": 2012,
+        "pmid": "22517559",
+        "doi": "10.1055/s-0032-1306275"
+      },
+      {
+        "title": "Hormonal imbalances and psychological scars left behind in infertile men",
+        "first_author": "Bak",
+        "year": 2012,
+        "pmid": "21546616",
+        "doi": "10.2164/jandrol.110.012351"
+      },
+      {
+        "title": "Hormonal imbalances and Psychological scars left behind in infertile men",
+        "first_author": "Bak",
+        "year": 2011,
+        "doi": "10.1093/humrep/26.s1.87"
+      },
+      {
+        "title": "Lifestyle behaviors in women undergoing IVF",
+        "first_author": "Domar",
+        "year": 2011,
+        "doi": "10.1016/j.fertnstert.2011.07.719"
+      },
+      {
+        "title": "Effect of luteinizing hormone-releasing hormone agonist on ovarian function after modern adjuvant breast cancer chemotherapy: The GBG 37 ZORO study",
+        "first_author": "Gerber",
+        "year": 2011,
+        "pmid": "21537042",
+        "doi": "10.1200/JCO.2010.32.5704"
+      },
+      {
+        "title": "Hormone replacement therapy and the adolescent",
+        "first_author": "Divasta",
+        "year": 2010,
+        "pmid": "20724926",
+        "doi": "10.1097/GCO.0b013e32833e4a35"
+      },
+      {
+        "title": "Progesterone for premenstrual syndrome",
+        "first_author": "Ford",
+        "year": 2009,
+        "pmid": "19370587",
+        "doi": "10.1002/14651858.CD003415.pub3"
+      },
+      {
+        "title": "Selective serotonin reuptake inhibitors for premenstrual syndrome",
+        "first_author": "Brown",
+        "year": 2009,
+        "pmid": "19370564",
+        "doi": "10.1002/14651858.CD001396.pub2"
+      },
+      {
+        "title": "Association of menopause with osteopenia and osteoporosis: Results from population based study done in Karachi",
+        "first_author": "Baig",
+        "year": 2009,
+        "pmid": "19356340"
+      },
+      {
+        "title": "Implications of diminished ovarian reserve (DOR) extend well beyond reproductive concerns",
+        "first_author": "Pal",
+        "year": 2008,
+        "pmid": "18791485",
+        "doi": "10.1097/gme.0b013e3181728467"
+      },
+      {
+        "title": "Vasomotor symptoms in infertile premenopausal women: a hitherto unappreciated risk for low bone mineral density",
+        "first_author": "Pal",
+        "year": 2008,
+        "pmid": "18068159",
+        "doi": "10.1016/j.fertnstert.2007.08.020"
+      },
+      {
+        "title": "A cross-sectional survey of herbal remedy taking by United Arab Emirate (UAE) citizens in Abu Dhabi",
+        "first_author": "AlBraik",
+        "year": 2008,
+        "pmid": "18395880",
+        "doi": "10.1002/pds.1591"
+      },
+      {
+        "title": "Symptoms and treatment burden associated with cancer treatment: Results from a cross-sectional national survey in the U.S.",
+        "first_author": "Henry",
+        "year": 2008,
+        "pmid": "18204940",
+        "doi": "10.1007/s00520-007-0380-2"
+      },
+      {
+        "title": "Treatment of Churg-Strauss syndrome without poor-prognosis factors: A multicenter, prospective, randomized, open-label study of seventy-two patients",
+        "first_author": "Ribi",
+        "year": 2008,
+        "pmid": "18240234",
+        "doi": "10.1002/art.23198"
+      },
+      {
+        "title": "A prospective 12-week study of quetiapine in adolescents with schizophrenia spectrum disorders",
+        "first_author": "Schimmelmann",
+        "year": 2007,
+        "pmid": "18315449",
+        "doi": "10.1089/cap.2007.0048"
+      },
+      {
+        "title": "Induction of ovulation in idiopathic premature ovarian failure: A randomized double-blind trial",
+        "first_author": "Badawy",
+        "year": 2007,
+        "pmid": "17697500",
+        "doi": "10.1016/S1472-6483(10)60711-0"
+      },
+      {
+        "title": "Menopause: evidence-based practice",
+        "first_author": "Blake",
+        "year": 2006,
+        "pmid": "17084674",
+        "doi": "10.1016/j.bpobgyn.2006.07.001"
+      },
+      {
+        "title": "Progesterone for premenstrual syndrome",
+        "first_author": "Ford",
+        "year": 2006,
+        "pmid": "17054168",
+        "doi": "10.1002/14651858.CD003415.pub2"
+      },
+      {
+        "title": "Age at menopause, and knowledge of and attitudes to menopause, of women in Karachi, Pakistan",
+        "first_author": "Baig",
+        "year": 2006,
+        "pmid": "16776858",
+        "doi": "10.1258/136218006777525721"
+      },
+      {
+        "title": "Preferences for fertility in women with pelvic inflammatory disease",
+        "first_author": "Songer",
+        "year": 2004,
+        "pmid": "15136100",
+        "doi": "10.1016/j.fertnstert.2003.09.064"
+      },
+      {
+        "title": "Nitric oxide donors for patients undergoing IVF. A prospective, double-blind, randomized, placebo-controlled trial",
+        "first_author": "Ohl",
+        "year": 2002,
+        "pmid": "12351537",
+        "doi": "10.1093/humrep/17.10.2615"
+      },
+      {
+        "title": "Comparison of the efficacy and safety of two formulations of micronized progesterone (ellios™and utrogestan™) used as luteal phase support after in vitro fertilization",
+        "first_author": "Germond",
+        "year": 2002,
+        "pmid": "11821089",
+        "doi": "10.1016/S0015-0282(01)02979-X"
+      },
+      {
+        "title": "Paracervical block with and without conscious sedation: a comparison of the pain levels during egg collection and the postoperative side effects",
+        "first_author": "Ng",
+        "year": 2001,
+        "pmid": "11287024",
+        "doi": "10.1016/S0015-0282(01)01693-4"
+      },
+      {
+        "title": "Health and development of children born after oocyte donation compared with that of those born after in-vitro fertilization, and parents' attitudes regarding secrecy",
+        "first_author": "Söderström-Anttila",
+        "year": 1998,
+        "pmid": "9740468",
+        "doi": "10.1093/humrep/13.7.2009"
+      },
+      {
+        "title": "Medical and surgical treatment of endometriosis",
+        "first_author": "Adamson",
+        "year": 1996,
+        "doi": "10.1097/00019616-199609000-00006"
+      },
+      {
+        "title": "Memory complaints associated with the use of gonadotropin-releasing hormone agonists: A preliminary study",
+        "first_author": "Newton",
+        "year": 1996,
+        "pmid": "8641510",
+        "doi": "10.1016/s0015-0282(16)58351-4"
+      },
+      {
+        "title": "Comparative prospective study of the psychological development of children born by in vitro fertilization and their mothers",
+        "first_author": "Raoul-Duval",
+        "year": 1993,
+        "pmid": "8358525"
+      },
+      {
+        "title": "Role of leuprolide acetate depot in hysteroscopic surgery: A controlled study",
+        "first_author": "Perino",
+        "year": 1993,
+        "pmid": "8458448",
+        "doi": "10.1016/S0015-0282(16)55790-2"
+      },
+      {
+        "title": "A long-acting repeatable form of bromocriptine as long-term treatment of prolactin-secreting macroadenomas: A multicenter study",
+        "first_author": "Brue",
+        "year": 1992,
+        "pmid": "1730334",
+        "doi": "10.1016/s0015-0282(16)54779-7"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

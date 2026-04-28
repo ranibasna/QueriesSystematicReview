@@ -1,0 +1,179 @@
+{
+  "14a76c185f36e3e8e48e1e62603355b95746e76fe0601a1a0bcedf3c6bc5e53a": {
+    "query": "(('genetic generalized epilepsy':ti OR 'genetic generalised epilepsy':ti OR 'idiopathic generalized epilepsy':ti OR 'idiopathic generalised epilepsy':ti OR 'juvenile myoclonic epilepsy':ti OR 'childhood absence epilepsy':ti OR 'juvenile absence epilepsy':ti OR 'generalized tonic-clonic seizures alone':ti OR 'generalised tonic-clonic seizures alone':ti OR 'generalized epilepsy'/mj) AND (sleep:ti OR 'sleep quality':ti OR 'sleep architecture':ti OR 'sleep disorder':ti OR 'sleep disorders':ti) AND (cohort:ti,ab OR 'cross-sectional':ti,ab OR observational:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 18,
+    "retrieved_dois": [
+      "10.1002/brb3.2860",
+      "10.1002/epi4.12687",
+      "10.1007/s12098-021-03863-w",
+      "10.1016/j.clinph.2020.01.021",
+      "10.1016/j.ejpn.2017.04.727",
+      "10.1016/j.eplepsyres.2016.06.015",
+      "10.1016/j.seizure.2022.11.002",
+      "10.1016/j.seizure.2024.05.014",
+      "10.1016/j.sleep.2015.11.006",
+      "10.1016/j.yebeh.2020.107064",
+      "10.1097/WNP.0000000000000239",
+      "10.1111/ane.12769",
+      "10.1111/ene.13092",
+      "10.1111/epi.13609",
+      "10.1111/epi.18151",
+      "10.1111/j.1528-1167.2012.03677.x",
+      "10.1111/jsr.12446",
+      "10.1177/0883073819842422"
+    ],
+    "retrieved_pmids": [
+      "26587665",
+      "26847987",
+      "27400071",
+      "28542735",
+      "31012364",
+      "32199394",
+      "32320932",
+      "34287802",
+      "36435032",
+      "36529529",
+      "36588283",
+      "38908143"
+    ],
+    "pmids": [
+      "26587665",
+      "26847987",
+      "27400071",
+      "28542735",
+      "31012364",
+      "32199394",
+      "32320932",
+      "34287802",
+      "36435032",
+      "36529529",
+      "36588283",
+      "38908143"
+    ],
+    "records": [
+      {
+        "title": "Systematic review highlights insufficient evidence in sleep research related to juvenile myoclonic epilepsy",
+        "first_author": "Yetkin",
+        "year": 2024,
+        "doi": "10.1111/epi.18151"
+      },
+      {
+        "title": "Sleep in juvenile myoclonic epilepsy: A systematic review",
+        "first_author": "Yetkin",
+        "year": 2024,
+        "pmid": "38908143",
+        "doi": "10.1016/j.seizure.2024.05.014"
+      },
+      {
+        "title": "Sleep architecture in drug-naïve adult patients with epilepsy: Comparison between focal and generalized epilepsy",
+        "first_author": "Calvello",
+        "year": 2023,
+        "pmid": "36529529",
+        "doi": "10.1002/epi4.12687"
+      },
+      {
+        "title": "Effect of add-on melatonin on seizure outcomes and quality of sleep in epilepsy with idiopathic generalized tonic-clonic seizures alone in adult patients: Cross-sectional, randomized, double-blind, placebo-controlled clinical trial",
+        "first_author": "Maghbooli",
+        "year": 2023,
+        "pmid": "36588283",
+        "doi": "10.1002/brb3.2860"
+      },
+      {
+        "title": "Sleep quality and circadian rhythm profile of persons with juvenile myoclonic epilepsy in a tertiary epilepsy center: A case-control study",
+        "first_author": "Koike",
+        "year": 2023,
+        "pmid": "36435032",
+        "doi": "10.1016/j.seizure.2022.11.002"
+      },
+      {
+        "title": "Sleep Characteristics Among Children with Idiopathic Generalized Epilepsy: A Polysomnography-Based Study",
+        "first_author": "Yadav",
+        "year": 2021,
+        "pmid": "34287802",
+        "doi": "10.1007/s12098-021-03863-w"
+      },
+      {
+        "title": "Rapid eye movement (REM) sleep and seizure control in idiopathic generalized epilepsy",
+        "first_author": "Hamdy",
+        "year": 2020,
+        "pmid": "32320932",
+        "doi": "10.1016/j.yebeh.2020.107064"
+      },
+      {
+        "title": "“Sleep Surge”: The impact of sleep onset and offset on epileptiform discharges in idiopathic generalized epilepsies",
+        "first_author": "Seneviratne",
+        "year": 2020,
+        "pmid": "32199394",
+        "doi": "10.1016/j.clinph.2020.01.021"
+      },
+      {
+        "title": "Sleepwalking and Sleep Paralysis: Prevalence in Colombian Families With Genetic Generalized Epilepsy",
+        "first_author": "Cornejo-Sanchez",
+        "year": 2019,
+        "pmid": "31012364",
+        "doi": "10.1177/0883073819842422"
+      },
+      {
+        "title": "Sleep convulsive seizures predict lack of remission in genetic generalized epilepsies: A retrospective study from a single epilepsy center in Egypt",
+        "first_author": "Ashmawi",
+        "year": 2017,
+        "pmid": "28542735",
+        "doi": "10.1111/ane.12769"
+      },
+      {
+        "title": "Epileptic characteristics and sleep architecture of drug naïve patients in childhood absence epilepsy spectrum. A prospective study",
+        "first_author": "Dinopoulos",
+        "year": 2017,
+        "doi": "10.1016/j.ejpn.2017.04.727"
+      },
+      {
+        "title": "Polysomnographic based study of sleep in juvenile myoclonic epilepsy patients",
+        "first_author": "Elbhrawy",
+        "year": 2016,
+        "doi": "10.1111/epi.13609"
+      },
+      {
+        "title": "Sleep respiratory parameters in children with idiopathic epilepsy: A cross-sectional study",
+        "first_author": "Gogou",
+        "year": 2016,
+        "pmid": "27400071",
+        "doi": "10.1016/j.eplepsyres.2016.06.015"
+      },
+      {
+        "title": "Sleep architecture and epileptic activity in childhood absence epilepsy spectrum before treatment",
+        "first_author": "Tsirouda",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Polysomnographic (PSG) based study of sleep in juvenile myoclonic epilepsy (JME) patients",
+        "first_author": "Ibrahim",
+        "year": 2016,
+        "doi": "10.1111/ene.13092"
+      },
+      {
+        "title": "Epileptiform K-Complexes and Sleep Spindles: An Underreported Phenomenon in Genetic Generalized Epilepsy",
+        "first_author": "Seneviratne",
+        "year": 2016,
+        "pmid": "26587665",
+        "doi": "10.1097/WNP.0000000000000239"
+      },
+      {
+        "title": "Effect of valproate on the sleep microstructure of juvenile myoclonic epilepsy patients - a cross-sectional CAP based study",
+        "first_author": "Nayak",
+        "year": 2016,
+        "pmid": "26847987",
+        "doi": "10.1016/j.sleep.2015.11.006"
+      },
+      {
+        "title": "Sleep in partial epilepsy (PE) as compared to idiopathic generalised epilepsy (IGE)",
+        "first_author": "Boserio",
+        "year": 2012,
+        "doi": "10.1111/j.1528-1167.2012.03677.x"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

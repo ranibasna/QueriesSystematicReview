@@ -1,0 +1,1819 @@
+{
+  "0e3fa86e3b772b2fe719df9d4cc875637e2f6a6df1b6aa5188e8cea63c19de82": {
+    "query": "((('noise'/mj OR 'white noise':ti OR 'pink noise':ti OR 'broadband noise':ti OR 'masking noise':ti OR 'noise machine':ti OR 'sound machine':ti OR 'acoustic noise':ti OR 'continuous noise':ti) AND ('sleep'/mj OR 'wakefulness'/mj OR 'sleep latency':ti OR 'sleep quality':ti OR 'sleep efficiency':ti OR 'wakefulness after sleep onset':ti OR 'sleep continuity':ti OR 'sleep fragmentation':ti OR 'sleep architecture':ti)) NOT ('review'/it OR 'systematic review'/it OR 'meta analysis'/it OR 'letter'/it OR 'editorial'/it OR 'case report'/it))",
+    "provider": "embase_manual",
+    "results_count": 140,
+    "retrieved_dois": [
+      "10.1002/jhm.13218",
+      "10.1002/jhm.70025",
+      "10.1002/jhm.920",
+      "10.1006/enrs.1993.1078",
+      "10.1007/BF00426876",
+      "10.1007/BF00544042",
+      "10.1007/s00103-011-1370-6",
+      "10.1007/s00134-013-3095-5",
+      "10.1007/s11818-008-0339-7",
+      "10.1007/s11818-008-0343-y",
+      "10.1007/s11916-014-0454-z",
+      "10.1007/s12630-025-03044-9",
+      "10.1007/s41782-021-00157-1",
+      "10.1007/s41999-025-01254-4",
+      "10.1016/0003-682X(80)90050-X",
+      "10.1016/0013-4694(74)90030-3",
+      "10.1016/0013-9351(76)90080-3",
+      "10.1016/0022-460X(79)90869-1",
+      "10.1016/0022-460X(79)90872-1",
+      "10.1016/0022-460X(86)90166-5",
+      "10.1016/0022-460X(88)90369-0",
+      "10.1016/0301-0511(87)90064-0",
+      "10.1016/j.cub.2010.06.032",
+      "10.1016/j.envint.2015.04.014",
+      "10.1016/j.envpol.2019.113461",
+      "10.1016/j.envres.2022.113941",
+      "10.1016/j.envres.2023.115502",
+      "10.1016/j.envres.2026.124255",
+      "10.1016/j.explore.2023.09.002",
+      "10.1016/j.explore.2026.103365",
+      "10.1016/j.heares.2026.109594",
+      "10.1016/j.iccn.2025.104239",
+      "10.1016/j.ijheh.2013.04.003",
+      "10.1016/j.ijnurstu.2008.12.009",
+      "10.1016/j.infbeh.2019.03.008",
+      "10.1016/j.jopan.2025.10.009",
+      "10.1016/j.jtbi.2012.04.006",
+      "10.1016/j.mcpsp.2021.100209",
+      "10.1016/j.neuroimage.2023.120264",
+      "10.1016/j.scitotenv.2012.02.024",
+      "10.1016/j.scitotenv.2024.177047",
+      "10.1016/j.sleep.2013.11.520",
+      "10.1016/j.sleep.2021.03.031",
+      "10.1016/j.sleep.2023.11.341",
+      "10.1016/j.sleep.2023.11.343",
+      "10.1016/j.sleh.2025.11.008",
+      "10.1038/s41598-025-14774-7",
+      "10.1088/0967-3334/29/9/007",
+      "10.1093/ageing/afae178.342",
+      "10.1093/aje/kwab246",
+      "10.1093/bjs/znaf270.105",
+      "10.1093/qjmed/hcad069.275",
+      "10.1093/sleep/14.1.24",
+      "10.1093/sleep/zsab283",
+      "10.1093/sleep/zsac197",
+      "10.1093/sleep/zsad286",
+      "10.1093/sleep/zsaf090.0246",
+      "10.1093/sleep/zsag001",
+      "10.1093/sleep/zsz067.056",
+      "10.1097/01.NAJ.0000438871.60154.a8",
+      "10.1097/01.ccm.0000458301.54861.01",
+      "10.1097/01.ccm.0000509212.61198.e5",
+      "10.1097/01.ede.0000417260.34450.17",
+      "10.1097/AUD.0000000000001625",
+      "10.1097/JCN.0000000000000273",
+      "10.1097/NCC.0000000000001513",
+      "10.1097/NMC.0000000000001076",
+      "10.1097/j.pain.0000000000003592",
+      "10.1101/2022.08.19.504510",
+      "10.1101/2023.10.04.560827",
+      "10.1101/2024.02.22.581655",
+      "10.1101/2024.05.12.593782",
+      "10.1101/2025.07.09.663932",
+      "10.1111/1744-9987.13794",
+      "10.1111/apa.12330",
+      "10.1111/j.1365-2702.2010.03507.x",
+      "10.1111/j.1365-2702.2011.03876.x",
+      "10.1111/j.1365-2869.2012.01044.x",
+      "10.1111/jsr.12213",
+      "10.1111/jsr.14291",
+      "10.1111/jsr.14293",
+      "10.1111/jsr.70227",
+      "10.1111/jsr.70301",
+      "10.1111/nicc.12742",
+      "10.1121/1.1903322",
+      "10.1121/1.380805",
+      "10.1121/1.381964",
+      "10.1121/1.4817923",
+      "10.1136/archdischild-2018-315168",
+      "10.1136/bmjopen-2017-020518",
+      "10.1136/bmjresp-2023-BSSconf.42",
+      "10.1159/000117865",
+      "10.1161/circ.150.suppl_1.4141803",
+      "10.1177/026309238500400103",
+      "10.1177/026309238800700103",
+      "10.1177/026309238800700303",
+      "10.1177/10738584251403967",
+      "10.1177/1751143718772957",
+      "10.11836/JEOM23189",
+      "10.11836/JEOM23198",
+      "10.1186/s12889-025-22887-x",
+      "10.1186/s13054-018-2182-y",
+      "10.12122/j.issn.1673-4254.2021.11.11",
+      "10.1265/jjh.43.1092",
+      "10.1515/pubhef-2025-8001",
+      "10.21037/apm-22-1269",
+      "10.3389/fnhum.2023.1302836",
+      "10.3389/fphys.2017.00931",
+      "10.3390/ijerph15112573",
+      "10.3390/ijerph192113844",
+      "10.3390/jcm11092328",
+      "10.3928/0098-9134-20010701-10",
+      "10.4103/1463-1741.192480",
+      "10.4103/1463-1741.63207",
+      "10.4103/nah.nah_103_25",
+      "10.4103/nah.nah_109_25",
+      "10.4103/nah.nah_111_24",
+      "10.4103/nah.nah_125_24",
+      "10.4103/nah.nah_125_25",
+      "10.4103/nah.nah_126_25",
+      "10.4103/nah.nah_12_24",
+      "10.4103/nah.nah_132_25",
+      "10.4103/nah.nah_137_25",
+      "10.4103/nah.nah_147_24",
+      "10.4103/nah.nah_163_25",
+      "10.4103/nah.nah_180_25",
+      "10.4103/nah.nah_25_24",
+      "10.4103/nah.nah_32_23",
+      "10.4103/nah.nah_42_24",
+      "10.4103/nah.nah_43_25",
+      "10.4103/nah.nah_55_24",
+      "10.4103/nah.nah_83_24",
+      "10.4103/nah.nah_95_25",
+      "10.4295/audiology.18.189",
+      "10.4295/audiology.23.50",
+      "10.55489/njcm.161020255359",
+      "10.5665/sleep.5326",
+      "10.5958/0974-360X.2018.00838.7",
+      "10.64898/2026.02.18.706715",
+      "10.7748/ns.8.43.25.s43"
+    ],
+    "retrieved_pmids": [
+      "10270047",
+      "1114289",
+      "1131121",
+      "1145178",
+      "11543230",
+      "11817458",
+      "1201745",
+      "1206157",
+      "1229207",
+      "13384947",
+      "13925677",
+      "14000871",
+      "14051850",
+      "14101234",
+      "14128872",
+      "14206375",
+      "14222154",
+      "14251095",
+      "14326616",
+      "15198098",
+      "15266953",
+      "15270371",
+      "167706",
+      "1773808",
+      "1811316",
+      "187002",
+      "18756029",
+      "19167711",
+      "19519943",
+      "196167",
+      "196586",
+      "1965969",
+      "20472953",
+      "206923",
+      "20692606",
+      "21219521",
+      "22082250",
+      "22116482",
+      "22444069",
+      "22456556",
+      "22726808",
+      "23684342",
+      "23800026",
+      "23967934",
+      "24284585",
+      "2534742",
+      "25982992",
+      "26035279",
+      "2617057",
+      "26518593",
+      "2746977",
+      "27762252",
+      "28825267",
+      "29530913",
+      "30018067",
+      "30290829",
+      "30453618",
+      "31102945",
+      "3148145",
+      "31706765",
+      "3215733",
+      "34049045",
+      "3410639",
+      "3410640",
+      "3447634",
+      "34613370",
+      "34865147",
+      "34916193",
+      "34931413",
+      "34995012",
+      "35931188",
+      "36360723",
+      "36708171",
+      "36747385",
+      "36805354",
+      "37399931",
+      "37779507",
+      "37806925",
+      "37942938",
+      "3827785",
+      "38358237",
+      "38904810",
+      "38904821",
+      "39345065",
+      "39345075",
+      "39447902",
+      "39787549",
+      "39787561",
+      "39828915",
+      "39998280",
+      "40298060",
+      "40327552",
+      "40335916",
+      "40522435",
+      "40790345",
+      "41122981",
+      "41259609",
+      "41259612",
+      "41259625",
+      "4137259",
+      "41454554",
+      "41482898",
+      "41482901",
+      "41482908",
+      "41482919",
+      "41482920",
+      "41586790",
+      "4159909",
+      "41617556",
+      "41627391",
+      "41645901",
+      "4167965",
+      "41761732",
+      "41775115",
+      "41800673",
+      "41800683",
+      "41800689",
+      "41819206",
+      "41825187",
+      "433350",
+      "4336955",
+      "4346303",
+      "4355296",
+      "4412282",
+      "4418709",
+      "4422946",
+      "4493666",
+      "4715081",
+      "4735388",
+      "5042899",
+      "5045437",
+      "5077904",
+      "5119985",
+      "5449192",
+      "5718320",
+      "5726545",
+      "5843570",
+      "5885688",
+      "590245",
+      "6118840",
+      "6123332",
+      "6149940",
+      "6559186",
+      "6723904",
+      "6904908",
+      "705330",
+      "711996",
+      "8080781",
+      "8350341",
+      "8446079",
+      "8495675",
+      "8736118",
+      "878655",
+      "905619",
+      "939214"
+    ],
+    "pmids": [
+      "10270047",
+      "1114289",
+      "1131121",
+      "1145178",
+      "11543230",
+      "11817458",
+      "1201745",
+      "1206157",
+      "1229207",
+      "13384947",
+      "13925677",
+      "14000871",
+      "14051850",
+      "14101234",
+      "14128872",
+      "14206375",
+      "14222154",
+      "14251095",
+      "14326616",
+      "15198098",
+      "15266953",
+      "15270371",
+      "167706",
+      "1773808",
+      "1811316",
+      "187002",
+      "18756029",
+      "19167711",
+      "19519943",
+      "196167",
+      "196586",
+      "1965969",
+      "20472953",
+      "206923",
+      "20692606",
+      "21219521",
+      "22082250",
+      "22116482",
+      "22444069",
+      "22456556",
+      "22726808",
+      "23684342",
+      "23800026",
+      "23967934",
+      "24284585",
+      "2534742",
+      "25982992",
+      "26035279",
+      "2617057",
+      "26518593",
+      "2746977",
+      "27762252",
+      "28825267",
+      "29530913",
+      "30018067",
+      "30290829",
+      "30453618",
+      "31102945",
+      "3148145",
+      "31706765",
+      "3215733",
+      "34049045",
+      "3410639",
+      "3410640",
+      "3447634",
+      "34613370",
+      "34865147",
+      "34916193",
+      "34931413",
+      "34995012",
+      "35931188",
+      "36360723",
+      "36708171",
+      "36747385",
+      "36805354",
+      "37399931",
+      "37779507",
+      "37806925",
+      "37942938",
+      "3827785",
+      "38358237",
+      "38904810",
+      "38904821",
+      "39345065",
+      "39345075",
+      "39447902",
+      "39787549",
+      "39787561",
+      "39828915",
+      "39998280",
+      "40298060",
+      "40327552",
+      "40335916",
+      "40522435",
+      "40790345",
+      "41122981",
+      "41259609",
+      "41259612",
+      "41259625",
+      "4137259",
+      "41454554",
+      "41482898",
+      "41482901",
+      "41482908",
+      "41482919",
+      "41482920",
+      "41586790",
+      "4159909",
+      "41617556",
+      "41627391",
+      "41645901",
+      "4167965",
+      "41761732",
+      "41775115",
+      "41800673",
+      "41800683",
+      "41800689",
+      "41819206",
+      "41825187",
+      "433350",
+      "4336955",
+      "4346303",
+      "4355296",
+      "4412282",
+      "4418709",
+      "4422946",
+      "4493666",
+      "4715081",
+      "4735388",
+      "5042899",
+      "5045437",
+      "5077904",
+      "5119985",
+      "5449192",
+      "5718320",
+      "5726545",
+      "5843570",
+      "5885688",
+      "590245",
+      "6118840",
+      "6123332",
+      "6149940",
+      "6559186",
+      "6723904",
+      "6904908",
+      "705330",
+      "711996",
+      "8080781",
+      "8350341",
+      "8446079",
+      "8495675",
+      "8736118",
+      "878655",
+      "905619",
+      "939214"
+    ],
+    "records": [
+      {
+        "title": "The association between outdoor noise and temperature exposure with incident type 2 diabetes, and mediation by sleep and body mass index: A multi-cohort analysis",
+        "first_author": "Siddiqui",
+        "year": 2026,
+        "pmid": "41819206",
+        "doi": "10.1016/j.envres.2026.124255"
+      },
+      {
+        "title": "Spatial variations of sleep impairment indicators associated with night-time noise: A fine-scale population-based study",
+        "first_author": "Kathari",
+        "year": 2026,
+        "pmid": "41617556",
+        "doi": "10.1016/j.sleh.2025.11.008"
+      },
+      {
+        "title": "The effectiveness of white noise for sleep quality in patients admitted to the intensive care unit: a randomized controlled trial",
+        "first_author": "Nien",
+        "year": 2026,
+        "pmid": "41761732",
+        "doi": "10.1016/j.iccn.2025.104239"
+      },
+      {
+        "title": "Pink noise/earplugs and nighttime environmental noise on sleep",
+        "first_author": "Lillehei",
+        "year": 2026,
+        "pmid": "41825187",
+        "doi": "10.1016/j.explore.2026.103365"
+      },
+      {
+        "title": "Chronotype asymmetry arises from stochastic sleep homeostasis under circadian entrainment",
+        "first_author": "Nguyen",
+        "year": 2026,
+        "doi": "10.64898/2026.02.18.706715"
+      },
+      {
+        "title": "Efficacy of pink noise and earplugs for mitigating the effects of intermittent environmental noise exposure on sleep",
+        "first_author": "Basner",
+        "year": 2026,
+        "pmid": "41627391",
+        "doi": "10.1093/sleep/zsag001"
+      },
+      {
+        "title": "Echoes of Pink Noise: A Hypothesized Mechanism for Enhancing Sleep-Dependent Memory Consolidation with Auditory Stimulation",
+        "first_author": "Sabaghypour",
+        "year": 2026,
+        "pmid": "41454554",
+        "doi": "10.1177/10738584251403967"
+      },
+      {
+        "title": "The Effect of White Noise on Sleep Quality, Comfort, and Satisfaction in Patients Undergoing Lumbar Disk Herniation Surgery: A Randomized Controlled Trial",
+        "first_author": "Kizilkaya",
+        "year": 2026,
+        "pmid": "41586790",
+        "doi": "10.1016/j.jopan.2025.10.009"
+      },
+      {
+        "title": "Investigating the Combined Effect of Artificial Light at Night and Noise on Sleep Quality of High School Students",
+        "first_author": "Shama",
+        "year": 2026,
+        "pmid": "41645901",
+        "doi": "10.1111/jsr.70301"
+      },
+      {
+        "title": "Sleep recovers prior to hearing after a single high-intensity noise exposure in mice",
+        "first_author": "Tan",
+        "year": 2026,
+        "pmid": "41775115",
+        "doi": "10.1016/j.heares.2026.109594"
+      },
+      {
+        "title": "Influence of Ward Nighttime Noise Management on Sleep Quality and Negative Emotions in Postoperative Patients with Osteonecrosis of the Femoral Head within an Enhanced Recovery After Surgery Context",
+        "first_author": "Zhang",
+        "year": 2026,
+        "pmid": "41800683",
+        "doi": "10.4103/nah.nah_180_25"
+      },
+      {
+        "title": "Comparative Effects of Music Therapy Versus White Noise on Sleep Quality and Psychological Resilience of Night-Shift Nurses: Retrospective Cohort Study",
+        "first_author": "Zhang",
+        "year": 2026,
+        "pmid": "41800673",
+        "doi": "10.4103/nah.nah_132_25"
+      },
+      {
+        "title": "Impact of Noise from Heat Pumps on Sleep, Noise Annoyance, and Concentration in Healthy Adults in a Laboratory Setting",
+        "first_author": "Benz",
+        "year": 2026,
+        "pmid": "41800689",
+        "doi": "10.4103/nah.nah_147_24"
+      },
+      {
+        "title": "Evaluating Noise and Light in Critical Care and Their Impact on Patients'Sleep: A Closed-Loop Audit",
+        "first_author": "Goh",
+        "year": 2025,
+        "doi": "10.1093/bjs/znaf270.105"
+      },
+      {
+        "title": "Effect of White Noise Therapy Combined with Cognitive Behavioural Therapy on Clinical Symptoms, Psychological Stress and Sleep Quality in Depressed Patients",
+        "first_author": "Wang",
+        "year": 2025,
+        "pmid": "41482898",
+        "doi": "10.4103/nah.nah_95_25"
+      },
+      {
+        "title": "Factors Influencing Sleep Quality in Postoperative Urological Patients and its Correlation with Ward Noise Exposure Levels",
+        "first_author": "Shen",
+        "year": 2025,
+        "pmid": "41482920",
+        "doi": "10.4103/nah.nah_125_25"
+      },
+      {
+        "title": "Is Too Noisy as Bad as Too Quiet? The Inverted U-shaped Relationship between Noise and Sleep Duration",
+        "first_author": "Chen",
+        "year": 2025,
+        "pmid": "41482901",
+        "doi": "10.4103/nah.nah_43_25"
+      },
+      {
+        "title": "Effects of Ward Noise on Sleep Quality and Emotional State in Older Patients with Proximal Humerus Fractures: A Retrospective Study",
+        "first_author": "Pan",
+        "year": 2025,
+        "pmid": "41482919",
+        "doi": "10.4103/nah.nah_126_25"
+      },
+      {
+        "title": "Influence of Ward Noise on Emotional State and Sleep Quality in Patients with Ventilator-induced Diaphragmatic Dysfunction",
+        "first_author": "Qiu",
+        "year": 2025,
+        "pmid": "41482908",
+        "doi": "10.4103/nah.nah_163_25"
+      },
+      {
+        "title": "Exposure to light and noise at night, and sleep quality in community-dwelling older adults: a cross-sectional study",
+        "first_author": "Dai",
+        "year": 2025,
+        "pmid": "40522435",
+        "doi": "10.1007/s41999-025-01254-4"
+      },
+      {
+        "title": "Sleep Quality and Perceived Stress in Diverse Work Environments: The Role of Noise Exposure and Sociodemographic Factors",
+        "first_author": "Afinwala",
+        "year": 2025,
+        "doi": "10.55489/njcm.161020255359"
+      },
+      {
+        "title": "Spontaneous pain dynamics characterized by stochasticity in neural recordings of awake humans with chronic pain",
+        "first_author": "Ryu",
+        "year": 2025,
+        "doi": "10.1097/j.pain.0000000000003592"
+      },
+      {
+        "title": "Impact of Postoperative Noise Reduction on Anxiety, Depression, and Sleep Quality in Patients with Extensive Burns Undergoing Skin Grafting",
+        "first_author": "Guo",
+        "year": 2025,
+        "pmid": "41259612",
+        "doi": "10.4103/nah.nah_109_25"
+      },
+      {
+        "title": "Effects of Ward Noise on Psychological Health and Sleep Quality during Recovery of Patients Who Underwent Surgery for Haemorrhagic Stroke",
+        "first_author": "Pan",
+        "year": 2025,
+        "pmid": "41259609",
+        "doi": "10.4103/nah.nah_103_25"
+      },
+      {
+        "title": "Associations Among Noise Sensitivity, Insomnia, and Sleep Quality in Earthquake Survivors Residing in Container Homes",
+        "first_author": "Aktürk",
+        "year": 2025,
+        "pmid": "41259625",
+        "doi": "10.4103/nah.nah_137_25"
+      },
+      {
+        "title": "Task-based functional connectivity in infants after exposure to regular white noise during natural sleep measured by fNIRS",
+        "first_author": "Li",
+        "year": 2025,
+        "pmid": "40790345",
+        "doi": "10.1038/s41598-025-14774-7"
+      },
+      {
+        "title": "The Effect of Road Traffic Noise on Annoyance and Sleep Disturbance in Future Mobility Scenarios: A Scoping Review",
+        "first_author": "Ternova",
+        "year": 2025,
+        "doi": "10.1515/pubhef-2025-8001"
+      },
+      {
+        "title": "Responses of inferior colliculus neurons to notched noises in awake mice: putative neural correlates of auditory enhancement and Zwicker tone",
+        "first_author": "Hsiao",
+        "year": 2025,
+        "doi": "10.1101/2025.07.09.663932"
+      },
+      {
+        "title": "Night-time noise levels and patients' sleep experiences in a tertiary care health care facility",
+        "first_author": "Best",
+        "year": 2025,
+        "doi": "10.1007/s12630-025-03044-9"
+      },
+      {
+        "title": "Correlation between nighttime sleep noise pollution and the risk of acute exacerbation of chronic obstructive pulmonary disease",
+        "first_author": "Tian",
+        "year": 2025,
+        "pmid": "40335916",
+        "doi": "10.1186/s12889-025-22887-x"
+      },
+      {
+        "title": "Sleep-Associated Traits and Hearing Difficulties in Noise: A Bidirectional Mendelian Randomization Study",
+        "first_author": "Liu",
+        "year": 2025,
+        "pmid": "39828915",
+        "doi": "10.1097/AUD.0000000000001625"
+      },
+      {
+        "title": "NEUROBEHAVIORAL OUTCOMES IMMEDIATELY FOLLOWING A DAYTIME SLEEP OPPORTUNITY WITH PINK NOISE",
+        "first_author": "Hilditch",
+        "year": 2025,
+        "doi": "10.1093/sleep/zsaf090.0246"
+      },
+      {
+        "title": "IMPACT AND EFFICACY OF SOUND MACHINE ON SLEEP IN HOSPITALIZED ADULTS: A SYSTEMATIC REVIEW",
+        "first_author": "Khandelwal",
+        "year": 2025,
+        "doi": "10.1002/jhm.70025"
+      },
+      {
+        "title": "White Noise Exposure During Sleep in Infants and Children: How Much is too Much?",
+        "first_author": "Beal",
+        "year": 2025,
+        "pmid": "39998280",
+        "doi": "10.1097/NMC.0000000000001076"
+      },
+      {
+        "title": "Effect of Night-Time Noise Control Combined with Detailed Nursing on Negative Emotions and Sleep Quality in Patients with Upper Gastrointestinal Bleeding",
+        "first_author": "Yu",
+        "year": 2025,
+        "pmid": "40298060",
+        "doi": "10.4103/nah.nah_125_24"
+      },
+      {
+        "title": "Factors Contributing to Sleep Disturbance in Inpatients with Cancer: A Cross-sectional Study",
+        "first_author": "Cabrera-Jaime",
+        "year": 2025,
+        "pmid": "40327552",
+        "doi": "10.1097/NCC.0000000000001513"
+      },
+      {
+        "title": "The Acute Effects of Wind Farm Versus Road Traffic Noise Onset on Electroencephalographically Defined Arousal From Sleep: Findings From an In-Laboratory Randomised Controlled Trial",
+        "first_author": "Lechat",
+        "year": 2025,
+        "pmid": "41122981",
+        "doi": "10.1111/jsr.70227"
+      },
+      {
+        "title": "Individual-level noise exposure and its association with sleep quality and duration: A cross-sectional study using real-time data",
+        "first_author": "Li",
+        "year": 2024,
+        "pmid": "39447902",
+        "doi": "10.1016/j.scitotenv.2024.177047"
+      },
+      {
+        "title": "Noise-induced sleep disruption reduces myocardial perfusion and impairs cardiac function in mice",
+        "first_author": "Gouwens",
+        "year": 2024,
+        "doi": "10.1161/circ.150.suppl_1.4141803"
+      },
+      {
+        "title": "Effects of White Noise Intervention on Sleep Quality and Immunological Indicators of Patients with Breast Cancer Undergoing Neoadjuvant Chemotherapy",
+        "first_author": "Yin",
+        "year": 2024,
+        "pmid": "39787561",
+        "doi": "10.4103/nah.nah_111_24"
+      },
+      {
+        "title": "Effect of the Levels and Sources of Noise on the Sleep Quality of Conscious Patients in Emergency Intensive Care Unit",
+        "first_author": "Yang",
+        "year": 2024,
+        "pmid": "39787549",
+        "doi": "10.4103/nah.nah_83_24"
+      },
+      {
+        "title": "The Effect ofWard Level Noise On Anxiety and Sleep In An Inpatient Population Aged Greater Than 65 Years Old",
+        "first_author": "Morris",
+        "year": 2024,
+        "doi": "10.1093/ageing/afae178.342"
+      },
+      {
+        "title": "Sleep Environmental Factors (SEF) measure light, noise, temperature, comfort, electronic devices and their influence on a person's sleep",
+        "first_author": "Pires",
+        "year": 2024,
+        "doi": "10.1111/jsr.14293"
+      },
+      {
+        "title": "The effects of blue light on sleep with the exposure to white noise and ambient sounds in foundation year university students",
+        "first_author": "Hou",
+        "year": 2024,
+        "doi": "10.1111/jsr.14291"
+      },
+      {
+        "title": "Association Between Perceived Noise Pollution and Sleep Quality: Findings from the 2018 Community Health Survey",
+        "first_author": "Lee",
+        "year": 2024,
+        "pmid": "39345075",
+        "doi": "10.4103/nah.nah_42_24"
+      },
+      {
+        "title": "Effects of Ward Night Noise Management in the Context of Enhanced Recovery After Surgery on Postoperative Sleep Quality, Anxiety, and Hormone Levels of Thoracic Surgery Patients with Lung Cancer",
+        "first_author": "Wang",
+        "year": 2024,
+        "pmid": "39345065",
+        "doi": "10.4103/nah.nah_25_24"
+      },
+      {
+        "title": "Cortical evoked activity is modulated by the sleep state in a ferret model of tinnitus. A case study",
+        "first_author": "Milinski",
+        "year": 2024,
+        "doi": "10.1101/2024.05.12.593782"
+      },
+      {
+        "title": "The effects of massage therapy and white noise application on premature infants’ sleep",
+        "first_author": "Düken",
+        "year": 2024,
+        "pmid": "37806925",
+        "doi": "10.1016/j.explore.2023.09.002"
+      },
+      {
+        "title": "Impacts of Different Noise Environments on Polysomnographic Monitoring Parameters and Sleep Quality Among Hospitalized Patients",
+        "first_author": "Chen",
+        "year": 2024,
+        "pmid": "38904810",
+        "doi": "10.4103/nah.nah_12_24"
+      },
+      {
+        "title": "Effects of Nighttime Noise Management in Intensive Care Units on Hormone Levels and Sleep Quality in Conscious Patients",
+        "first_author": "Zhang",
+        "year": 2024,
+        "pmid": "38904821",
+        "doi": "10.4103/nah.nah_55_24"
+      },
+      {
+        "title": "Spontaneous pain dynamics characterized by stochasticity in awake human LFP with chronic pain",
+        "first_author": "Ryu",
+        "year": 2024,
+        "doi": "10.1101/2024.02.22.581655"
+      },
+      {
+        "title": "Noise-induced sleep disruption from wind turbines: scientific updates and acoustical standards",
+        "first_author": "Ellenbogen",
+        "year": 2024,
+        "pmid": "37942938",
+        "doi": "10.1093/sleep/zsad286"
+      },
+      {
+        "title": "Novel metabolic disturbance following noise-induced sleep fragmentation: a pilot study",
+        "first_author": "Smith",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.343"
+      },
+      {
+        "title": "Neighborhood noise and child sleep: insights from objective sleep data",
+        "first_author": "Thakur",
+        "year": 2024,
+        "doi": "10.1016/j.sleep.2023.11.341"
+      },
+      {
+        "title": "Effects of long-term noise exposure during sleep on liver circadian clock and lipid metabolism",
+        "first_author": "Zhang",
+        "year": 2024,
+        "doi": "10.11836/JEOM23189"
+      },
+      {
+        "title": "Effects of long-term noise exposure during sleep on cognitive function and biological clock-re-lated mechanisms in mice",
+        "first_author": "Fu",
+        "year": 2024,
+        "doi": "10.11836/JEOM23198"
+      },
+      {
+        "title": "Sleep and circadian disruptors: Unhealthy noise and light levels for hospitalized pediatric patients",
+        "first_author": "Fidler",
+        "year": 2023,
+        "pmid": "37779507",
+        "doi": "10.1002/jhm.13218"
+      },
+      {
+        "title": "Wireless electrocochleography in awake chinchillas: a model to study multimodal modulations at the peripheral level",
+        "first_author": "Pérez-Valenzuela",
+        "year": 2023,
+        "doi": "10.1101/2023.10.04.560827"
+      },
+      {
+        "title": "Effect of White Noise Intervention Combined with Multi-dimensional Nursing Mode on Sleep Quality and Incidence of Nosocomial Infection in Patients Undergoing Hip Replacement",
+        "first_author": "Tian",
+        "year": 2023,
+        "pmid": "38358237",
+        "doi": "10.4103/nah.nah_32_23"
+      },
+      {
+        "title": "The maturation of aperiodic EEG activity across development reveals a progressive differentiation of wakefulness from sleep",
+        "first_author": "Favaro",
+        "year": 2023,
+        "pmid": "37399931",
+        "doi": "10.1016/j.neuroimage.2023.120264"
+      },
+      {
+        "title": "Trigger Factors of Migraine in Patients Attending Headache and Neurology Outpatient Clinics at Ain Shams University Hospitals",
+        "first_author": "Elguindy",
+        "year": 2023,
+        "doi": "10.1093/qjmed/hcad069.275"
+      },
+      {
+        "title": "Outdoor residential noise exposure and sleep in preadolescents from two European birth cohorts",
+        "first_author": "Pérez-Crespo",
+        "year": 2023,
+        "pmid": "36805354",
+        "doi": "10.1016/j.envres.2023.115502"
+      },
+      {
+        "title": "Association between indoor noise level at night and objective/subjective sleep quality in the older population: a cross-sectional study of the HEIJO-KYO cohort",
+        "first_author": "Yamagami",
+        "year": 2023,
+        "pmid": "36708171",
+        "doi": "10.1093/sleep/zsac197"
+      },
+      {
+        "title": "Overnight exposure to pink noise could jeopardize sleep-dependent insight and pattern detection",
+        "first_author": "Vickrey",
+        "year": 2023,
+        "doi": "10.3389/fnhum.2023.1302836"
+      },
+      {
+        "title": "Effect of the sound of the mother's heartbeat combined with white noise on heart rate, weight, and sleep in premature infants: a retrospective comparative cohort study",
+        "first_author": "Zhang",
+        "year": 2023,
+        "pmid": "36747385",
+        "doi": "10.21037/apm-22-1269"
+      },
+      {
+        "title": "IMPROVING PATIENT AND PARENT SLEEP IN HOSPITAL - EARS TO KEEPING THE NOISE DOWN",
+        "first_author": "Mclellan",
+        "year": 2023,
+        "doi": "10.1136/bmjresp-2023-BSSconf.42"
+      },
+      {
+        "title": "Investigating the combined effect of ALAN and noise on sleep by simultaneous real-time monitoring using low-cost smartphone devices",
+        "first_author": "Gabinet",
+        "year": 2022,
+        "pmid": "35931188",
+        "doi": "10.1016/j.envres.2022.113941"
+      },
+      {
+        "title": "Acute Exposure to Simulated Nocturnal Train Noise Leads to Impaired Sleep Quality and Endothelial Dysfunction in Young Healthy Men and Women: A Sex-Specific Analysis",
+        "first_author": "Hahad",
+        "year": 2022,
+        "pmid": "36360723",
+        "doi": "10.3390/ijerph192113844"
+      },
+      {
+        "title": "Impact of a white noise app on sleep quality among critically ill patients",
+        "first_author": "Warjri",
+        "year": 2022,
+        "pmid": "34931413",
+        "doi": "10.1111/nicc.12742"
+      },
+      {
+        "title": "Environmental Influences on Sleep in the California Teachers Study Cohort",
+        "first_author": "Zhong",
+        "year": 2022,
+        "pmid": "34613370",
+        "doi": "10.1093/aje/kwab246"
+      },
+      {
+        "title": "Noisy neuronal populations effectively encode sound localization in the dorsal inferior colliculus of awake mice",
+        "first_author": "Boffi",
+        "year": 2022,
+        "doi": "10.1101/2022.08.19.504510"
+      },
+      {
+        "title": "Noise Levels and Sleep in a Surgical ICU",
+        "first_author": "Guisasola-Rabes",
+        "year": 2022,
+        "doi": "10.3390/jcm11092328"
+      },
+      {
+        "title": "Noise levels in the dialysis unit and its relationship with sleep quality and anxiety in patients receiving HD: A pilot study",
+        "first_author": "Ok",
+        "year": 2022,
+        "pmid": "34995012",
+        "doi": "10.1111/1744-9987.13794"
+      },
+      {
+        "title": "The effect of wind turbine noise on polysomnographically measured and self-reported sleep latency in wind turbine noise naïve participants",
+        "first_author": "Liebich",
+        "year": 2022,
+        "pmid": "34865147",
+        "doi": "10.1093/sleep/zsab283"
+      },
+      {
+        "title": "Sleep Quality Index and Factors Influencing Sleep of Patients in Tertiary Care Hospital: A Cross-Sectional Study",
+        "first_author": "Singh",
+        "year": 2021,
+        "doi": "10.1007/s41782-021-00157-1"
+      },
+      {
+        "title": "Effects of background noise on auditory response characteristics of primary auditory cortex neurons in awake mice",
+        "first_author": "Song",
+        "year": 2021,
+        "pmid": "34916193",
+        "doi": "10.12122/j.issn.1673-4254.2021.11.11"
+      },
+      {
+        "title": "The effects of white noise on sleep and duration in individuals living in a high noise environment in New York City",
+        "first_author": "Ebben",
+        "year": 2021,
+        "pmid": "34049045",
+        "doi": "10.1016/j.sleep.2021.03.031"
+      },
+      {
+        "title": "The effect of white noise on high school students’ sleep quality at Unit B of Rajawali Girls Dormitory Makassar",
+        "first_author": "Umbas",
+        "year": 2021,
+        "doi": "10.1016/j.mcpsp.2021.100209"
+      },
+      {
+        "title": "Effects of co-exposure to 900MHz radiofrequency electromagnetic fields and high-level noise on sleep, weight, and food intake parameters in juvenile rats",
+        "first_author": "Bosquillon",
+        "year": 2020,
+        "pmid": "31706765",
+        "doi": "10.1016/j.envpol.2019.113461"
+      },
+      {
+        "title": "Age attenuates noise and increases symmetry of head movements during sleep resting-state fMRI in healthy neonates, infants, and toddlers",
+        "first_author": "Denisova",
+        "year": 2019,
+        "pmid": "31102945",
+        "doi": "10.1016/j.infbeh.2019.03.008"
+      },
+      {
+        "title": "Sex-dependent effects of suvorexant on sleep fragmentation during sleep disruption due to noise exposure",
+        "first_author": "Coborn",
+        "year": 2019,
+        "doi": "10.1093/sleep/zsz067.056"
+      },
+      {
+        "title": "Sleep quality and noise: Comparisons between hospital and home settings",
+        "first_author": "Bevan",
+        "year": 2019,
+        "pmid": "30018067",
+        "doi": "10.1136/archdischild-2018-315168"
+      },
+      {
+        "title": "Wind turbine noise and sleep: Pilot studies on the influence of noise characteristics",
+        "first_author": "Morsing",
+        "year": 2018,
+        "pmid": "30453618",
+        "doi": "10.3390/ijerph15112573"
+      },
+      {
+        "title": "Noise in the intensive care unit and its influence on sleep quality: A multicenter observational study in Dutch intensive care units",
+        "first_author": "Simons",
+        "year": 2018,
+        "pmid": "30290829",
+        "doi": "10.1186/s13054-018-2182-y"
+      },
+      {
+        "title": "Noise levels in Adult Critical Care Unit (CCU) and Achieving a Better Sleeping Pattern for Patients",
+        "first_author": "Ribeiro",
+        "year": 2018,
+        "doi": "10.1177/1751143718772957"
+      },
+      {
+        "title": "Effect of noise tolerance on non-restorative sleep: A population-based study in Hong Kong",
+        "first_author": "Fong",
+        "year": 2018,
+        "pmid": "29530913",
+        "doi": "10.1136/bmjopen-2017-020518"
+      },
+      {
+        "title": "Relationship between the dose of noise exposure with sleep quality and noise annoyance in industrial workers",
+        "first_author": "Beheshti",
+        "year": 2018,
+        "doi": "10.5958/0974-360X.2018.00838.7"
+      },
+      {
+        "title": "Balanced noise-evoked excitation and inhibition in awake mice CA3",
+        "first_author": "Wang",
+        "year": 2017,
+        "doi": "10.3389/fphys.2017.00931"
+      },
+      {
+        "title": "Intervention to reduce the impact of light and noise on sleep in an emergency department observation area",
+        "first_author": "Ordozgoiti",
+        "year": 2017,
+        "pmid": "28825267"
+      },
+      {
+        "title": "Noise and sleep in the ICU: A prospective multinational observational study",
+        "first_author": "Litton",
+        "year": 2016,
+        "doi": "10.1097/01.ccm.0000509212.61198.e5"
+      },
+      {
+        "title": "The effect of room acoustics on the sleep quality of healthy sleepers",
+        "first_author": "Fietze",
+        "year": 2016,
+        "pmid": "27762252",
+        "doi": "10.4103/1463-1741.192480"
+      },
+      {
+        "title": "A Case Study of the Environmental Experience of a Hospitalized Newborn Infant With Complex Congenital Heart Disease",
+        "first_author": "Daniels",
+        "year": 2016,
+        "pmid": "26035279",
+        "doi": "10.1097/JCN.0000000000000273"
+      },
+      {
+        "title": "Effects of wind turbine noise on self-reported and objective measures of sleep",
+        "first_author": "Michaud",
+        "year": 2016,
+        "pmid": "26518593",
+        "doi": "10.5665/sleep.5326"
+      },
+      {
+        "title": "The effect of wind turbine noise on sleep and quality of life: A systematic review and meta-analysis of observational studies",
+        "first_author": "Onakpoya",
+        "year": 2015,
+        "pmid": "25982992",
+        "doi": "10.1016/j.envint.2015.04.014"
+      },
+      {
+        "title": "Noise levels in the PICU and staff perception regarding effect of noise exposure on sleep quality",
+        "first_author": "Tripathi",
+        "year": 2014,
+        "doi": "10.1097/01.ccm.0000458301.54861.01"
+      },
+      {
+        "title": "Sleep quality in hospitalized medical patients: Influence of light, noise, and switch to daylight saving time",
+        "first_author": "Bano",
+        "year": 2014,
+        "doi": "10.1111/jsr.12213"
+      },
+      {
+        "title": "Inter-individual differences in the effects of night-time noise exposure on sleep and cognitive performance during daytime",
+        "first_author": "Clark",
+        "year": 2014,
+        "doi": "10.1111/jsr.12213"
+      },
+      {
+        "title": "Reduction of intensive care unit (ICU) simulated noise's effect on the nap by earplugs",
+        "first_author": "Nakai",
+        "year": 2014,
+        "doi": "10.1111/jsr.12213"
+      },
+      {
+        "title": "What Turns on a Migraine? A Systematic Review of Migraine Precipitating Factors",
+        "first_author": "Peroutka",
+        "year": 2014,
+        "doi": "10.1007/s11916-014-0454-z"
+      },
+      {
+        "title": "Effect of nocturnal road traffic noise exposure and annoyance on objective and subjective sleep quality",
+        "first_author": "Frei",
+        "year": 2014,
+        "pmid": "23684342",
+        "doi": "10.1016/j.ijheh.2013.04.003"
+      },
+      {
+        "title": "Quiet at night: Implementing a nightingale principle",
+        "first_author": "Murphy",
+        "year": 2013,
+        "pmid": "24284585",
+        "doi": "10.1097/01.NAJ.0000438871.60154.a8"
+      },
+      {
+        "title": "Sleep fragmentation and deprivation in critically ill patients-Is noise a factor?",
+        "first_author": "Nannapaneni",
+        "year": 2013,
+        "doi": "10.1016/j.sleep.2013.11.520"
+      },
+      {
+        "title": "Moderate acoustic changes can disrupt the sleep of very preterm infants in their incubators",
+        "first_author": "Kuhn",
+        "year": 2013,
+        "pmid": "23800026",
+        "doi": "10.1111/apa.12330"
+      },
+      {
+        "title": "Assessment of noise and quality of sleep in ICU using the modified richard campbell sleep questionnaire: A survey of patients' perception and experience in ICU",
+        "first_author": "Shyamsundar",
+        "year": 2013,
+        "doi": "10.1007/s00134-013-3095-5"
+      },
+      {
+        "title": "Enhanced awakening probability of repetitive impulse sounds",
+        "first_author": "Vos",
+        "year": 2013,
+        "pmid": "23967934",
+        "doi": "10.1121/1.4817923"
+      },
+      {
+        "title": "The effect of Intensive Care Unit reproduced noise on thenap",
+        "first_author": "Mandai",
+        "year": 2012,
+        "doi": "10.1111/j.1365-2869.2012.01044.x"
+      },
+      {
+        "title": "Cohort study on the effect of objective road traffic noise and noise annoyance on subjective and objective sleep quality",
+        "first_author": "Frei",
+        "year": 2012,
+        "doi": "10.1097/01.ede.0000417260.34450.17"
+      },
+      {
+        "title": "Pink noise: Effect on complexity synchronization of brain activity and sleep consolidation",
+        "first_author": "Zhou",
+        "year": 2012,
+        "pmid": "22726808",
+        "doi": "10.1016/j.jtbi.2012.04.006"
+      },
+      {
+        "title": "Examining nocturnal railway noise and aircraft noise in the field: Sleep, psychomotor performance, and annoyance",
+        "first_author": "Elmenhorst",
+        "year": 2012,
+        "pmid": "22444069",
+        "doi": "10.1016/j.scitotenv.2012.02.024"
+      },
+      {
+        "title": "Hospital noise puts patients at risk.",
+        "first_author": "Wallis",
+        "year": 2012,
+        "pmid": "22456556"
+      },
+      {
+        "title": "Effect of sleep-inducing music on sleep in persons with percutaneous transluminal coronary angiography in the cardiac care unit",
+        "first_author": "Ryu",
+        "year": 2012,
+        "pmid": "22082250",
+        "doi": "10.1111/j.1365-2702.2011.03876.x"
+      },
+      {
+        "title": "Influence of environmental noise on sleep quality and sleeping disorders-implications for health",
+        "first_author": "Kohlhuber",
+        "year": 2011,
+        "pmid": "22116482",
+        "doi": "10.1007/s00103-011-1370-6"
+      },
+      {
+        "title": "Association between hospital noise levels and inpatient sleep among middle-aged and older adults: Far from a quiet night",
+        "first_author": "Yoder",
+        "year": 2011,
+        "doi": "10.1002/jhm.920"
+      },
+      {
+        "title": "Efficacy of controlling night-time noise and activities to improve patients' sleep quality in a surgical intensive care unit",
+        "first_author": "Li",
+        "year": 2011,
+        "pmid": "21219521",
+        "doi": "10.1111/j.1365-2702.2010.03507.x"
+      },
+      {
+        "title": "Spontaneous brain rhythms predict sleep stability in the face of noise",
+        "first_author": "Dang-Vu",
+        "year": 2010,
+        "pmid": "20692606",
+        "doi": "10.1016/j.cub.2010.06.032"
+      },
+      {
+        "title": "The state of the art of predicting noise-induced sleep disturbance in field settings.",
+        "first_author": "Fidell",
+        "year": 2010,
+        "pmid": "20472953",
+        "doi": "10.4103/1463-1741.63207"
+      },
+      {
+        "title": "Filtering out the noise: evaluating the impact of noise and sound reduction strategies on sleep quality for ICU patients.",
+        "first_author": "Bosma",
+        "year": 2009,
+        "pmid": "19519943"
+      },
+      {
+        "title": "Creating a therapeutic environment: A non-randomised controlled trial of a quiet time intervention for patients in acute care",
+        "first_author": "Gardner",
+        "year": 2009,
+        "pmid": "19167711",
+        "doi": "10.1016/j.ijnurstu.2008.12.009"
+      },
+      {
+        "title": "Aircraft noise effects on sleep: A systematic comparison of EEG awakenings and automatically detected cardiac activations",
+        "first_author": "Basner",
+        "year": 2008,
+        "pmid": "18756029",
+        "doi": "10.1088/0967-3334/29/9/007"
+      },
+      {
+        "title": "Effects of nocturnal railway noise on subjective ratings of sleep and subsequent cognitive performance",
+        "first_author": "Bonnefond",
+        "year": 2008,
+        "doi": "10.1007/s11818-008-0339-7"
+      },
+      {
+        "title": "Sleep quality in a hospital and effects of noise",
+        "first_author": "Fietze",
+        "year": 2008,
+        "doi": "10.1007/s11818-008-0343-y"
+      },
+      {
+        "title": "More attention must be paid to sleep.",
+        "first_author": "Baldock",
+        "year": 2004,
+        "pmid": "15198098"
+      },
+      {
+        "title": "Effect of occupational noise on the nocturnal sleep architecture of healthy subjects",
+        "first_author": "Gitanjali",
+        "year": 2004,
+        "pmid": "15270371"
+      },
+      {
+        "title": "Effect of occupational noise on the nocturnal sleep architecture of healthy subjects",
+        "first_author": "Gitanjali",
+        "year": 2003,
+        "pmid": "15266953"
+      },
+      {
+        "title": "Redesigning nighttime care for personal care residents.",
+        "first_author": "O'Rourke",
+        "year": 2001,
+        "pmid": "11817458",
+        "doi": "10.3928/0098-9134-20010701-10"
+      },
+      {
+        "title": "Observation on sleep improvement under noise environment by wearing earplugs",
+        "first_author": "Li",
+        "year": 1998,
+        "pmid": "11543230"
+      },
+      {
+        "title": "Noise and the quality of sleep in two hospitals in the city of Belo Horizonte, Brazil.",
+        "first_author": "Pimentel-Souza",
+        "year": 1996,
+        "pmid": "8736118"
+      },
+      {
+        "title": "Reducing the effects of noise in hospital.",
+        "first_author": "Haddock",
+        "year": 1994,
+        "pmid": "8080781",
+        "doi": "10.7748/ns.8.43.25.s43"
+      },
+      {
+        "title": "Effect of some factors on sleep polygraphic parameters and subjective evaluations of sleep",
+        "first_author": "Sato",
+        "year": 1993,
+        "pmid": "8495675",
+        "doi": "10.1006/enrs.1993.1078"
+      },
+      {
+        "title": "An analysis of relationships among environmental noise, annoyance and sensitivity to noise, and the consequences for health and sleep",
+        "first_author": "Nivison",
+        "year": 1993,
+        "pmid": "8350341"
+      },
+      {
+        "title": "Implementation of a quiet hour: effect on noise levels and infant sleep states.",
+        "first_author": "Strauch",
+        "year": 1993,
+        "pmid": "8446079"
+      },
+      {
+        "title": "Cardiovascular responses and electroencephalogram disturbances to intermittent noises: Effects of nocturnal heat and daytime exposure",
+        "first_author": "Bach",
+        "year": 1991,
+        "pmid": "1773808"
+      },
+      {
+        "title": "Relative and combined effects of heat and noise exposure on sleep in humans",
+        "first_author": "Libert",
+        "year": 1991,
+        "pmid": "1811316",
+        "doi": "10.1093/sleep/14.1.24"
+      },
+      {
+        "title": "Lullabye and not a good night?",
+        "first_author": "Walgenbach",
+        "year": 1990,
+        "pmid": "1965969"
+      },
+      {
+        "title": "The effects of noise on sleep",
+        "first_author": "Muzet",
+        "year": 1989,
+        "pmid": "2534742"
+      },
+      {
+        "title": "Evaluation of afternoon sleep of children in nurseries and nursery schools with different acoustic conditions",
+        "first_author": "Koszarny",
+        "year": 1989,
+        "pmid": "2617057"
+      },
+      {
+        "title": "Effects of noise on sleep. Part 1. Development of an automatic analysing system for all-night sleep polygraphy by microcomputer",
+        "first_author": "Aoki",
+        "year": 1989,
+        "pmid": "2746977",
+        "doi": "10.1265/jjh.43.1092"
+      },
+      {
+        "title": "The influence of road traffic noise on sleep",
+        "first_author": "Eberhardt",
+        "year": 1988,
+        "doi": "10.1016/0022-460X(88)90369-0"
+      },
+      {
+        "title": "Low frequency noise in lorries and correlated effects on drivers",
+        "first_author": "Landstrom",
+        "year": 1988,
+        "doi": "10.1177/026309238800700303"
+      },
+      {
+        "title": "Study on the effects of infra- and low frequency sound on the sleep by EEG recording",
+        "first_author": "Inaba",
+        "year": 1988,
+        "doi": "10.1177/026309238800700103"
+      },
+      {
+        "title": "Effects of daytime noise load on the sleep-wake cycle and endocrine patterns in man. III. 24 hours secretion of free and sulfate conjugated catecholamines.",
+        "first_author": "Fruhstorfer",
+        "year": 1988,
+        "pmid": "3215733"
+      },
+      {
+        "title": "Effects of triazolam on heart rate level and on phasic cardiac response to noise during sleep",
+        "first_author": "Libert",
+        "year": 1988,
+        "pmid": "3148145"
+      },
+      {
+        "title": "Effects of daytime noise load on the sleep-wake cycle and endocrine patterns in man: I. 24 hours neurophysiological data.",
+        "first_author": "Fruhstorfer",
+        "year": 1988,
+        "pmid": "3410639"
+      },
+      {
+        "title": "Effects of daytime noise load on the sleep-wake cycle and endocrine patterns in man: II. 24 hours secretion of anterior and posterior pituitary hormones and of cortisol.",
+        "first_author": "Fruhstorfer",
+        "year": 1988,
+        "pmid": "3410640"
+      },
+      {
+        "title": "Control of masseter muscle tension during sleep",
+        "first_author": "O'Rourke",
+        "year": 1987,
+        "pmid": "3447634",
+        "doi": "10.1016/0301-0511(87)90064-0"
+      },
+      {
+        "title": "Noise, vibration and changes in wakefulness during helicopter flight",
+        "first_author": "Landstrom",
+        "year": 1987,
+        "pmid": "3827785"
+      },
+      {
+        "title": "Noise and sleep at home, a field study on primary and after-effects",
+        "first_author": "Griefahn",
+        "year": 1986,
+        "doi": "10.1016/0022-460X(86)90166-5"
+      },
+      {
+        "title": "Changes in wakefulness during exposure to noise at 42 Hz, 1000 Hz and individual EEG frequencies",
+        "first_author": "Landstrom",
+        "year": 1985,
+        "doi": "10.1177/026309238500400103"
+      },
+      {
+        "title": "The effect of critical care unit noise on patient sleep cycles",
+        "first_author": "Snyder-Halpern",
+        "year": 1985,
+        "pmid": "10270047"
+      },
+      {
+        "title": "Influence of triazolam on thermal heat balance in poor sleepers",
+        "first_author": "Libert",
+        "year": 1984,
+        "pmid": "6149940",
+        "doi": "10.1007/BF00544042"
+      },
+      {
+        "title": "Sleep disturbance due to transportation noise: ear plugs vs oral drugs",
+        "first_author": "Vallet",
+        "year": 1984,
+        "pmid": "6723904"
+      },
+      {
+        "title": "The behavioral effects of noise on man: The patient with 'intensive care unit psychosis'",
+        "first_author": "Hansell",
+        "year": 1984,
+        "pmid": "6559186"
+      },
+      {
+        "title": "Alterations of sleep stage patterns in humans and carry-over effects under estazolam. 1st comm.: Effects of estazolam on sleep disturbed by jet fly-over noise",
+        "first_author": "Ehrenstein",
+        "year": 1982,
+        "pmid": "6123332"
+      },
+      {
+        "title": "Traffic noise-induced sleep disturbances and their correction by an anxiolytic sedative, OX-373",
+        "first_author": "Saletu",
+        "year": 1981,
+        "pmid": "6118840",
+        "doi": "10.1159/000117865"
+      },
+      {
+        "title": "Effects of noise and psychologic factors on sleep of female patients in hospitals",
+        "first_author": "De",
+        "year": 1980,
+        "doi": "10.1016/0003-682X(80)90050-X"
+      },
+      {
+        "title": "Pictures in nursing: silent night?",
+        "first_author": "Hopkins",
+        "year": 1980,
+        "pmid": "6904908"
+      },
+      {
+        "title": "Stability of SVR with white noise during sleep",
+        "first_author": "Itabashi",
+        "year": 1980,
+        "doi": "10.4295/audiology.23.50"
+      },
+      {
+        "title": "Rapporteur's report, Session 6: Community response to noise; criteria, effect on sleep",
+        "first_author": "Rylander",
+        "year": 1979,
+        "doi": "10.1016/0022-460X(79)90872-1"
+      },
+      {
+        "title": "Effect of train noise on sleep for people living in houses bordering the railway line",
+        "first_author": "Vernet",
+        "year": 1979,
+        "doi": "10.1016/0022-460X(79)90869-1"
+      },
+      {
+        "title": "Studies on the effect of outside noise on the afternoon sleep of children in nursery schools",
+        "first_author": "Havránek",
+        "year": 1979,
+        "pmid": "433350"
+      },
+      {
+        "title": "EEG-responses caused by environmental noise during sleep. Their relationship to exogenic and endogenic influences",
+        "first_author": "Griefahn",
+        "year": 1978,
+        "pmid": "705330"
+      },
+      {
+        "title": "Model insomnia, noise and methylphenidate, used for the evaluation of hypnotic drugs",
+        "first_author": "Okuma",
+        "year": 1978,
+        "pmid": "206923",
+        "doi": "10.1007/BF00426876"
+      },
+      {
+        "title": "Disturbance of sleep by noise",
+        "first_author": "Thiessen",
+        "year": 1978,
+        "pmid": "711996",
+        "doi": "10.1121/1.381964"
+      },
+      {
+        "title": "Arousal from sleep: the physiological and subjective effects of a 15 dB(A) reduction in aircraft flyover noise",
+        "first_author": "LeVere",
+        "year": 1977,
+        "pmid": "196586"
+      },
+      {
+        "title": "The problem of habituation to noise during sleep",
+        "first_author": "Griefahn",
+        "year": 1977,
+        "pmid": "878655"
+      },
+      {
+        "title": "Study of recovery and the post anaesthetic period",
+        "first_author": "Kurtz",
+        "year": 1977,
+        "pmid": "905619"
+      },
+      {
+        "title": "Sleep loss, noise and decisions",
+        "first_author": "Hartley",
+        "year": 1977,
+        "pmid": "590245"
+      },
+      {
+        "title": "Experimental studies of the effects of Seda Kneipp on the sleep of sleep disturbed subjects; implications for the treatment of different sleep disturbances",
+        "first_author": "Mueller",
+        "year": 1977,
+        "pmid": "196167"
+      },
+      {
+        "title": "Neurophysiologic studies of welders in shipbuilding work",
+        "first_author": "Petersen",
+        "year": 1976,
+        "pmid": "939214",
+        "doi": "10.1016/0013-9351(76)90080-3"
+      },
+      {
+        "title": "Human sleep modifications induced by urban traffic noise",
+        "first_author": "Bergamasco",
+        "year": 1976,
+        "pmid": "187002"
+      },
+      {
+        "title": "Characteristics of the sleep of men in simulated space flights",
+        "first_author": "Myasnikov",
+        "year": 1975,
+        "pmid": "167706"
+      },
+      {
+        "title": "Noise and sleeping behaviour of kindergarten children",
+        "first_author": "Borris",
+        "year": 1975,
+        "pmid": "1229207"
+      },
+      {
+        "title": "Annoyance of aircraft noise in the closest proximity of the Warszawa Okecie airport (Polish)",
+        "first_author": "Koszarny",
+        "year": 1975,
+        "pmid": "1114289"
+      },
+      {
+        "title": "A criteria for detecting the evoked response of young children during sleep (Japanese)",
+        "first_author": "Onishi",
+        "year": 1975,
+        "doi": "10.4295/audiology.18.189"
+      },
+      {
+        "title": "Changes of pulse rate caused by sonic booms during sleep",
+        "first_author": "Griefahn",
+        "year": 1975,
+        "pmid": "1201745"
+      },
+      {
+        "title": "Noise and sleep: a literature review and a proposed criterion for assessing effect",
+        "first_author": "Lukas",
+        "year": 1975,
+        "pmid": "1206157",
+        "doi": "10.1121/1.380805"
+      },
+      {
+        "title": "Disturbance of sleep by sonic booms.",
+        "first_author": "Griefahn",
+        "year": 1975,
+        "pmid": "1145178"
+      },
+      {
+        "title": "The effect of white noise on the somatosensory evoked response in sleeping newborn infants",
+        "first_author": "Wolff",
+        "year": 1974,
+        "doi": "10.1016/0013-4694(74)90030-3"
+      },
+      {
+        "title": "Noise stimuli in the acute care area",
+        "first_author": "Woods",
+        "year": 1974,
+        "pmid": "4493666"
+      },
+      {
+        "title": "The effect of white noise on the somatosensory evoked response in sleeping newborn infants",
+        "first_author": "Wolff",
+        "year": 1974,
+        "doi": "10.1016/0013-4694(74)90030-3"
+      },
+      {
+        "title": "White noise as a pretest sensitizer for neonatal hearing screening",
+        "first_author": "Mencher",
+        "year": 1974,
+        "pmid": "1131121"
+      },
+      {
+        "title": "Prolonged exposure to intermittent noise: audiometric, biochemical, motor, psychological and sleep effects.",
+        "first_author": "Cantrell",
+        "year": 1974,
+        "pmid": "4422946"
+      },
+      {
+        "title": "The effect of white noise on the somatosensory evoked response in sleeping newborn infants.",
+        "first_author": "Wolff",
+        "year": 1974,
+        "pmid": "4137259"
+      },
+      {
+        "title": "Effects of noise on people",
+        "first_author": "Miller",
+        "year": 1974,
+        "pmid": "4418709",
+        "doi": "10.1121/1.1903322"
+      },
+      {
+        "title": "Calculating the hearing threshold from the stapedius reflex threshold for different sound stimuli",
+        "first_author": "Niemeyer",
+        "year": 1974,
+        "pmid": "4412282"
+      },
+      {
+        "title": "Sonic booms and sleep: affect change as a function of age",
+        "first_author": "Smith",
+        "year": 1973,
+        "pmid": "4715081"
+      },
+      {
+        "title": "Effects of repeated simulated sonic booms of 1.0 PSF on the sleep behavior of young and old subjects.",
+        "first_author": "Collins",
+        "year": 1973,
+        "pmid": "4355296"
+      },
+      {
+        "title": "Human reactions after sonic boom exposure--experience from Swedish field studies",
+        "first_author": "Rylander",
+        "year": 1973,
+        "pmid": "4735388"
+      },
+      {
+        "title": "Unquiet rest.",
+        "year": 1972,
+        "pmid": "5077904"
+      },
+      {
+        "title": "The effect of noise during sleep on the sleep patterns of different age groups.",
+        "first_author": "Roth",
+        "year": 1972,
+        "pmid": "5042899"
+      },
+      {
+        "title": "Effects of aircraft noise on human sleep.",
+        "first_author": "Lukas",
+        "year": 1972,
+        "pmid": "4346303"
+      },
+      {
+        "title": "Electroencephalographic and behavioral effects of nocturnally occurring jet aircraft sounds.",
+        "first_author": "LeVere",
+        "year": 1972,
+        "pmid": "5045437"
+      },
+      {
+        "title": "The effects of continuous, high intensity, white noise on the human sleep cycle.",
+        "first_author": "Scott",
+        "year": 1972,
+        "pmid": "4336955"
+      },
+      {
+        "title": "The effects of the environment upon state cycles in the human newborn.",
+        "first_author": "Ashton",
+        "year": 1971,
+        "pmid": "5119985"
+      },
+      {
+        "title": "Ear stopples. A defense against snoring.",
+        "first_author": "Boulware",
+        "year": 1970,
+        "pmid": "5449192"
+      },
+      {
+        "title": "Snoring: theory of compensative resortia.",
+        "first_author": "Boulware",
+        "year": 1968,
+        "pmid": "5726545"
+      },
+      {
+        "title": "Noise measurement in a children's hospital and the awaking noise threshold of infant",
+        "first_author": "Gädeke",
+        "year": 1968,
+        "pmid": "5718320"
+      },
+      {
+        "title": "The EEG and the impairment of sleep by traffic noise during the night: a problem of preventive medicine.",
+        "first_author": "Richter",
+        "year": 1967,
+        "pmid": "4167965"
+      },
+      {
+        "title": "Repetitive auditory stimuli and the development of sleep.",
+        "first_author": "Tizard",
+        "year": 1966,
+        "pmid": "4159909"
+      },
+      {
+        "title": "Autonomic reactions to hearing impressions",
+        "first_author": "Lehmann",
+        "year": 1965,
+        "pmid": "5885688"
+      },
+      {
+        "title": "Disturbance by noise from the medical and legal viewpoint",
+        "first_author": "Wiethaup",
+        "year": 1965,
+        "pmid": "5843570"
+      },
+      {
+        "title": "STUDIES ON THE VISUAL EVOKED RESPONSE. I. THE USE OF THE 0.06 DEGREE RED TARGET FOR EVALUATION OF FOVEAL FUNCTION.",
+        "first_author": "Potts",
+        "year": 1965,
+        "pmid": "14326616"
+      },
+      {
+        "title": "EVOKED RESPONSES FROM THE AUDITORY CERTEX.",
+        "first_author": "Teas",
+        "year": 1964,
+        "pmid": "14206375"
+      },
+      {
+        "title": "THE CIRCADIAN RHYTHM IN THE CANARY STUDIED BY SELF-SELECTION OF LIGHT",
+        "first_author": "Wahlstroem",
+        "year": 1964,
+        "pmid": "14222154"
+      },
+      {
+        "title": "NOISE AS AN INJURIOUS FACTOR.",
+        "first_author": "Lehmann",
+        "year": 1964,
+        "pmid": "14251095"
+      },
+      {
+        "title": "RESPONSES TO AUDITORY STIMULATION, SLEEP LOSS AND THE EEG STAGES OF SLEEP",
+        "first_author": "Williams",
+        "year": 1964,
+        "pmid": "14128872"
+      },
+      {
+        "title": "\"REBOUND\" RECOVERY FROM DEPRIVATION OF PARADOXICAL SLEEP IN",
+        "first_author": "Khazan",
+        "year": 1963,
+        "pmid": "14101234"
+      },
+      {
+        "title": "INTERACTION OF NOISE WITH KNOWLEDGE OF RESULTS AND SLEEP DEPRIVATION.",
+        "first_author": "Wilkinson",
+        "year": 1963,
+        "pmid": "14051850"
+      },
+      {
+        "title": "Effect of audiometric parameters on K-complex of electrencephalogram.",
+        "first_author": "Vetter",
+        "year": 1962,
+        "pmid": "13925677"
+      },
+      {
+        "title": "Evoked responses to clicks and electroencephalographic stages of sleep in man.",
+        "first_author": "Williams",
+        "year": 1962,
+        "pmid": "14000871"
+      },
+      {
+        "title": "Helping the ears go to sleep.",
+        "first_author": "Laird",
+        "year": 1957,
+        "pmid": "13384947"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

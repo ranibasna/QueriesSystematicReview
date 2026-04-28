@@ -1,0 +1,17 @@
+# Q1: High-recall
+(('mediterranean diet'/exp OR 'mediterranean diet':ti,ab OR 'mediterranean diet adherence':ti,ab OR ((fruit*:ti,ab OR vegetable*:ti,ab OR cereal*:ti,ab OR legume*:ti,ab OR 'dairy product':ti,ab OR 'dairy products':ti,ab OR fish:ti,ab OR meat:ti,ab OR 'olive oil':ti,ab OR alcohol:ti,ab) AND (diet*:ti,ab OR intake:ti,ab OR consumption:ti,ab))) AND ('sleep'/exp OR 'somnolence'/exp OR sleep:ti,ab OR 'sleep quality':ti,ab OR 'sleep duration':ti,ab OR 'daytime sleepiness':ti,ab OR sleepiness:ti,ab OR somnolence:ti,ab))
+
+# Q2: Balanced
+(('mediterranean diet'/exp OR 'mediterranean diet':ti,ab OR 'mediterranean diet adherence':ti,ab OR ((legume*:ti,ab OR fish:ti,ab OR 'olive oil':ti,ab OR alcohol:ti,ab) AND (diet*:ti,ab OR intake:ti,ab OR consumption:ti,ab))) AND ('sleep'/exp OR sleep:ti,ab OR 'sleep quality':ti,ab OR 'sleep duration':ti,ab OR 'daytime sleepiness':ti,ab OR sleepiness:ti,ab) AND ('adult'/exp OR adult*:ti,ab))
+
+# Q3: High-precision
+((('mediterranean diet'/mj OR 'mediterranean diet':ti OR 'mediterranean diet adherence':ti) AND ('sleep quality':ti OR 'sleep duration':ti OR 'daytime sleepiness':ti OR sleep:ti)) AND ('adult'/exp OR adult*:ti,ab))
+
+# Q4: Balanced + scope_only
+(('mediterranean diet':ti OR 'mediterranean diet adherence':ti) AND ('sleep quality':ti OR 'sleep duration':ti OR 'daytime sleepiness':ti OR sleep:ti) AND ('adult'/exp OR adult*:ti,ab))
+
+# Q5: Balanced + proximity_or_scope_fallback
+((((mediterranean ADJ2 diet):ti,ab OR (('olive oil' OR fish OR legume*) ADJ3 (diet* OR intake OR consumption)):ti,ab) AND ((sleep ADJ2 quality):ti,ab OR (sleep ADJ2 duration):ti,ab OR (daytime ADJ1 sleepiness):ti,ab OR sleepiness:ti,ab OR somnolence:ti,ab OR sleep:ti,ab) AND ('adult'/exp OR adult*:ti,ab))
+
+# Q6: Balanced + design_plus_filter
+((('mediterranean diet'/exp OR 'mediterranean diet':ti,ab OR 'mediterranean diet adherence':ti,ab OR ((legume*:ti,ab OR fish:ti,ab OR 'olive oil':ti,ab OR alcohol:ti,ab) AND (diet*:ti,ab OR intake:ti,ab OR consumption:ti,ab))) AND ('sleep'/exp OR sleep:ti,ab OR 'sleep quality':ti,ab OR 'sleep duration':ti,ab OR 'daytime sleepiness':ti,ab OR sleepiness:ti,ab) AND ('adult'/exp OR adult*:ti,ab) AND (cohort:ti,ab OR observational:ti,ab OR 'cross-sectional':ti,ab OR 'case-control':ti,ab)))

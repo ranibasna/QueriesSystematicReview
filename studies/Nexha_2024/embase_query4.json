@@ -1,0 +1,428 @@
+{
+  "f455f79b0095059ae7dfcae5e71680842456ca2e1f90b0691623ea2b590ff08b": {
+    "query": "('premenstrual syndrome':ti OR 'premenstrual dysphoric disorder':ti OR pms:ti OR pmdd:ti) AND ('biological rhythm':ti OR 'biological rhythms':ti OR 'circadian rhythm':ti OR 'circadian rhythms':ti OR chronobiolog*:ti OR melatonin:ti OR 'sleep disturbance':ti OR 'sleep quality':ti OR polysomnograph*:ti OR 'body temperature':ti)",
+    "provider": "embase_manual",
+    "results_count": 39,
+    "retrieved_dois": [
+      "10.1007/s00404-020-05628-w",
+      "10.1007/s00737-022-01220-0",
+      "10.1007/s00737-022-01283-z",
+      "10.1016/0165-1781(91)90070-6",
+      "10.1016/0165-1781(96)02905-8",
+      "10.1016/0306-4530(90)90034-7",
+      "10.1016/S0006-3223(00)00876-3",
+      "10.1016/S0304-3940(00)00826-0",
+      "10.1016/j.psychres.2007.11.017",
+      "10.1016/j.sleep.2012.05.012",
+      "10.1038/s41598-025-23040-9",
+      "10.1038/s41598-025-90581-4",
+      "10.1080/09513590.2021.1968820",
+      "10.1089/jwh.2014.Ab01.abstracts",
+      "10.1093/sleep/30.10.1283",
+      "10.1093/sleep/zsab072.735",
+      "10.1093/sleep/zsab171",
+      "10.1111/bdi.12189",
+      "10.1111/bdi.12939",
+      "10.1111/j.1365-2869.2012.01007.x",
+      "10.1111/j.1468-1331.2011.03551.x",
+      "10.1111/jog.15585",
+      "10.1111/ppc.12628",
+      "10.1155/2010/259345",
+      "10.1159/000122184",
+      "10.1176/ajp.148.10.1329",
+      "10.1177/23969873221087559",
+      "10.1177/27683605251392784",
+      "10.1186/s12888-025-07126-2",
+      "10.1186/s12905-024-03395-3",
+      "10.12891/ceog4201.2018",
+      "10.1371/journal.pone.0051929",
+      "10.3109/07420528.2010.503331",
+      "10.3109/07420528.2011.567365",
+      "10.3109/09513590.2011.650769",
+      "10.3389/fendo.2022.1084249",
+      "10.5455/njppp.2017.7.0935427102017",
+      "10.5455/njppp.2019.9.1133209112018",
+      "10.5455/njppp.2023.13.08404202318092023"
+    ],
+    "retrieved_pmids": [
+      "10704767",
+      "11074230",
+      "1214962",
+      "17969462",
+      "1876626",
+      "18789826",
+      "1897612",
+      "20795885",
+      "21721857",
+      "22316208",
+      "22417163",
+      "2255751",
+      "22749440",
+      "23284821",
+      "25790587",
+      "32514756",
+      "32984973",
+      "34240212",
+      "34409910",
+      "35226173",
+      "36520251",
+      "39375682",
+      "39979390",
+      "41184955",
+      "41198846",
+      "41213572",
+      "4760262",
+      "768798",
+      "8771612",
+      "9104689",
+      "9104690",
+      "9526177"
+    ],
+    "pmids": [
+      "10704767",
+      "11074230",
+      "1214962",
+      "17969462",
+      "1876626",
+      "18789826",
+      "1897612",
+      "20795885",
+      "21721857",
+      "22316208",
+      "22417163",
+      "2255751",
+      "22749440",
+      "23284821",
+      "25790587",
+      "32514756",
+      "32984973",
+      "34240212",
+      "34409910",
+      "35226173",
+      "36520251",
+      "39375682",
+      "39979390",
+      "41184955",
+      "41198846",
+      "41213572",
+      "4760262",
+      "768798",
+      "8771612",
+      "9104689",
+      "9104690",
+      "9526177"
+    ],
+    "records": [
+      {
+        "title": "The Effect of Footbath on Premenstrual Syndrome, Sleep Quality, and Quality of Life in University Students with Premenstrual Syndrome: A Randomized Controlled Trial",
+        "first_author": "Yücesoy",
+        "year": 2026,
+        "pmid": "41213572",
+        "doi": "10.1177/27683605251392784"
+      },
+      {
+        "title": "Effects of sleep quality on the default mode network and on anxiety-depression symptoms in premenstrual syndrome",
+        "first_author": "Qin",
+        "year": 2025,
+        "pmid": "41184955",
+        "doi": "10.1186/s12888-025-07126-2"
+      },
+      {
+        "title": "The relationship between premenstrual syndrome and circadian rhythm, depressive mood, and anxiety",
+        "first_author": "Yamak",
+        "year": 2025,
+        "pmid": "41198846",
+        "doi": "10.1038/s41598-025-23040-9"
+      },
+      {
+        "title": "Association between sleep quality and premenstrual syndrome in young women in a cross-sectional study",
+        "first_author": "Mighani",
+        "year": 2025,
+        "pmid": "39979390",
+        "doi": "10.1038/s41598-025-90581-4"
+      },
+      {
+        "title": "Biological rhythms in premenstrual syndrome and premenstrual dysphoric disorder: a systematic review",
+        "first_author": "Nexha",
+        "year": 2024,
+        "pmid": "39375682",
+        "doi": "10.1186/s12905-024-03395-3"
+      },
+      {
+        "title": "Assessment of relationship between premenstrual syndrome symptoms with sleep quality and menstrual attitudes in medical students: A cross-sectional study",
+        "first_author": "Ramamoorthy",
+        "year": 2024,
+        "doi": "10.5455/njppp.2023.13.08404202318092023"
+      },
+      {
+        "title": "Relationship between sleep quality and severity of premenstrual syndrome in adolescents",
+        "first_author": "Firdaus",
+        "year": 2023,
+        "doi": "10.1111/jog.15585"
+      },
+      {
+        "title": "A 1-week sleep and light intervention improves mood in premenstrual dysphoric disorder in association with shifting melatonin offset time earlier",
+        "first_author": "Parry",
+        "year": 2023,
+        "pmid": "36520251",
+        "doi": "10.1007/s00737-022-01283-z"
+      },
+      {
+        "title": "Melatonin for premenstrual syndrome: A potential remedy but not ready",
+        "first_author": "Yin",
+        "year": 2023,
+        "doi": "10.3389/fendo.2022.1084249"
+      },
+      {
+        "title": "CHRONOBIOLOGY AND THE EFFECT OF PMS ON STROKE INCIDENCE",
+        "first_author": "Świȩczkowski",
+        "year": 2022,
+        "doi": "10.1177/23969873221087559"
+      },
+      {
+        "title": "Investigating biological rhythms disruptions across the menstrual cycle in women with comorbid bipolar disorder and premenstrual dysphoric disorder",
+        "first_author": "El",
+        "year": 2022,
+        "pmid": "35226173",
+        "doi": "10.1007/s00737-022-01220-0"
+      },
+      {
+        "title": "Relationship between premenstrual syndrome and sleep quality among nursing and medical students",
+        "first_author": "Erbil",
+        "year": 2022,
+        "pmid": "32984973",
+        "doi": "10.1111/ppc.12628"
+      },
+      {
+        "title": "Effects of exogenous melatonin on sleep and circadian rhythms in women with premenstrual dysphoric disorder",
+        "first_author": "Moderie",
+        "year": 2021,
+        "pmid": "34240212",
+        "doi": "10.1093/sleep/zsab171"
+      },
+      {
+        "title": "Effects of exogenous melatonin on sleep, circadian rhythms, and mood in women with premenstrual dysphoric disorder",
+        "first_author": "Moderie",
+        "year": 2021,
+        "doi": "10.1093/sleep/zsab072.735"
+      },
+      {
+        "title": "Sleep quality and excessive daytime sleepiness in women with Premenstrual Syndrome",
+        "first_author": "Conzatti",
+        "year": 2021,
+        "pmid": "34409910",
+        "doi": "10.1080/09513590.2021.1968820"
+      },
+      {
+        "title": "Effect of zinc supplementation on quality of life and sleep quality in young women with premenstrual syndrome: a randomized, double-blind, placebo-controlled trial",
+        "first_author": "Jafari",
+        "year": 2020,
+        "pmid": "32514756",
+        "doi": "10.1007/s00404-020-05628-w"
+      },
+      {
+        "title": "Biological rhythms disruption in comorbid bipolar disorder and premenstrual dysphoric disorder",
+        "first_author": "Caropreso",
+        "year": 2020,
+        "doi": "10.1111/bdi.12939"
+      },
+      {
+        "title": "Investigating biological rhythm disruptions across the menstrual cycle in women with comorbid bipolar and premenstrual dysphoric disorder",
+        "first_author": "El-Dahr",
+        "year": 2020,
+        "doi": "10.1111/bdi.12939"
+      },
+      {
+        "title": "Effect of sleep quality on cognition and psychomotor skill in women with premenstrual syndrome",
+        "first_author": "Prabhavathi",
+        "year": 2019,
+        "doi": "10.5455/njppp.2019.9.1133209112018"
+      },
+      {
+        "title": "Study of psychological predictors and sleep quality in different grades of premenstrual syndrome",
+        "first_author": "Prabhavathi",
+        "year": 2018,
+        "doi": "10.5455/njppp.2017.7.0935427102017"
+      },
+      {
+        "title": "The effect of physical activity on the levels of the hormones, serotonin and melatonin in premenstrual syndrome",
+        "first_author": "Bakay",
+        "year": 2018,
+        "doi": "10.12891/ceog4201.2018"
+      },
+      {
+        "title": "Are at-home sleep studies performed using portable monitors (PMs) as effective at diagnosing obstructive sleep apnea (OSA) in adults as sleep laboratory-based polysomnography (PSG)?",
+        "first_author": "Walia",
+        "year": 2014,
+        "pmid": "25790587"
+      },
+      {
+        "title": "Circadian rhythm disruption in women with bipoloar and premenstrual dysphoric disorder during remission: Preliminary results",
+        "first_author": "Syan",
+        "year": 2014,
+        "doi": "10.1089/jwh.2014.Ab01.abstracts"
+      },
+      {
+        "title": "Circadian rhythm disruption in women with bipolar and premenstrual dysphoric disorder during remission: Preliminary results",
+        "first_author": "Syan",
+        "year": 2014,
+        "doi": "10.1111/bdi.12189"
+      },
+      {
+        "title": "Pilot Investigation of the Circadian Plasma Melatonin Rhythm across the Menstrual Cycle in a Small Group of Women with Premenstrual Dysphoric Disorder",
+        "first_author": "Shechter",
+        "year": 2012,
+        "pmid": "23284821",
+        "doi": "10.1371/journal.pone.0051929"
+      },
+      {
+        "title": "Perceived poor sleep quality in the absence of polysomnographic sleep disturbance in women with severe premenstrual syndrome",
+        "first_author": "Baker",
+        "year": 2012,
+        "pmid": "22417163",
+        "doi": "10.1111/j.1365-2869.2012.01007.x"
+      },
+      {
+        "title": "Nocturnal polysomnographic sleep across the menstrual cycle in premenstrual dysphoric disorder",
+        "first_author": "Shechter",
+        "year": 2012,
+        "pmid": "22749440",
+        "doi": "10.1016/j.sleep.2012.05.012"
+      },
+      {
+        "title": "Subjective sleep quality in premenstrual syndrome.",
+        "first_author": "Ozisik",
+        "year": 2012,
+        "pmid": "22316208",
+        "doi": "10.3109/09513590.2011.650769"
+      },
+      {
+        "title": "Subjective sleep quality in premenstrual syndrome",
+        "first_author": "Ozisik",
+        "year": 2012,
+        "doi": "10.3109/09513590.2011.650769"
+      },
+      {
+        "title": "Subjective sleep quality in premenstrual syndrome",
+        "first_author": "Ozisik",
+        "year": 2011,
+        "doi": "10.1111/j.1468-1331.2011.03551.x"
+      },
+      {
+        "title": "Reduced phase-advance of plasma melatonin after bright morning light in the luteal, but not follicular, menstrual cycle phase in premenstrual dysphoric disorder: An extended study",
+        "first_author": "Parry",
+        "year": 2011,
+        "pmid": "21721857",
+        "doi": "10.3109/07420528.2011.567365"
+      },
+      {
+        "title": "Sleep, hormones, and circadian rhythms throughout the menstrual cycle in healthy women and women with premenstrual dysphoric disorder",
+        "first_author": "Boivin",
+        "year": 2010,
+        "doi": "10.1155/2010/259345"
+      },
+      {
+        "title": "Increased sensitivity to light-induced melatonin suppression in premenstrual dysphoric disorder",
+        "first_author": "Parry",
+        "year": 2010,
+        "pmid": "20795885",
+        "doi": "10.3109/07420528.2010.503331"
+      },
+      {
+        "title": "Late, but not early, wake therapy reduces morning plasma melatonin: Relationship to mood in Premenstrual Dysphoric Disorder",
+        "first_author": "Parry",
+        "year": 2008,
+        "pmid": "18789826",
+        "doi": "10.1016/j.psychres.2007.11.017"
+      },
+      {
+        "title": "Sleep quality and the sleep electroencephalogram in women with severe premenstrual syndrome",
+        "first_author": "Baker",
+        "year": 2007,
+        "pmid": "17969462",
+        "doi": "10.1093/sleep/30.10.1283"
+      },
+      {
+        "title": "Cortisol circadian rhythms during the menstrual cycle and with sleep deprivation in premenstrual dysphoric disorder and normal control subjects",
+        "first_author": "Parry",
+        "year": 2000,
+        "pmid": "11074230",
+        "doi": "10.1016/S0006-3223(00)00876-3"
+      },
+      {
+        "title": "Menstrual changes in sleep, rectal temperature and melatonin rhythms in a subject with premenstrual syndrome",
+        "first_author": "Shinohara",
+        "year": 2000,
+        "pmid": "10704767",
+        "doi": "10.1016/S0304-3940(00)00826-0"
+      },
+      {
+        "title": "Circadian changes in body temperature during the menstrual cycle of healthy adult females and patients suffering from premenstrual syndrome",
+        "first_author": "Nakayama",
+        "year": 1997,
+        "pmid": "9526177"
+      },
+      {
+        "title": "Temperature circadian rhythms during the menstrual cycle and sleep deprivation in premenstrual dysphoric disorder and normal comparison subjects.",
+        "first_author": "Parry",
+        "year": 1997,
+        "pmid": "9104689"
+      },
+      {
+        "title": "Plasma melatonin circadian rhythms during the menstrual cycle and after light therapy in premenstrual dysphoric disorder and normal control subjects.",
+        "first_author": "Parry",
+        "year": 1997,
+        "pmid": "9104690"
+      },
+      {
+        "title": "Circadian rhythms of prolactin and thyroid-stimulating hormone during the menstrual cycle and early versus late sleep deprivation in premenstrual dysphoric disorder",
+        "first_author": "Parry",
+        "year": 1996,
+        "pmid": "8771612",
+        "doi": "10.1016/0165-1781(96)02905-8"
+      },
+      {
+        "title": "High nocturnal body temperature in premenstrual syndrome and late luteal phase dysphoric disorder",
+        "first_author": "Severino",
+        "year": 1991,
+        "pmid": "1897612",
+        "doi": "10.1176/ajp.148.10.1329"
+      },
+      {
+        "title": "Atenolol in premenstrual syndrome: A test of the melatonin hypothesis",
+        "first_author": "Parry",
+        "year": 1991,
+        "pmid": "1876626",
+        "doi": "10.1016/0165-1781(91)90070-6"
+      },
+      {
+        "title": "Urinary 6-sulphatoxy melatonin levels within the menstrual cycle and in patients with premenstrual syndrome",
+        "first_author": "McIntyre",
+        "year": 1990,
+        "pmid": "2255751",
+        "doi": "10.1016/0306-4530(90)90034-7"
+      },
+      {
+        "title": "Inhibition of ovulation induced with PMS and HCG by a melatonin free extract of bovine pineal powder",
+        "first_author": "Ota",
+        "year": 1975,
+        "pmid": "1214962"
+      },
+      {
+        "title": "Ovulation in PMS treated rats with gonadotropin releasing hormone after pentobarbital and melatonin block",
+        "first_author": "Sorrentino",
+        "year": 1975,
+        "pmid": "768798"
+      },
+      {
+        "title": "The influence of melatonin administered subcutaneously, intravenously, or intraocularly upon ovulation in the PMS treated immature rat",
+        "first_author": "Pomerantz",
+        "year": 1973,
+        "pmid": "4760262",
+        "doi": "10.1159/000122184"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

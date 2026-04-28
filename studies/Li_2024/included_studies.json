@@ -1,0 +1,550 @@
+{
+  "study_name": "Li_2024",
+  "source_file": "studies/Li_2024/paper_Li_2024.md",
+  "total_included_studies": 19,
+  "extraction_method": "manual_llm_assisted",
+  "included_studies": [
+    {
+      "reference_number": 17,
+      "first_author": "Li",
+      "year": 2023,
+      "title": "Sleep characteristics before assisted reproductive technology treatment predict reproductive outcomes: a prospective cohort study of Chinese infertile women",
+      "journal": "Frontiers in Endocrinology",
+      "authors": [
+        "Li QL",
+        "Wang C",
+        "Cao KX",
+        "Zhang L",
+        "Xu YS",
+        "Chang L",
+        "Liu ZH",
+        "Yang AJ",
+        "Xue YX"
+      ],
+      "doi": "10.3389/fendo.2023.1178396",
+      "pmid": "37908752",
+      "volume": "14",
+      "issue": null,
+      "pages": "1178396",
+      "raw_citation": "Li Q-L, Wang C, Cao K-X, Zhang L, Xu Y-S, Chang L, Liu Z-H, Yang A-J, Xue Y-X. Sleep characteristics before assisted reproductive technology treatment predict reproductive outcomes: a prospective cohort study of Chinese infertile women. Front Endocrinol 2023, 14:1178396.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9968051118210862,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 18,
+      "first_author": "Yao",
+      "year": 2022,
+      "title": "Associations of sleep characteristics with outcomes of IVF/ICSI treatment: a prospective cohort study",
+      "journal": "Human Reproduction",
+      "authors": [
+        "Yao QY",
+        "Yuan XQ",
+        "Liu C",
+        "Du YY",
+        "Yao YC",
+        "Wu LJ",
+        "Jiang HH",
+        "Deng TR",
+        "Guo N",
+        "Deng YL"
+      ],
+      "doi": "10.1093/humrep/deac040",
+      "pmid": "35259255",
+      "volume": "37",
+      "issue": "6",
+      "pages": "1297-1310",
+      "raw_citation": "Yao QY, Yuan XQ, Liu C, Du YY, Yao YC, Wu LJ, Jiang HH, Deng TR, Guo N, Deng YL, et al. Associations of sleep characteristics with outcomes of IVF/ICSI treatment: a prospective cohort study. Hum Reprod. 2022;37(6):1297-310.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9950738916256158,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 25,
+      "first_author": "Lim",
+      "year": 2021,
+      "title": "Obstructive sleep apnea increases risk of female infertility: A 14-year nationwide population-based study",
+      "journal": "PLOS ONE",
+      "authors": [
+        "Lim ZW",
+        "Wang ID",
+        "Wang P",
+        "Chung CH",
+        "Huang SS",
+        "Huang CC",
+        "Tsai PY",
+        "Wu GJ",
+        "Wu KH",
+        "Chien WC"
+      ],
+      "doi": "10.1371/journal.pone.0260842",
+      "pmid": "34910749",
+      "volume": "16",
+      "issue": "12",
+      "pages": "e0260842",
+      "raw_citation": "Lim ZW, Wang ID, Wang P, Chung CH, Huang SS, Huang CC, Tsai PY, Wu GJ, Wu KH, Chien WC. Obstructive sleep apnea increases risk of female infertility: A 14-year nationwide population-based study. PLoS ONE. 2021;16(12):e0260842.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.995260663507109,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 27,
+      "first_author": "Yang",
+      "year": 2022,
+      "title": "Analysis of the proportion and clinical characteristics of obstructive sleep apnea in women with polycystic ovary syndrome",
+      "journal": "Sleep and Breathing",
+      "authors": [
+        "Yang R",
+        "Gao C",
+        "Yan Y",
+        "Huang Y",
+        "Wang J",
+        "Zhang C",
+        "Ma X",
+        "Li N",
+        "Du X",
+        "Zhang L"
+      ],
+      "doi": "10.1007/s11325-021-02376-2",
+      "pmid": "34013438",
+      "volume": "26",
+      "issue": "1",
+      "pages": "497-503",
+      "raw_citation": "Yang R, Gao C, Yan Y, Huang Y, Wang J, Zhang C, Ma X, Li N, Du X, Zhang L, et al. Analysis of the proportion and clinical characteristics of obstructive sleep apnea in women with polycystic ovary syndrome. Sleep Breath. 2022;26(1):497-503.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9959183673469387,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 28,
+      "first_author": "Pimolsri",
+      "year": 2021,
+      "title": "Objective sleep duration and timing predicts completion of in vitro fertilization cycle",
+      "journal": "Journal of Assisted Reproduction and Genetics",
+      "authors": [
+        "Pimolsri C",
+        "Lyu X",
+        "Goldstein C",
+        "Fortin CN",
+        "Mumford SL",
+        "Smith YR",
+        "Lanham MS",
+        "O'Brien LM",
+        "Dunietz GL"
+      ],
+      "doi": "10.1007/s10815-021-02260-8",
+      "pmid": "34374922",
+      "volume": "38",
+      "issue": "10",
+      "pages": "2687-2696",
+      "raw_citation": "Pimolsri C, Lyu X, Goldstein C, Fortin CN, Mumford SL, Smith YR, Lanham MS, O'Brien LM, Dunietz GL. Objective sleep duration and timing predicts completion of in vitro fertilization cycle. J Assist Reprod Genet. 2021;38(10):2687-96.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9942857142857143,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 29,
+      "first_author": "Goldstein",
+      "year": 2017,
+      "title": "Sleep in women undergoing in vitro fertilization: a pilot study",
+      "journal": "Sleep Medicine",
+      "authors": [
+        "Goldstein CA",
+        "Lanham MS",
+        "Smith YR",
+        "O'Brien LM"
+      ],
+      "doi": "10.1016/j.sleep.2016.12.007",
+      "pmid": "28366321",
+      "volume": "32",
+      "issue": null,
+      "pages": "105-113",
+      "raw_citation": "Goldstein CA, Lanham MS, Smith YR, O'Brien LM. Sleep in women undergoing in vitro fertilization: a pilot study. Sleep Med. 2017;32:105-13.",
+      "lookup_metadata": {
+        "confidence": 0.8,
+        "similarity": 0.8976377952755905,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 30,
+      "first_author": "Ozcelik",
+      "year": 2023,
+      "title": "Evaluation of chronotype and sleep quality in infertile population and comparison with fertile population: a cross-sectional study",
+      "journal": "Journal of Psychosomatic Obstetrics and Gynaecology",
+      "authors": [
+        "Ozcelik C",
+        "Varli B",
+        "Gokce A",
+        "Takmaz T",
+        "Cetin C",
+        "Ozcan P"
+      ],
+      "doi": "10.1080/0167482X.2022.2148523",
+      "pmid": null,
+      "volume": "44",
+      "issue": "1",
+      "pages": "2148523",
+      "raw_citation": "Özçelik C, Varlı B, Gökçe A, Takmaz T, Çetin Ç, Özcan P. Evaluation of chronotype and sleep quality in infertile population and comparison with fertile population: a cross-sectional study. J Psychosom Obstet Gynaecol. 2023;44(1):2148523."
+    },
+    {
+      "reference_number": 31,
+      "first_author": "Philipsen",
+      "year": 2022,
+      "title": "Sleep, psychological distress, and clinical pregnancy outcome in women and their partners undergoing in vitro or intracytoplasmic sperm injection fertility treatment",
+      "journal": "Sleep Health",
+      "authors": [
+        "Philipsen MT",
+        "Knudsen UB",
+        "Zachariae R",
+        "Ingerslev HJ",
+        "Hvidt JEM",
+        "Frederiksen Y"
+      ],
+      "doi": "10.1016/j.sleh.2021.10.011",
+      "pmid": "34949542",
+      "volume": "8",
+      "issue": "2",
+      "pages": "242-248",
+      "raw_citation": "Philipsen MT, Knudsen UB, Zachariae R, Ingerslev HJ, Hvidt JEM, Frederiksen Y. Sleep, psychological distress, and clinical pregnancy outcome in women and their partners undergoing in vitro or intracytoplasmic sperm injection fertility treatment. Sleep Health. 2022;8(2):242-8.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9969788519637462,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 32,
+      "first_author": "Stocker",
+      "year": 2021,
+      "title": "Is sleep deficit associated with infertility and recurrent pregnancy losses? Results from a prospective cohort study",
+      "journal": "Acta Obstetricia et Gynecologica Scandinavica",
+      "authors": [
+        "Stocker LJ",
+        "Cagampang FR",
+        "Lu S",
+        "Ladyman T",
+        "Cheong YC"
+      ],
+      "doi": "10.1111/aogs.14008",
+      "pmid": "32981061",
+      "volume": "100",
+      "issue": "2",
+      "pages": "302-313",
+      "raw_citation": "Stocker LJ, Cagampang FR, Lu S, Ladyman T, Cheong YC. Is sleep deficit associated with infertility and recurrent pregnancy losses? Results from a prospective cohort study. Acta Obstet Gynecol Scand. 2021;100(2):302-13.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9957081545064378,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 34,
+      "first_author": "Eisenberg",
+      "year": 2021,
+      "title": "Sleep Habits of Women With Infertility",
+      "journal": "Journal of Clinical Endocrinology and Metabolism",
+      "authors": [
+        "Eisenberg E",
+        "Legro RS",
+        "Diamond MP",
+        "Huang H",
+        "O'Brien LM",
+        "Smith YR",
+        "Coutifaris C",
+        "Hansen KR",
+        "Santoro N",
+        "Zhang H"
+      ],
+      "doi": "10.1210/clinem/dgab474",
+      "pmid": "34180998",
+      "volume": "106",
+      "issue": "11",
+      "pages": "e4414-e4426",
+      "raw_citation": "Eisenberg E, Legro RS, Diamond MP, Huang H, O'Brien LM, Smith YR, Coutifaris C, Hansen KR, Santoro N, Zhang H. Sleep Habits of Women With Infertility. J Clin Endocrinol Metab. 2021;106(11):e4414-26.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.987012987012987,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 36,
+      "first_author": "Willis",
+      "year": 2019,
+      "title": "Female sleep patterns, shift work, and fecundability in a North American preconception cohort study",
+      "journal": "Fertility and Sterility",
+      "authors": [
+        "Willis SK",
+        "Hatch EE",
+        "Wesselink AK",
+        "Rothman KJ",
+        "Mikkelsen EM",
+        "Wise LA"
+      ],
+      "doi": "10.1016/j.fertnstert.2019.01.037",
+      "pmid": "30987736",
+      "volume": "111",
+      "issue": "6",
+      "pages": "1201-1210.e1",
+      "raw_citation": "Willis SK, Hatch EE, Wesselink AK, Rothman KJ, Mikkelsen EM, Wise LA. Female sleep patterns, shift work, and fecundability in a North American preconception cohort study. Fertil Steril. 2019;111(6):1201-e12101201.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9949748743718593,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 37,
+      "first_author": "Wang",
+      "year": 2018,
+      "title": "NonApnea Sleep Disorder Increases the Risk of Subsequent Female Infertility-A Nationwide Population-Based Cohort Study",
+      "journal": "Sleep",
+      "authors": [
+        "Wang ID",
+        "Liu YL",
+        "Peng CK",
+        "Chung CH",
+        "Chang SY",
+        "Tsao CH",
+        "Chien WC"
+      ],
+      "doi": "10.1093/sleep/zsx186",
+      "pmid": "29136234",
+      "volume": "41",
+      "issue": "1",
+      "pages": "zsx197",
+      "raw_citation": "Wang ID, Liu YL, Peng CK, Chung CH, Chang SY, Tsao CH, Chien Ph DW. NonApnea Sleep Disorder Increases the Risk of Subsequent Female Infertility-A Nationwide Population-Based Cohort Study. Sleep 2018, 41(1):186.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9915966386554622,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 38,
+      "first_author": "Shi",
+      "year": 2020,
+      "title": "Female and male sleep duration in association with the probability of conception in two representative populations of reproductive age in US and China",
+      "journal": "Sleep Medicine",
+      "authors": [
+        "Shi F",
+        "Liu C",
+        "Liu K",
+        "Sun L",
+        "Yang H",
+        "Cao J",
+        "Chen Q"
+      ],
+      "doi": "10.1016/j.sleep.2020.05.026",
+      "pmid": "32836186",
+      "volume": "74",
+      "issue": null,
+      "pages": "9-17",
+      "raw_citation": "Shi F, Liu C, Liu K, Sun L, Yang H, Cao J, Chen Q. Female and male sleep duration in association with the probability of conception in two representative populations of reproductive age in US and China. Sleep Med. 2020;74:9-17.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9966777408637875,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 39,
+      "first_author": "Liang",
+      "year": 2022,
+      "title": "Sleep Behavior and Self-Reported Infertility: A Cross-Sectional Analysis Among U.S. Women",
+      "journal": "Frontiers in Endocrinology",
+      "authors": [
+        "Liang Z",
+        "Liu J"
+      ],
+      "doi": "10.3389/fendo.2022.818567",
+      "pmid": "35620388",
+      "volume": "13",
+      "issue": null,
+      "pages": "818567",
+      "raw_citation": "Liang Z, Liu J. Sleep Behavior and Self-Reported Infertility: A Cross-Sectional Analysis Among U.S. Women. Front Endocrinol (Lausanne). 2022;13:818567.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9944134078212289,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 40,
+      "first_author": "Zhao",
+      "year": 2023,
+      "title": "Relationship between sleep disorders and female infertility among US reproductive-aged women",
+      "journal": "Sleep and Breathing",
+      "authors": [
+        "Zhao J",
+        "Chen Q",
+        "Xue X"
+      ],
+      "doi": "10.1007/s11325-023-02802-7",
+      "pmid": "36877353",
+      "volume": "27",
+      "issue": "5",
+      "pages": "1875-1882",
+      "raw_citation": "Zhao J, Chen Q, Xue X. Relationship between sleep disorders and female infertility among US reproductive-aged women. Sleep Breath. 2023;27(5):1875-82.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9945945945945946,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 41,
+      "first_author": "Freeman",
+      "year": 2023,
+      "title": "Preconception sleep duration, sleep timing, and shift work in association with fecundability and live birth among women with a history of pregnancy loss",
+      "journal": "Fertility and Sterility",
+      "authors": [
+        "Freeman JR",
+        "Whitcomb BW",
+        "Bertone-Johnson ER",
+        "Balzer LB",
+        "O'Brien LM",
+        "Dunietz GL",
+        "Purdue-Smithe AC",
+        "Kim K",
+        "Silver RM",
+        "Schisterman EF"
+      ],
+      "doi": "10.1016/j.fertnstert.2022.10.026",
+      "pmid": "36586812",
+      "volume": "119",
+      "issue": "2",
+      "pages": "252-263",
+      "raw_citation": "Freeman JR, Whitcomb BW, Bertone-Johnson ER, Balzer LB, O'Brien LM, Dunietz GL, Purdue-Smithe AC, Kim K, Silver RM, Schisterman EF, et al. Preconception sleep duration, sleep timing, and shift work in association with fecundability and live birth among women with a history of pregnancy loss. Fertil Steril. 2023;119(2):252-63.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.99672131147541,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 44,
+      "first_author": "Liu",
+      "year": 2023,
+      "title": "The impact of sleep on in vitro fertilization embryo transfer outcomes: a prospective study",
+      "journal": "Fertility and Sterility",
+      "authors": [
+        "Liu Z",
+        "Zheng Y",
+        "Wang B",
+        "Li J",
+        "Qin L",
+        "Li X",
+        "Liu X",
+        "Bian Y",
+        "Chen Z",
+        "Zhao H"
+      ],
+      "doi": "10.1016/j.fertnstert.2022.10.015",
+      "pmid": "36435629",
+      "volume": "119",
+      "issue": "1",
+      "pages": "47-55",
+      "raw_citation": "Liu Z, Zheng Y, Wang B, Li J, Qin L, Li X, Liu X, Bian Y, Chen Z, Zhao H, et al. The impact of sleep on in vitro fertilization embryo transfer outcomes: a prospective study. Fertil Steril. 2023;119(1):47-55.",
+      "lookup_metadata": {
+        "confidence": 0.9,
+        "similarity": 0.9289617486338798,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 49,
+      "first_author": "Zhang",
+      "year": 2023,
+      "title": "Effect of obstructive sleep apnea on in vitro fertilization outcomes in women with polycystic ovary syndrome",
+      "journal": "Journal of Clinical Sleep Medicine",
+      "authors": [
+        "Zhang Q",
+        "Wang Z",
+        "Ding J",
+        "Yan S",
+        "Hao Y",
+        "Chen H",
+        "Yang J",
+        "Hu K"
+      ],
+      "doi": "10.5664/jcsm.10780",
+      "pmid": "37593900",
+      "volume": "20",
+      "issue": "1",
+      "pages": "31-38",
+      "raw_citation": "Zhang Q, Wang Z, Ding J, Yan S, Hao Y, Chen H, Yang J, Hu K. Effect of obstructive sleep apnea on in vitro fertilization outcomes in women with polycystic ovary syndrome. Journal of Clinical Sleep Medicine: JCSM: Official Publication of the American Academy of Sleep Medicine 2023;20(1):31-38.",
+      "lookup_metadata": {
+        "confidence": 0.9,
+        "similarity": 0.9400921658986175,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 50,
+      "first_author": "Ibrahim",
+      "year": 2023,
+      "title": "Sleep and obstructive sleep apnea in women with infertility",
+      "journal": "Sleep and Breathing",
+      "authors": [
+        "Ibrahim S",
+        "Mehra R",
+        "Tantibhedhyangkul J",
+        "Bena J",
+        "Flyckt RL"
+      ],
+      "doi": "10.1007/s11325-022-02770-4",
+      "pmid": "36609819",
+      "volume": "27",
+      "issue": "5",
+      "pages": "1733-1742",
+      "raw_citation": "Ibrahim S, Mehra R, Tantibhedhyangkul J, Bena J, Flyckt RL. Sleep and obstructive sleep apnea in women with infertility. Sleep Breath. 2023;27(5):1733-42.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9915966386554622,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    }
+  ],
+  "statistics": {
+    "total_studies": 19,
+    "with_doi": 19,
+    "with_pmid": 18,
+    "with_identifiers": 19,
+    "doi_coverage_percent": 100.0,
+    "pmid_coverage_percent": 94.7,
+    "identifier_coverage_percent": 100.0,
+    "pubmed_matches": 18,
+    "europepmc_matches": 0,
+    "crossref_matches": 0
+  }
+}

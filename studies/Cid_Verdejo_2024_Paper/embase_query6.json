@@ -1,0 +1,13 @@
+{
+  "bfd6b2012889806f9fdb7832330ff3a064db6ceeecf749d235a08ce201d82a14": {
+    "query": "(('sleep bruxism':ti OR 'sleep-related bruxism':ti OR 'sleep related bruxism':ti) AND (electromyograph*:ti,ab OR EMG:ti,ab OR 'portable electromyography':ti,ab OR 'portable electromyographic':ti,ab OR 'portable EMG':ti,ab OR 'portable device':ti,ab OR 'portable devices':ti,ab) AND (polysomnograph*:ti,ab OR PSG:ti,ab) AND (diagnos*:ti,ab OR valid*:ti,ab OR accuracy:ti,ab OR 'diagnostic yield':ti,ab OR sensitivity:ti,ab OR specificity:ti,ab OR compar*:ti,ab OR agreement:ti,ab OR 'reference standard':ti,ab OR 'gold standard':ti,ab) AND (observational:ti,ab OR nonrandomized:ti,ab OR 'non-randomized':ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 0,
+    "retrieved_dois": [],
+    "retrieved_pmids": [],
+    "pmids": [],
+    "records": [],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "8a58f6f198822ea6a096d541655ba41a6329968b308ab264b2df8f4898ffd25e": {
+    "query": "# Query 6: Balanced + scope_plus_filter - title-focused sleep block plus human filter\n((('sleep disturbance*':ti OR 'sleep disorder*':ti OR 'obstructive sleep apnea':ti OR 'circadian dysrhythmia':ti) AND ('female infertil*':ti,ab OR 'fertility treatment*':ti,ab OR 'in vitro fertilization':ti,ab OR 'assisted reproduction':ti,ab OR ((infertil*:ti,ab OR subfertil*:ti,ab) AND (female*:ti,ab OR woman:ti,ab OR women:ti,ab))) AND (female*:ti,ab OR woman:ti,ab OR women:ti,ab)) AND 'human'/de)",
+    "provider": "embase_manual",
+    "results_count": 37,
+    "retrieved_dois": [
+      "10.1002/brb3.70293",
+      "10.1002/ijgo.70879",
+      "10.1007/s11325-021-02376-2",
+      "10.1007/s11325-022-02770-4",
+      "10.1007/s11325-023-02802-7",
+      "10.1007/s11325-024-02998-2",
+      "10.1016/j.ejogrb.2021.07.037",
+      "10.1016/j.fertnstert.2021.07.1085",
+      "10.1016/j.fertnstert.2021.07.342",
+      "10.1016/j.fertnstert.2021.07.620",
+      "10.1016/j.fertnstert.2022.08.206",
+      "10.1016/j.fertnstert.2025.07.130",
+      "10.1016/j.jsmc.2026.02.010",
+      "10.1016/j.sleep.2019.11.601",
+      "10.1016/j.sleep.2022.06.009",
+      "10.1016/j.sleep.2022.09.026",
+      "10.1016/j.smrv.2014.10.005",
+      "10.1038/s41598-024-78123-w",
+      "10.1093/humrep/deac106.P-687",
+      "10.1093/sleep/zsx186",
+      "10.1111/jocn.12306",
+      "10.1111/jocn.13194",
+      "10.1155/mi/4572392",
+      "10.1159/000468958",
+      "10.1183/13993003.congress-2019.PA901",
+      "10.1186/s12884-026-08808-9",
+      "10.1186/s12905-022-01661-w",
+      "10.1186/s12905-024-03185-x",
+      "10.1186/s12905-024-03508-y",
+      "10.1371/journal.pone.0260842",
+      "10.1371/journal.pone.0321635",
+      "10.18565/aig.2024.138",
+      "10.2147/IJWH.S543184",
+      "10.2174/157339807782359887",
+      "10.3390/jpm12060933",
+      "10.3390/reprodmed7010004",
+      "10.5664/jcsm.10780"
+    ],
+    "retrieved_pmids": [
+      "23829562",
+      "25458772",
+      "27075044",
+      "29136234",
+      "34013438",
+      "34333367",
+      "34910749",
+      "35313872",
+      "35772248",
+      "36306629",
+      "36609819",
+      "36877353",
+      "37593900",
+      "38308749",
+      "38877485",
+      "39487261",
+      "39707272",
+      "39924965",
+      "40238733",
+      "40270512",
+      "41700659",
+      "41709190"
+    ],
+    "pmids": [
+      "23829562",
+      "25458772",
+      "27075044",
+      "29136234",
+      "34013438",
+      "34333367",
+      "34910749",
+      "35313872",
+      "35772248",
+      "36306629",
+      "36609819",
+      "36877353",
+      "37593900",
+      "38308749",
+      "38877485",
+      "39487261",
+      "39707272",
+      "39924965",
+      "40238733",
+      "40270512",
+      "41700659",
+      "41709190"
+    ],
+    "records": [
+      {
+        "title": "The Global Burden of Obstructive Sleep Apnea on Fertility: Pathophysiology, Clinical Evidence, and Therapeutic Perspectives",
+        "first_author": "Lazzeroni",
+        "year": 2026,
+        "doi": "10.3390/reprodmed7010004"
+      },
+      {
+        "title": "Sleep disturbances and assisted reproduction outcomes in women undergoing IVF/ICSI: a systematic review and meta-analysis",
+        "first_author": "Huang",
+        "year": 2026,
+        "pmid": "41709190",
+        "doi": "10.1186/s12884-026-08808-9"
+      },
+      {
+        "title": "Mediating role of sleep disorders in the association between depression and infertility: A cross-sectional study using the National Health and nutrition examination survey",
+        "first_author": "Zhang",
+        "year": 2026,
+        "pmid": "41700659",
+        "doi": "10.1002/ijgo.70879"
+      },
+      {
+        "title": "Sleep Disturbance and Female Infertility",
+        "first_author": "Wang",
+        "year": 2026,
+        "doi": "10.1016/j.jsmc.2026.02.010"
+      },
+      {
+        "title": "DIAGNOSIS OF OBSTRUCTIVE SLEEP APNEA IN PATIENTS WITH INFERTILITY: A CASE SERIES",
+        "first_author": "Licea",
+        "year": 2025,
+        "doi": "10.1016/j.fertnstert.2025.07.130"
+      },
+      {
+        "title": "Melatonin and sleep parameters in infertile women with endometriosis: first results from the triple-blind randomized controlled trial of administration of melatonin in chronic pelvic pain and sleep disturbance",
+        "first_author": "Esmaeilzadeh",
+        "year": 2025,
+        "pmid": "40238733",
+        "doi": "10.1371/journal.pone.0321635"
+      },
+      {
+        "title": "Relationship Between Sleep Disturbances and In Vitro Fertilization Outcomes in Infertile Women: A Systematic Review and Meta-Analysis",
+        "first_author": "Habibi",
+        "year": 2025,
+        "pmid": "39924965",
+        "doi": "10.1002/brb3.70293"
+      },
+      {
+        "title": "The Association Between Sleep Disorder and Female Infertility: A Mediation Analysis of Inflammatory and Oxidative Markers",
+        "first_author": "Yang",
+        "year": 2025,
+        "pmid": "40270512",
+        "doi": "10.1155/mi/4572392"
+      },
+      {
+        "title": "Metabolic Risk Factors Evaluation of Obstructive Sleep Apnea Among Patients with Polycystic Ovary Syndrome",
+        "first_author": "Ha",
+        "year": 2025,
+        "doi": "10.2147/IJWH.S543184"
+      },
+      {
+        "title": "Sleep disorders in patients with endometriosis; a cross-sectional study",
+        "first_author": "Chaichian",
+        "year": 2024,
+        "pmid": "38877485",
+        "doi": "10.1186/s12905-024-03185-x"
+      },
+      {
+        "title": "Sleep disturbances and female infertility: a systematic review",
+        "first_author": "Li",
+        "year": 2024,
+        "pmid": "39707272",
+        "doi": "10.1186/s12905-024-03508-y"
+      },
+      {
+        "title": "Association of sleep disturbances with diminished ovarian reserve in women undergoing infertility treatment",
+        "first_author": "Cai",
+        "year": 2024,
+        "pmid": "39487261",
+        "doi": "10.1038/s41598-024-78123-w"
+      },
+      {
+        "title": "Implications of obstructive sleep apnea on reproductive health: a study on anti-Mullerian hormone levels",
+        "first_author": "Yildiz",
+        "year": 2024,
+        "pmid": "38308749",
+        "doi": "10.1007/s11325-024-02998-2"
+      },
+      {
+        "title": "EXPERIENCE OF USING A COMBINED MELATONIN-CONTAINING DRUG IN THE CORRECTION OF SLEEP DISORDERS IN WOMEN",
+        "first_author": "Stenyaeva",
+        "year": 2024,
+        "doi": "10.18565/aig.2024.138"
+      },
+      {
+        "title": "Effect of obstructive sleep apnea on in vitro fertilization outcomes in women with polycystic ovary syndrome",
+        "first_author": "Zhang",
+        "year": 2024,
+        "pmid": "37593900",
+        "doi": "10.5664/jcsm.10780"
+      },
+      {
+        "title": "Sleep and obstructive sleep apnea in women with infertility",
+        "first_author": "Ibrahim",
+        "year": 2023,
+        "pmid": "36609819",
+        "doi": "10.1007/s11325-022-02770-4"
+      },
+      {
+        "title": "Relationship between sleep disorders and female infertility among US reproductive-aged women",
+        "first_author": "Zhao",
+        "year": 2023,
+        "pmid": "36877353",
+        "doi": "10.1007/s11325-023-02802-7"
+      },
+      {
+        "title": "Women with polycystic ovary syndrome (PCOS) have reduced melatonin concentrations in their follicles and have mild sleep disturbances",
+        "first_author": "Li",
+        "year": 2022,
+        "pmid": "35313872",
+        "doi": "10.1186/s12905-022-01661-w"
+      },
+      {
+        "title": "Pregnancy outcomes in infertility patients diagnosed with sleep disordered breathing with wireless wearable sensors",
+        "first_author": "Walter",
+        "year": 2022,
+        "pmid": "36306629",
+        "doi": "10.1016/j.sleep.2022.09.026"
+      },
+      {
+        "title": "Human fertility and sleep disturbances: A narrative review",
+        "first_author": "Spaggiari",
+        "year": 2022,
+        "pmid": "35772248",
+        "doi": "10.1016/j.sleep.2022.06.009"
+      },
+      {
+        "title": "ASSESSING THE EFFECTIVENESS OF A PREGNANCY-SPECIFIC OBSTRUCTIVE SLEEP APNEA SCREENING TOOL IN NON-PREGNANT, REPRODUCTIVE-AGED WOMEN",
+        "first_author": "Bui",
+        "year": 2022,
+        "doi": "10.1016/j.fertnstert.2022.08.206"
+      },
+      {
+        "title": "Sleep parameters and sleep disorders in male and female subjects presenting idiopathic infertility: the ALIFERT case-control study",
+        "first_author": "Sermondade",
+        "year": 2022,
+        "doi": "10.1093/humrep/deac106.P-687"
+      },
+      {
+        "title": "Risk of Infertility in Males with Obstructive Sleep Apnea: A Nationwide, Population-based, Nested Case‒Control Study",
+        "first_author": "Lin",
+        "year": 2022,
+        "doi": "10.3390/jpm12060933"
+      },
+      {
+        "title": "Analysis of the proportion and clinical characteristics of obstructive sleep apnea in women with polycystic ovary syndrome",
+        "first_author": "Yang",
+        "year": 2022,
+        "pmid": "34013438",
+        "doi": "10.1007/s11325-021-02376-2"
+      },
+      {
+        "title": "Obstructive sleep apnea increases risk of female infertility: A 14-year nationwide population-based study",
+        "first_author": "Lim",
+        "year": 2021,
+        "pmid": "34910749",
+        "doi": "10.1371/journal.pone.0260842"
+      },
+      {
+        "title": "Evaluation of depression and sleep disorders in the preoperative and postoperative period in stage 4 endometriosis patients",
+        "first_author": "Goksu",
+        "year": 2021,
+        "pmid": "34333367",
+        "doi": "10.1016/j.ejogrb.2021.07.037"
+      },
+      {
+        "title": "EARLY PREGNANCY OUTCOMES AFTER IVF AND SLEEP DISORDERED BREATHING",
+        "first_author": "Walter",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.620"
+      },
+      {
+        "title": "PREVALENCE OF OBSTRUCTIVE SLEEP APNEA IN WOMEN SEEKING FERTILITY TREATMENT",
+        "first_author": "Cooney",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.1085"
+      },
+      {
+        "title": "OBSTRUCTIVE SLEEP APNEA RISK IS ASSOCIATED WITH LOWER HEALTH-RELATED QUALITY OF LIFE IN WOMEN WITH POLYCYSTIC OVARY SYNDROME",
+        "first_author": "Zhou",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.342"
+      },
+      {
+        "title": "PREVALENCE OF OBSTRUCTIVE SLEEP APNEA IN WOMEN SEEKING FERTILITY TREATMENT",
+        "first_author": "Cooney",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.1085"
+      },
+      {
+        "title": "OBSTRUCTIVE SLEEP APNEA RISK IS ASSOCIATED WITH LOWER HEALTH-RELATED QUALITY OF LIFE IN WOMEN WITH POLYCYSTIC OVARY SYNDROME",
+        "first_author": "Zhou",
+        "year": 2021,
+        "doi": "10.1016/j.fertnstert.2021.07.342"
+      },
+      {
+        "title": "Sleep disordered breathing and fertility hormones in women: an early exploration",
+        "first_author": "Lee",
+        "year": 2019,
+        "doi": "10.1016/j.sleep.2019.11.601"
+      },
+      {
+        "title": "Association of obstructive sleep apnea with female infertility-A 13-year nationwide population-based retrospective study",
+        "first_author": "Wang",
+        "year": 2019,
+        "doi": "10.1183/13993003.congress-2019.PA901"
+      },
+      {
+        "title": "Non-Apnea sleep disorder increases the risk of subsequent female infertility—A nationwide population-Based cohort study",
+        "first_author": "Wang",
+        "year": 2018,
+        "pmid": "29136234",
+        "doi": "10.1093/sleep/zsx186"
+      },
+      {
+        "title": "The role of melatonin and sleep disturbances in the pathogenesis of metabolic disorders in polycystic ovary syndrome",
+        "first_author": "Absatarova",
+        "year": 2017,
+        "doi": "10.1159/000468958"
+      },
+      {
+        "title": "Somatic symptoms, sleep disturbance and psychological distress among women undergoing oocyte pick-up and in vitro fertilisation-embryo transfer",
+        "first_author": "Lin",
+        "year": 2016,
+        "pmid": "27075044",
+        "doi": "10.1111/jocn.13194"
+      },
+      {
+        "title": "Sleep, sleep disturbance, and fertility in women",
+        "first_author": "Kloss",
+        "year": 2015,
+        "pmid": "25458772",
+        "doi": "10.1016/j.smrv.2014.10.005"
+      },
+      {
+        "title": "Somatic symptoms, psychological distress and sleep disturbance among infertile women with intrauterine insemination treatment",
+        "first_author": "Lin",
+        "year": 2014,
+        "pmid": "23829562",
+        "doi": "10.1111/jocn.12306"
+      },
+      {
+        "title": "Polycystic ovarian syndrome and obstructive sleep apnea",
+        "first_author": "Desai",
+        "year": 2007,
+        "doi": "10.2174/157339807782359887"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "2d285c462fa90561b9ccb5975dc646ea4244d90fbf9e82b1e97bfffbe7932d18": {
+    "query": "# Query 4: Balanced + proximity_or_scope_fallback - proximity-based tightening\n(((sleep ADJ2 disturbance*):ti,ab OR (sleep ADJ2 disorder*):ti,ab OR ('sleep breathing' ADJ2 disorder*):ti,ab OR ('obstructive sleep' ADJ2 apnea):ti,ab OR (circadian ADJ2 dysrhythmia):ti,ab) AND ((female ADJ2 infertil*):ti,ab OR (fertility ADJ2 treatment*):ti,ab OR ('in vitro' ADJ2 fertilization):ti,ab OR (assisted ADJ2 reproduction):ti,ab OR ((infertil* OR subfertil*) ADJ3 (female* OR woman OR women)):ti,ab) AND (female*:ti,ab OR woman:ti,ab OR women:ti,ab) AND 'human'/de)",
+    "provider": "embase_manual",
+    "results_count": 0,
+    "retrieved_dois": [],
+    "retrieved_pmids": [],
+    "pmids": [],
+    "records": [],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "23586c406f933953aab36ba8e5e634c19b6ee005f5b8c2ef3a3893edf4f81077": {
+    "query": "(('sleep duration':ti OR 'sleep time':ti OR 'sleep quality':ti OR 'short sleep duration':ti OR 'long sleep duration':ti OR 'poor sleep quality':ti OR 'sleep disturbance':ti) AND ('c-reactive protein':ti OR crp:ti OR 'interleukin 6':ti OR 'il-6':ti OR adiponectin:ti OR 'tnf alpha':ti OR 'tnf-alpha':ti OR inflammation:ti) AND (child*:ti,ab OR adolescen*:ti,ab OR teen*:ti,ab OR teenager*:ti,ab OR youth:ti,ab OR preschool*:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 0,
+    "retrieved_dois": [],
+    "retrieved_pmids": [],
+    "pmids": [],
+    "records": [],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

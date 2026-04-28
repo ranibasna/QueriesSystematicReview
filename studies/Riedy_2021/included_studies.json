@@ -1,0 +1,911 @@
+{
+  "study_name": "Riedy_2021",
+  "source_file": "studies/Riedy_2021/paper_Riedy_2021.md",
+  "total_included_studies": 38,
+  "extraction_method": "manual_llm_assisted",
+  "included_studies": [
+    {
+      "reference_number": 21,
+      "first_author": "Ashton",
+      "year": 1971,
+      "title": "The effects of the environment upon state cycles in the human newborn",
+      "journal": "Journal of Experimental Child Psychology",
+      "authors": [
+        "Ashton R"
+      ],
+      "doi": "10.1016/0022-0965(71)90012-9",
+      "pmid": "5119985",
+      "volume": "12",
+      "issue": "1",
+      "pages": "1-9",
+      "raw_citation": "Ashton R. The effects of the environment upon state cycles in the human newborn. J Exp Child Psychol 1971;12(1):1-9.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9928057553956835,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 13,
+      "first_author": "Borkowski",
+      "year": 2001,
+      "title": "White noise and scheduled bedtime routines to reduce infant and childhood sleep disturbances",
+      "journal": "Behavior Therapist",
+      "authors": [
+        "Borkowski MM",
+        "Hunter KE",
+        "Johnson CM"
+      ],
+      "doi": null,
+      "pmid": null,
+      "volume": "24",
+      "issue": "2",
+      "pages": "29-37",
+      "raw_citation": "Borkowski MM, Hunter KE, Johnson CM. White noise and scheduled bedtime routines to reduce infant and childhood sleep disturbances. Behav Ther 2001;24(2):29-37."
+    },
+    {
+      "reference_number": 22,
+      "first_author": "Brackbill",
+      "year": 1973,
+      "title": "Continuous stimulation reduced arousal level: stability of the effect over time",
+      "journal": "Child Development",
+      "authors": [
+        "Brackbill Y"
+      ],
+      "doi": null,
+      "pmid": "4706072",
+      "volume": "44",
+      "issue": "1",
+      "pages": "43-46",
+      "raw_citation": "Brackbill Y. Continuous stimulation reduced arousal level: stability of the effect over time. Child Dev 1973;44(1):43-6.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9811320754716981,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 23,
+      "first_author": "Cautilli",
+      "year": 2005,
+      "title": "Brief report: use of an antecedent procedure to decrease night awakening in an infant: a replication",
+      "journal": "Journal of Early Intensive Behavioral Intervention",
+      "authors": [
+        "Cautilli J"
+      ],
+      "doi": "10.1037/h0100295",
+      "pmid": null,
+      "volume": "2",
+      "issue": "1",
+      "pages": "9-13",
+      "raw_citation": "Cautilli J. Brief report: use of an antecedent procedure to decrease night awakening in an infant: a replication. J Early Intensive Behav Interv (JEIBI) 2005;2(1):9-13.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 0.9950248756218906,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 24,
+      "first_author": "Falkenberg",
+      "year": 2003,
+      "title": "Habituation therapy of chronic distressing tinnitus: a presentation of a treatment programme and an evaluation study of its effects",
+      "journal": "Audiological Medicine",
+      "authors": [
+        "Falkenberg ES",
+        "Tungland OP",
+        "Skollerud S"
+      ],
+      "doi": "10.1080/16513860301715",
+      "pmid": null,
+      "volume": "1",
+      "issue": "2",
+      "pages": "132-137",
+      "raw_citation": "Falkenberg ES, Tungland OP, Skollerud S. Habituation therapy of chronic distressing tinnitus: a presentation of a treatment programme and an evaluation study of its effects. Audiol Med 2003;1(2):132-7.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 1.0,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 25,
+      "first_author": "Farokhnezhad Afshar",
+      "year": 2016,
+      "title": "Effect of white noise on sleep in patients admitted to a coronary care",
+      "journal": "Journal of Caring Sciences",
+      "authors": [
+        "Farokhnezhad AP",
+        "Bahramnezhad F",
+        "Asgari P",
+        "Shiri M"
+      ],
+      "doi": "10.15171/jcs.2016.011",
+      "pmid": "27354974",
+      "volume": "5",
+      "issue": "2",
+      "pages": "103-109",
+      "raw_citation": "Farokhnezhad AP, Bahramnezhad F, Asgari P, Shiri M. Effect of white noise on sleep in patients admitted to a coronary care. J Caring Sci 2016;5(2):103-9.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9929078014184397,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 26,
+      "first_author": "Farrehi",
+      "year": 2016,
+      "title": "Efficacy of sleep tool education during hospitalization: a randomized controlled trial",
+      "journal": "American Journal of Medicine",
+      "authors": [
+        "Farrehi PM",
+        "Clore KR",
+        "Scott JR",
+        "Vanini G",
+        "Clauw DJ"
+      ],
+      "doi": "10.1016/j.amjmed.2016.08.001",
+      "pmid": "27566502",
+      "volume": "129",
+      "issue": "12",
+      "pages": "1329.e9-1329.e17",
+      "raw_citation": "Farrehi PM, Clore KR, Scott JR, Vanini G, Clauw DJ. Efficacy of sleep tool education during hospitalization: a randomized controlled trial. Am J Med 2016;129(12). 1329.e9-1329.e17.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9942196531791907,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 27,
+      "first_author": "Forquer",
+      "year": 2005,
+      "title": "Continuous white noise to reduce resistance going to sleep and night wakings in toddlers",
+      "journal": "Child and Family Behavior Therapy",
+      "authors": [
+        "Forquer LM",
+        "Johnson CM"
+      ],
+      "doi": "10.1300/j019v27n02_01",
+      "pmid": null,
+      "volume": "27",
+      "issue": "2",
+      "pages": "1-10",
+      "raw_citation": "Forquer LM, Johnson CM. Continuous white noise to reduce resistance going to sleep and night wakings in toddlers. Child Fam Behav Ther 2005;27(2):1-10.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 1.0,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 28,
+      "first_author": "Forquer",
+      "year": 2007,
+      "title": "Continuous white noise to reduce sleep latency and night wakings in college students",
+      "journal": "Sleep and Hypnosis",
+      "authors": [
+        "Forquer LM",
+        "Johnson CM"
+      ],
+      "doi": null,
+      "pmid": null,
+      "volume": "9",
+      "issue": "2",
+      "pages": "60-66",
+      "raw_citation": "Forquer LM, Johnson CM. Continuous white noise to reduce sleep latency and night wakings in college students. Sleep Hypn 2007;9(2):60-6."
+    },
+    {
+      "reference_number": 29,
+      "first_author": "Forquer",
+      "year": 2008,
+      "title": "Sleep patterns of college students at a public university",
+      "journal": "Journal of American College Health",
+      "authors": [
+        "Forquer LM",
+        "Camden AE",
+        "Gabriau KM",
+        "Johnson CM"
+      ],
+      "doi": "10.3200/jach.56.5.563-565",
+      "pmid": "18400669",
+      "volume": "56",
+      "issue": "5",
+      "pages": "563-565",
+      "raw_citation": "Forquer LM, Camden AE, Gabriau KM, Johnson CM. Sleep patterns of college students at a public university. J Am Coll Health 2008;56(5):563-5.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.991304347826087,
+        "method": "europe_pmc",
+        "source": "EuropePMC"
+      }
+    },
+    {
+      "reference_number": 30,
+      "first_author": "Gragert",
+      "year": 1990,
+      "title": "The use of a masking signal to enhance the sleep of men and women 65 years of age and older in the critical care environment",
+      "journal": "PhD Thesis, The University of Texas at Austin",
+      "authors": [
+        "Gragert MD"
+      ],
+      "doi": null,
+      "pmid": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "raw_citation": "Gragert MD. The use of a masking signal to enhance the sleep of men and women 65 years of age and older in the critical care environment. PhD Thesis. The University of Texas at Austin. 1990."
+    },
+    {
+      "reference_number": 31,
+      "first_author": "Handscomb",
+      "year": 2006,
+      "title": "Use of bedside sound generators by patients with tinnitus-related sleeping difficulty: which sounds are preferred and why?",
+      "journal": "Acta Otolaryngologica Supplementum",
+      "authors": [
+        "Handscomb L"
+      ],
+      "doi": "10.1080/03655230600895275",
+      "pmid": "17114145",
+      "volume": "556",
+      "issue": null,
+      "pages": "59-63",
+      "raw_citation": "Handscomb L. Use of bedside sound generators by patients with tinnitus-related sleeping difficulty: which sounds are preferred and why? Act otolaryngologica. Supplementum 2006;556:59-63.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 1.0,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 32,
+      "first_author": "Johnson",
+      "year": 1991,
+      "title": "Infant and toddler sleep: a telephone survey of parents in one community",
+      "journal": "Journal of Developmental and Behavioral Pediatrics",
+      "authors": [
+        "Johnson CM"
+      ],
+      "doi": null,
+      "pmid": "2045483",
+      "volume": "12",
+      "issue": "2",
+      "pages": "108-114",
+      "raw_citation": "Johnson CM. Infant and toddler sleep: a telephone survey of parents in one community. Dev Behavior Pediatric 1991;12(2):108-14.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.993103448275862,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 33,
+      "first_author": "Knight",
+      "year": 2014,
+      "title": "Using a behavioral treatment package for sleep problems in children with autism spectrum disorders",
+      "journal": "Child and Family Behavior Therapy",
+      "authors": [
+        "Knight RM",
+        "Johnson CM"
+      ],
+      "doi": "10.1080/07317107.2014.934171",
+      "pmid": null,
+      "volume": "36",
+      "issue": "3",
+      "pages": "204-221",
+      "raw_citation": "Knight RM, Johnson CM. Using a behavioral treatment package for sleep problems in children with autism spectrum disorders. Child Fam Behav Ther 2014;36(3):204-21.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 1.0,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 34,
+      "first_author": "Lee",
+      "year": 2011,
+      "title": "Can modifications to the bedroom environment improve the sleep of new parents? Two randomized controlled trials",
+      "journal": "Research in Nursing and Health",
+      "authors": [
+        "Lee KA",
+        "Gay CL"
+      ],
+      "doi": "10.1002/nur.20413",
+      "pmid": "21243655",
+      "volume": "34",
+      "issue": "1",
+      "pages": "7-19",
+      "raw_citation": "Lee KA, Gay CL. Can modifications to the bedroom environment improve the sleep of new parents? Two randomized controlled trials. Res Nurs Health 2011;34(1):7-19.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9955156950672646,
+        "method": "europe_pmc",
+        "source": "EuropePMC"
+      }
+    },
+    {
+      "reference_number": 35,
+      "first_author": "Messineo",
+      "year": 2017,
+      "title": "Broad sound administration improves sleep onset latency in healthy subjects in a model of transient insomnia",
+      "journal": "Frontiers in Neurology",
+      "authors": [
+        "Messineo L",
+        "Taranto-Montemurro L",
+        "Sands SA",
+        "Oliveira Marques MD",
+        "Azabarzin A",
+        "Wellman DA"
+      ],
+      "doi": "10.3389/fneur.2017.00718",
+      "pmid": null,
+      "volume": "8",
+      "issue": null,
+      "pages": "718",
+      "raw_citation": "Messineo L, Taranto-Montemurro L, Sands SA, Oliveira Marques MD, Azabarzin A, Wellman DA. Broad sound administration improves sleep onset latency in healthy subjects in a model of transient insomnia. Front Neurol 2017;8:718.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 0.9818181818181819,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 36,
+      "first_author": "Montgomery-Downs",
+      "year": 2010,
+      "title": "Effects of two types of ambient sound during sleep",
+      "journal": "Behavioral Sleep Medicine",
+      "authors": [
+        "Montgomery-Downs HE",
+        "Insana SP",
+        "Miller EA"
+      ],
+      "doi": "10.1080/15402000903425686",
+      "pmid": "20043248",
+      "volume": "8",
+      "issue": "1",
+      "pages": "40-47",
+      "raw_citation": "Montgomery-Downs HE, Insana SP, Miller EA. Effects of two types of ambient sound during sleep. Behav Sleep Med 2010;8(1):40-7.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9900990099009901,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 37,
+      "first_author": "Murray",
+      "year": 1971,
+      "title": "Sleep stages in the newborn: influence of sound",
+      "journal": "Neuropadiatrie",
+      "authors": [
+        "Murray B",
+        "Campbell D"
+      ],
+      "doi": "10.1055/s-0028-1091789",
+      "pmid": "4330831",
+      "volume": "2",
+      "issue": "3",
+      "pages": "338-342",
+      "raw_citation": "Murray B, Campbell D. Sleep stages in the newborn: influence of sound. Neumpidiatrie 1971;2(3):338-342.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9684210526315788,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 38,
+      "first_author": "Novak",
+      "year": 1996,
+      "title": "Focus group evaluation of night nurse shiftwork difficulties and coping strategies",
+      "journal": "Chronobiology International",
+      "authors": [
+        "Novak RD",
+        "Auvil-Novak SE"
+      ],
+      "doi": "10.3109/07420529609020916",
+      "pmid": "8974191",
+      "volume": "13",
+      "issue": "6",
+      "pages": "457-463",
+      "raw_citation": "Novak RD, Auvil-Novak SE. Focus group evaluation of night nurse shiftwork difficulties and coping strategies. Chronobiol Int 1996;13(6):457-63.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9939393939393939,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 39,
+      "first_author": "Ogata",
+      "year": 1995,
+      "title": "Human EEG responses to classical music and simulated white noise: effects of a musical loudness component on consciousness",
+      "journal": "Perceptual and Motor Skills",
+      "authors": [
+        "Ogata S"
+      ],
+      "doi": "10.2466/pms.1995.80.3.779",
+      "pmid": "7567395",
+      "volume": "80",
+      "issue": "3 Pt 1",
+      "pages": "779-790",
+      "raw_citation": "Ogata S. Human EEG responses to classical music and simulated white noise: effects of a musical loudness component on consciousness. Percept Mot Skills 1995;80(3 Pt 1):779-90.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9959183673469387,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 40,
+      "first_author": "Rocknathan",
+      "year": 2017,
+      "title": "Proceedings of the 2017 international conference on orange technologies",
+      "journal": "Proceedings of the 2017 International Conference on Orange Technologies",
+      "authors": [
+        "Rocknathan SK",
+        "Thone W",
+        "Xuan YT",
+        "Rong AYW",
+        "Roy AKR",
+        "Alagusubramanian D"
+      ],
+      "doi": null,
+      "pmid": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "raw_citation": "Rocknathan SK, Thone W, Xuan YT, Rong AYW, Roy AKR, Alagusubramanian D, et al. Proceedings of the 2017 international conference on orange technologies. 2017."
+    },
+    {
+      "reference_number": 41,
+      "first_author": "Rosalez",
+      "year": 2019,
+      "title": "Effects of white noise on off-task behavior and sleep for elementary-age students with ADHD",
+      "journal": "Child and Family Behavior Therapy",
+      "authors": [
+        "Rosalez E",
+        "Johnson CM",
+        "Bradley-Johnson S",
+        "Kanouse S"
+      ],
+      "doi": "10.1080/07317107.2019.1690735",
+      "pmid": null,
+      "volume": "42",
+      "issue": "1",
+      "pages": "20-36",
+      "raw_citation": "Rosalez E, Johnson CM, Bradley-Johnson S, Kanouse S. Effects of white noise on off-task behavior and sleep for elementary-age students with ADHD. Child Fam Behav Ther 2019;42(1):20-36.",
+      "lookup_metadata": {
+        "confidence": 0.807,
+        "similarity": 1.0,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 42,
+      "first_author": "Scott",
+      "year": 1972,
+      "title": "Effects of continuous, high-intensity, white noise on human sleep cycle",
+      "journal": "Psychophysiology",
+      "authors": [
+        "Scott TD"
+      ],
+      "doi": "10.1111/j.1469-8986.1972.tb00757.x",
+      "pmid": "4336955",
+      "volume": "9",
+      "issue": "2",
+      "pages": "227-232",
+      "raw_citation": "Scott TD. Effects of continuous, high-intensity, white noise on human sleep cycle. Psychophysiology 1972;9(2):227-32.",
+      "lookup_metadata": {
+        "confidence": 1.0,
+        "similarity": 1.0,
+        "method": "user_confirmed",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 43,
+      "first_author": "Sezici",
+      "year": 2018,
+      "title": "Comparison between swinging and playing of white noise among colicky babies: a paired randomized controlled trial",
+      "journal": "Journal of Clinical Nursing",
+      "authors": [
+        "Sezici E",
+        "Yigit D"
+      ],
+      "doi": "10.1111/jocn.13928",
+      "pmid": "28618052",
+      "volume": "27",
+      "issue": "3-4",
+      "pages": "593-600",
+      "raw_citation": "Sezici E, Yigit D. Comparison between swinging and playing of white noise among colicky babies: a paired randomized controlled trial. J Clin Nurs 2018;27(3-4):593-600.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.986784140969163,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 44,
+      "first_author": "Spencer",
+      "year": 1990,
+      "title": "White noise and sleep induction",
+      "journal": "Archives of Disease in Childhood",
+      "authors": [
+        "Spencer JAD",
+        "Moran DJ",
+        "Lee A",
+        "Talbert D"
+      ],
+      "doi": "10.1136/adc.65.1.135",
+      "pmid": "2405784",
+      "volume": "65",
+      "issue": "1",
+      "pages": "135-137",
+      "raw_citation": "Spencer JAD, Moran DJ, Lee A, Talbert D. White noise and sleep induction. Arch Dis Child 1990;65(1):135-7.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9841269841269842,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 45,
+      "first_author": "Stanchina",
+      "year": 2005,
+      "title": "The influence of white noise on sleep in subjects exposed to ICU noise",
+      "journal": "Sleep Medicine",
+      "authors": [
+        "Stanchina ML",
+        "Abu-Hijleh M",
+        "Chaudhry BK",
+        "Carlisle CC",
+        "Millman RP"
+      ],
+      "doi": "10.1016/j.sleep.2004.12.004",
+      "pmid": "16139772",
+      "volume": "6",
+      "issue": "5",
+      "pages": "423-428",
+      "raw_citation": "Stanchina ML, Abu-Hijleh M, Chaudhry BK, Carlisle CC, Millman RP. The influence of white noise on sleep in subjects exposed to ICU noise. Sleep Med 2005;6(5):423-8.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9929078014184397,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 46,
+      "first_author": "Suzuki",
+      "year": 1991,
+      "title": "Sleep deepening effect of steady pink noise",
+      "journal": "Journal of Sound and Vibration",
+      "authors": [
+        "Suzuki S",
+        "Kawada T",
+        "Ogawa M",
+        "Aoki S"
+      ],
+      "doi": "10.1016/0022-460x(91)90537-t",
+      "pmid": null,
+      "volume": "151",
+      "issue": "3",
+      "pages": "407-414",
+      "raw_citation": "Suzuki S, Kawada T, Ogawa M, Aoki S. Sleep deepening effect of steady pink noise. J Sound Vib 1991;151(3):407-14.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 1.0,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 47,
+      "first_author": "Terzano",
+      "year": 1988,
+      "title": "Variations of cyclic alternating pattern rate and homeostasis of sleep organization: a controlled-study on the effects of white noise and zolpidem",
+      "journal": "Pharmacology Biochemistry and Behavior",
+      "authors": [
+        "Terzano MG",
+        "Parrino L",
+        "Fioriti G",
+        "Farolfi A",
+        "Spaggiari MC",
+        "Anelli S"
+      ],
+      "doi": "10.1016/0091-3057(88)90218-3",
+      "pmid": "3413207",
+      "volume": "29",
+      "issue": "4",
+      "pages": "827-829",
+      "raw_citation": "Terzano MG, Parrino L, Fioriti G, Farolfi A, Spaggiari MC, Anelli S, et al. Variations of cyclic alternating pattern rate and homeostasis of sleep organization: a controlled-study on the effects of white noise and zolpidem. Pharmacol Biochem Behav 1988;29(4):827-9.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.955631399317406,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 48,
+      "first_author": "Terzano",
+      "year": 1990,
+      "title": "Modifications of sleep structure induced by increasing levels of acoustic perturbation in normal subjects",
+      "journal": "Electroencephalography and Clinical Neurophysiology",
+      "authors": [
+        "Terzano MG",
+        "Parrino L",
+        "Fioriti G",
+        "Orofamma B",
+        "Depoortere H"
+      ],
+      "doi": "10.1016/0013-4694(90)90055-o",
+      "pmid": "1694482",
+      "volume": "76",
+      "issue": "1",
+      "pages": "29-38",
+      "raw_citation": "Terzano MG, Parrino L, Fioriti G, Orofamma B, Depoortere H. Modifications of sleep structure induced by increasing levels of acoustic perturbation in normal subjects. Electroencephalogr Clin Neurophysiol 1990;76(1):29-38.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.995260663507109,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 49,
+      "first_author": "Terzano",
+      "year": 1993,
+      "title": "Assessment of noise-induced sleep fragility in two age ranges by means of polysomnographic microstructure",
+      "journal": "Journal of Sound and Vibration",
+      "authors": [
+        "Terzano MG",
+        "Parrino L",
+        "Spaggiari MC",
+        "Buccino GP",
+        "Fioriti G",
+        "Depoortere H"
+      ],
+      "doi": "10.1006/jsvi.1993.1123",
+      "pmid": null,
+      "volume": "162",
+      "issue": "2",
+      "pages": "345-359",
+      "raw_citation": "Terzano MG, Parrino L, Spaggiari MC, Buccino GP, Fioriti G, Depoortere H. Assessment of noise-induced sleep fragility in two age ranges by means of polysomnographic microstructure. J Sound Vib 1993;162(2):345-59.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 1.0,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 50,
+      "first_author": "Terzano",
+      "year": 1995,
+      "title": "Changes of cyclic alternating pattern (CAP) parameters in situational insomnia under brotizolam and traizolam",
+      "journal": "Psychopharmacology",
+      "authors": [
+        "Terzano MG",
+        "Parrino L",
+        "Boselli M",
+        "Dell'Orso S",
+        "Moroni M",
+        "Spaggiari MC"
+      ],
+      "doi": "10.1007/bf02311169",
+      "pmid": "8524969",
+      "volume": "120",
+      "issue": "3",
+      "pages": "237-243",
+      "raw_citation": "Terzano MG, Parrino L, Boselli M, Dell'Orso S, Moroni M, Spaggiari MC. Changes of cyclic alternating pattern (CAP) parameters in situational insomnia under brotizolam and traizolam. Psychopharmacology 1995;120(3):237-43.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9863013698630136,
+        "method": "europe_pmc",
+        "source": "EuropePMC"
+      }
+    },
+    {
+      "reference_number": 51,
+      "first_author": "Vesterager",
+      "year": 1994,
+      "title": "Combined psychological and prosthetic management of tinnitus: a cross-sectional study of patients with severe tinnitus",
+      "journal": "British Journal of Audiology",
+      "authors": [
+        "Vesterager V"
+      ],
+      "doi": "10.3109/03005369409077908",
+      "pmid": "7987267",
+      "volume": "28",
+      "issue": "1",
+      "pages": "1-11",
+      "raw_citation": "Vesterager V. Combined psychological and prosthetic management of tinnitus - a cross-sectional study of patients with severe tinnitus. Br J Audiol 1994;28(1):1-11.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9957805907172996,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 52,
+      "first_author": "Webb",
+      "year": 1979,
+      "title": "Sleep onset facilitation by tones",
+      "journal": "Sleep",
+      "authors": [
+        "Webb WB",
+        "Agnew HW Jr"
+      ],
+      "doi": "10.1093/sleep/1.3.281",
+      "pmid": "504873",
+      "volume": "1",
+      "issue": "3",
+      "pages": "281-286",
+      "raw_citation": "Webb WB, Agnew Jr HW. Sleep onset facilitation by tones. Sleep 1979;1(3):281-6.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9850746268656717,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 53,
+      "first_author": "Williams",
+      "year": 2006,
+      "title": "Parent perceptions of efficacy for strategies used to facilitate sleep in children with autism",
+      "journal": "Journal of Developmental and Physical Disabilities",
+      "authors": [
+        "Williams G",
+        "Sears L",
+        "Allard AM"
+      ],
+      "doi": "10.1007/s10882-006-9003-y",
+      "pmid": null,
+      "volume": "18",
+      "issue": "1",
+      "pages": "25-33",
+      "raw_citation": "Williams G, Sears L, Allard AM. Parent perceptions of efficacy for strategies used to facilitate sleep in children with autism. J Dev Phys Disabil 2006;18(1):25-33.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 1.0,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 54,
+      "first_author": "Williamson",
+      "year": 1992,
+      "title": "The effects of ocean sounds on sleep after coronary artery bypass graft surgery",
+      "journal": "American Journal of Critical Care",
+      "authors": [
+        "Williamson JW"
+      ],
+      "doi": null,
+      "pmid": "1307884",
+      "volume": "1",
+      "issue": "1",
+      "pages": "91-97",
+      "raw_citation": "Williamson JW. The effects of ocean sounds on sleep after coronary artery bypass graft surgery. Am J Crit Care 1992;1(1):91-7.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9937106918238993,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 55,
+      "first_author": "Wolff",
+      "year": 1974,
+      "title": "The effect of white noise on the somatosensory evoked response in sleeping newborn infants",
+      "journal": "Electroencephalography and Clinical Neurophysiology",
+      "authors": [
+        "Wolff PH",
+        "Matsumiya Y",
+        "Abroms IF",
+        "Van Velzer C",
+        "Lombroso CT"
+      ],
+      "doi": "10.1016/0013-4694(74)90030-3",
+      "pmid": "4137259",
+      "volume": "37",
+      "issue": "3",
+      "pages": "269-274",
+      "raw_citation": "Wolff PH, Matsumiya Y, Abroms IF, Van Velzer C, Lombroso CT. The effect of white noise on the somatosensory evoked response in sleeping newborn infants. Electroencephalogr Clin Neurophysiol 1974;37(3):269-74.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.994475138121547,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 56,
+      "first_author": "Young",
+      "year": 1988,
+      "title": "Managing nocturnal wandering behavior",
+      "journal": "Journal of Gerontological Nursing",
+      "authors": [
+        "Young SH",
+        "Muir-Nash J",
+        "Ninos M"
+      ],
+      "doi": "10.3928/0098-9134-19880501-04",
+      "pmid": "3372968",
+      "volume": "14",
+      "issue": "5",
+      "pages": "6-12",
+      "raw_citation": "Young SH, Muir-Nash J, Ninos M. Managing nocturnal wandering behavior. J Gerontol Nurs 1988;14(5):6-12.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9866666666666667,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 57,
+      "first_author": "Zhou",
+      "year": 2012,
+      "title": "Pink noise: effect on complexity synchronization of brain activity and sleep consolidation",
+      "journal": "Journal of Theoretical Biology",
+      "authors": [
+        "Zhou J",
+        "Liu D",
+        "Li X",
+        "Ma J",
+        "Zhang J",
+        "Fang J"
+      ],
+      "doi": "10.1016/j.jtbi.2012.04.006",
+      "pmid": "22726808",
+      "volume": "306",
+      "issue": null,
+      "pages": "68-72",
+      "raw_citation": "Zhou J, Liu D, Li X, Ma J, Zhang J, Fang J. Pink noise: effect on complexity synchronization of brain activity and sleep consolidation. J Theor Biol 2012;306:68-72.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.994475138121547,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    }
+  ],
+  "statistics": {
+    "total_studies": 38,
+    "with_doi": 31,
+    "with_pmid": 25,
+    "with_identifiers": 34,
+    "doi_coverage_percent": 81.6,
+    "pmid_coverage_percent": 65.8,
+    "identifier_coverage_percent": 89.5,
+    "pubmed_matches": 3,
+    "europepmc_matches": 0,
+    "crossref_matches": 9
+  }
+}

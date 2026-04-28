@@ -1,0 +1,473 @@
+{
+  "study_name": "Varallo_2022",
+  "source_file": "studies/Varallo_2022/paper_Varallo_2022.md",
+  "total_included_studies": 21,
+  "extraction_method": "deterministic_parsing",
+  "included_studies": [
+    {
+      "reference_number": 46,
+      "first_author": "Schreiber KL",
+      "year": 2021,
+      "title": "Prediction of persistent pain severity and impact 12 Months after breast surgery using comprehensive preoperative assessment of biopsychosocial pain modulators",
+      "journal": "Ann Surg Oncol",
+      "authors": [
+        "Schreiber KL"
+      ],
+      "doi": "10.1245/s10434-020-09479-2",
+      "pmid": "33452600",
+      "volume": "28",
+      "issue": "9",
+      "pages": "5015e38",
+      "raw_citation": "Schreiber KL, Zinboonyahgoon N, Flowers KM, Hruschak V, Fields KG, Patton ME, et al. Prediction of persistent pain severity and impact 12 Months after breast surgery using comprehensive preoperative assessment of biopsychosocial pain modulators. Ann Surg Oncol 2021;28(9): 5015 e 38.",
+      "lookup_metadata": {
+        "confidence": 0.9,
+        "similarity": 0.9968652037617555,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 47,
+      "first_author": "Bjurstrom MF",
+      "year": 2021,
+      "title": "Preoperative sleep quality and adverse pain outcomes after total hip arthroplasty",
+      "journal": "Eur J Pain",
+      "authors": [
+        "Bjurstrom MF"
+      ],
+      "doi": "10.1002/ejp.1761",
+      "pmid": null,
+      "volume": "25",
+      "issue": "7",
+      "pages": "1482e92",
+      "raw_citation": "Bjurstrom MF, Irwin MR, Bodelsson M, Smith MT, Mattsson-Carlgren N. \u20ac Preoperative sleep quality and adverse pain outcomes after total hip arthroplasty. Eur J Pain 2021;25(7):1482 e 92.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "method": "manual_verified",
+        "source": "Manual"
+      }
+    },
+    {
+      "reference_number": 48,
+      "first_author": "Shim J",
+      "year": 2018,
+      "title": "Development of a clinical risk score for pain and function following total knee arthroplasty: results from the TRIO study",
+      "journal": "Rheumatol Adv Pract",
+      "authors": [
+        "Shim J"
+      ],
+      "doi": "10.1093/rap/rky021",
+      "pmid": "30506023",
+      "volume": "2",
+      "issue": "2",
+      "pages": "1e9",
+      "raw_citation": "Shim J, Mclernon DJ, Hamilton D, Simpson HA, Beasley M, Macfarlane GJ. Development of a clinical risk score for pain and function following total knee arthroplasty: results from the TRIO study. Rheumatol Adv Pract 2018;2(2):1 e 9.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9958847736625515,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 49,
+      "first_author": "Bogoch ER",
+      "year": 2010,
+      "title": "Increased tender point counts before and after total hip arthroplasty are associated with poorer outcomes but are not individually predictive",
+      "journal": "J Arthroplasty",
+      "authors": [
+        "Bogoch ER"
+      ],
+      "doi": "10.1016/j.arth.2009.08.005",
+      "pmid": "19837554",
+      "volume": "25",
+      "issue": "6",
+      "pages": "945e50",
+      "raw_citation": "Bogoch ER, Olschewski E, Zangger P, Henke ML, Smythe HA. Increased tender point counts before and after total hip arthroplasty are associated with poorer outcomes but are not individually predictive. J Arthroplasty 2010;25(6):945 e 50.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9964664310954063,
+        "method": "europe_pmc",
+        "source": "EuropePMC"
+      }
+    },
+    {
+      "reference_number": 50,
+      "first_author": "Greco C",
+      "year": 2017,
+      "title": "Associations of psychosocial factors with chronic postsurgical pain following total knee arthroplasty",
+      "journal": "J Pain",
+      "authors": [
+        "Greco C"
+      ],
+      "doi": "10.1016/j.jpain.2017.02.258",
+      "pmid": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "raw_citation": "Greco C, Belfer I, Vulakovich K, Landsittel D, Dai F, Chelly J. Associations of psychosocial factors with chronic postsurgical pain following total knee arthroplasty. J Pain 2017;18(4):S76.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 0.9711538461538461,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 51,
+      "first_author": "Soni A",
+      "year": 2020,
+      "title": "Sleep disturbance is associated with more severe pain and worse outcome following knee replacement surgery in patients with knee osteoarthritis",
+      "journal": "Br J Pain",
+      "authors": [
+        "Soni A"
+      ],
+      "doi": null,
+      "pmid": null,
+      "volume": "14",
+      "issue": "1",
+      "pages": "8e9",
+      "raw_citation": "Soni A, Bartling A, Wanigasekera V, Tracey I. Sleep disturbance is associated with more severe pain and worse outcome following knee replacement surgery in patients with knee osteoarthritis. Br J Pain 2020;14(1):8 e 9."
+    },
+    {
+      "reference_number": 52,
+      "first_author": "Kornilov N",
+      "year": 2018,
+      "title": "Higher physical activity and lower pain levels before surgery predict nonimprovement of knee pain 1 y after TKA",
+      "journal": "Sport Traumatol Arthrosc",
+      "authors": [
+        "Kornilov N"
+      ],
+      "doi": "10.1007/s00167-017-4713-5",
+      "pmid": "28916991",
+      "volume": "26",
+      "issue": "6",
+      "pages": "1698e708",
+      "raw_citation": "Kornilov N, Lindberg MF, Gay C, Saraev A, Kuliaba T, Rosseland LA, et al. Higher physical activity and lower pain levels before surgery predict nonimprovement of knee pain 1 y after TKA. Knee Surgery. Sport Traumatol Arthrosc 2018;26(6):1698 e 708.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.960352422907489,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 53,
+      "first_author": "Luo Z",
+      "year": 2019,
+      "title": "Preoperative sleep quality affects postoperative pain and function after total joint arthroplasty : a prospective cohort study",
+      "journal": "J Orthop Surg Res",
+      "authors": [
+        "Luo Z"
+      ],
+      "doi": "10.1186/s13018-019-1446-9",
+      "pmid": "31752947",
+      "volume": "14",
+      "issue": "1",
+      "pages": "1e10",
+      "raw_citation": "Luo Z, Li L, Wang D, Wang H, Pei F, Zhou Z. Preoperative sleep quality affects postoperative pain and function after total joint arthroplasty : a prospective cohort study. J Orthop Surg Res 2019;14(1):1 e 10.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9841269841269842,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 54,
+      "first_author": "Chen AF",
+      "year": 2016,
+      "title": "Prospective evaluation of sleep disturbances after total knee arthroplasty",
+      "journal": "J Arthroplasty",
+      "authors": [
+        "Chen AF"
+      ],
+      "doi": "10.1016/j.arth.2015.07.044",
+      "pmid": "26455403",
+      "volume": "31",
+      "issue": "1",
+      "pages": "330e2",
+      "raw_citation": "Chen AF, Orozco FR, Austin LS, Post ZD, Deirmengian CA, Ong AC. Prospective evaluation of sleep disturbances after total knee arthroplasty. J Arthroplasty 2016;31(1):330 e 2.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.993288590604027,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 55,
+      "first_author": "Schreiber KL",
+      "year": 2016,
+      "title": "Acute and subacute postoperative pain after partial and total mastectomy: prospective association with pyschophysical and psychosocial processing of pain",
+      "journal": "Anesth Analg",
+      "authors": [
+        "Schreiber KL"
+      ],
+      "doi": null,
+      "pmid": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "raw_citation": "Schreiber KL, Zinboonyahgoon RRE N. Acute and subacute postoperative pain after partial and total mastectomy: prospective association with pyschophysical and psychosocial processing of pain. Anesth Analg 2016;122:S1 e 480."
+    },
+    {
+      "reference_number": 56,
+      "first_author": "Schreiber K",
+      "year": 2016,
+      "title": "Acute and subacute postoperative pain after partial and total mastectomy: association with prospectively assessed psychosocial and psychophysical variables",
+      "journal": "J Pain",
+      "authors": [
+        "Schreiber K"
+      ],
+      "doi": "10.1016/j.jpain.2016.01.152",
+      "pmid": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "raw_citation": "Schreiber K, Zinboonyahgoon N, Cornelius M, Edwards R. Acute and subacute postoperative pain after partial and total mastectomy: association with prospectively assessed psychosocial and psychophysical variables. J Pain 2016;17(4):S37. 248.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 0.9810126582278481,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 57,
+      "first_author": "Cho CH",
+      "year": 2015,
+      "title": "Does rotator cuff repair improve psychologic status and quality of life in patients with rotator cuff tear? Clin Orthop Relat Res 2015;473(11):3494 e 500",
+      "journal": "Does rotator cuff repair improve psychologic status and quality of life in patients with rotator cuff tear? Clin Orthop Relat Res",
+      "authors": [
+        "Cho CH"
+      ],
+      "doi": "10.1007/s11999-015-4258-1",
+      "pmid": "25791445",
+      "volume": "473",
+      "issue": "11",
+      "pages": "3494e500",
+      "raw_citation": "Cho CH, Song KS, Hwang I, Warner JJP. Does rotator cuff repair improve psychologic status and quality of life in patients with rotator cuff tear? Clin Orthop Relat Res 2015;473(11):3494 e 500.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "method": "manual_verified",
+        "source": "Manual"
+      }
+    },
+    {
+      "reference_number": 58,
+      "first_author": "Walker J",
+      "year": 2015,
+      "title": "Pre- and post-operative sleep is associated with post-operative pain and functioning following total knee replacements",
+      "journal": "J Pain [Internet]",
+      "authors": [
+        "Walker J"
+      ],
+      "doi": "10.1016/j.jpain.2015.01.268",
+      "pmid": null,
+      "volume": "16",
+      "issue": "4",
+      "pages": "",
+      "raw_citation": "Walker J, Campbell C, Pejsa M, Hand M, Haythornthwaite J, Edwards R, et al. Pre- and post-operative sleep is associated with post-operative pain and functioning following total knee replacements. J Pain [Internet] 2015;16(4): S63. https://doi.org/10.1016/j.jpain.2015.01.268. Available from:.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 0.9752066115702479,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 59,
+      "first_author": "Gren E",
+      "year": 2018,
+      "title": "Does preoperative insomnia explain persistent pain after breast cancer treatments? J Sleep Res 2018;27:172 e 3",
+      "journal": "Does preoperative insomnia explain persistent pain after breast cancer treatments? J Sleep Res",
+      "authors": [
+        "Gren E"
+      ],
+      "doi": null,
+      "pmid": null,
+      "volume": "27",
+      "issue": null,
+      "pages": "172e3",
+      "raw_citation": "Gren E, Sipila R, /C19 \u20ac Salo P. Does preoperative insomnia explain persistent pain after breast cancer treatments? J Sleep Res 2018;27:172 e 3."
+    },
+    {
+      "reference_number": 60,
+      "first_author": "Baeyens M",
+      "year": 2019,
+      "title": "Screening for psychosocial variables that predict chronic postsurgical pain",
+      "journal": "In: European society of regional anesthesia;",
+      "authors": [
+        "Baeyens M"
+      ],
+      "doi": "10.1136/rapm-2019-esraabs2019.418",
+      "pmid": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "raw_citation": "Baeyens M, Neckebroek M, De Paepe A, De Bock L, Keunebrock L, Crombez G, et al. Screening for psychosocial variables that predict chronic postsurgical pain. In: European society of regional anesthesia; 2019. A234.1 e 234.",
+      "lookup_metadata": {
+        "confidence": 0.812,
+        "similarity": 0.9259259259259259,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 61,
+      "first_author": "Miaskowski C",
+      "year": 2012,
+      "title": "Identification of patient subgroups and risk factors for persistent breast pain following breast cancer surgery",
+      "journal": "J Pain",
+      "authors": [
+        "Miaskowski C"
+      ],
+      "doi": "10.1016/j.jpain.2012.09.013",
+      "pmid": "23182226",
+      "volume": "13",
+      "issue": "12",
+      "pages": "1172e87",
+      "raw_citation": "Miaskowski C, Cooper B, Paul SM, West C, Langford D, Levine JD, et al. Identi /uniFB01 cation of patient subgroups and risk factors for persistent breast pain following breast cancer surgery. J Pain 2012;13(12):1172 e 87.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9955156950672646,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 62,
+      "first_author": "Hastie B",
+      "year": 2013,
+      "title": "Tick-Tock.genes working round the clock: associations with sleep and acute and chronic post-thoracotomy pain",
+      "journal": "J Pain",
+      "authors": [
+        "Hastie B"
+      ],
+      "doi": "10.1016/j.jpain.2013.01.488",
+      "pmid": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "raw_citation": "Hastie B, Klodell C, Frye R, Wallace M. Tick-Tock.genes working round the clock: associations with sleep and acute and chronic post-thoracotomy pain. J Pain 2013;14(4):S33.",
+      "lookup_metadata": {
+        "confidence": 0.902,
+        "similarity": 0.9908256880733946,
+        "method": "crossref_api",
+        "source": "CrossRef"
+      }
+    },
+    {
+      "reference_number": 63,
+      "first_author": "Bayman E",
+      "year": 2017,
+      "title": "A prospective study of predictors of chronic pain after thoracic surgery",
+      "journal": "J Pain",
+      "authors": [
+        "Bayman E"
+      ],
+      "doi": "10.1097/ALN.0000000000001576",
+      "pmid": "28248713",
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "raw_citation": "Bayman E, Brennan T. A prospective study of predictors of chronic pain after thoracic surgery. J Pain 2017;18(4):S75.",
+      "lookup_metadata": {
+        "confidence": 0.8,
+        "similarity": 0.8854961832061069,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 64,
+      "first_author": "Getachew M",
+      "year": 2021,
+      "title": "High levels of preoperative pain and fatigue are red flags for moderate-to-severe pain 12 months after primary total knee arthroplasty: a cohort study",
+      "journal": "Musculoskeletal Care",
+      "authors": [
+        "Getachew M",
+        "Lerdal A",
+        "Smaastuen MC",
+        "Gay CL",
+        "Aamodt A",
+        "Tesfaye M"
+      ],
+      "doi": "10.1002/msc.1522",
+      "pmid": null,
+      "volume": "19",
+      "issue": "2",
+      "pages": "186-192",
+      "raw_citation": "Getachew M, Lerdal A, Smaastuen MC, Gay CL, Aamodt A, Tesfaye M, et al. High levels of preoperative pain and fatigue are red flags for moderate-to-severe pain 12 months after primary total knee arthroplasty: a cohort study. Muscoskel Care 2021;19(2):186-92.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "method": "manual_verified",
+        "source": "Manual"
+      }
+    },
+    {
+      "reference_number": 65,
+      "first_author": "Rhon DI",
+      "year": 2019,
+      "title": "Comorbid insomnia and sleep apnea are associated with greater downstream health care utilization and chronic opioid use after arthroscopic hip surgery",
+      "journal": "Pain Physician",
+      "authors": [
+        "Rhon DI",
+        "Snodgrass SJ",
+        "Cleland JA",
+        "Cook CE"
+      ],
+      "doi": null,
+      "pmid": "31337179",
+      "volume": "22",
+      "issue": "4",
+      "pages": "E351-360",
+      "raw_citation": "Rhon DI, Snodgrass SJ, Cleland JA, Cook CE. Comorbid insomnia and sleep apnea are associated with greater downstream health care utilization and chronic opioid use after arthroscopic hip surgery. Pain Physician 2019;22(4):E351-60.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9966777408637875,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 66,
+      "first_author": "Rhon DI",
+      "year": 2018,
+      "title": "Predictors of chronic prescription opioid use after orthopedic surgery: derivation of a clinical prediction rule",
+      "journal": "Perioperative Medicine",
+      "authors": [
+        "Rhon DI",
+        "Snodgrass SJ",
+        "Cleland JA",
+        "Sissel CD",
+        "Cook CE"
+      ],
+      "doi": "10.1186/s13741-018-0105-8",
+      "pmid": "30479746",
+      "volume": null,
+      "issue": null,
+      "pages": "1-11",
+      "raw_citation": "Rhon DI, Snodgrass SJ, Cleland JA, Sissel CD, Cook CE. Predictors of chronic prescription opioid use after orthopedic surgery: derivation of a clinical prediction rule. Perioperat Med 2018:1-11.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9955555555555555,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    }
+  ],
+  "statistics": {
+    "total_studies": 21,
+    "with_doi": 17,
+    "with_pmid": 11,
+    "with_identifiers": 16,
+    "doi_coverage_percent": 81.0,
+    "pmid_coverage_percent": 52.4,
+    "identifier_coverage_percent": 76.2,
+    "pubmed_matches": 2,
+    "europepmc_matches": 0,
+    "crossref_matches": 5
+  }
+}

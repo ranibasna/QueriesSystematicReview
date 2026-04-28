@@ -1,0 +1,17 @@
+# Q1: High-recall
+TITLE-ABS-KEY(("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "idiopathic generalised epilepsy" OR "juvenile myoclonic epilepsy" OR "childhood absence epilepsy" OR "juvenile absence epilepsy" OR "generalized tonic-clonic seizures alone" OR "generalised tonic-clonic seizures alone") AND (sleep OR "sleep quality" OR "sleep architecture" OR "sleep macrostructure" OR "sleep microstructure" OR "sleep questionnaire" OR "sleep questionnaires" OR "sleep disorder" OR "sleep disorders"))
+
+# Q2: Balanced
+TITLE-ABS-KEY(("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "idiopathic generalised epilepsy" OR "juvenile myoclonic epilepsy" OR "childhood absence epilepsy" OR "juvenile absence epilepsy" OR "generalized tonic-clonic seizures alone" OR "generalised tonic-clonic seizures alone") AND ("sleep quality" OR "sleep architecture" OR "sleep macrostructure" OR "sleep microstructure" OR "sleep questionnaire" OR "sleep questionnaires" OR "sleep disorder" OR "sleep disorders" OR sleep) AND (cohort OR "cross-sectional" OR observational))
+
+# Q3: High-precision
+TITLE("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "idiopathic generalised epilepsy" OR "juvenile myoclonic epilepsy" OR "childhood absence epilepsy" OR "juvenile absence epilepsy") AND TITLE-ABS-KEY("sleep quality" OR "sleep architecture" OR "sleep macrostructure" OR "sleep microstructure" OR "sleep disorder" OR "sleep disorders") AND TITLE-ABS-KEY(cohort OR "cross-sectional" OR observational) AND TITLE-ABS-KEY(child* OR adolescen* OR "young adult*" OR pediatric* OR paediatric*)
+
+# Q4: Balanced + scope_only
+TITLE("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "idiopathic generalised epilepsy" OR "juvenile myoclonic epilepsy" OR "childhood absence epilepsy" OR "juvenile absence epilepsy" OR "generalized tonic-clonic seizures alone" OR "generalised tonic-clonic seizures alone") AND TITLE(sleep OR "sleep quality" OR "sleep architecture" OR "sleep disorder" OR "sleep disorders") AND TITLE-ABS-KEY(cohort OR "cross-sectional" OR observational)
+
+# Q5: Balanced + design_plus_filter
+TITLE-ABS-KEY(("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "idiopathic generalised epilepsy" OR "juvenile myoclonic epilepsy" OR "childhood absence epilepsy" OR "juvenile absence epilepsy" OR "generalized tonic-clonic seizures alone" OR "generalised tonic-clonic seizures alone") AND ("sleep quality" OR "sleep architecture" OR "sleep macrostructure" OR "sleep microstructure" OR "sleep questionnaire" OR "sleep questionnaires" OR "sleep disorder" OR "sleep disorders" OR sleep) AND (cohort OR "cross-sectional" OR observational) AND (child* OR adolescen* OR "young adult*" OR pediatric* OR paediatric*))
+
+# Q6: Balanced + proximity_or_scope_fallback
+TITLE-ABS-KEY(("genetic generalized epilepsy" OR "genetic generalised epilepsy" OR "idiopathic generalized epilepsy" OR "idiopathic generalised epilepsy" OR "juvenile myoclonic epilepsy" OR "childhood absence epilepsy" OR "juvenile absence epilepsy") AND (sleep W/3 (quality OR architecture OR macrostructure OR microstructure OR questionnair* OR disorder*)) AND (cohort OR "cross-sectional" OR observational))

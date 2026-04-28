@@ -1,0 +1,51 @@
+{
+  "93da2067f84a71aef4f1ae8456fe52046086f5b0a2e82ecb46d163605ef99c16": {
+    "query": "(('generalized epilepsy'/mj OR 'genetic generalized epilepsy':ti OR 'genetic generalised epilepsy':ti OR 'idiopathic generalized epilepsy':ti OR 'idiopathic generalised epilepsy':ti OR 'juvenile myoclonic epilepsy':ti OR 'childhood absence epilepsy':ti OR 'juvenile absence epilepsy':ti) AND ('sleep'/mj OR 'sleep quality':ti OR 'sleep architecture':ti OR 'sleep macrostructure':ti,ab OR 'sleep microstructure':ti,ab OR 'sleep disorder':ti,ab OR 'sleep disorders':ti,ab) AND (cohort:ti,ab OR 'cross-sectional':ti,ab OR observational:ti,ab) AND ('child'/exp OR 'adolescent'/exp OR 'young adult'/exp OR child*:ti,ab OR adolescen*:ti,ab OR 'young adult':ti,ab OR 'young adults':ti,ab OR pediatric*:ti,ab OR paediatric*:ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 4,
+    "retrieved_dois": [
+      "10.1016/j.ejpn.2017.04.727",
+      "10.1111/ane.12769",
+      "10.1111/jsr.12446",
+      "10.1177/0883073819842422"
+    ],
+    "retrieved_pmids": [
+      "28542735",
+      "31012364"
+    ],
+    "pmids": [
+      "28542735",
+      "31012364"
+    ],
+    "records": [
+      {
+        "title": "Sleepwalking and Sleep Paralysis: Prevalence in Colombian Families With Genetic Generalized Epilepsy",
+        "first_author": "Cornejo-Sanchez",
+        "year": 2019,
+        "pmid": "31012364",
+        "doi": "10.1177/0883073819842422"
+      },
+      {
+        "title": "Sleep convulsive seizures predict lack of remission in genetic generalized epilepsies: A retrospective study from a single epilepsy center in Egypt",
+        "first_author": "Ashmawi",
+        "year": 2017,
+        "pmid": "28542735",
+        "doi": "10.1111/ane.12769"
+      },
+      {
+        "title": "Epileptic characteristics and sleep architecture of drug naïve patients in childhood absence epilepsy spectrum. A prospective study",
+        "first_author": "Dinopoulos",
+        "year": 2017,
+        "doi": "10.1016/j.ejpn.2017.04.727"
+      },
+      {
+        "title": "Sleep architecture and epileptic activity in childhood absence epilepsy spectrum before treatment",
+        "first_author": "Tsirouda",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

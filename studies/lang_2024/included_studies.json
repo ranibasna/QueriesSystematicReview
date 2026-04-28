@@ -1,0 +1,179 @@
+{
+  "study_name": "lang_2024",
+  "source_file": "studies/lang_2024/paper_lang_2024.md",
+  "total_included_studies": 6,
+  "extraction_method": "manual_llm_assisted",
+  "included_studies": [
+    {
+      "reference_number": 30,
+      "first_author": "Huang",
+      "year": 2021,
+      "title": "Association between sleep duration and weight gain and incident overweight/obesity: longitudinal analyses from the China Health and Nutrition Survey",
+      "journal": "Sleep and Breathing",
+      "authors": [
+        "Huang X",
+        "Xu W",
+        "Chen R",
+        "Jiang Y",
+        "Li J",
+        "Xu S"
+      ],
+      "doi": "10.1007/s11325-020-02194-y",
+      "pmid": "32959137",
+      "volume": "25",
+      "issue": "2",
+      "pages": "1187-1194",
+      "raw_citation": "Huang X, Xu W, Chen R, Jiang Y, Li J, Xu S. Association between sleep duration and weight gain and incident overweight/obesity: longitudinal analyses from the China Health and Nutrition Survey. Sleep Breath 2021;25(2):1187-94.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9966329966329966,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 31,
+      "first_author": "Itani",
+      "year": 2011,
+      "title": "Association of onset of obesity with sleep duration and shift work among Japanese adults",
+      "journal": "Sleep Medicine",
+      "authors": [
+        "Itani O",
+        "Kaneita Y",
+        "Murata A",
+        "Yokoyama E",
+        "Ohida T"
+      ],
+      "doi": "10.1016/j.sleep.2010.09.007",
+      "pmid": "21377926",
+      "volume": "12",
+      "issue": "4",
+      "pages": "341-345",
+      "raw_citation": "Itani O, Kaneita Y, Murata A, Yokoyama E, Ohida T. Association of onset of obesity with sleep duration and shift work among Japanese adults. Sleep Med 2011;12(4):341-5.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9943502824858758,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 32,
+      "first_author": "Sayon-Orea",
+      "year": 2013,
+      "title": "Association between sleeping hours and siesta and the risk of obesity: the SUN mediterranean cohort",
+      "journal": "Obesity Facts",
+      "authors": [
+        "Sayon-Orea C",
+        "Bes-Rastrollo M",
+        "Carlos S",
+        "Beunza JJ",
+        "Basterra-Gortari FJ",
+        "Martinez-Gonzalez MA"
+      ],
+      "doi": "10.1159/000354746",
+      "pmid": "23970143",
+      "volume": "6",
+      "issue": "4",
+      "pages": "337-347",
+      "raw_citation": "Sayon-Orea C, Bes-Rastrollo M, Carlos S, Beunza JJ, Basterra-Gortari FJ, Martinez-Gonzalez MA. Association between sleeping hours and siesta and the risk of obesity: the SUN mediterranean cohort. Obes Facts 2013;6(4):337-47.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 1.0,
+        "method": "manual_correction",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 33,
+      "first_author": "Watanabe",
+      "year": 2010,
+      "title": "Association of short sleep duration with weight gain and obesity at 1-year follow-up: a large-scale prospective study",
+      "journal": "Sleep",
+      "authors": [
+        "Watanabe M",
+        "Kikuchi H",
+        "Tanaka K",
+        "Takahashi M"
+      ],
+      "doi": "10.1093/sleep/33.2.161",
+      "pmid": "20175399",
+      "volume": "33",
+      "issue": "2",
+      "pages": "161-167",
+      "raw_citation": "Watanabe M, Kikuchi H, Tanaka K, Takahashi M. Association of short sleep duration with weight gain and obesity at 1-year follow-up: a large-scale prospective study. Sleep 2010;33(2):161-7.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9957446808510639,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 34,
+      "first_author": "Xiao",
+      "year": 2013,
+      "title": "A large prospective investigation of sleep duration, weight change, and obesity in the NIH-AARP diet and health study cohort",
+      "journal": "American Journal of Epidemiology",
+      "authors": [
+        "Xiao Q",
+        "Arem H",
+        "Moore SC",
+        "Hollenbeck AR",
+        "Matthews CE"
+      ],
+      "doi": "10.1093/aje/kwt180",
+      "pmid": "24049160",
+      "volume": "178",
+      "issue": "11",
+      "pages": "1600-1610",
+      "raw_citation": "Xiao Q, Arem H, Moore SC, Hollenbeck AR, Matthews CE. A large prospective investigation of sleep duration, weight change, and obesity in the NIH-aarp diet and health study cohort. Am J Epidemiol 2013;178(11):1600-10.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9959839357429717,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 35,
+      "first_author": "Zhou",
+      "year": 2020,
+      "title": "Age and sex differences in the association between sleep duration and general and abdominal obesity at 6-year follow-up: the rural Chinese cohort study",
+      "journal": "Sleep Medicine",
+      "authors": [
+        "Zhou QG",
+        "Wu XY",
+        "Zhang DD",
+        "Liu LL",
+        "Wang J",
+        "Cheng RR"
+      ],
+      "doi": "10.1016/j.sleep.2019.12.025",
+      "pmid": "32058229",
+      "volume": "69",
+      "issue": null,
+      "pages": "71-77",
+      "raw_citation": "Zhou QG, Wu XY, Zhang DD, Liu LL, Wang J, Cheng RR, et al. Age and sex differences in the association between sleep duration and general and abdominal obesity at 6-year follow-up: the rural Chinese cohort study. Sleep Med 2020;69:71-7.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9966996699669967,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    }
+  ],
+  "statistics": {
+    "total_studies": 6,
+    "with_doi": 6,
+    "with_pmid": 6,
+    "with_identifiers": 6,
+    "doi_coverage_percent": 100.0,
+    "pmid_coverage_percent": 100.0,
+    "identifier_coverage_percent": 100.0,
+    "pubmed_matches": 0,
+    "europepmc_matches": 0,
+    "crossref_matches": 0,
+    "manual_corrections": 1
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "study_name": "Cid-Verdejo_2024_Paper",
+  "source_file": "studies/Cid-Verdejo_2024_Paper/paper_Cid-Verdejo_2024_Paper.md",
+  "total_included_studies": 10,
+  "extraction_method": "manual_llm_assisted",
+  "included_studies": [
+    {
+      "reference_number": 38,
+      "first_author": "Castroflorio",
+      "year": 2014,
+      "title": "Detection of sleep bruxism: comparison between an electromyographic and electrocardiographic portable holter and polysomnography",
+      "journal": "J Oral Rehabil",
+      "authors": [
+        "Castroflorio T",
+        "Deregibus A",
+        "Bargellini A",
+        "Debernardi C",
+        "Manfredini D"
+      ],
+      "volume": "41",
+      "issue": "3",
+      "pages": "163-9",
+      "doi": "10.1111/joor.12131",
+      "pmid": "24417585",
+      "raw_citation": "Castroflorio T, Deregibus A, Bargellini A, Debernardi C, Manfredini D. Detection of sleep bruxism: comparison between an electromyographic and electrocardiographic portable holter and polysomnography. J Oral Rehabil 2014 Mar;41(3):163-9.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9961089494163424,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 39,
+      "first_author": "Gallo",
+      "year": 1997,
+      "title": "Reliability of scoring EMG orofacial events: polysomnography compared with ambulatory recordings",
+      "journal": "J Sleep Res",
+      "authors": [
+        "Gallo LM",
+        "Lavigne G",
+        "Rompre P",
+        "Palla S"
+      ],
+      "volume": "6",
+      "issue": "4",
+      "pages": "259-63",
+      "doi": "10.1111/j.1365-2869.1997.00259.x",
+      "pmid": "9493526",
+      "raw_citation": "Gallo LM, Lavigne G, Rompre P, Palla S. Reliability of scoring EMG orofacial events: polysomnography compared with ambulatory recordings. J Sleep Res 1997 Dec;6(4):259-63.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9948186528497409,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 40,
+      "first_author": "Maeda",
+      "year": 2020,
+      "title": "Validity of single-channel masseteric electromyography by using an ultraminiature wearable electromyographic device for diagnosis of sleep bruxism",
+      "journal": "J Prosthodont Res",
+      "authors": [
+        "Maeda M",
+        "Yamaguchi T",
+        "Mikami S",
+        "Yachida W",
+        "Saito T",
+        "Sakuma T"
+      ],
+      "volume": "64",
+      "issue": "1",
+      "pages": "90-7",
+      "doi": "10.1016/j.jpor.2019.04.003",
+      "pmid": "31085074",
+      "raw_citation": "Maeda M, Yamaguchi T, Mikami S, Yachida W, Saito T, Sakuma T, et al. Validity of single-channel masseteric electromyography by using an ultraminiature wearable electromyographic device for diagnosis of sleep bruxism. J Prosthodont Res 2020 Jan;64(1):90-7.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9965870307167235,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 41,
+      "first_author": "Mainieri",
+      "year": 2012,
+      "title": "Validation of the Bitestrip versus polysomnography in the diagnosis of patients with a clinical history of sleep bruxism",
+      "journal": "Oral Surg Oral Med Oral Pathol Oral Radiol",
+      "authors": [
+        "Mainieri VC",
+        "Saueressig AC",
+        "Pattussi MP",
+        "Fagondes SC",
+        "Grossi ML"
+      ],
+      "volume": "113",
+      "issue": "5",
+      "pages": "612-7",
+      "doi": "10.1016/j.oooo.2011.10.008",
+      "pmid": "22668619",
+      "raw_citation": "Mainieri VC, Saueressig AC, Pattussi MP, Fagondes SC, Grossi ML. Validation of the Bitestrip versus polysomnography in the diagnosis of patients with a clinical history of sleep bruxism. Oral Surg Oral Med Oral Pathol Oral Radiol 2012 May;113(5):612-7.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.995850622406639,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 42,
+      "first_author": "Miettinen",
+      "year": 2018,
+      "title": "Screen-printed ambulatory electrode set enables accurate diagnostics of sleep bruxism",
+      "journal": "J Sleep Res",
+      "authors": [
+        "Miettinen T",
+        "Myllymaa K",
+        "Muraja-Murro A",
+        "Westeren-Punnonen S",
+        "Hukkanen T",
+        "Toyras J"
+      ],
+      "volume": "27",
+      "issue": "1",
+      "pages": "103-12",
+      "doi": "10.1111/jsr.12536",
+      "pmid": "28513083",
+      "raw_citation": "Miettinen T, Myllymaa K, Muraja-Murro A, Westeren-Punnonen S, Hukkanen T, Toyras J, et al. Screen-printed ambulatory electrode set enables accurate diagnostics of sleep bruxism. J Sleep Res 2018 Feb 17;27(1):103-12.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9941520467836259,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 43,
+      "first_author": "Sakuma",
+      "year": 2022,
+      "title": "Comparison of the occurrence of sleep bruxism under accustomed conditions at home and under polysomnography conditions in a sleep laboratory",
+      "journal": "J Prosthodont Res",
+      "authors": [
+        "Sakuma T",
+        "Yamaguchi T",
+        "Maeda M",
+        "Saito T",
+        "Nakamura H",
+        "Mikami S"
+      ],
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "doi": "10.2186/jpr.JPR_D_21_00219",
+      "pmid": "35095085",
+      "raw_citation": "Sakuma T, Yamaguchi T, Maeda M, Saito T, Nakamura H, Mikami S, et al. Comparison of the occurrence of sleep bruxism under accustomed conditions at home and under polysomnography conditions in a sleep laboratory. J Prosthodont",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.99644128113879,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 44,
+      "first_author": "Shochat",
+      "year": 2007,
+      "title": "Validation of the BiteStrip screener for sleep bruxism",
+      "journal": "Oral Surg Oral Med Oral Pathol Oral Radiol Endod",
+      "authors": [
+        "Shochat T",
+        "Gavish A",
+        "Arons E",
+        "Hadas N",
+        "Molotsky A",
+        "Lavie P"
+      ],
+      "volume": "104",
+      "issue": "3",
+      "pages": "e32-9",
+      "doi": "10.1016/j.tripleo.2007.03.009",
+      "pmid": "17618147",
+      "raw_citation": "Shochat T, Gavish A, Arons E, Hadas N, Molotsky A, Lavie P, et al. Validation of the BiteStrip screener for sleep bruxism. Oral Surg Oral Med Oral Pathol Oral Radiol Endod 2007 Sep;104(3):e32-9.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9908256880733946,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 45,
+      "first_author": "Stuginski-Barbosa",
+      "year": 2016,
+      "title": "Diagnostic validity of the use of a portable single-channel electromyography device for sleep bruxism",
+      "journal": "Sleep Breath",
+      "authors": [
+        "Stuginski-Barbosa J",
+        "Porporatti AL",
+        "Costa YM",
+        "Svensson P",
+        "Conti PCR"
+      ],
+      "volume": "20",
+      "issue": "2",
+      "pages": "695-702",
+      "doi": "10.1007/s11325-015-1283-y",
+      "pmid": "26527206",
+      "raw_citation": "Stuginski-Barbosa J, Porporatti AL, Costa YM, Svensson P, Conti PCR. Diagnostic validity of the use of a portable single-channel electromyography device for sleep bruxism. Sleep Breath 2016 May 2;20(2):695-702.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9950738916256158,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 47,
+      "first_author": "Yamaguchi",
+      "year": 2012,
+      "title": "Comparison of ambulatory and polysomnographic recording of jaw muscle activity during sleep in normal subjects",
+      "journal": "J Oral Rehabil",
+      "authors": [
+        "Yamaguchi T",
+        "Abe S",
+        "Rompre PH",
+        "Manzini C",
+        "Lavigne GJ"
+      ],
+      "volume": "39",
+      "issue": "1",
+      "pages": "2-10",
+      "doi": "10.1111/j.1365-2842.2011.02232.x",
+      "pmid": "21707698",
+      "raw_citation": "Yamaguchi T, Abe S, Rompre PH, Manzini C, Lavigne GJ. Comparison of ambulatory and polysomnographic recording of jaw muscle activity during sleep in normal subjects. J Oral Rehabil 2012 Jan;39(1):2-10.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.995475113122172,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 48,
+      "first_author": "Yanez-Regonesi",
+      "year": 2023,
+      "title": "Diagnostic accuracy of a portable device (Bruxoff) to measure sleep bruxism",
+      "journal": "J Oral Rehabil",
+      "authors": [
+        "Yanez-Regonesi F",
+        "Eisa E",
+        "Judge S",
+        "Carlson C",
+        "Okeson J",
+        "Moreno-Hay I"
+      ],
+      "volume": "50",
+      "issue": "4",
+      "pages": "258-66",
+      "doi": "10.1111/joor.13416",
+      "pmid": "36648354",
+      "raw_citation": "Yanez-Regonesi F, Eisa E, Judge S, Carlson C, Okeson J, Moreno-Hay I. Diagnostic accuracy of a portable device (Bruxoff®) to measure sleep bruxism. J Oral Rehabil 2023 Apr 25;50(4):258-66.",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9868421052631579,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    }
+  ],
+  "statistics": {
+    "total_studies": 10,
+    "with_doi": 10,
+    "with_pmid": 10,
+    "with_identifiers": 10,
+    "doi_coverage_percent": 100.0,
+    "pmid_coverage_percent": 100.0,
+    "identifier_coverage_percent": 100.0,
+    "pubmed_matches": 10,
+    "europepmc_matches": 0,
+    "crossref_matches": 0
+  }
+}

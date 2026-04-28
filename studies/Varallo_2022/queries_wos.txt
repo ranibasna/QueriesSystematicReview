@@ -1,0 +1,17 @@
+# Q1: High-recall
+TS=((sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep quality" OR "sleep quantity" OR "sleep duration" OR polysomnograph*) AND ("postoperative pain" OR "post-operative pain" OR "postsurgical pain" OR "post-surgical pain" OR "persistent postoperative pain" OR "persistent post-operative pain" OR "persistent postsurgical pain" OR "persistent post-surgical pain" OR "chronic postoperative pain" OR "chronic post-operative pain" OR "chronic postsurgical pain" OR "chronic post-surgical pain" OR CPSP))
+
+# Q2: Balanced
+TS=((sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep quality" OR "sleep quantity" OR "sleep duration") AND ("postoperative pain" OR "post-operative pain" OR "postsurgical pain" OR "post-surgical pain" OR "persistent postoperative pain" OR "persistent postsurgical pain" OR "chronic postoperative pain" OR "chronic postsurgical pain" OR CPSP) AND (preoperat* OR presurg* OR perioperat* OR "pre-operative" OR "peri-operative") AND (chronic* OR persistent* OR "3 month*" OR "three month*" OR "follow-up") AND adult*)
+
+# Q3: High-precision
+TI=(sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "obstructive sleep apnea" OR "sleep quality") AND TI=("postoperative pain" OR "postsurgical pain" OR "persistent postoperative pain" OR "chronic postsurgical pain" OR CPSP) AND TS=(preoperat* OR presurg* OR perioperat*) AND TS=(chronic* OR persistent* OR "follow-up") AND TS=(adult*) AND TS=(prospective OR longitudinal OR cohort)
+
+# Q4: Balanced + scope_only
+TI=(sleep disturbance* OR sleep disorder* OR insomnia OR "sleep apnea" OR "obstructive sleep apnea" OR "sleep quality") AND TI=("postoperative pain" OR "postsurgical pain" OR "persistent postoperative pain" OR "chronic postsurgical pain" OR CPSP) AND TS=(preoperat* OR presurg* OR perioperat*)
+
+# Q5: Balanced + proximity_or_scope_fallback
+TS=(((sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep quality" OR "sleep quantity" OR "sleep duration") NEAR/10 ("postoperative pain" OR "post-operative pain" OR "postsurgical pain" OR "post-surgical pain" OR "persistent postoperative pain" OR "chronic postoperative pain" OR "persistent postsurgical pain" OR "chronic postsurgical pain" OR CPSP)) AND (preoperat* OR presurg* OR perioperat*) AND adult*)
+
+# Q6: Balanced + design_plus_filter
+TS=((sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep quality" OR "sleep quantity" OR "sleep duration") AND ("postoperative pain" OR "post-operative pain" OR "postsurgical pain" OR "post-surgical pain" OR "persistent postoperative pain" OR "persistent postsurgical pain" OR "chronic postoperative pain" OR "chronic postsurgical pain" OR CPSP) AND (preoperat* OR presurg* OR perioperat* OR "pre-operative" OR "peri-operative") AND (chronic* OR persistent* OR "3 month*" OR "three month*" OR "follow-up") AND adult*) AND TS=(prospective OR longitudinal OR cohort) AND DT=(Article)

@@ -1,0 +1,17 @@
+# Q1: High-recall
+TITLE-ABS-KEY((sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep quality" OR "sleep quantity" OR "sleep duration" OR polysomnograph*) AND ("postoperative pain" OR "post-operative pain" OR "postsurgical pain" OR "post-surgical pain" OR "persistent postoperative pain" OR "persistent post-operative pain" OR "persistent postsurgical pain" OR "persistent post-surgical pain" OR "chronic postoperative pain" OR "chronic post-operative pain" OR "chronic postsurgical pain" OR "chronic post-surgical pain" OR cpsp))
+
+# Q2: Balanced
+TITLE-ABS-KEY((sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep quality" OR "sleep quantity" OR "sleep duration") AND ("postoperative pain" OR "post-operative pain" OR "postsurgical pain" OR "post-surgical pain" OR "persistent postoperative pain" OR "persistent postsurgical pain" OR "chronic postoperative pain" OR "chronic postsurgical pain" OR cpsp) AND (preoperat* OR presurg* OR perioperat* OR "pre-operative" OR "peri-operative") AND (chronic* OR persistent* OR "3 month*" OR "three month*" OR "follow-up") AND adult*)
+
+# Q3: High-precision
+TITLE(sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "obstructive sleep apnea" OR "sleep quality") AND TITLE("postoperative pain" OR "postsurgical pain" OR "persistent postoperative pain" OR "chronic postsurgical pain" OR cpsp) AND TITLE-ABS-KEY(preoperat* OR presurg* OR perioperat*) AND TITLE-ABS-KEY(chronic* OR persistent* OR "follow-up") AND TITLE-ABS-KEY(adult*) AND TITLE-ABS-KEY(prospective OR longitudinal OR cohort)
+
+# Q4: Balanced + scope_only
+TITLE(sleep disturbance* OR sleep disorder* OR insomnia OR "sleep apnea" OR "obstructive sleep apnea" OR "sleep quality") AND TITLE("postoperative pain" OR "postsurgical pain" OR "persistent postoperative pain" OR "chronic postsurgical pain" OR cpsp) AND TITLE-ABS-KEY(preoperat* OR presurg* OR perioperat*)
+
+# Q5: Balanced + proximity_or_scope_fallback
+TITLE-ABS-KEY(((sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep quality" OR "sleep quantity" OR "sleep duration") W/10 ("postoperative pain" OR "post-operative pain" OR "postsurgical pain" OR "post-surgical pain" OR "persistent postoperative pain" OR "chronic postoperative pain" OR "persistent postsurgical pain" OR "chronic postsurgical pain" OR cpsp)) AND (preoperat* OR presurg* OR perioperat*) AND adult*)
+
+# Q6: Balanced + design_plus_filter
+TITLE-ABS-KEY((sleep disturbance* OR sleep disorder* OR insomnia OR hypersomnia OR narcolep* OR "sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR "obstructive sleep apnoea" OR "sleep quality" OR "sleep quantity" OR "sleep duration") AND ("postoperative pain" OR "post-operative pain" OR "postsurgical pain" OR "post-surgical pain" OR "persistent postoperative pain" OR "persistent postsurgical pain" OR "chronic postoperative pain" OR "chronic postsurgical pain" OR cpsp) AND (preoperat* OR presurg* OR perioperat* OR "pre-operative" OR "peri-operative") AND (chronic* OR persistent* OR "3 month*" OR "three month*" OR "follow-up") AND adult*) AND TITLE-ABS-KEY(prospective OR longitudinal OR cohort) AND DOCTYPE(ar)

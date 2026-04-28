@@ -1,0 +1,618 @@
+{
+  "study_name": "Nexha_2024",
+  "source_file": "studies/Nexha_2024/paper_Nexha_2024.md",
+  "total_included_studies": 25,
+  "extraction_method": "manual_llm_assisted",
+  "included_studies": [
+    {
+      "reference_number": 36,
+      "first_author": "Parry",
+      "year": 1999,
+      "title": "Sleep EEG studies during early and late partial sleep deprivation in premenstrual dysphoric disorder and normal control subjects",
+      "journal": "Psychiatry Research",
+      "authors": [
+        "Parry BL",
+        "Mostofi N",
+        "LeVeau B",
+        "Nahum HC",
+        "Golshan S",
+        "Laughlin GA"
+      ],
+      "doi": "10.1016/s0165-1781(98)00128-0",
+      "pmid": "10220004",
+      "volume": "85",
+      "pages": "127-43",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9961089494163424,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 37,
+      "first_author": "Baker",
+      "year": 2012,
+      "title": "Perceived poor sleep quality in the absence of polysomnographic sleep disturbance in women with severe premenstrual syndrome",
+      "journal": "Journal of Sleep Research",
+      "authors": [
+        "Baker FC",
+        "Sassoon SA",
+        "Kahan T",
+        "Palaniappan L",
+        "Nicholas CL",
+        "Trinder J"
+      ],
+      "doi": "10.1111/j.1365-2869.2012.01007.x",
+      "pmid": "22417163",
+      "volume": "21",
+      "pages": "535-45",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9959839357429717,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 38,
+      "first_author": "Shechter",
+      "year": 2012,
+      "title": "Nocturnal polysomnographic sleep across the menstrual cycle in premenstrual dysphoric disorder",
+      "journal": "Sleep Medicine",
+      "authors": [
+        "Shechter A",
+        "Lespérance P",
+        "Ng Ying Kin NMK",
+        "Boivin DB"
+      ],
+      "doi": "10.1016/j.sleep.2012.05.012",
+      "pmid": "22749440",
+      "volume": "13",
+      "pages": "1071-8",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9947089947089947,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 39,
+      "first_author": "Parry",
+      "year": 1989,
+      "title": "Longitudinal sleep EEG, temperature, and activity measurements across the menstrual cycle in patients with premenstrual depression and in age-matched controls",
+      "journal": "Psychiatry Research",
+      "authors": [
+        "Parry BL",
+        "Mendelson WB",
+        "Duncan WC",
+        "Sack DA",
+        "Wehr TA"
+      ],
+      "doi": "10.1016/0165-1781(89)90020-6",
+      "pmid": "2616693",
+      "volume": "30",
+      "pages": "285-303",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9968454258675079,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 40,
+      "first_author": "Baker",
+      "year": 2007,
+      "title": "Sleep Quality and the Sleep Electroencephalogram in Women with Severe Premenstrual Syndrome",
+      "journal": "Sleep",
+      "authors": [
+        "Baker FC",
+        "Kahan TL",
+        "Trinder J",
+        "Colrain IM"
+      ],
+      "doi": "10.1093/sleep/30.10.1283",
+      "pmid": "17969462",
+      "volume": "30",
+      "pages": "1283-91",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.994535519125683,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 41,
+      "first_author": "Lamarche",
+      "year": 2007,
+      "title": "Nocturnal sleep, daytime sleepiness, and napping among women with significant emotional/behavioral premenstrual symptoms",
+      "journal": "Journal of Sleep Research",
+      "authors": [
+        "Lamarche LJ",
+        "Driver HS",
+        "Wiebe S",
+        "Crawford L",
+        "Koninck DE JM"
+      ],
+      "doi": "10.1111/j.1365-2869.2007.00604.x",
+      "pmid": "17716275",
+      "volume": "16",
+      "pages": "262-8",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.995850622406639,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 42,
+      "first_author": "Parry",
+      "year": 1990,
+      "title": "Altered waveform of plasma nocturnal melatonin secretion in premenstrual depression",
+      "journal": "Archives of General Psychiatry",
+      "authors": [
+        "Parry BL",
+        "Berga SL",
+        "Kripke DF",
+        "Klauber MR",
+        "Laughlin GA",
+        "Yen SS"
+      ],
+      "doi": "10.1001/archpsyc.1990.01810240059010",
+      "pmid": "2244799",
+      "volume": "47",
+      "pages": "1139-46",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9940119760479041,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 43,
+      "first_author": "Parry",
+      "year": 1997,
+      "title": "Plasma melatonin circadian rhythms during the menstrual cycle and after light therapy in premenstrual dysphoric disorder and normal control subjects",
+      "journal": "Journal of Biological Rhythms",
+      "authors": [
+        "Parry BL",
+        "Berga SL",
+        "Mostofi N",
+        "Klauber MR",
+        "Resnick A"
+      ],
+      "doi": "10.1177/074873049701200107",
+      "pmid": "9104690",
+      "volume": "12",
+      "pages": "47-64",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9966329966329966,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 44,
+      "first_author": "Parry",
+      "year": 2011,
+      "title": "Reduced Phase-Advance of Plasma Melatonin after Bright Morning Light in the Luteal, but not Follicular, Menstrual Cycle Phase in Premenstrual Dysphoric Disorder: An Extended Study",
+      "journal": "Chronobiology International",
+      "authors": [
+        "Parry BL",
+        "Meliska CJ",
+        "Sorenson DL",
+        "Martínez LF",
+        "López AM",
+        "Elliott JA"
+      ],
+      "doi": "10.3109/07420528.2011.567365",
+      "pmid": "21721857",
+      "volume": "28",
+      "pages": "415-24",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9972144846796658,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 45,
+      "first_author": "McIntyre",
+      "year": 1990,
+      "title": "Urinary 6-sulphatoxy melatonin levels within the menstrual cycle and in patients with premenstrual syndrome",
+      "journal": "Psychoneuroendocrinology",
+      "authors": [
+        "McIntyre IM",
+        "Morse C"
+      ],
+      "doi": "10.1016/0306-4530(90)90034-7",
+      "pmid": "2255751",
+      "volume": "15",
+      "pages": "233-6",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9953488372093023,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 46,
+      "first_author": "Parry",
+      "year": 2008,
+      "title": "Late, but not early, wake therapy reduces morning plasma melatonin: relationship to mood in premenstrual dysphoric disorder",
+      "journal": "Psychiatry Research",
+      "authors": [
+        "Parry BL",
+        "Meliska CJ",
+        "Martínez LF",
+        "López AM",
+        "Sorenson DL",
+        "Hauger RL"
+      ],
+      "doi": "10.1016/j.psychres.2007.11.017",
+      "pmid": "18789826",
+      "volume": "161",
+      "pages": "76-86",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9959514170040485,
+        "method": "europe_pmc",
+        "source": "EuropePMC"
+      }
+    },
+    {
+      "reference_number": 47,
+      "first_author": "Parry",
+      "year": 2010,
+      "title": "Increased Sensitivity to Light-Induced Melatonin Suppression in Premenstrual Dysphoric Disorder",
+      "journal": "Chronobiology International",
+      "authors": [
+        "Parry BL",
+        "Meliska CJ",
+        "Sorenson DL",
+        "Lopez A",
+        "Martínez LF",
+        "Hauger RL"
+      ],
+      "doi": "10.3109/07420528.2010.503331",
+      "pmid": "20795885",
+      "volume": "27",
+      "pages": "1438-53",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9947643979057592,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 48,
+      "first_author": "Parry",
+      "year": 1997,
+      "title": "Blunted phase-shift responses to morning bright light in premenstrual dysphoric disorder",
+      "journal": "Journal of Biological Rhythms",
+      "authors": [
+        "Parry BL",
+        "Udell C",
+        "Elliott JA",
+        "Berga SL",
+        "Klauber MR",
+        "Mostofi N"
+      ],
+      "doi": "10.1177/074873049701200506",
+      "pmid": "9376643",
+      "volume": "12",
+      "pages": "443-56",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9943502824858758,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 49,
+      "first_author": "Severino",
+      "year": 1991,
+      "title": "High nocturnal body temperature in premenstrual syndrome and late luteal phase dysphoric disorder",
+      "journal": "American Journal of Psychiatry",
+      "authors": [
+        "Severino SK",
+        "Wagner DR",
+        "Moline ML",
+        "Hurt SW",
+        "Pollak CP",
+        "Zendell S"
+      ],
+      "doi": "10.1176/ajp.148.10.1329",
+      "pmid": "1897612",
+      "volume": "148",
+      "pages": "1329-35",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9948717948717949,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 50,
+      "first_author": "Mauri",
+      "year": 1988,
+      "title": "Sleep in the premenstrual phase: a self-report study of PMS patients and normal controls",
+      "journal": "Acta Psychiatrica Scandinavica",
+      "authors": [
+        "Mauri M",
+        "Reid RL",
+        "MacLean AW"
+      ],
+      "doi": "10.1111/j.1600-0447.1988.tb06304.x",
+      "pmid": "3177000",
+      "volume": "78",
+      "pages": "82-6",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9943502824858758,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 51,
+      "first_author": "Miura",
+      "year": 2019,
+      "title": "Daytime sleepiness in relation to gender and premenstrual symptoms in a sample of Japanese college students",
+      "journal": "Sleep and Biological Rhythms",
+      "authors": [
+        "Miura J",
+        "Honma R"
+      ],
+      "doi": "10.1007/s41105-019-00236-x",
+      "pmid": null,
+      "volume": "18",
+      "pages": null,
+      "lookup_metadata": {
+        "confidence": 1.0,
+        "similarity": 1.0,
+        "method": "user_confirmed",
+        "source": "CrossRef+UserConfirmed",
+        "note": "DOI confirmed by user from paper reference list; journal not indexed in PubMed, no PMID available"
+      }
+    },
+    {
+      "reference_number": 52,
+      "first_author": "El Dahr",
+      "year": 2022,
+      "title": "Investigating biological rhythms disruptions across the menstrual cycle in women with comorbid bipolar disorder and premenstrual dysphoric disorder",
+      "journal": "Archives of Women's Mental Health",
+      "authors": [
+        "El Dahr Y",
+        "de Azevedo CT",
+        "Syan SK",
+        "Caropreso L",
+        "Minuzzi L",
+        "Smith M"
+      ],
+      "doi": "10.1007/s00737-022-01220-0",
+      "pmid": "35226173",
+      "volume": "25",
+      "pages": "345-53",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9966101694915256,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 53,
+      "first_author": "Parry",
+      "year": 1994,
+      "title": "Neuroendocrine effects of light therapy in late luteal phase dysphoric disorder",
+      "journal": "Biological Psychiatry",
+      "authors": [
+        "Parry BL",
+        "Hauger R",
+        "Lin E",
+        "LeVeau B",
+        "Mostofi N",
+        "Clopton PL"
+      ],
+      "doi": "10.1016/0006-3223(94)91210-6",
+      "pmid": "7803596",
+      "volume": "36",
+      "pages": "356-64",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9937106918238993,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 54,
+      "first_author": "Parry",
+      "year": 1997,
+      "title": "Temperature circadian rhythms during the menstrual cycle and sleep deprivation in premenstrual dysphoric disorder and normal comparison subjects",
+      "journal": "Journal of Biological Rhythms",
+      "authors": [
+        "Parry BL",
+        "LeVeau B",
+        "Mostofi N",
+        "Naham HC",
+        "Loving R",
+        "Clopton P"
+      ],
+      "doi": "10.1177/074873049701200106",
+      "pmid": "9104689",
+      "volume": "12",
+      "pages": "34-46",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9965397923875432,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 55,
+      "first_author": "Beddig",
+      "year": 2019,
+      "title": "Stress, mood, and cortisol during daily life in women with Premenstrual Dysphoric Disorder (PMDD)",
+      "journal": "Psychoneuroendocrinology",
+      "authors": [
+        "Beddig T",
+        "Reinhard I",
+        "Kuehner C"
+      ],
+      "doi": "10.1016/j.psyneuen.2019.104372",
+      "pmid": "31357135",
+      "volume": "109",
+      "pages": "104372",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9948717948717949,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 56,
+      "first_author": "Parry",
+      "year": 2000,
+      "title": "Cortisol circadian rhythms during the menstrual cycle and with sleep deprivation in premenstrual dysphoric disorder and normal control subjects",
+      "journal": "Biological Psychiatry",
+      "authors": [
+        "Parry BL",
+        "Javeed S",
+        "Laughlin GA",
+        "Hauger R",
+        "Clopton P"
+      ],
+      "doi": "10.1016/s0006-3223(00)00876-3",
+      "pmid": "11074230",
+      "volume": "48",
+      "pages": "920-31",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9965156794425087,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 57,
+      "first_author": "Izakova",
+      "year": 2021,
+      "title": "Steroid stress hormone changes throughout the menstrual cycle: A rise in evening aldosterone concentration in early luteal phase precedes the symptoms of premenstrual syndrome",
+      "journal": "Journal of Neuroendocrinology",
+      "authors": [
+        "Izakova L",
+        "Hlavacova N",
+        "Jezova D"
+      ],
+      "doi": "10.1111/jne.13043",
+      "pmid": "34595778",
+      "volume": "33",
+      "pages": "e13043",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9971509971509973,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 58,
+      "first_author": "Mortola",
+      "year": 1989,
+      "title": "Depressive episodes in premenstrual syndrome",
+      "journal": "American Journal of Obstetrics and Gynecology",
+      "authors": [
+        "Mortola JF",
+        "Girton L",
+        "Yen SSC"
+      ],
+      "doi": "10.1016/0002-9378(89)90950-2",
+      "pmid": "2603926",
+      "volume": "161",
+      "pages": "1682-7",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9887640449438202,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 59,
+      "first_author": "Segebladh",
+      "year": 2013,
+      "title": "Allopregnanolone serum concentrations and diurnal cortisol secretion in women with premenstrual dysphoric disorder",
+      "journal": "Archives of Women's Mental Health",
+      "authors": [
+        "Segebladh B",
+        "Bannbers E",
+        "Moby L",
+        "Nyberg S",
+        "Bixo M",
+        "Bäckström T"
+      ],
+      "doi": "10.1007/s00737-013-0327-1",
+      "pmid": "23329007",
+      "volume": "16",
+      "pages": "131-7",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9956331877729258,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    },
+    {
+      "reference_number": 60,
+      "first_author": "Parry",
+      "year": 1996,
+      "title": "Circadian rhythms of prolactin and thyroid-stimulating hormone during the menstrual cycle and early versus late sleep deprivation in premenstrual dysphoric disorder",
+      "journal": "Psychiatry Research",
+      "authors": [
+        "Parry BL",
+        "Hauger R",
+        "LeVeau B",
+        "Mostofi N",
+        "Cover H",
+        "Clopton P"
+      ],
+      "doi": "10.1016/0165-1781(96)02905-8",
+      "pmid": "8771612",
+      "volume": "62",
+      "pages": "147-60",
+      "lookup_metadata": {
+        "confidence": 0.95,
+        "similarity": 0.9969604863221885,
+        "method": "pubmed_eutils",
+        "source": "PubMed"
+      }
+    }
+  ],
+  "statistics": {
+    "total_studies": 25,
+    "with_doi": 25,
+    "with_pmid": 24,
+    "with_identifiers": 25,
+    "doi_coverage_percent": 100.0,
+    "pmid_coverage_percent": 96.0,
+    "identifier_coverage_percent": 100.0,
+    "pubmed_matches": 23,
+    "europepmc_matches": 1,
+    "crossref_matches": 1
+  }
+}

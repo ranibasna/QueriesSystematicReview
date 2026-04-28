@@ -1,0 +1,13 @@
+{
+  "d847d98b1d2b3a4bfbcf26645a901b0aaabfa9664dbc71e3a448f4225d929f4d": {
+    "query": "(((('sleep disordered breathing' OR 'sleep-disordered breathing' OR 'obstructive sleep apnea' OR 'obstructive sleep apnoea' OR 'primary snoring' OR snor*) ADJ5 ('blood pressure' OR 'ambulatory blood pressure' OR 'systolic blood pressure' OR 'diastolic blood pressure' OR 'blood pressure load' OR 'non-dipping')):ti,ab AND ('child'/exp OR 'adolescent'/exp OR child*:ti,ab OR adolescen*:ti,ab OR pediatric*:ti,ab OR paediatric*:ti,ab)))",
+    "provider": "embase_manual",
+    "results_count": 0,
+    "retrieved_dois": [],
+    "retrieved_pmids": [],
+    "pmids": [],
+    "records": [],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

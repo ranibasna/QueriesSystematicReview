@@ -8,7 +8,7 @@
     "study_id": {
       "type": "string",
       "description": "Unique identifier for the study (e.g., 'Godos_2024', 'sleep_apnea')",
-      "pattern": "^[a-zA-Z0-9_]+$"
+      "pattern": "^[a-zA-Z0-9_-]+$"
     },
     "schema_version": {
       "type": "string",
@@ -44,7 +44,7 @@
           "minimum": 1
         },
         "date_range": {
-          "type": "object",
+          "type": ["object", "null"],
           "description": "Date range of literature search",
           "properties": {
             "start": {

@@ -1,0 +1,17 @@
+# Q1: High-recall
+TITLE-ABS-KEY((("premenstrual syndrome" OR "premenstrual syndromes" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND ("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep disruption" OR "sleep disruptions" OR "sleep disturbance" OR "sleep disturbances" OR "sleep quality" OR polysomnograph* OR "sleep eeg" OR diurnal OR "body temperature" OR ((cortisol OR prolactin OR TSH OR "thyroid stimulating hormone") AND (circadian OR diurnal OR rhythm*))))) AND PUBYEAR < 2020
+
+# Q2: Balanced
+TITLE-ABS-KEY((("premenstrual syndrome" OR "premenstrual syndromes" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND ("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep disturbance" OR "sleep disturbances" OR "sleep quality" OR polysomnograph* OR "sleep eeg" OR "body temperature" OR ((cortisol OR prolactin OR TSH OR "thyroid stimulating hormone") AND (circadian OR diurnal OR rhythm*))))) AND PUBYEAR < 2020
+
+# Q3: High-precision
+TITLE("premenstrual syndrome" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND TITLE("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep quality" OR polysomnograph* OR "body temperature") AND TITLE-ABS-KEY(cross-sectional OR longitudinal OR prospective OR observational OR "clinical trial" OR trial) AND PUBYEAR < 2020 AND DOCTYPE(ar)
+
+# Q4: Balanced + scope_only
+TITLE("premenstrual syndrome" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND TITLE("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep disturbance" OR "sleep quality" OR polysomnograph* OR "body temperature") AND PUBYEAR < 2020
+
+# Q5: Balanced + proximity_or_scope_fallback
+TITLE-ABS-KEY((("premenstrual syndrome" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND ((biological W/1 rhythm*) OR (circadian W/1 rhythm*) OR chronobiolog* OR melatonin OR (sleep W/2 (disruption* OR disturbance* OR quality OR eeg)) OR (body W/1 temperature) OR ((cortisol OR prolactin OR TSH OR "thyroid stimulating hormone") W/3 (circadian OR diurnal OR rhythm*))))) AND PUBYEAR < 2020
+
+# Q6: Balanced + design_plus_filter
+TITLE-ABS-KEY((("premenstrual syndrome" OR "premenstrual syndromes" OR "premenstrual dysphoric disorder" OR PMS OR PMDD) AND ("biological rhythm" OR "biological rhythms" OR "circadian rhythm" OR "circadian rhythms" OR chronobiolog* OR melatonin OR "sleep disturbance" OR "sleep disturbances" OR "sleep quality" OR polysomnograph* OR "sleep eeg" OR "body temperature" OR ((cortisol OR prolactin OR TSH OR "thyroid stimulating hormone") AND (circadian OR diurnal OR rhythm*))))) AND TITLE-ABS-KEY(cross-sectional OR longitudinal OR prospective OR observational OR "clinical trial" OR trial) AND DOCTYPE(ar) AND PUBYEAR < 2020

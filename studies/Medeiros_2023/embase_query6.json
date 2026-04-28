@@ -1,0 +1,71 @@
+{
+  "cf334f86b45d477852b1d995029fbf6cfc436152268dfd3eccf46dab02ace5c0": {
+    "query": "(('sleep duration':ti OR 'sleep time':ti OR 'sleep quality':ti OR 'short sleep duration':ti OR 'long sleep duration':ti OR 'poor sleep quality':ti OR 'sleep disturbance':ti) AND ('c-reactive protein':ti OR crp:ti OR 'interleukin 6':ti OR 'il-6':ti OR adiponectin:ti OR 'tnf alpha':ti OR 'tnf-alpha':ti OR inflammation:ti) AND (child*:ti,ab OR adolescen*:ti,ab OR teen*:ti,ab OR teenager*:ti,ab OR youth:ti,ab OR preschool*:ti,ab) AND (observational:ti,ab OR cohort:ti,ab OR prospective:ti,ab OR 'cross-sectional':ti,ab OR 'case-control':ti,ab OR 'case control':ti,ab))",
+    "provider": "embase_manual",
+    "results_count": 6,
+    "retrieved_dois": [
+      "10.1001/jamapsychiatry.2024.0796",
+      "10.1016/j.bbi.2016.12.026",
+      "10.1016/j.envres.2014.07.026",
+      "10.1111/bjd.21028",
+      "10.1111/jsr.12446",
+      "10.1177/00099228251348266"
+    ],
+    "retrieved_pmids": [
+      "25173056",
+      "28041986",
+      "38717746",
+      "40528786"
+    ],
+    "pmids": [
+      "25173056",
+      "28041986",
+      "38717746",
+      "40528786"
+    ],
+    "records": [
+      {
+        "title": "Associations Between Sleep Quality and Asthma Control, Pulmonary Inflammation, Asthma Severity, Exercise Capacity, and Quality of Life in Children With Asthma: A Cross-sectional Study",
+        "first_author": "Leite",
+        "year": 2025,
+        "pmid": "40528786",
+        "doi": "10.1177/00099228251348266"
+      },
+      {
+        "title": "Role of Inflammation in Short Sleep Duration Across Childhood and Psychosis in Young Adulthood",
+        "first_author": "Morales-Muñoz",
+        "year": 2024,
+        "pmid": "38717746",
+        "doi": "10.1001/jamapsychiatry.2024.0796"
+      },
+      {
+        "title": "Elevated C-reactive protein levels in patients with atopic dermatitis who have sleep disturbance are associated with the development of cardiovascular comorbidities and increased mortality: a multicentre cohort study",
+        "first_author": "Parthasarathy",
+        "year": 2022,
+        "doi": "10.1111/bjd.21028"
+      },
+      {
+        "title": "Insomnia symptoms with objective short sleep duration are associated with systemic inflammation in adolescents",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2017,
+        "pmid": "28041986",
+        "doi": "10.1016/j.bbi.2016.12.026"
+      },
+      {
+        "title": "Insomnia is associated with increased C-reactive protein levels in adolescents: Role of objective short sleep duration",
+        "first_author": "Fernandez-Mendoza",
+        "year": 2016,
+        "doi": "10.1111/jsr.12446"
+      },
+      {
+        "title": "Low-level mercury in children: Associations with sleep duration and cytokines TNF-α and IL-6",
+        "first_author": "Gump",
+        "year": 2014,
+        "pmid": "25173056",
+        "doi": "10.1016/j.envres.2014.07.026"
+      }
+    ],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}

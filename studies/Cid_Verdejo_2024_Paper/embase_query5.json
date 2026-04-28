@@ -1,0 +1,13 @@
+{
+  "0220353bcfefc70b39f9ffdc76e7ed8e9f6b832de0ca71fbb552e16958a49f18": {
+    "query": "(((('sleep bruxism' OR 'sleep-related bruxism' OR 'sleep related bruxism' OR 'rhythmic masticatory muscle activity' OR RMMA OR 'sleep-related oromotor activity' OR 'sleep related oromotor activity') ADJ5 (electromyograph* OR 'portable electromyography' OR 'portable electromyographic' OR 'portable EMG' OR 'portable device' OR 'portable devices')):ti,ab AND (polysomnograph*:ti,ab OR PSG:ti,ab) AND (diagnos*:ti,ab OR valid*:ti,ab OR 'diagnostic yield':ti,ab OR sensitivity:ti,ab OR specificity:ti,ab OR agreement:ti,ab OR 'reference standard':ti,ab OR 'gold standard':ti,ab)))",
+    "provider": "embase_manual",
+    "results_count": 0,
+    "retrieved_dois": [],
+    "retrieved_pmids": [],
+    "pmids": [],
+    "records": [],
+    "source": "manual_export",
+    "note": "Manually exported from Embase website and imported via import_embase_manual.py"
+  }
+}
