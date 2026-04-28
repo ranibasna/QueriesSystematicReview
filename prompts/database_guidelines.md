@@ -50,26 +50,28 @@ This file provides database-specific syntax and strategy rules for the LLM to us
 
 ## Embase
 
-- **Date Syntax**: Date filtering varies by platform. For inline queries, OMIT date filters entirely and apply them through the platform's interface after execution. DO NOT use `limit to yr=` syntax in inline queries.
-
-- **Syntax**: On platforms like Ovid, use `.ti,ab.` for title/abstract. Use field codes like `.ti.` or `.ab.`.
-- **Controlled Vocabulary**: Emtree is the primary thesaurus. Use the format `'term'/exp` to search for a term and explode it. Use `'term'/de` for the term without explosion.
-- **Proximity Operators**: Use `ADJn` where `n` is the number of words apart.
-- **Date Syntax**: `<YYYYMMDD>.dt.`
+- **Platform Assumption**: Default to **Embase.com / Elsevier Embase** unless the user or source strategy clearly specifies **Ovid Embase**. Do not mix Ovid and Embase.com syntax in the same query.
+- **Date Syntax**: Date filtering varies by platform. For inline queries, OMIT date filters entirely and apply them through the platform interface after execution unless the source strategy explicitly requires a platform-specific limit.
+- **Syntax**: For Embase.com / Elsevier Embase, use `'term'/exp` for exploded headings, `'term'/de` for non-exploded headings, `:ti,ab` for title/abstract, `:ti` for title only, and `ADJn` for proximity. If the user or source strategy clearly specifies Ovid Embase, use `exp term/`, `term/`, `.mp.`, `.ti,ab.`, `.ti.`, and `adjN` instead.
+- **Controlled Vocabulary**: Emtree is the primary thesaurus. By default, prefer Embase.com forms such as `'obesity'/exp` or `'obesity'/de`. If the user or source strategy clearly specifies Ovid Embase, use the Ovid equivalents such as `exp obesity/` or `obesity/`.
+- **Proximity Operators**: For Embase.com / Elsevier Embase, use `ADJN`. For Ovid Embase, use `adjN`.
+- **Important**: If using Embase.com syntax, do not invent Ovid field codes such as `.mp.` or `.ti,ab.`. If using Ovid syntax, do not invent Embase.com field codes such as `:ti,ab` or `:it`. Convert the whole query consistently to the chosen platform.
 - **Precision_Knobs**:
   
   **Filter Knobs:**
-  - Publication type: `limit to article or review` - Limit to articles and reviews
+  - Publication type: apply via platform limit step or interface when possible; avoid inventing inline publication-type field codes that do not match the chosen platform
+  - Language: apply via platform limit step or interface when possible; avoid forcing language terms into the retrieval logic unless the source strategy does so
   
   **Scope Knobs:**
-  - Title only: `.ti.` - Search for concepts in title field only (e.g., `[CONCEPT].ti.`)
-  - Major focus: `*[TERM]` - Find articles where the term is a primary subject (e.g., `*'dementia'`)
+  - Title only: `:ti` by default for Embase.com (e.g., `[CONCEPT]:ti`); if Ovid is explicitly requested, use `.ti.`
+  - Major focus: `/mj` by default for Embase.com major focus headings when supported by the chosen term form; if Ovid is explicitly requested, use `*term/`
   
   **Vocabulary Knobs:**
-  - No explosion: `'[TERM]'/de` - Use Emtree term without explosion (e.g., `'dementia'/de` instead of `'dementia'/exp`)
+  - No explosion: `'term'/de` by default for Embase.com (e.g., `'dementia'/de` instead of `'dementia'/exp`); if Ovid is explicitly requested, use `term/`
+  - Text mapping choice: prefer explicit `:ti,ab` fielding by default for Embase.com; if Ovid is explicitly requested and the source strategy is Ovid-faithful, prefer `.mp.` over inventing a new field mapping
   
   **Proximity Knobs:**
-  - Adjacent terms: `ADJ5` - Require concepts within 5 words (e.g., `'[CONCEPT1]':ti,ab ADJ5 '[CONCEPT2]':ti,ab`)
+  - Adjacent terms: `ADJ5` by default for Embase.com (e.g., `([CONCEPT1]:ti,ab ADJ5 [CONCEPT2]:ti,ab)`); if Ovid is explicitly requested, use `adj5`
 
 ## Web of Science
 - **Syntax**: Use field tags like `TS=` (Topic), `TI=` (Title), `AB=` (Abstract).

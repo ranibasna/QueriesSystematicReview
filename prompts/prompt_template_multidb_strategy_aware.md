@@ -63,15 +63,17 @@ The design_analytic_block is a separate modifier, not a retrieval architecture.
    - Start with this modifier active by default.
    - Populate it carefully from explicit protocol constraints, which may include study type, longitudinal or prospective framing, comparator structure, population restrictions, data-source restrictions, language restrictions, publication or journal-type restrictions, and other retrieval-relevant design constraints.
    - Double-check each candidate constraint before adding it. Only keep constraints that are clearly intended to shape retrieval rather than later-stage screening.
-   - If a candidate protocol restriction is too likely to remove relevant studies when used at retrieval time, demote it to `filter_only` or `screening_only` rather than forcing it into the baseline design block.
    - When a design-related candidate is explicit in the protocol, assign it using this order:
-      - baseline_active only if retrieval-defining
+      - baseline_active only if retrieval-defining. For example if the protocol clearly say longitudinal study, english language, specific document type, then these maybe be used as baseline_active. 
       - filter_only if acceptable as a later retrieval limit
       - bundled_only if useful but recall-risky
       - screening_only if better handled after retrieval
 
-   - `baseline_active` may appear in Q1 when the protocol makes it retrieval-defining.
-   - `filter_only` may enter Q2 or Q3 as a later retrieval limit.
+   - Treat these as design-block activation statuses, not as concept (concept topic) roles.
+   - First assign each candidate concept a role from `mandatory_core`, `optional_precision`, `filter_only`, or `screening_only`.
+   - Separately, for each design_analytic_block candidate, decide when it may enter the query family.
+   - `baseline_active` should appear in Q1 when the protocol makes it retrieval-defining.
+   - `filter_only` may enter Q2 and Q3 as a later retrieval limit.
    - `bundled_only` must stay out of Q1 and Q2 and may enter only bundled variants derived from Q2.
 
 ## Protocol-based architecture decision rules:
@@ -137,8 +139,9 @@ If `RELAXATION_PROFILE` is omitted, use `default`.
    - Q1 may add at most one low-risk retrieval-shaping restriction only when the protocol makes it explicit and omitting it would broaden retrieval into a clearly adjacent literature. Prefer a protocol-explicit population or setting restriction before humans or document type.
 - **Q2 Balanced:** Keep the same `mandatory_core` blocks as Q1, then tighten with narrower wording, fields, or controlled vocabulary choices. Then, always add:
    - Preserve the Q1 route and all mandatory_core blocks.
-   - Add one primary optional_precision narrowing mode by default. Add a second only when the protocol clearly supports it and recall risk remains acceptable.
+   - Add one primary optional_precision narrowing mode by default. Add a second only when the protocol clearly supports it.
    - Add one low-risk filter_only category when at least one protocol-supported, retrieval-safe filter category is available. Add a second only when the protocol clearly supports it.
+   - Asses and update the design_analytic_block to inlcude `filter_only` protocol constraints folloiwng the below rules.
 
  **Allowed Q2 optional_precision narrowing modes**:
 
@@ -162,6 +165,8 @@ If `RELAXATION_PROFILE` is omitted, use `default`.
    - humans restriction
    - document type restriction
    - language restriction
+
+   If a second (or more) Q2 filter is assessed to be allowed and the first one (ones) is already baseline-active or part of `mandatory_core`, Q2 should prefer continue from the next remaining eligible category in the same order as its first `filter_only` tightening step when such a restriction is available.
 
 - **Q3 High-precision:** Start from Q2 and add 2-3 further precision steps and filter_only that are protocol-supported and recall-aware. Respect the importance order defined previously. Do not remove any `mandatory_core` block or convert Q3 into a highly selective niche query unless the protocol clearly supports that level of restriction.
 
@@ -242,7 +247,7 @@ Query order:
 
 ## FINAL TASK
 
-1. Overwrite `studies/[STUDY_NAME]/search_strategy.md` with the architecture summary, concept tables, JSON query object, JSON patch, and translation notes.
+1. Overwrite (or create if not exist) `studies/[STUDY_NAME]/search_strategy.md` with the architecture summary, concept tables, JSON query object, JSON patch, and translation notes.
 2. Apply any `json_patch` replacements to the main query object.
 3. Write one query file per database using the corrected six-query arrays.
 4. Preserve comment lines on their own lines and separate query blocks with a single blank line.
