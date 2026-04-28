@@ -51,13 +51,15 @@ class MetadataCollector:
                 - date_range: Dict (start/end dates if found)
                 - has_embase: bool (whether Embase data exists)
         """
+        date_range = self._extract_date_range()
         metadata = {
             'domain': self._infer_domain(),
             'databases': self._detect_databases(),
             'num_queries': self._count_queries(),
-            'date_range': self._extract_date_range(),
             'has_embase': self._check_embase()
         }
+        if date_range is not None:
+            metadata['date_range'] = date_range
         
         logger.info(f"Collected metadata for {self.study_id}")
         logger.info(f"  Domain: {metadata['domain']}")

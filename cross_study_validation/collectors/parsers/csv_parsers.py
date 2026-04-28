@@ -15,6 +15,23 @@ from datetime import datetime
 logger = logging.getLogger(__name__)
 
 
+def find_latest_matching_csv(study_dir: Path, predicate) -> Optional[Path]:
+    """Return the most recent CSV in a directory that satisfies a filename predicate."""
+    study_dir = Path(study_dir)
+    if not study_dir.exists():
+        logger.warning(f"Study directory not found: {study_dir}")
+        return None
+
+    csv_files = [path for path in study_dir.glob('*.csv') if predicate(path.name)]
+    if not csv_files:
+        logger.warning(f"No matching CSV files found in {study_dir}")
+        return None
+
+    latest = max(csv_files, key=lambda p: p.stat().st_mtime)
+    logger.info(f"Found latest CSV: {latest.name} (modified: {datetime.fromtimestamp(latest.stat().st_mtime)})")
+    return latest
+
+
 class AggregatesCSVParser:
     """Parser for aggregates_eval CSV files."""
     
@@ -77,6 +94,55 @@ class BenchmarkCSVParser:
         self.csv_path = Path(csv_path)
         if not self.csv_path.exists():
             raise FileNotFoundError(f"CSV file not found: {csv_path}")
+
+    @staticmethod
+    def _query_sort_key(path: Path):
+        """Sort query directories numerically when names follow query_01, query_02, ..."""
+        suffix = path.name.split('_')[-1]
+        return int(suffix) if suffix.isdigit() else suffix
+
+    @staticmethod
+    def _row_to_query(row) -> Dict:
+        """Convert a benchmark summary row into standardized query metrics."""
+        return {
+            'query_text': str(row['query']),
+            'results_count': int(row['results_count']),
+            'true_positives': int(row['TP']),
+            'recall': float(row['recall']),
+            'nnr_proxy': float(row.get('NNR_proxy', 0.0))
+        }
+
+    def _parse_query_directories(self, study_dir: Path) -> List[Dict]:
+        """Parse one latest combined summary per query from query_XX subdirectories."""
+        query_dirs = sorted(
+            [path for path in study_dir.glob('query_*') if path.is_dir()],
+            key=self._query_sort_key,
+        )
+        if not query_dirs:
+            return []
+
+        queries = []
+        for query_dir in query_dirs:
+            summary_csv = find_latest_matching_csv(
+                query_dir,
+                lambda name: name.startswith('summary_') and not name.startswith('summary_per_database_'),
+            )
+            if not summary_csv:
+                logger.warning(f"No summary CSV found in {query_dir}")
+                continue
+
+            df = pd.read_csv(summary_csv)
+            if df.empty:
+                logger.warning(f"Summary CSV is empty: {summary_csv}")
+                continue
+
+            queries.append(self._row_to_query(df.iloc[0]))
+
+        if queries:
+            logger.info(
+                f"Parsed {len(queries)} queries from per-query benchmark summaries in {study_dir.name}"
+            )
+        return queries
     
     def parse(self) -> List[Dict]:
         """
@@ -86,6 +152,11 @@ class BenchmarkCSVParser:
             List of dicts with keys: query_text, results_count, true_positives,
             recall, nnr_proxy
         """
+        study_dir = self.csv_path if self.csv_path.is_dir() else self.csv_path.parent
+        query_dir_results = self._parse_query_directories(study_dir)
+        if query_dir_results:
+            return query_dir_results
+
         df = pd.read_csv(self.csv_path)
         
         # Expected columns: query, results_count, TP, gold_size, recall, NNR_proxy
@@ -93,17 +164,15 @@ class BenchmarkCSVParser:
         missing = [col for col in required_cols if col not in df.columns]
         if missing:
             raise ValueError(f"Missing required columns: {missing}")
+
+        if 'database' in df.columns:
+            df = df[df['database'].astype(str).str.upper() == 'COMBINED'].copy()
+            if 'query_num' in df.columns:
+                df = df.sort_values('query_num')
         
         queries = []
         for _, row in df.iterrows():
-            query = {
-                'query_text': str(row['query']),
-                'results_count': int(row['results_count']),
-                'true_positives': int(row['TP']),
-                'recall': float(row['recall']),
-                'nnr_proxy': float(row.get('NNR_proxy', 0.0))
-            }
-            queries.append(query)
+            queries.append(self._row_to_query(row))
         
         logger.info(f"Parsed {len(queries)} queries from {self.csv_path.name}")
         return queries
@@ -169,7 +238,10 @@ def get_benchmark_csv(study_id: str, base_dir: Path = None) -> Optional[Path]:
         base_dir = Path.cwd()
     
     study_dir = base_dir / 'benchmark_outputs' / study_id
-    return find_latest_csv(study_dir, 'summary_*.csv')
+    return find_latest_matching_csv(
+        study_dir,
+        lambda name: name.startswith('summary_') and not name.startswith('summary_per_database_'),
+    )
 
 
 # Example usage and testing

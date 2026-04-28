@@ -140,28 +140,35 @@ def get_gold_standard_csv(study_id: str, base_dir: Path = None) -> Optional[Path
     if base_dir is None:
         base_dir = Path.cwd()
     
-    # Try different naming conventions
-    study_dir = base_dir / 'studies' / study_id
+    # Candidate study directories: exact name, then hyphen→underscore variant
+    alt_id = study_id.replace('-', '_')
+    candidate_dirs = [base_dir / 'studies' / study_id]
+    if alt_id != study_id:
+        candidate_dirs.append(base_dir / 'studies' / alt_id)
+
+    # Try different naming conventions (using original study_id for filename)
     patterns = [
         f'gold_pmids_{study_id}.csv',
         f'gold_pmids_{study_id.lower()}.csv',
+        f'gold_pmids_{alt_id}.csv',
         'gold_pmids.csv',
         f'Gold_list_{study_id}.csv'
     ]
-    
-    for pattern in patterns:
-        csv_path = study_dir / pattern
-        if csv_path.exists():
-            logger.info(f"Found gold standard: {csv_path}")
-            return csv_path
-    
+
+    for study_dir in candidate_dirs:
+        for pattern in patterns:
+            csv_path = study_dir / pattern
+            if csv_path.exists():
+                logger.info(f"Found gold standard: {csv_path}")
+                return csv_path
+
     # Also check in base directory for legacy files
     for pattern in patterns:
         csv_path = base_dir / pattern
         if csv_path.exists():
             logger.info(f"Found gold standard: {csv_path}")
             return csv_path
-    
+
     logger.warning(f"No gold standard CSV found for {study_id}")
     return None
 

@@ -82,7 +82,11 @@ class StudyDataCollector:
             agg_csv = get_aggregates_csv(study_id, self.base_dir)
             bench_csv = get_benchmark_csv(study_id, self.base_dir)
             gold_csv = get_gold_standard_csv(study_id, self.base_dir)
+            # Resolve study dir: try exact match first, then hyphen→underscore variant
             study_dir = self.base_dir / 'studies' / study_id
+            if not study_dir.exists():
+                alt_id = study_id.replace('-', '_')
+                study_dir = self.base_dir / 'studies' / alt_id
             
             if not agg_csv:
                 logger.error(f"  ✗ Aggregates CSV not found for {study_id}")
