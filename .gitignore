@@ -4,53 +4,133 @@
 # Allow directories so file rules can apply recursively
 !*/
 
-# Keep only these file types in version control
+# Keep common source, config, and documentation file types in version control
 !*.py
 !*.md
 !*.toml
 !*.txt
+!*.sh
+!*.json
+!*.yml
+!*.yaml
+!*.html
 
-# Always track this file
+# Always track repo metadata
 !.gitignore
+!LICENSE*
+!Makefile
 
 # Common local/OS/editor artifacts (kept ignored)
 .DS_Store
 .vscode/
+.vscode/**
 .idea/
+.idea/**
 .env
+.env.*
 sr_config.toml
 .venv/
-.github/
+.venv/**
+.gemini/
+.gemini/**
 __pycache__/
+__pycache__/**
+.pytest_cache/
+.pytest_cache/**
 .ipynb_checkpoints/
+.ipynb_checkpoints/**
 *.ipynb
 *.log
+workflow_*.log
 *.tmp
 *.lock
 *.bak
 *.swp
-*.swpDocumentations/
+run_workflow_sleep_apnea.sh
+run_workflow.sh
+# sr_config.example.toml
+sr_config.toml
+README.html
+environment.yml
+scripts/complete_embase_workflow.sh
+scripts/test_vscode_prompt.sh
+studies/*/workflow_*.md
+studies/*/*conflicted copy*.json
 
-# Archived test scripts
+# Archived or internal-only working material
 archive/
-
+archive/**
+Examples/
+Examples/**
+Responses/
+Responses/**
+plans/
+plans/**
+tasks/
+tasks/**
 GEMINI_files/
+GEMINI_files/**
 generation_comparison_files/
+generation_comparison_files/**
 generation_comparison.md
 tasks.md
-# Project-specific output folders
+
+# Keep most documentation private for now; only publish the two public guides
+Documentations/**
+!Documentations/Automation_guide_main.md
+!Documentations/complete_pipeline_guide.md
+!Documentations/multi_database_deduplication_complete.md
+docs/**
+
+# Ignore project-specific generated output folders
 aggregates/
+aggregates/**
+## ignore all txt files in the aggregates folder
+aggregates/*.txt
 aggregates_eval/
+aggregates_eval/**
+aggregates_eval_multi_key_test/
+aggregates_eval_multi_key_test/**
+aggregates_eval_pmid_only_test/
+aggregates_eval_pmid_only_test/**
+concepts/
+concepts/**
+analysis_results/
+analysis_results/**
 benchmark_outputs/
-Documentations/
-Examples/
+benchmark_outputs/**
 final_outputs/
+final_outputs/**
 sealed_outputs/
+sealed_outputs/**
 NoteBooks/
-Queries/
+NoteBooks/**
 sleep_docs/
+sleep_docs/**
+
+# Ignore specific files inside the prompts folder
+prompts/**
+!prompts/database_guidelines.md
+!prompts/prompt_template_basic.md
+!prompts/prompt_template_extended.md
+!prompts/prompt_template_keywords.md
+!prompts/prompt_template_multidb.md
+!prompts/prompt_template_multidb_strategy_aware.md
+
+# Ignore the tests folder
+tests/
+tests/** 
+
+# Ignore most of the .github folder, but keep prompt assets referenced by the docs
+.github/
+.github/**
+!.github/
+!.github/prompts/
+!.github/prompts/**
+
 
 # Cross-study validation generated outputs
 cross_study_validation/reports/
+cross_study_validation/reports/**
 cross_study_validation/data/*.json
 
