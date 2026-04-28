@@ -48,8 +48,18 @@ def parse_embase_csv(csv_path: str) -> tuple[Set[str], Set[str], List[Dict], int
         first_line = f.readline()
         f.seek(0)
 
-        # Check if it's vertical format (no header row, field names in first column)
-        if 'TITLE' in first_line.upper() and first_line.count(',') <= 2:
+        # Check if it's vertical format (no header row, field names in first column).
+        # Use csv.reader to parse the first line so quoted commas in the title value
+        # don't cause false negatives (the raw comma count check was unreliable).
+        # Guard: vertical rows have ≤3 CSV fields (field_name + value + optional extra);
+        # wide horizontal header rows (many columns) are excluded by len(_first_row) <= 3.
+        _first_row = next(csv.reader([first_line]))
+        _is_vertical = (
+            len(_first_row) >= 1
+            and _first_row[0].strip().strip('"').upper() == 'TITLE'
+            and len(_first_row) <= 3
+        )
+        if _is_vertical:
             # Vertical format: field_name, value
             reader = csv.reader(f)
             current_record = {}
@@ -100,6 +110,16 @@ def parse_embase_csv(csv_path: str) -> tuple[Set[str], Set[str], List[Dict], int
                         last_name = first_entry.split()[0].rstrip('.') if first_entry.split() else first_entry
                         if last_name:
                             current_record['first_author'] = last_name
+
+                # W4.1: Extract publication year (vertical format: YEAR field).
+                elif field_name in ('YEAR', 'PUBLICATION YEAR', 'PY'):
+                    if field_value and field_value.strip().isdigit():
+                        current_record['year'] = int(field_value.strip())
+
+                # W4.1: Extract journal/source title (vertical format).
+                elif field_name in ('SOURCE', 'JOURNAL', 'JOURNAL TITLE', 'PUBLICATION TITLE', 'SOURCE TITLE'):
+                    if field_value and field_value.strip():
+                        current_record['journal'] = field_value.strip()
             
             # Don't forget the last record
             if current_record and ('doi' in current_record or 'pmid' in current_record):
@@ -154,6 +174,23 @@ def parse_embase_csv(csv_path: str) -> tuple[Set[str], Set[str], List[Dict], int
                             last_name = first_entry.split()[0].rstrip('.') if first_entry.split() else first_entry
                             if last_name:
                                 record['first_author'] = last_name
+                        break
+
+                # W4.1: Extract publication year (horizontal format).
+                for col in ['Year', 'Publication Year', 'PY', 'YEAR', 'year']:
+                    if col in row and row[col]:
+                        yr = str(row[col]).strip()
+                        if yr.isdigit():
+                            record['year'] = int(yr)
+                        break
+
+                # W4.1: Extract journal/source title (horizontal format).
+                for col in ['Source title', 'Source Title', 'Journal', 'JOURNAL',
+                            'Publication Title', 'Journal Title', 'Source']:
+                    if col in row and row[col]:
+                        jn = row[col].strip()
+                        if jn:
+                            record['journal'] = jn
                         break
                 
                 # Only add records that have at least a DOI or PMID

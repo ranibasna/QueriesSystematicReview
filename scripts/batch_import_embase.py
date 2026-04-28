@@ -18,9 +18,11 @@ Or with a manifest file:
 """
 
 import argparse
+import hashlib
+import json
 import sys
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Optional, Set, Tuple
 import subprocess
 
 
@@ -85,6 +87,33 @@ def read_manifest(manifest_file: Path) -> List[Tuple[Path, str]]:
     return pairs
 
 
+def create_placeholder_json(output_path: Path, query: str) -> None:
+    """Create an embase_queryN.json with zero records for a skipped/excluded query.
+
+    The JSON is keyed by the SHA-256 hash of the query text — identical to what
+    import_embase_manual.py would produce — so that EmbaseLocalProvider can find
+    the entry at runtime and return (set(), set(), 0) without a hash-miss warning.
+    Keeping the placeholder means query numbering stays aligned with PubMed/Scopus/WoS.
+    """
+    query_hash = hashlib.sha256(query.encode()).hexdigest()
+    payload = {
+        query_hash: {
+            "query": query,
+            "provider": "embase_manual",
+            "results_count": 0,
+            "retrieved_dois": [],
+            "retrieved_pmids": [],
+            "pmids": [],
+            "records": [],
+            "source": "placeholder",
+            "note": "Zero-record placeholder — query excluded intentionally (e.g. too many results).",
+        }
+    }
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as fh:
+        json.dump(payload, fh, indent=2, ensure_ascii=False)
+
+
 def import_single_csv(csv_path: Path, output_path: Path, query: str) -> bool:
     """Import a single CSV using import_embase_manual.py"""
     cmd = [
@@ -120,13 +149,23 @@ def main():
     
     parser.add_argument('--study', required=True,
                        help='Study name (e.g., sleep_apnea)')
-    
+
     # Option 1: Separate CSV and queries files
     parser.add_argument('--csvs', nargs='+',
                        help='List of CSV files to import')
     parser.add_argument('--queries-file',
                        help='Text file with queries (same format as queries.txt)')
-    
+    parser.add_argument(
+        '--placeholder-indices', nargs='+', type=int, metavar='N',
+        help=(
+            'Query indices (1-based) for which NO CSV is available. '
+            'An empty placeholder JSON is written for each so that query numbering '
+            'stays aligned with the other databases. '
+            'The remaining CSVs are assigned to the other indices in order. '
+            'Example: --placeholder-indices 1  (skip query 1, import CSVs for 2-6)'
+        ),
+    )
+
     # Option 2: Manifest file
     parser.add_argument('--manifest',
                        help='Manifest file with CSV|query pairs')
@@ -148,49 +187,110 @@ def main():
         # Match CSVs with queries from file
         csv_paths = [Path(csv) for csv in args.csvs]
         queries = read_queries_from_file(Path(args.queries_file))
-        
-        if len(csv_paths) != len(queries):
-            print(f"⚠️  Warning: Number of CSVs ({len(csv_paths)}) doesn't match number of queries ({len(queries)})", 
-                  file=sys.stderr)
-            print(f"   This is normal if some queries returned zero results on Embase.", file=sys.stderr)
-            
-            if len(csv_paths) > len(queries):
-                print(f"   Error: More CSVs than queries - please check your files.", file=sys.stderr)
+        placeholder_indices: Set[int] = set(args.placeholder_indices or [])
+
+        if placeholder_indices:
+            # Validate placeholder indices are within range
+            for idx in sorted(placeholder_indices):
+                if idx < 1 or idx > len(queries):
+                    print(
+                        f"❌ Error: --placeholder-indices {idx} is out of range "
+                        f"(valid: 1–{len(queries)})",
+                        file=sys.stderr,
+                    )
+                    return 1
+            active_indices = [i for i in range(1, len(queries) + 1) if i not in placeholder_indices]
+            if len(csv_paths) != len(active_indices):
+                print(
+                    f"❌ Error: {len(csv_paths)} CSV file(s) provided but "
+                    f"{len(active_indices)} non-placeholder quer{'y' if len(active_indices)==1 else 'ies'} "
+                    f"(total={len(queries)}, placeholders={sorted(placeholder_indices)}). "
+                    "These numbers must match.",
+                    file=sys.stderr,
+                )
                 return 1
-            else:
-                # Fewer CSVs than queries - assume missing CSVs had zero results
-                print(f"   Will import {len(csv_paths)} queries and skip {len(queries) - len(csv_paths)} query(ies) with no results.", file=sys.stderr)
-                # Use only the first N queries to match the CSVs
-                queries = queries[:len(csv_paths)]
-        
-        pairs = list(zip(csv_paths, queries))
+            # pairs carries (csv_path_or_None, query_text, output_index)
+            # We handle placeholders in the loop below; store as (Path|None, str, int)
+            indexed_pairs: List[Tuple] = []
+            csv_iter = iter(csv_paths)
+            for idx in range(1, len(queries) + 1):
+                q = queries[idx - 1]
+                if idx in placeholder_indices:
+                    indexed_pairs.append((None, q, idx))
+                else:
+                    indexed_pairs.append((next(csv_iter), q, idx))
+        else:
+            # Legacy: no placeholder indices — original behaviour with alignment check
+            if len(csv_paths) != len(queries):
+                print(
+                    f"⚠️  Warning: Number of CSVs ({len(csv_paths)}) doesn't match "
+                    f"number of queries ({len(queries)})",
+                    file=sys.stderr,
+                )
+                print(
+                    "   If a query returned no results on Embase, use "
+                    "--placeholder-indices N to skip it while keeping numbering aligned.",
+                    file=sys.stderr,
+                )
+                if len(csv_paths) > len(queries):
+                    print("   Error: More CSVs than queries — please check your files.",
+                          file=sys.stderr)
+                    return 1
+                else:
+                    print(
+                        f"   Matching first {len(csv_paths)} queries to CSVs. "
+                        "Note: this may misalign query numbering — prefer --placeholder-indices.",
+                        file=sys.stderr,
+                    )
+                    queries = queries[:len(csv_paths)]
+            indexed_pairs = [(csv, q, i) for i, (csv, q) in enumerate(zip(csv_paths, queries), 1)]
     else:
         print("Error: Must provide either --manifest or both --csvs and --queries-file", file=sys.stderr)
         parser.print_help()
         return 1
     
-    if not pairs:
+    # At this point either 'pairs' (manifest path) or 'indexed_pairs' (csv+queries path) is set.
+    # Normalise to indexed_pairs for the loop below.
+    if args.manifest:
+        if not pairs:
+            print("Error: No CSV-query pairs to process", file=sys.stderr)
+            return 1
+        indexed_pairs = [(csv, q, i) for i, (csv, q) in enumerate(pairs, 1)]
+    elif not indexed_pairs:  # type: ignore[possibly-undefined]
         print("Error: No CSV-query pairs to process", file=sys.stderr)
         return 1
-    
+
+    placeholder_count = sum(1 for (csv, _, _) in indexed_pairs if csv is None)
+    real_count = len(indexed_pairs) - placeholder_count
+
     print(f"\n📋 Batch Import Plan")
     print(f"Study: {args.study}")
-    print(f"Total queries to import: {len(pairs)}")
+    print(f"Total queries: {len(indexed_pairs)} "
+          f"({real_count} to import, {placeholder_count} placeholder{'s' if placeholder_count!=1 else ''})")
     print(f"Output directory: {study_dir}/")
-    
+    if placeholder_count:
+        ph_indices = [idx for (csv, _, idx) in indexed_pairs if csv is None]
+        print(f"Placeholder indices (zero-record JSON): {ph_indices}")
+
     # Import all CSVs
     success_count = 0
     failed = []
-    
-    for i, (csv_path, query) in enumerate(pairs, 1):
+
+    for csv_path, query, output_index in indexed_pairs:
+        output_path = study_dir / f"embase_query{output_index}.json"
+
+        if csv_path is None:
+            # Placeholder: write an empty JSON with the correct hash key
+            create_placeholder_json(output_path, query)
+            print(f"\n📄 Placeholder written for query {output_index}: {output_path.name}")
+            success_count += 1
+            continue
+
         if not csv_path.exists():
             print(f"\n❌ CSV file not found: {csv_path}", file=sys.stderr)
             failed.append(csv_path.name)
             continue
-        
-        # Generate output filename
-        output_path = study_dir / f"embase_query{i}.json"
-        
+
         if import_single_csv(csv_path, output_path, query):
             success_count += 1
         else:
@@ -200,7 +300,8 @@ def main():
     print(f"\n{'='*60}")
     print(f"📊 Batch Import Summary")
     print(f"{'='*60}")
-    print(f"✅ Successfully imported: {success_count}/{len(pairs)}")
+    print(f"✅ Succeeded: {success_count}/{len(indexed_pairs)} "
+          f"({placeholder_count} placeholder{'s' if placeholder_count!=1 else ''} included)")
     if failed:
         print(f"❌ Failed: {len(failed)}")
         for fname in failed:

@@ -388,12 +388,13 @@ if [ "$SKIP_EMBASE" = false ]; then
         
         # Run batch import
         echo "   Importing Embase results..."
+        EMBASE_IMPORT_RC=0
         python scripts/batch_import_embase.py \
             --study "$STUDY_NAME" \
             --csvs "${EMBASE_CSVS[@]}" \
-            --queries-file "$STUDY_DIR/$QUERIES_EMBASE"
+            --queries-file "$STUDY_DIR/$QUERIES_EMBASE" || EMBASE_IMPORT_RC=$?
         
-        if [ $? -eq 0 ]; then
+        if [ "$EMBASE_IMPORT_RC" -eq 0 ]; then
             echo "   ✅ Embase import complete!"
             EMBASE_IMPORTED=true
             
@@ -442,8 +443,15 @@ if [ "$SKIP_EMBASE" = false ]; then
                 echo "   ℹ️  Query-level mode: Embase scoring will run per query."
             fi
         else
-            echo "   ❌ Embase import failed"
-            exit 1
+            echo "   ⚠️  Embase import had partial failures (continuing with successfully imported files)"
+            EMBASE_IMPORTED=true
+            # Collect whatever JSON files were successfully created
+            for json_file in "$STUDY_DIR"/embase_query*.json; do
+                if [ -f "$json_file" ]; then
+                    EMBASE_FILES+=("$json_file")
+                fi
+            done
+            echo "   Created ${#EMBASE_FILES[@]} JSON file(s)"
         fi
     else
         echo "ℹ️  No Embase CSV files found (checked: embase_query*.csv)"
@@ -533,9 +541,17 @@ if [ "$EMBASE_ONLY" = false ] && [ "$RUN_QUERY_LEVEL" = true ]; then
             echo "   Including Embase (W3.2): $(basename "$EMBASE_QUERY_FILE")"
         fi
 
+        SCORE_DB_ARGS=("${DB_ARGS[@]}")
+        if [ ${#EMBASE_SCORE_ARGS[@]} -gt 0 ] && [[ "$DATABASES" == *"embase"* ]]; then
+            SCORE_DATABASES=$(printf '%s' "$DATABASES" | sed -E 's/(^|,)embase(,|$)/\1\2/g; s/^,//; s/,$//; s/,,+/,/g')
+            if [ -n "$SCORE_DATABASES" ] && [ ${#SCORE_DB_ARGS[@]} -ge 2 ] && [ "${SCORE_DB_ARGS[0]}" = "--databases" ]; then
+                SCORE_DB_ARGS[1]="$SCORE_DATABASES"
+            fi
+        fi
+
         python llm_sr_select_and_score.py \
             --study-name "$STUDY_NAME" \
-            "${DB_ARGS[@]}" \
+            "${SCORE_DB_ARGS[@]}" \
             score \
             --queries-txt "$QUERY_MAIN_TMP" \
             --gold-csv "$GOLD_CSV" \
