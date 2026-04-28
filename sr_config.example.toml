@@ -1,0 +1,32 @@
+# Copy to sr_config.toml and adjust as needed.
+# Paths below are resolved relative to studies/<study-name>/ by llm_sr_select_and_score.py.
+
+mindate = "2015/01/01"
+maxdate = "2024/08/31"
+
+# Replace with study-local files inside studies/<study-name>/.
+concept_terms = "concept_terms.csv"
+queries_txt = "queries.txt"
+outdir = "sealed_outputs"
+
+# target_results = 5000
+# min_results = 50
+
+# Optional score/finalize defaults if you want to rely on config instead of CLI.
+# gold_csv = "gold_pmids_<study>.csv"
+# sealed = "sealed_outputs/sealed_*.json"
+# score_gold_csv = "gold_pmids_<study>.csv"
+
+[databases]
+default = ["pubmed"]
+
+[databases.scopus]
+enabled = true
+api_key = "${SCOPUS_API_KEY}"
+# insttoken = "${SCOPUS_INSTTOKEN}"
+view = "STANDARD"
+
+[databases.web_of_science]
+enabled = true
+api_key = "${WOS_API_KEY}"
+db = "WOS"

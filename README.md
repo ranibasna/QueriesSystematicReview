@@ -13,8 +13,15 @@ This repository provides tools to:
 ## 📚 Documentation
 
 - **[Complete Pipeline Guide](Documentations/complete_pipeline_guide.md)** - Comprehensive technical walkthrough of all steps
-- **[Automation Guide](Documentations/AUTOMATION_GUIDE.md)** - End-to-end workflow from raw PDFs to results
-- **[Multi-Database Deduplication](Documentations/multi_database_deduplication_complete.md)** - DOI-based deduplication design
+- **[Automation Guide](Documentations/Automation_guide_main.md)** - End-to-end workflow from raw PDFs to results
+
+## 🗂️ Repository Map
+
+- `llm_sr_select_and_score.py` - Main CLI for query selection, scoring, and workflow execution
+- `scripts/` - End-to-end workflow wrappers and helper utilities
+- `cross_study_validation/` - Cross-study data collection, scoring, and visualization
+- `studies/` - Per-study protocols, papers, search strategies, queries, and gold-standard artifacts
+- `tests/` - Automated coverage for core workflow pieces
 
 ## 🚀 Quick Start
 
@@ -66,6 +73,12 @@ conda deactivate
 ### 3. Configure API Keys
 
 ⚠️ **SECURITY IMPORTANT**: Never commit API keys to version control!
+
+Recommended setup:
+
+```bash
+cp sr_config.example.toml sr_config.toml
+```
 
 Create a `.env` file in the project root (this file is git-ignored):
 
@@ -152,7 +165,7 @@ Results will be in:
 - `aggregates/Godos_2024/` - Combined query strategies
 - `aggregates_eval/Godos_2024/` - Strategy performance metrics
 
-See [Automation Guide](Documentations/AUTOMATION_GUIDE.md) for detailed instructions.
+See [Automation Guide](Documentations/Automation_guide_main.md) for detailed instructions.
 
 ## 📊 Supported Databases
 
@@ -310,7 +323,7 @@ Pass it with `--config sr_config.toml`.
 - Use `--databases pubmed,scopus` (or set `SR_DATABASES=pubmed,scopus`) to query multiple providers in one run.
 - Provider credentials can come from CLI flags (`--scopus-api-key`, `--scopus-insttoken`), environment variables (`SCOPUS_API_KEY`, `SCOPUS_INSTTOKEN`), or the `[databases.<name>]` section in `sr_config.toml`.
 - If you need to run without date limits (e.g., waiting on an Insttoken), add `--scopus-skip-date-filter` or set `SCOPUS_SKIP_DATE_FILTER=true`. This flag removes the automatic `PUBYEAR` clause so Scopus behaves like your standalone test script. If Scopus still rejects the call, the workflow logs the error but continues with the remaining providers.
-- **Deduplication**: DOI-based deduplication (Option A) is now implemented and automatic. Articles are deduplicated by DOI, handling 96% of articles perfectly. The workflow logs deduplication statistics showing raw results → unique articles. See `Documentations/multi_database_deduplication_complete.md` for details.
+- **Deduplication**: DOI-based deduplication (Option A) is implemented and automatic. Articles are deduplicated by DOI, handling roughly 96% of articles with a stable cross-database key.
 
 ## Multi-Database Workflow (beta)
 
@@ -476,7 +489,7 @@ QueriesSystematicReview/
 ├── prompts/                       # LLM prompt templates
 │   ├── prompt_template_multidb.md
 │   └── database_guidelines.md
-├── Documentations/                # Comprehensive guides
+├── Documentations/                # Public guides plus private working docs kept out of the public repo
 └── .env                          # API keys (git-ignored)
 
 ### The `/generate_prompt` Command

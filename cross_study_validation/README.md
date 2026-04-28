@@ -66,6 +66,4 @@ See `schemas/study_result_schema.json` for complete schema.
 
 ## Documentation
 
-For detailed documentation, see:
-- `Documentations/plans/cross_study_validation_framework_plan.md` - Overall plan
-- `Documentations/tasks/cross_study_validation_tasks.md` - Implementation tasks
+Detailed planning and task-tracking notes are kept internal while the public documentation set is being reduced.
