@@ -33,6 +33,9 @@ sr_config.toml
 .venv/**
 .gemini/
 .gemini/**
+!.gemini/
+!.gemini/commands/
+!.gemini/commands/generate_multidb_prompt.toml
 __pycache__/
 __pycache__/**
 .pytest_cache/
