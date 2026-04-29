@@ -113,11 +113,6 @@ sleep_docs/**
 
 # Ignore specific files inside the prompts folder
 prompts/**
-!prompts/database_guidelines.md
-!prompts/prompt_template_basic.md
-!prompts/prompt_template_extended.md
-!prompts/prompt_template_keywords.md
-!prompts/prompt_template_multidb.md
 !prompts/prompt_template_multidb_strategy_aware.md
 
 # Ignore the tests folder
@@ -129,7 +124,7 @@ tests/**
 .github/**
 !.github/
 !.github/prompts/
-!.github/prompts/**
+!.github/prompts/generate_multidb_prompt.prompt.md
 
 
 # Cross-study validation generated outputs
