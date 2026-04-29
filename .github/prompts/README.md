@@ -10,13 +10,13 @@ VS Code prompt files are reusable prompts that can be invoked by typing `/` in G
 
 ### `/generate-multidb-prompt`
 
-**Purpose:** Generates a new VS Code prompt file for multi-database query generation.
+**Purpose:** Generates a new VS Code prompt file for the current strategy-aware multi-database query workflow.
 
 **Usage (Two Options):**
 
 **Option 1: One-Line Command (Recommended)**
 ```
-/generate-multidb-prompt run_godos_2024_multidb studies/Godos_2024/prospero_godos_2024.md pubmed,scopus,wos,embase extended 1990/01/01 2023/12/31
+/generate-multidb-prompt run_godos_2024_multidb studies/Godos_2024/prospero_godos_2024.md pubmed,scopus,wos,embase default 1990/01/01 2023/12/31
 ```
 
 **Option 2: Interactive Prompts**
@@ -25,8 +25,8 @@ VS Code prompt files are reusable prompts that can be invoked by typing `/` in G
 3. Provide the requested parameters when prompted:
    - **command_name**: Name for the new command (e.g., `run_godos_2024_multidb`)
    - **protocol_path**: Path to PROSPERO protocol (e.g., `studies/Godos_2024/prospero_godos_2024.md`)
-   - **databases**: Comma-separated list (e.g., `pubmed,scopus,embase`)
-   - **level**: Query complexity (`basic`, `extended`, `keywords`, `exhaustive`)
+   - **databases**: Comma-separated list (e.g., `pubmed,scopus,wos,embase`)
+   - **relaxation_profile**: `default`, `recall_soft`, or `recall_strong`
    - **min_date**: Start date (YYYY/MM/DD format)
    - **max_date**: End date (YYYY/MM/DD format)
 
@@ -36,23 +36,23 @@ VS Code prompt files are reusable prompts that can be invoked by typing `/` in G
 
 ```bash
 # One-line format (fastest - equivalent to Gemini CLI)
-/generate-multidb-prompt run_godos_2024_multidb_extended studies/Godos_2024/prospero_godos_2024.md pubmed,scopus,wos,embase extended 1990/01/01 2023/12/31
+/generate-multidb-prompt run_godos_2024_multidb_strategy studies/Godos_2024/prospero_godos_2024.md pubmed,scopus,wos,embase default 1990/01/01 2023/12/31
 
-# Result: New command /run-godos-2024-multidb-extended is created
+# Result: New command /run_godos_2024_multidb_strategy is created
 ```
 
 **Argument Order:**
 1. `command_name` - Name for the generated command
 2. `protocol_path` - Path to protocol file  
 3. `databases` - Comma-separated (NO SPACES!)
-4. `level` - basic/extended/keywords/exhaustive
+4. `relaxation_profile` - default/recall_soft/recall_strong
 5. `min_date` - YYYY/MM/DD format
 6. `max_date` - YYYY/MM/DD format
 
 ## How It Works
 
-1. **Generation Step**: `/generate-multidb-prompt` reads your protocol file and creates a customized prompt
-2. **Execution Step**: The generated command (e.g., `/run-godos-2024-multidb`) generates actual query files
+1. **Generation Step**: `/generate-multidb-prompt` reads your protocol file and creates a customized strategy-aware prompt.
+2. **Execution Step**: The generated command writes `search_strategy.md` plus the database query files directly into the study folder.
 
 This mirrors the Gemini CLI workflow but runs natively in VS Code.
 
@@ -69,14 +69,14 @@ This mirrors the Gemini CLI workflow but runs natively in VS Code.
 
 | Feature | Gemini CLI | VS Code Prompt Files |
 |---------|------------|---------------------|
-| **Invocation** | `/generate_multidb_prompt --flag value` | `/generate-multidb-prompt` (prompts for values) |
+| **Invocation** | `/generate_multidb_prompt --flag value` | `/generate-multidb-prompt` |
 | **Location** | `.gemini/commands/` | `.github/prompts/` |
 | **Requires** | Gemini CLI installed | GitHub Copilot subscription |
 | **Interface** | Terminal | VS Code Chat |
-| **Logic** | ✅ Identical | ✅ Identical |
-| **Output** | ✅ Same files | ✅ Same files |
+| **Template stack** | `prompt_template_multidb_strategy_aware.md` | `prompt_template_multidb_strategy_aware.md` |
+| **Output** | `search_strategy.md` + `queries*.txt` | `search_strategy.md` + `queries*.txt` |
 
-**Both approaches produce identical query files** - choose based on your preferred workflow.
+**Both approaches now point at the same strategy-aware template and generate the same study outputs.** If you already have older generated `run_*_multidb*.toml` or `.prompt.md` files, regenerate them so they pick up the new template.
 
 ## Testing
 
@@ -118,12 +118,12 @@ This validates:
 ## Documentation
 
 For complete workflow documentation, see:
-- `Documentations/AUTOMATION_GUIDE.md` - Complete automation workflow
+- `Documentations/Automation_guide_main.md` - Complete automation workflow
 - `Documentations/complete_pipeline_guide.md` - Detailed pipeline guide
 - `README.md` - Project overview
 
 ## Related Files
 
 - **Gemini version**: `.gemini/commands/generate_multidb_prompt.toml`
-- **Templates**: `prompts/prompt_template_multidb.md`
-- **Guidelines**: `prompts/database_guidelines.md`
+- **Templates**: `prompts/prompt_template_multidb_strategy_aware.md`
+- **Guidelines**: `prompts/database_guidelines_strategy_aware.md`
