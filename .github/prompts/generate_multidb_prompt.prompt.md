@@ -25,7 +25,9 @@ vars:
         default: "2025/12/31"
 ---
 
-You are an expert assistant for systematic reviews. Your task is to **generate and save a new VS Code prompt file** for strategy-aware multi-database query generation by following these steps:
+You are an expert assistant for systematic reviews. Your task is to **generate and save a new VS Code prompt file** for strategy-aware multi-database query generation by following these steps.
+
+Important: in this workflow you are generating a reusable prompt file, not the final database queries themselves. The generated prompt must keep the same outputs as today while preserving the runtime logic defined in `.github/skills/systematic-review-pdf-to-queries-automated-strategy-aware/generate_multidb_queries_instructions.md`.
 
 ## Input Parameters
 
@@ -55,31 +57,58 @@ If arguments are not provided, Copilot will prompt for:
 
 1.  **Acknowledge Inputs:** You have been given a new command name (`${command_name}`), a protocol path (`${protocol_path}`), a list of target databases (`${databases}`), a relaxation profile (`${relaxation_profile}`), a min date (`${min_date}`), and a max date (`${max_date}`).
 
-2.  **Read Required Files:**
+2.  **Read Required Files In Order:**
+    *   Read the canonical runtime-logic file: `.github/skills/systematic-review-pdf-to-queries-automated-strategy-aware/generate_multidb_queries_instructions.md`.
     *   Read the master multi-database template file: `prompts/prompt_template_multidb_strategy_aware.md`.
     *   Read the database guidelines file: `prompts/database_guidelines_strategy_aware.md`.
-    *   Read the shared study guidance file: `studies/guidelines.md`.
     *   Read the shared general guidance file: `studies/general_guidelines.md`.
+    *   Read the shared study guidance file: `studies/guidelines.md`.
     *   Read the protocol file located at `${protocol_path}`.
 
-3.  **Prepare Database-Specific Guidelines:**
-    *   Parse the content of `prompts/database_guidelines_strategy_aware.md`. It contains markdown sections starting with `## {database_name}`.
-    *   Create a string variable that will hold the concatenated guidelines.
-    *   For each database name in the `${databases}` list (e.g., "pubmed", "scopus"):
-        *   Find the corresponding markdown section in the guidelines file.
-        *   Append the full text of that section to your string variable.
-    *   The resulting string is your collection of database-specific guidelines.
+3.  **Apply The Canonical Evidence Rule:**
+    *   Treat `generate_multidb_queries_instructions.md` as the canonical description of the runtime query-generation logic.
+    *   Use only the protocol and repository guidance files as evidence sources for the generated prompt.
+    *   Do not use the published paper, its appendix, or reconstructed paper search text when selecting architecture, assigning roles, or choosing query terms.
 
-4.  **Extract Information from Protocol:**
-    *   Analyze the content of the protocol file you read.
-    *   Extract the following key pieces of information:
-        *   A concise topic description.
-        *   The full PICOS summary (Population, Intervention/Exposure, Comparator, Outcomes, Design).
+4.  **Extract Study Information:**
+    *   From the protocol file, extract:
+        *   a concise topic description
+        *   the full PICOS summary
+        *   study keywords
+        *   date coverage if available
+        *   protocol-provided term lists or search fragments if present
+    *   From `studies/guidelines.md`, extract:
+        *   domain concept hierarchy when present
+        *   domain-specific broad versus narrow concept options when present
+        *   domain-specific term selection cautions when present
+    *   From `studies/general_guidelines.md`, extract only generic method rules:
+        *   concept-block logic
+        *   controlled vocabulary plus free-text logic
+        *   filtering caution
+        *   cross-database translation principles
 
-5.  **Process and Populate the Template:**
-    *   Take the content of the master template file you read (`prompts/prompt_template_multidb_strategy_aware.md`).
+5.  **Preserve The Canonical Runtime Logic In The Generated Prompt:**
+    *   The generated prompt must remain a prompt generator output, but its runtime logic must match `generate_multidb_queries_instructions.md`.
+    *   Ensure the populated prompt preserves these runtime phases and constraints:
+        *   select retrieval architecture before concept tables or queries
+        *   support `single_route` and `dual_route_union`
+        *   start `design_analytic_block` as active by default and keep its contents protocol-justified
+        *   assign concept roles using `mandatory_core`, `optional_precision`, `filter_only`, and `screening_only`
+        *   apply `RELAXATION_PROFILE` with `default` fallback
+        *   generate concept tables first, then six aligned queries per database (`Q1` through `Q6`)
+        *   preserve the approved bundled-variant policy for `Q4` to `Q6`
+        *   preserve the database translation rules, including Embase.com / Elsevier Embase as the default unless Ovid is explicit
+        *   build JSON output with six comment-prefixed query strings per database
+        *   run PRESS self-check with up to two `json_patch` corrections
+        *   write `search_strategy.md` plus the database-specific `queries*.txt` files automatically
+
+6.  **Prepare Prompt Inputs And Populate The Template:**
+    *   Parse `prompts/database_guidelines_strategy_aware.md`. It contains markdown sections starting with `## {database_name}`.
+    *   Create a concatenated database-guidance string by appending the full section for each requested database in `${databases}`.
+    *   Take the content of `prompts/prompt_template_multidb_strategy_aware.md`.
     *   This template is the current strategy-aware six-query workflow. Do not try to recover or recreate the retired level-based instruction system.
-    *   Systematically replace the following placeholders:
+    *   Preserve the template's runtime structure. Do not collapse, replace, or reinterpret its architecture-selection, bundled-variant, JSON-output, PRESS, or final file-writing logic.
+    *   Systematically replace only the study-specific placeholders:
         *   Replace `[PATH TO PROSPERO/PROTOCOL FILE]` with the value of `${protocol_path}`.
         *   Replace `[STUDY_NAME]` with the derived study name (the folder from the protocol path).
         *   Replace `[DATE_WINDOW_START]` with `${min_date}`.
@@ -88,10 +117,9 @@ If arguments are not provided, Copilot will prompt for:
         *   Replace `[default | recall_soft | recall_strong]` with `${relaxation_profile}`.
         *   Replace `[CONCISE TOPIC DESCRIPTION]` with the topic you extracted.
         *   Replace the PICOS placeholders (`[Describe the patient population]`, etc.) with the corresponding PICOS summary you extracted.
-        *   Replace `[DATABASE_SPECIFIC_GUIDELINES]` with the concatenated guidelines string you prepared in Step 3.
-    *   Preserve the template's final task, which writes `studies/[STUDY_NAME]/search_strategy.md` and the per-database query files automatically when the generated prompt is executed.
+        *   Replace `[DATABASE_SPECIFIC_GUIDELINES]` with the concatenated guidelines string you prepared above.
 
-6.  **Generate the New Prompt File:**
+7.  **Generate the New Prompt File:**
     *   You will now create a new VS Code prompt file.
     *   The name of the new file will be `.github/prompts/${command_name}.prompt.md`.
     *   Construct the content for this new file as follows:
