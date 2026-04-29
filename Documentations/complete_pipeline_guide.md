@@ -112,7 +112,7 @@ This systematic review pipeline automates:
 - **DOI-primary matching**: When detailed gold standard found, uses DOI as primary key, PMID as fallback
 - **Why important**: Scopus/WOS return DOIs (not PMIDs), so DOI matching is essential for accurate recall
 - **Performance impact**: Without DOI matching, Scopus/WOS show 0% recall; with DOI matching, 90-100% recall
-- **Automatic activation**: `--use-multi-key` flag automatically enabled when detailed gold standard detected
+- **Automatic activation**: The main wrapper enables multi-key matching automatically when a detailed gold standard is detected
 
 **Study-Specific Structure**: All files organized under `studies/<study_name>/` for portability and clarity.
 
@@ -139,7 +139,7 @@ This systematic review pipeline automates:
 
 **Step 1: Clone Repository**
 ```bash
-git clone https://github.com/yourusername/QueriesSystematicReview.git
+git clone https://github.com/ranibasna/QueriesSystematicReview.git
 cd QueriesSystematicReview
 ```
 
@@ -172,21 +172,17 @@ SCOPUS_INSTTOKEN=your_institution_token_optional
 # Web of Science (requires subscription)
 WOS_API_KEY=your_wos_api_key
 
-# Multi-database configuration (no spaces after commas!)
-SR_DATABASES=pubmed,scopus
-
 # Skip date filters for Scopus (recommended due to API limitations)
 SCOPUS_SKIP_DATE_FILTER=true
 ```
 
-**Important**: No spaces around commas in `SR_DATABASES`! Incorrect: `pubmed, scopus` ❌ Correct: `pubmed,scopus` ✅
+The main wrapper uses `pubmed,scopus,wos` by default. Override that provider set with `--databases` when you run `bash scripts/run_complete_workflow.sh <study>`.
 
 **Flag Explanations**:
 - `NCBI_EMAIL`: Required by NCBI to contact you if there are issues
 - `NCBI_API_KEY`: Optional, increases rate limit from 3 to 10 requests/second
 - `SCOPUS_INSTTOKEN`: Optional, institution-specific token for enhanced access
 - `SCOPUS_SKIP_DATE_FILTER`: Recommended `true` - Scopus API date filtering has known issues
-- `SR_DATABASES`: Default databases to use (can be overridden via command line)
 
 ---
 
@@ -202,8 +198,8 @@ studies/
 └── sleep_apnea/                          # Your study name
     ├── queries.txt                       # PubMed queries (6 queries)
     ├── queries_scopus.txt                # Scopus queries (6 queries)
-    ├── queries_wos.txt                   # Web of Science queries (5-6 queries)
-    ├── queries_embase.txt                # Embase queries (5-6 queries)
+  ├── queries_wos.txt                   # Web of Science queries (6 queries)
+  ├── queries_embase.txt                # Embase queries (6 queries)
     ├── concept_terms_sleep_apnea.csv     # Concepts for query generation
     ├── gold_pmids_sleep_apnea.csv        # Gold standard PMIDs
     ├── embase_query1.csv                 # Embase manual exports (optional)
@@ -226,930 +222,130 @@ cd studies/sleep_apnea
 
 ### Overview
 
-This step uses a Large Language Model (LLM) to automatically generate database-specific search queries from a PROSPERO protocol or study description. Instead of manually writing queries for each database, the LLM acts as an expert information specialist, translating your research question into optimized queries for PubMed, Scopus, Web of Science, and Embase.
+The current query-generation system is strategy-aware. It reads the study protocol plus shared guidance, selects a retrieval architecture, and writes aligned six-query families for each requested database.
 
-**What You'll Learn:**
-- How the command generation system works
-- Creating executable prompts from templates
-- Running LLM-powered query generation
-- Understanding the integration between templates, guidelines, and protocols
-
-### Architecture: Command Generation System
+### Architecture: Current Strategy-Aware Stack
 
 ```
 ┌───────────────────────────────────────────────────────────────┐
-│                    INPUT LAYER                                 │
-│  ┌──────────────────┐  ┌──────────────────┐                  │
-│  │ PROSPERO Protocol│  │ Study Guidelines │                  │
-│  │ (study-specific) │  │ (study-specific) │                  │
-│  └──────────────────┘  └──────────────────┘                  │
+│                    INPUT LAYER                                │
+│  • studies/<study>/prospero_<study>.md                       │
+│  • studies/guidelines.md                                     │
+│  • studies/general_guidelines.md                             │
 └───────────────────────────────────────────────────────────────┘
                             ↓
 ┌───────────────────────────────────────────────────────────────┐
-│                  TEMPLATE LAYER                                │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │  prompt_template_multidb.md                            │  │
-│  │  • Contains 4 levels: basic, extended, keywords,       │  │
-│  │    exhaustive                                           │  │
-│  │  • Has [PLACEHOLDERS] for injection                    │  │
-│  │  • Includes Precision_Knobs Framework                  │  │
-│  └────────────────────────────────────────────────────────┘  │
+│                  TEMPLATE LAYER                               │
+│  • prompts/prompt_template_multidb_strategy_aware.md         │
+│  • prompts/database_guidelines_strategy_aware.md             │
 └───────────────────────────────────────────────────────────────┘
                             ↓
 ┌───────────────────────────────────────────────────────────────┐
-│                  GUIDELINES LAYER                              │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │  database_guidelines.md                                │  │
-│  │  • PubMed syntax & Precision_Knobs                     │  │
-│  │  • Scopus syntax & Precision_Knobs                     │  │
-│  │  • Embase syntax & Precision_Knobs                     │  │
-│  │  • Web of Science syntax & Precision_Knobs             │  │
-│  └────────────────────────────────────────────────────────┘  │
+│                GENERATOR LAYER                                │
+│  • /generate_multidb_prompt                                  │
+│  • /generate-multidb-prompt                                  │
+│  • parameterized by relaxation_profile                       │
 └───────────────────────────────────────────────────────────────┘
                             ↓
 ┌───────────────────────────────────────────────────────────────┐
-│               ORCHESTRATION LAYER                              │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │  generate_multidb_prompt.toml                          │  │
-│  │  • Reads template + guidelines + protocol             │  │
-│  │  • Extracts level-specific instructions               │  │
-│  │  • Injects database guidelines for selected DBs       │  │
-│  │  • Populates all placeholders                          │  │
-│  │  • Writes executable command file                      │  │
-│  └────────────────────────────────────────────────────────┘  │
+│                 EXECUTION LAYER                               │
+│  • /run_<study>_multidb_strategy                             │
+│  • selects architecture, builds Q1-Q6, applies json_patch    │
 └───────────────────────────────────────────────────────────────┘
                             ↓
 ┌───────────────────────────────────────────────────────────────┐
-│                  OUTPUT LAYER                                  │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │  run_<study>_multidb_<level>.toml                      │  │
-│  │  • Complete, ready-to-execute command                  │  │
-│  │  • Contains full populated prompt                      │  │
-│  │  • Invoked via: /run_<study>_multidb_<level>          │  │
-│  └────────────────────────────────────────────────────────┘  │
-└───────────────────────────────────────────────────────────────┘
-                            ↓
-┌───────────────────────────────────────────────────────────────┐
-│                  EXECUTION LAYER                               │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │  LLM (Claude, GPT, Gemini)                             │  │
-│  │  • Reads prompt with protocol + guidelines             │  │
-│  │  • Generates queries for each database                 │  │
-│  │  • Returns JSON with paste-ready queries               │  │
-│  └────────────────────────────────────────────────────────┘  │
+│                   OUTPUT LAYER                                │
+│  • studies/<study>/search_strategy.md                        │
+│  • studies/<study>/queries.txt                               │
+│  • studies/<study>/queries_scopus.txt                        │
+│  • studies/<study>/queries_wos.txt                           │
+│  • studies/<study>/queries_embase.txt                        │
 └───────────────────────────────────────────────────────────────┘
 ```
 
----
+### Step 2.1: Prepare Study Inputs
 
-### Step 2.1: Prepare Study Materials
+Before generating queries, make sure you have:
 
-Before generating queries, you need:
+1. The study protocol markdown from Step 1.
+2. The shared study guidance file `studies/guidelines.md`.
+3. The shared general guidance file `studies/general_guidelines.md`.
 
-1. **PROSPERO protocol** (or study description)
-2. **Study-specific guidelines** (optional but recommended)
-3. **General systematic review guidelines** (optional)
+### Step 2.2: Generate a Runnable Command
 
-#### Example: Sleep Apnea Study Structure
+You can generate the study-specific runnable command through either supported path.
 
-```
-studies/sleep_apnea/
-├── prospero-sleep-apnea-dementia.md     # PROSPERO protocol
-├── guidelines.md                         # Study-specific query guidelines
-└── general_guidelines.md                 # General SR best practices
-```
-
-#### PROSPERO Protocol File
-
-**File: `studies/sleep_apnea/prospero-sleep-apnea-dementia.md`**
-
-```markdown
-# PROSPERO Protocol: Sleep Apnea and Dementia
-
-## Research Question
-Does sleep apnea increase the risk of dementia?
-
-## PICOS Framework
-
-### Population
-Patients with sleep apnea diagnosed by:
-- Polysomnography (PSG) study
-- Overnight oximetry study
-- Apnea-Hypopnea Index (AHI) or Oxygen Desaturation Index (ODI) clearly specified
-- No age limit
-
-### Intervention/Exposure
-Presence of sleep apnea
-
-### Comparator
-Patients without sleep apnea
-
-### Outcomes
-Primary: Onset of dementia (all-cause)
-
-Secondary:
-- Alzheimer's disease
-- Parkinson's disease dementia
-- Lewy body dementia
-- Frontotemporal dementia
-- Vascular dementia
-- Mixed dementia
-
-### Study Design
-- Prospective cohort studies
-- Retrospective cohort studies
-- Randomized controlled trials
-
-## Keywords
-Sleep apnea, obstructive sleep apnea, OSA, sleep-disordered breathing, 
-dementia, cognitive decline, Alzheimer's, cognitive impairment
-
-## Date Range
-From inception to March 1, 2021
-```
-
-#### Study Guidelines File
-
-**File: `studies/sleep_apnea/guidelines.md`**
-
-```markdown
-# Sleep Apnea Study - Query Generation Guidelines
-
-## Key Concepts to Emphasize
-
-### Exposure Concept (Sleep Apnea)
-- Use both MeSH/Emtree: "Sleep Apnea Syndromes"
-- Include variants: sleep apnea, sleep apnoea, OSA, OSAS
-- Include: sleep-disordered breathing, sleep breathing disorders
-
-### Outcome Concept (Dementia)
-- Use broad MeSH/Emtree: "Dementia"
-- Include specific types: Alzheimer's, vascular dementia, Lewy body
-- Include: cognitive decline, cognitive impairment
-
-### Study Design Filters
-- Cohort studies (prospective/retrospective)
-- RCTs
-- Exclude: case reports, case series, reviews
-
-## Precision Strategy
-- High-recall: Maximize MeSH explosion, broad text words
-- Balanced: Combine MeSH with filtered free text
-- High-precision: Major focus headings, title searches
-```
-
----
-
-### Step 2.2: Generate the Command File
-
-Now you'll use the command generator to create an executable LLM prompt.
-
-#### Command Structure
+**Gemini CLI**
 
 ```bash
 /generate_multidb_prompt \
-  --command_name <name_for_new_command> \
-  --protocol_path <path_to_protocol_file> \
-  --databases <comma_separated_db_list> \
-  --level <basic|extended|keywords|exhaustive> \
-  --min_date <YYYY/MM/DD> \
-  --max_date <YYYY/MM/DD>
-```
-
-#### Parameter Explanations
-
-| Parameter | Description | Example | Default |
-|-----------|-------------|---------|---------|
-| `--command_name` | Name for the generated command (becomes `/<command_name>`) | `run_sleep_apnea_multidb_extended_v2` | *Required* |
-| `--protocol_path` | Absolute path to PROSPERO/protocol file | `studies/sleep_apnea/prospero-sleep-apnea-dementia.md` | *Required* |
-| `--databases` | Comma-separated database list (no spaces!) | `pubmed,scopus,embase` | `pubmed` |
-| `--level` | Query complexity level (see below) | `extended` | `extended` |
-| `--min_date` | Start of date range for literature search | `1990/01/01` | `1980/01/01` |
-| `--max_date` | End of date range for literature search | `2021/03/01` | `2025/12/31` |
-
-**Level Options:**
-
-| Level | Queries per DB | Description | Use When |
-|-------|----------------|-------------|----------|
-| **basic** | 3 | High-recall, Balanced, High-precision | Quick testing, simple reviews |
-| **extended** | 6 | Basic 3 + 3 micro-variants (Filter, Scope, Proximity) | **Recommended** for most studies |
-| **keywords** | 4 | Keyword-focused + Basic 3 | Protocol has explicit keyword list |
-| **exhaustive** | 9 | All variants + extra exploration | Comprehensive systematic reviews |
-
-**Important Database Notes:**
-- `pubmed`: Always free, no API key needed (but recommended for rate limits)
-- `scopus`: Requires institutional subscription + API key
-- `embase`: No API access - requires manual export (see Step 4)
-- `wos`: Requires institutional subscription + API key
-
-#### Example: Sleep Apnea Command Generation
-
-```bash
-/generate_multidb_prompt \
-  --command_name run_sleep_apnea_multidb_extended_v2 \
+  --command_name run_sleep_apnea_multidb_strategy \
   --protocol_path studies/sleep_apnea/prospero-sleep-apnea-dementia.md \
-  --databases pubmed,scopus,embase \
-  --level extended \
+  --databases pubmed,scopus,wos,embase \
+  --relaxation_profile default \
   --min_date "" \
   --max_date "2021/03/01"
 ```
 
-**What This Does:**
+**VS Code Copilot Chat**
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ Step 1: Read Input Files                                    │
-├─────────────────────────────────────────────────────────────┤
-│ ✓ Read prompts/prompt_template_multidb.md                  │
-│ ✓ Read prompts/database_guidelines.md                      │
-│ ✓ Read studies/sleep_apnea/prospero-sleep-apnea-dementia.md│
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Step 2: Extract Level-Specific Instructions                 │
-├─────────────────────────────────────────────────────────────┤
-│ • Find text between:                                        │
-│   --- START LEVEL-SPECIFIC INSTRUCTIONS ---                │
-│   and                                                        │
-│   --- END LEVEL-SPECIFIC INSTRUCTIONS ---                  │
-│                                                              │
-│ • Within that block, extract:                               │
-│   --- LEVEL: extended ---                                   │
-│   [content here]                                            │
-│   --- END LEVEL: extended ---                               │
-│                                                              │
-│ • Remove the LEVEL markers, keep only content               │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Step 3: Extract Database Guidelines                         │
-├─────────────────────────────────────────────────────────────┤
-│ Databases: pubmed, scopus, embase                           │
-│                                                              │
-│ From database_guidelines.md, extract:                       │
-│ ✓ ## PubMed section (all content)                          │
-│ ✓ ## Scopus section (all content)                          │
-│ ✓ ## Embase section (all content)                          │
-│                                                              │
-│ Concatenate into single string                              │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Step 4: Extract Protocol Information                        │
-├─────────────────────────────────────────────────────────────┤
-│ From prospero-sleep-apnea-dementia.md:                      │
-│ • Topic: "The Association Between Sleep Apnea and Dementia"│
-│ • Population: "Patients with sleep apnea diagnosed..."     │
-│ • Intervention: "Presence of sleep apnea"                  │
-│ • Comparator: "Patients without sleep apnea"               │
-│ • Outcomes: "Onset of dementia (all-cause)..."             │
-│ • Design: "Prospective or retrospective cohort studies..." │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Step 5: Populate Template                                   │
-├─────────────────────────────────────────────────────────────┤
-│ Replace placeholders:                                        │
-│ [PATH TO PROSPERO/PROTOCOL FILE] →                         │
-│   studies/sleep_apnea/prospero-sleep-apnea-dementia.md    │
-│                                                              │
-│ [STUDY_NAME] → sleep_apnea                                 │
-│                                                              │
-│ [DATE_WINDOW_START] → "" (from inception)                  │
-│ [DATE_WINDOW_END] → "2021/03/01"                           │
-│                                                              │
-│ [LIST OF DATABASES] → pubmed,scopus,embase                 │
-│                                                              │
-│ [CONCISE TOPIC DESCRIPTION] →                               │
-│   "The Association Between Sleep Apnea and Dementia"       │
-│                                                              │
-│ [DATABASE_SPECIFIC_GUIDELINES] →                            │
-│   [Full concatenated guidelines for PubMed+Scopus+Embase]  │
-│                                                              │
-│ [Describe the patient population] →                         │
-│   "Patients with sleep apnea diagnosed..."                 │
-│ [... and all other PICOS placeholders ...]                 │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Step 6: Write Output File                                   │
-├─────────────────────────────────────────────────────────────┤
-│ File: .gemini/commands/run_sleep_apnea_multidb_extended_v2.toml │
-│                                                              │
-│ Content: TOML file with populated prompt in '''...'''      │
-└─────────────────────────────────────────────────────────────┘
+```text
+/generate-multidb-prompt run_sleep_apnea_multidb_strategy studies/sleep_apnea/prospero-sleep-apnea-dementia.md pubmed,scopus,wos,embase default "" 2021/03/01
 ```
 
-#### Expected Output
+#### Parameters
 
-```
-✅ Command Generation Complete!
+| Parameter | Description | Example |
+|-----------|-------------|---------|
+| `command_name` | Name for the generated runnable command | `run_sleep_apnea_multidb_strategy` |
+| `protocol_path` | Path to the protocol markdown | `studies/sleep_apnea/prospero-sleep-apnea-dementia.md` |
+| `databases` | Comma-separated database list | `pubmed,scopus,wos,embase` |
+| `relaxation_profile` | Strategy-aware recall/precision bias | `default` |
+| `min_date` | Start of search window | `1990/01/01` or empty for inception |
+| `max_date` | End of search window | `2021/03/01` |
 
-Generated file:
-  .gemini/commands/run_sleep_apnea_multidb_extended_v2.toml
+`relaxation_profile` replaces the retired level-based generation model. The current strategy-aware path is fixed to the latest six-query family and does not use `basic`, `extended`, `keywords`, or `exhaustive` as the main workflow contract.
 
-The new command is ready to execute:
-  /run_sleep_apnea_multidb_extended_v2
-
-This command will:
-  • Generate 6 queries for PubMed (high-recall, balanced, high-precision, 
-    filter-variant, scope-variant, proximity-variant)
-  • Generate 6 queries for Scopus (same structure)
-  • Generate 6 queries for Embase (same structure)
-  • Total: 18 queries across 3 databases
-
-Next step: Run the command to execute the LLM prompt!
-```
-
----
-
-### Step 2.3: Understand the Generated Command File
-
-Let's examine what was created in `.gemini/commands/run_sleep_apnea_multidb_extended_v2.toml`.
-
-#### File Structure
-
-```toml
-# In: ~/.gemini/commands/run_sleep_apnea_multidb_extended_v2.toml
-# This command will be invoked via: /run_sleep_apnea_multidb_extended_v2
-
-description = "Runs the multi-database query generation prompt for the study based on studies/sleep_apnea/prospero-sleep-apnea-dementia.md."
-
-prompt = '''
-[FULL POPULATED PROMPT HERE - 200+ lines]
-'''
-```
-
-#### Key Sections in the Populated Prompt
-
-**1. System Instructions**
-```markdown
-## SYSTEM (role: information specialist & indexer):
-- You are an expert information specialist and medical indexer.
-- Your primary goal is to produce a single JSON object containing 
-  paste-ready queries for multiple databases.
-- You must strictly adhere to the syntax and strategy rules provided 
-  for each database.
-```
-
-**2. Input Specification**
-```markdown
-## INPUT
-- TOPIC: `The Association Between Sleep Apnea and Dementia`
-- DATE WINDOW: `` to `2021/03/01`
-- DATABASES: `pubmed,scopus,embase`
-```
-
-**3. PICOS Summary** (extracted from protocol)
-```markdown
-## PICOS (summary)
-- **Population:** `Patients with sleep apnea diagnosed by polysomnography...`
-- **Intervention/Exposure:** `Presence of sleep apnea`
-- **Comparator:** `Patients without sleep apnea`
-- **Outcomes:** `Onset of dementia (all-cause)...`
-- **Design:** `Prospective or retrospective cohort studies...`
-```
-
-**4. Database-Specific Guidelines** (injected from database_guidelines.md)
-```markdown
-## DATABASE-SPECIFIC GUIDELINES
-
-## PubMed
-- **Syntax**: Use `[tiab]` for title/abstract searches...
-- **Precision_Knobs**:
-  **Filter Knobs:**
-  - Species filter: `humans[Filter]`
-  - Language filter: `english[Filter]`
-  
-  **Scope Knobs:**
-  - Title only: `[ti]`
-  - Major headings: `[majr]`
-  ...
-
-## Scopus
-- **Syntax**: Use `TITLE-ABS-KEY(...)` for general topic searches...
-- **Precision_Knobs**:
-  **Filter Knobs:**
-  - Document type: `DOCTYPE(ar OR re)`
-  ...
-
-## Embase
-[Similar structure]
-```
-
-**5. Output Instructions** (level-specific, cleaned of markers)
-```markdown
-## OUTPUT
-
-### 1. Concept Tables (Markdown)
-- **Concept→MeSH/Emtree table:** ...
-- **Concept→Textword table:** ...
-
-### 2. JSON Query Object
-Generate **6 queries** for each database by following this recipe:
-1. **High-recall:** ...
-2. **Balanced:** ...
-3. **High-precision:** ...
-4. **Micro-variant 1 (Filter-based):** Start with 'Balanced' and add 
-   a filter from "Filter Knobs"
-5. **Micro-variant 2 (Field/Scope-based):** Start with 'Balanced' and 
-   add a scope restriction from "Scope Knobs"
-6. **Micro-variant 3 (Proximity-based):** Start with 'Balanced' and 
-   add proximity operators from "Proximity Knobs"
-
-### 3. PRESS Self-Check (JSON Patch)
-- Critically review your work
-- Provide up to 2 revisions in json_patch object
-```
-
-**6. Expected Output Format**
-```markdown
-## Expected JSON Output Format
-
-Your JSON Query Object should follow this structure:
-
-```json
-{
-  "pubmed": [
-    "# High-recall: ...",
-    "# Balanced: ...",
-    "# High-precision: ...",
-    "# Micro-variant 1: ...",
-    "# Micro-variant 2: ...",
-    "# Micro-variant 3: ..."
-  ],
-  "scopus": [
-    "# High-recall: ...",
-    ...
-  ],
-  "embase": [
-    "# High-recall: ...",
-    ...
-  ]
-}
-```
-
-Note: The number of queries per database depends on the level 
-(basic: 3, extended: 6, keywords: 4, exhaustive: 9).
-```
-
----
-
-### Step 2.4: Execute the LLM Prompt
-
-Now run the generated command to execute the prompt with an LLM.
-
-#### Basic Execution
+### Step 2.3: Execute the Generated Command
 
 ```bash
-/run_sleep_apnea_multidb_extended_v2
+/run_sleep_apnea_multidb_strategy
 ```
 
-This invokes the LLM (Claude, GPT, Gemini, etc.) with the complete prompt.
+When executed, the generated command:
 
-#### What Happens During Execution
+1. Classifies the retrieval architecture.
+2. Builds the concept tables and aligned `Q1` to `Q6` query families for each requested database.
+3. Produces a single JSON query object keyed by database, then applies any `json_patch` corrections.
+4. Writes `search_strategy.md` with the architecture summary, concept tables, JSON query object, `json_patch`, and translation notes.
+5. Writes the final query files directly to the study folder.
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 1: LLM Analyzes Protocol                              │
-├─────────────────────────────────────────────────────────────┤
-│ • Reads PICOS framework                                     │
-│ • Identifies key concepts: sleep apnea, dementia           │
-│ • Notes study design requirements: cohort, RCT             │
-│ • Notes date range: inception to 2021/03/01                │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 2: LLM Creates Concept Tables                         │
-├─────────────────────────────────────────────────────────────┤
-│ Concept→MeSH Table:                                         │
-│ ┌─────────────┬──────────────────┬─────────┬──────────┐   │
-│ │ Concept     │ MeSH Term        │ Tree    │ Explode? │   │
-│ ├─────────────┼──────────────────┼─────────┼──────────┤   │
-│ │ Sleep Apnea │ Sleep Apnea Syn. │ C08.618 │ Yes      │   │
-│ │ Dementia    │ Dementia         │ F03.615 │ Yes      │   │
-│ └─────────────┴──────────────────┴─────────┴──────────┘   │
-│                                                              │
-│ Concept→Textword Table:                                     │
-│ ┌─────────────┬──────────────────┬───────┬────────────┐   │
-│ │ Concept     │ Synonym/Phrase   │ Field │ Truncation │   │
-│ ├─────────────┼──────────────────┼───────┼────────────┤   │
-│ │ Sleep Apnea │ sleep apnea      │ tiab  │ No         │   │
-│ │ Sleep Apnea │ sleep apnoea     │ tiab  │ No         │   │
-│ │ Sleep Apnea │ OSA              │ tiab  │ No         │   │
-│ │ Dementia    │ cognitive decline│ tiab  │ No         │   │
-│ └─────────────┴──────────────────┴───────┴────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 3: LLM Generates Queries (Database by Database)       │
-├─────────────────────────────────────────────────────────────┤
-│ FOR EACH DATABASE (pubmed, scopus, embase):                │
-│                                                              │
-│ 1. High-recall query:                                       │
-│    • Use exploded MeSH/Emtree terms                        │
-│    • Include all synonyms with OR                           │
-│    • Broad Boolean logic                                    │
-│                                                              │
-│ 2. Balanced query:                                          │
-│    • Mix of MeSH + free text                               │
-│    • Add study design filters                               │
-│    • Moderate precision                                     │
-│                                                              │
-│ 3. High-precision query:                                    │
-│    • Major focus terms only ([majr], *term)                │
-│    • Title searches                                         │
-│    • Strict filters                                         │
-│                                                              │
-│ 4. Micro-variant 1 (Filter):                               │
-│    • Start with Balanced                                    │
-│    • Add: humans[Filter] (PubMed)                          │
-│    • Add: DOCTYPE(ar OR re) (Scopus)                       │
-│    • Add: limit to article (Embase)                        │
-│                                                              │
-│ 5. Micro-variant 2 (Scope):                                │
-│    • Start with Balanced                                    │
-│    • Restrict key concepts to title: [ti]                  │
-│    • Or use major headings: [majr]                         │
-│                                                              │
-│ 6. Micro-variant 3 (Proximity):                            │
-│    • Start with Balanced                                    │
-│    • Add: W/5 for Scopus (within 5 words)                 │
-│    • Add: ADJ5 for Embase                                  │
-│    • For PubMed (no proximity): use [majr] fallback       │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 4: LLM Applies Database-Specific Syntax               │
-├─────────────────────────────────────────────────────────────┤
-│ PubMed:                                                     │
-│ ("Sleep Apnea Syndromes"[MeSH] OR "sleep apnea"[tiab] OR   │
-│  "sleep apnoea"[tiab]) AND ("Dementia"[MeSH] OR            │
-│  dementia[tiab]) AND ("1990/01/01"[Date - Publication] :   │
-│  "2021/03/01"[Date - Publication])                         │
-│                                                              │
-│ Scopus:                                                     │
-│ TITLE-ABS-KEY("sleep apnea" OR "sleep apnoea" OR           │
-│ "obstructive sleep apnea") AND TITLE-ABS-KEY(dementia OR   │
-│ "cognitive decline") AND PUBYEAR > 1989 AND PUBYEAR < 2022 │
-│                                                              │
-│ Embase:                                                     │
-│ ('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab) AND    │
-│ ('dementia'/exp OR dementia:ti,ab) AND [1990-2021]/py      │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 5: LLM Performs PRESS Self-Check                      │
-├─────────────────────────────────────────────────────────────┤
-│ • Reviews generated queries for:                            │
-│   - Missing synonyms                                        │
-│   - Syntax errors                                           │
-│   - Logical inconsistencies                                 │
-│                                                              │
-│ • If issues found, creates JSON patch:                      │
-│   {                                                          │
-│     "json_patch": {                                         │
-│       "pubmed.0": "# Revised query...",                    │
-│       "scopus.2": "# Revised query..."                     │
-│     }                                                        │
-│   }                                                          │
-│                                                              │
-│ • Includes translation notes documenting syntax differences │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 6: LLM Returns JSON Output                            │
-├─────────────────────────────────────────────────────────────┤
-│ {                                                            │
-│   "pubmed": [                                               │
-│     "# High-recall: Broad MeSH...",                        │
-│     "(\"Sleep Apnea Syndromes\"[MeSH] OR...)",             │
-│     "# Balanced: Mix of MeSH...",                          │
-│     "(\"Sleep Apnea Syndromes\"[MeSH] OR...)",             │
-│     ...                                                     │
-│   ],                                                         │
-│   "scopus": [...],                                          │
-│   "embase": [...]                                           │
-│ }                                                            │
-└─────────────────────────────────────────────────────────────┘
-```
+### Step 2.4: Verify Generated Outputs
 
-#### Expected LLM Response Format
-
-The LLM will return a structured response with three main sections:
-
-**1. Concept Tables (Markdown)**
-```markdown
-### 1. Concept Tables
-
-#### Concept→MeSH/Emtree Table
-
-| Concept | Term | Tree Note | Explode? | Rationale & Source |
-|---------|------|-----------|----------|-------------------|
-| Sleep Apnea | Sleep Apnea Syndromes | C08.618.085 | Yes | Captures all SA types; from PROSPERO keywords |
-| Dementia | Dementia | F03.615.400 | Yes | Broad outcome capture; PICOS primary outcome |
-| Study Design | Cohort Studies | E05.318.372 | Yes | PICOS specifies cohort + RCT designs |
-
-#### Concept→Textword Table
-
-| Concept | Synonym/Phrase | Field | Truncation? | Source |
-|---------|----------------|-------|-------------|--------|
-| Sleep Apnea | sleep apnea | tiab | No | PROSPERO keywords |
-| Sleep Apnea | sleep apnoea | tiab | No | UK spelling variant |
-| Sleep Apnea | OSA | tiab | No | Common abbreviation |
-| Sleep Apnea | obstructive sleep apnea | tiab | No | Most common type |
-| Dementia | dementia | tiab | No | PROSPERO keywords |
-| Dementia | cognitive decline | tiab | No | Related outcome term |
-```
-
-**2. JSON Query Object**
-````json
-{
-  "pubmed": [
-    "# High-recall: Broad MeSH terms with explosion, all text word synonyms",
-    "(\"Sleep Apnea Syndromes\"[MeSH] OR \"sleep apnea\"[tiab] OR \"sleep apnoea\"[tiab] OR \"obstructive sleep apnea\"[tiab] OR \"OSA\"[tiab] OR \"OSAS\"[tiab]) AND (\"Dementia\"[MeSH] OR dementia[tiab] OR \"cognitive decline\"[tiab] OR \"cognitive impairment\"[tiab] OR alzheimer*[tiab]) AND (\"1990/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-    
-    "# Balanced: Mix of MeSH and free text with study design filter",
-    "(\"Sleep Apnea Syndromes\"[MeSH] OR \"sleep apnea\"[tiab]) AND (\"Dementia\"[MeSH] OR dementia[tiab]) AND (\"Cohort Studies\"[MeSH] OR cohort[tiab] OR prospective[tiab] OR \"Randomized Controlled Trial\"[pt]) AND (\"1990/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-    
-    "# High-precision: Major MeSH headings and title searches",
-    "(\"Sleep Apnea Syndromes\"[majr]) AND (\"Dementia\"[majr]) AND (cohort[ti] OR trial[ti]) AND (\"1990/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-    
-    "# Micro-variant 1 (Filter): Balanced + humans filter",
-    "(\"Sleep Apnea Syndromes\"[MeSH] OR \"sleep apnea\"[tiab]) AND (\"Dementia\"[MeSH] OR dementia[tiab]) AND (\"Cohort Studies\"[MeSH] OR cohort[tiab]) AND humans[Filter] AND (\"1990/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-    
-    "# Micro-variant 2 (Scope): Balanced + title restriction on key concepts",
-    "(\"Sleep Apnea Syndromes\"[MeSH] OR \"sleep apnea\"[ti]) AND (\"Dementia\"[MeSH] OR dementia[ti]) AND (cohort[tiab] OR prospective[tiab]) AND (\"1990/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])",
-    
-    "# Micro-variant 3 (Proximity fallback): Balanced + major headings (PubMed has no proximity)",
-    "(\"Sleep Apnea Syndromes\"[majr] OR \"sleep apnea\"[tiab]) AND (\"Dementia\"[majr] OR dementia[tiab]) AND (cohort[tiab] OR trial[tiab]) AND (\"1990/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])"
-  ],
-  
-  "scopus": [
-    "# High-recall: Broad keyword search across all fields",
-    "TITLE-ABS-KEY(\"sleep apnea\" OR \"sleep apnoea\" OR \"obstructive sleep apnea\" OR OSA OR OSAS OR \"sleep disordered breathing\") AND TITLE-ABS-KEY(dementia OR \"cognitive decline\" OR \"cognitive impairment\" OR alzheimer*) AND PUBYEAR > 1989 AND PUBYEAR < 2022",
-    
-    "# Balanced: Mixed fields with document type filter",
-    "TITLE-ABS-KEY(\"sleep apnea\" OR \"obstructive sleep apnea\") AND TITLE-ABS-KEY(dementia OR \"cognitive decline\") AND TITLE-ABS-KEY(cohort OR prospective OR trial) AND DOCTYPE(ar OR re) AND PUBYEAR > 1989 AND PUBYEAR < 2022",
-    
-    "# High-precision: Title-only search for key concepts",
-    "TITLE(\"sleep apnea\" OR \"obstructive sleep apnea\") AND TITLE(dementia) AND TITLE-ABS-KEY(cohort OR trial) AND DOCTYPE(ar) AND PUBYEAR > 1989 AND PUBYEAR < 2022",
-    
-    "# Micro-variant 1 (Filter): Balanced + article/review document type",
-    "TITLE-ABS-KEY(\"sleep apnea\" OR \"obstructive sleep apnea\") AND TITLE-ABS-KEY(dementia OR \"cognitive decline\") AND TITLE-ABS-KEY(cohort OR prospective) AND DOCTYPE(ar OR re) AND PUBYEAR > 1989 AND PUBYEAR < 2022",
-    
-    "# Micro-variant 2 (Scope): Balanced + title restriction",
-    "TITLE(\"sleep apnea\") AND TITLE(dementia) AND TITLE-ABS-KEY(cohort OR prospective OR trial) AND PUBYEAR > 1989 AND PUBYEAR < 2022",
-    
-    "# Micro-variant 3 (Proximity): Balanced + W/5 proximity operator",
-    "TITLE-ABS-KEY(\"sleep apnea\" W/5 dementia) AND TITLE-ABS-KEY(cohort OR prospective OR trial) AND DOCTYPE(ar OR re) AND PUBYEAR > 1989 AND PUBYEAR < 2022"
-  ],
-  
-  "embase": [
-    "# High-recall: Exploded Emtree terms with broad free text",
-    "('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab OR 'sleep apnoea':ti,ab OR 'obstructive sleep apnea':ti,ab OR OSA:ti,ab) AND ('dementia'/exp OR dementia:ti,ab OR 'cognitive decline':ti,ab OR 'cognitive impairment':ti,ab) AND [1990-2021]/py",
-    
-    "# Balanced: Mixed Emtree and free text with study design",
-    "('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab) AND ('dementia'/exp OR dementia:ti,ab) AND ('cohort analysis'/exp OR cohort:ti,ab OR prospective:ti,ab OR 'randomized controlled trial'/exp) AND [1990-2021]/py",
-    
-    "# High-precision: Major focus terms and title searches",
-    "*'sleep apnea syndrome' AND *'dementia' AND (cohort:ti OR trial:ti) AND [1990-2021]/py AND [article]/lim",
-    
-    "# Micro-variant 1 (Filter): Balanced + article limit",
-    "('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab) AND ('dementia'/exp OR dementia:ti,ab) AND (cohort:ti,ab OR prospective:ti,ab) AND [1990-2021]/py AND [article]/lim",
-    
-    "# Micro-variant 2 (Scope): Balanced + title restriction",
-    "('sleep apnea syndrome'/exp OR 'sleep apnea':ti) AND ('dementia'/exp OR dementia:ti) AND (cohort:ti,ab OR prospective:ti,ab) AND [1990-2021]/py",
-    
-    "# Micro-variant 3 (Proximity): Balanced + ADJ5 adjacency operator",
-    "('sleep apnea':ti,ab ADJ5 dementia:ti,ab) AND (cohort:ti,ab OR prospective:ti,ab OR trial:ti,ab) AND [1990-2021]/py"
-  ]
-}
-````
-
-**3. PRESS Self-Check & JSON Patch**
-```json
-{
-  "json_patch": {
-    "pubmed.1": "# Balanced: Mix of MeSH and free text with study design filter (REVISED: added RCT publication type)\n(\"Sleep Apnea Syndromes\"[MeSH] OR \"sleep apnea\"[tiab]) AND (\"Dementia\"[MeSH] OR dementia[tiab]) AND (\"Cohort Studies\"[MeSH] OR cohort[tiab] OR prospective[tiab] OR \"Randomized Controlled Trial\"[pt] OR \"controlled clinical trial\"[pt]) AND (\"1990/01/01\"[Date - Publication] : \"2021/03/01\"[Date - Publication])"
-  }
-}
-```
-
-**Translation Notes:**
-```markdown
-## Translation Notes
-
-### Database Syntax Differences
-- **Date filters**: PubMed uses [Date - Publication] range, Scopus uses PUBYEAR comparisons, Embase uses /py suffix
-- **Field codes**: PubMed [tiab], Scopus TITLE-ABS-KEY(), Embase :ti,ab
-- **Controlled vocab**: PubMed uses MeSH with [MeSH], Embase uses Emtree with /exp or /de
-- **Major focus**: PubMed [majr], Embase *'term' prefix, Scopus has no direct equivalent (use TITLE)
-- **Proximity**: Scopus W/n, Embase ADJn, PubMed has none (fallback to [majr])
-
-### Significant Changes Between Databases
-- Scopus queries use PUBYEAR > 1989 instead of >= 1990 to ensure 1990 is included
-- PubMed includes RCT publication type [pt] for design filter
-- Embase uses [article]/lim instead of DOCTYPE for precision variants
-```
-
----
-
-### Step 2.5: Save and Organize Query Outputs
-
-After receiving the LLM response, you need to extract and save the queries.
-
-#### Manual Extraction Process
-
-**Step 1: Copy JSON Queries**
-
-From the LLM response, copy the JSON object (between the ` ```json ` markers).
-
-**Step 2: Create Database-Specific Query Files**
-
-For each database, create a text file with queries:
-
-**File: `studies/sleep_apnea/queries.txt` (PubMed)**
-```
-# High-recall: Broad MeSH terms with explosion, all text word synonyms
-("Sleep Apnea Syndromes"[MeSH] OR "sleep apnea"[tiab] OR "sleep apnoea"[tiab] OR "obstructive sleep apnea"[tiab] OR "OSA"[tiab] OR "OSAS"[tiab]) AND ("Dementia"[MeSH] OR dementia[tiab] OR "cognitive decline"[tiab] OR "cognitive impairment"[tiab] OR alzheimer*[tiab]) AND ("1990/01/01"[Date - Publication] : "2021/03/01"[Date - Publication])
-
-# Balanced: Mix of MeSH and free text with study design filter
-("Sleep Apnea Syndromes"[MeSH] OR "sleep apnea"[tiab]) AND ("Dementia"[MeSH] OR dementia[tiab]) AND ("Cohort Studies"[MeSH] OR cohort[tiab] OR prospective[tiab] OR "Randomized Controlled Trial"[pt]) AND ("1990/01/01"[Date - Publication] : "2021/03/01"[Date - Publication])
-
-# High-precision: Major MeSH headings and title searches
-("Sleep Apnea Syndromes"[majr]) AND ("Dementia"[majr]) AND (cohort[ti] OR trial[ti]) AND ("1990/01/01"[Date - Publication] : "2021/03/01"[Date - Publication])
-
-# Micro-variant 1 (Filter): Balanced + humans filter
-("Sleep Apnea Syndromes"[MeSH] OR "sleep apnea"[tiab]) AND ("Dementia"[MeSH] OR dementia[tiab]) AND ("Cohort Studies"[MeSH] OR cohort[tiab]) AND humans[Filter] AND ("1990/01/01"[Date - Publication] : "2021/03/01"[Date - Publication])
-
-# Micro-variant 2 (Scope): Balanced + title restriction on key concepts
-("Sleep Apnea Syndromes"[MeSH] OR "sleep apnea"[ti]) AND ("Dementia"[MeSH] OR dementia[ti]) AND (cohort[tiab] OR prospective[tiab]) AND ("1990/01/01"[Date - Publication] : "2021/03/01"[Date - Publication])
-
-# Micro-variant 3 (Proximity fallback): Balanced + major headings
-("Sleep Apnea Syndromes"[majr] OR "sleep apnea"[tiab]) AND ("Dementia"[majr] OR dementia[tiab]) AND (cohort[tiab] OR trial[tiab]) AND ("1990/01/01"[Date - Publication] : "2021/03/01"[Date - Publication])
-```
-
-**File: `studies/sleep_apnea/queries_scopus.txt` (Scopus)**
-```
-# High-recall: Broad keyword search across all fields
-TITLE-ABS-KEY("sleep apnea" OR "sleep apnoea" OR "obstructive sleep apnea" OR OSA OR OSAS OR "sleep disordered breathing") AND TITLE-ABS-KEY(dementia OR "cognitive decline" OR "cognitive impairment" OR alzheimer*) AND PUBYEAR > 1989 AND PUBYEAR < 2022
-
-# Balanced: Mixed fields with document type filter
-TITLE-ABS-KEY("sleep apnea" OR "obstructive sleep apnea") AND TITLE-ABS-KEY(dementia OR "cognitive decline") AND TITLE-ABS-KEY(cohort OR prospective OR trial) AND DOCTYPE(ar OR re) AND PUBYEAR > 1989 AND PUBYEAR < 2022
-
-[... continue with remaining 4 queries ...]
-```
-
-**File: `studies/sleep_apnea/queries_embase.txt` (Embase)**
-```
-# High-recall: Exploded Emtree terms with broad free text
-('sleep apnea syndrome'/exp OR 'sleep apnea':ti,ab OR 'sleep apnoea':ti,ab OR 'obstructive sleep apnea':ti,ab OR OSA:ti,ab) AND ('dementia'/exp OR dementia:ti,ab OR 'cognitive decline':ti,ab OR 'cognitive impairment':ti,ab) AND [1990-2021]/py
-
-[... continue with remaining 5 queries ...]
-```
-
-#### Automated Extraction (Optional)
-
-You can create a script to parse the JSON and generate query files automatically:
-
-```python
-# scripts/extract_queries_from_json.py
-import json
-import sys
-from pathlib import Path
-
-def extract_queries(json_file, output_dir):
-    """Extract queries from LLM JSON output to database-specific files."""
-    
-    with open(json_file) as f:
-        data = json.load(f)
-    
-    # Database → filename mapping
-    file_map = {
-        'pubmed': 'queries.txt',
-        'scopus': 'queries_scopus.txt',
-        'embase': 'queries_embase.txt',
-        'wos': 'queries_wos.txt'
-    }
-    
-    output_dir = Path(output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
-    for db, queries in data.items():
-        if db == 'json_patch':
-            continue  # Skip patch object
-        
-        output_file = output_dir / file_map.get(db, f'queries_{db}.txt')
-        
-        with open(output_file, 'w') as f:
-            for query in queries:
-                f.write(query + '\n\n')
-        
-        print(f"✅ Created {output_file} ({len(queries)} queries)")
-
-if __name__ == '__main__':
-    extract_queries(sys.argv[1], sys.argv[2])
-```
-
-**Usage:**
 ```bash
-python scripts/extract_queries_from_json.py \
-  llm_output.json \
-  studies/sleep_apnea/
+ls studies/sleep_apnea/search_strategy.md
+ls studies/sleep_apnea/queries*.txt
 ```
 
----
+Things to verify:
 
-### Step 2.6: Integration with Workflow
+- The command wrote `search_strategy.md` automatically, including the JSON query object and any `json_patch` block.
+- The command wrote aligned `queries*.txt` files automatically.
+- The query families remain aligned across databases.
+- Manual JSON copying is not required in the current workflow.
 
-The generated queries are now ready to use with the main workflow.
+If an older generated `run_*_multidb*.toml` or `.prompt.md` file still references `prompt_template_multidb.md`, `database_guidelines.md`, or `--level`, regenerate it before continuing.
 
-#### Verification Checklist
+### Step 2.5: Compare With Manual Query Design
 
-Before proceeding to query execution, verify:
+| Aspect | Current Strategy-Aware Generation | Manual Design (Step 3) |
+|--------|-----------------------------------|------------------------|
+| Time required | ~5-10 minutes plus review | ~2-4 hours per database |
+| Source of truth | Protocol + shared guidance + strategy-aware template | Human-authored logic |
+| Output shape | Fixed aligned Q1-Q6 family | Fully custom |
+| Best use | Fast, consistent cross-database starting point | Expert refinement and edge cases |
 
-- [ ] **Query files exist** for all databases:
-  ```bash
-  ls studies/sleep_apnea/queries*.txt
-  # Should show: queries.txt, queries_scopus.txt, queries_embase.txt
-  ```
-
-- [ ] **Query count matches level**:
-  ```bash
-  # For extended level: 6 queries per database
-  grep -c "^# " studies/sleep_apnea/queries.txt
-  # Should output: 6
-  ```
-
-- [ ] **Database syntax is correct**:
-  - PubMed: Check for `[MeSH]`, `[tiab]`, `[Date - Publication]`
-  - Scopus: Check for `TITLE-ABS-KEY()`, `PUBYEAR`, `DOCTYPE()`
-  - Embase: Check for `/exp`, `:ti,ab`, `/py`
-
-- [ ] **Queries are paste-ready** (no markdown formatting, code blocks, or extra whitespace)
-
-- [ ] **Date ranges match protocol** (inception to 2021/03/01 for sleep apnea example)
-
-#### Query Quality Assessment
-
-Review the generated queries for:
-
-1. **Concept Coverage**
-   - ✅ All PICOS concepts included (sleep apnea, dementia, study design)
-   - ✅ Synonyms and variants present
-   - ✅ Controlled vocabulary used (MeSH, Emtree)
-
-2. **Syntax Correctness**
-   - ✅ Parentheses balanced
-   - ✅ Boolean operators correct (AND, OR, NOT)
-   - ✅ Field codes valid for database
-
-3. **Precision Gradient**
-   - ✅ High-recall query is broadest (most OR clauses)
-   - ✅ High-precision query is narrowest (major headings, title searches)
-   - ✅ Micro-variants apply appropriate Precision_Knobs
-
-4. **Cross-Database Consistency**
-   - ✅ Query 1 in all files = same strategy (high-recall)
-   - ✅ Query 2 in all files = same strategy (balanced)
-   - ✅ Concept coverage equivalent across databases
-
-#### Next Steps
-
-```
-┌────────────────────────────────────────────────────────────┐
-│ ✅ LLM Query Generation Complete                           │
-│                                                             │
-│ You now have:                                               │
-│ • studies/sleep_apnea/queries.txt (6 PubMed queries)      │
-│ • studies/sleep_apnea/queries_scopus.txt (6 Scopus)       │
-│ • studies/sleep_apnea/queries_embase.txt (6 Embase)       │
-│                                                             │
-│ Next: Execute queries across all databases                 │
-│       → See Step 5: Multi-Database Query Execution         │
-└────────────────────────────────────────────────────────────┘
-```
-
----
-
-### Step 2.7: Comparison with Manual Query Design
-
-You now have two options for query creation:
-
-| Aspect | **LLM-Powered (Step 2)** | **Manual Design (Step 3)** |
-|--------|-------------------------|---------------------------|
-| **Time required** | ~5-10 minutes (generation + review) | ~2-4 hours (per database) |
-| **Expertise needed** | Protocol writing | Database syntax + SR methods |
-| **Consistency** | High (automated translation) | Variable (manual translation) |
-| **Customization** | Template-based levels | Fully customizable |
-| **Quality control** | PRESS self-check included | Manual peer review |
-| **Best for** | Multiple databases, rapid prototyping | Single database, expert-level queries |
-
-**Recommendation**: 
-- Use **LLM-powered** for initial query generation and multi-database consistency
-- Use **manual refinement** (Step 3) to optimize queries based on preliminary results
-- Combine both: Generate with LLM, refine manually, regenerate if needed
+Recommendation: use Step 2 to generate the baseline query family, then refine manually in Step 3 if the study needs tighter control.
 
 ---
 
@@ -1427,16 +623,16 @@ Extracted:
 
 **Command**:
 ```bash
-bash scripts/complete_embase_workflow.sh
+bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed,scopus,wos,embase
 ```
 
 **What it does**:
-1. Validates CSV files exist
-2. Batch imports all Embase queries
-3. Aggregates with existing PubMed/Scopus/WOS results
-4. Scores combined sets against gold standard
+1. Validates study files and provider query alignment
+2. Batch imports all Embase CSV exports it finds
+3. Scores queries, aggregates results, and scores combined sets
+4. Reuses the main workflow wrapper instead of a separate Embase-only helper
 
-**When to use**: After running the main workflow, when adding Embase results.
+**When to use**: Whenever you want the main wrapper to include imported Embase results.
 
 ---
 
@@ -1608,12 +804,14 @@ python scripts/extract_included_studies.py ai_2022 \
 3. ✅ Matches to References section
 4. ✅ Parses citations → extracts title, author, year, journal
 5. ✅ Looks up DOI + PMID via PubMed E-utilities API
-6. ✅ Falls back to CrossRef API for non-PubMed articles
+6. ✅ Falls back to Europe PMC and CrossRef when PubMed does not resolve an article
 7. ✅ Generates `gold_pmids_ai_2022.csv` (simple format)
 8. ✅ Generates `gold_pmids_ai_2022_detailed.csv` (multi-key format)
 9. ✅ Creates quality report: `gold_generation_report_ai_2022.md`
 
 **Expected runtime**: 5-10 minutes for 40-50 included studies
+
+For most users, the one-command workflow above is the current path. The sub-steps below expose the same phases for technical inspection or debugging.
 
 ### Step-by-Step Breakdown
 
@@ -1635,7 +833,7 @@ python scripts/extract_included_studies.py ai_2022
    ✅ Matched 14/14 citations
 
 ✅ Extraction complete!
-   Output: studies/ai_2022/included_studies_ai_2022.json
+  Output: studies/ai_2022/included_studies.json
 
 Summary:
   - Total included studies: 14
@@ -1644,7 +842,7 @@ Summary:
   - With neither: 0
 ```
 
-**Output format** (`included_studies_ai_2022.json`):
+**Output format** (`included_studies.json`):
 ```json
 {
   "study_name": "ai_2022",
@@ -1679,8 +877,8 @@ Summary:
 **Command**:
 ```bash
 python scripts/lookup_pmid.py \
-  --input studies/ai_2022/included_studies_ai_2022.json \
-  --output studies/ai_2022/included_studies_ai_2022_with_pmids.json \
+  --input studies/ai_2022/included_studies.json \
+  --output studies/ai_2022/included_studies_with_identifiers.json \
   --email your.email@institution.edu
 ```
 
@@ -1757,7 +955,7 @@ Study 4/14: Non-Indexed Article (2020)
 **Command**:
 ```bash
 python scripts/generate_gold_standard.py \
-  --input studies/ai_2022/included_studies_ai_2022_with_pmids.json \
+  --input studies/ai_2022/included_studies_with_identifiers.json \
   --study ai_2022 \
   --confidence 0.85
 ```
@@ -1966,8 +1164,8 @@ Coverage Metrics:
 
 | File | Format | Purpose |
 |------|--------|---------|
-| `included_studies_<study>.json` | JSON | Intermediate: Extracted studies (no API lookups) |
-| `included_studies_<study>_with_pmids.json` | JSON | Intermediate: After API lookups (with confidence) |
+| `included_studies.json` | JSON | Intermediate: Extracted study list; the current default extractor output |
+| `included_studies_sampling.json` | JSON | Intermediate: Sampling-mode study list when `--sampling-runs` is used |
 | `gold_pmids_<study>.csv` | CSV (1 column) | Simple: PMID-only, backward compatible |
 | `gold_pmids_<study>_detailed.csv` | CSV (6 columns) | **Main output**: PMID+DOI, multi-key ready |
 | `gold_generation_report_<study>.md` | Markdown | Quality report: Coverage, confidence, rejected studies |
@@ -1976,205 +1174,64 @@ Coverage Metrics:
 
 ## Step 5: Multi-Database Query Execution
 
-### Understanding the Main Workflow Script
+### Understanding the Main Workflow Wrapper
 
-The main workflow script (`run_workflow_sleep_apnea.sh`) orchestrates everything:
-
-**What it does**:
-1. Loads environment variables (`.env`)
-2. Activates conda environment
-3. Queries all enabled databases (PubMed, Scopus, WOS)
-4. Auto-detects Embase imports
-5. Deduplicates results by DOI
-6. Evaluates query performance
-7. Aggregates queries
-8. Scores aggregated sets
-
-### Running the Full Workflow
-
-**Basic command**:
-```bash
-# Run with default databases (from .env file)
-./run_workflow_sleep_apnea.sh
-```
-
-**Override databases via environment variable**:
-```bash
-# Run specific databases (overrides .env)
-DATABASES="pubmed,scopus,wos" ./run_workflow_sleep_apnea.sh
-```
-
-**Available database names**:
-- `pubmed` - PubMed (NCBI Entrez)
-- `scopus` - Scopus (Elsevier)
-- `wos` or `web_of_science` - Web of Science (Clarivate)
-
-**Database Flags Explained**:
-
-```bash
-# The script automatically forwards these from .env to the Python script:
---databases pubmed,scopus,wos          # Which databases to query
---scopus-api-key YOUR_KEY              # Scopus API key
---scopus-insttoken YOUR_TOKEN          # Optional institution token
---scopus-skip-date-filter              # Skip date filtering (recommended)
---wos-api-key YOUR_KEY                 # Web of Science API key
-```
-
-### What Happens During Execution
-
-**Phase 1: Query Evaluation and Selection**
-
-The script runs three commands sequentially:
-
-**Command 1: Select** (Heuristic-based selection)
-```bash
-python llm_sr_select_and_score.py \
-    --study-name sleep_apnea \
-    --databases pubmed,scopus,wos \
-    select \
-    --concept-terms concept_terms_sleep_apnea.csv \
-    --queries-txt queries.txt \
-    --outdir sealed_outputs
-```
+The main orchestrator is now `scripts/run_complete_workflow.sh`.
 
 **What it does**:
-- Uses heuristics to choose the "best" query WITHOUT gold standard
-- Analyzes query characteristics (term counts, specificity, etc.)
-- Creates a "sealed" recommendation
-- Output: `sealed_outputs/sleep_apnea/sealed_TIMESTAMP.json`
+1. Validates the study folder and aligned query files.
+2. Auto-detects a detailed DOI-aware gold standard and enables multi-key mode when available.
+3. Imports Embase CSV exports when present.
+4. Runs query scoring across the selected API-backed providers.
+5. Aggregates query results.
+6. Scores the aggregate result sets.
 
-**When to use**: When you don't have a gold standard yet, or for blind validation.
+### Running the Wrapper
 
----
-
-**Command 2: Score** (Benchmark all queries)
+**Default full-set mode**
 ```bash
-python llm_sr_select_and_score.py \
-    --study-name sleep_apnea \
-    --databases pubmed,scopus,wos \
-    score \
-    --queries-txt queries.txt \
-    --gold-csv gold_pmids_sleep_apnea.csv \
-    --outdir benchmark_outputs
+bash scripts/run_complete_workflow.sh sleep_apnea
 ```
 
-**What it does**:
-- Executes all queries across all databases
-- Deduplicates by DOI for each query
-- Calculates precision, recall, F1 against gold standard
-- Creates detailed and summary reports
+This uses the current wrapper defaults: `pubmed,scopus,wos`.
 
-**Outputs**:
-- `benchmark_outputs/sleep_apnea/details_TIMESTAMP.json` - Full results with DOIs/PMIDs
-- `benchmark_outputs/sleep_apnea/summary_TIMESTAMP.csv` - Performance metrics
-
-**Example output**:
-```
-Query 1 (High-recall):
-  Retrieved: 1850 articles
-  True Positives: 11/11 (100% recall)
-  Precision: 0.59%
-  F1-score: 0.012
-
-Query 3 (High-precision):
-  Retrieved: 237 articles
-  True Positives: 5/11 (45% recall)
-  Precision: 2.1%
-  F1-score: 0.040
-```
-
----
-
-**Command 3: Finalize** (Validate sealed selection)
+**Explicit provider selection**
 ```bash
-python llm_sr_select_and_score.py \
-    --study-name sleep_apnea \
-    --databases pubmed,scopus,wos \
-    finalize \
-    --sealed sealed_outputs/sleep_apnea/sealed_TIMESTAMP.json \
-    --gold-csv gold_pmids_sleep_apnea.csv
+bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed,scopus,wos
 ```
 
-**What it does**:
-- Takes the heuristically-selected "best" query
-- Scores it against gold standard
-- Validates whether heuristics matched actual performance
-
-**Output**: `final_outputs/sleep_apnea/final_TIMESTAMP.json`
-
----
-
-**Phase 2: Query Aggregation**
-
-The script automatically detects Embase files:
-
+**Query-level modes**
 ```bash
-# Check for manually imported Embase results
-EMBASE_FILES=()
+# Run the full score-and-aggregate flow once per aligned query block
+bash scripts/run_complete_workflow.sh sleep_apnea --query-by-query
 
-# Check for single Embase result file
-if [ -f "studies/$STUDY_NAME/embase_results.json" ]; then
-    EMBASE_FILES+=("studies/$STUDY_NAME/embase_results.json")
-fi
-
-# Check for batch-imported Embase queries
-for file in studies/$STUDY_NAME/embase_query*.json; do
-    if [ -f "$file" ]; then
-        EMBASE_FILES+=("$file")
-    fi
-done
+# Run only query 3 through the same flow
+bash scripts/run_complete_workflow.sh sleep_apnea --query-index 3
 ```
 
-Then runs aggregation:
+### Embase Handling
 
-```bash
-python scripts/aggregate_queries.py \
-    --inputs benchmark_outputs/sleep_apnea/details_*.json \
-             studies/sleep_apnea/embase_query*.json \
-    --outdir aggregates/sleep_apnea
-```
+- Embase remains a manual-export path, not a live API-backed provider.
+- Export the six Embase CSVs from Embase.com into `studies/<study>/embase_manual_queries/`.
+- Re-run the wrapper and it will convert those CSVs into `embase_query*.json`, then include them in scoring and aggregation automatically.
+- The wrapper accepts `--databases ... ,embase` as a convenience token, but strips `embase` before forwarding provider names to the Python CLI.
 
-**What it does**:
-- Takes all query results (PubMed, Scopus, WOS, Embase)
-- Creates multiple aggregation strategies:
-  - **consensus_k2.txt**: Articles found by ≥2 queries
-  - **consensus_k3.txt**: Articles found by ≥3 queries
-  - **precision_gated_union.txt**: Union with precision threshold
-  - **weighted_vote.txt**: Weighted by query performance
-  - **two_stage_screen.txt**: High-precision first, then high-recall
-  - **time_stratified_hybrid.txt**: Newer articles from precision, older from recall
+### Outputs
 
-**Output**: Text files with PMIDs, one per line
+The wrapper produces the main study outputs in:
 
----
+- `benchmark_outputs/<study>/`
+- `aggregates/<study>/`
+- `aggregates_eval/<study>/`
 
-**Phase 3: Score Aggregated Sets**
+### Relationship to the Low-Level Commands
 
-```bash
-python llm_sr_select_and_score.py \
-    --study-name sleep_apnea \
-    --databases pubmed,scopus,wos \
-    score-sets \
-    --sets aggregates/sleep_apnea/*.txt \
-    --gold-csv gold_pmids_sleep_apnea.csv \
-    --outdir aggregates_eval
-```
+The wrapper is now the documented primary entry point. Internally it delegates to `llm_sr_select_and_score.py` and `scripts/aggregate_queries.py`.
 
-**What it does**:
-- Evaluates each aggregation strategy
-- Calculates precision, recall, F1 for each set
-- Creates summary CSV and detailed JSON
+- Step 6 describes the lower-level query-scoring commands.
+- Step 7 describes the aggregation layer.
 
-**Outputs**:
-- `aggregates_eval/sleep_apnea/sets_summary_TIMESTAMP.csv`
-- `aggregates_eval/sleep_apnea/sets_details_TIMESTAMP.json`
-
-**Example output**:
-```
-Set[consensus_k2]: n=72 TP=3 Precision=0.042 Recall=0.273 F1=0.072
-Set[precision_gated_union]: n=1961 TP=11 Precision=0.006 Recall=1.000 F1=0.011
-Set[weighted_vote]: n=1961 TP=11 Precision=0.006 Recall=1.000 F1=0.011
-```
+Use those lower-level commands when you need debugging, custom experiments, or manual decomposition of the workflow.
 
 ---
 
@@ -3081,8 +2138,8 @@ python scripts/batch_import_embase.py \
   --csvs studies/sleep_apnea/embase_query*.csv \
   --queries-file studies/sleep_apnea/queries_embase.txt
 
-# 6. Run full workflow (includes Embase automatically)
-DATABASES="pubmed,scopus,wos" ./run_workflow_sleep_apnea.sh
+# 6. Run full workflow (the wrapper will import Embase CSVs automatically)
+bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed,scopus,wos,embase
 
 # Done! All databases queried, deduplicated, aggregated, and scored in ONE run.
 ```
@@ -3103,8 +2160,8 @@ DATABASES="pubmed,scopus,wos" ./run_workflow_sleep_apnea.sh
 # 1. Export Embase queries from Embase.com
 # Save as: studies/sleep_apnea/embase_query*.csv
 
-# 2. Run complete Embase workflow (import + re-aggregate + re-score)
-bash scripts/complete_embase_workflow.sh
+# 2. Re-run the main workflow wrapper
+bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed,scopus,wos,embase
 
 # Done! Embase integrated with existing results.
 ```
@@ -3127,7 +2184,7 @@ bash scripts/complete_embase_workflow.sh
 
 ```bash
 # Run with PubMed only
-DATABASES="pubmed" ./run_workflow_sleep_apnea.sh
+bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed
 ```
 
 **Outputs**: Same structure, but only PubMed results
@@ -3196,10 +2253,10 @@ Provider query counts differ: {'pubmed': 6, 'scopus': 6, 'web_of_science': 5}
 
 #### Error: ".env: line 30: scopus: command not found"
 
-**Cause**: Space after comma in `.env` file:
+**Cause**: Space after comma in an optional comma-separated `.env` variable such as `SR_DATABASES`:
 ```bash
 # WRONG
-SR_DATABASES=pubmed, scopus
+SR_DATABASES=pubmed, scopus,wos
 
 # Bash tries to execute " scopus" as a command
 ```
@@ -3207,7 +2264,7 @@ SR_DATABASES=pubmed, scopus
 **Solution**: Remove spaces:
 ```bash
 # CORRECT
-SR_DATABASES=pubmed,scopus
+SR_DATABASES=pubmed,scopus,wos
 ```
 
 ---
@@ -3324,26 +2381,26 @@ Do you have Embase access?
 │  │
 │  ├─ Yes → Use Method 1
 │  │        1. Export Embase queries
-│  │        2. Import Embase (batch_import_embase.py)
-│  │        3. Run full workflow (run_workflow_sleep_apnea.sh)
+│  │        2. Save CSVs under studies/<study>/embase_manual_queries/
+│  │        3. Run full workflow (scripts/run_complete_workflow.sh)
 │  │
 │  └─ No → Use Method 2
 │           1. Run full workflow first
 │           2. Export Embase later
-│           3. Run complete_embase_workflow.sh
+│           3. Re-run scripts/run_complete_workflow.sh
 │
 └─ No
    │
    Which databases do you have access to?
    │
-   ├─ PubMed only (free)
-   │  → DATABASES="pubmed" ./run_workflow_sleep_apnea.sh
+  ├─ PubMed only (free)
+  │  → bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed
    │
-   ├─ PubMed + Scopus
-   │  → DATABASES="pubmed,scopus" ./run_workflow_sleep_apnea.sh
+  ├─ PubMed + Scopus
+  │  → bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed,scopus
    │
-   └─ PubMed + Scopus + WOS
-      → DATABASES="pubmed,scopus,wos" ./run_workflow_sleep_apnea.sh
+  └─ PubMed + Scopus + WOS
+    → bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed,scopus,wos
 ```
 
 ---
@@ -3352,7 +2409,7 @@ Do you have Embase access?
 
 ```bash
 # Complete workflow (automated databases + auto-detect Embase)
-DATABASES="pubmed,scopus,wos" ./run_workflow_sleep_apnea.sh
+bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed,scopus,wos
 
 # Import single Embase query
 python scripts/import_embase_manual.py -i query.csv -o query.json -q "query text"
@@ -3360,8 +2417,8 @@ python scripts/import_embase_manual.py -i query.csv -o query.json -q "query text
 # Batch import Embase queries
 python scripts/batch_import_embase.py --study STUDY --csvs *.csv --queries-file queries_embase.txt
 
-# Complete Embase workflow (import + aggregate + score)
-bash scripts/complete_embase_workflow.sh
+# Re-run the main wrapper to include imported Embase results
+bash scripts/run_complete_workflow.sh sleep_apnea --databases pubmed,scopus,wos,embase
 
 # Manual aggregation
 python scripts/aggregate_queries.py --inputs benchmark_outputs/STUDY/details_*.json --outdir aggregates/STUDY

@@ -72,15 +72,13 @@ conda deactivate
 
 ### 3. Configure API Keys
 
-⚠️ **SECURITY IMPORTANT**: Never commit API keys to version control!
-
-Recommended setup:
+You can provide credentials and defaults through either a local `.env` file or a copied config file:
 
 ```bash
 cp sr_config.example.toml sr_config.toml
 ```
 
-Create a `.env` file in the project root (this file is git-ignored):
+Create a `.env` file in the project root:
 
 ```bash
 # .env file
@@ -105,13 +103,6 @@ SR_DATABASES=pubmed,scopus,wos
 - **Scopus**: Contact your institution's library
 - **WOS**: Contact your institution's library
 
-**Important Notes:**
-- ✅ `.env` is in `.gitignore` and will NOT be committed
-- ✅ `sr_config.toml` is in `.gitignore` and will NOT be committed
-- ❌ Never hardcode API keys in Python files
-- ✅ Use environment variables or config files only
-- 📋 See [SECURITY_AUDIT.md](SECURITY_AUDIT.md) for security review
-
 ## 📋 Complete Workflow: From PDFs to Results
 
 This workflow takes ~45-90 minutes per study (30-40 min automated, 15-50 min manual Embase).
@@ -124,19 +115,22 @@ python scripts/prepare_study.py Godos_2024 --docling-env docling
 ### STEP 2: Generate LLM Command (2 min, automated)
 ```bash
 /generate_multidb_prompt \
-  --command_name run_godos_2024_multidb_extended \
+  --command_name run_godos_2024_multidb_strategy \
   --protocol_path studies/Godos_2024/prospero_godos_2024.md \
   --databases pubmed,scopus,wos,embase \
-  --level extended \
+  --relaxation_profile default \
   --min_date "1990/01/01" \
   --max_date "2023/12/31"
 ```
 
+VS Code Copilot Chat provides the equivalent generator as `/generate-multidb-prompt`.
+
 ### STEP 3: Run LLM Command to Generate Queries (5 min, automated)
 ```bash
-/run_godos_2024_multidb_extended
+/run_godos_2024_multidb_strategy
 ```
 This creates:
+- `search_strategy.md` (architecture summary + concept tables + translation notes)
 - `queries.txt` (6 PubMed queries)
 - `queries_scopus.txt` (6 Scopus queries)
 - `queries_wos.txt` (6 WOS queries)
@@ -148,12 +142,14 @@ This creates:
 3. Export results as CSV
 4. Place in `studies/Godos_2024/embase_manual_queries/`
 
-### STEP 5: Create Gold Standard (5-30 min, semi-automated)
+### STEP 5: Create Gold Standard (5-30 min, automated)
 ```bash
-python scripts/validate_pmids_multi_source.py \
-  --study-name Godos_2024 \
-  --paper studies/Godos_2024/paper_godos_2024.md
+python scripts/extract_included_studies.py Godos_2024 \
+  --lookup-pmid \
+  --generate-gold-csv
 ```
+
+This creates both `gold_pmids_Godos_2024.csv` and `gold_pmids_Godos_2024_detailed.csv` for the downstream workflow.
 
 ### STEP 6: Run Complete Workflow (15-30 min, automated)
 ```bash
@@ -213,44 +209,17 @@ AND
 
 - concept_terms CSV: CSV with headers `concept,term_regex`; used to compute query concept coverage (regex applied to the raw Boolean text). Example file is provided and adapted for OSA + microbiome case–control.
 
-### Provider-specific query files (beta)
+### Provider-specific query files
 
-Task 1 (structured LLM output) is still underway, so database-specific files are authored manually for now.
+The current strategy-aware generation workflow writes aligned database files directly into `studies/<study>/`:
 
-**Step-by-step**
+- `queries.txt`
+- `queries_scopus.txt`
+- `queries_wos.txt`
+- `queries_embase.txt`
+- `search_strategy.md`
 
-1. Keep the canonical PubMed queries in `studies/<study>/queries.txt` (current behavior).
-2. For every additional provider:
-   - Copy `queries.txt` into the same folder and rename it using one of these patterns:
-     - `queries_scopus.txt`
-     - `queries.scopus.txt`
-     - `queries-scopus.txt`
-     - (future options: `queries_wos.txt`, `queries_embase.txt`, …)
-   - Edit the new file so each query uses that provider’s syntax (`TITLE-ABS-KEY`, field tags, proximity operators, etc.).
-3. Repeat until you have one aligned file per provider.
-
-**Requirements**
-
-- Every provider file **must contain the same number of queries, in the same order**, as the base file so bundle #1/#2/#3 line up across providers.
-- Queries remain separated by blank lines; inline comments starting with `#` are still ignored.
-- If a provider-specific file is missing, the workflow reuses `queries.txt` for that provider and emits a warning so you know you are running untailored syntax.
-
-**Example**
-
-```
-studies/sleep_apnea/
-  queries.txt             # PubMed strategies
-  queries_scopus.txt      # Scopus strategies (see repo for full file)
-```
-
-Snippet from `queries_scopus.txt` (Variant A):
-
-```
-(TITLE-ABS-KEY("sleep apnea syndrome" OR "sleep apnea, obstructive" OR "sleep apnea, central" OR "obstructive sleep apnea")
- AND TITLE-ABS-KEY("dementia" OR "alzheimer disease" OR "vascular dementia" OR "frontotemporal dementia"))
-```
-
-With this layout you can iterate on Scopus queries immediately while the PubMed-only workflow keeps running unchanged.
+If you refine those files manually after generation, keep the same number of query blocks in the same order across databases. `scripts/run_complete_workflow.sh` validates that alignment before running full-set or query-level scoring.
 
 ## Configuration modes (precedence: CLI > ENV > CONFIG)
 
@@ -268,7 +237,7 @@ NCBI_EMAIL=you@example.com
 SELECT_MINDATE=2015/01/01
 SELECT_MAXDATE=2024/08/31
 SELECT_CONCEPT_TERMS=concept_terms_OSA_microbiome_case_control.csv
-SELECT_QUERIES_TXT=Queries/queries.txt
+SELECT_QUERIES_TXT=studies/your_study/queries.txt
 SELECT_OUTDIR=sealed_outputs
 # SELECT_TARGET_RESULTS=5000
 # SELECT_MIN_RESULTS=50
@@ -278,12 +247,12 @@ SELECT_OUTDIR=sealed_outputs
 
 SCORE_MINDATE=2000/01/01
 SCORE_MAXDATE=2024/08/31
-SCORE_QUERIES_TXT=Queries/queries.txt
-SCORE_GOLD_CSV=gold_pmids.csv
+SCORE_QUERIES_TXT=studies/your_study/queries.txt
+SCORE_GOLD_CSV=studies/your_study/gold_pmids_your_study.csv
 SCORE_OUTDIR=benchmark_outputs
 
 # Multi-database controls
-SR_DATABASES=pubmed,scopus            # Comma-separated list of providers to run
+SR_DATABASES=pubmed,scopus,wos        # Comma-separated list of providers to run
 SCOPUS_API_KEY=your_scopus_api_key    # Required when Scopus is enabled
 # SCOPUS_INSTTOKEN=optional_insttoken  # Only needed for institutions requiring it
 # SCOPUS_SKIP_DATE_FILTER=true         # Set to true to temporarily drop PUBYEAR filters
@@ -301,13 +270,13 @@ Then fill values, e.g.:
 mindate = "2015/01/01"
 maxdate = "2024/08/31"
 concept_terms = "concept_terms_OSA_microbiome_case_control.csv"
-queries_txt = "Queries/queries.txt"
+queries_txt = "studies/your_study/queries.txt"
 outdir = "sealed_outputs"
 # target_results = 5000
 # min_results = 50
 
 [databases]
-default = ["pubmed"]
+default = ["pubmed", "scopus", "wos"]
 
 [databases.scopus]
 enabled = true
@@ -318,41 +287,32 @@ view = "STANDARD"
 ```
 Pass it with `--config sr_config.toml`.
 
-### Selecting databases (beta)
+### Selecting databases
 
-- Use `--databases pubmed,scopus` (or set `SR_DATABASES=pubmed,scopus`) to query multiple providers in one run.
-- Provider credentials can come from CLI flags (`--scopus-api-key`, `--scopus-insttoken`), environment variables (`SCOPUS_API_KEY`, `SCOPUS_INSTTOKEN`), or the `[databases.<name>]` section in `sr_config.toml`.
-- If you need to run without date limits (e.g., waiting on an Insttoken), add `--scopus-skip-date-filter` or set `SCOPUS_SKIP_DATE_FILTER=true`. This flag removes the automatic `PUBYEAR` clause so Scopus behaves like your standalone test script. If Scopus still rejects the call, the workflow logs the error but continues with the remaining providers.
-- **Deduplication**: DOI-based deduplication (Option A) is implemented and automatic. Articles are deduplicated by DOI, handling roughly 96% of articles with a stable cross-database key.
+- Use `bash scripts/run_complete_workflow.sh <study>` as the main entry point. Its default database set is `pubmed,scopus,wos`.
+- Override the provider set with `--databases pubmed,scopus,wos` when needed.
+- Embase is not an API-backed provider in `llm_sr_select_and_score.py`. Instead, export Embase CSVs manually, place them under `studies/<study>/embase_manual_queries/`, and rerun the wrapper.
+- `scripts/run_complete_workflow.sh` auto-detects imported Embase CSVs, converts them to `embase_query*.json`, and includes them in scoring and aggregation automatically.
+- The wrapper now accepts `--databases ... ,embase` as a convenience token, but strips `embase` before provider instantiation because Embase results are added from imported JSON files rather than a live API call.
+- Provider credentials can come from CLI flags, environment variables, or the `[databases.<name>]` section in `sr_config.toml`.
 
-## Multi-Database Workflow (beta)
-
-You can now run the workflow across PubMed and Scopus simultaneously. This is an interim experience while we finish Task 1 (structured query prompts) and future DOI/PubMed normalization work.
+## Multi-Database Workflow
 
 ### 1. Prepare queries
 
-1. Keep your canonical PubMed queries in `studies/<name>/queries.txt`.
-2. Create a Scopus-specific file with the exact same number of queries in the same order, using any of these names placed next to the original file:
-   - `queries_scopus.txt`
-   - `queries.scopus.txt`
-   - `queries-scopus.txt`
-3. Each provider file can tailor syntax (e.g., set `TITLE-ABS-KEY`, `PUBYEAR`, proximity operators) to that database’s rules. Missing provider files fall back to `queries.txt` and emit a warning so you know uniform queries are being used.
+- Recommended: generate the aligned database files with the strategy-aware prompt workflow described below.
+- If you edit them manually, keep query block counts and ordering aligned across `queries.txt`, `queries_scopus.txt`, `queries_wos.txt`, and `queries_embase.txt`.
 
 ### 2. Configure credentials
 
-Add the Scopus credentials to `.env` (or export them in your shell):
+Add provider credentials to `.env` or your shell:
 
 ```
 SCOPUS_API_KEY=your_elsevier_key_here
 # SCOPUS_INSTTOKEN=optional_institution_token_if_required
-SR_DATABASES=pubmed,scopus
+WOS_API_KEY=your_clarivate_key_here
+SR_DATABASES=pubmed,scopus,wos
 ```
-
-- `SCOPUS_API_KEY` is picked up automatically. The CLI also exposes `--scopus-api-key` if you prefer to pass it explicitly.
-- `SCOPUS_INSTTOKEN` is optional and only needed for institutions that require an Insttoken. Use the `--scopus-insttoken` flag to override per run.
-- If you temporarily disable the date filter, remember to re-enable it (remove `SCOPUS_SKIP_DATE_FILTER` or the CLI flag) once you obtain an Insttoken so Scopus respects `mindate`/`maxdate`.
-- Internally the CLI calls `_instantiate_providers(...)`, which looks for `SCOPUS_API_KEY` / `SCOPUS_INSTTOKEN` / `SCOPUS_SKIP_DATE_FILTER` in this priority order: CLI flag → environment variable (`.env`) → `[databases.scopus]` section in `sr_config.toml`.
-- `SR_DATABASES=pubmed,scopus` enables both providers globally. You can override it on demand with `--databases`.
 
 ### 3. Run the workflow
 
@@ -360,28 +320,22 @@ From the repo root:
 
 ```zsh
 conda activate systematic_review_queries
-DATABASES="pubmed,scopus" ./run_workflow_sleep_apnea.sh
+bash scripts/run_complete_workflow.sh sleep_apnea
 ```
 
-Or call the CLI directly:
+Useful modes:
 
-```zsh
-python llm_sr_select_and_score.py \
-  --study-name sleep_apnea \
-  --databases pubmed,scopus \
-  select \
-  --concept-terms concept_terms_sleep_apnea.csv \
-  --queries-txt queries.txt \
-  --outdir sealed_outputs
-```
-
-The same `--databases` flag works for `score`, `finalize`, and `score-sets`. Every bundled query run prints per-provider diagnostics, and the resulting `details_*.json` / `sealed_*.json` files now include a `provider_details` section with the specific query used, result count, and raw IDs returned for each database.
+- Default mode scores the full six-query set across the selected providers, then aggregates and scores the combined strategies.
+- `--query-by-query` runs the full score-and-aggregate flow once per aligned query block.
+- `--query-index N` runs that same flow for a single query index.
+- `--skip-aggregation` keeps only the individual query scoring outputs.
 
 ### 4. Inspecting results
 
-- `sealed_outputs/<study>/sealed_*.json` now include `retrieved_dois`, `retrieved_pmids` (PubMed only), and a `provider_details` map. This lets you inspect which provider contributed which identifiers.
-- `benchmark_outputs/<study>/details_*.json` mirror the same structure for the scoring phase.
-- **Deduplication**: Results are automatically deduplicated by DOI. Check the console logs for deduplication statistics (e.g., "3,771 raw results → 3,502 unique articles (269 duplicates removed, 7.1%)").
+- `benchmark_outputs/<study>/details_*.json` contains per-query results and provider diagnostics.
+- `aggregates/<study>/` contains the aggregate result sets.
+- `aggregates_eval/<study>/` contains the aggregate evaluation summaries.
+- DOI-based deduplication is automatic when identifiers are available.
 
 ### 5. Gold Standard Enhancement (Optional)
 
@@ -393,7 +347,7 @@ python scripts/enhance_gold_standard.py \
   studies/<study>/gold_pmids_with_doi.csv
 ```
 
-This script fetches DOIs from PubMed for each PMID and creates an enhanced CSV with both identifiers. The workflow automatically supports both formats (simple PMID-only and enhanced PMID+DOI).
+This script fetches DOIs from PubMed for each PMID and creates an enhanced CSV with both identifiers. The workflow automatically supports both formats, and the wrapper auto-enables multi-key matching when it finds the detailed gold file.
 
 ## Commands
 
@@ -480,63 +434,49 @@ QueriesSystematicReview/
 ├── scripts/                       # Utility scripts
 │   ├── run_complete_workflow.sh   # Complete workflow automation
 │   ├── prepare_study.py           # PDF to markdown conversion
-│   ├── validate_pmids_multi_source.py  # Gold standard creation
+│   ├── extract_included_studies.py     # Gold standard extraction and CSV generation
 │   └── enhance_gold_standard.py   # Add DOIs to gold PMIDs
 ├── studies/                       # Study-specific data
 │   ├── Godos_2024/
 │   ├── ai_2022/
 │   └── sleep_apnea/
 ├── prompts/                       # LLM prompt templates
-│   ├── prompt_template_multidb.md
-│   └── database_guidelines.md
+│   ├── prompt_template_multidb_strategy_aware.md
+│   └── database_guidelines_strategy_aware.md
 ├── Documentations/                # Public guides plus private working docs kept out of the public repo
-└── .env                          # API keys (git-ignored)
-
-### The `/generate_prompt` Command
-
-This command reads a study protocol file, extracts key information, and injects it into a template to create a new, permanent, and runnable command for query generation.
-
-**Arguments:**
-
-*   `--command_name` (Required): The name for the new command you are creating (e.g., `run_my_study`).
-*   `--protocol_path` (Required): The absolute path to the study's protocol file (e.g., `studies/my_study/protocol.md`).
-*   `--level` (Optional): The template to use. Can be `basic`, `extended`, or `keywords`. Defaults to `basic`.
-*   `--min_date` (Optional): The start date for the search (YYYY/MM/DD). Defaults to `1980/01/01`.
-*   `--max_date` (Optional): The end date for the search (YYYY/MM/DD). Defaults to `2025/12/31`.
-
-### Usage Examples
-
-Here are three examples demonstrating how to use the command for different levels of prompt complexity.
-
-**1. Basic Level**
-
-This generates a command using the standard template, focusing on the core query strategies.
-
-```bash
-/generate_prompt --command_name "run_basic_study" --protocol_path "studies/sleep_apnea/prospero-sleep-apnea-dementia.md" --level "basic" --max_date "2021/03/01"
+└── .env                           # Local credentials and defaults
 ```
 
-This will create a new command `/run_basic_study` in your Gemini command list.
+### Command Generators
 
-**2. Extended Level**
+The main current command generators are:
 
-This uses the extended template, which includes the detailed `USER TASK` section and instructions for generating precision-lean micro-variants.
+- `/generate_multidb_prompt` for the Gemini CLI path
+- `/generate-multidb-prompt` for the VS Code Copilot path
+
+Both generators now read the strategy-aware template stack and create reusable runnable commands that write `search_strategy.md` and `queries*.txt` automatically when executed.
+
+Key parameters:
+
+- `command_name`
+- `protocol_path`
+- `databases`
+- `relaxation_profile`
+- `min_date`
+- `max_date`
+
+Example:
 
 ```bash
-/generate_prompt --command_name "run_extended_study" --protocol_path "studies/sleep_apnea/prospero-sleep-apnea-dementia.md" --level "extended" --max_date "2021/03/01"
+/generate_multidb_prompt \
+  --command_name run_sleep_apnea_multidb_strategy \
+  --protocol_path studies/sleep_apnea/prospero-sleep-apnea-dementia.md \
+  --databases pubmed,scopus,wos,embase \
+  --relaxation_profile default \
+  --max_date 2021/03/01
 ```
 
-This will create a new command `/run_extended_study`.
-
-**3. Keywords Level**
-
-This uses the keywords-first template, which adds a preliminary step for the LLM to expand on the protocol's keywords before building the main query concepts.
-
-```bash
-/generate_prompt --command_name "run_keywords_study" --protocol_path "studies/sleep_apnea/prospero-sleep-apnea-dementia.md" --level "keywords" --max_date "2021/03/01"
-```
-
-This will create a new command `/run_keywords_study`.
+See `Automated Multi-Database Prompt Generation` below for the full current workflow.
 
 
 ## Heuristics & checks (what affects the score)
@@ -554,7 +494,7 @@ This will create a new command `/run_keywords_study`.
 - No env: confirm `conda activate systematic_review_queries` and VS Code interpreter/kernel.
 - .env not loaded: file must be named `.env` and `python-dotenv` must be installed (it is in `environment.yml`).
 
-## Precision-lean variants framework (new)
+## Precision-lean variants framework
 
 This repo now includes an abstract "Recall Lock + Precision Knobs" framework to help generate precision-lean PubMed variants without sacrificing recall.
 
@@ -571,59 +511,67 @@ Workflow impact:
 
 ## Automated Multi-Database Prompt Generation
 
-This project features an advanced, two-stage workflow for automatically generating runnable commands that produce complex, multi-database search queries. This system is designed to be robust, maintainable, and highly specific to your study's needs.
+The current prompt-generation stack is strategy-aware and is centered on:
 
-### Stage 1: Create a Study-Specific Command
+- `prompts/prompt_template_multidb_strategy_aware.md`
+- `prompts/database_guidelines_strategy_aware.md`
+- `studies/guidelines.md`
+- `studies/general_guidelines.md`
 
-The first step is to use the `/generate_multidb_prompt` command to create a new, permanent, and runnable command tailored to your specific study protocol.
+This workflow is fixed to the current six-query family (`Q1` through `Q6`). The retired level-based modes (`basic`, `extended`, `keywords`, `exhaustive`) are no longer the source of truth for the latest generator files.
 
-**Command:**
-`/generate_multidb_prompt`
+### Two Supported Generation Paths
 
-**Arguments:**
+**1. VS Code / GitHub Copilot prompt generator**
 
-*   `--command_name` (Required): The name for the new command you want to create (e.g., `run_my_study_multidb`).
-*   `--protocol_path` (Required): The path to the study's protocol file (e.g., `studies/my_study/protocol.md`).
-*   `--databases` (Required): A comma-separated list of databases (e.g., `pubmed,scopus,embase`).
-*   `--level` (Optional): Specifies the complexity and detail of the queries to be generated. Defaults to `extended`. The available levels are:
-    *   `basic`: Generates the 3 core strategies (High-recall, Balanced, High-precision).
-    *   `extended`: Generates the 3 core strategies plus 3 prescriptive micro-variants based on the database-specific `Precision_Knobs`.
-    *   `keywords`: Adds a preliminary keyword-expansion step and generates 4 keyword-focused queries.
-    *   `exhaustive`: Generates the 3 core strategies plus 6 micro-variants, creating a highly comprehensive set of queries.
-*   `--min_date` / `--max_date` (Optional): The date window for the search (YYYY/MM/DD).
-
-**Example Usage:**
-
-```bash
-/generate_multidb_prompt --command_name "run_sleep_apnea_multidb_extended" --protocol_path "studies/sleep_apnea/prospero-sleep-apnea-dementia.md" --databases "pubmed,scopus,embase" --level "extended" --max_date "2021/03/01"
+```text
+/generate-multidb-prompt run_godos_2024_multidb_strategy studies/Godos_2024/prospero_godos_2024.md pubmed,scopus,wos,embase default 1990/01/01 2023/12/31
 ```
 
-This command will read the protocol, select the correct instructions from the master template for the `extended` level, and create a new, permanent Gemini command named `/run_sleep_apnea_multidb_extended`.
+This creates `.github/prompts/run_godos_2024_multidb_strategy.prompt.md`.
 
-### Stage 2: Execute the New Command to Generate Queries
-
-Once Stage 1 is complete, you can run the command you just created to perform the actual query generation.
-
-**Example Usage:**
+**2. Gemini CLI generator**
 
 ```bash
-/run_sleep_apnea_multidb_extended
+/generate_multidb_prompt \
+  --command_name run_godos_2024_multidb_strategy \
+  --protocol_path studies/Godos_2024/prospero_godos_2024.md \
+  --databases pubmed,scopus,wos,embase \
+  --relaxation_profile default \
+  --min_date 1990/01/01 \
+  --max_date 2023/12/31
 ```
 
-Running this command will instruct the LLM to execute the complex, level-specific prompt. The output is a single JSON object containing all queries, which is then automatically parsed to create separate files for each database in your study's folder (e.g., `studies/sleep_apnea/`):
+This creates `.gemini/commands/run_godos_2024_multidb_strategy.toml`.
 
-*   `queries.txt` (for PubMed)
-*   `queries_scopus.txt`
-*   `queries_embase.txt`
+### Parameters
 
-### Advanced Architectural Features
+- `command_name`: name of the generated runnable command.
+- `protocol_path`: PROSPERO or protocol markdown file for the study.
+- `databases`: comma-separated list of target databases. For query generation, including `embase` is appropriate because the generator should still create `queries_embase.txt`.
+- `relaxation_profile`: one of `default`, `recall_soft`, or `recall_strong`.
+- `min_date` and `max_date`: literature search window.
 
-The multi-database generation workflow includes several advanced features to ensure high-quality and robust output:
+### Generated command behavior
 
-*   **Master Template Architecture:** All prompt logic is consolidated into a single master template (`prompts/prompt_template_multidb.md`). The generator intelligently processes this file to select the correct instructions based on the chosen `--level`, making the system highly maintainable.
-*   **Prescriptive Micro-variants:** The `extended` and `exhaustive` levels use a detailed recipe to create micro-variants, telling the LLM what *type* of `Precision_Knob` to use (e.g., Filter-based, Scope-based) for each variant, ensuring consistent and high-quality output.
-*   **"JSON Patch" Self-Correction:** The prompt includes a structured self-correction step. The LLM reviews its own generated queries and produces a machine-readable `json_patch` object for any necessary fixes. This patch is then automatically applied before the final files are written, creating a reliable self-healing mechanism.
-*   **High-Level Context (`USER TASK`):** The prompt includes a dedicated section to provide the LLM with the high-level goals and context of a rigorous systematic review, which helps steer the model towards producing better results.
+Executing the generated command now writes the study outputs automatically:
+
+- `studies/<study>/search_strategy.md`
+- `studies/<study>/queries.txt`
+- `studies/<study>/queries_scopus.txt`
+- `studies/<study>/queries_wos.txt`
+- `studies/<study>/queries_embase.txt`
+
+Manual copying of JSON arrays into query files is no longer part of the current workflow.
+
+### Strategy-aware features
+
+- Selects a retrieval architecture before writing queries.
+- Uses `design_analytic_block` conservatively from protocol evidence.
+- Generates the fixed six-query family with bundled variants in `Q4` to `Q6`.
+- Applies `json_patch` self-correction before writing final files.
+
+If you already have older generated `.gemini/commands/run_*_multidb*.toml` or `.github/prompts/run_*_multidb*.prompt.md` files, regenerate them so they pick up the strategy-aware template stack.
 
 
 
@@ -727,7 +675,7 @@ The multi-database generation workflow includes several advanced features to ens
 
   ---
 
-### The finalize Command: Unsealing the Winner
+### The finalize Command:
 
   The finalize command takes the single "best" query chosen by the select command
   (which was selected without seeing the gold list) and runs the same
@@ -777,107 +725,42 @@ The multi-database generation workflow includes several advanced features to ens
 
 ## Workflow
 
-This section outlines the typical workflow for using the tools in this repository to generate, evaluate, and refine PubMed queries for a systematic review.
+This repository now centers on a single end-to-end path:
 
-### 1. Query Generation
-
-The first step is to generate a set of candidate queries using the Gemini CLI. This is done by executing a predefined command that contains a prompt for the Large Language Model (LLM).
-
--   **Process:** Run a command such as `/run_sleep` or `/run_sleep_ms`. These commands are defined in TOML files located in the `.gemini/commands/` directory (e.g., `run_sleep.toml`). The `prompt` within the TOML file instructs the LLM to generate a series of PubMed queries based on a specific research question and PICOS criteria.
--   **Input:** A prompt defined in a `.toml` file (e.g., `.gemini/commands/run_sleep.toml`).
--   **Output:** The LLM-generated queries are automatically saved to the `Queries/Queries/queries.txt` file.
-
-### 2. Query Evaluation and Selection
-
-Once the candidate queries are generated, the `llm_sr_select_and_score.py` script is used to evaluate and select the best-performing queries.
-
--   **Process:** This script offers several subcommands:
-    -   `select`: Evaluates queries based on heuristics (e.g., concept coverage, screening burden) without using a gold-standard list. It "seals" the best query for later evaluation.
-    -   `score`: Benchmarks all queries against a gold-standard list of PMIDs (e.g., `Gold_list__all_included_studies_.csv`) to calculate metrics like recall, precision, and Number Needed to Read (NNR).
-    -   `finalize`: Takes a "sealed" query from the `select` step and runs a full evaluation against the gold-standard list.
--   **Inputs:**
-    -   `Queries/Queries/queries.txt`: The file containing the candidate queries.
-    -   A gold-standard list of PMIDs in a CSV file (e.g., `Gold_list__all_included_studies_.csv`) for the `score` and `finalize` commands.
-    -   Configuration parameters, which can be provided via the command line, a `.env` file, or `sr_config.toml`.
--   **Outputs:**
-    -   `select`: A `sealed_*.json` file and a `selection_summary_*.csv` file in the `sealed_outputs/` directory.
-    -   `score`: A `summary_*.csv` file and a `details_*.json` file in the `benchmark_outputs/` directory.
-    -   `finalize`: A `final_*.json` file in the `sealed_outputs/` directory.
-
-### 3. Query Aggregation and Comparison
-
-After evaluating the queries, you can use additional scripts to aggregate results or compare different runs.
-
--   **Process:**
-    -   `scripts/aggregate_queries.py`: This script combines PMIDs from multiple queries using various strategies (e.g., consensus, weighted voting) to create aggregated sets of results. This can help in finding a balance between recall and precision.
-    -   `scripts/compare_runs.py`: This script compares the outputs of two different query generation runs (e.g., from different prompts or models), providing statistics on the overlap and differences in the retrieved PMIDs.
--   **Inputs:**
-    -   `aggregate_queries.py`: JSON files from the `benchmark_outputs/` or `sealed_outputs/` directories.
-    -   `compare_runs.py`: The output directories of two different runs (e.g., `benchmark_A/` and `benchmark_B/`).
--   **Outputs:**
-    -   `aggregate_queries.py`: A set of `.txt` files in the `aggregates/` directory, each containing a list of aggregated PMIDs.
-    -   `compare_runs.py`: A `report.json` file in a new directory named after the two compared runs (e.g., `benchmark_A_vs_benchmark_B/`).
+1. Convert `Paper.pdf` and `PROSPERO.pdf` to markdown.
+2. Generate a strategy-aware runnable prompt or command.
+3. Execute that generated prompt or command to write `search_strategy.md` and `queries*.txt` into the study folder.
+4. Export Embase results manually from `queries_embase.txt` and save the CSVs under `studies/<study>/embase_manual_queries/`.
+5. Create a gold standard, preferably the detailed DOI-aware CSV.
+6. Run `bash scripts/run_complete_workflow.sh <study>`.
+7. Review `benchmark_outputs/`, `aggregates/`, and `aggregates_eval/`.
 
 ### Workflow Diagram
 
-The following diagram illustrates the overall workflow:
-
 ```mermaid
 graph TD
-    subgraph "Step 1: Query Generation"
-        A[Start] --> B{Run Gemini Command<br>(e.g., /run_sleep)};
-        B -- LLM Generates Queries --> C[Save to<br>Queries/Queries/queries.txt];
-    end
-
-    subgraph "Step 2: Evaluation & Selection"
-        C --> D{llm_sr_select_and_score.py};
-        D -- select --> E[Sealed Query<br>(sealed_outputs/*.json)];
-        D -- score --> F[Benchmark Results<br>(benchmark_outputs/*.json)];
-        D -- finalize --> G[Final Results<br>(sealed_outputs/final_*.json)];
-    end
-
-    subgraph "Step 3: Aggregation & Comparison"
-        F --> H{aggregate_queries.py};
-        H --> I[Aggregated PMIDs<br>(aggregates/*.txt)];
-        F --> J{compare_runs.py};
-J[Comparison Report<br>(runA_vs_runB/report.json)];
-    end
-
-### Example Workflow Execution
-
-The `run_workflow_sleep_apnea.sh` script provides an automated way to execute the entire workflow, from query evaluation to aggregation and comparison.
-
--   **Process:** This script runs the `select`, `finalize`, `score`, `aggregate`, and `evaluate aggregates` steps in sequence. It is a convenient way to perform a full analysis of your queries with a single command.
--   **Inputs:** The script accepts various command-line options to customize the workflow, such as changing the date range, input files, or output directories.
--   **Output:** The script will create the output files from each step in the respective directories (`sealed_outputs/`, `final_outputs/`, `benchmark_outputs/`, `aggregates/`, and `aggregates_eval/`).
-
-**Usage:**
-
-```bash
-./run_workflow_sleep_apnea.sh [OPTIONS]
+  A[Prepare PDFs] --> B[prepare_study.py]
+  B --> C[Generate strategy-aware command or prompt]
+  C --> D[Run generated command]
+  D --> E[Write search_strategy.md and queries*.txt]
+  E --> F[Manual Embase CSV export]
+  F --> G[Create gold standard]
+  G --> H[run_complete_workflow.sh]
+  H --> I[benchmark_outputs]
+  H --> J[aggregates]
+  H --> K[aggregates_eval]
 ```
 
-**Options:**
+### Main wrapper
 
-| Option                      | Description                                                  | Default                                     |
-| --------------------------- | ------------------------------------------------------------ | ------------------------------------------- |
-| `-m`, `--mindate`           | Minimum date for the search (YYYY/MM/DD).                    | `2015/01/01`                                |
-| `-x`, `--maxdate`           | Maximum date for the search (YYYY/MM/DD).                    | `2024/08/31`                                |
-| `-q`, `--queries-txt`       | Path to the queries text file.                               | `Queries/queries.txt`                       |
-| `-g`, `--gold-csv`          | Path to the gold-standard CSV file.                          | `Gold_list__all_included_studies_.csv`      |
-| `-c`, `--concept-terms`     | Path to the concept terms CSV file.                          | `concept_terms_OSA_microbiome_case_control.csv` |
-| `-os`, `--outdir-select`    | Output directory for the `select` command.                   | `sealed_outputs`                            |
-| `-ob`, `--outdir-score`     | Output directory for the `score` command.                    | `benchmark_outputs`                         |
-| `-oa`, `--outdir-aggregates`| Output directory for the aggregation script.                 | `aggregates`                                |
-| `-oe`, `--outdir-aggregates-eval`| Output directory for the aggregates evaluation.         | `aggregates_eval`                           |
-| `-of`, `--outdir-final`     | Output directory for the `finalize` command.                 | `final_outputs`                             |
-| `-h`, `--help`              | Display the help message.                                    |                                             |
+`scripts/run_complete_workflow.sh` is the current orchestrator.
 
-**Example:**
+- Default mode: full-set scoring plus aggregate scoring across `pubmed,scopus,wos`.
+- `--query-by-query`: run the full score-and-aggregate path once per aligned query block.
+- `--query-index N`: run that same path for only query `N`.
+- Embase: auto-imported from manual CSV exports when present.
+- `--help` is supported directly via `bash scripts/run_complete_workflow.sh --help`.
 
-To run the workflow with a different date range and a specific queries file, you can use the following command:
+### Low-level CLI
 
-```bash
-./run_workflow_sleep_apnea.sh --mindate 2010/01/01 --maxdate 2023/12/31 --queries-txt My_Queries/new_queries.txt
-```
-```
+`llm_sr_select_and_score.py` still exposes `select`, `score`, `finalize`, and `score-sets` for lower-level debugging or benchmarking, but the main documentation path now assumes `scripts/run_complete_workflow.sh` is the primary entry point.

@@ -14,9 +14,9 @@
 #   bash scripts/run_complete_workflow.sh sleep_apnea --skip-embase
 #
 # Options:
-#   --databases DB1,DB2     Databases to query (default: pubmed,scopus,wos)
+#   --databases DB1,DB2     Databases to query (default: pubmed,scopus,wos; 'embase' is accepted as manual-import shorthand)
 #   --skip-embase           Skip Embase import even if CSV files exist
-#   --embase-only           Only import Embase and re-aggregate (Method 2)
+#   --embase-only           Only import Embase CSVs and exit
 #   --skip-aggregation      Skip aggregation and scoring steps
 #   --multi-key             Use multi-key matching (PMID OR DOI) for improved recall
 #   --query-by-query        Run full scoring+aggregation per query (1..N), sequentially
@@ -42,6 +42,11 @@ set -e  # Exit on any error
 # ============================================================================
 # CONFIGURATION & ARGUMENT PARSING
 # ============================================================================
+
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+    head -n 38 "$0" | tail -n +3 | sed 's/^# //' | sed 's/^#//'
+    exit 0
+fi
 
 STUDY_NAME="${1:-}"
 DATABASES="pubmed,scopus,wos"
@@ -88,7 +93,7 @@ while [[ $# -gt 0 ]]; do
             QUERY_INDEX="$2"
             shift 2
             ;;
-        --help)
+        --help|-h)
             head -n 38 "$0" | tail -n +3 | sed 's/^# //' | sed 's/^#//'
             exit 0
             ;;
@@ -318,9 +323,22 @@ echo ""
 # DATABASE API CONFIGURATION
 # ============================================================================
 
+FORWARDED_DATABASES=$(printf '%s' "$DATABASES" | sed -E 's/(^|,)embase(,|$)/\1\2/g; s/^,//; s/,$//; s/,,+/,/g')
+
+if [[ "$DATABASES" == *"embase"* ]]; then
+    echo "ℹ️  Embase is included via manual CSV import when embase_query*.json files exist."
+    echo "   The 'embase' token will not be forwarded as an API-backed provider."
+fi
+
+if [ -z "$FORWARDED_DATABASES" ] && [ "$EMBASE_ONLY" = false ]; then
+    echo "❌ Error: No API-backed databases selected. Use at least one of: pubmed, scopus, wos."
+    echo "   Embase is included from imported CSVs; use --embase-only to import only."
+    exit 1
+fi
+
 DB_ARGS=()
-if [ -n "$DATABASES" ]; then
-    DB_ARGS+=(--databases "$DATABASES")
+if [ -n "$FORWARDED_DATABASES" ]; then
+    DB_ARGS+=(--databases "$FORWARDED_DATABASES")
 fi
 
 # Scopus configuration

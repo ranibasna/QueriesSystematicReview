@@ -52,7 +52,7 @@ This guide walks you through the **complete automated systematic review workflow
            ↓ STEP 2: Generate LLM Command (2 min, automated)
 ┌─────────────────────────────────────────────────────────────┐
 │  LLM Command Ready                                          │
-│  └── /run_<study>_multidb_extended                          │
+│  └── /run_<study>_multidb_strategy                          │
 └─────────────────────────────────────────────────────────────┘
            ↓ STEP 3: Run LLM Command (5 min, automated)
 ┌─────────────────────────────────────────────────────────────┐
@@ -176,7 +176,7 @@ studies/Godos_2024/
 ├── Paper.pdf                        # Published systematic review (raw)
 ├── PROSPERO.pdf                     # PROSPERO protocol (raw)
 ├── embase_manual_queries/           # Empty folder (you'll populate during workflow)
-└── pmids_multiple_sources/          # Empty folder (you'll populate before workflow)
+└── pmids_multiple_sources/          # Optional; only needed for the manual LLM fallback in STEP 5
 ```
 
 **After completing all steps:**
@@ -413,450 +413,164 @@ mv studies/Godos_2024/prospero.pdf studies/Godos_2024/PROSPERO.pdf
 # STEP 2: Generate LLM Query Generation Command
 
 ## Purpose
-Create an executable LLM command that will generate database-specific search queries from your PROSPERO protocol.
+Create a runnable strategy-aware command or prompt that reads your protocol and writes aligned database-specific query files for the study.
 
 ## Requirements
 - ✅ Markdown files from STEP 1 completed
-- ✅ LLM tool installed (Gemini CLI, Claude Desktop, etc.)
+- ✅ Access to either Gemini CLI or GitHub Copilot Chat in VS Code
 
-## Command
+## Current Source of Truth
+
+The latest generation workflow uses:
+
+- `prompts/prompt_template_multidb_strategy_aware.md`
+- `prompts/database_guidelines_strategy_aware.md`
+- `studies/guidelines.md`
+- `studies/general_guidelines.md`
+- `studies/<study>/prospero_<study>.md`
+
+This workflow is fixed to the current six-query family (`Q1` through `Q6`). The older level-based modes are not the current strategy-aware path.
+
+## Two Supported Generation Approaches
+
+### Option A: Gemini CLI
 
 ```bash
 /generate_multidb_prompt \
-  --command_name run_godos_2024_multidb_extended \
+  --command_name run_godos_2024_multidb_strategy \
   --protocol_path studies/Godos_2024/prospero_godos_2024.md \
   --databases pubmed,scopus,wos,embase \
-  --level extended \
+  --relaxation_profile default \
   --min_date "1990/01/01" \
   --max_date "2023/12/31"
 ```
 
+### Option B: VS Code Copilot Chat
+
+```text
+/generate-multidb-prompt run_godos_2024_multidb_strategy studies/Godos_2024/prospero_godos_2024.md pubmed,scopus,wos,embase default 1990/01/01 2023/12/31
+```
+
+Both approaches now point at the same strategy-aware template stack.
+
 ## Parameter Explanations
 
-| Parameter | Description | Your Value | Notes |
-|-----------|-------------|------------|-------|
-| `--command_name` | Name for the LLM command you're creating | `run_godos_2024_multidb_extended` | Becomes `/<command_name>` |
-| `--protocol_path` | Path to PROSPERO markdown from STEP 1 | `studies/Godos_2024/prospero_godos_2024.md` | Use PROSPERO, not Paper |
-| `--databases` | Which databases to generate queries for | `pubmed,scopus,wos,embase` | **No spaces!** |
-| `--level` | Query complexity (basic/extended/keywords/exhaustive) | `extended` | **Recommended**: 6 queries/DB |
-| `--min_date` | Start of literature search date range | `1990/01/01` | YYYY/MM/DD format |
-| `--max_date` | End of literature search date range | `2023/12/31` | Match your review |
+| Parameter | Description | Example | Notes |
+|-----------|-------------|---------|-------|
+| `command_name` | Name of the runnable command to create | `run_godos_2024_multidb_strategy` | Becomes `/<command_name>` |
+| `protocol_path` | Path to PROSPERO markdown from STEP 1 | `studies/Godos_2024/prospero_godos_2024.md` | Use protocol markdown, not the paper |
+| `databases` | Databases to generate queries for | `pubmed,scopus,wos,embase` | Include `embase` here if you want `queries_embase.txt` |
+| `relaxation_profile` | Strategy-aware recall/precision bias | `default` | One of `default`, `recall_soft`, `recall_strong` |
+| `min_date` | Start of literature search date range | `1990/01/01` | YYYY/MM/DD format |
+| `max_date` | End of literature search date range | `2023/12/31` | Match your review |
 
-**Level Options:**
+## What the Generator Does
 
-| Level | Queries/DB | Description | Recommended For |
-|-------|------------|-------------|-----------------|
-| `basic` | 3 | High-recall, Balanced, High-precision | Quick tests |
-| `extended` | 6 | Basic 3 + 3 micro-variants (Filter/Scope/Proximity) | **Most studies ← Use this** |
-| `keywords` | 4 | Keyword-focused variations | Explicit keyword lists in protocol |
-| `exhaustive` | 9 | All variants + exploration queries | Comprehensive reviews |
-
-## What This Does
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│ Step 1: Read Template Files                                 │
-├─────────────────────────────────────────────────────────────┤
-│ ✓ prompts/prompt_template_multidb.md                       │
-│ ✓ prompts/database_guidelines.md                           │
-│ ✓ studies/Godos_2024/prospero_godos_2024.md               │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Step 2: Extract Protocol Information                        │
-├─────────────────────────────────────────────────────────────┤
-│ From PROSPERO markdown, extract:                            │
-│ • Research question / topic                                 │
-│ • Population (P in PICOS)                                   │
-│ • Intervention/Exposure (I)                                 │
-│ • Comparator (C)                                            │
-│ • Outcomes (O)                                              │
-│ • Study designs (S)                                         │
-│ • Keywords                                                  │
-│ • Date range                                                │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Step 3: Extract Database Guidelines                         │
-├─────────────────────────────────────────────────────────────┤
-│ For each database (pubmed, scopus, wos, embase):           │
-│ • Syntax rules ([MeSH], TITLE-ABS-KEY, etc.)              │
-│ • Precision_Knobs (filters, scope, proximity)              │
-│ • Boolean operators (AND, OR, NOT)                         │
-│ • Field tags ([tiab], [majr], etc.)                       │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Step 4: Build Complete Prompt                               │
-├─────────────────────────────────────────────────────────────┤
-│ • Insert protocol info into template placeholders          │
-│ • Insert database guidelines for selected DBs               │
-│ • Insert level-specific instructions (extended = 6 queries)│
-│ • Add date range constraints                                │
-│ • Add output format specifications                          │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Step 5: Write Executable Command File                       │
-├─────────────────────────────────────────────────────────────┤
-│ Save to: .gemini/commands/run_godos_2024_multidb_extended.toml │
-│                                                              │
-│ File contains:                                              │
-│ • description = "Runs query generation for Godos_2024..."  │
-│ • prompt = '''[FULL POPULATED PROMPT]'''                   │
-│                                                              │
-│ Ready to invoke via: /run_godos_2024_multidb_extended      │
-└─────────────────────────────────────────────────────────────┘
-```
-
-## Expected Output
-
-```
-═══════════════════════════════════════════════════════════════
-  🔧 LLM Command Generation
-═══════════════════════════════════════════════════════════════
-
-Reading template files...
-  ✓ prompts/prompt_template_multidb.md
-  ✓ prompts/database_guidelines.md
-
-Reading protocol...
-  ✓ studies/Godos_2024/prospero_godos_2024.md
-
-Extracting protocol information...
-  ✓ Topic: "Mediterranean Diet and Cardiovascular Health"
-  ✓ Population: Adults aged 18+
-  ✓ Intervention: Mediterranean diet adherence
-  ✓ Outcomes: CVD incidence, mortality
-  ✓ Designs: Cohort studies, RCTs
-
-Extracting database guidelines...
-  ✓ PubMed syntax & Precision_Knobs
-  ✓ Scopus syntax & Precision_Knobs
-  ✓ Web of Science syntax & Precision_Knobs
-  ✓ Embase syntax & Precision_Knobs
-
-Building prompt with level: extended (6 queries per database)...
-  ✓ Injected PICOS framework
-  ✓ Injected database-specific guidelines
-  ✓ Injected extended-level instructions
-  ✓ Added date range: 1990/01/01 to 2023/12/31
-
-Writing command file...
-  ✓ Saved to: .gemini/commands/run_godos_2024_multidb_extended.toml
-
-✅ Command generation complete!
-
-═══════════════════════════════════════════════════════════════
-
-The new command is ready to execute:
-
-  /run_godos_2024_multidb_extended
-
-This command will generate:
-  • 6 queries for PubMed
-  • 6 queries for Scopus
-  • 6 queries for Web of Science
-  • 6 queries for Embase
-  ────────────────────────
-  Total: 24 queries
-
-Next step: Run the command to execute the LLM prompt!
-```
+1. Reads the strategy-aware template and database-guidance files.
+2. Reads shared study guidance plus your study protocol markdown.
+3. Extracts topic framing and PICOS information from the protocol.
+4. Injects selected database guidance, date window, and relaxation profile into the populated prompt.
+5. Preserves the runtime exchange format used by the strategy-aware workflow: one JSON query object keyed by database plus an optional `json_patch` correction block.
+6. Writes a reusable command file to either `.gemini/commands/` or `.github/prompts/`.
 
 ## Verify Output
 
 ```bash
-# Check command file was created
-ls -lh .gemini/commands/run_godos_2024_multidb_extended.toml
+# Gemini path
+ls -lh .gemini/commands/run_godos_2024_multidb_strategy.toml
 
-# Preview the file (first 100 lines)
-head -100 .gemini/commands/run_godos_2024_multidb_extended.toml
+# Copilot prompt path
+ls -lh .github/prompts/run_godos_2024_multidb_strategy.prompt.md
 ```
 
 ## Troubleshooting
 
 **Problem: "Protocol file not found"**
 ```bash
-# Check STEP 1 completed successfully
 ls studies/Godos_2024/prospero_*.md
-
-# If missing, re-run STEP 1
 ```
 
 **Problem: "Template files not found"**
 ```bash
-# Check you're in project root
-pwd  # Should end with QueriesSystematicReview
-
-# Check template files exist
-ls prompts/prompt_template_multidb.md
-ls prompts/database_guidelines.md
+pwd
+ls prompts/prompt_template_multidb_strategy_aware.md
+ls prompts/database_guidelines_strategy_aware.md
 ```
 
-**Problem: "Invalid database name"**
-```bash
-# Valid options: pubmed, scopus, wos, embase
-# NO SPACES! ❌ "pubmed, scopus" ✅ "pubmed,scopus"
-
-# Correct usage:
-/generate_multidb_prompt \
-  --databases pubmed,scopus,wos,embase \
-  ...
+**Problem: "I restored Gemini files but they still use the old prompt stack"**
+```text
+Regenerate the study-specific command after updating the generator.
+Older run_*_multidb*.toml and .prompt.md files do not automatically migrate.
 ```
 
 ---
 
-# STEP 3: Run LLM Command to Generate Queries
+# STEP 3: Run the Generated LLM Command
 
 ## Purpose
-Execute the LLM command from STEP 2 to automatically generate 24 database-specific search queries (6 for each of PubMed, Scopus, WOS, Embase).
-
-## Requirements
-- ✅ Command file from STEP 2 completed
-- ✅ LLM access (Gemini CLI / Claude Desktop / GPT-4)
+Execute the generated command so the system writes the strategy summary and aligned query files automatically.
 
 ## Command
 
 ```bash
-/run_godos_2024_multidb_extended
+/run_godos_2024_multidb_strategy
 ```
 
 ## What This Does
 
-The LLM will:
+The generated command now:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 1: Analyze PROSPERO Protocol                          │
-├─────────────────────────────────────────────────────────────┤
-│ • Read research question                                    │
-│ • Extract PICOS framework elements                          │
-│ • Identify key concepts (e.g., "Mediterranean diet", "CVD")│
-│ • Note study design requirements                            │
-│ • Note date range constraints                               │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 2: Create Concept-to-Term Mapping Tables              │
-├─────────────────────────────────────────────────────────────┤
-│ Concept→MeSH/Emtree Mapping:                               │
-│ ┌──────────────┬─────────────────┬─────────┬─────────┐    │
-│ │ Concept      │ MeSH Term       │ Tree    │ Explode │    │
-│ ├──────────────┼─────────────────┼─────────┼─────────┤    │
-│ │ Med. Diet    │ Diet, Mediter.  │ E02.642 │ Yes     │    │
-│ │ CVD          │ Card. Diseases  │ C14     │ Yes     │    │
-│ └──────────────┴─────────────────┴─────────┴─────────┘    │
-│                                                              │
-│ Concept→Textword Mapping:                                  │
-│ ┌──────────────┬──────────────────┬───────┬──────────┐    │
-│ │ Concept      │ Synonym/Phrase   │ Field │ Truncat? │    │
-│ ├──────────────┼──────────────────┼───────┼──────────┤    │
-│ │ Med. Diet    │ mediterranean*   │ tiab  │ Yes      │    │
-│ │ Med. Diet    │ med diet         │ tiab  │ No       │    │
-│ │ CVD          │ cardiovascular*  │ tiab  │ Yes      │    │
-│ │ CVD          │ heart disease*   │ tiab  │ Yes      │    │
-│ └──────────────┴──────────────────┴───────┴──────────┘    │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 3: Generate 6 Queries for Each Database               │
-├─────────────────────────────────────────────────────────────┤
-│ FOR EACH DATABASE (PubMed, Scopus, WOS, Embase):           │
-│                                                              │
-│ Query 1 - High-recall:                                      │
-│ • Use exploded MeSH/Emtree terms                           │
-│ • Include all text synonyms with OR                         │
-│ • Broad Boolean logic (maximize sensitivity)                │
-│                                                              │
-│ Query 2 - Balanced:                                         │
-│ • Mix of controlled vocab + free text                       │
-│ • Add study design filters                                  │
-│ • Moderate precision                                        │
-│                                                              │
-│ Query 3 - High-precision:                                   │
-│ • Major focus terms only ([majr], */de)                    │
-│ • Title-only searches                                       │
-│ • Strict filters                                            │
-│                                                              │
-│ Query 4 - Micro-variant (Filter-based):                    │
-│ • Start with Balanced query                                 │
-│ • Add: humans[Filter] (PubMed)                             │
-│ • Add: DOCTYPE(ar OR re) (Scopus)                          │
-│ • Add: article or review (Embase)                          │
-│                                                              │
-│ Query 5 - Micro-variant (Scope-based):                     │
-│ • Start with Balanced query                                 │
-│ • Restrict key concepts to title: [ti]                     │
-│ • Or use major headings: [majr]                            │
-│                                                              │
-│ Query 6 - Micro-variant (Proximity-based):                 │
-│ • Start with Balanced query                                 │
-│ • Add: W/5 for Scopus (within 5 words)                    │
-│ • Add: ADJ5 for Embase                                     │
-│ • For PubMed: use [majr] (no proximity operator)          │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 4: Apply Database-Specific Syntax                     │
-├─────────────────────────────────────────────────────────────┤
-│ PubMed Example:                                             │
-│ ("Diet, Mediterranean"[MeSH] OR mediterranean diet[tiab])   │
-│ AND ("Cardiovascular Diseases"[MeSH] OR cardiovascular[tiab│
-│ AND ("1990/01/01"[Date - Publication] : "2023/12/31"[Date])│
-│                                                              │
-│ Scopus Example:                                             │
-│ TITLE-ABS-KEY("mediterranean diet" OR "med diet") AND      │
-│ TITLE-ABS-KEY(cardiovascular OR "heart disease") AND       │
-│ PUBYEAR > 1989 AND PUBYEAR < 2024                          │
-│                                                              │
-│ [Similar for WOS and Embase]                                │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 5: Self-Check with PRESS Criteria                     │
-├─────────────────────────────────────────────────────────────┤
-│ LLM reviews its own work:                                   │
-│ • Are MeSH terms correct and appropriately exploded?        │
-│ • Are synonyms comprehensive?                               │
-│ • Is Boolean logic correct?                                 │
-│ • Are date filters applied correctly?                       │
-│ • Are queries syntactically valid?                          │
-│                                                              │
-│ If issues found: Apply corrections via json_patch           │
-└─────────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────────┐
-│ Phase 6: Output JSON with All Queries                       │
-├─────────────────────────────────────────────────────────────┤
-│ Returns:                                                    │
-│ {                                                            │
-│   "pubmed": ["query1", "query2", ..., "query6"],          │
-│   "scopus": ["query1", "query2", ..., "query6"],          │
-│   "wos": ["query1", "query2", ..., "query6"],             │
-│   "embase": ["query1", "query2", ..., "query6"]           │
-│ }                                                            │
-└─────────────────────────────────────────────────────────────┘
-```
+1. Executes the populated strategy-aware instructions for this study and the requested databases.
+2. Selects the retrieval architecture (`single_route` or `dual_route_union`) and determines whether the `design_analytic_block` stays active.
+3. Builds the concept tables that map protocol concepts to controlled vocabulary and textword terms for each database.
+4. Generates a single JSON query object keyed by database, where each database contains six comment-prefixed query strings (`Q1` through `Q6`).
+5. Runs the PRESS self-check and records any needed `json_patch` corrections.
+6. Writes `search_strategy.md` with the architecture summary, concept tables, JSON query object, `json_patch`, and translation notes.
+7. Applies any corrections and writes the final database-specific `queries*.txt` files into `studies/Godos_2024/`.
 
-## Expected Output
+## Files Written Automatically
 
-The LLM will return a JSON object with all queries. You'll see:
+- `studies/Godos_2024/search_strategy.md` (architecture summary, concept tables, JSON query object, `json_patch`, translation notes)
+- `studies/Godos_2024/queries.txt`
+- `studies/Godos_2024/queries_scopus.txt`
+- `studies/Godos_2024/queries_wos.txt`
+- `studies/Godos_2024/queries_embase.txt`
 
-```json
-{
-  "pubmed": [
-    "(\"Diet, Mediterranean\"[MeSH] OR \"mediterranean diet\"[tiab] OR \"med diet\"[tiab]) AND (\"Cardiovascular Diseases\"[MeSH] OR cardiovascular[tiab] OR \"heart disease\"[tiab]) AND (\"Cohort Studies\"[MeSH] OR cohort[tiab]) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-    
-    "(\"Diet, Mediterranean\"[MeSH] OR mediterranean[tiab]) AND (\"Cardiovascular Diseases\"[MeSH] OR cvd[tiab]) AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-    
-    "\"Diet, Mediterranean\"[Majr] AND \"Cardiovascular Diseases\"[Majr] AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-    
-    "(\"Diet, Mediterranean\"[MeSH] OR mediterranean[tiab]) AND (\"Cardiovascular Diseases\"[MeSH] OR cvd[tiab]) AND humans[Filter] AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-    
-    "\"Diet, Mediterranean\"[Majr] AND cardiovascular[ti] AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])",
-    
-    "\"Diet, Mediterranean\"[Majr] AND \"Cardiovascular Diseases\"[Majr] AND english[Language] AND (\"1990/01/01\"[Date - Publication] : \"2023/12/31\"[Date - Publication])"
-  ],
-  
-  "scopus": [
-    "TITLE-ABS-KEY((\"mediterranean diet\" OR \"med diet\" OR mediterranean)) AND TITLE-ABS-KEY((cardiovascular OR \"heart disease\" OR cvd)) AND TITLE-ABS-KEY(cohort) AND PUBYEAR > 1989 AND PUBYEAR < 2024",
-    
-    "TITLE-ABS-KEY(mediterranean AND diet) AND TITLE-ABS-KEY(cardiovascular) AND PUBYEAR > 1989 AND PUBYEAR < 2024",
-    
-    "TITLE(mediterranean AND diet) AND TITLE(cardiovascular) AND PUBYEAR > 1989 AND PUBYEAR < 2024",
-    
-    "TITLE-ABS-KEY(mediterranean AND diet) AND TITLE-ABS-KEY(cardiovascular) AND DOCTYPE(ar OR re) AND PUBYEAR > 1989 AND PUBYEAR < 2024",
-    
-    "TITLE(mediterranean AND diet) AND TITLE-ABS-KEY(cardiovascular) AND PUBYEAR > 1989 AND PUBYEAR < 2024",
-    
-    "TITLE-ABS-KEY(mediterranean W/5 diet) AND TITLE-ABS-KEY(cardiovascular) AND PUBYEAR > 1989 AND PUBYEAR < 2024"
-  ],
-  
-  "wos": [
-    "...",  
-  ],
-  
-  "embase": [
-    "..."
-  ]
-}
-```
+The JSON query object is the intermediate communication format used during generation. In the current workflow it is stored inside `search_strategy.md` rather than as a separate standalone query JSON file.
 
-## Save Queries to Files
-
-**IMPORTANT**: You must manually copy each array of queries to the corresponding file:
-
-```bash
-# 1. Copy pubmed queries to studies/Godos_2024/queries.txt
-#    One query per line (6 lines total)
-
-# 2. Copy scopus queries to studies/Godos_2024/queries_scopus.txt
-#    One query per line (6 lines total)
-
-# 3. Copy wos queries to studies/Godos_2024/queries_wos.txt
-#    One query per line (6 lines total)
-
-# 4. Copy embase queries to studies/Godos_2024/queries_embase.txt
-#    One query per line (6 lines total)
-```
-
-**Format Example** (`queries.txt`):
-```
-("Diet, Mediterranean"[MeSH] OR "mediterranean diet"[tiab]) AND ("Cardiovascular Diseases"[MeSH] OR cardiovascular[tiab]) AND ("1990/01/01"[Date - Publication] : "2023/12/31"[Date - Publication])
-("Diet, Mediterranean"[MeSH] OR mediterranean[tiab]) AND (cvd[tiab]) AND ("1990/01/01"[Date - Publication] : "2023/12/31"[Date - Publication])
-"Diet, Mediterranean"[Majr] AND "Cardiovascular Diseases"[Majr] AND ("1990/01/01"[Date - Publication] : "2023/12/31"[Date - Publication])
-...
-```
+Manual copying of JSON arrays into query files is no longer part of the current workflow.
 
 ## Verify Output
 
 ```bash
-# Check all query files were created
+ls studies/Godos_2024/search_strategy.md
 ls studies/Godos_2024/queries*.txt
+grep -n "json_patch" studies/Godos_2024/search_strategy.md
 
-# Count lines (should be 6 for each)
-wc -l studies/Godos_2024/queries*.txt
-
-# Expected output:
-#   6 studies/Godos_2024/queries.txt
-#   6 studies/Godos_2024/queries_scopus.txt
-#   6 studies/Godos_2024/queries_wos.txt
-#   6 studies/Godos_2024/queries_embase.txt
+# Optional quick check that comment-prefixed query blocks were written
+grep -c "^# Q" studies/Godos_2024/queries.txt
 ```
+
+## Review Before Proceeding
+
+- Confirm the query files exist for each requested database.
+- Confirm the six query blocks stay aligned across database files.
+- Review `search_strategy.md` for the selected architecture, concept-role assignments, and translation notes.
+- Make any manual refinements directly in the generated `queries*.txt` files before moving to STEP 4.
 
 ## Troubleshooting
 
-**Problem: "LLM returned incomplete JSON"**
-```bash
-# Re-run the command
-/run_godos_2024_multidb_extended
-
-# Or try with a different level
-/generate_multidb_prompt \
-  --level basic \  # Start with simpler (3 queries per DB)
-  ...
-```
-
 **Problem: "Queries don't match my protocol"**
 ```bash
-# Review your PROSPERO markdown
 cat studies/Godos_2024/prospero_godos_2024.md
-
-# If PICOS unclear, manually edit the markdown to add clarity
-# Then re-run STEP 2 and STEP 3
 ```
 
-**Problem: "How do I review queries before saving?"**
-```markdown
-**Best Practice**: Manually review all queries for:
-1. Correct MeSH/Emtree terms (check against PubMed MeSH browser)
-2. Complete synonym lists (add missing variants)
-3. Correct Boolean logic (AND/OR precedence)
-4. Date range accuracy
-5. Syntax validity (test one query manually on each database)
+Clarify the protocol markdown if needed, then regenerate the command and rerun it.
 
-Make edits directly in the .txt files before proceeding to STEP 4.
+**Problem: "Generated command did not write query files"**
+```text
+This usually means you are still running an older generated command file.
+Regenerate it using the current strategy-aware generator, then rerun the new command.
 ```
 
 ---
@@ -1203,8 +917,8 @@ Step 2: Matching references...
 
 Step 3: Looking up DOIs and PMIDs...
    Email: john.doe@university.edu
-   Min confidence: 0.70
-   Strategy: PubMed → CrossRef fallback
+  Min confidence: 0.80
+  Strategy: PubMed → Europe PMC → CrossRef
 
   [1/47] Mediterranean diet and cardiovascular disease risk...
       → [PubMed] DOI: 10.1016/j.nutr.2021.111234, PMID: 33445678,
@@ -1215,14 +929,16 @@ Step 3: Looking up DOIs and PMIDs...
         Confidence: 0.92 ✓
   
   [3/47] 睡眠呼吸暂停综合征的研究...
-      → PubMed: No match, trying CrossRef...
+    → PubMed: No match, trying Europe PMC...
+    → Europe PMC: No match, trying CrossRef...
       → [CrossRef] DOI: 10.12345/cjrm.2020.03.001, Confidence: 0.88 ✓
 
 [... 44 more studies ...]
 
 ✅ Updated 45 studies
    PubMed: 42 studies (DOI + PMID)
-   CrossRef: 3 studies (DOI only)
+     Europe PMC: 0 studies (DOI + PMID when available)
+     CrossRef: 3 studies (DOI only)
 
 📊 Final Statistics:
    With DOI: 45 (95.7%)
@@ -1578,7 +1294,7 @@ Now use the automated validation script to cross-check the LLM outputs against P
 
 ```bash
 # IMPORTANT: Run from project root directory
-cd to QueriesSystematicReview
+cd /path/to/QueriesSystematicReview
 
 # Activate environment
 conda activate systematic_review_queries
@@ -1714,7 +1430,7 @@ python scripts/validate_pmids_direct.py Godos_2024 --json-report
 
 ```bash
 # From project root:
-cd to QueriesSystematicReview
+cd /path/to/QueriesSystematicReview
 
 # Simple format (for workflow integration)
 head studies/Godos_2024/gold_pmids_godos_2024.csv
@@ -1766,7 +1482,7 @@ Uses title similarity matching instead of DOI:
 
 ```bash
 # From project root:
-cd to QueriesSystematicReview
+cd /path/to/QueriesSystematicReview
 
 python scripts/validate_pmids_multi_source.py Godos_2024 --validate-pubmed
 ```
@@ -1782,7 +1498,7 @@ Looks up PMIDs from DOIs instead of validating PMIDs:
 
 ```bash
 # From project root:
-cd to QueriesSystematicReview
+cd /path/to/QueriesSystematicReview
 
 python scripts/validate_pmids_by_doi.py Godos_2024 --json-report
 ```
@@ -1842,7 +1558,7 @@ With validation:
 
 ```bash
 # From project root, check folder exists and has files
-cd to QueriesSystematicReview
+cd /path/to/QueriesSystematicReview
 ls -la studies/Godos_2024/pmids_multiple_sources/
 
 # Make sure you saved LLM outputs as CSV files in this folder
@@ -2031,6 +1747,8 @@ bash scripts/run_complete_workflow.sh Godos_2024 \
   --multi-key
 ```
 
+If `gold_pmids_<study>_detailed.csv` already exists, the wrapper also enables multi-key matching automatically even when `--multi-key` is omitted. Passing the flag explicitly is still useful when you want to make that behavior obvious in the command line.
+
 **That's it!** This single command runs the entire workflow automatically.
 
 ## What This Command Does
@@ -2204,14 +1922,24 @@ consensus_k2              1234       44   0.936    0.036     0.069
 ### Basic Usage
 
 ```bash
-# Run with default databases (PubMed only)
+# Run with the wrapper defaults: pubmed,scopus,wos
 bash scripts/run_complete_workflow.sh Godos_2024
 
-# Specify multiple databases
+# Specify the provider set explicitly
 bash scripts/run_complete_workflow.sh Godos_2024 --databases pubmed,scopus,wos
 
-# Include Embase (auto-detects CSV files)
+# Embase CSV imports are still auto-detected; including embase here is optional shorthand
 bash scripts/run_complete_workflow.sh Godos_2024 --databases pubmed,scopus,wos,embase
+```
+
+### Mode Selection
+
+```bash
+# Run the full score-and-aggregate flow once per aligned query block
+bash scripts/run_complete_workflow.sh Godos_2024 --query-by-query
+
+# Run that same flow for a single query index only
+bash scripts/run_complete_workflow.sh Godos_2024 --query-index 3
 ```
 
 ### Advanced Options
@@ -2234,11 +1962,16 @@ bash scripts/run_complete_workflow.sh --help
 
 | Flag | Purpose | Use When |
 |------|---------|----------|
-| `--databases` | Select which databases to query | Customizing database selection |
+| `--databases` | Select which API-backed providers to query | Customizing provider selection; default is `pubmed,scopus,wos` |
 | `--skip-embase` | Ignore Embase CSV files | Testing without Embase |
 | `--embase-only` | Only import Embase, skip APIs | Already ran API queries |
 | `--skip-aggregation` | Skip aggregation phase | Only want individual query performance |
+| `--query-by-query` | Run score + aggregation once per query block | Comparing query families one at a time |
+| `--query-index N` | Run score + aggregation for one query block | Debugging or targeted experiments |
+| `--multi-key` | Use DOI-first matching with PMID fallback | Preferred when detailed gold CSV exists; auto-enabled when the detailed gold CSV is detected |
 | `--help` | Show usage information | Learning command options |
+
+**Important Embase note:** Embase is still integrated via manual CSV export and JSON import, not as a live API-backed provider. `scripts/run_complete_workflow.sh` accepts `,embase` for convenience, but strips it before forwarding provider names to the Python CLI.
 
 ## Understanding the Output Files
 
@@ -2322,11 +2055,10 @@ python scripts/extract_included_studies.py microbiome_2024 \
 #   ✓ studies/microbiome_2024/included_studies.json (with DOI+PMID)
 #   ✓ studies/microbiome_2024/gold_pmids_microbiome_2024_detailed.csv
 
-# Step 4: Generate queries with LLM (manual)
-# Save to:
-#   - studies/microbiome_2024/queries.txt
-#   - studies/microbiome_2024/queries_scopus.txt
-#   - studies/microbiome_2024/queries_wos.txt
+# Step 4: Generate strategy-aware queries
+/generate_multidb_prompt --command_name run_microbiome_2024_multidb_strategy ...
+/run_microbiome_2024_multidb_strategy
+# Writes search_strategy.md and queries*.txt automatically
 
 # Step 5: Run complete workflow with multi-key evaluation
 bash scripts/run_complete_workflow.sh microbiome_2024 \
@@ -2666,18 +2398,15 @@ Use this checklist to ensure you've completed all steps correctly:
 - [ ] Verified: `prospero_<study>.md` created
 
 ### STEP 2: LLM Command Generation
-- [ ] Ran: `/generate_multidb_prompt` with correct parameters
-- [ ] Command file created in `.gemini/commands/`
+- [ ] Ran either `/generate_multidb_prompt ... --relaxation_profile ...` or `/generate-multidb-prompt ...`
+- [ ] Command or prompt file created in `.gemini/commands/` or `.github/prompts/`
 - [ ] Verified command name is correct
 
 ### STEP 3: Query Generation
 - [ ] Ran: `/<command_name>` (LLM command from STEP 2)
-- [ ] Received JSON output with queries for all databases
-- [ ] Copied PubMed queries to `queries.txt` (one per line)
-- [ ] Copied Scopus queries to `queries_scopus.txt` (one per line)
-- [ ] Copied WOS queries to `queries_wos.txt` (one per line)
-- [ ] Copied Embase queries to `queries_embase.txt` (one per line)
-- [ ] Verified: Each file has 6 lines (for extended level)
+- [ ] Verified: `search_strategy.md` was written automatically
+- [ ] Verified: `queries.txt`, `queries_scopus.txt`, `queries_wos.txt`, and `queries_embase.txt` were written automatically as needed
+- [ ] Verified: Each database file contains 6 aligned query blocks
 - [ ] Manually reviewed queries for accuracy
 
 ### STEP 4: Embase Export (Optional but Recommended)
@@ -2765,11 +2494,11 @@ python llm_sr_select_and_score.py ...
 python scripts/prepare_study.py Godos_2024 --docling-env docling
 
 # 2. Generate LLM command
-/generate_multidb_prompt --command_name run_godos_2024_multidb_extended ...
+/generate_multidb_prompt --command_name run_godos_2024_multidb_strategy --relaxation_profile default ...
 
 # 3. Run LLM
-/run_godos_2024_multidb_extended
-# → Copy output to queries*.txt files
+/run_godos_2024_multidb_strategy
+# → Writes search_strategy.md and queries*.txt automatically
 
 # 4. Export Embase (manual, but streamlined)
 # Save CSVs to embase_manual_queries/
@@ -2853,7 +2582,7 @@ These steps still require human involvement:
 **Why**: Requires specifying study-specific parameters
 
 **Manual steps**:
-1. Choose query complexity level (basic/extended/keywords/exhaustive)
+1. Choose the strategy-aware relaxation profile (`default`, `recall_soft`, or `recall_strong`)
 2. Set date range for literature search
 3. Select which databases to target
 4. Run command generation tool
@@ -2991,9 +2720,9 @@ Create a `README.md` in your study folder:
 
 ## Query Generation
 - LLM: Gemini 1.5 Pro
-- Level: Extended (6 queries per database)
+- Generation mode: Strategy-aware six-query family (`Q1`-`Q6`)
 - Date: 2026-01-21
-- Command: /run_godos_2024_multidb_extended
+- Command: /run_godos_2024_multidb_strategy
 
 ## Workflow Execution
 - Date: 2026-01-21
@@ -3128,18 +2857,20 @@ git push origin main
 
 ## Q6: What if I want more/fewer queries per database?
 
-**A**: Change the `--level` parameter in STEP 2:
+**A**: The current strategy-aware workflow is fixed to six aligned queries per database (`Q1` to `Q6`). The main knob is now `relaxation_profile`, not query count.
 
 ```bash
-# 3 queries per database (faster, less comprehensive)
-/generate_multidb_prompt --level basic ...
+# Default behavior
+/generate_multidb_prompt --relaxation_profile default ...
 
-# 6 queries per database (recommended balance)
-/generate_multidb_prompt --level extended ...
+# Slightly more recall-friendly baseline
+/generate_multidb_prompt --relaxation_profile recall_soft ...
 
-# 9 queries per database (most comprehensive)
-/generate_multidb_prompt --level exhaustive ...
+# Strongest recall bias within the same six-query family
+/generate_multidb_prompt --relaxation_profile recall_strong ...
 ```
+
+If you truly need a different number of queries, that requires a different template workflow rather than a flag change in the current strategy-aware generator.
 
 ## Q7: Can I customize the aggregation strategies?
 
